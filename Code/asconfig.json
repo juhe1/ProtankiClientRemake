@@ -1,0 +1,33 @@
+{
+	"compilerOptions": {
+		"source-path": [
+			"src"
+		],
+		"output": "bin/library.swf",
+		"default-frame-rate": 60,
+		"default-background-color": "#FFFFFF",
+		"default-size": {
+			"width": 800,
+			"height": 600
+		},
+		"target-player": "28.0",
+		"accessible": false,
+		"benchmark": false,
+		"optimize": true,
+		"omit-trace-statements": true,
+		"show-unused-type-selector-warnings": true,
+		"strict": true,
+		"use-network": true,
+		"use-resource-bundle-metadata": true,
+		"warnings": false,
+		"verbose-stacktraces": false,
+		"static-link-runtime-shared-libraries": true,
+		"library-path":[
+			"libs"
+		],
+	},
+	"files": [
+		"src/Game.as"
+	],
+	"config": "air",
+}

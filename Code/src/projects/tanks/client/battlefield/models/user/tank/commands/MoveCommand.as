@@ -1,0 +1,90 @@
+package projects.tanks.client.battlefield.models.user.tank.commands
+{
+   import projects.tanks.client.battlefield.types.Vector3d;
+   
+   public class MoveCommand
+   {
+      
+      private var _angularVelocity:Vector3d;
+      
+      private var _control:int;
+      
+      private var _linearVelocity:Vector3d;
+      
+      private var _orientation:Vector3d;
+      
+      private var _position:Vector3d;
+      
+      public function MoveCommand(param1:Vector3d = null, param2:int = 0, param3:Vector3d = null, param4:Vector3d = null, param5:Vector3d = null)
+      {
+         super();
+         this._angularVelocity = param1;
+         this._control = param2;
+         this._linearVelocity = param3;
+         this._orientation = param4;
+         this._position = param5;
+      }
+      
+      public function get angularVelocity() : Vector3d
+      {
+         return this._angularVelocity;
+      }
+      
+      public function set angularVelocity(param1:Vector3d) : void
+      {
+         this._angularVelocity = param1;
+      }
+      
+      public function get control() : int
+      {
+         return this._control;
+      }
+      
+      public function set control(param1:int) : void
+      {
+         this._control = param1;
+      }
+      
+      public function get linearVelocity() : Vector3d
+      {
+         return this._linearVelocity;
+      }
+      
+      public function set linearVelocity(param1:Vector3d) : void
+      {
+         this._linearVelocity = param1;
+      }
+      
+      public function get orientation() : Vector3d
+      {
+         return this._orientation;
+      }
+      
+      public function set orientation(param1:Vector3d) : void
+      {
+         this._orientation = param1;
+      }
+      
+      public function get position() : Vector3d
+      {
+         return this._position;
+      }
+      
+      public function set position(param1:Vector3d) : void
+      {
+         this._position = param1;
+      }
+      
+      public function toString() : String
+      {
+         var _loc1_:String = "MoveCommand [";
+         _loc1_ += "angularVelocity = " + this.angularVelocity + " ";
+         _loc1_ += "control = " + this.control + " ";
+         _loc1_ += "linearVelocity = " + this.linearVelocity + " ";
+         _loc1_ += "orientation = " + this.orientation + " ";
+         _loc1_ += "position = " + this.position + " ";
+         return _loc1_ + "]";
+      }
+   }
+}
+

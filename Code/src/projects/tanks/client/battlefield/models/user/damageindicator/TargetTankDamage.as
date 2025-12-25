@@ -1,0 +1,62 @@
+package projects.tanks.client.battlefield.models.user.damageindicator
+{
+   import platform.client.fp10.core.type.IGameObject;
+   
+   public class TargetTankDamage
+   {
+      
+      private var _damageAmount:Number;
+      
+      private var _damageIndicatorType:DamageIndicatorType;
+      
+      private var _target:String;
+      
+      public function TargetTankDamage(param1:Number = 0, param2:DamageIndicatorType = null, param3:String = null)
+      {
+         super();
+         this._damageAmount = param1;
+         this._damageIndicatorType = param2;
+         this._target = param3;
+      }
+      
+      public function get damageAmount() : Number
+      {
+         return this._damageAmount;
+      }
+      
+      public function set damageAmount(param1:Number) : void
+      {
+         this._damageAmount = param1;
+      }
+      
+      public function get damageIndicatorType() : DamageIndicatorType
+      {
+         return this._damageIndicatorType;
+      }
+      
+      public function set damageIndicatorType(param1:DamageIndicatorType) : void
+      {
+         this._damageIndicatorType = param1;
+      }
+      
+      public function get target() : String
+      {
+         return this._target;
+      }
+      
+      public function set target(param1:String) : void
+      {
+         this._target = param1;
+      }
+      
+      public function toString() : String
+      {
+         var _loc1_:String = "TargetTankDamage [";
+         _loc1_ += "damageAmount = " + this.damageAmount + " ";
+         _loc1_ += "damageIndicatorType = " + this.damageIndicatorType + " ";
+         _loc1_ += "target = " + this.target + " ";
+         return _loc1_ + "]";
+      }
+   }
+}
+
