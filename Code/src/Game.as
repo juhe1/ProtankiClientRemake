@@ -49,7 +49,7 @@ package
       {
          var _loc1_:OSGi = OSGi.getInstance();
          new EntranceActivator().start(_loc1_);
-         ILoaderWindowService(_loc1_.getService(ILoaderWindowService)).showImmediately();
+         ILoaderWindowService(_loc1_.getService(ILoaderWindowService)).show();
          //new GameActivator().start(_loc1_);
          StartupSettings.preLauncher = Sprite(parent.parent.parent);
          this.b629458b();

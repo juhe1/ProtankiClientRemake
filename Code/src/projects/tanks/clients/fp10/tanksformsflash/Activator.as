@@ -150,111 +150,111 @@ package projects.tanks.clients.fp10.tanksformsflash
          {
             return ServerStopAlert.localeService;
          });
-         osgi.injectService(ILocaleService,function(param1:Object):void
-         {
-            TankWindowWithHeader.localeService = ILocaleService(param1);
-         },function():ILocaleService
-         {
-            return TankWindowWithHeader.localeService;
-         });
-         osgi.injectService(IBattleInfoService,function(param1:Object):void
-         {
-            ContextMenu.battleInfoService = IBattleInfoService(param1);
-         },function():IBattleInfoService
-         {
-            return ContextMenu.battleInfoService;
-         });
-         osgi.injectService(IBattleInviteService,function(param1:Object):void
-         {
-            ContextMenu.battleInviteService = IBattleInviteService(param1);
-         },function():IBattleInviteService
-         {
-            return ContextMenu.battleInviteService;
-         });
-         osgi.injectService(IBlockUserService,function(param1:Object):void
-         {
-            ContextMenu.blockUserService = IBlockUserService(param1);
-         },function():IBlockUserService
-         {
-            return ContextMenu.blockUserService;
-         });
-         osgi.injectService(ClanFunctionsService,function(param1:Object):void
-         {
-            ContextMenu.clanFunctionsService = ClanFunctionsService(param1);
-         },function():ClanFunctionsService
-         {
-            return ContextMenu.clanFunctionsService;
-         });
-         osgi.injectService(ClanUserInfoService,function(param1:Object):void
-         {
-            ContextMenu.clanUserInfoService = ClanUserInfoService(param1);
-         },function():ClanUserInfoService
-         {
-            return ContextMenu.clanUserInfoService;
-         });
-         osgi.injectService(IContextMenuService,function(param1:Object):void
-         {
-            ContextMenu.contextMenuService = IContextMenuService(param1);
-         },function():IContextMenuService
-         {
-            return ContextMenu.contextMenuService;
-         });
-         osgi.injectService(IDisplay,function(param1:Object):void
-         {
-            ContextMenu.display = IDisplay(param1);
-         },function():IDisplay
-         {
-            return ContextMenu.display;
-         });
-         osgi.injectService(ILobbyLayoutService,function(param1:Object):void
-         {
-            ContextMenu.lobbyLayoutService = ILobbyLayoutService(param1);
-         },function():ILobbyLayoutService
-         {
-            return ContextMenu.lobbyLayoutService;
-         });
-         osgi.injectService(ILocaleService,function(param1:Object):void
-         {
-            ContextMenu.localeService = ILocaleService(param1);
-         },function():ILocaleService
-         {
-            return ContextMenu.localeService;
-         });
-         osgi.injectService(IOnlineNotifierService,function(param1:Object):void
-         {
-            ContextMenu.onlineNotifierService = IOnlineNotifierService(param1);
-         },function():IOnlineNotifierService
-         {
-            return ContextMenu.onlineNotifierService;
-         });
-         osgi.injectService(IPartnerService,function(param1:Object):void
-         {
-            ContextMenu.partnerService = IPartnerService(param1);
-         },function():IPartnerService
-         {
-            return ContextMenu.partnerService;
-         });
-         osgi.injectService(UserChangeGameScreenService,function(param1:Object):void
-         {
-            ContextMenu.userChangeGameScreenService = UserChangeGameScreenService(param1);
-         },function():UserChangeGameScreenService
-         {
-            return ContextMenu.userChangeGameScreenService;
-         });
-         osgi.injectService(IUserInfoService,function(param1:Object):void
-         {
-            ContextMenu.userInfoService = IUserInfoService(param1);
-         },function():IUserInfoService
-         {
-            return ContextMenu.userInfoService;
-         });
-         osgi.injectService(IUserPropertiesService,function(param1:Object):void
-         {
-            ContextMenu.userPropertiesService = IUserPropertiesService(param1);
-         },function():IUserPropertiesService
-         {
-            return ContextMenu.userPropertiesService;
-         });
+         //osgi.injectService(ILocaleService,function(param1:Object):void
+         //{
+         //   TankWindowWithHeader.localeService = ILocaleService(param1);
+         //},function():ILocaleService
+         //{
+         //   return TankWindowWithHeader.localeService;
+         //});
+         //osgi.injectService(IBattleInfoService,function(param1:Object):void
+         //{
+         //   ContextMenu.battleInfoService = IBattleInfoService(param1);
+         //},function():IBattleInfoService
+         //{
+         //   return ContextMenu.battleInfoService;
+         //});
+         //osgi.injectService(IBattleInviteService,function(param1:Object):void
+         //{
+         //   ContextMenu.battleInviteService = IBattleInviteService(param1);
+         //},function():IBattleInviteService
+         //{
+         //   return ContextMenu.battleInviteService;
+         //});
+         //osgi.injectService(IBlockUserService,function(param1:Object):void
+         //{
+         //   ContextMenu.blockUserService = IBlockUserService(param1);
+         //},function():IBlockUserService
+         //{
+         //   return ContextMenu.blockUserService;
+         //});
+         //osgi.injectService(ClanFunctionsService,function(param1:Object):void
+         //{
+         //   ContextMenu.clanFunctionsService = ClanFunctionsService(param1);
+         //},function():ClanFunctionsService
+         //{
+         //   return ContextMenu.clanFunctionsService;
+         //});
+         //osgi.injectService(ClanUserInfoService,function(param1:Object):void
+         //{
+         //   ContextMenu.clanUserInfoService = ClanUserInfoService(param1);
+         //},function():ClanUserInfoService
+         //{
+         //   return ContextMenu.clanUserInfoService;
+         //});
+         //osgi.injectService(IContextMenuService,function(param1:Object):void
+         //{
+         //   ContextMenu.contextMenuService = IContextMenuService(param1);
+         //},function():IContextMenuService
+         //{
+         //   return ContextMenu.contextMenuService;
+         //});
+         //osgi.injectService(IDisplay,function(param1:Object):void
+         //{
+         //   ContextMenu.display = IDisplay(param1);
+         //},function():IDisplay
+         //{
+         //   return ContextMenu.display;
+         //});
+         //osgi.injectService(ILobbyLayoutService,function(param1:Object):void
+         //{
+         //   ContextMenu.lobbyLayoutService = ILobbyLayoutService(param1);
+         //},function():ILobbyLayoutService
+         //{
+         //   return ContextMenu.lobbyLayoutService;
+         //});
+         //osgi.injectService(ILocaleService,function(param1:Object):void
+         //{
+         //   ContextMenu.localeService = ILocaleService(param1);
+         //},function():ILocaleService
+         //{
+         //   return ContextMenu.localeService;
+         //});
+         //osgi.injectService(IOnlineNotifierService,function(param1:Object):void
+         //{
+         //   ContextMenu.onlineNotifierService = IOnlineNotifierService(param1);
+         //},function():IOnlineNotifierService
+         //{
+         //   return ContextMenu.onlineNotifierService;
+         //});
+         //osgi.injectService(IPartnerService,function(param1:Object):void
+         //{
+         //   ContextMenu.partnerService = IPartnerService(param1);
+         //},function():IPartnerService
+         //{
+         //   return ContextMenu.partnerService;
+         //});
+         //osgi.injectService(UserChangeGameScreenService,function(param1:Object):void
+         //{
+         //   ContextMenu.userChangeGameScreenService = UserChangeGameScreenService(param1);
+         //},function():UserChangeGameScreenService
+         //{
+         //   return ContextMenu.userChangeGameScreenService;
+         //});
+         //osgi.injectService(IUserInfoService,function(param1:Object):void
+         //{
+         //   ContextMenu.userInfoService = IUserInfoService(param1);
+         //},function():IUserInfoService
+         //{
+         //   return ContextMenu.userInfoService;
+         //});
+         //osgi.injectService(IUserPropertiesService,function(param1:Object):void
+         //{
+         //   ContextMenu.userPropertiesService = IUserPropertiesService(param1);
+         //},function():IUserPropertiesService
+         //{
+         //   return ContextMenu.userPropertiesService;
+         //});
          osgi.injectService(ILocaleService,function(param1:Object):void
          {
             PaymentListHeader.localeService = ILocaleService(param1);
@@ -269,111 +269,111 @@ package projects.tanks.clients.fp10.tanksformsflash
          {
             return RankIcon.rankService;
          });
-         osgi.injectService(ILocaleService,function(param1:Object):void
-         {
-            EmailInvalidBubble.localeService = ILocaleService(param1);
-         },function():ILocaleService
-         {
-            return EmailInvalidBubble.localeService;
-         });
-         osgi.injectService(ILocaleService,function(param1:Object):void
-         {
-            NameIsIncorrectBubble.localeService = ILocaleService(param1);
-         },function():ILocaleService
-         {
-            return NameIsIncorrectBubble.localeService;
-         });
-         osgi.injectService(ILocaleService,function(param1:Object):void
-         {
-            NameIsNotUniqueBubble.localeService = ILocaleService(param1);
-         },function():ILocaleService
-         {
-            return NameIsNotUniqueBubble.localeService;
-         });
-         osgi.injectService(ILocaleService,function(param1:Object):void
-         {
-            PasswordIsTooEasyBubble.localeService = ILocaleService(param1);
-         },function():ILocaleService
-         {
-            return PasswordIsTooEasyBubble.localeService;
-         });
-         osgi.injectService(ILocaleService,function(param1:Object):void
-         {
-            PasswordsDoNotMatchBubble.localeService = ILocaleService(param1);
-         },function():ILocaleService
-         {
-            return PasswordsDoNotMatchBubble.localeService;
-         });
-         osgi.injectService(RankService,function(param1:Object):void
-         {
-            StatListRenderer.rankService = RankService(param1);
-         },function():RankService
-         {
-            return StatListRenderer.rankService;
-         });
-         osgi.injectService(BattleUserPremiumService,function(param1:Object):void
-         {
-            UserLabel.battlePremiumService = BattleUserPremiumService(param1);
-         },function():BattleUserPremiumService
-         {
-            return UserLabel.battlePremiumService;
-         });
-         osgi.injectService(ClanUserInfoService,function(param1:Object):void
-         {
-            UserLabel.clanUserInfoService = ClanUserInfoService(param1);
-         },function():ClanUserInfoService
-         {
-            return UserLabel.clanUserInfoService;
-         });
-         osgi.injectService(IContextMenuService,function(param1:Object):void
-         {
-            UserLabel.contextMenuService = IContextMenuService(param1);
-         },function():IContextMenuService
-         {
-            return UserLabel.contextMenuService;
-         });
-         osgi.injectService(IDisplay,function(param1:Object):void
-         {
-            UserLabel.display = IDisplay(param1);
-         },function():IDisplay
-         {
-            return UserLabel.display;
-         });
-         osgi.injectService(IFriendInfoService,function(param1:Object):void
-         {
-            UserLabel.friendInfoService = IFriendInfoService(param1);
-         },function():IFriendInfoService
-         {
-            return UserLabel.friendInfoService;
-         });
-         osgi.injectService(IGroupInfoService,function(param1:Object):void
-         {
-            UserLabel.groupInfoService = IGroupInfoService(param1);
-         },function():IGroupInfoService
-         {
-            return UserLabel.groupInfoService;
-         });
-         osgi.injectService(PremiumService,function(param1:Object):void
-         {
-            UserLabel.premiumService = PremiumService(param1);
-         },function():PremiumService
-         {
-            return UserLabel.premiumService;
-         });
-         osgi.injectService(IUserInfoService,function(param1:Object):void
-         {
-            UserLabel.userInfoService = IUserInfoService(param1);
-         },function():IUserInfoService
-         {
-            return UserLabel.userInfoService;
-         });
-         osgi.injectService(IUserPropertiesService,function(param1:Object):void
-         {
-            UserLabel.userPropertiesService = IUserPropertiesService(param1);
-         },function():IUserPropertiesService
-         {
-            return UserLabel.userPropertiesService;
-         });
+         //osgi.injectService(ILocaleService,function(param1:Object):void
+         //{
+         //   EmailInvalidBubble.localeService = ILocaleService(param1);
+         //},function():ILocaleService
+         //{
+         //   return EmailInvalidBubble.localeService;
+         //});
+         //osgi.injectService(ILocaleService,function(param1:Object):void
+         //{
+         //   NameIsIncorrectBubble.localeService = ILocaleService(param1);
+         //},function():ILocaleService
+         //{
+         //   return NameIsIncorrectBubble.localeService;
+         //});
+         //osgi.injectService(ILocaleService,function(param1:Object):void
+         //{
+         //   NameIsNotUniqueBubble.localeService = ILocaleService(param1);
+         //},function():ILocaleService
+         //{
+         //   return NameIsNotUniqueBubble.localeService;
+         //});
+         //osgi.injectService(ILocaleService,function(param1:Object):void
+         //{
+         //   PasswordIsTooEasyBubble.localeService = ILocaleService(param1);
+         //},function():ILocaleService
+         //{
+         //   return PasswordIsTooEasyBubble.localeService;
+         //});
+         //osgi.injectService(ILocaleService,function(param1:Object):void
+         //{
+         //   PasswordsDoNotMatchBubble.localeService = ILocaleService(param1);
+         //},function():ILocaleService
+         //{
+         //   return PasswordsDoNotMatchBubble.localeService;
+         //});
+         //osgi.injectService(RankService,function(param1:Object):void
+         //{
+         //   StatListRenderer.rankService = RankService(param1);
+         //},function():RankService
+         //{
+         //   return StatListRenderer.rankService;
+         //});
+         //osgi.injectService(BattleUserPremiumService,function(param1:Object):void
+         //{
+         //   UserLabel.battlePremiumService = BattleUserPremiumService(param1);
+         //},function():BattleUserPremiumService
+         //{
+         //   return UserLabel.battlePremiumService;
+         //});
+         //osgi.injectService(ClanUserInfoService,function(param1:Object):void
+         //{
+         //   UserLabel.clanUserInfoService = ClanUserInfoService(param1);
+         //},function():ClanUserInfoService
+         //{
+         //   return UserLabel.clanUserInfoService;
+         //});
+         //osgi.injectService(IContextMenuService,function(param1:Object):void
+         //{
+         //   UserLabel.contextMenuService = IContextMenuService(param1);
+         //},function():IContextMenuService
+         //{
+         //   return UserLabel.contextMenuService;
+         //});
+         //osgi.injectService(IDisplay,function(param1:Object):void
+         //{
+         //   UserLabel.display = IDisplay(param1);
+         //},function():IDisplay
+         //{
+         //   return UserLabel.display;
+         //});
+         //osgi.injectService(IFriendInfoService,function(param1:Object):void
+         //{
+         //   UserLabel.friendInfoService = IFriendInfoService(param1);
+         //},function():IFriendInfoService
+         //{
+         //   return UserLabel.friendInfoService;
+         //});
+         //osgi.injectService(IGroupInfoService,function(param1:Object):void
+         //{
+         //   UserLabel.groupInfoService = IGroupInfoService(param1);
+         //},function():IGroupInfoService
+         //{
+         //   return UserLabel.groupInfoService;
+         //});
+         //osgi.injectService(PremiumService,function(param1:Object):void
+         //{
+         //   UserLabel.premiumService = PremiumService(param1);
+         //},function():PremiumService
+         //{
+         //   return UserLabel.premiumService;
+         //});
+         //osgi.injectService(IUserInfoService,function(param1:Object):void
+         //{
+         //   UserLabel.userInfoService = IUserInfoService(param1);
+         //},function():IUserInfoService
+         //{
+         //   return UserLabel.userInfoService;
+         //});
+         //osgi.injectService(IUserPropertiesService,function(param1:Object):void
+         //{
+         //   UserLabel.userPropertiesService = IUserPropertiesService(param1);
+         //},function():IUserPropertiesService
+         //{
+         //   return UserLabel.userPropertiesService;
+         //});
          osgi.injectService(IBlurService,function(param1:Object):void
          {
             AlertService.blurService = IBlurService(param1);
@@ -402,41 +402,41 @@ package projects.tanks.clients.fp10.tanksformsflash
          {
             return AlertService.localeService;
          });
-         osgi.injectService(IAlertService,function(param1:Object):void
-         {
-            ContextMenuService.alertService = IAlertService(param1);
-         },function():IAlertService
-         {
-            return ContextMenuService.alertService;
-         });
-         osgi.injectService(IFriendActionService,function(param1:Object):void
-         {
-            ContextMenuService.friendsActionService = IFriendActionService(param1);
-         },function():IFriendActionService
-         {
-            return ContextMenuService.friendsActionService;
-         });
-         osgi.injectService(ILocaleService,function(param1:Object):void
-         {
-            ContextMenuService.localeService = ILocaleService(param1);
-         },function():ILocaleService
-         {
-            return ContextMenuService.localeService;
-         });
-         osgi.injectService(IDisplay,function(param1:Object):void
-         {
-            GUIDebugger.display = IDisplay(param1);
-         },function():IDisplay
-         {
-            return GUIDebugger.display;
-         });
-         osgi.injectService(ILocaleService,function(param1:Object):void
-         {
-            TimeFormatter.localeService = ILocaleService(param1);
-         },function():ILocaleService
-         {
-            return TimeFormatter.localeService;
-         });
+         //osgi.injectService(IAlertService,function(param1:Object):void
+         //{
+         //   ContextMenuService.alertService = IAlertService(param1);
+         //},function():IAlertService
+         //{
+         //   return ContextMenuService.alertService;
+         //});
+         //osgi.injectService(IFriendActionService,function(param1:Object):void
+         //{
+         //   ContextMenuService.friendsActionService = IFriendActionService(param1);
+         //},function():IFriendActionService
+         //{
+         //   return ContextMenuService.friendsActionService;
+         //});
+         //osgi.injectService(ILocaleService,function(param1:Object):void
+         //{
+         //   ContextMenuService.localeService = ILocaleService(param1);
+         //},function():ILocaleService
+         //{
+         //   return ContextMenuService.localeService;
+         //});
+         //osgi.injectService(IDisplay,function(param1:Object):void
+         //{
+         //   GUIDebugger.display = IDisplay(param1);
+         //},function():IDisplay
+         //{
+         //   return GUIDebugger.display;
+         //});
+         //osgi.injectService(ILocaleService,function(param1:Object):void
+         //{
+         //   TimeFormatter.localeService = ILocaleService(param1);
+         //},function():ILocaleService
+         //{
+         //   return TimeFormatter.localeService;
+         //});
       }
       
       public function stop(param1:OSGi) : void

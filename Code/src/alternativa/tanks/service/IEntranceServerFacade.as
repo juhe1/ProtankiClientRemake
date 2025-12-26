@@ -10,8 +10,6 @@ package alternativa.tanks.service
       
       function checkEmail(param1:String) : void;
       
-      function checkInviteCode(param1:String) : void;
-      
       function sendEmailRestoreMessage(param1:String) : void;
       
       function login(param1:String, param2:String, param3:Boolean) : void;
@@ -29,12 +27,6 @@ package alternativa.tanks.service
       function loginBySingleUseHash(param1:String) : void;
       
       function confirmEmail(param1:String, param2:String) : void;
-      
-      function checkChangeUidHash(param1:String, param2:String) : void;
-      
-      function changeUidAndPassword(param1:String, param2:String) : void;
-      
-      function changeUid(param1:String) : void;
       
       function set entranceObject(param1:IGameObject) : void;
       

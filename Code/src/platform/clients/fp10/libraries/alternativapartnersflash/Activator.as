@@ -34,27 +34,27 @@ package platform.clients.fp10.libraries.alternativapartnersflash
          var modelRegister:ModelRegistry;
          var _osgi:OSGi = param1;
          osgi = _osgi;
-         //osgi.injectService(AddressService,function(param1:Object):void
-         //{
-         //   PartnerService.addressService = AddressService(param1);
-         //},function():AddressService
-         //{
-         //   return PartnerService.addressService;
-         //});
-         //osgi.injectService(LogService,function(param1:Object):void
-         //{
-         //   PartnerService.log = LogService(param1);
-         //},function():LogService
-         //{
-         //   return PartnerService.log;
-         //});
-         //osgi.injectService(ILauncherParams,function(param1:Object):void
-         //{
-         //   PartnerService.paramsService = ILauncherParams(param1);
-         //},function():ILauncherParams
-         //{
-         //   return PartnerService.paramsService;
-         //});
+         osgi.injectService(AddressService,function(param1:Object):void
+         {
+            PartnerService.addressService = AddressService(param1);
+         },function():AddressService
+         {
+            return PartnerService.addressService;
+         });
+         osgi.injectService(LogService,function(param1:Object):void
+         {
+            PartnerService.log = LogService(param1);
+         },function():LogService
+         {
+            return PartnerService.log;
+         });
+         osgi.injectService(ILauncherParams,function(param1:Object):void
+         {
+            PartnerService.paramsService = ILauncherParams(param1);
+         },function():ILauncherParams
+         {
+            return PartnerService.paramsService;
+         });
          modelRegisterAdapt = osgi.getService(ModelRegistry) as ModelRegistry;
          //modelRegisterAdapt.registerAdapt(SocialNetworkParameters,SocialNetworkParametersAdapt);
          //modelRegisterAdapt.registerEvents(SocialNetworkParameters,SocialNetworkParametersEvents);

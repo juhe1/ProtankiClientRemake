@@ -8,12 +8,18 @@ package projects.tanks.clients.fp10.libraries.tanksservices.service.user
    import projects.tanks.clients.fp10.libraries.tanksservices.model.notifier.UserInfoConsumer;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.TimeOutTruncateConsumers;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.premium.PremiumService;
+   import platform.client.fp10.core.registry.ModelRegistry;
+   import projects.tanks.clients.fp10.libraries.tanksservices.model.listener.UserNotifierModel;
+   import projects.tanks.client.tanksservices.model.listener.UserNotifierModelBase;
    
    public class UserInfoService extends EventDispatcher implements IUserInfoService
    {
       
       [Inject]
       public static var premiumService:PremiumService;
+
+      [Inject]
+      public static var modelRegistry:ModelRegistry;
       
       private var consumers:Dictionary;
       
@@ -40,7 +46,7 @@ package projects.tanks.clients.fp10.libraries.tanksservices.service.user
          this.unsubscribedConsumers = new Dictionary();
       }
       
-      public function getOrCreateUpdater(param1:Long) : IUserInfoLabelUpdater
+      public function getOrCreateUpdater(param1:String) : IUserInfoLabelUpdater
       {
          var _loc2_:UserInfoLabelUpdater = null;
          if(this.hasConsumer(param1))
@@ -63,7 +69,7 @@ package projects.tanks.clients.fp10.libraries.tanksservices.service.user
          return _loc2_;
       }
       
-      public function forciblySubscribe(param1:Long) : void
+      public function forciblySubscribe(param1:String) : void
       {
          var _loc2_:UserInfoLabelUpdater = null;
          if(!this.hasConsumer(param1))
@@ -74,36 +80,36 @@ package projects.tanks.clients.fp10.libraries.tanksservices.service.user
          }
       }
       
-      private function subscribe(param1:Long, param2:UserInfoConsumer) : void
+      private function subscribe(param1:String, param2:UserInfoConsumer) : void
       {
          delete this.unsubscribedConsumers[param1];
          this.consumers[param1] = param2;
-         UserNotifier(this.serviceObject.adapt(UserNotifier)).subcribe(param1,param2);
+         UserNotifier(modelRegistry.getModel(UserNotifierModelBase.modelId)).subcribe(param1,param2);
       }
       
-      private function refresh(param1:Long, param2:UserInfoConsumer) : void
+      private function refresh(param1:String, param2:UserInfoConsumer) : void
       {
          this.consumers[param1] = param2;
-         UserNotifier(this.serviceObject.adapt(UserNotifier)).refresh(param1,param2);
+         UserNotifier(modelRegistry.getModel(UserNotifierModelBase.modelId)).refresh(param1,param2);
       }
       
-      private function unSubscribe(param1:Vector.<Long>) : void
+      private function unSubscribe(param1:Vector.<String>) : void
       {
-         var _loc2_:Long = null;
+         var _loc2_:String = null;
          for each(_loc2_ in param1)
          {
             this.unsubscribedConsumers[_loc2_] = true;
             delete this.consumers[_loc2_];
          }
-         UserNotifier(this.serviceObject.adapt(UserNotifier)).unsubcribe(param1);
+         UserNotifier(modelRegistry.getModel(UserNotifierModelBase.modelId)).unsubcribe(param1);
       }
       
-      public function hasConsumer(param1:Long) : Boolean
+      public function hasConsumer(param1:String) : Boolean
       {
          return param1 in this.consumers;
       }
       
-      public function getConsumer(param1:Long) : UserInfoConsumer
+      public function getConsumer(param1:String) : UserInfoConsumer
       {
          return this.consumers[param1];
       }
@@ -118,9 +124,9 @@ package projects.tanks.clients.fp10.libraries.tanksservices.service.user
          this.stateOffer = false;
       }
       
-      public function getCurrentUserId() : Long
+      public function getCurrentUserId() : String
       {
-         return UserNotifier(this.serviceObject.adapt(UserNotifier)).getCurrentUserId();
+         return UserNotifier(modelRegistry.getModel(UserNotifierModelBase.modelId)).getCurrentUserId();
       }
       
       public function isOffer() : Boolean
@@ -133,7 +139,7 @@ package projects.tanks.clients.fp10.libraries.tanksservices.service.user
          this.stateOffer = param1;
       }
       
-      public function hasPremium(param1:Long) : Boolean
+      public function hasPremium(param1:String) : Boolean
       {
          return this.getCurrentUserId() == param1 && Boolean(premiumService.hasPremium());
       }

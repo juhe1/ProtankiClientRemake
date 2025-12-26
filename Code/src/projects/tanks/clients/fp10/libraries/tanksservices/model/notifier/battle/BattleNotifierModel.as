@@ -11,6 +11,8 @@ package projects.tanks.clients.fp10.libraries.tanksservices.model.notifier.battl
    import projects.tanks.clients.fp10.libraries.tanksservices.model.listener.UserNotifier;
    import projects.tanks.clients.fp10.libraries.tanksservices.model.notifier.UserInfoConsumer;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.notifier.battle.IBattleNotifierService;
+   import platform.client.fp10.core.registry.ModelRegistry;
+   import projects.tanks.client.tanksservices.model.listener.UserNotifierModelBase;
    
    [ModelInfo]
    public class BattleNotifierModel extends BattleNotifierModelBase implements IBattleNotifierModelBase, UserRefresh, ObjectLoadListener, ObjectUnloadListener
@@ -18,6 +20,9 @@ package projects.tanks.clients.fp10.libraries.tanksservices.model.notifier.battl
       
       [Inject]
       public static var battleNotifierService:IBattleNotifierService;
+
+      [Inject]
+      public static var modelRegistry:ModelRegistry;
       
       private var battleLinkData:Dictionary;
       
@@ -53,17 +58,17 @@ package projects.tanks.clients.fp10.libraries.tanksservices.model.notifier.battl
       
       private function setAndUpdateConsumer(param1:BattleNotifierData) : BattleLinkData
       {
-         var _loc2_:Long = param1.userId;
+         var _loc2_:String = param1.userId;
          var _loc3_:BattleLinkData = new BattleLinkData(_loc2_,param1);
          this.battleLinkData[_loc2_] = _loc3_;
          this.setBattleLinkForConsumer(_loc2_,_loc3_);
          return _loc3_;
       }
       
-      private function setBattleLinkForConsumer(param1:Long, param2:BattleLinkData) : void
+      private function setBattleLinkForConsumer(param1:String, param2:BattleLinkData) : void
       {
          var _loc4_:UserInfoConsumer = null;
-         var _loc3_:UserNotifier = UserNotifier(object.adapt(UserNotifier));
+         var _loc3_:UserNotifier = UserNotifier(modelRegistry.getModel(UserNotifierModelBase.modelId));
          if(_loc3_.hasDataConsumer(param1))
          {
             _loc4_ = _loc3_.getDataConsumer(param1);
@@ -71,7 +76,7 @@ package projects.tanks.clients.fp10.libraries.tanksservices.model.notifier.battl
          }
       }
       
-      public function refresh(param1:Long, param2:UserInfoConsumer) : void
+      public function refresh(param1:String, param2:UserInfoConsumer) : void
       {
          if(param1 in this.battleLinkData)
          {
@@ -79,19 +84,19 @@ package projects.tanks.clients.fp10.libraries.tanksservices.model.notifier.battl
          }
       }
       
-      public function remove(param1:Long) : void
+      public function remove(param1:String) : void
       {
          delete this.battleLinkData[param1];
          this.setBattleLinkForConsumer(param1,null);
       }
       
-      public function leaveBattle(param1:Long) : void
+      public function leaveBattle(param1:String) : void
       {
          battleNotifierService.leaveBattle(param1);
          this.remove(param1);
       }
       
-      public function leaveGroup(param1:Long) : void
+      public function leaveGroup(param1:String) : void
       {
          this.remove(param1);
       }

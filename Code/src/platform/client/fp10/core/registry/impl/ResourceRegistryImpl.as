@@ -24,10 +24,6 @@ package platform.client.fp10.core.registry.impl
       
       private var _lock:int;
       
-      private var protocol:IProtocol = IProtocol(OSGi.getInstance().getService(IProtocol));
-      
-      private var resourceGetterCodec:ResourceGetterCodec;
-      
       private var resourceById:Dictionary = new Dictionary();
       
       private var _resources:Vector.<Resource> = new Vector.<Resource>();
@@ -43,15 +39,12 @@ package platform.client.fp10.core.registry.impl
       public function ResourceRegistryImpl(param1:OSGi)
       {
          super();
-         this.resourceGetterCodec = new ResourceGetterCodec(this);
-         this.resourceGetterCodec.init(this.protocol);
          var _loc2_:LogService = LogService(param1.getService(LogService));
          this.logger = _loc2_.getLogger(ResourceLogChannel.NAME);
       }
       
       public function registerTypeClasses(param1:int, param2:Class) : void
       {
-         this.protocol.registerCodecForType(param2,this.resourceGetterCodec);
          this.type2class[param1] = param2;
       }
       
@@ -166,48 +159,7 @@ package platform.client.fp10.core.registry.impl
    }
 }
 
-import alternativa.protocol.ICodec;
-import alternativa.protocol.IProtocol;
-import alternativa.protocol.ProtocolBuffer;
-import alternativa.protocol.info.TypeCodecInfo;
-import alternativa.types.Long;
-import platform.client.fp10.core.registry.ResourceRegistry;
-import platform.client.fp10.core.resource.Resource;
 import platform.client.fp10.core.service.loadingprogress.ILoadingProgressListener;
-
-class ResourceGetterCodec implements ICodec
-{
-   
-   private var resourceRegistry:ResourceRegistry;
-   
-   private var longCodec:ICodec;
-   
-   public function ResourceGetterCodec(param1:ResourceRegistry)
-   {
-      super();
-      this.resourceRegistry = param1;
-   }
-   
-   public function init(param1:IProtocol) : void
-   {
-      this.longCodec = param1.getCodec(new TypeCodecInfo(Long,false));
-   }
-   
-   public function encode(param1:ProtocolBuffer, param2:Object) : void
-   {
-   }
-   
-   public function decode(param1:ProtocolBuffer) : Object
-   {
-      var _loc2_:Long = Long(this.longCodec.decode(param1));
-      var _loc3_:Resource = this.resourceRegistry.getResource(_loc2_);
-      if(_loc3_ == null)
-      {
-         throw new Error("Resource " + _loc2_ + " not found");
-      }
-      return _loc3_;
-   }
-}
 
 class ProgressListeners
 {

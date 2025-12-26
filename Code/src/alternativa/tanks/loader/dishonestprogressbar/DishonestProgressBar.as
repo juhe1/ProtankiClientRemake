@@ -8,6 +8,7 @@ package alternativa.tanks.loader.dishonestprogressbar
    import flash.events.Event;
    import flash.geom.Matrix;
    import flash.utils.clearTimeout;
+   import flash.utils.getTimer;
    import flash.utils.setTimeout;
    
    public class DishonestProgressBar extends Sprite
@@ -67,6 +68,8 @@ package alternativa.tanks.loader.dishonestprogressbar
       
       private var _forciblyStep:Number;
       
+      private var frameTime:int;
+      
       public function DishonestProgressBar(param1:Function)
       {
          super();
@@ -103,6 +106,7 @@ package alternativa.tanks.loader.dishonestprogressbar
          this._bgdCenterIcon.graphics.clear();
          this._bgdCenterIcon.graphics.beginBitmapFill(bgdCenterBitmapData);
          this._bgdCenterIcon.graphics.drawRect(0,0,DEFAULT_WIDTH - this._bgdLeftIcon.width - this._bgdRightIcon.width,DEFAULT_HEIGHT);
+         this._bgdCenterIcon.graphics.endFill();
          this._bgdCenterIcon.x = this._bgdLeftIcon.width;
          this._bgdRightIcon.x = this._bgdCenterIcon.x + this._bgdCenterIcon.width;
       }
@@ -121,6 +125,11 @@ package alternativa.tanks.loader.dishonestprogressbar
       
       private function onEnterFrame(param1:Event) : void
       {
+         if(getTimer() - this.frameTime < 5)
+         {
+            return;
+         }
+         this.frameTime = getTimer();
          if(this._isForciblyFinish)
          {
             this._progressLineWidth += this._forciblyStep;
@@ -169,6 +178,7 @@ package alternativa.tanks.loader.dishonestprogressbar
          this._progressLineBlick.graphics.clear();
          this._progressLineBlick.graphics.beginBitmapFill(blickBitmapData,this._blickMatrix,true,false);
          this._progressLineBlick.graphics.drawRect(0,0,param1,this._progressLine.height);
+         this._progressLineBlick.graphics.endFill();
       }
       
       public function forciblyStop() : void

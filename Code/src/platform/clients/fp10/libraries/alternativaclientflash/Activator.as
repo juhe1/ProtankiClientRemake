@@ -86,27 +86,27 @@ package platform.clients.fp10.libraries.alternativaclientflash
          var codec:ICodec = null;
          var _osgi:OSGi = param1;
          osgi = _osgi;
-         osgi.injectService(IClientLog,function(param1:Object):void
-         {
-            TLSEngine.clientLog = IClientLog(param1);
-         },function():IClientLog
-         {
-            return TLSEngine.clientLog;
-         });
-         osgi.injectService(IClientLog,function(param1:Object):void
-         {
-            TLSSecurityParameters.clientLog = IClientLog(param1);
-         },function():IClientLog
-         {
-            return TLSSecurityParameters.clientLog;
-         });
-         osgi.injectService(IClientLog,function(param1:Object):void
-         {
-            TLSSocket.clientLog = IClientLog(param1);
-         },function():IClientLog
-         {
-            return TLSSocket.clientLog;
-         });
+         //osgi.injectService(IClientLog,function(param1:Object):void
+         //{
+         //   TLSEngine.clientLog = IClientLog(param1);
+         //},function():IClientLog
+         //{
+         //   return TLSEngine.clientLog;
+         //});
+         //osgi.injectService(IClientLog,function(param1:Object):void
+         //{
+         //   TLSSecurityParameters.clientLog = IClientLog(param1);
+         //},function():IClientLog
+         //{
+         //   return TLSSecurityParameters.clientLog;
+         //});
+         //osgi.injectService(IClientLog,function(param1:Object):void
+         //{
+         //   TLSSocket.clientLog = IClientLog(param1);
+         //},function():IClientLog
+         //{
+         //   return TLSSocket.clientLog;
+         //});
          //osgi.injectService(CommandService,function(param1:Object):void
          //{
          //   CoreCommands.commandService = CommandService(param1);
@@ -205,83 +205,83 @@ package platform.clients.fp10.libraries.alternativaclientflash
          //{
          //   return SocketConnection.networkService;
          //});
-         osgi.injectService(AddressService,function(param1:Object):void
-         {
-            ControlCommandHandler.addressService = AddressService(param1);
-         },function():AddressService
-         {
-            return ControlCommandHandler.addressService;
-         });
-         osgi.injectService(IDisplay,function(param1:Object):void
-         {
-            ControlCommandHandler.display = IDisplay(param1);
-         },function():IDisplay
-         {
-            return ControlCommandHandler.display;
-         });
-         osgi.injectService(ILauncherParams,function(param1:Object):void
-         {
-            ControlCommandHandler.launcherParams = ILauncherParams(param1);
-         },function():ILauncherParams
-         {
-            return ControlCommandHandler.launcherParams;
-         });
-         osgi.injectService(LogService,function(param1:Object):void
-         {
-            ControlCommandHandler.logService = LogService(param1);
-         },function():LogService
-         {
-            return ControlCommandHandler.logService;
-         });
-         osgi.injectService(IErrorMessageService,function(param1:Object):void
-         {
-            ControlCommandHandler.messageBoxService = IErrorMessageService(param1);
-         },function():IErrorMessageService
-         {
-            return ControlCommandHandler.messageBoxService;
-         });
-         osgi.injectService(SpaceRegistry,function(param1:Object):void
-         {
-            ControlCommandHandler.spaceRegistry = SpaceRegistry(param1);
-         },function():SpaceRegistry
-         {
-            return ControlCommandHandler.spaceRegistry;
-         });
-         osgi.injectService(LogService,function(param1:Object):void
-         {
-            SpaceCommandHandler.logService = LogService(param1);
-         },function():LogService
-         {
-            return SpaceCommandHandler.logService;
-         });
-         osgi.injectService(ModelRegistry,function(param1:Object):void
-         {
-            SpaceCommandHandler.modelRegistry = ModelRegistry(param1);
-         },function():ModelRegistry
-         {
-            return SpaceCommandHandler.modelRegistry;
-         });
-         osgi.injectService(IProtocol,function(param1:Object):void
-         {
-            SpaceCommandHandler.protocol = IProtocol(param1);
-         },function():IProtocol
-         {
-            return SpaceCommandHandler.protocol;
-         });
-         osgi.injectService(SpaceRegistry,function(param1:Object):void
-         {
-            SpaceCommandHandler.spaceRegistry = SpaceRegistry(param1);
-         },function():SpaceRegistry
-         {
-            return SpaceCommandHandler.spaceRegistry;
-         });
-         osgi.injectService(ITransportService,function(param1:Object):void
-         {
-            SpaceCommandHandler.transportService = ITransportService(param1);
-         },function():ITransportService
-         {
-            return SpaceCommandHandler.transportService;
-         });
+         //osgi.injectService(AddressService,function(param1:Object):void
+         //{
+         //   ControlCommandHandler.addressService = AddressService(param1);
+         //},function():AddressService
+         //{
+         //   return ControlCommandHandler.addressService;
+         //});
+         //osgi.injectService(IDisplay,function(param1:Object):void
+         //{
+         //   ControlCommandHandler.display = IDisplay(param1);
+         //},function():IDisplay
+         //{
+         //   return ControlCommandHandler.display;
+         //});
+         //osgi.injectService(ILauncherParams,function(param1:Object):void
+         //{
+         //   ControlCommandHandler.launcherParams = ILauncherParams(param1);
+         //},function():ILauncherParams
+         //{
+         //   return ControlCommandHandler.launcherParams;
+         //});
+         //osgi.injectService(LogService,function(param1:Object):void
+         //{
+         //   ControlCommandHandler.logService = LogService(param1);
+         //},function():LogService
+         //{
+         //   return ControlCommandHandler.logService;
+         //});
+         //osgi.injectService(IErrorMessageService,function(param1:Object):void
+         //{
+         //   ControlCommandHandler.messageBoxService = IErrorMessageService(param1);
+         //},function():IErrorMessageService
+         //{
+         //   return ControlCommandHandler.messageBoxService;
+         //});
+         //osgi.injectService(SpaceRegistry,function(param1:Object):void
+         //{
+         //   ControlCommandHandler.spaceRegistry = SpaceRegistry(param1);
+         //},function():SpaceRegistry
+         //{
+         //   return ControlCommandHandler.spaceRegistry;
+         //});
+         //osgi.injectService(LogService,function(param1:Object):void
+         //{
+         //   SpaceCommandHandler.logService = LogService(param1);
+         //},function():LogService
+         //{
+         //   return SpaceCommandHandler.logService;
+         //});
+         //osgi.injectService(ModelRegistry,function(param1:Object):void
+         //{
+         //   SpaceCommandHandler.modelRegistry = ModelRegistry(param1);
+         //},function():ModelRegistry
+         //{
+         //   return SpaceCommandHandler.modelRegistry;
+         //});
+         //osgi.injectService(IProtocol,function(param1:Object):void
+         //{
+         //   SpaceCommandHandler.protocol = IProtocol(param1);
+         //},function():IProtocol
+         //{
+         //   return SpaceCommandHandler.protocol;
+         //});
+         //osgi.injectService(SpaceRegistry,function(param1:Object):void
+         //{
+         //   SpaceCommandHandler.spaceRegistry = SpaceRegistry(param1);
+         //},function():SpaceRegistry
+         //{
+         //   return SpaceCommandHandler.spaceRegistry;
+         //});
+         //osgi.injectService(ITransportService,function(param1:Object):void
+         //{
+         //   SpaceCommandHandler.transportService = ITransportService(param1);
+         //},function():ITransportService
+         //{
+         //   return SpaceCommandHandler.transportService;
+         //});
          //osgi.injectService(LogService,function(param1:Object):void
          //{
          //   ControlRootCodec.logService = LogService(param1);
@@ -408,13 +408,13 @@ package platform.clients.fp10.libraries.alternativaclientflash
          //{
          //   return TextureResource.resourceLocalStorage;
          //});
-         //osgi.injectService(ILauncherParams,function(param1:Object):void
-         //{
-         //   AddressServiceFakeImpl.launcherParams = ILauncherParams(param1);
-         //},function():ILauncherParams
-         //{
-         //   return AddressServiceFakeImpl.launcherParams;
-         //});
+         osgi.injectService(ILauncherParams,function(param1:Object):void
+         {
+            AddressServiceFakeImpl.launcherParams = ILauncherParams(param1);
+         },function():ILauncherParams
+         {
+            return AddressServiceFakeImpl.launcherParams;
+         });
          osgi.injectService(ModelRegistry,function(param1:Object):void
          {
             GameObject.modelRegistry = ModelRegistry(param1);

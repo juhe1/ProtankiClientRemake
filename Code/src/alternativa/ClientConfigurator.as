@@ -14,12 +14,12 @@ package alternativa
    import alternativa.osgi.service.display.Display;
    import alternativa.osgi.service.display.IDisplay;
    import alternativa.osgi.service.logging.LogService;
-   import alternativa.osgi.service.logging.Logger;
+   //import alternativa.osgi.service.logging.Logger;
    import alternativa.osgi.service.network.INetworkService;
    import alternativa.osgi.service.network.NetworkService;
    import alternativa.startup.ConnectionParameters;
    import alternativa.startup.IClientConfigurator;
-   import alternativa.startup.LibraryInfo;
+   //import alternativa.startup.LibraryInfo;
    import scpacker.logging.IRemoteLogging;
    import scpacker.logging.RemoteLogging;
    import flash.display.DisplayObjectContainer;
@@ -28,7 +28,6 @@ package alternativa
    import flash.events.KeyboardEvent;
    import flash.ui.Keyboard;
    import alternativa.osgi.service.launcherparams.ILauncherParams;
-   import flash.ui.Keyboard;
    
    public class ClientConfigurator implements IClientConfigurator
    {

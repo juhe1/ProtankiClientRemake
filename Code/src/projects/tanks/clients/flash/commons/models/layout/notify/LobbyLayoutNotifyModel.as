@@ -100,7 +100,7 @@ package projects.tanks.clients.flash.commons.models.layout.notify
          {
             this.inProgress = true;
             ymService.reachGoalIfPlayerIsNewbie(this.lastState == LayoutState.BATTLE && !this.origin ? BATTLE_LOAD_START : LOBBY_LOAD_START);
-            if(this.lastState == LayoutState.GARAGE || this.lastState == LayoutState.CLAN || this.lastState == LayoutState.MATCHMAKING || this.lastState == LayoutState.BATTLE_SELECT)
+            if(this.lastState == LayoutState.GARAGE || this.lastState == LayoutState.BATTLE_SELECT)
             {
                modalLoaderService.show();
             }

@@ -2,9 +2,9 @@ package scpacker.networking.protocol.codec.custom
 {
    import projects.tanks.client.battleservice.model.statistics.team.StatisticsTeamCC;
    import flash.utils.ByteArray;
-   import projects.tanks.client.battleservice.model.statistics.newname_4104__END;
    import scpacker.networking.protocol.ProtocolInitializer;
    import scpacker.networking.protocol.codec.ICodec;
+   import projects.tanks.client.battleservice.model.statistics.UserInfo;
    
    public class CodecStatisticsTeamCC implements ICodec
    {
@@ -34,8 +34,8 @@ package scpacker.networking.protocol.codec.custom
          var _loc2_:StatisticsTeamCC = new StatisticsTeamCC();
          _loc2_.blueScore = this.newname_4410__END.decode(param1) as int;
          _loc2_.redScore = this.newname_4411__END.decode(param1) as int;
-         _loc2_.usersInfoBlue = this.newname_4412__END.decode(param1) as Vector.<newname_4104__END>;
-         _loc2_.usersInfoRed = this.newname_4413__END.decode(param1) as Vector.<newname_4104__END>;
+         _loc2_.usersInfoBlue = this.newname_4412__END.decode(param1) as Vector.<UserInfo>;
+         _loc2_.usersInfoRed = this.newname_4413__END.decode(param1) as Vector.<UserInfo>;
          return _loc2_;
       }
       

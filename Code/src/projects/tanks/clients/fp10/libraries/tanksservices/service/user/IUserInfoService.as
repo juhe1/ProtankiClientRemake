@@ -9,23 +9,23 @@ package projects.tanks.clients.fp10.libraries.tanksservices.service.user
       
       function init(param1:IGameObject) : void;
       
-      function getOrCreateUpdater(param1:Long) : IUserInfoLabelUpdater;
+      function getOrCreateUpdater(param1:String) : IUserInfoLabelUpdater;
       
-      function hasConsumer(param1:Long) : Boolean;
+      function hasConsumer(param1:String) : Boolean;
       
-      function getConsumer(param1:Long) : UserInfoConsumer;
+      function getConsumer(param1:String) : UserInfoConsumer;
       
-      function forciblySubscribe(param1:Long) : void;
+      function forciblySubscribe(param1:String) : void;
       
       function unload() : void;
       
-      function getCurrentUserId() : Long;
+      function getCurrentUserId() : String;
       
       function isOffer() : Boolean;
       
       function setOffer(param1:Boolean) : void;
       
-      function hasPremium(param1:Long) : Boolean;
+      function hasPremium(param1:String) : Boolean;
    }
 }
 

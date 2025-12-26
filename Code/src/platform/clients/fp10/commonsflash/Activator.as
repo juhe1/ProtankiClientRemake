@@ -1,13 +1,13 @@
 package platform.clients.fp10.commonsflash
 {
-   import alternativa.model.description.DescriptionModel;
-   import alternativa.model.description.IDescription;
-   import alternativa.model.description.IDescriptionAdapt;
-   import alternativa.model.description.IDescriptionEvents;
-   import alternativa.model.timeperiod.TimePeriod;
-   import alternativa.model.timeperiod.TimePeriodAdapt;
-   import alternativa.model.timeperiod.TimePeriodEvents;
-   import alternativa.model.timeperiod.TimePeriodModel;
+   //import alternativa.model.description.DescriptionModel;
+   //import alternativa.model.description.IDescription;
+   //import alternativa.model.description.IDescriptionAdapt;
+   //import alternativa.model.description.IDescriptionEvents;
+   //import alternativa.model.timeperiod.TimePeriod;
+   //import alternativa.model.timeperiod.TimePeriodAdapt;
+   //import alternativa.model.timeperiod.TimePeriodEvents;
+   //import alternativa.model.timeperiod.TimePeriodModel;
    import alternativa.osgi.OSGi;
    import alternativa.osgi.bundle.IBundleActivator;
    import platform.client.fp10.core.registry.ModelRegistry;

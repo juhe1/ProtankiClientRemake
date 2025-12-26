@@ -1,6 +1,5 @@
 package scpacker.resource
 {
-   import newname_3200__END.ResourceImageParams;
    import alternativa.types.Long;
    import platform.core.general.resource.types.imageframe.ResourceImageFrameParams;
    import alternativa.osgi.OSGi;

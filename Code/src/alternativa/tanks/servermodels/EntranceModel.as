@@ -12,6 +12,8 @@ package alternativa.tanks.servermodels
    import projects.tanks.client.entrance.model.entrance.entrance.EntranceModelBase;
    import projects.tanks.client.entrance.model.entrance.entrance.IEntranceModelBase;
    import projects.tanks.clients.flash.commons.models.captcha.IServerCaptcha;
+   import platform.client.fp10.core.registry.ModelRegistry;
+   import projects.tanks.client.commons.models.captcha.CaptchaModelBase;
    
    [ModelInfo]
    public class EntranceModel extends EntranceModelBase implements IEntranceModelBase, ObjectLoadListener, ObjectLoadPostListener, ObjectUnloadListener, ObjectUnloadPostListener
@@ -28,6 +30,9 @@ package alternativa.tanks.servermodels
       
       [Inject]
       public static var loaderWindow:ILoaderWindowService;
+
+      [Inject]
+      public static var modelRegistry:ModelRegistry;
       
       public function EntranceModel()
       {
@@ -45,12 +50,12 @@ package alternativa.tanks.servermodels
       {
          serverFacade.entranceObject = object;
          clientFacade.entranceObject = object;
-         IServerCaptcha(object.adapt(IServerCaptcha)).bindFacade(clientFacade);
+         IServerCaptcha(modelRegistry.getModel(CaptchaModelBase.modelId)).bindFacade(clientFacade);
       }
       
       public function objectUnloaded() : void
       {
-         IServerCaptcha(object.adapt(IServerCaptcha)).unbindFacade();
+         IServerCaptcha(modelRegistry.getModel(CaptchaModelBase.modelId)).unbindFacade();
          loaderWindow.show();
       }
       

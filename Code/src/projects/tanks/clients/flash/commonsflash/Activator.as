@@ -84,90 +84,90 @@ package projects.tanks.clients.flash.commonsflash
          var modelRegisterAdapt:ModelRegistry;
          var _osgi:OSGi = param1;
          osgi = _osgi;
-         osgi.injectService(IAlertService,function(param1:Object):void
-         {
-            AlertModel.alertService = IAlertService(param1);
-         },function():IAlertService
-         {
-            return AlertModel.alertService;
-         });
-         osgi.injectService(ILocaleService,function(param1:Object):void
-         {
-            AlertModel.localeService = ILocaleService(param1);
-         },function():ILocaleService
-         {
-            return AlertModel.localeService;
-         });
-         osgi.injectService(IAlertService,function(param1:Object):void
-         {
-            BattleLinkActivatorModel.alertService = IAlertService(param1);
-         },function():IAlertService
-         {
-            return BattleLinkActivatorModel.alertService;
-         });
-         osgi.injectService(IBattleLinkActivatorService,function(param1:Object):void
-         {
-            BattleLinkActivatorModel.battleLinkActivatorService = IBattleLinkActivatorService(param1);
-         },function():IBattleLinkActivatorService
-         {
-            return BattleLinkActivatorModel.battleLinkActivatorService;
-         });
-         osgi.injectService(ILobbyLayoutService,function(param1:Object):void
-         {
-            BattleLinkActivatorModel.lobbyLayoutService = ILobbyLayoutService(param1);
-         },function():ILobbyLayoutService
-         {
-            return BattleLinkActivatorModel.lobbyLayoutService;
-         });
-         osgi.injectService(ILocaleService,function(param1:Object):void
-         {
-            BattleLinkActivatorModel.localeService = ILocaleService(param1);
-         },function():ILocaleService
-         {
-            return BattleLinkActivatorModel.localeService;
-         });
-         osgi.injectService(IStorageService,function(param1:Object):void
-         {
-            BattleLinkActivatorModel.storageService = IStorageService(param1);
-         },function():IStorageService
-         {
-            return BattleLinkActivatorModel.storageService;
-         });
-         osgi.injectService(IUserPropertiesService,function(param1:Object):void
-         {
-            BattleLinkActivatorModel.userPropertyService = IUserPropertiesService(param1);
-         },function():IUserPropertiesService
-         {
-            return BattleLinkActivatorModel.userPropertyService;
-         });
-         osgi.injectService(ChallengeInfoService,function(param1:Object):void
-         {
-            ChallengeTimeModel.challengesService = ChallengeInfoService(param1);
-         },function():ChallengeInfoService
-         {
-            return ChallengeTimeModel.challengesService;
-         });
-         osgi.injectService(ResourceRegistry,function(param1:Object):void
-         {
-            ColoringModel.resourceRegistry = ResourceRegistry(param1);
-         },function():ResourceRegistry
-         {
-            return ColoringModel.resourceRegistry;
-         });
-         osgi.injectService(IDisplay,function(param1:Object):void
-         {
-            GPUDetectorModel.display = IDisplay(param1);
-         },function():IDisplay
-         {
-            return GPUDetectorModel.display;
-         });
-         osgi.injectService(ILauncherParams,function(param1:Object):void
-         {
-            GPUDetectorModel.launcherParams = ILauncherParams(param1);
-         },function():ILauncherParams
-         {
-            return GPUDetectorModel.launcherParams;
-         });
+         //osgi.injectService(IAlertService,function(param1:Object):void
+         //{
+         //   AlertModel.alertService = IAlertService(param1);
+         //},function():IAlertService
+         //{
+         //   return AlertModel.alertService;
+         //});
+         //osgi.injectService(ILocaleService,function(param1:Object):void
+         //{
+         //   AlertModel.localeService = ILocaleService(param1);
+         //},function():ILocaleService
+         //{
+         //   return AlertModel.localeService;
+         //});
+         //osgi.injectService(IAlertService,function(param1:Object):void
+         //{
+         //   BattleLinkActivatorModel.alertService = IAlertService(param1);
+         //},function():IAlertService
+         //{
+         //   return BattleLinkActivatorModel.alertService;
+         //});
+         //osgi.injectService(IBattleLinkActivatorService,function(param1:Object):void
+         //{
+         //   BattleLinkActivatorModel.battleLinkActivatorService = IBattleLinkActivatorService(param1);
+         //},function():IBattleLinkActivatorService
+         //{
+         //   return BattleLinkActivatorModel.battleLinkActivatorService;
+         //});
+         //osgi.injectService(ILobbyLayoutService,function(param1:Object):void
+         //{
+         //   BattleLinkActivatorModel.lobbyLayoutService = ILobbyLayoutService(param1);
+         //},function():ILobbyLayoutService
+         //{
+         //   return BattleLinkActivatorModel.lobbyLayoutService;
+         //});
+         //osgi.injectService(ILocaleService,function(param1:Object):void
+         //{
+         //   BattleLinkActivatorModel.localeService = ILocaleService(param1);
+         //},function():ILocaleService
+         //{
+         //   return BattleLinkActivatorModel.localeService;
+         //});
+         //osgi.injectService(IStorageService,function(param1:Object):void
+         //{
+         //   BattleLinkActivatorModel.storageService = IStorageService(param1);
+         //},function():IStorageService
+         //{
+         //   return BattleLinkActivatorModel.storageService;
+         //});
+         //osgi.injectService(IUserPropertiesService,function(param1:Object):void
+         //{
+         //   BattleLinkActivatorModel.userPropertyService = IUserPropertiesService(param1);
+         //},function():IUserPropertiesService
+         //{
+         //   return BattleLinkActivatorModel.userPropertyService;
+         //});
+         //osgi.injectService(ChallengeInfoService,function(param1:Object):void
+         //{
+         //   ChallengeTimeModel.challengesService = ChallengeInfoService(param1);
+         //},function():ChallengeInfoService
+         //{
+         //   return ChallengeTimeModel.challengesService;
+         //});
+         //osgi.injectService(ResourceRegistry,function(param1:Object):void
+         //{
+         //   ColoringModel.resourceRegistry = ResourceRegistry(param1);
+         //},function():ResourceRegistry
+         //{
+         //   return ColoringModel.resourceRegistry;
+         //});
+         //osgi.injectService(IDisplay,function(param1:Object):void
+         //{
+         //   GPUDetectorModel.display = IDisplay(param1);
+         //},function():IDisplay
+         //{
+         //   return GPUDetectorModel.display;
+         //});
+         //osgi.injectService(ILauncherParams,function(param1:Object):void
+         //{
+         //   GPUDetectorModel.launcherParams = ILauncherParams(param1);
+         //},function():ILauncherParams
+         //{
+         //   return GPUDetectorModel.launcherParams;
+         //});
          osgi.injectService(IBattleInfoService,function(param1:Object):void
          {
             LobbyLayoutModel.battleInfoSerivce = IBattleInfoService(param1);
@@ -224,62 +224,62 @@ package projects.tanks.clients.flash.commonsflash
          {
             return LobbyLayoutNotifyModel.modalLoaderService;
          });
-         osgi.injectService(YandexMetricaService,function(param1:Object):void
-         {
-            LobbyLayoutNotifyModel.ymService = YandexMetricaService(param1);
-         },function():YandexMetricaService
-         {
-            return LobbyLayoutNotifyModel.ymService;
-         });
-         osgi.injectService(TanksAddressService,function(param1:Object):void
-         {
-            MoveUserToServerModel.addressService = TanksAddressService(param1);
-         },function():TanksAddressService
-         {
-            return MoveUserToServerModel.addressService;
-         });
-         osgi.injectService(IServerHaltService,function(param1:Object):void
-         {
-            ServerHaltModel.serverHaltService = IServerHaltService(param1);
-         },function():IServerHaltService
-         {
-            return ServerHaltModel.serverHaltService;
-         });
-         osgi.injectService(ILobbyLayoutService,function(param1:Object):void
-         {
-            AutomaticEnterExitService.lobbyLayoutService = ILobbyLayoutService(param1);
-         },function():ILobbyLayoutService
-         {
-            return AutomaticEnterExitService.lobbyLayoutService;
-         });
-         osgi.injectService(LogService,function(param1:Object):void
-         {
-            AutomaticEnterExitService.logService = LogService(param1);
-         },function():LogService
-         {
-            return AutomaticEnterExitService.logService;
-         });
-         osgi.injectService(PaymentDisplayService,function(param1:Object):void
-         {
-            AutomaticEnterExitService.paymentDisplayService = PaymentDisplayService(param1);
-         },function():PaymentDisplayService
-         {
-            return AutomaticEnterExitService.paymentDisplayService;
-         });
-         osgi.injectService(ILocaleService,function(param1:Object):void
-         {
-            DateFormatter.localeService = ILocaleService(param1);
-         },function():ILocaleService
-         {
-            return DateFormatter.localeService;
-         });
-         osgi.injectService(LogService,function(param1:Object):void
-         {
-            DateFormatter.logService = LogService(param1);
-         },function():LogService
-         {
-            return DateFormatter.logService;
-         });
+         //osgi.injectService(YandexMetricaService,function(param1:Object):void
+         //{
+         //   LobbyLayoutNotifyModel.ymService = YandexMetricaService(param1);
+         //},function():YandexMetricaService
+         //{
+         //   return LobbyLayoutNotifyModel.ymService;
+         //});
+         //osgi.injectService(TanksAddressService,function(param1:Object):void
+         //{
+         //   MoveUserToServerModel.addressService = TanksAddressService(param1);
+         //},function():TanksAddressService
+         //{
+         //   return MoveUserToServerModel.addressService;
+         //});
+         //osgi.injectService(IServerHaltService,function(param1:Object):void
+         //{
+         //   ServerHaltModel.serverHaltService = IServerHaltService(param1);
+         //},function():IServerHaltService
+         //{
+         //   return ServerHaltModel.serverHaltService;
+         //});
+         //osgi.injectService(ILobbyLayoutService,function(param1:Object):void
+         //{
+         //   AutomaticEnterExitService.lobbyLayoutService = ILobbyLayoutService(param1);
+         //},function():ILobbyLayoutService
+         //{
+         //   return AutomaticEnterExitService.lobbyLayoutService;
+         //});
+         //osgi.injectService(LogService,function(param1:Object):void
+         //{
+         //   AutomaticEnterExitService.logService = LogService(param1);
+         //},function():LogService
+         //{
+         //   return AutomaticEnterExitService.logService;
+         //});
+         //osgi.injectService(PaymentDisplayService,function(param1:Object):void
+         //{
+         //   AutomaticEnterExitService.paymentDisplayService = PaymentDisplayService(param1);
+         //},function():PaymentDisplayService
+         //{
+         //   return AutomaticEnterExitService.paymentDisplayService;
+         //});
+         //osgi.injectService(ILocaleService,function(param1:Object):void
+         //{
+         //   DateFormatter.localeService = ILocaleService(param1);
+         //},function():ILocaleService
+         //{
+         //   return DateFormatter.localeService;
+         //});
+         //osgi.injectService(LogService,function(param1:Object):void
+         //{
+         //   DateFormatter.logService = LogService(param1);
+         //},function():LogService
+         //{
+         //   return DateFormatter.logService;
+         //});
          osgi.injectService(IAlertService,function(param1:Object):void
          {
             LobbyLayoutService.alertService = IAlertService(param1);
@@ -336,13 +336,13 @@ package projects.tanks.clients.flash.commonsflash
          {
             return LobbyLayoutService.userInfoService;
          });
-         osgi.injectService(ILocaleService,function(param1:Object):void
-         {
-            SocialNetworkNameUtils.localeService = ILocaleService(param1);
-         },function():ILocaleService
-         {
-            return SocialNetworkNameUtils.localeService;
-         });
+         //osgi.injectService(ILocaleService,function(param1:Object):void
+         //{
+         //   SocialNetworkNameUtils.localeService = ILocaleService(param1);
+         //},function():ILocaleService
+         //{
+         //   return SocialNetworkNameUtils.localeService;
+         //});
          osgi.injectService(IDisplay,function(param1:Object):void
          {
             Notification.display = IDisplay(param1);
@@ -357,49 +357,49 @@ package projects.tanks.clients.flash.commonsflash
          {
             return Notification.notificationSoundService;
          });
-         osgi.injectService(IDisplay,function(param1:Object):void
-         {
-            StageQualityService.display = IDisplay(param1);
-         },function():IDisplay
-         {
-            return StageQualityService.display;
-         });
-         osgi.injectService(ILocaleService,function(param1:Object):void
-         {
-            TimeUnitService.localeService = ILocaleService(param1);
-         },function():ILocaleService
-         {
-            return TimeUnitService.localeService;
-         });
+         //osgi.injectService(IDisplay,function(param1:Object):void
+         //{
+         //   StageQualityService.display = IDisplay(param1);
+         //},function():IDisplay
+         //{
+         //   return StageQualityService.display;
+         //});
+         //osgi.injectService(ILocaleService,function(param1:Object):void
+         //{
+         //   TimeUnitService.localeService = ILocaleService(param1);
+         //},function():ILocaleService
+         //{
+         //   return TimeUnitService.localeService;
+         //});
          modelRegister = osgi.getService(ModelRegistry) as ModelRegistry;
-         modelRegister.add(new AlertModel());
-         modelRegister.add(new BattleLinkActivatorModel());
-         modelRegisterAdapt = osgi.getService(ModelRegistry) as ModelRegistry;
-         modelRegisterAdapt.registerAdapt(IServerCaptcha,IServerCaptchaAdapt);
-         modelRegisterAdapt.registerEvents(IServerCaptcha,IServerCaptchaEvents);
-         modelRegister.add(new ServerCaptchaModel());
-         modelRegister.add(new ChallengeTimeModel());
-         modelRegister.add(new ColoringModel());
-         modelRegisterAdapt.registerAdapt(IColoring,IColoringAdapt);
-         modelRegisterAdapt.registerEvents(IColoring,IColoringEvents);
-         modelRegisterAdapt.registerAdapt(Detach,DetachAdapt);
-         modelRegisterAdapt.registerEvents(Detach,DetachEvents);
-         modelRegister.add(new DetachModel());
-         modelRegisterAdapt.registerAdapt(ExternalAuthApi,ExternalAuthApiAdapt);
-         modelRegisterAdapt.registerEvents(ExternalAuthApi,ExternalAuthApiEvents);
-         modelRegister.add(new ExternalAuthApiModel());
-         modelRegister.add(new GPUDetectorModel());
+         //modelRegister.add(new AlertModel());
+         //modelRegister.add(new BattleLinkActivatorModel());
+         //modelRegisterAdapt = osgi.getService(ModelRegistry) as ModelRegistry;
+         //modelRegisterAdapt.registerAdapt(IServerCaptcha,IServerCaptchaAdapt);
+         //modelRegisterAdapt.registerEvents(IServerCaptcha,IServerCaptchaEvents);
+         //modelRegister.add(new ServerCaptchaModel());
+         //modelRegister.add(new ChallengeTimeModel());
+         //modelRegister.add(new ColoringModel());
+         //modelRegisterAdapt.registerAdapt(IColoring,IColoringAdapt);
+         //modelRegisterAdapt.registerEvents(IColoring,IColoringEvents);
+         //modelRegisterAdapt.registerAdapt(Detach,DetachAdapt);
+         //modelRegisterAdapt.registerEvents(Detach,DetachEvents);
+         //modelRegister.add(new DetachModel());
+         //modelRegisterAdapt.registerAdapt(ExternalAuthApi,ExternalAuthApiAdapt);
+         //modelRegisterAdapt.registerEvents(ExternalAuthApi,ExternalAuthApiEvents);
+         //modelRegister.add(new ExternalAuthApiModel());
+         //modelRegister.add(new GPUDetectorModel());
          modelRegisterAdapt.registerAdapt(ILobbyLayout,ILobbyLayoutAdapt);
          modelRegisterAdapt.registerEvents(ILobbyLayout,ILobbyLayoutEvents);
          modelRegister.add(new LobbyLayoutModel());
          modelRegisterAdapt.registerAdapt(ILobbyLayoutNotify,ILobbyLayoutNotifyAdapt);
          modelRegisterAdapt.registerEvents(ILobbyLayoutNotify,ILobbyLayoutNotifyEvents);
          modelRegister.add(new LobbyLayoutNotifyModel());
-         modelRegister.add(new MoveUserToServerModel());
-         modelRegisterAdapt.registerAdapt(DataOwner,DataOwnerAdapt);
-         modelRegisterAdapt.registerEvents(DataOwner,DataOwnerEvents);
-         modelRegister.add(new DataOwnerModel());
-         modelRegister.add(new ServerHaltModel());
+         //modelRegister.add(new MoveUserToServerModel());
+         //modelRegisterAdapt.registerAdapt(DataOwner,DataOwnerAdapt);
+         //modelRegisterAdapt.registerEvents(DataOwner,DataOwnerEvents);
+         //modelRegister.add(new DataOwnerModel());
+         //modelRegister.add(new ServerHaltModel());
       }
       
       public function stop(param1:OSGi) : void

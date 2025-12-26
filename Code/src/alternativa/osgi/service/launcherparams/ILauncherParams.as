@@ -1,7 +1,5 @@
 package alternativa.osgi.service.launcherparams
-{
-   import alternativa.startup.LibraryInfo;
-   
+{   
    public interface ILauncherParams
    {
        

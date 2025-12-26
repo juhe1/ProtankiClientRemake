@@ -1,0 +1,16 @@
+package forms.ranks
+{
+   import mx.core.BitmapAsset;
+   
+   [ExcludeClass]
+   [Embed(source="/_assets/718_forms.ranks.DefaultRanksBitmaps_bitmapSmallRank25_forms.ranks.DefaultRanksBitmaps_bitmapSmallRank25.png")]
+   public class DefaultRanksBitmaps_bitmapSmallRank25 extends BitmapAsset
+   {
+      
+      public function DefaultRanksBitmaps_bitmapSmallRank25()
+      {
+         super();
+      }
+   }
+}
+

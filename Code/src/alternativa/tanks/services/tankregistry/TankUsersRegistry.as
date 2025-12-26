@@ -1,6 +1,5 @@
 package alternativa.tanks.services.tankregistry
 {
-   import platform.client.fp10.core.type.ClientObject;
    import alternativa.object.ClientObject;
    
    public interface TankUsersRegistry

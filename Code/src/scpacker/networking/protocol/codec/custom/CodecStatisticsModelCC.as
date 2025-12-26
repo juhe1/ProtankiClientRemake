@@ -2,8 +2,6 @@ package scpacker.networking.protocol.codec.custom
 {
    import projects.tanks.client.battleservice.BattleMode;
    import flash.utils.ByteArray;
-   import newname_2265__END.newname_2266__END;
-   import projects.tanks.client.battleservice.model.statistics.newname_4552__END;
    import projects.tanks.client.battleservice.model.createparams.BattleLimits;
    import scpacker.networking.protocol.ProtocolInitializer;
    import scpacker.networking.protocol.codec.ICodec;

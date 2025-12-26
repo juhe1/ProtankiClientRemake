@@ -2,11 +2,11 @@ package platform.clients.fp10.models.alternativaspacesmodelsflash
 {
    import alternativa.osgi.OSGi;
    import alternativa.osgi.bundle.IBundleActivator;
-   import alternativa.osgi.service.clientlog.IClientLog;
+   //import alternativa.osgi.service.clientlog.IClientLog;
    import alternativa.osgi.service.logging.LogService;
    import platform.client.fp10.core.registry.ModelRegistry;
    import platform.loading.DispatcherModel;
-   import platform.loading.codecs.ModelDataCodec;
+   //import platform.loading.codecs.ModelDataCodec;
    
    public class Activator implements IBundleActivator
    {

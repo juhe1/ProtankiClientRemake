@@ -41,10 +41,6 @@ package platform.client.fp10.core.registry
       
       function continueLoadingResources() : void;
       
-      function registerHashCalculationMethod(param1:IHashCalculationMethod, param2:int) : void;
-      
-      function getHashCalculationMethod(param1:int) : IHashCalculationMethod;
-      
       function isRegistered(param1:Long) : Boolean;
    }
 }

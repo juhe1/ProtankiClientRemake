@@ -12,13 +12,8 @@ package platform.client.fp10.core.type.impl
    import platform.client.fp10.core.network.ICommandSender;
    import platform.client.fp10.core.network.connection.ConnectionCloseStatus;
    import platform.client.fp10.core.network.connection.ConnectionConnectParameters;
-   import platform.client.fp10.core.network.connection.ConnectionInitializers;
    import platform.client.fp10.core.network.connection.IConnection;
-   import platform.client.fp10.core.network.connection.IProtectionContext;
-   import platform.client.fp10.core.network.connection.protection.PrimitiveProtectionContext;
-   import platform.client.fp10.core.network.connection.protection.XorBasedProtectionContext;
    import platform.client.fp10.core.network.handler.ISpaceCommandHandler;
-   import platform.client.fp10.core.protocol.codec.SpaceRootCodec;
    import platform.client.fp10.core.service.errormessage.IErrorMessageService;
    import platform.client.fp10.core.service.transport.ITransportService;
    import platform.client.fp10.core.type.*;

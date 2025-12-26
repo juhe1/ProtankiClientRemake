@@ -25,12 +25,12 @@ package projects.tanks.client.tanksservices.model.notifier.battle
          this._battleData = param1;
       }
       
-      public function get UserId() : String
+      public function get userId() : String
       {
          return this._userId;
       }
       
-      public function set UserId(param1:String) : void
+      public function set userId(param1:String) : void
       {
          this._userId = param1;
       }

@@ -7,7 +7,6 @@ package scpacker.utils
    import platform.client.fp10.core.model.ObjectLoadPostListener;
    import platform.client.fp10.core.registry.SpaceRegistry;
    import platform.client.fp10.core.registry.GameTypeRegistry;
-   import platform.client.fp10.core.type.newname_3133__END;
    import platform.client.fp10.core.type.IGameObject;
    import platform.client.fp10.core.type.IGameClass;
    import platform.client.fp10.core.type.impl.GameClass;

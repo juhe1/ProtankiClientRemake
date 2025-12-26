@@ -24,7 +24,7 @@ package utils.preview
       {
       }
       
-      public function onResourceLoadingComplete(param1:Resource, param2:IValidationHash) : void
+      public function onResourceLoadingComplete(param1:Resource) : void
       {
          this.previewModel.setPreviewResource(ImageResource(param1));
       }

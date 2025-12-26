@@ -6,7 +6,6 @@ package platform.client.fp10.core.network.handler
    public interface ISpaceCommandHandler extends ICommandHandler
    {
       
-      function setSpace(param1:Space) : void;
    }
 }
 

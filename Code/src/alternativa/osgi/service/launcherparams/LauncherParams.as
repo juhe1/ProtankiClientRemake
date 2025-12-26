@@ -1,6 +1,5 @@
 package alternativa.osgi.service.launcherparams
 {
-   import alternativa.startup.LibraryInfo;
    import alternativa.utils.Properties;
    import flash.display.LoaderInfo;
    

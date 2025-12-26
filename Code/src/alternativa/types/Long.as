@@ -78,6 +78,42 @@ package alternativa.types
          }
          return 0;
       }
+
+      public function toOct() : String
+      {
+         var n1:uint = 0;
+         var n2:uint = 0;
+         var version_oct1:String = "";
+         var version_oct2:String = "";
+         var mask:uint = 63;
+         var offset:uint = 0;
+         for(var i:int = 0; i < 5; i++)
+         {
+            n1 = uint((this.high & mask << 4 + offset) >>> offset + 4);
+            n2 = uint((this.low & mask << offset) >>> offset);
+            version_oct1 = this._toOct(n1) + version_oct1;
+            version_oct2 = this._toOct(n2) + version_oct2;
+            offset += 6;
+         }
+         var version:String = version_oct1 + this._toOct(((this.high & uint(15)) << 2) + (this.low >>> 30)) + version_oct2;
+         return this.trimLeadingZeros(version);
+      }
+
+      private function trimLeadingZeros(s:String) : String
+      {
+         var i:int = 0;
+         while(i < s.length && s.charAt(i) == "0")
+         {
+            i++;
+         }
+         return s.substr(i);
+      }
+
+      private function _toOct(value:uint) : String
+      {
+         var result:String = value.toString(8);
+         return (result.length < 2 ? "0" : "") + result;
+      }
       
       public function get low() : int
       {

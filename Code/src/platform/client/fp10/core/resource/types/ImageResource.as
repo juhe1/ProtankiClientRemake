@@ -1,6 +1,5 @@
 package platform.client.fp10.core.resource.types
 {
-   import platform.client.fp10.core.resource.types.ResourceImageParams;
    import flash.display.BitmapData;
    import flash.events.ErrorEvent;
    import flash.events.Event;

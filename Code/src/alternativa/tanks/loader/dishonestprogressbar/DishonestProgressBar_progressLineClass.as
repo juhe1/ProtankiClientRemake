@@ -3,7 +3,7 @@ package alternativa.tanks.loader.dishonestprogressbar
    import mx.core.BitmapAsset;
    
    [ExcludeClass]
-   [Embed(source="/_assets/7_alternativa.tanks.loader.dishonestprogressbar.DishonestProgressBar_progressLineClass.png")]
+   [Embed(source="/_assets/57_alternativa.tanks.loader.dishonestprogressbar.DishonestProgressBar_progressLineClass_alternativa.tanks.loader.dishonestprogressbar.DishonestProgressBar_progressLineClass.png")]
    public class DishonestProgressBar_progressLineClass extends BitmapAsset
    {
       

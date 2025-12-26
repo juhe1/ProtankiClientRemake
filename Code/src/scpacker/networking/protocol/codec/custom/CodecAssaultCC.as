@@ -3,7 +3,6 @@ package scpacker.networking.protocol.codec.custom
    import projects.tanks.client.battlefield.models.battle.assault.AssaultSoundFX;
    import projects.tanks.client.battlefield.models.battle.assault.AssaultCC;
    import projects.tanks.client.battlefield.models.battle.assault.AssaultBase;
-   import projects.tanks.client.battlefield.models.battle.assault.newname_1852__END;
    import flash.utils.ByteArray;
    import scpacker.networking.protocol.ProtocolInitializer;
    import platform.client.fp10.core.resource.types.ImageResource;

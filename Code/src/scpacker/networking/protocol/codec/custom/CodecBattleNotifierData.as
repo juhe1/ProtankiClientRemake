@@ -27,7 +27,7 @@ package scpacker.networking.protocol.codec.custom
       {
          var _loc2_:BattleNotifierData = new BattleNotifierData();
          _loc2_.battleData = this.newname_4097__END.decode(param1) as BattleInfoData;
-         _loc2_.UserId = this.stringCodec.decode(param1) as String;
+         _loc2_.userId = this.stringCodec.decode(param1) as String;
          return _loc2_;
       }
       
@@ -39,7 +39,7 @@ package scpacker.networking.protocol.codec.custom
          }
          var _loc3_:BattleNotifierData = BattleNotifierData(param2);
          this.newname_4097__END.encode(param1,_loc3_.battleData);
-         this.stringCodec.encode(param1,_loc3_.UserId);
+         this.stringCodec.encode(param1,_loc3_.userId);
          return 4;
       }
    }

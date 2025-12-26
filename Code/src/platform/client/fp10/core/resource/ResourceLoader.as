@@ -87,17 +87,16 @@ package platform.client.fp10.core.resource
          }
       }
       
-      public function onResourceLoadingComplete(param1:Resource, param2:IValidationHash) : void
+      public function onResourceLoadingComplete(param1:Resource) : void
       {
          var listener:IResourceLoadingListener = null;
          var resource:Resource = param1;
-         var validationHash:IValidationHash = param2;
          var entry:ResourceEntry = this.processLoadedResource(resource);
          for each(listener in entry.listeners)
          {
             try
             {
-               listener.onResourceLoadingComplete(resource,validationHash);
+               listener.onResourceLoadingComplete(resource);
             }
             catch(e:Error)
             {
@@ -154,7 +153,7 @@ package platform.client.fp10.core.resource
             ++this.numLoadingsInProgress;
             if(_loc1_.isLoaded)
             {
-               this.onResourceLoadingComplete(_loc1_,_loc1_.getValidationHash());
+               this.onResourceLoadingComplete(_loc1_);
             }
             else if(localStorage != null && Boolean(localStorage.enabled))
             {
@@ -218,6 +217,9 @@ package platform.client.fp10.core.resource
       }
    }
 }
+
+import platform.client.fp10.core.resource.Resource;
+import platform.client.fp10.core.resource.IResourceLoadingListener;
 
 class ResourceEntry
 {

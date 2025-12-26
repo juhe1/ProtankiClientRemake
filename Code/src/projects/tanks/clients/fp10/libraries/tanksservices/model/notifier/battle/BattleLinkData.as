@@ -57,7 +57,7 @@ package projects.tanks.clients.fp10.libraries.tanksservices.model.notifier.battl
       
       public function isSelfBattle() : Boolean
       {
-         var _loc1_:Long = userInfoService.getCurrentUserId();
+         var _loc1_:String = userInfoService.getCurrentUserId();
          var _loc2_:IUserInfoLabelUpdater = userInfoService.getOrCreateUpdater(_loc1_);
          if(_loc2_.battleLink != null)
          {

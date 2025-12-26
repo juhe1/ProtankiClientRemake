@@ -56,6 +56,7 @@ package platform.client.fp10.core.osgi
    import platform.client.fp10.core.service.transport.ITransportService;
    import platform.client.fp10.core.service.transport.impl.TransportService;
    import platform.client.fp10.core.type.IGameObject;
+   import platform.client.fp10.core.resource.types.MultiframeImageResource;
    
    public class ClientActivator implements IBundleActivator
    {
@@ -75,7 +76,6 @@ package platform.client.fp10.core.osgi
          this.registerCodecs();
          this.registerServices();
          this.registerResources();
-         setTimeout(this.completeInitialization,0);
       }
       
       public function stop(param1:OSGi) : void
@@ -107,62 +107,8 @@ package platform.client.fp10.core.osgi
          _loc1_.registerTypeClasses(ResourceType.SWF_LIBRARY,SWFLibraryResource);
          _loc1_.registerTypeClasses(ResourceType.IMAGE,ImageResource);
          _loc1_.registerTypeClasses(ResourceType.LOCALIZED_IMAGE,LocalizedImageResource);
-         _loc1_.registerTypeClasses(ResourceType.MULTIFRAME_IMAGE,MultiframeTextureResource);
+         _loc1_.registerTypeClasses(ResourceType.MULTIFRAME_IMAGE,MultiframeImageResource);
          _loc1_.registerTypeClasses(ResourceType.SOUND,SoundResource);
-         _loc1_.registerTypeClasses(ResourceType.TEXTURE,TextureResource);
-      }
-      
-      private function createConnection() : void
-      {
-         var _loc1_:IProtocol = IProtocol(this.osgi.getService(IProtocol));
-         var _loc2_:ITransportService = ITransportService(this.osgi.getService(ITransportService));
-         var _loc3_:INetworkService = INetworkService(this.osgi.getService(INetworkService));
-         var _loc4_:ConnectionInitializers = new ConnectionInitializers(_loc1_,new ControlRootCodec(),_loc2_.controlCommandHandler,_loc3_.secure,new Long(0,0),PrimitiveProtectionContext.INSTANCE);
-         this.controlChannelConnection = _loc2_.createConnection(_loc4_);
-      }
-      
-      private function setupServerLog() : void
-      {
-         var _loc4_:ServerLogTarget = null;
-         var _loc5_:IDisplay = null;
-         var _loc1_:LogService = LogService(this.osgi.getService(LogService));
-         var _loc2_:ILauncherParams = ILauncherParams(this.osgi.getService(ILauncherParams));
-         var _loc3_:String = _loc2_.getParameter("log_to_server");
-         if(Boolean(_loc3_))
-         {
-            _loc4_ = new ServerLogTarget(new ControlConnectionSender(),_loc3_);
-            _loc1_.addLogTarget(_loc4_);
-            if(Boolean(_loc2_.getParameter("show_server_logs")))
-            {
-               _loc5_ = IDisplay(this.osgi.getService(IDisplay));
-               _loc4_.setLogPanel(new ServerLogPanel(_loc5_.stage));
-            }
-         }
-      }
-      
-      private function completeInitialization() : void
-      {
-         this.registerCommmands();
-         this.createConnection();
-         this.setupServerLog();
-         this.connectToServer();
-         this.setupUncaughtErrorLogSender();
-      }
-      
-      private function registerCommmands() : void
-      {
-         new CoreCommands();
-      }
-      
-      private function connectToServer() : void
-      {
-         var _loc1_:INetworkService = INetworkService(this.osgi.getService(INetworkService));
-         this.controlChannelConnection.connect(new ConnectionConnectParameters(_loc1_.controlServerAddress,_loc1_.controlServerPorts));
-      }
-      
-      private function setupUncaughtErrorLogSender() : void
-      {
-         this.osgi.registerService(UncaughtErrorServerLog,new UncaughtErrorServerLogImpl(new ControlConnectionSender()));
       }
    }
 }
