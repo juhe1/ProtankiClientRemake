@@ -23,38 +23,37 @@ package projects.tanks.clients.flash.commons.services.layout
    import services.alertservice.Alert;
    import services.alertservice.AlertAnswer;
    import platform.client.fp10.core.registry.ModelRegistry;
-   import projects.tanks.clients.flash.commons.models.layout.LobbyLayoutModel;
    import projects.tanks.client.commons.models.layout.LobbyLayoutModelBase;
    import projects.tanks.client.commons.models.layout.notify.LobbyLayoutNotifyModelBase;
    
    public class LobbyLayoutService extends EventDispatcher implements ILobbyLayoutService
    {
       
-      [Inject]
+      [Inject] // added
       public static var alertService:IAlertService;
       
-      [Inject]
+      [Inject] // added
       public static var storageService:IStorageService;
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
-      [Inject]
+      [Inject] // added
       public static var battleInfoService:IBattleInfoService;
       
-      [Inject]
+      [Inject] // added
       public static var dialogWindowsDispatcherService:IDialogWindowsDispatcherService;
       
-      [Inject]
+      [Inject] // added
       public static var partnersService:IPartnerService;
       
-      [Inject]
+      [Inject] // added
       public static var userInfoService:IUserInfoService;
 
-      [Inject]
+      [Inject] // added
       public static var modelRegistry:ModelRegistry;
       
-      [Inject]
+      [Inject] // added
       public static var userChangeGameScreenService:UserChangeGameScreenService;
       
       private var serviceGameObject:IGameObject;
@@ -247,13 +246,13 @@ package projects.tanks.clients.flash.commons.services.layout
       
       public function isSwitchInProgress() : Boolean
       {
-         this.checkObject();
+         //this.checkObject();
          return ILobbyLayoutNotify(modelRegistry.getModel((LobbyLayoutNotifyModelBase.modelId))).isSwitchInProgress();
       }
       
       public function getCurrentState() : LayoutState
       {
-         this.checkObject();
+         //this.checkObject();
          return ILobbyLayoutNotify(modelRegistry.getModel((LobbyLayoutNotifyModelBase.modelId))).getCurrentState();
       }
       
@@ -268,7 +267,7 @@ package projects.tanks.clients.flash.commons.services.layout
       
       private function layoutSwitchPredicted() : void
       {
-         this.checkObject();
+         //this.checkObject();
          ILobbyLayoutNotify(modelRegistry.getModel((LobbyLayoutNotifyModelBase.modelId))).layoutSwitchPredicted();
       }
       

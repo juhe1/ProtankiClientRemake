@@ -1,8 +1,5 @@
 package projects.tanks.client.commons.models.externalauth
 {
-   import alternativa.osgi.OSGi;
-   import alternativa.protocol.IProtocol;
-   import alternativa.protocol.ProtocolBuffer;
    import alternativa.types.Long;
    import platform.client.fp10.core.model.IModel;
    import platform.client.fp10.core.model.impl.Model;

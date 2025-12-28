@@ -1,6 +1,5 @@
 package projects.tanks.clients.fp10.libraries.tanksservices.model.notifier.battle
 {
-   import alternativa.types.Long;
    import flash.utils.Dictionary;
    import platform.client.fp10.core.model.ObjectLoadListener;
    import platform.client.fp10.core.model.ObjectUnloadListener;
@@ -18,10 +17,10 @@ package projects.tanks.clients.fp10.libraries.tanksservices.model.notifier.battl
    public class BattleNotifierModel extends BattleNotifierModelBase implements IBattleNotifierModelBase, UserRefresh, ObjectLoadListener, ObjectUnloadListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleNotifierService:IBattleNotifierService;
 
-      [Inject]
+      [Inject] // added
       public static var modelRegistry:ModelRegistry;
       
       private var battleLinkData:Dictionary;

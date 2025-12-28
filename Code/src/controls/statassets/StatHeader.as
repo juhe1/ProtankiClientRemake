@@ -9,7 +9,7 @@ package controls.statassets
    public class StatHeader extends Sprite
    {
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
       protected var tabs:Vector.<Number>;

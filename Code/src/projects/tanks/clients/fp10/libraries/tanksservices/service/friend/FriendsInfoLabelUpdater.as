@@ -9,7 +9,7 @@ package projects.tanks.clients.fp10.libraries.tanksservices.service.friend
    public class FriendsInfoLabelUpdater extends EventDispatcher implements FriendInfoConsumer, IFriendsInfoLabelUpdater, IInfoLabelUpdater
    {
       
-      [Inject]
+      [Inject] // added
       public static var logService:LogService;
       
       private var _state:FriendState;

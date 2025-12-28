@@ -10,7 +10,7 @@ package alternativa.tanks.view.registration
    public class ExternalEntranceForm extends TankWindow
    {
       
-      [Inject]
+      [Inject] // added
       public static var externalEntranceService:IExternalEntranceService;
       
       public var vkButton:VKButton;

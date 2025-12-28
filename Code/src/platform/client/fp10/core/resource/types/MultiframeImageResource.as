@@ -1,91 +1,85 @@
 package platform.client.fp10.core.resource.types
 {
-   import alternativa.protocol.impl.Protocol;
+   import platform.client.fp10.core.resource.tara.TARAParser;
+   import platform.core.general.resource.types.imageframe.ResourceImageFrameParams;
    import flash.display.BitmapData;
    import flash.events.ErrorEvent;
    import flash.events.Event;
-   import flash.events.IOErrorEvent;
    import flash.events.ProgressEvent;
-   import flash.events.SecurityErrorEvent;
-   import flash.net.URLLoaderDataFormat;
    import flash.net.URLRequest;
    import flash.utils.ByteArray;
-   import platform.client.fp10.core.resource.IResourceLoadingListener;
    import platform.client.fp10.core.resource.IResourceSerializationListener;
    import platform.client.fp10.core.resource.Resource;
-   import platform.client.fp10.core.resource.ResourceFlags;
    import platform.client.fp10.core.resource.ResourceInfo;
-   import platform.client.fp10.core.resource.ResourceStatus;
    import platform.client.fp10.core.resource.SafeURLLoader;
-   import platform.client.fp10.core.resource.tara.TARAParser;
+   import platform.client.fp10.core.resource.IResourceLoadingListener;
    import platform.client.fp10.core.service.localstorage.IResourceLocalStorage;
-   import platform.core.general.resource.types.imageframe.ResourceImageFrameParams;
    
    public class MultiframeImageResource extends Resource
    {
-      
-      [Inject]
+      [Inject] // added
       public static var resourceLocalStorage:IResourceLocalStorage;
       
-      private static const TARA_FILE:String = "image.tara";
+      private static const TARA_FILE_NAME:String = "image.tara";
       
-      private static const PARAMS_FILE:String = "p";
+      private static const DIFFUSE_FILE_KEY:String = "i";
       
-      private static const DIFFUSE_FILE:String = "i";
+      private static const ALPHA_FILE_KEY:String = "a";
       
-      private static const ALPHA_FILE:String = "a";
+      private static const MAGIC_BYTE_F:int = 70;
       
-      private static const CHAR_F:int = 70;
+      private static const MAGIC_BYTE_R:int = 82;
       
-      private static const CHAR_R:int = 82;
+      private static const MAGIC_BYTE_M:int = 77;
       
-      private static const CHAR_M:int = 77;
+      private static const FORMAT_VERSION:int = 1;
       
-      private static const BINARY_VERSION:int = 1;
-      
-      private var multiframeResourceInfo:ResourceImageFrameParams;
-      
-      private var framesConstructor:FramesConstructor;
+      private var frameParams:ResourceImageFrameParams;
       
       private var loader:SafeURLLoader;
       
-      private var taraData:ByteArray;
+      private var rawImageData:ByteArray;
       
-      private var _data:BitmapData;
+      private var bitmapData:BitmapData;
       
-      public function MultiframeImageResource(param1:ResourceInfo)
+      public function MultiframeImageResource(param1:ResourceInfo, param2:ResourceImageFrameParams)
       {
          super(param1);
+         if(param2 == null)
+         {
+            throw new Error("Parameter c3bffb77 is null");
+         }
+         this.frameParams = param2;
       }
       
       public function get frameWidth() : int
       {
-         return this.multiframeResourceInfo.frameWidth;
+         return this.frameParams.frameWidth;
       }
       
       public function get frameHeight() : int
       {
-         return this.multiframeResourceInfo.frameHeight;
+         return this.frameParams.frameHeight;
       }
       
       public function get numFrames() : int
       {
-         return this.multiframeResourceInfo.numFrames;
+         return this.frameParams.numFrames;
       }
       
       public function get fps() : Number
       {
-         return this.multiframeResourceInfo.fps;
+         return this.frameParams.fps;
       }
       
-      public function get data() : BitmapData
+      public function get Data() : BitmapData
       {
-         return this._data;
+         return this.bitmapData;
       }
       
       override public function toString() : String
       {
-         return "[MultiframeImageResource id=" + id + "]";
+         return "";
       }
       
       override public function get description() : String
@@ -95,7 +89,7 @@ package platform.client.fp10.core.resource.types
       
       override public function loadBytes(param1:ByteArray, param2:IResourceLoadingListener) : Boolean
       {
-         if(param1.bytesAvailable < 4 || param1.readByte() != CHAR_F || param1.readByte() != CHAR_R || param1.readByte() != CHAR_M || param1.readByte() != BINARY_VERSION)
+         if(param1.bytesAvailable < 4 || param1.readByte() != MAGIC_BYTE_F || param1.readByte() != MAGIC_BYTE_R || param1.readByte() != MAGIC_BYTE_M || param1.readByte() != FORMAT_VERSION)
          {
             return false;
          }
@@ -103,59 +97,59 @@ package platform.client.fp10.core.resource.types
          var _loc3_:int = param1.readInt();
          var _loc4_:ByteArray = new ByteArray();
          param1.readBytes(_loc4_,0,_loc3_);
-         this.buildFrames(_loc4_);
+         this.parseImageData(_loc4_);
          return true;
       }
       
       override public function serialize(param1:IResourceSerializationListener) : void
       {
          var _loc2_:ByteArray = new ByteArray();
-         _loc2_.writeByte(CHAR_F);
-         _loc2_.writeByte(CHAR_R);
-         _loc2_.writeByte(CHAR_M);
-         _loc2_.writeByte(BINARY_VERSION);
-         _loc2_.writeInt(this.taraData.length);
-         _loc2_.writeBytes(this.taraData);
-         this.taraData = null;
+         _loc2_.writeByte(MAGIC_BYTE_F);
+         _loc2_.writeByte(MAGIC_BYTE_R);
+         _loc2_.writeByte(MAGIC_BYTE_M);
+         _loc2_.writeByte(FORMAT_VERSION);
+         _loc2_.writeInt(this.rawImageData.length);
+         _loc2_.writeBytes(this.rawImageData);
+         this.rawImageData = null;
          param1.onSerializationComplete(this,_loc2_);
       }
       
       override public function load(param1:String, param2:IResourceLoadingListener) : void
       {
          super.load(param1,param2);
-         this.doLoad();
+         this.startLoading();
       }
       
       override protected function doReload() : void
       {
          this.loader.close();
-         this.doLoad();
+         this.startLoading();
       }
       
       override protected function completeLoading() : void
       {
          super.completeLoading();
-         if(hasAllFlags(ResourceFlags.LOCAL) || !resourceLocalStorage.enabled)
+         if(hasAllFlags(2) || !resourceLocalStorage.enabled)
          {
-            this.taraData = null;
+            this.rawImageData = null;
          }
       }
       
-      private function doLoad() : void
+      private function startLoading() : void
       {
          this.loader = new SafeURLLoader();
-         this.loader.dataFormat = URLLoaderDataFormat.BINARY;
-         this.loader.addEventListener(Event.OPEN,this.onLoadingOpen);
-         this.loader.addEventListener(Event.COMPLETE,this.onLoadingComplete);
-         this.loader.addEventListener(IOErrorEvent.IO_ERROR,this.onLoadingError);
-         this.loader.addEventListener(SecurityErrorEvent.SECURITY_ERROR,this.onLoadingError);
-         this.loader.addEventListener(ProgressEvent.PROGRESS,this.onLoadingProgress);
-         this.loader.load(new URLRequest(baseUrl + TARA_FILE));
+         this.loader.dataFormat = "binary";
+         this.loader.addEventListener("open",this.onLoadingStart);
+         this.loader.addEventListener("complete",this.onLoadingComplete);
+         this.loader.addEventListener("ioError",this.onLoadingError);
+         this.loader.addEventListener("securityError",this.onLoadingError);
+         this.loader.addEventListener("progress",this.onLoadingProgress);
+         this.loader.load(new URLRequest(baseUrl + TARA_FILE_NAME));
          startTimeoutTracking();
-         status = ResourceStatus.REQUESTED;
+         status = "Data requested";
       }
       
-      private function onLoadingOpen(param1:Event) : void
+      private function onLoadingStart(param1:Event) : void
       {
          updateLastActivityTime();
          listener.onResourceLoadingStart(this);
@@ -163,15 +157,7 @@ package platform.client.fp10.core.resource.types
       
       private function onLoadingError(param1:ErrorEvent) : void
       {
-         this.loader = null;
-         if(this.multiframeResourceInfo != null)
-         {
-            this._data = new StubBitmapData(16711935,this.frameWidth,this.frameHeight);
-         }
-         else
-         {
-            this._data = new StubBitmapData(16711935,1,1);
-         }
+         this.bitmapData = new StubBitmapData(16711935,this.frameWidth,this.frameHeight);
          listener.onResourceLoadingError(this,param1.text);
       }
       
@@ -183,93 +169,26 @@ package platform.client.fp10.core.resource.types
       private function onLoadingComplete(param1:Event) : void
       {
          stopTimeoutTracking();
-         this.taraData = this.loader.data;
+         this.rawImageData = this.loader.data;
          this.loader = null;
-         this.buildFrames(this.taraData);
+         this.parseImageData(this.rawImageData);
       }
       
-      private function buildFrames(param1:ByteArray) : void
+      private function parseImageData(param1:ByteArray) : void
       {
-         var _loc2_:TARAParser = new TARAParser(param1);
-         this.multiframeResourceInfo = Protocol.defaultInstance.decode(ResourceImageFrameParams,_loc2_.getFileData(PARAMS_FILE));
-         this.framesConstructor = new FramesConstructor();
-         this.framesConstructor.addEventListener(Event.COMPLETE,this.onFramesComplete);
-         this.framesConstructor.buildFrames(_loc2_.getFileData(DIFFUSE_FILE),_loc2_.getFileData(ALPHA_FILE));
+         var _loc3_:TARAParser = new TARAParser(param1);
+         var _loc2_:ImageByteData = new ImageByteData();
+         _loc2_.diffuseBytes = _loc3_.getFileData(DIFFUSE_FILE_KEY);
+         _loc2_.alphaBytes = _loc3_.getFileData(ALPHA_FILE_KEY);
+         var _loc4_:ImageBuilder = new ImageBuilder();
+         _loc4_.build(_loc2_,onImageBuilt);
       }
       
-      private function onFramesComplete(param1:Event) : void
+      private function onImageBuilt(param1:ImageBuilder) : void
       {
-         this._data = this.framesConstructor.image;
-         this.framesConstructor = null;
+         this.bitmapData = param1.image;
          this.completeLoading();
       }
    }
 }
 
-import flash.display.Bitmap;
-import flash.display.BitmapData;
-import flash.display.Loader;
-import flash.events.Event;
-import flash.events.EventDispatcher;
-import flash.utils.ByteArray;
-import platform.client.fp10.core.resource.ResourceUtils;
-
-class FramesConstructor extends EventDispatcher
-{
-   
-   private var alphaData:ByteArray;
-   
-   private var loader:Loader;
-   
-   private var _image:BitmapData;
-   
-   public function FramesConstructor()
-   {
-      super();
-   }
-   
-   public function get image() : BitmapData
-   {
-      return this._image;
-   }
-   
-   public function buildFrames(param1:ByteArray, param2:ByteArray) : void
-   {
-      this.alphaData = param2;
-      this.load(param1,this.onDiffuseImageComplete);
-   }
-   
-   private function load(param1:ByteArray, param2:Function) : void
-   {
-      this.loader = new Loader();
-      this.loader.contentLoaderInfo.addEventListener(Event.COMPLETE,param2);
-      this.loader.loadBytes(param1);
-   }
-   
-   private function onDiffuseImageComplete(param1:Event) : void
-   {
-      this._image = Bitmap(this.loader.content).bitmapData;
-      if(this.alphaData != null)
-      {
-         this.load(this.alphaData,this.onAlphaImageComplete);
-      }
-      else
-      {
-         this.complete();
-      }
-   }
-   
-   private function onAlphaImageComplete(param1:Event) : void
-   {
-      var _loc2_:BitmapData = Bitmap(this.loader.content).bitmapData;
-      this._image = ResourceUtils.mergeBitmapAlpha(this._image,_loc2_,true);
-      this.complete();
-   }
-   
-   private function complete() : void
-   {
-      this.loader = null;
-      this.alphaData = null;
-      dispatchEvent(new Event(Event.COMPLETE));
-   }
-}

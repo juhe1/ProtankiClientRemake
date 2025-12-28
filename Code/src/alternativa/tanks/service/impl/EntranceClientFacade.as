@@ -34,16 +34,16 @@ package alternativa.tanks.service.impl
    public class EntranceClientFacade extends Actor implements IEntranceClientFacade
    {
       
-      [Inject]
+      [Inject] // added
       public var registrationBackgroundModel:RegistrationBackgroundModel;
       
-      [Inject]
+      [Inject] // added
       public var serverParams:EntranceServerParamsModel;
       
-      [Inject]
+      [Inject] // added
       public var paramsModel:EntranceUrlParamsModel;
       
-      [Inject]
+      [Inject] // added
       public var captchaService:ICaptchaService;
       
       public function EntranceClientFacade()

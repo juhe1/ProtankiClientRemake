@@ -27,20 +27,20 @@ package alternativa.tanks.view.forms
    public class PasswordRestoreForm extends Sprite
    {
       
-      [Inject]
+      [Inject] // added
       public static var validateService:IValidateService;
       
-      [Inject]
+      [Inject] // added
       public static var loaderWindowService:ILoaderWindowService;
       
       private static const MARGIN:int = 20;
       
       private static const INFO_MARGIN:int = 10;
       
-      [Inject]
+      [Inject] // added
       public var localeService:ILocaleService;
       
-      [Inject]
+      [Inject] // added
       public var injector:IInjector;
       
       public var captchaSection:CaptchaSection;

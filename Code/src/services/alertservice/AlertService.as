@@ -17,16 +17,16 @@ package services.alertservice
    public class AlertService extends EventDispatcher implements IAlertService, OnConnectionClosedServiceListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
-      [Inject]
+      [Inject] // added
       public static var blurService:IBlurService;
       
-      [Inject]
+      [Inject] // added
       public static var dialogWindowsDispatcherService:IDialogWindowsDispatcherService;
       
       private var _alert:Alert;

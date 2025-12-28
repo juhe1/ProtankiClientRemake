@@ -25,6 +25,8 @@ package platform.client.fp10.core.type
       function addEventListener(param1:ISpaceListener) : void;
       
       function removeEventListener(param1:ISpaceListener) : void;
+
+      function getObjectByName(param1:String) : IGameObject;
    }
 }
 

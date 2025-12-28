@@ -7,13 +7,9 @@ package controls.dropdownlist
    public class DropDownButton extends Sprite
    {
       
-      private var buttonClass:Class = DropDownButton_buttonClass;
+      private var back:Bitmap = new DropDownButton_buttonClass();
       
-      private var buttonUpClass:Class = DropDownButton_buttonUpClass;
-      
-      private var back:Bitmap = new this.buttonClass();
-      
-      private var backMouseUp:Bitmap = new this.buttonUpClass();
+      private var backMouseUp:Bitmap = new DropDownButton_buttonUpClass();
       
       public function DropDownButton()
       {

@@ -11,13 +11,13 @@ package platform.clients.fp10.libraries.alternativapartners.service.impl
    public class PartnerService implements IPartnerService
    {
       
-      [Inject]
+      [Inject] // added
       public static var addressService:AddressService;
       
-      [Inject]
+      [Inject] // added
       public static var log:LogService;
       
-      [Inject]
+      [Inject] // added
       public static var paramsService:ILauncherParams;
       
       private var _partner:IPartner;

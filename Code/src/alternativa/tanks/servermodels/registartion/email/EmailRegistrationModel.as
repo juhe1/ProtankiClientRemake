@@ -12,13 +12,13 @@ package alternativa.tanks.servermodels.registartion.email
    public class EmailRegistrationModel extends EmailRegistrationModelBase implements IEmailRegistrationModelBase, IEmailRegistration
    {
       
-      [Inject]
+      [Inject] // added
       public static var facade:IEntranceClientFacade;
       
-      [Inject]
+      [Inject] // added
       public static var alertService:IAlertService;
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
       public function EmailRegistrationModel()

@@ -11,10 +11,10 @@ package projects.tanks.clients.fp10.libraries.tanksservices.service.dialogs.gui
    public class DialogWindow extends DiscreteSprite
    {
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
-      [Inject]
+      [Inject] // added
       public static var dialogService:IDialogsService;
       
       public function DialogWindow()

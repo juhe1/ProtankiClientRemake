@@ -1,6 +1,5 @@
 package projects.tanks.clients.flash.commons.services.notification
 {
-   import alternativa.types.Long;
    import org.osflash.signals.Signal;
    import platform.client.fp10.core.network.connection.ConnectionCloseStatus;
    import platform.client.fp10.core.network.handler.OnConnectionClosedServiceListener;

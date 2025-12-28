@@ -16,7 +16,7 @@ package platform.client.fp10.core.registry.impl
    public class ModelsRegistryImpl implements ModelRegistry
    {
       
-      [Inject]
+      [Inject] // added
       public static var protocol:IProtocol;
       
       private var logger:Logger;

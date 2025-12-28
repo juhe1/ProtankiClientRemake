@@ -29,7 +29,7 @@ package scpacker.networking.protocol
    import scpacker.networking.protocol.protection.IProtection;
    import scpacker.networking.protocol.protection.XorProtection;
    import scpacker.networking.protocol.protection.EmptyProtection;
-   import scpacker.networking.protocol.packets.init.SetClientLang;
+   import scpacker.networking.protocol.packets.init.SetClientLangOutPacket;
    
    public class ProtocolInitializer
    {
@@ -59,7 +59,7 @@ package scpacker.networking.protocol
       {
          this.addCodec(new ResourceGetterCodec(this,ResourceRegistry(OSGi.getInstance().getService(ResourceRegistry))));
          this.addEnumCodec("CaptchaLocationCodec",CaptchaLocation);
-         this.addCodec(new CodecUserPropertyCC(this));
+         this.addCodec(new CodecUserPropertiesCC(this));
          this.addCodec(new CodecPremiumAccountAlertCC(this));
          this.addCodec(new CodecPremiumNotifierCC(this));
          this.addEnumCodec("CodecLayoutState",LayoutState);
@@ -148,7 +148,7 @@ package scpacker.networking.protocol
       {
          this.protection = new XorProtection(param1);
          var _loc2_:OSGi = OSGi.getInstance();
-         Network(_loc2_.getService(Network)).send(new SetClientLang(ILocaleService(_loc2_.getService(ILocaleService)).language));
+         Network(_loc2_.getService(Network)).send(new SetClientLangOutPacket(ILocaleService(_loc2_.getService(ILocaleService)).language));
       }
       
       public function getProtection() : IProtection

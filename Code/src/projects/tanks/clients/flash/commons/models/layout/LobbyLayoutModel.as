@@ -15,16 +15,16 @@ package projects.tanks.clients.flash.commons.models.layout
    public class LobbyLayoutModel extends LobbyLayoutModelBase implements ILobbyLayoutModelBase, ILobbyLayout, ObjectLoadListener, ObjectUnloadListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var lobbyLayoutService:ILobbyLayoutService;
       
-      [Inject]
+      [Inject] // added
       public static var storageService:IStorageService;
       
-      [Inject]
+      [Inject] // added
       public static var tanksAddressService:TanksAddressService;
       
-      [Inject]
+      [Inject] // added
       public static var battleInfoSerivce:IBattleInfoService;
       
       public static const USE_BATTLE_LIST_KEY:String = "USE_BATTLE_LIST";

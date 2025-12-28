@@ -23,31 +23,31 @@ package alternativa.tanks.servermodels.registartion.password
    public class PasswordRegistrationModel extends RegistrationModelBase implements IRegistrationModelBase, IPasswordRegistration, ObjectLoadListener, IImageResource
    {
       
-      [Inject]
+      [Inject] // added
       public static var facade:IEntranceClientFacade;
       
-      [Inject]
+      [Inject] // added
       public static var passwordParamsService:IPasswordParamsService;
       
-      [Inject]
+      [Inject] // added
       public static var alertService:IAlertService;
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
-      [Inject]
+      [Inject] // added
       public static var trackerService:ITrackerService;
       
-      [Inject]
+      [Inject] // added
       public static var launcherParams:ILauncherParams;
       
-      [Inject]
+      [Inject] // added
       public static var ymService:YandexMetricaService;
       
-      [Inject]
+      [Inject] // added
       public static var newbieUserService:NewbieUserService;
       
-      [Inject]
+      [Inject] // added
       public static var storageService:IStorageService;
       
       private static const USER_IS_REGISTERED:String = "registered";

@@ -19,7 +19,7 @@ package alternativa.tanks.gui.error
    public class ErrorForm extends DialogWindow
    {
       
-      [Inject]
+      [Inject] // added
       public static var addressService:AddressService;
       
       private static const IconImage:Class = ErrorForm_IconImage;

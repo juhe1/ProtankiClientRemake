@@ -15,19 +15,19 @@ package projects.tanks.clients.flash.commons.models.layout.notify
    public class LobbyLayoutNotifyModel extends LobbyLayoutNotifyModelBase implements ILobbyLayoutNotifyModelBase, ILobbyLayoutNotify, ObjectUnloadListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var lobbyLayoutService:ILobbyLayoutService;
       
-      [Inject]
+      [Inject] // added
       public static var loaderWindowService:ILoaderWindowService;
       
-      [Inject]
+      [Inject] // added
       public static var modalLoaderService:IModalLoaderService;
       
-      [Inject]
+      [Inject] // added
       public static var logService:LogService;
       
-      [Inject]
+      [Inject] // added
       public static var ymService:YandexMetricaService;
       
       private static const CHANNEL:String = "LobbyLayoutNotifyModel";

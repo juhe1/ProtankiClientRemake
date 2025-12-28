@@ -9,7 +9,7 @@ package forms.payment
    public class PaymentListHeader extends Sprite
    {
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
       private static var _withSMSText:Boolean = false;

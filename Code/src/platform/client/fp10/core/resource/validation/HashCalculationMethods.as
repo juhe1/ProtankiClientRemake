@@ -5,7 +5,7 @@ package platform.client.fp10.core.resource.validation
    public class HashCalculationMethods
    {
       
-      [Inject]
+      [Inject] // added
       public static var resourceRegistry:ResourceRegistry;
       
       public static const DEFAULT:int = 0;

@@ -25,25 +25,25 @@ package alternativa.tanks.servermodels.socialnetwork
    public class ExternalEntranceModel extends ExternalEntranceModelBase implements IExternalEntranceModelBase, ObjectLoadListener, IExternalEntranceModel
    {
       
-      [Inject]
+      [Inject] // added
       public static var externalEntranceService:IExternalEntranceService;
       
-      [Inject]
+      [Inject] // added
       public static var clientFacade:IEntranceClientFacade;
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
-      [Inject]
+      [Inject] // added
       public static var alertService:IAlertService;
       
-      [Inject]
+      [Inject] // added
       public static var ymService:YandexMetricaService;
       
-      [Inject]
+      [Inject] // added
       public static var externalAuthParamsService:ExternalAuthParamsService;
 
-      [Inject]
+      [Inject] // added
       public static var modelRegistry:ModelRegistry;
       
       private static const VK_REGISTRATION_COMPLETED:String = "VKRegistration:completed";

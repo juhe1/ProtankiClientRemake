@@ -8,7 +8,7 @@ package alternativa.tanks.servermodels.emailandpasswordchanger
    public class PasswordRestoreModel extends PasswordChangeModelBase implements IPasswordRecovery, IPasswordChangeModelBase
    {
       
-      [Inject]
+      [Inject] // added
       public static var entranceClientFacade:IEntranceClientFacade;
       
       private var passwordChangeHash:String;

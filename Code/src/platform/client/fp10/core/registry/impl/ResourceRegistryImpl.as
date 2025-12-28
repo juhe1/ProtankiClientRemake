@@ -3,7 +3,6 @@ package platform.client.fp10.core.registry.impl
    import alternativa.osgi.OSGi;
    import alternativa.osgi.service.logging.LogService;
    import alternativa.osgi.service.logging.Logger;
-   import alternativa.protocol.IProtocol;
    import alternativa.types.Long;
    import flash.utils.Dictionary;
    import platform.client.fp10.core.registry.ResourceRegistry;
@@ -19,7 +18,7 @@ package platform.client.fp10.core.registry.impl
    public class ResourceRegistryImpl implements ResourceRegistry, ILoadingProgressService
    {
       
-      [Inject]
+      [Inject] // added
       public static var resourceLoader:IResourceLoader;
       
       private var _lock:int;

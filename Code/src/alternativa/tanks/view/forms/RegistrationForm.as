@@ -6,7 +6,6 @@ package alternativa.tanks.view.forms
    import alternativa.tanks.controller.events.socialnetwork.StartExternalEntranceEvent;
    import alternativa.tanks.loader.ILoaderWindowService;
    import alternativa.tanks.service.IExternalEntranceService;
-   import alternativa.tanks.service.IRegistrationUXService;
    import alternativa.tanks.view.forms.commons.RegistrationCommonElementsSection;
    import alternativa.tanks.view.registration.ExternalEntranceForm;
    import alternativa.tanks.ymservice.YandexMetricaService;
@@ -19,23 +18,21 @@ package alternativa.tanks.view.forms
    import flash.events.MouseEvent;
    import forms.TankWindowWithHeader;
    import org.robotlegs.core.IInjector;
-   import projects.tanks.client.entrance.model.entrance.logging.RegistrationUXFormAction;
-   import projects.tanks.client.entrance.model.entrance.logging.RegistrationUXScreen;
    import projects.tanks.clients.fp10.libraries.TanksLocale;
    
    public class RegistrationForm extends Sprite
    {
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
-      [Inject]
+      [Inject] // added
       public static var externalEntranceService:IExternalEntranceService;
       
-      [Inject]
+      [Inject] // added
       public static var ymService:YandexMetricaService;
 
-      [Inject]
+      [Inject] // added
       public static var loaderWindowService:ILoaderWindowService;
       
       public static const VK_ID:String = "vkontakte";
@@ -48,7 +45,7 @@ package alternativa.tanks.view.forms
       
       private static const GO_TO_LOGIN_FORM_CLICK:String = "GoToLoginForm:click";
       
-      [Inject]
+      [Inject] // added
       public var injector:IInjector;
       
       private var _externalForm:ExternalEntranceForm;

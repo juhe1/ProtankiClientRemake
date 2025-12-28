@@ -21,16 +21,16 @@ package platform.client.fp10.core.type.impl
    public class Space implements ISpace
    {
       
-      [Inject]
+      [Inject] // added
       public static var logService:LogService;
       
-      [Inject]
+      [Inject] // added
       public static var messageBoxService:IErrorMessageService;
       
-      [Inject]
+      [Inject] // added
       public static var networkService:INetworkService;
       
-      [Inject]
+      [Inject] // added
       public static var transportService:ITransportService;
       
       private static var logger:Logger;
@@ -38,6 +38,8 @@ package platform.client.fp10.core.type.impl
       private var _id:Long;
       
       private var objectById:Dictionary = new Dictionary();
+
+      private var objectByName:Dictionary = new Dictionary();
       
       private var _objects:Vector.<IGameObject>;
       
@@ -54,6 +56,11 @@ package platform.client.fp10.core.type.impl
          this.listeners = new Vector.<ISpaceListener>();
          var _loc7_:GameClass = new GameClass(Long.getLong(0,0),new Vector.<Long>());
          this.createObject(param1,_loc7_,"Space object");
+      }
+
+      public function getObjectByName(param1:String) : IGameObject
+      {
+         return this.objectByName[param1];
       }
       
       public function connect(param1:String, param2:Vector.<int>) : void
@@ -84,6 +91,7 @@ package platform.client.fp10.core.type.impl
          {
             _loc4_ = new GameObject(param1,GameClass(param2),param3,this);
             this.objectById[_loc4_.id] = _loc4_;
+            this.objectByName[_loc4_.name] = _loc4_;
             this._objects.push(_loc4_);
          }
          return this.objectById[param1];
@@ -138,6 +146,7 @@ package platform.client.fp10.core.type.impl
       {
          this._objects.splice(this._objects.indexOf(param1),1);
          delete this.objectById[param1.id];
+         delete this.objectByName[param1.name];
          param1.clear();
       }
       

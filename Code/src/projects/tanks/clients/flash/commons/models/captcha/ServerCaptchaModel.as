@@ -9,6 +9,8 @@ package projects.tanks.clients.flash.commons.models.captcha
    {
       
       private var clientFacade:CaptchaClientFacade;
+
+      private var stateWithCaptcha:Vector.<CaptchaLocation>;
       
       public function ServerCaptchaModel()
       {
@@ -39,11 +41,16 @@ package projects.tanks.clients.flash.commons.models.captcha
       {
          server.getNewCaptcha(param1);
       }
+
+      public function objectLoaded() : void
+      {
+         this.stateWithCaptcha = getInitParam().stateWithCaptcha;
+      }
       
       public function bindFacade(param1:CaptchaClientFacade) : void
       {
          this.clientFacade = param1;
-         param1.setCaptchaLocations(getInitParam().stateWithCaptcha);
+         param1.setCaptchaLocations(this.stateWithCaptcha);
       }
       
       public function unbindFacade() : void

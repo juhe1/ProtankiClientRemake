@@ -12,7 +12,7 @@ package platform.client.fp10.core.resource
       
       public var isLazy:Boolean;
 
-      public var newname_3167__END:Object;
+      public var params:Object;
 
       public var newname_3168__END:Vector.<String>;
       
@@ -23,7 +23,7 @@ package platform.client.fp10.core.resource
          this.id = param2;
          this.version = param3;
          this.isLazy = param4;
-         this.newname_3167__END = param5;
+         this.params = param5;
          this.newname_3168__END = param6;
       }
    }

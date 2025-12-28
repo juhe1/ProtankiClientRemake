@@ -12,13 +12,13 @@ package alternativa.tanks.servermodels.loginbyhash
    public class LoginByHashModel extends LoginByHashModelBase implements ILoginByHash, ILoginByHashModelBase
    {
       
-      [Inject]
+      [Inject] // added
       public static var clientFacade:IEntranceClientFacade;
       
-      [Inject]
+      [Inject] // added
       public static var storageService:IStorageService;
       
-      [Inject]
+      [Inject] // added
       public static var launcherParams:ILauncherParams;
       
       public function LoginByHashModel()

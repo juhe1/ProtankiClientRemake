@@ -2,10 +2,11 @@ package projects.tanks.client.tanksservices.model.listener
 {
    import alternativa.types.Long;
    import platform.client.fp10.core.model.impl.Model;
+   import platform.client.fp10.core.model.IModel;
    
    public class UserNotifierModelBase extends Model
    {
-      protected var server:UserNotifierModelServer = new UserNotifierModelServer(this);
+      protected var server:UserNotifierModelServer = new UserNotifierModelServer(IModel(this));
       
       private var client:IUserNotifierModelBase = IUserNotifierModelBase(this);
       

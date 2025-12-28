@@ -15,7 +15,7 @@ package projects.tanks.clients.fp10.libraries.tanksservices.service.blur
    public class BlurService extends EventDispatcher implements IBlurService
    {
       
-      [Inject]
+      [Inject] // added
       public static var helperService:IHelpService;
       
       private static const OVERLAY_COLOR:uint = 0;

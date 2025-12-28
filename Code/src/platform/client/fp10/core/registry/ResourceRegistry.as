@@ -4,7 +4,6 @@ package platform.client.fp10.core.registry
    import platform.client.fp10.core.resource.ILockableResource;
    import platform.client.fp10.core.resource.IResourceLoadingListener;
    import platform.client.fp10.core.resource.Resource;
-   import platform.client.fp10.core.resource.validation.IHashCalculationMethod;
    
    public interface ResourceRegistry
    {

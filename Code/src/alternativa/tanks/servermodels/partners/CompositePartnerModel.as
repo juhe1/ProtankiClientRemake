@@ -23,19 +23,19 @@ package alternativa.tanks.servermodels.partners
    public class CompositePartnerModel extends CompositePartnerModelBase implements ICompositePartnerModelBase, ICompositePartnerModel, IParametersListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var clientFacade:IEntranceClientFacade;
       
-      [Inject]
+      [Inject] // added
       public static var alertService:IAlertService;
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
-      [Inject]
+      [Inject] // added
       public static var partnerService:IPartnerService;
       
-      [Inject]
+      [Inject] // added
       public static var launcherParams:ILauncherParams;
       
       public function CompositePartnerModel()

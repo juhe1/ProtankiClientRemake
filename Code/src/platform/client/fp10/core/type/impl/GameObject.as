@@ -11,7 +11,7 @@ package platform.client.fp10.core.type.impl
    public class GameObject implements IGameObject, IGameObjectInternal
    {
       
-      [Inject]
+      [Inject] // added
       public static var modelRegistry:ModelRegistry;
       
       private var _name:String;

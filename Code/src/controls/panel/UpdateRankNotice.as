@@ -20,13 +20,13 @@ package controls.panel
    public class UpdateRankNotice extends Sprite
    {
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
-      [Inject]
+      [Inject] // added
       public static var premiumService:PremiumService;
       
-      [Inject]
+      [Inject] // added
       public static var rankService:RankService;
       
       private static const IconCrystalClass:Class = UpdateRankNotice_IconCrystalClass;

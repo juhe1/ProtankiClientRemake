@@ -11,7 +11,7 @@ package projects.tanks.client.entrance.model.entrance.entrance
    
    public class EntranceModelBase extends Model
    {
-      private var modelId:Long = Long.getLong(687101726,-1582366168);
+      static public var modelId:Long = Long.getLong(687101726,-1582366168);
       
       public function EntranceModelBase()
       {
@@ -20,7 +20,7 @@ package projects.tanks.client.entrance.model.entrance.entrance
       
       override public function get id() : Long
       {
-         return this.modelId;
+         return modelId;
       }
    }
 }

@@ -9,7 +9,7 @@ package alternativa.tanks.gui.dailyquests
    public class DailyQuestChangesIndicator extends Sprite
    {
       
-      [Inject]
+      [Inject] // added
       public static var dailyQuestInfoService:DailyQuestNotifierService;
       
       private static var dailyQuestsChangesIconClass:Class = DailyQuestChangesIndicator_dailyQuestsChangesIconClass;

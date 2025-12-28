@@ -9,7 +9,7 @@ package alternativa.tanks.servermodels.emailconfirm
    public class EmailConfirmModel extends EmailConfirmModelBase implements IEmailConfirmModelBase, IEmailConfirm
    {
       
-      [Inject]
+      [Inject] // added
       public static var clientFacade:IEntranceClientFacade;
       
       public function EmailConfirmModel()

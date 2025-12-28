@@ -2,7 +2,6 @@ package alternativa.tanks.view.layers
 {
    import alternativa.osgi.service.locale.ILocaleService;
    import alternativa.tanks.loader.ILoaderWindowService;
-   import alternativa.tanks.service.IRegistrationUXService;
    import alternativa.tanks.view.StandAloneCaptchaForm;
    import alternativa.tanks.view.forms.ChangeEmailAndPasswordForm;
    import alternativa.tanks.view.forms.ChangeUidForm;
@@ -22,7 +21,6 @@ package alternativa.tanks.view.layers
    import org.robotlegs.core.IInjector;
    import platform.clients.fp10.libraries.alternativapartners.service.IPartnerService;
    import projects.tanks.client.entrance.model.entrance.emailconfirm.ConfirmEmailStatus;
-   import projects.tanks.client.entrance.model.entrance.logging.RegistrationUXScreen;
    import projects.tanks.clients.flash.commons.services.timeunit.ITimeUnitService;
    import projects.tanks.clients.fp10.libraries.TanksLocale;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.alertservices.IAlertService;
@@ -31,22 +29,22 @@ package alternativa.tanks.view.layers
    public class EntranceView extends Sprite
    {
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
-      [Inject]
+      [Inject] // added
       public static var alertService:IAlertService;
       
-      [Inject]
+      [Inject] // added
       public static var partnerService:IPartnerService;
       
-      [Inject]
+      [Inject] // added
       public static var timeUnitService:ITimeUnitService;
       
-      [Inject]
+      [Inject] // added
       public static var loaderWindowService:ILoaderWindowService;
       
-      [Inject]
+      [Inject] // added
       public var injector:IInjector;
       
       private var alert:Alert;

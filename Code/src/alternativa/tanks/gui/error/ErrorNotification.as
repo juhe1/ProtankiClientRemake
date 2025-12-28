@@ -5,7 +5,6 @@ package alternativa.tanks.gui.error
    import controls.base.LabelBase;
    import flash.events.MouseEvent;
    import forms.ColorConstants;
-   import platform.client.fp10.core.service.address.AddressService;
    import projects.tanks.clients.flash.commons.services.notification.Notification;
    import projects.tanks.clients.fp10.libraries.TanksLocale;
    import alternativa.startup.StartupSettings;
@@ -13,7 +12,7 @@ package alternativa.tanks.gui.error
    public class ErrorNotification extends Notification
    {
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
       private static const DEFAULT_BUTTON_WIDTH:int = 96;

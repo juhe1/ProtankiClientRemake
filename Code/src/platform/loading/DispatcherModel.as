@@ -15,7 +15,6 @@ package platform.loading
    import platform.client.fp10.core.model.ObjectLoadPostListener;
    import platform.client.fp10.core.model.impl.Model;
    import platform.client.fp10.core.registry.ModelRegistry;
-   import platform.client.fp10.core.registry.ResourceRegistry;
    import platform.client.fp10.core.registry.SpaceRegistry;
    import platform.client.fp10.core.resource.BatchResourceLoader;
    import platform.client.fp10.core.service.errormessage.IErrorMessageService;
@@ -30,7 +29,7 @@ package platform.loading
    public class DispatcherModel extends DispatcherModelBase implements IDispatcherModelBase
    {
       
-      [Inject]
+      [Inject] // added
       public static var logService:LogService;
       
       private static var logger:Logger;

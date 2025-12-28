@@ -190,7 +190,7 @@ package platform.client.fp10.core.resource.types
          this.imageBytes = new ImageByteData();
          this.imageBytes.diffuseBytes = bytes;
 
-         if(this.imageParams.alpha)
+         if(this.imageParams != null && this.imageParams.alpha)
          {
             this.requestAlpha();
          }

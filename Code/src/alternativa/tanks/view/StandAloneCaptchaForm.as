@@ -18,10 +18,10 @@ package alternativa.tanks.view
    public class StandAloneCaptchaForm extends Sprite
    {
       
-      [Inject]
+      [Inject] // added
       public var localeService:ILocaleService;
       
-      [Inject]
+      [Inject] // added
       public var injector:IInjector;
       
       private var captchaSection:CaptchaSection;

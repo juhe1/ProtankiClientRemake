@@ -14,7 +14,7 @@ package forms
    public class ChangeTeamAlert extends Sprite
    {
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
       public static const RED:int = 0;

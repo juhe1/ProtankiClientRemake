@@ -7,16 +7,15 @@ package platform.client.fp10.core.resource
    import alternativa.utils.LoaderUtils;
    import flash.utils.ByteArray;
    import flash.utils.Dictionary;
-   import platform.client.fp10.core.resource.validation.IValidationHash;
    import platform.client.fp10.core.service.localstorage.IResourceLocalStorage;
    
    public class ResourceLoader implements IResourceLoader, IResourceLoadingListener, IResourceSerializationListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var localStorage:IResourceLocalStorage;
       
-      [Inject]
+      [Inject] // added
       public static var networkSerice:INetworkService;
       
       private var logger:Logger;

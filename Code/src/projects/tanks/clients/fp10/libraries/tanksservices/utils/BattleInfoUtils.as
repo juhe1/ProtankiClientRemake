@@ -11,16 +11,16 @@ package projects.tanks.clients.fp10.libraries.tanksservices.utils
    public class BattleInfoUtils
    {
       
-      [Inject]
+      [Inject] // added
       public static var addressService:AddressService;
       
-      [Inject]
+      [Inject] // added
       public static var partnersService:IPartnerService;
       
-      [Inject]
+      [Inject] // added
       public static var serverNameService:ServerNumberToLocaleServerService;
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
       private static const BATTLE_NAME_SEPARATOR:String = " ";

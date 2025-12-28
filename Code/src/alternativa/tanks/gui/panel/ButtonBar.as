@@ -1,12 +1,10 @@
 package alternativa.tanks.gui.panel
 {
    import alternativa.osgi.service.locale.ILocaleService;
-   import alternativa.tanks.gui.panel.buttons.ClanButton;
    import alternativa.tanks.gui.panel.buttons.FriendsButton;
    import alternativa.tanks.gui.panel.buttons.MainPanelFullscreenButton;
    import alternativa.tanks.gui.panel.buttons.DailyQuestsButton;
    import alternativa.tanks.gui.panel.buttons.ShopBarButton;
-   import alternativa.tanks.service.clan.ClanPanelNotificationService;
    import controls.base.MainPanelBattlesButtonBase;
    import controls.base.MainPanelGarageButtonBase;
    import controls.panel.BaseButton;
@@ -19,24 +17,22 @@ package alternativa.tanks.gui.panel
    import projects.tanks.clients.fp10.libraries.tanksservices.service.fullscreen.FullscreenService;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.userproperties.IUserPropertiesService;
    import services.buttonbar.IButtonBarService;
+   import alternativa.tanks.gui.panel.buttons.ClanButton;
    
    public class ButtonBar extends Sprite
    {
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
-      [Inject]
+      [Inject] // added
       public static var buttonBarService:IButtonBarService;
       
-      [Inject]
+      [Inject] // added
       public static var fullscreenService:FullscreenService;
       
-      [Inject]
+      [Inject] // added
       public static var userPropertiesService:IUserPropertiesService;
-      
-      [Inject]
-      public static var clanPanelNotificationService:ClanPanelNotificationService;
       
       private static const SECTION_BUTTON_GAP:int = 8;
       
@@ -93,7 +89,8 @@ package alternativa.tanks.gui.panel
          this.clanButton.type = 11;
          this.clanButton.label = localeService.getText(TanksLocale.TEXT_CLAN);
          this.clanButton.addEventListener(MouseEvent.CLICK,this.listClick);
-         this.clanButton.visible = clanPanelNotificationService.clanButtonVisible;
+         //this.clanButton.visible = clanPanelNotificationService.clanButtonVisible;
+         this.clanButton.visible = false;
          this.questsButton.type = 10;
          this.questsButton.addEventListener(MouseEvent.CLICK,this.listClick);
          this.friendsButton.type = 8;

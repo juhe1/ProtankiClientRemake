@@ -7,7 +7,6 @@ package alternativa.tanks.view.forms
    import alternativa.tanks.controller.events.LoginButtonPressed;
    import alternativa.tanks.controller.events.PartnersEvent;
    import alternativa.tanks.loader.ILoaderWindowService;
-   import alternativa.tanks.service.IRegistrationUXService;
    import alternativa.tanks.view.bubbles.Bubble;
    import alternativa.tanks.view.bubbles.EntranceBubbleFactory;
    import alternativa.tanks.view.forms.commons.RegistrationCommonElementsSection;
@@ -16,7 +15,6 @@ package alternativa.tanks.view.forms
    import controls.base.LabelBase;
    import controls.base.TankInputBase;
    import flash.display.Bitmap;
-   import flash.display.InteractiveObject;
    import flash.display.Sprite;
    import flash.events.Event;
    import flash.events.KeyboardEvent;
@@ -37,25 +35,25 @@ package alternativa.tanks.view.forms
    public class LinkPartnerLoginForm extends Sprite
    {
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
-      [Inject]
+      [Inject] // added
       public static var log:LogService;
       
-      [Inject]
+      [Inject] // added
       public static var validateService:IValidateService;
       
-      [Inject]
+      [Inject] // added
       public static var clientLog:IClientLog;
       
-      [Inject]
+      [Inject] // added
       public static var loaderWindowService:ILoaderWindowService;
       
-      [Inject]
+      [Inject] // added
       public var injector:IInjector;
       
       private var _callSignOrEmail:TankInputBase;

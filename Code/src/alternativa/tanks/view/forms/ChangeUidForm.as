@@ -27,13 +27,13 @@ package alternativa.tanks.view.forms
    public class ChangeUidForm extends DiscreteSprite
    {
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
-      [Inject]
+      [Inject] // added
       public static var passwordParamsService:IPasswordParamsService;
       
       private static var changeUidBitmapDataClass:Class = ChangeUidForm_changeUidBitmapDataClass;

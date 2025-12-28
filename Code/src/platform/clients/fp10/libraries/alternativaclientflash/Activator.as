@@ -1,29 +1,13 @@
 package platform.clients.fp10.libraries.alternativaclientflash
 {
-   import _codec.platform.client.fp10.core.resource.types.VectorCodecImageResourceLevel1;
-   import _codec.platform.client.fp10.core.resource.types.VectorCodecMultiframeTextureResourceLevel1;
-   import _codec.platform.client.fp10.core.resource.types.VectorCodecTextureResourceLevel1;
-   import _codec.platform.client.fp10.core.type.VectorCodecIGameObjectLevel1;
    import alternativa.osgi.OSGi;
    import alternativa.osgi.bundle.IBundleActivator;
-   import alternativa.osgi.service.clientlog.IClientLog;
-   import alternativa.osgi.service.command.CommandService;
-   import alternativa.osgi.service.display.IDisplay;
    import alternativa.osgi.service.launcherparams.ILauncherParams;
    import alternativa.osgi.service.locale.ILocaleService;
    import alternativa.osgi.service.logging.LogService;
    import alternativa.osgi.service.network.INetworkService;
    import alternativa.protocol.ICodec;
    import alternativa.protocol.IProtocol;
-   import alternativa.protocol.codec.OptionalCodecDecorator;
-   import alternativa.protocol.impl.Protocol;
-   import alternativa.protocol.info.CollectionCodecInfo;
-   import alternativa.protocol.info.TypeCodecInfo;
-   import com.hurlant.crypto.tls.TLSEngine;
-   import com.hurlant.crypto.tls.TLSSecurityParameters;
-   import com.hurlant.crypto.tls.TLSSocket;
-   import platform.client.fp10.core.CoreCommands;
-   import platform.client.fp10.core.logging.serverlog.UncaughtErrorServerLogImpl;
    import platform.client.fp10.core.model.IObjectLoadListener;
    import platform.client.fp10.core.model.IObjectLoadListenerAdapt;
    import platform.client.fp10.core.model.IObjectLoadListenerEvents;
@@ -39,17 +23,8 @@ package platform.clients.fp10.libraries.alternativaclientflash
    import platform.client.fp10.core.model.ObjectUnloadPostListener;
    import platform.client.fp10.core.model.ObjectUnloadPostListenerAdapt;
    import platform.client.fp10.core.model.ObjectUnloadPostListenerEvents;
-   import platform.client.fp10.core.network.command.control.server.OpenSpaceCommand;
-   import platform.client.fp10.core.network.connection.ControlConnectionSender;
-   import platform.client.fp10.core.network.connection.SocketConnection;
-   import platform.client.fp10.core.network.handler.ControlCommandHandler;
-   import platform.client.fp10.core.network.handler.SpaceCommandHandler;
-   import platform.client.fp10.core.protocol.codec.ControlRootCodec;
-   import platform.client.fp10.core.protocol.codec.GameObjectCodec;
-   import platform.client.fp10.core.registry.GameTypeRegistry;
    import platform.client.fp10.core.registry.ModelRegistry;
    import platform.client.fp10.core.registry.ResourceRegistry;
-   import platform.client.fp10.core.registry.SpaceRegistry;
    import platform.client.fp10.core.registry.impl.ModelsRegistryImpl;
    import platform.client.fp10.core.registry.impl.ResourceRegistryImpl;
    import platform.client.fp10.core.resource.BatchResourceLoader;
@@ -58,17 +33,14 @@ package platform.clients.fp10.libraries.alternativaclientflash
    import platform.client.fp10.core.resource.ResourceLoader;
    import platform.client.fp10.core.resource.types.ImageResource;
    import platform.client.fp10.core.resource.types.LocalizedImageResource;
-   import platform.client.fp10.core.resource.types.MultiframeTextureResource;
-   import platform.client.fp10.core.resource.types.TextureResource;
    import platform.client.fp10.core.service.IResourceTimer;
-   import platform.client.fp10.core.service.address.AddressService;
    import platform.client.fp10.core.service.address.impl.AddressServiceFakeImpl;
    import platform.client.fp10.core.service.errormessage.IErrorMessageService;
    import platform.client.fp10.core.service.localstorage.IResourceLocalStorage;
    import platform.client.fp10.core.service.transport.ITransportService;
-   import platform.client.fp10.core.type.IGameObject;
    import platform.client.fp10.core.type.impl.GameObject;
    import platform.client.fp10.core.type.impl.Space;
+   import platform.client.fp10.core.resource.types.MultiframeImageResource;
    
    public class Activator implements IBundleActivator
    {
@@ -86,6 +58,15 @@ package platform.clients.fp10.libraries.alternativaclientflash
          var codec:ICodec = null;
          var _osgi:OSGi = param1;
          osgi = _osgi;
+
+         osgi.injectService(IResourceLocalStorage,function(param1:Object):void
+         {
+            MultiframeImageResource.resourceLocalStorage = IResourceLocalStorage(param1);
+         },function():IResourceLocalStorage
+         {
+            return MultiframeImageResource.resourceLocalStorage;
+         });
+
          //osgi.injectService(IClientLog,function(param1:Object):void
          //{
          //   TLSEngine.clientLog = IClientLog(param1);

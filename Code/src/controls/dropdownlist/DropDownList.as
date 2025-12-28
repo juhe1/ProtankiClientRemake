@@ -20,7 +20,7 @@ package controls.dropdownlist
    public class DropDownList extends DiscreteSprite
    {
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
       protected var button:ComboButton = new ComboButton();

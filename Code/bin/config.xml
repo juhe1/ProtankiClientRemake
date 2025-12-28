@@ -1,0 +1,6 @@
+<cfg>
+<server address="127.0.0.1">
+<port>1212</port>
+</server>
+<status>available</status>
+</cfg>

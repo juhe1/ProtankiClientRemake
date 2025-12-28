@@ -28,6 +28,8 @@ package alternativa
    import flash.events.KeyboardEvent;
    import flash.ui.Keyboard;
    import alternativa.osgi.service.launcherparams.ILauncherParams;
+   import alternativa.osgi.service.dump.DumpService;
+   import alternativa.osgi.service.dump.IDumpService;
    
    public class ClientConfigurator implements IClientConfigurator
    {
@@ -60,6 +62,8 @@ package alternativa
          this.osgi.registerService(INetworkService,new NetworkService(param3));
          this.registerCommand(this.osgi,this.commandService);
          this.osgi.registerService(IRemoteLogging,new RemoteLogging(param4));
+         var _loc5_:IDumpService = new DumpService(this.osgi);
+         this.osgi.registerService(IDumpService,_loc5_);
       }
       
       private function registerCommand(param1:OSGi, param2:CommandService) : void

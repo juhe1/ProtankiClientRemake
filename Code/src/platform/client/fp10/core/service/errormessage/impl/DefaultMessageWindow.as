@@ -124,10 +124,7 @@ package platform.client.fp10.core.service.errormessage.impl
 }
 
 import flash.display.DisplayObject;
-import flash.display.DisplayObjectContainer;
-import flash.display.InteractiveObject;
 import flash.display.Sprite;
-import flash.events.EventDispatcher;
 import flash.text.AntiAliasType;
 import flash.text.TextField;
 import flash.text.TextFieldAutoSize;

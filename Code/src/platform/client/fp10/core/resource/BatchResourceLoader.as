@@ -10,18 +10,18 @@ package platform.client.fp10.core.resource
    public class BatchResourceLoader implements IResourceLoadingListener, AutoClosable
    {
       
-      [Inject]
+      [Inject] // added
       public static var logService:LogService;
       
       private static var logger:Logger;
       
-      [Inject]
+      [Inject] // added
       public static var messageBoxService:IErrorMessageService;
       
-      [Inject]
+      [Inject] // added
       public static var resourceLoader:IResourceLoader;
       
-      [Inject]
+      [Inject] // added
       public static var resourceRegistry:ResourceRegistry;
       
       private var callback:Function;

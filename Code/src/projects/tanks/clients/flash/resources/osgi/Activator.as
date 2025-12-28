@@ -2,7 +2,6 @@ package projects.tanks.clients.flash.resources.osgi
 {
    import alternativa.osgi.OSGi;
    import alternativa.osgi.bundle.IBundleActivator;
-   import alternativa.types.Long;
    import platform.client.fp10.core.registry.ResourceRegistry;
    //import projects.tanks.clients.flash.resources.resource.MapResource;
    //import projects.tanks.clients.flash.resources.resource.PropLibResource;

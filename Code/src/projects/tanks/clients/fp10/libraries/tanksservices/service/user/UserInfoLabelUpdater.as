@@ -9,7 +9,7 @@ package projects.tanks.clients.fp10.libraries.tanksservices.service.user
    public class UserInfoLabelUpdater extends EventDispatcher implements UserInfoConsumer, IUserInfoLabelUpdater, IInfoLabelUpdater
    {
       
-      [Inject]
+      [Inject] // added
       public static var logService:LogService;
       
       private var _rank:int = 0;

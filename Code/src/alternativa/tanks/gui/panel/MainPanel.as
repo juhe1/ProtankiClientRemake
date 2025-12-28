@@ -2,8 +2,6 @@ package alternativa.tanks.gui.panel
 {
    import alternativa.osgi.service.display.IDisplay;
    import alternativa.tanks.model.battlepass.notifier.BattlePassPurchaseService;
-   import alternativa.tanks.model.quest.common.MissionsWindowsService;
-   import alternativa.tanks.service.clan.ClanPanelNotificationService;
    import flash.display.Sprite;
    import flash.events.Event;
    import flash.events.MouseEvent;
@@ -14,7 +12,6 @@ package alternativa.tanks.gui.panel
    import forms.ranks.BigRankIcon;
    import forms.ranks.RankIcon;
    import platform.clients.fp10.libraries.alternativapartners.service.IPartnerService;
-   import projects.tanks.client.panel.model.quest.QuestTypeEnum;
    import projects.tanks.clients.flash.commons.models.challenge.ChallengeInfoService;
    import projects.tanks.clients.flash.commons.services.payment.PaymentDisplayService;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.logging.gamescreen.UserChangeGameScreenService;
@@ -26,37 +23,37 @@ package alternativa.tanks.gui.panel
    public class MainPanel extends Sprite
    {
       
-      [Inject]
+      [Inject] // added
       public static var reconnectService:ReconnectService;
       
-      [Inject]
+      [Inject] // added
       public static var userPropertiesService:IUserPropertiesService;
       
-      [Inject]
+      [Inject] // added
       public static var premiumService:PremiumService;
       
-      [Inject]
+      [Inject] // added
       public static var partnerService:IPartnerService;
       
-      [Inject]
+      [Inject] // added
       public static var userChangeGameScreenService:UserChangeGameScreenService;
       
-      [Inject]
-      public static var clanPanelNotification:ClanPanelNotificationService;
+      //[Inject] // added
+      //public static var clanPanelNotification:ClanPanelNotificationService;
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
-      [Inject]
+      [Inject] // added
       public static var challengeInfoService:ChallengeInfoService;
       
-      [Inject]
+      [Inject] // added
       public static var paymentDisplayService:PaymentDisplayService;
       
-      [Inject]
+      [Inject] // added
       public static var battlePassPurchaseService:BattlePassPurchaseService;
 
-      [Inject]
+      [Inject] // added
       public static var modelRegistry:ModelRegistry;
       
       private static const PLAYER_INFO_OFFSET:int = 58;

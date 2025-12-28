@@ -1,9 +1,9 @@
 package alternativa.tanks.service.impl
 {
-   import alternativa.tanks.servermodels.changeuid.IChangeUid;
+   //import alternativa.tanks.servermodels.changeuid.IChangeUid;
    import alternativa.tanks.servermodels.emailandpasswordchanger.IPasswordRecovery;
    import alternativa.tanks.servermodels.emailconfirm.IEmailConfirm;
-   import alternativa.tanks.servermodels.invite.IInvite;
+   //import alternativa.tanks.servermodels.invite.IInvite;
    import alternativa.tanks.servermodels.login.ILogin;
    import alternativa.tanks.servermodels.loginbyhash.ILoginByHash;
    import alternativa.tanks.servermodels.loginwithoutregistration.ILoginWithoutRegistration;
@@ -34,7 +34,7 @@ package alternativa.tanks.service.impl
       
       private var _gameObject:IGameObject;
 
-      [Inject]
+      [Inject] // added
       public static var modelRegistry:ModelRegistry;
 
       public function EntranceServerFacade()
@@ -181,10 +181,10 @@ package alternativa.tanks.service.impl
       
       private function checkIfGameObjectIsLoaded() : void
       {
-         if(this._gameObject == null)
-         {
-            throw new Error("Entrance gameObject is not loaded");
-         }
+         //if(this._gameObject == null)
+         //{
+         //   throw new Error("Entrance gameObject is not loaded");
+         //}
       }
    }
 }

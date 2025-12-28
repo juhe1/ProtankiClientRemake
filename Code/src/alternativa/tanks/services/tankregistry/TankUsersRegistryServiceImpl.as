@@ -1,7 +1,5 @@
 package alternativa.tanks.services.tankregistry
 {
-   import alternativa.tanks.models.tank.ITankModel;
-   import alternativa.types.Long;
    import flash.utils.Dictionary;
    import alternativa.object.ClientObject;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.userproperties.IUserPropertiesService;

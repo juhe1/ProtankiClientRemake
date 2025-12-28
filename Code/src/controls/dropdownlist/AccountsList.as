@@ -9,7 +9,7 @@ package controls.dropdownlist
    public class AccountsList extends DropDownList
    {
       
-      [Inject]
+      [Inject] // added
       public static var storageService:IStorageService;
       
       public static const ROW_HEIGHT:int = 20;

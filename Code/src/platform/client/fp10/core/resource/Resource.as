@@ -13,16 +13,16 @@ package platform.client.fp10.core.resource
    public class Resource
    {
       
-      [Inject]
+      [Inject] // added
       public static var resourceRegistry:ResourceRegistry;
       
-      [Inject]
+      [Inject] // added
       public static var resourceTimer:IResourceTimer;
       
-      [Inject]
+      [Inject] // added
       public static var launcherParams:ILauncherParams;
       
-      [Inject]
+      [Inject] // added
       public static var logService:LogService;
       
       public static var logger:Logger;
@@ -31,7 +31,7 @@ package platform.client.fp10.core.resource
       
       public var status:String;
       
-      protected var resourceInfo:ResourceInfo;
+      public var resourceInfo:ResourceInfo;
       
       protected var baseUrl:String;
       

@@ -20,10 +20,10 @@ package alternativa.tanks.view.forms.commons
    public class ChangeUidInputField extends DiscreteSprite
    {
       
-      [Inject]
+      [Inject] // added
       public static var validateService:IValidateService;
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
       private var _callsignInput:TankInputBase;

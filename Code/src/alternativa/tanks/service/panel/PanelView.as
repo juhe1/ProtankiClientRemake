@@ -9,10 +9,10 @@ package alternativa.tanks.service.panel
    public class PanelView extends EventDispatcher implements IPanelView
    {
       
-      [Inject]
+      [Inject] // added
       public static var alertService:IAlertService;
       
-      [Inject]
+      [Inject] // added
       public static var userChangeGameScreenService:UserChangeGameScreenService;
       
       private var panel:MainPanel;

@@ -9,7 +9,7 @@ package forms.ranks
    public class RankIcon extends DiscreteSprite
    {
       
-      [Inject]
+      [Inject] // added
       public static var rankService:RankService;
       
       private var hasPremium:Boolean = false;

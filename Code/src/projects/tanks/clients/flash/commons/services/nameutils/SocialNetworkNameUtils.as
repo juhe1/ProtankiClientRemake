@@ -6,7 +6,7 @@ package projects.tanks.clients.flash.commons.services.nameutils
    public class SocialNetworkNameUtils
    {
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
       public function SocialNetworkNameUtils()

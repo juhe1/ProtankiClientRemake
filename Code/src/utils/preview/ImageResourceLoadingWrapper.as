@@ -3,7 +3,6 @@ package utils.preview
    import platform.client.fp10.core.resource.IResourceLoadingListener;
    import platform.client.fp10.core.resource.Resource;
    import platform.client.fp10.core.resource.types.ImageResource;
-   import platform.client.fp10.core.resource.validation.IValidationHash;
    
    public class ImageResourceLoadingWrapper implements IResourceLoadingListener
    {

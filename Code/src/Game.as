@@ -22,6 +22,7 @@ package
    import projects.tanks.clients.flash.commons.models.gpu.GPUCapabilities;
    import alternativa.osgi.service.launcherparams.LauncherParams;
    import scpacker.networking.Network;
+   import scpacker.utils.LocalizationLoaderL18n;
    
    public class Game extends Sprite
    {
@@ -42,15 +43,21 @@ package
          new ClientConfigurator().start(this.container,new LauncherParams(),new ConnectionParameters(param1.parameters["ip"],new <int>[param1.parameters["port"]],param1.parameters["resources"]),param1);
          var _loc2_:ILocaleService = new LocaleService(param1.parameters["lang"],"en");
          OSGi.getInstance().registerService(ILocaleService,_loc2_);
-         new LocalizationLoader().load(param1.parameters["resources"] + "/localized.data_" + _loc2_.language,this.activate);
+         new LocalizationLoader().load(param1.parameters["resources"] + "/localized.data_" + _loc2_.language,this.loadTanki2019Locale);
+      }
+
+      private function loadTanki2019Locale() : void
+      {
+         var _loc1_:OSGi = OSGi.getInstance();
+         new EntranceActivator().start(_loc1_);
+         new LocalizationLoaderL18n().load("/EN.l18n",this.activate);
       }
       
       private function activate() : void
       {
          var _loc1_:OSGi = OSGi.getInstance();
-         new EntranceActivator().start(_loc1_);
          ILoaderWindowService(_loc1_.getService(ILoaderWindowService)).show();
-         //new GameActivator().start(_loc1_);
+         new GameActivator().start(_loc1_);
          StartupSettings.preLauncher = Sprite(parent.parent.parent);
          this.b629458b();
          CoreUtils.init();
@@ -67,7 +74,7 @@ package
          this.activateAllModels(param3);
       }
       
-      private function connectToServer() : void
+      private function connectToServer(param1:Event = null) : void
       {
          new Connector().connectToServer();
       }

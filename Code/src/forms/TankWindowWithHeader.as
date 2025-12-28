@@ -13,7 +13,7 @@ package forms
    public class TankWindowWithHeader extends DiscreteSprite
    {
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
       private static const HEADER_BACKGROUND_HEIGHT:int = 25;

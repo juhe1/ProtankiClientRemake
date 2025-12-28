@@ -4,15 +4,17 @@ package scpacker.networking.protocol.packets.init
    import alternativa.osgi.OSGi;
    import alternativa.tanks.loader.ILoaderWindowService;
    import alternativa.tanks.servermodels.EntranceModel;
-   import scpacker.utils.ResourcesLoader;
    import platform.client.fp10.core.model.impl.Model;
    import platform.loading.DispatcherModel;
    import scpacker.networking.protocol.AbstractPacketHandler;
    import scpacker.networking.protocol.AbstractPacket;
-   import scpacker.networking.protocol.packets.init.ActivateProtection;
-   import scpacker.networking.protocol.packets.init.LoadResources;
+   import scpacker.networking.protocol.packets.init.ActivateProtectionInPacket;
+   import scpacker.networking.protocol.packets.init.LoadResourcesInPacket;
+   import scpacker.networking.protocol.packets.init.HideLoaderInPacket;
    import scpacker.networking.protocol.ProtocolInitializer;
    import scpacker.resource.ResourcesLoader;
+   import projects.tanks.client.entrance.model.entrance.entrance.EntranceModelBase;
+   import platform.client.core.general.spaces.loading.dispatcher.DispatcherModelBase;
    
    public class InitPacketHandler extends AbstractPacketHandler
    {
@@ -26,41 +28,42 @@ package scpacker.networking.protocol.packets.init
       {
          super();
          this.id = 4;
-         this.dispatcherModel = DispatcherModel(modelRegistry.getModel(Long.getLong(191355032,163351191)));
-         this.entranceModel = EntranceModel(modelRegistry.getModel(Long.getLong(687101726,-1582366168)));
+         this.dispatcherModel = DispatcherModel(modelRegistry.getModel(DispatcherModelBase.modelId));
+         this.entranceModel = EntranceModel(modelRegistry.getModel(EntranceModelBase.modelId));
       }
       
       public function invoke(param1:AbstractPacket) : void
       {
          switch(param1.getId())
          {
-            case 2001736388:
-               this.activateProtection(param1 as ActivateProtection);
+            case ActivateProtectionInPacket.id:
+               this.activateProtection(param1 as ActivateProtectionInPacket);
                break;
-            case -1797047325:
-               this.loadResources(param1 as LoadResources);
+            case LoadResourcesInPacket.id:
+               this.loadResources(param1 as LoadResourcesInPacket);
                break;
-            case -1282173466:
+            case HideLoaderInPacket.id:
                this.hideLoader();
          }
       }
       
-      private function loadResources(param1:LoadResources) : void
+      private function loadResources(param1:LoadResourcesInPacket) : void
       {
-         this.dispatcherModel.loadDependencies(this.resourcesLoader.getResourceDependencies(param1.BattlesJson,param1.CallbackID));
+         this.dispatcherModel.loadDependencies(this.resourcesLoader.getResourceDependencies(param1.resourcesJson,param1.callbackId));
          Model.popObject();
       }
       
       private function hideLoader() : void
       {
          (OSGi.getInstance().getService(ILoaderWindowService) as ILoaderWindowService).hide();
+         this.entranceModel.objectLoaded();
          this.entranceModel.objectLoadedPost();
       }
       
-      private function activateProtection(param1:ActivateProtection) : void
+      private function activateProtection(param1:ActivateProtectionInPacket) : void
       {
          var _loc2_:ProtocolInitializer = ProtocolInitializer(OSGi.getInstance().getService(ProtocolInitializer));
-         _loc2_.InitializeProtection(param1.Keys);
+         _loc2_.InitializeProtection(param1.keys);
       }
    }
 }

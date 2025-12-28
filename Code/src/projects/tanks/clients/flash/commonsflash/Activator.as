@@ -3,36 +3,12 @@ package projects.tanks.clients.flash.commonsflash
    import alternativa.osgi.OSGi;
    import alternativa.osgi.bundle.IBundleActivator;
    import alternativa.osgi.service.display.IDisplay;
-   import alternativa.osgi.service.launcherparams.ILauncherParams;
    import alternativa.osgi.service.locale.ILocaleService;
    import alternativa.osgi.service.logging.LogService;
    import alternativa.tanks.loader.ILoaderWindowService;
    import alternativa.tanks.loader.IModalLoaderService;
-   import alternativa.tanks.ymservice.YandexMetricaService;
    import platform.client.fp10.core.registry.ModelRegistry;
-   import platform.client.fp10.core.registry.ResourceRegistry;
    import platform.clients.fp10.libraries.alternativapartners.service.IPartnerService;
-   import projects.tanks.clients.flash.commons.models.alert.AlertModel;
-   import projects.tanks.clients.flash.commons.models.battlelinkactivator.BattleLinkActivatorModel;
-   import projects.tanks.clients.flash.commons.models.captcha.IServerCaptcha;
-   import projects.tanks.clients.flash.commons.models.captcha.IServerCaptchaAdapt;
-   import projects.tanks.clients.flash.commons.models.captcha.IServerCaptchaEvents;
-   import projects.tanks.clients.flash.commons.models.captcha.ServerCaptchaModel;
-   import projects.tanks.clients.flash.commons.models.challenge.ChallengeInfoService;
-   import projects.tanks.clients.flash.commons.models.challenge.ChallengeTimeModel;
-   import projects.tanks.clients.flash.commons.models.coloring.ColoringModel;
-   import projects.tanks.clients.flash.commons.models.coloring.IColoring;
-   import projects.tanks.clients.flash.commons.models.coloring.IColoringAdapt;
-   import projects.tanks.clients.flash.commons.models.coloring.IColoringEvents;
-   import projects.tanks.clients.flash.commons.models.detach.Detach;
-   import projects.tanks.clients.flash.commons.models.detach.DetachAdapt;
-   import projects.tanks.clients.flash.commons.models.detach.DetachEvents;
-   import projects.tanks.clients.flash.commons.models.detach.DetachModel;
-   import projects.tanks.clients.flash.commons.models.externalauth.ExternalAuthApi;
-   import projects.tanks.clients.flash.commons.models.externalauth.ExternalAuthApiAdapt;
-   import projects.tanks.clients.flash.commons.models.externalauth.ExternalAuthApiEvents;
-   import projects.tanks.clients.flash.commons.models.externalauth.ExternalAuthApiModel;
-   import projects.tanks.clients.flash.commons.models.gpu.GPUDetectorModel;
    import projects.tanks.clients.flash.commons.models.layout.ILobbyLayout;
    import projects.tanks.clients.flash.commons.models.layout.ILobbyLayoutAdapt;
    import projects.tanks.clients.flash.commons.models.layout.ILobbyLayoutEvents;
@@ -41,32 +17,21 @@ package projects.tanks.clients.flash.commonsflash
    import projects.tanks.clients.flash.commons.models.layout.notify.ILobbyLayoutNotifyAdapt;
    import projects.tanks.clients.flash.commons.models.layout.notify.ILobbyLayoutNotifyEvents;
    import projects.tanks.clients.flash.commons.models.layout.notify.LobbyLayoutNotifyModel;
-   import projects.tanks.clients.flash.commons.models.moveusertoserver.MoveUserToServerModel;
-   import projects.tanks.clients.flash.commons.models.runtime.DataOwner;
-   import projects.tanks.clients.flash.commons.models.runtime.DataOwnerAdapt;
-   import projects.tanks.clients.flash.commons.models.runtime.DataOwnerEvents;
-   import projects.tanks.clients.flash.commons.models.runtime.DataOwnerModel;
-   import projects.tanks.clients.flash.commons.models.serverhalt.ServerHaltModel;
-   import projects.tanks.clients.flash.commons.services.autobattleenter.AutomaticEnterExitService;
-   import projects.tanks.clients.flash.commons.services.datetime.DateFormatter;
    import projects.tanks.clients.flash.commons.services.layout.LobbyLayoutService;
-   import projects.tanks.clients.flash.commons.services.nameutils.SocialNetworkNameUtils;
    import projects.tanks.clients.flash.commons.services.notification.Notification;
    import projects.tanks.clients.flash.commons.services.notification.sound.INotificationSoundService;
-   import projects.tanks.clients.flash.commons.services.payment.PaymentDisplayService;
-   import projects.tanks.clients.flash.commons.services.serverhalt.IServerHaltService;
-   import projects.tanks.clients.flash.commons.services.stagequality.StageQualityService;
-   import projects.tanks.clients.flash.commons.services.timeunit.TimeUnitService;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.address.TanksAddressService;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.alertservices.IAlertService;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.battle.IBattleInfoService;
-   import projects.tanks.clients.fp10.libraries.tanksservices.service.battle.activator.IBattleLinkActivatorService;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.dialogwindowdispatcher.IDialogWindowsDispatcherService;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.layout.ILobbyLayoutService;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.logging.gamescreen.UserChangeGameScreenService;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.storage.IStorageService;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.user.IUserInfoService;
-   import projects.tanks.clients.fp10.libraries.tanksservices.service.userproperties.IUserPropertiesService;
+   import projects.tanks.clients.flash.commons.models.captcha.ServerCaptchaModel;
+   import projects.tanks.clients.flash.commons.services.datetime.DateFormatter;
+   import projects.tanks.clients.flash.commons.models.detach.DetachModel;
+   import alternativa.tanks.ymservice.YandexMetricaService;
    
    public class Activator implements IBundleActivator
    {
@@ -224,13 +189,13 @@ package projects.tanks.clients.flash.commonsflash
          {
             return LobbyLayoutNotifyModel.modalLoaderService;
          });
-         //osgi.injectService(YandexMetricaService,function(param1:Object):void
-         //{
-         //   LobbyLayoutNotifyModel.ymService = YandexMetricaService(param1);
-         //},function():YandexMetricaService
-         //{
-         //   return LobbyLayoutNotifyModel.ymService;
-         //});
+         osgi.injectService(YandexMetricaService,function(param1:Object):void
+         {
+            LobbyLayoutNotifyModel.ymService = YandexMetricaService(param1);
+         },function():YandexMetricaService
+         {
+            return LobbyLayoutNotifyModel.ymService;
+         });
          //osgi.injectService(TanksAddressService,function(param1:Object):void
          //{
          //   MoveUserToServerModel.addressService = TanksAddressService(param1);
@@ -266,20 +231,20 @@ package projects.tanks.clients.flash.commonsflash
          //{
          //   return AutomaticEnterExitService.paymentDisplayService;
          //});
-         //osgi.injectService(ILocaleService,function(param1:Object):void
-         //{
-         //   DateFormatter.localeService = ILocaleService(param1);
-         //},function():ILocaleService
-         //{
-         //   return DateFormatter.localeService;
-         //});
-         //osgi.injectService(LogService,function(param1:Object):void
-         //{
-         //   DateFormatter.logService = LogService(param1);
-         //},function():LogService
-         //{
-         //   return DateFormatter.logService;
-         //});
+         osgi.injectService(ILocaleService,function(param1:Object):void
+         {
+            DateFormatter.localeService = ILocaleService(param1);
+         },function():ILocaleService
+         {
+            return DateFormatter.localeService;
+         });
+         osgi.injectService(LogService,function(param1:Object):void
+         {
+            DateFormatter.logService = LogService(param1);
+         },function():LogService
+         {
+            return DateFormatter.logService;
+         });
          osgi.injectService(IAlertService,function(param1:Object):void
          {
             LobbyLayoutService.alertService = IAlertService(param1);
@@ -336,6 +301,13 @@ package projects.tanks.clients.flash.commonsflash
          {
             return LobbyLayoutService.userInfoService;
          });
+         osgi.injectService(ModelRegistry,function(param1:Object):void
+         {
+            LobbyLayoutService.modelRegistry = ModelRegistry(param1);
+         },function():ModelRegistry
+         {
+            return LobbyLayoutService.modelRegistry;
+         });
          //osgi.injectService(ILocaleService,function(param1:Object):void
          //{
          //   SocialNetworkNameUtils.localeService = ILocaleService(param1);
@@ -374,17 +346,17 @@ package projects.tanks.clients.flash.commonsflash
          modelRegister = osgi.getService(ModelRegistry) as ModelRegistry;
          //modelRegister.add(new AlertModel());
          //modelRegister.add(new BattleLinkActivatorModel());
-         //modelRegisterAdapt = osgi.getService(ModelRegistry) as ModelRegistry;
+         modelRegisterAdapt = osgi.getService(ModelRegistry) as ModelRegistry;
          //modelRegisterAdapt.registerAdapt(IServerCaptcha,IServerCaptchaAdapt);
          //modelRegisterAdapt.registerEvents(IServerCaptcha,IServerCaptchaEvents);
-         //modelRegister.add(new ServerCaptchaModel());
+         modelRegister.add(new ServerCaptchaModel());
          //modelRegister.add(new ChallengeTimeModel());
          //modelRegister.add(new ColoringModel());
          //modelRegisterAdapt.registerAdapt(IColoring,IColoringAdapt);
          //modelRegisterAdapt.registerEvents(IColoring,IColoringEvents);
          //modelRegisterAdapt.registerAdapt(Detach,DetachAdapt);
          //modelRegisterAdapt.registerEvents(Detach,DetachEvents);
-         //modelRegister.add(new DetachModel());
+         modelRegister.add(new DetachModel());
          //modelRegisterAdapt.registerAdapt(ExternalAuthApi,ExternalAuthApiAdapt);
          //modelRegisterAdapt.registerEvents(ExternalAuthApi,ExternalAuthApiEvents);
          //modelRegister.add(new ExternalAuthApiModel());

@@ -9,7 +9,7 @@ package controls.timer
    public class CountDownTimer implements AutoClosable
    {
       
-      [Inject]
+      [Inject] // added
       public static var logService:LogService;
       
       private static var intervalId:int;

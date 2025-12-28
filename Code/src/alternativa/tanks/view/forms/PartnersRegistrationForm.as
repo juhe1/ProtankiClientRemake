@@ -5,7 +5,6 @@ package alternativa.tanks.view.forms
    import alternativa.tanks.controller.events.CheckCallsignEvent;
    import alternativa.tanks.controller.events.PartnersEvent;
    import alternativa.tanks.controller.events.partners.FinishPartnerRegisterEvent;
-   import alternativa.tanks.service.IRegistrationUXService;
    import alternativa.tanks.type.RulesType;
    import alternativa.tanks.view.bubbles.Bubble;
    import alternativa.tanks.view.bubbles.EntranceBubbleFactory;
@@ -32,7 +31,6 @@ package alternativa.tanks.view.forms
    import forms.TankWindowWithHeader;
    import forms.events.LoginFormEvent;
    import org.robotlegs.core.IInjector;
-   import projects.tanks.client.entrance.model.entrance.logging.RegistrationUXFormAction;
    import projects.tanks.clients.flash.commons.services.validate.IValidateService;
    import projects.tanks.clients.flash.commons.services.validate.ValidateService;
    import projects.tanks.clients.fp10.libraries.TanksLocale;
@@ -41,22 +39,22 @@ package alternativa.tanks.view.forms
    public class PartnersRegistrationForm extends Sprite
    {
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
-      [Inject]
+      [Inject] // added
       public static var helperService:IHelpService;
       
-      [Inject]
+      [Inject] // added
       public static var validateService:IValidateService;
       
-      [Inject]
+      [Inject] // added
       public var entranceView:EntranceView;
       
-      [Inject]
+      [Inject] // added
       public var injector:IInjector;
       
       private var _allowExternalLogin:Boolean = false;

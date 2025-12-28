@@ -10,13 +10,13 @@ package projects.tanks.clients.fp10.libraries.tanksservices.service.battle
    public class BattleInfoService extends EventDispatcher implements IBattleInfoService
    {
       
-      [Inject]
+      [Inject] // added
       public static var addressService:TanksAddressService;
       
-      [Inject]
+      [Inject] // added
       public static var serverNameService:ServerNumberToLocaleServerService;
       
-      [Inject]
+      [Inject] // added
       public static var userPropertiesService:IUserPropertiesService;
       
       private var _currentBattleId:Long;

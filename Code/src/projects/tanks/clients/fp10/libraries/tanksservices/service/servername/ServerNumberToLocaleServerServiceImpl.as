@@ -9,10 +9,10 @@ package projects.tanks.clients.fp10.libraries.tanksservices.service.servername
    public class ServerNumberToLocaleServerServiceImpl implements ServerNumberToLocaleServerService
    {
       
-      [Inject]
+      [Inject] // added
       public static var reconnectService:ReconnectService;
       
-      [Inject]
+      [Inject] // added
       public static var addressService:TanksAddressService;
       
       private static const SERVER_NAME_PATTERN:RegExp = /^[A-Za-z]{2}[1-9][0-9]{0,8}$/;

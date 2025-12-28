@@ -1,15 +1,8 @@
 package projects.tanks.client.entrance.model.entrance.partners
 {
-   import alternativa.osgi.OSGi;
-   import alternativa.protocol.ICodec;
-   import alternativa.protocol.IProtocol;
-   import alternativa.protocol.ProtocolBuffer;
-   import alternativa.protocol.info.TypeCodecInfo;
    import alternativa.types.Long;
    import platform.client.fp10.core.model.IModel;
    import platform.client.fp10.core.model.impl.Model;
-   import platform.client.fp10.core.registry.ModelRegistry;
-   import platform.client.fp10.core.type.IGameObject;
    
    public class CompositePartnerModelBase extends Model
    {
@@ -32,7 +25,7 @@ package projects.tanks.client.entrance.model.entrance.partners
       
       protected function getInitParam() : CompositePartnerCC
       {
-         return CompositePartnerCC(initParams[Model.object]);
+         return CompositePartnerCC(initParams[platform.client.fp10.core.model.impl.Model.currentObject]);
       }
       
       override public function get id() : Long

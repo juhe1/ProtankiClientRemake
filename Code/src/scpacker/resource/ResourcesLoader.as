@@ -12,7 +12,7 @@ package scpacker.resource
    
    public class ResourcesLoader
    {
-      private var newname_122__END:ResourceRegistry = OSGi.getInstance().getService(ResourceRegistry) as ResourceRegistry;
+      private var resourceRegistry:ResourceRegistry = OSGi.getInstance().getService(ResourceRegistry) as ResourceRegistry;
       
       public function ResourcesLoader()
       {
@@ -33,9 +33,9 @@ package scpacker.resource
          var _loc6_:Boolean = false;
          var _loc3_:Object = JSON.parse(param1);
          var _loc5_:Vector.<Resource> = new Vector.<Resource>();
-         for each(var _loc2_ in _loc3_.resources)
+         for each(var _loc2_ in _loc3_)
          {
-            var _loc7_:* = _loc4_ = this.createResource(this.parseResourceInfo(_loc2_));
+            var _loc7_:Resource = _loc4_ = this.createResource(this.parseResourceInfo(_loc2_));
             _loc6_ = !_loc7_.resourceInfo.isLazy && _loc4_.status == null;
             if(_loc6_)
             {
@@ -49,24 +49,24 @@ package scpacker.resource
       {
          var _loc3_:Resource = null;
          var _loc2_:Long = param1.id;
-         if(this.newname_122__END.isRegistered(_loc2_))
+         if(this.resourceRegistry.isRegistered(_loc2_))
          {
-            return this.newname_122__END.getResource(_loc2_);
+            return this.resourceRegistry.getResource(_loc2_);
          }
-         if(!this.newname_122__END.isTypeClassRegistered(param1.type))
+         if(!this.resourceRegistry.isTypeClassRegistered(param1.type))
          {
             throw new Error("Unknown resource type");
          }
-         var _loc4_:Class = this.newname_122__END.getResourceClass(param1.type);
-         if(param1.newname_3167__END == null)
+         var _loc4_:Class = this.resourceRegistry.getResourceClass(param1.type);
+         if(param1.params == null)
          {
             _loc3_ = Resource(new _loc4_(param1));
          }
          else
          {
-            _loc3_ = Resource(new _loc4_(param1,param1.newname_3167__END));
+            _loc3_ = Resource(new _loc4_(param1,param1.params));
          }
-         this.newname_122__END.registerResource(_loc3_);
+         this.resourceRegistry.registerResource(_loc3_);
          return _loc3_;
       }
       

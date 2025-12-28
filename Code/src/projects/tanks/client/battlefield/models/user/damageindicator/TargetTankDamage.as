@@ -1,6 +1,5 @@
 package projects.tanks.client.battlefield.models.user.damageindicator
 {
-   import platform.client.fp10.core.type.IGameObject;
    
    public class TargetTankDamage
    {

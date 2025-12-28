@@ -18,7 +18,7 @@ package alternativa.tanks.view.forms
    public class ViewText extends Sprite
    {
       
-      [Inject]
+      [Inject] // added
       public var localeService:ILocaleService;
       
       private var output:TextField;

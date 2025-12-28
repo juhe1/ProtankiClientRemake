@@ -3,20 +3,11 @@ package projects.tanks.clients.fp10.libraries.tanksservicesflash
    import alternativa.osgi.OSGi;
    import alternativa.osgi.bundle.IBundleActivator;
    import alternativa.osgi.service.display.IDisplay;
-   import alternativa.osgi.service.launcherparams.ILauncherParams;
    import alternativa.osgi.service.locale.ILocaleService;
    import alternativa.osgi.service.logging.LogService;
-   import alternativa.osgi.service.network.INetworkService;
-   import alternativa.protocol.IProtocol;
    import alternativa.tanks.loader.ILoaderWindowService;
-   import alternativa.tanks.loader.IModalLoaderService;
-   import alternativa.tanks.newbieservice.NewbieUserService;
-   import alternativa.tanks.newbieservice.NewbieUserServiceImpl;
-   import alternativa.tanks.tracker.ITrackerService;
-   import alternativa.tanks.ymservice.YandexMetricaServiceImpl;
    import platform.client.fp10.core.registry.ModelRegistry;
    import platform.client.fp10.core.service.address.AddressService;
-   import platform.client.fp10.core.service.transport.ITransportService;
    import platform.clients.fp10.libraries.alternativapartners.service.IPartnerService;
    //import projects.tanks.clients.fp10.libraries.tanksservices.model.FriendsModel;
    //import projects.tanks.clients.fp10.libraries.tanksservices.model.IFriends;
@@ -27,91 +18,50 @@ package projects.tanks.clients.fp10.libraries.tanksservicesflash
    //import projects.tanks.clients.fp10.libraries.tanksservices.model.UserRefreshEvents;
    //import projects.tanks.clients.fp10.libraries.tanksservices.model.formatbattle.EquipmentConstraintsNamingModel;
    //import projects.tanks.clients.fp10.libraries.tanksservices.model.friends.accepted.FriendsAcceptedModel;
-   import projects.tanks.clients.fp10.libraries.tanksservices.model.friends.acceptednotificator.FriendsAcceptedNotificatorModel;
-   import projects.tanks.clients.fp10.libraries.tanksservices.model.friends.battleinvite.NotificationEnabledModel;
-   import projects.tanks.clients.fp10.libraries.tanksservices.model.friends.incoming.FriendsIncomingModel;
-   import projects.tanks.clients.fp10.libraries.tanksservices.model.friends.incomingnotificator.FriendsIncomingNotificatorModel;
-   import projects.tanks.clients.fp10.libraries.tanksservices.model.gpu.GPUDetector;
-   import projects.tanks.clients.fp10.libraries.tanksservices.model.gpu.GPUDetectorAdapt;
-   import projects.tanks.clients.fp10.libraries.tanksservices.model.gpu.GPUDetectorEvents;
    import projects.tanks.clients.fp10.libraries.tanksservices.model.listener.UserNotifier;
    import projects.tanks.clients.fp10.libraries.tanksservices.model.listener.UserNotifierAdapt;
    import projects.tanks.clients.fp10.libraries.tanksservices.model.listener.UserNotifierEvents;
    import projects.tanks.clients.fp10.libraries.tanksservices.model.listener.UserNotifierModel;
-   import projects.tanks.clients.fp10.libraries.tanksservices.model.logging.UserActionsLoggerModel;
-   import projects.tanks.clients.fp10.libraries.tanksservices.model.notifier.Notifier;
-   import projects.tanks.clients.fp10.libraries.tanksservices.model.notifier.NotifierAdapt;
-   import projects.tanks.clients.fp10.libraries.tanksservices.model.notifier.NotifierEvents;
    import projects.tanks.clients.fp10.libraries.tanksservices.model.notifier.battle.BattleLinkData;
    import projects.tanks.clients.fp10.libraries.tanksservices.model.notifier.battle.BattleNotifierModel;
-   import projects.tanks.clients.fp10.libraries.tanksservices.model.notifier.online.OnlineNotifierModel;
-   import projects.tanks.clients.fp10.libraries.tanksservices.model.notifier.premium.PremiumNotifierModel;
-   import projects.tanks.clients.fp10.libraries.tanksservices.model.notifier.rank.RankNotifierModel;
-   import projects.tanks.clients.fp10.libraries.tanksservices.model.notifier.referrals.ReferralNotifierModel;
-   import projects.tanks.clients.fp10.libraries.tanksservices.model.notifier.socialnetworks.SNUidNotifierModel;
-   import projects.tanks.clients.fp10.libraries.tanksservices.model.notifier.uid.UidNotifierModel;
-   import projects.tanks.clients.fp10.libraries.tanksservices.model.payment.PayModeProceed;
-   import projects.tanks.clients.fp10.libraries.tanksservices.model.payment.PayModeProceedAdapt;
-   import projects.tanks.clients.fp10.libraries.tanksservices.model.payment.PayModeProceedEvents;
-   import projects.tanks.clients.fp10.libraries.tanksservices.model.proabonement.ProBattleNotifierModel;
-   import projects.tanks.clients.fp10.libraries.tanksservices.model.rankloader.RankLoaderModel;
-   import projects.tanks.clients.fp10.libraries.tanksservices.model.reconnect.ReconnectLauncher;
-   import projects.tanks.clients.fp10.libraries.tanksservices.model.reconnect.ReconnectModel;
-   import projects.tanks.clients.fp10.libraries.tanksservices.model.serverrestarttime.OnceADayActionModel;
-   import projects.tanks.clients.fp10.libraries.tanksservices.model.uidcheck.UidCheckModel;
-   import projects.tanks.clients.fp10.libraries.tanksservices.model.uidcheck.UidCheckService;
-   import projects.tanks.clients.fp10.libraries.tanksservices.model.uidcheck.UidCheckServiceAdapt;
-   import projects.tanks.clients.fp10.libraries.tanksservices.model.uidcheck.UidCheckServiceEvents;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.TimeOutTruncateConsumers;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.address.TanksAddressService;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.address.TanksAddressServiceImpl;
-   import projects.tanks.clients.fp10.libraries.tanksservices.service.alertservices.IAlertService;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.battle.BattleInfoService;
-   import projects.tanks.clients.fp10.libraries.tanksservices.service.battle.IBattleInfoService;
-   import projects.tanks.clients.fp10.libraries.tanksservices.service.blockuser.BlockUserService;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.blur.BlurService;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.blur.IBlurService;
-   import projects.tanks.clients.fp10.libraries.tanksservices.service.clan.ClanUserInfoService;
-   import projects.tanks.clients.fp10.libraries.tanksservices.service.clan.ClanUserInfoServiceImpl;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.dialogs.DialogsService;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.dialogs.IDialogsService;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.dialogs.gui.DialogWindow;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.dialogwindowdispatcher.IDialogWindowsDispatcherService;
-   import projects.tanks.clients.fp10.libraries.tanksservices.service.friend.FriendActionService;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.friend.FriendsInfoLabelUpdater;
-   import projects.tanks.clients.fp10.libraries.tanksservices.service.friend.IFriendActionService;
-   import projects.tanks.clients.fp10.libraries.tanksservices.service.friend.IFriendInfoService;
-   import projects.tanks.clients.fp10.libraries.tanksservices.service.friend.battleinvite.BattleInviteService;
-   import projects.tanks.clients.fp10.libraries.tanksservices.service.friend.battleinvite.IBattleInviteService;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.fullscreen.FullscreenStateService;
-   import projects.tanks.clients.fp10.libraries.tanksservices.service.helper.BubbleHelper;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.helper.IHelpService;
-   import projects.tanks.clients.fp10.libraries.tanksservices.service.layout.ILobbyLayoutService;
-   import projects.tanks.clients.fp10.libraries.tanksservices.service.layout.LobbyLayoutServiceBase;
-   import projects.tanks.clients.fp10.libraries.tanksservices.service.logging.battlelist.UserBattleSelectActionsService;
-   import projects.tanks.clients.fp10.libraries.tanksservices.service.logging.gamescreen.UserChangeGameScreenService;
-   import projects.tanks.clients.fp10.libraries.tanksservices.service.logging.garage.UserGarageActionsService;
-   import projects.tanks.clients.fp10.libraries.tanksservices.service.logging.garage.UserGarageActionsServiceImpl;
-   import projects.tanks.clients.fp10.libraries.tanksservices.service.logging.paymentactions.UserPaymentActionsService;
-   import projects.tanks.clients.fp10.libraries.tanksservices.service.logging.settings.UserSettingsChangedService;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.notifier.battle.IBattleNotifierService;
-   import projects.tanks.clients.fp10.libraries.tanksservices.service.notifier.online.IOnlineNotifierService;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.premium.PremiumService;
-   import projects.tanks.clients.fp10.libraries.tanksservices.service.probattle.IUserProBattleService;
-   import projects.tanks.clients.fp10.libraries.tanksservices.service.rank.RankService;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.reconnect.ReconnectService;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.servername.ServerNumberToLocaleServerService;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.servername.ServerNumberToLocaleServerServiceImpl;
-   import projects.tanks.clients.fp10.libraries.tanksservices.service.storage.IStorageService;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.user.IUserInfoService;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.user.UserInfoLabelUpdater;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.user.UserInfoService;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.userproperties.IUserPropertiesService;
-   import projects.tanks.clients.fp10.libraries.tanksservices.service.userproperties.UserPropertiesService;
    import projects.tanks.clients.fp10.libraries.tanksservices.utils.AlertUtils;
-   import projects.tanks.clients.fp10.libraries.tanksservices.utils.BattleFormatUtil;
    import projects.tanks.clients.fp10.libraries.tanksservices.utils.BattleInfoUtils;
-   import projects.tanks.clients.fp10.libraries.tanksservices.utils.PieceWordDeclensionUtil;
+   import projects.tanks.clients.fp10.libraries.tanksservices.service.helper.BubbleHelper;
+   import alternativa.tanks.ymservice.YandexMetricaServiceImpl;
+   import alternativa.tanks.newbieservice.NewbieUserService;
+   import alternativa.tanks.newbieservice.NewbieUserServiceImpl;
+   import projects.tanks.clients.fp10.libraries.tanksservices.service.storage.IStorageService;
+   import projects.tanks.clients.fp10.libraries.tanksservices.service.userproperties.UserPropertiesService;
+   import projects.tanks.clients.fp10.libraries.tanksservices.service.rank.RankService;
+   import projects.tanks.clients.fp10.libraries.tanksservices.service.blockuser.BlockUserService;
+   import projects.tanks.clients.fp10.libraries.tanksservices.service.friend.FriendActionService;
+   import projects.tanks.clients.fp10.libraries.tanksservices.service.alertservices.IAlertService;
+   import projects.tanks.clients.fp10.libraries.tanksservices.service.friend.battleinvite.BattleInviteService;
+   import projects.tanks.clients.fp10.libraries.tanksservices.service.layout.ILobbyLayoutService;
+   import projects.tanks.clients.fp10.libraries.tanksservices.service.friend.IFriendInfoService;
+   import projects.tanks.clients.fp10.libraries.tanksservices.service.battle.IBattleInfoService;
    
    public class Activator implements IBundleActivator
    {
@@ -129,20 +79,20 @@ package projects.tanks.clients.fp10.libraries.tanksservicesflash
          var modelRegisterAdapt:ModelRegistry;
          var _osgi:OSGi = param1;
          osgi = _osgi;
-         //osgi.injectService(IStorageService,function(param1:Object):void
-         //{
-         //   NewbieUserServiceImpl.storageService = IStorageService(param1);
-         //},function():IStorageService
-         //{
-         //   return NewbieUserServiceImpl.storageService;
-         //});
-         //osgi.injectService(NewbieUserService,function(param1:Object):void
-         //{
-         //   YandexMetricaServiceImpl.newbieUserService = NewbieUserService(param1);
-         //},function():NewbieUserService
-         //{
-         //   return YandexMetricaServiceImpl.newbieUserService;
-         //});
+         osgi.injectService(IStorageService,function(param1:Object):void
+         {
+            NewbieUserServiceImpl.storageService = IStorageService(param1);
+         },function():IStorageService
+         {
+            return NewbieUserServiceImpl.storageService;
+         });
+         osgi.injectService(NewbieUserService,function(param1:Object):void
+         {
+            YandexMetricaServiceImpl.newbieUserService = NewbieUserService(param1);
+         },function():NewbieUserService
+         {
+            return YandexMetricaServiceImpl.newbieUserService;
+         });
          //osgi.injectService(IFriendActionService,function(param1:Object):void
          //{
          //   FriendsModel.friendsActionService = IFriendActionService(param1);
@@ -493,13 +443,13 @@ package projects.tanks.clients.fp10.libraries.tanksservicesflash
          {
             return BattleInfoService.userPropertiesService;
          });
-         //osgi.injectService(IStorageService,function(param1:Object):void
-         //{
-         //   BlockUserService.storageService = IStorageService(param1);
-         //},function():IStorageService
-         //{
-         //   return BlockUserService.storageService;
-         //});
+         osgi.injectService(IStorageService,function(param1:Object):void
+         {
+            BlockUserService.storageService = IStorageService(param1);
+         },function():IStorageService
+         {
+            return BlockUserService.storageService;
+         });
          osgi.injectService(IHelpService,function(param1:Object):void
          {
             BlurService.helperService = IHelpService(param1);
@@ -556,20 +506,20 @@ package projects.tanks.clients.fp10.libraries.tanksservicesflash
          {
             return DialogWindow.display;
          });
-         //osgi.injectService(IAlertService,function(param1:Object):void
-         //{
-         //   FriendActionService.alertService = IAlertService(param1);
-         //},function():IAlertService
-         //{
-         //   return FriendActionService.alertService;
-         //});
-         //osgi.injectService(ILocaleService,function(param1:Object):void
-         //{
-         //   FriendActionService.localeService = ILocaleService(param1);
-         //},function():ILocaleService
-         //{
-         //   return FriendActionService.localeService;
-         //});
+         osgi.injectService(IAlertService,function(param1:Object):void
+         {
+            FriendActionService.alertService = IAlertService(param1);
+         },function():IAlertService
+         {
+            return FriendActionService.alertService;
+         });
+         osgi.injectService(ILocaleService,function(param1:Object):void
+         {
+            FriendActionService.localeService = ILocaleService(param1);
+         },function():ILocaleService
+         {
+            return FriendActionService.localeService;
+         });
          osgi.injectService(LogService,function(param1:Object):void
          {
             FriendsInfoLabelUpdater.logService = LogService(param1);
@@ -577,13 +527,13 @@ package projects.tanks.clients.fp10.libraries.tanksservicesflash
          {
             return FriendsInfoLabelUpdater.logService;
          });
-         //osgi.injectService(IBattleInfoService,function(param1:Object):void
-         //{
-         //   BattleInviteService.battleInfoService = IBattleInfoService(param1);
-         //},function():IBattleInfoService
-         //{
-         //   return BattleInviteService.battleInfoService;
-         //});
+         osgi.injectService(IBattleInfoService,function(param1:Object):void
+         {
+            BattleInviteService.battleInfoService = IBattleInfoService(param1);
+         },function():IBattleInfoService
+         {
+            return BattleInviteService.battleInfoService;
+         });
          //osgi.injectService(ClanUserInfoService,function(param1:Object):void
          //{
          //   BattleInviteService.clanUserInfoService = ClanUserInfoService(param1);
@@ -591,34 +541,34 @@ package projects.tanks.clients.fp10.libraries.tanksservicesflash
          //{
          //   return BattleInviteService.clanUserInfoService;
          //});
-         //osgi.injectService(IFriendInfoService,function(param1:Object):void
-         //{
-         //   BattleInviteService.friendInfoService = IFriendInfoService(param1);
-         //},function():IFriendInfoService
-         //{
-         //   return BattleInviteService.friendInfoService;
-         //});
-         //osgi.injectService(ILobbyLayoutService,function(param1:Object):void
-         //{
-         //   BattleInviteService.lobbyLayoutService = ILobbyLayoutService(param1);
-         //},function():ILobbyLayoutService
-         //{
-         //   return BattleInviteService.lobbyLayoutService;
-         //});
-         //osgi.injectService(IDisplay,function(param1:Object):void
-         //{
-         //   BubbleHelper.display = IDisplay(param1);
-         //},function():IDisplay
-         //{
-         //   return BubbleHelper.display;
-         //});
-         //osgi.injectService(ILocaleService,function(param1:Object):void
-         //{
-         //   BubbleHelper.localeService = ILocaleService(param1);
-         //},function():ILocaleService
-         //{
-         //   return BubbleHelper.localeService;
-         //});
+         osgi.injectService(IFriendInfoService,function(param1:Object):void
+         {
+            BattleInviteService.friendInfoService = IFriendInfoService(param1);
+         },function():IFriendInfoService
+         {
+            return BattleInviteService.friendInfoService;
+         });
+         osgi.injectService(ILobbyLayoutService,function(param1:Object):void
+         {
+            BattleInviteService.lobbyLayoutService = ILobbyLayoutService(param1);
+         },function():ILobbyLayoutService
+         {
+            return BattleInviteService.lobbyLayoutService;
+         });
+         osgi.injectService(IDisplay,function(param1:Object):void
+         {
+            BubbleHelper.display = IDisplay(param1);
+         },function():IDisplay
+         {
+            return BubbleHelper.display;
+         });
+         osgi.injectService(ILocaleService,function(param1:Object):void
+         {
+            BubbleHelper.localeService = ILocaleService(param1);
+         },function():ILocaleService
+         {
+            return BubbleHelper.localeService;
+         });
          //osgi.injectService(ITrackerService,function(param1:Object):void
          //{
          //   UserGarageActionsServiceImpl.trackerService = ITrackerService(param1);
@@ -654,20 +604,20 @@ package projects.tanks.clients.fp10.libraries.tanksservicesflash
          {
             return UserInfoService.premiumService;
          });
-         //osgi.injectService(IPartnerService,function(param1:Object):void
-         //{
-         //   UserPropertiesService.partnerService = IPartnerService(param1);
-         //},function():IPartnerService
-         //{
-         //   return UserPropertiesService.partnerService;
-         //});
-         //osgi.injectService(RankService,function(param1:Object):void
-         //{
-         //   UserPropertiesService.rankService = RankService(param1);
-         //},function():RankService
-         //{
-         //   return UserPropertiesService.rankService;
-         //});
+         osgi.injectService(IPartnerService,function(param1:Object):void
+         {
+            UserPropertiesService.partnerService = IPartnerService(param1);
+         },function():IPartnerService
+         {
+            return UserPropertiesService.partnerService;
+         });
+         osgi.injectService(RankService,function(param1:Object):void
+         {
+            UserPropertiesService.rankService = RankService(param1);
+         },function():RankService
+         {
+            return UserPropertiesService.rankService;
+         });
          osgi.injectService(FullscreenStateService,function(param1:Object):void
          {
             AlertUtils.fullscreenStateService = FullscreenStateService(param1);

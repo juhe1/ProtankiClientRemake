@@ -12,7 +12,6 @@ package alternativa.tanks.view.forms
    import controls.base.LabelBase;
    import controls.base.TankInputBase;
    import flash.display.Bitmap;
-   import flash.display.InteractiveObject;
    import flash.display.Sprite;
    import flash.events.Event;
    import flash.events.KeyboardEvent;
@@ -34,16 +33,16 @@ package alternativa.tanks.view.forms
    public class LinkExternalLoginForm extends Sprite
    {
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
-      [Inject]
+      [Inject] // added
       public static var validateService:IValidateService;
       
-      [Inject]
+      [Inject] // added
       public var injector:IInjector;
       
       private var _margin:int = 25;

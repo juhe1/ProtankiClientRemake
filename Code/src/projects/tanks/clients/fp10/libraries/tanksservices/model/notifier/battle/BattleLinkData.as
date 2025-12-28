@@ -1,6 +1,5 @@
 package projects.tanks.clients.fp10.libraries.tanksservices.model.notifier.battle
 {
-   import alternativa.types.Long;
    import projects.tanks.client.battleservice.Range;
    import projects.tanks.client.tanksservices.model.notifier.battle.BattleNotifierData;
    import projects.tanks.client.tanksservices.types.battle.BattleInfoData;
@@ -12,13 +11,13 @@ package projects.tanks.clients.fp10.libraries.tanksservices.model.notifier.battl
    public class BattleLinkData
    {
       
-      [Inject]
+      [Inject] // added
       public static var userInfoService:IUserInfoService;
       
-      [Inject]
+      [Inject] // added
       public static var userPropertiesService:IUserPropertiesService;
       
-      [Inject]
+      [Inject] // added
       public static var reconnectService:ReconnectService;
       
       private var _userId:String;

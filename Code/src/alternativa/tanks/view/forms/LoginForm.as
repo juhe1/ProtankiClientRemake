@@ -8,7 +8,6 @@ package alternativa.tanks.view.forms
    import alternativa.tanks.controller.events.socialnetwork.StartExternalEntranceEvent;
    import alternativa.tanks.loader.ILoaderWindowService;
    import alternativa.tanks.service.IExternalEntranceService;
-   import alternativa.tanks.service.IRegistrationUXService;
    import alternativa.tanks.view.bubbles.Bubble;
    import alternativa.tanks.view.bubbles.EntranceBubbleFactory;
    import alternativa.tanks.view.forms.commons.RegistrationCommonElementsSection;
@@ -22,7 +21,6 @@ package alternativa.tanks.view.forms
    import controls.checkbox.CheckBoxBase;
    import controls.dropdownlist.AccountsList;
    import flash.display.Bitmap;
-   import flash.display.InteractiveObject;
    import flash.display.Sprite;
    import flash.events.Event;
    import flash.events.KeyboardEvent;
@@ -44,25 +42,25 @@ package alternativa.tanks.view.forms
    public class LoginForm extends Sprite
    {
       
-      [Inject]
+      [Inject] // added
       public static var externalEntranceService:IExternalEntranceService;
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
-      [Inject]
+      [Inject] // added
       public static var validateService:IValidateService;
       
-      [Inject]
+      [Inject] // added
       public static var storageService:IStorageService;
       
-      [Inject]
+      [Inject] // added
       public static var loaderWindowService:ILoaderWindowService;
       
-      [Inject]
+      [Inject] // added
       public var localeService:ILocaleService;
       
-      [Inject]
+      [Inject] // added
       public var injector:IInjector;
       
       public var _callSignOrEmail:TankInputBase;

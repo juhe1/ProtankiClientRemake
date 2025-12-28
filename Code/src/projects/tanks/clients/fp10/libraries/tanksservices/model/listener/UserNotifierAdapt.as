@@ -1,6 +1,5 @@
 package projects.tanks.clients.fp10.libraries.tanksservices.model.listener
 {
-   import alternativa.types.Long;
    import platform.client.fp10.core.model.impl.Model;
    import platform.client.fp10.core.type.IGameObject;
    import projects.tanks.clients.fp10.libraries.tanksservices.model.notifier.UserInfoConsumer;

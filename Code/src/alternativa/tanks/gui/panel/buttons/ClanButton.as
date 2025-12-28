@@ -1,27 +1,22 @@
 package alternativa.tanks.gui.panel.buttons
 {
-   import alternativa.tanks.service.clan.ClanPanelNotificationEvent;
-   import alternativa.tanks.service.clan.ClanPanelNotificationService;
    import controls.base.MainPanelClanButtonBase;
    import flash.display.Bitmap;
    import flash.display.BitmapData;
    import flash.events.Event;
-   import projects.tanks.client.commons.models.layout.LayoutState;
-   import projects.tanks.clients.fp10.libraries.tanksservices.service.clan.ClanUserInfoService;
-   import projects.tanks.clients.fp10.libraries.tanksservices.service.clan.RestrictionJoinClanEvent;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.layout.ILobbyLayoutService;
    
    public class ClanButton extends MainPanelClanButtonBase
    {
       
-      [Inject]
-      public static var clanPanelNotificationService:ClanPanelNotificationService;
+      //[Inject] // added
+      //public static var clanPanelNotificationService:ClanPanelNotificationService;
       
       // Clan functionality is disabled for now
-      //[Inject]
+      //[Inject] // added
       //public static var clanUserInfoService:ClanUserInfoService;
       
-      [Inject]
+      [Inject] // added
       public static var lobbyLayoutService:ILobbyLayoutService;
       
       public static var attentionIconClass:Class = ClanButton_attentionIconClass;
@@ -60,14 +55,14 @@ package alternativa.tanks.gui.panel.buttons
       
       public function update(param1:Event = null) : void
       {
-         if(enable)
-         {
-            this._attentionIcon.visible = clanPanelNotificationService.numberNotification() > 0;
-         }
-         else
-         {
+         //if(enable)
+         //{
+         //   this._attentionIcon.visible = clanPanelNotificationService.numberNotification() > 0;
+         //}
+         //else
+         //{
             this._attentionIcon.visible = false;
-         }
+         //}
       }
    }
 }

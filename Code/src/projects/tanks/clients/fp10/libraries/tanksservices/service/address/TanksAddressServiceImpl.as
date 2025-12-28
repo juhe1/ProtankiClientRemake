@@ -15,10 +15,10 @@ package projects.tanks.clients.fp10.libraries.tanksservices.service.address
    public class TanksAddressServiceImpl extends EventDispatcher implements TanksAddressService
    {
       
-      [Inject]
+      [Inject] // added
       public static var serverNameService:ServerNumberToLocaleServerService;
       
-      [Inject]
+      [Inject] // added
       public static var addressService:AddressService;
       
       private const DELAY_LISTEN_ADDRESS_CHANGE:int = 1500;

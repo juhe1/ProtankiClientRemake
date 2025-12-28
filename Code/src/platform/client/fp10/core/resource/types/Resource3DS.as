@@ -22,7 +22,7 @@ package platform.client.fp10.core.resource.types
    public class Resource3DS extends Resource
    {
       
-      [Inject]
+      [Inject] // added
       public static var resourceLocalStorage:IResourceLocalStorage;
       
       private static const TARA_FILE:String = "3ds.tara";

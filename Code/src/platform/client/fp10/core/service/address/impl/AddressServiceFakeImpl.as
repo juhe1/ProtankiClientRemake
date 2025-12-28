@@ -7,7 +7,7 @@ package platform.client.fp10.core.service.address.impl
    public class AddressServiceFakeImpl implements AddressService
    {
       
-      [Inject]
+      [Inject] // added
       public static var launcherParams:ILauncherParams;
       
       public function AddressServiceFakeImpl()

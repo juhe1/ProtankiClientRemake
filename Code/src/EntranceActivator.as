@@ -13,14 +13,13 @@ package
    import projects.tanks.clients.fp10.models.tanksusermodelflash.Activator;
    import projects.tanks.clients.flash.resources.osgi.Activator;
    import projects.tanks.clients.flash.commonsflash.Activator;
-   import platform.clients.fp10.libraries.alternativaclient.Activator;
    import init.TanksFormsActivator;
    import alternativa.init.GarageModelActivator;
    import alternativa.init.UserModelActivator;
    import platform.clients.fp10.models.alternativaspacesmodelsflash.Activator;
    import projects.tanks.clients.fp10.models.tanksbattleselectmodelflash.Activator;
    import alternativa.protocol.osgi.ProtocolActivator;
-   import projects.tanks.clients.flash.resources.Activator;
+   //import projects.tanks.clients.flash.resources.Activator;
    import scpacker.networking.Network;
    import projects.tanks.clients.fp10.libraries.tanksservicesflash.Activator;
    import platform.clients.fp10.commonsflash.Activator;
@@ -28,7 +27,9 @@ package
    import alternativa.init.TanksServicesActivator;
    import alternativa.init.TanksFonts;
    import alternativa.init.PanelModelActivator;
+   import platform.clients.fp10.libraries.alternativapartners.osgi.PartnersActivator;
    //import alternativa.init.BattleSelectModelActivator;
+   import platform.clients.fp10.libraries.alternativapartnersflash.Activator;
    
    public class EntranceActivator implements IBundleActivator
    {
@@ -45,13 +46,15 @@ package
          var sbti:ScrollBar_thumbIcon;
          var spus:ScrollPane_upSkin;
          var osgi:OSGi = param1;
-         new TanksServicesActivator().start(osgi);
          new ProtocolActivator().start(osgi);
          new ClientActivator().start(osgi);
+         new TanksServicesActivator().start(osgi);
          new platform.clients.fp10.libraries.alternativaclientflash.Activator().start(osgi);
          new platform.clients.fp10.commonsflash.Activator().start(osgi);
          new TanksFonts().start(osgi);
          new platform.clients.fp10.models.alternativaspacesmodelsflash.Activator().start(osgi);
+         new PartnersActivator().start(param1);
+         new platform.clients.fp10.libraries.alternativapartnersflash.Activator().start(param1);
          new projects.tanks.clients.flash.commonsflash.Activator().start(osgi);
          new projects.tanks.clients.fp10.libraries.tanksservicesflash.Activator().start(osgi);
          new projects.tanks.clients.fp10.models.tankspanelmodelflash.Activator().start(osgi);

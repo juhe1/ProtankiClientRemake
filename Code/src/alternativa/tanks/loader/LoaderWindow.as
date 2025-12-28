@@ -63,6 +63,7 @@ package alternativa.tanks.loader
          super();
          this._localeService = OSGi.getInstance().getService(ILocaleService) as ILocaleService;
          //this._tips = this._localeService.getTextWithPrefix("TIP_").sort(randomize);
+         this._tips = ["Remake by Juho."];
          var _loc1_:IDisplay = IDisplay(TanksServicesActivator.osgi.getService(IDisplay));
          this.layer = _loc1_.loaderLayer;
          this._stage = _loc1_.stage;

@@ -9,7 +9,7 @@ package projects.tanks.clients.fp10.libraries.tanksservices.service
    public class TimeOutTruncateConsumers
    {
       
-      [Inject]
+      [Inject] // added
       public static var logService:LogService;
       
       private const TRUNCATE_PERIOD:int = 300000;
@@ -62,7 +62,7 @@ package projects.tanks.clients.fp10.libraries.tanksservices.service
          }
       }
       
-      public function updateLastAccessTime(param1:Long) : void
+      public function updateLastAccessTime(param1:String) : void
       {
          this._consumersLastAccessTime[param1] = new Date().time;
       }

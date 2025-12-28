@@ -30,7 +30,7 @@ package projects.tanks.clients.flash.resources.resource
    public class Tanks3DSResource extends Resource
    {
       
-      [Inject]
+      [Inject] // added
       public static var resourceLocalStorage:IResourceLocalStorage;
       
       public static const TYPE:int = 17;

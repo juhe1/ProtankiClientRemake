@@ -24,10 +24,15 @@ package projects.tanks.clients.flash.commons.osgi
    //import projects.tanks.clients.flash.commons.services.timeunit.TimeUnitService;
    //import projects.tanks.clients.flash.commons.services.validate.IValidateService;
    //import projects.tanks.clients.flash.commons.services.validate.ValidateService;
-   //import projects.tanks.clients.fp10.libraries.tanksservices.service.fullscreen.FullscreenService;
+   import projects.tanks.clients.fp10.libraries.tanksservices.service.fullscreen.FullscreenService;
    //import projects.tanks.clients.fp10.libraries.tanksservices.service.fullscreen.FullscreenStateService;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.layout.ILobbyLayoutService;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.layout.LobbyLayoutServiceBase;
+   import projects.tanks.clients.flash.commons.services.validate.ValidateService;
+   import projects.tanks.clients.flash.commons.services.validate.IValidateService;
+   import projects.tanks.clients.fp10.libraries.tanksservices.service.fullscreen.FullscreenStateService;
+   import projects.tanks.clients.flash.commons.services.fullscreen.FullscreenServiceImpl;
+   import projects.tanks.clients.flash.commons.services.fullscreen.FullscreenStateServiceImpl;
    
    public class Activator implements IBundleActivator
    {
@@ -44,7 +49,7 @@ package projects.tanks.clients.flash.commons.osgi
          param1.registerService(LobbyLayoutServiceBase,_loc2_);
          param1.registerService(INotificationService,new NotificationService(_loc2_));
          //param1.registerService(IServerHaltService,new ServerHaltService());
-         //param1.registerService(IValidateService,new ValidateService());
+         param1.registerService(IValidateService,new ValidateService());
          //param1.registerService(AutomaticEnterExitService,new AutomaticEnterExitService(param1));
          param1.registerService(INotificationSoundService,new NotificationSoundService());
          //param1.registerService(IStageQualityService,new StageQualityService(_loc2_));
@@ -52,9 +57,9 @@ package projects.tanks.clients.flash.commons.osgi
          //param1.registerService(ExternalAuthParamsService,new ExternalAuthParamsServiceImpl());
          var _loc3_:IDisplay = IDisplay(OSGi.getInstance().getService(IDisplay));
          var _loc4_:ILauncherParams = ILauncherParams(OSGi.getInstance().getService(ILauncherParams));
-         //var _loc5_:FullscreenServiceImpl = new FullscreenServiceImpl(_loc3_,_loc4_);
-         //param1.registerService(FullscreenService,_loc5_);
-         //param1.registerService(FullscreenStateService,new FullscreenStateServiceImpl(_loc3_,_loc5_.isAvailable()));
+         var _loc5_:FullscreenServiceImpl = new FullscreenServiceImpl(_loc3_,_loc4_);
+         param1.registerService(FullscreenService,_loc5_);
+         param1.registerService(FullscreenStateService,new FullscreenStateServiceImpl(_loc3_,_loc5_.isAvailable()));
          //param1.registerService(ChallengeInfoService,new ChallengesServiceImpl());
       }
       

@@ -13,10 +13,10 @@ package alternativa.tanks.view.forms.freeuids
    public class FreeUidsForm extends Sprite
    {
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
       public static const DEFAULT_WIDTH:int = 200;

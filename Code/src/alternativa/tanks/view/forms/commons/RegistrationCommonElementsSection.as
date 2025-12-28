@@ -6,10 +6,8 @@ package alternativa.tanks.view.forms.commons
    import alternativa.tanks.controller.events.CheckCallsignEvent;
    import alternativa.tanks.controller.events.CheckEmailEvent;
    import alternativa.tanks.service.IPasswordParamsService;
-   import alternativa.tanks.service.IRegistrationUXService;
    import alternativa.tanks.view.bubbles.Bubble;
    import alternativa.tanks.view.bubbles.EntranceBubbleFactory;
-   import alternativa.tanks.view.events.AntiAddictionInfoUpdatedEvent;
    import alternativa.tanks.view.events.RegistrationFormEvent;
    import alternativa.tanks.view.forms.freeuids.FreeUidsForm;
    import alternativa.tanks.view.forms.freeuids.FreeUidsFormEvent;
@@ -32,7 +30,6 @@ package alternativa.tanks.view.forms.commons
    import flash.utils.Timer;
    import forms.events.LoginFormEvent;
    import org.robotlegs.core.IInjector;
-   import projects.tanks.client.entrance.model.entrance.logging.RegistrationUXFormAction;
    import projects.tanks.clients.flash.commons.models.captcha.CaptchaSection;
    import projects.tanks.clients.flash.commons.models.captcha.RefreshCaptchaClickedEvent;
    import projects.tanks.clients.flash.commons.services.validate.IValidateService;
@@ -43,22 +40,22 @@ package alternativa.tanks.view.forms.commons
    public class RegistrationCommonElementsSection extends Sprite
    {
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
-      [Inject]
+      [Inject] // added
       public static var passwordParamsService:IPasswordParamsService;
       
-      [Inject]
+      [Inject] // added
       public static var validateService:IValidateService;
       
-      [Inject]
+      [Inject] // added
       public static var launcherParams:ILauncherParams;
       
-      [Inject]
+      [Inject] // added
       public static var ymService:YandexMetricaService;
       
       public static const MAX_CHARS_CALLSIGN:int = 20;
@@ -75,10 +72,10 @@ package alternativa.tanks.view.forms.commons
       
       private static const SYMBOL_IS_NOT_ALLOWED:String = "SymbolIsNotAllowed";
       
-      [Inject]
+      [Inject] // added
       public var injector:IInjector;
       
-      [Inject]
+      [Inject] // added
       public var entranceView:EntranceView;
       
       private const CHECK_CALLSIGN_DELAY:int = 500;

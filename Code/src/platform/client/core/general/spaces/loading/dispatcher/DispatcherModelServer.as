@@ -1,7 +1,7 @@
 package platform.client.core.general.spaces.loading.dispatcher
 {
    import alternativa.osgi.OSGi;
-   import scpacker.networking.protocol.packets.init.ResourcesLoaded;
+   import scpacker.networking.protocol.packets.init.ResourcesLoadedOutPacket;
    import platform.client.fp10.core.model.IModel;
    import scpacker.networking.Network;
    
@@ -16,7 +16,7 @@ package platform.client.core.general.spaces.loading.dispatcher
       
       public function dependenciesLoaded(param1:int) : void
       {
-         network.send(new ResourcesLoaded(param1));
+         network.send(new ResourcesLoadedOutPacket(param1));
       }
    }
 }

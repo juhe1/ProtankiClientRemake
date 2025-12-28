@@ -13,7 +13,7 @@ package alternativa.tanks.service.logging
    public class UserChangeGameScreenServiceImpl extends EventDispatcher implements UserChangeGameScreenService
    {
       
-      [Inject]
+      [Inject] // added
       public static var lobbyLayoutService:ILobbyLayoutService;
       
       private var panelView:IPanelView;

@@ -1,6 +1,5 @@
 package projects.tanks.client.tanksservices.types.battle
 {
-   import alternativa.types.Long;
    import projects.tanks.client.battleservice.BattleMode;
    import projects.tanks.client.battleservice.Range;
    

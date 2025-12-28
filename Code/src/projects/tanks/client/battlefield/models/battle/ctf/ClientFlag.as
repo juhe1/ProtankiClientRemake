@@ -1,6 +1,5 @@
 package projects.tanks.client.battlefield.models.battle.ctf
 {
-   import alternativa.types.Long;
    import projects.tanks.client.battlefield.types.Vector3d;
    
    public class ClientFlag

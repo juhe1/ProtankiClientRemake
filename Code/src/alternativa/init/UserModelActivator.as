@@ -5,6 +5,11 @@ package alternativa.init
    //import alternativa.osgi.service.display.IDisplay;
    import alternativa.tanks.service.IEntranceClientFacade;
    import alternativa.tanks.service.IEntranceServerFacade;
+   import alternativa.tanks.service.IPasswordParamsService;
+   import alternativa.tanks.service.impl.PasswordParamsService;
+   import alternativa.tanks.service.IExternalEntranceService;
+   import alternativa.tanks.service.impl.ExternalEntranceService;
+   import alternativa.osgi.service.display.IDisplay;
    //import alternativa.tanks.service.IExternalEntranceService;
    //import alternativa.tanks.service.IPasswordParamsService;
    //import alternativa.tanks.service.IRegistrationUXService;
@@ -53,16 +58,16 @@ package alternativa.init
       public function start(param1:OSGi) : void
       {
          _osgi = param1;
-         //param1.registerService(IPasswordParamsService,new PasswordParamsService());
-         //param1.registerService(IExternalEntranceService,new ExternalEntranceService());
+         param1.registerService(IPasswordParamsService,new PasswordParamsService());
+         param1.registerService(IExternalEntranceService,new ExternalEntranceService());
          //param1.registerService(IRegistrationUXService,new RegistrationUXService());
-         //new EntranceContext((param1.getService(IDisplay) as IDisplay).contentUILayer);
+         new EntranceContext((param1.getService(IDisplay) as IDisplay).contentUILayer);
       }
       
       public function stop(param1:OSGi) : void
       {
-         //param1.unregisterService(IPasswordParamsService);
-         //param1.unregisterService(IExternalEntranceService);
+         param1.unregisterService(IPasswordParamsService);
+         param1.unregisterService(IExternalEntranceService);
          //param1.unregisterService(IRegistrationUXService);
       }
    }

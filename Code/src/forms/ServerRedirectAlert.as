@@ -7,7 +7,7 @@ package forms
    public class ServerRedirectAlert extends ServerStopAlert
    {
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
       public function ServerRedirectAlert(param1:int)

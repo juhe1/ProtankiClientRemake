@@ -30,16 +30,16 @@ package alternativa.tanks.view.forms
    public class ChangeEmailAndPasswordForm extends Sprite
    {
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
-      [Inject]
+      [Inject] // added
       public static var passwordParamsService:IPasswordParamsService;
       
-      [Inject]
+      [Inject] // added
       public static var validateService:IValidateService;
       
-      [Inject]
+      [Inject] // added
       public static var loaderWindowService:ILoaderWindowService;
       
       private var windowSize:Point;

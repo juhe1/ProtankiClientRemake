@@ -1,6 +1,5 @@
 package projects.tanks.clients.fp10.libraries.tanksservices.model.listener
 {
-   import alternativa.types.Long;
    import platform.client.fp10.core.model.ObjectLoadListener;
    import platform.client.fp10.core.model.ObjectUnloadListener;
    import projects.tanks.client.tanksservices.model.listener.IUserNotifierModelBase;
@@ -14,10 +13,10 @@ package projects.tanks.clients.fp10.libraries.tanksservices.model.listener
    public class UserNotifierModel extends UserNotifierModelBase implements IUserNotifierModelBase, UserNotifier, ObjectLoadListener, ObjectUnloadListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var userInfoService:IUserInfoService;
 
-      [Inject]
+      [Inject] // added
       public static var userPropertiesService:IUserPropertiesService;
       
       public function UserNotifierModel()

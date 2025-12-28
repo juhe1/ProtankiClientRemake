@@ -59,7 +59,7 @@ package projects.tanks.clients.fp10.libraries.tanksservices.service.friend
          this.newIncomingFriends = new Dictionary();
       }
       
-      private function subscribe(param1:Long, param2:FriendInfoConsumer) : void
+      private function subscribe(param1:String, param2:FriendInfoConsumer) : void
       {
          this.consumers[param1] = param2;
          if(param1 in this.friends)
@@ -68,16 +68,16 @@ package projects.tanks.clients.fp10.libraries.tanksservices.service.friend
          }
       }
       
-      private function unSubscribe(param1:Vector.<Long>) : void
+      private function unSubscribe(param1:Vector.<String>) : void
       {
-         var _loc2_:Long = null;
+         var _loc2_:String = null;
          for each(_loc2_ in param1)
          {
             delete this.consumers[_loc2_];
          }
       }
       
-      public function setFriendState(param1:Long, param2:FriendState) : void
+      public function setFriendState(param1:String, param2:FriendState) : void
       {
          var _loc3_:FriendState = this.getFriendState(param1);
          this.friends[param1] = param2;
@@ -85,10 +85,10 @@ package projects.tanks.clients.fp10.libraries.tanksservices.service.friend
          dispatchEvent(new FriendStateChangeEvent(FriendStateChangeEvent.CHANGE,param1,param2,_loc3_));
       }
       
-      public function getFriendsIdByState(param1:FriendState) : Vector.<Long>
+      public function getFriendsIdByState(param1:FriendState) : Vector.<String>
       {
          var _loc3_:* = undefined;
-         var _loc2_:Vector.<Long> = new Vector.<Long>();
+         var _loc2_:Vector.<String> = new Vector.<String>();
          for(_loc3_ in this.friends)
          {
             if(this.friends[_loc3_] == param1)
@@ -99,7 +99,7 @@ package projects.tanks.clients.fp10.libraries.tanksservices.service.friend
          return _loc2_;
       }
       
-      public function deleteFriend(param1:Long, param2:FriendState) : void
+      public function deleteFriend(param1:String, param2:FriendState) : void
       {
          var _loc3_:FriendState = null;
          if(this.isFriendsInState(param1,param2))
@@ -111,12 +111,12 @@ package projects.tanks.clients.fp10.libraries.tanksservices.service.friend
          }
       }
       
-      public function getConsumer(param1:Long) : FriendInfoConsumer
+      public function getConsumer(param1:String) : FriendInfoConsumer
       {
          return this.consumers[param1];
       }
       
-      private function notifyConsumer(param1:Long, param2:FriendState) : void
+      private function notifyConsumer(param1:String, param2:FriendState) : void
       {
          if(param1 in this.consumers)
          {
@@ -124,7 +124,7 @@ package projects.tanks.clients.fp10.libraries.tanksservices.service.friend
          }
       }
       
-      public function getOrCreateUpdater(param1:Long) : IFriendsInfoLabelUpdater
+      public function getOrCreateUpdater(param1:String) : IFriendsInfoLabelUpdater
       {
          var _loc2_:FriendsInfoLabelUpdater = null;
          this.truncateConsumers.updateLastAccessTime(param1);
@@ -142,12 +142,12 @@ package projects.tanks.clients.fp10.libraries.tanksservices.service.friend
          return _loc2_;
       }
       
-      public function isFriendsInState(param1:Long, param2:FriendState) : Boolean
+      public function isFriendsInState(param1:String, param2:FriendState) : Boolean
       {
          return this.friends[param1] == param2;
       }
       
-      public function getFriendState(param1:Long) : FriendState
+      public function getFriendState(param1:String) : FriendState
       {
          if(param1 in this.friends)
          {
@@ -166,24 +166,24 @@ package projects.tanks.clients.fp10.libraries.tanksservices.service.friend
          return getDictionaryLengthByValue(this.friends,FriendState.INCOMING);
       }
       
-      public function onAddNewAcceptedFriend(param1:Long) : void
+      public function onAddNewAcceptedFriend(param1:String) : void
       {
          this.newAcceptedFriends[param1] = true;
          this.dispatchChangeNewAcceptedFriend(param1);
       }
       
-      public function onRemoveNewAcceptedFriend(param1:Long) : void
+      public function onRemoveNewAcceptedFriend(param1:String) : void
       {
          delete this.newAcceptedFriends[param1];
          this.dispatchChangeNewAcceptedFriend(param1);
       }
       
-      public function removeNewAcceptedFriend(param1:Long) : void
+      public function removeNewAcceptedFriend(param1:String) : void
       {
          dispatchEvent(new NewFriendRemoveEvent(NewFriendRemoveEvent.ACCEPTED,param1));
       }
       
-      public function isNewAcceptedFriend(param1:Long) : Boolean
+      public function isNewAcceptedFriend(param1:String) : Boolean
       {
          return param1 in this.newAcceptedFriends;
       }
@@ -193,29 +193,29 @@ package projects.tanks.clients.fp10.libraries.tanksservices.service.friend
          return getDictionaryLengthByValue(this.newAcceptedFriends);
       }
       
-      private function dispatchChangeNewAcceptedFriend(param1:Long) : void
+      private function dispatchChangeNewAcceptedFriend(param1:String) : void
       {
          dispatchEvent(new NewFriendEvent(NewFriendEvent.ACCEPTED_CHANGE,param1));
       }
       
-      public function onAddNewIncomingFriend(param1:Long) : void
+      public function onAddNewIncomingFriend(param1:String) : void
       {
          this.newIncomingFriends[param1] = true;
          this.dispatchChangeNewIncommingFriend(param1);
       }
       
-      public function onRemoveNewIncomingFriend(param1:Long) : void
+      public function onRemoveNewIncomingFriend(param1:String) : void
       {
          delete this.newIncomingFriends[param1];
          this.dispatchChangeNewIncommingFriend(param1);
       }
       
-      public function removeNewIncomingFriend(param1:Long) : void
+      public function removeNewIncomingFriend(param1:String) : void
       {
          dispatchEvent(new NewFriendRemoveEvent(NewFriendRemoveEvent.INCOMING,param1));
       }
       
-      public function isNewIncomingFriend(param1:Long) : Boolean
+      public function isNewIncomingFriend(param1:String) : Boolean
       {
          return param1 in this.newIncomingFriends;
       }
@@ -225,12 +225,12 @@ package projects.tanks.clients.fp10.libraries.tanksservices.service.friend
          return getDictionaryLengthByValue(this.newIncomingFriends);
       }
       
-      private function dispatchChangeNewIncommingFriend(param1:Long) : void
+      private function dispatchChangeNewIncommingFriend(param1:String) : void
       {
          dispatchEvent(new NewFriendEvent(NewFriendEvent.INCOMING_CHANGE,param1));
       }
       
-      public function isNewFriend(param1:Long) : Boolean
+      public function isNewFriend(param1:String) : Boolean
       {
          return this.isNewAcceptedFriend(param1) || this.isNewIncomingFriend(param1);
       }

@@ -1,6 +1,5 @@
 package projects.tanks.clients.fp10.libraries.tanksservices.service.notifier.battle
 {
-   import alternativa.types.Long;
    import flash.events.EventDispatcher;
    import projects.tanks.clients.fp10.libraries.tanksservices.model.notifier.battle.BattleLinkData;
    

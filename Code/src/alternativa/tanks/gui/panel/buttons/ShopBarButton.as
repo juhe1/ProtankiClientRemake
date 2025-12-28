@@ -1,6 +1,5 @@
 package alternativa.tanks.gui.panel.buttons
 {
-   import alternativa.tanks.gui.shop.components.notification.ShopNotificationIndicator;
    import flash.display.Bitmap;
    
    public class ShopBarButton extends MainPanelOrangeWideButton

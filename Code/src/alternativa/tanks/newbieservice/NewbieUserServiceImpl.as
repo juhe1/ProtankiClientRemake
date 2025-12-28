@@ -5,7 +5,7 @@ package alternativa.tanks.newbieservice
    public class NewbieUserServiceImpl implements NewbieUserService
    {
       
-      [Inject]
+      [Inject] // added
       public static var storageService:IStorageService;
       
       public function NewbieUserServiceImpl()

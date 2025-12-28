@@ -8,7 +8,7 @@ package platform.client.fp10.core.resource
    public class LibraryResourceWrapper extends Resource
    {
       
-      [Inject]
+      [Inject] // added
       public static var uncaughtErrorServerLog:UncaughtErrorServerLog;
       
       private var loader:Loader;

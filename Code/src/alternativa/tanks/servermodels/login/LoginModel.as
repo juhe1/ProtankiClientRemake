@@ -9,7 +9,7 @@ package alternativa.tanks.servermodels.login
    public class LoginModel extends LoginModelBase implements ILogin, ILoginModelBase
    {
       
-      [Inject]
+      [Inject] // added
       public static var entranceClientFacade:IEntranceClientFacade;
       
       public function LoginModel()

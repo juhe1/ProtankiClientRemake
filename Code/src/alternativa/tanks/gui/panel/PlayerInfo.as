@@ -12,7 +12,7 @@ package alternativa.tanks.gui.panel
    public class PlayerInfo extends Sprite
    {
       
-      [Inject]
+      [Inject] // added
       public static var rankService:RankService;
       
       private const normalGlowColor:uint = 1244928;

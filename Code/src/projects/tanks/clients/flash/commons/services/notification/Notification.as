@@ -1,7 +1,6 @@
 package projects.tanks.clients.flash.commons.services.notification
 {
    import alternativa.osgi.service.display.IDisplay;
-   import alternativa.types.Long;
    import controls.TankWindow;
    import controls.TankWindowInner;
    import flash.display.Sprite;
@@ -18,10 +17,10 @@ package projects.tanks.clients.flash.commons.services.notification
    public class Notification extends Sprite implements INotification
    {
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
-      [Inject]
+      [Inject] // added
       public static var notificationSoundService:INotificationSoundService;
       
       protected static const GAP:int = 11;

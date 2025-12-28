@@ -14,10 +14,10 @@ package forms
    public class ServerStopAlert extends Sprite
    {
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
       protected const PADDING:int = 15;

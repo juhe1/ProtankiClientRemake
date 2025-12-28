@@ -32,16 +32,16 @@ package platform.client.fp10.core.resource.types
    public class SWFLibraryResource extends Resource implements ILockableResource
    {
       
-      [Inject]
+      [Inject] // added
       public static var launcherParams:ILauncherParams;
       
-      [Inject]
+      [Inject] // added
       public static var resourceLocalStorage:IResourceLocalStorage;
       
-      [Inject]
+      [Inject] // added
       public static var resourceRegistry:ResourceRegistry;
       
-      [Inject]
+      [Inject] // added
       public static var uncaughtErrorServerLog:UncaughtErrorServerLog;
       
       private static const BASE_FILE_NAME:String = "library";

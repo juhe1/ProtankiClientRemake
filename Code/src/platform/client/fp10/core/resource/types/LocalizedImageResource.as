@@ -6,7 +6,7 @@ package platform.client.fp10.core.resource.types
    public class LocalizedImageResource extends ImageResource
    {
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
       public function LocalizedImageResource(param1:ResourceInfo)

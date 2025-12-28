@@ -106,9 +106,6 @@ package platform.client.fp10.core.resource
    }
 }
 
-import flash.display.DisplayObject;
-import flash.display.DisplayObjectContainer;
-import flash.display.InteractiveObject;
 import flash.display.Loader;
 import flash.events.EventDispatcher;
 

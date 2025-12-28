@@ -8,7 +8,7 @@ package alternativa.tanks.view.bubbles
    public class EntranceBubbleFactory
    {
       
-      [Inject]
+      [Inject] // added
       public static var LocaleService:ILocaleService;
       
       public function EntranceBubbleFactory()

@@ -1,6 +1,5 @@
 package projects.tanks.clients.fp10.libraries.tanksservices.service.user
 {
-   import alternativa.types.Long;
    import flash.events.EventDispatcher;
    import flash.utils.Dictionary;
    import platform.client.fp10.core.type.IGameObject;
@@ -9,16 +8,15 @@ package projects.tanks.clients.fp10.libraries.tanksservices.service.user
    import projects.tanks.clients.fp10.libraries.tanksservices.service.TimeOutTruncateConsumers;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.premium.PremiumService;
    import platform.client.fp10.core.registry.ModelRegistry;
-   import projects.tanks.clients.fp10.libraries.tanksservices.model.listener.UserNotifierModel;
    import projects.tanks.client.tanksservices.model.listener.UserNotifierModelBase;
    
    public class UserInfoService extends EventDispatcher implements IUserInfoService
    {
       
-      [Inject]
+      [Inject] // added
       public static var premiumService:PremiumService;
 
-      [Inject]
+      [Inject] // added
       public static var modelRegistry:ModelRegistry;
       
       private var consumers:Dictionary;

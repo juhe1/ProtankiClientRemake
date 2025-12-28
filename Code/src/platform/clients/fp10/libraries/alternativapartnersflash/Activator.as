@@ -6,17 +6,7 @@ package platform.clients.fp10.libraries.alternativapartnersflash
    import alternativa.osgi.service.logging.LogService;
    import platform.client.fp10.core.registry.ModelRegistry;
    import platform.client.fp10.core.service.address.AddressService;
-   import platform.clients.fp10.libraries.alternativapartners.models.socialnetworkparameters.SocialNetworkParameters;
-   import platform.clients.fp10.libraries.alternativapartners.models.socialnetworkparameters.SocialNetworkParametersAdapt;
-   import platform.clients.fp10.libraries.alternativapartners.models.socialnetworkparameters.SocialNetworkParametersEvents;
-   import platform.clients.fp10.libraries.alternativapartners.models.socialnetworkparameters.SocialNetworkParametersModel;
    import platform.clients.fp10.libraries.alternativapartners.service.impl.PartnerService;
-   import platform.clients.fp10.libraries.alternativapartners.type.IParametersListener;
-   import platform.clients.fp10.libraries.alternativapartners.type.IParametersListenerAdapt;
-   import platform.clients.fp10.libraries.alternativapartners.type.IParametersListenerEvents;
-   import platform.clients.fp10.libraries.alternativapartners.type.IPartner;
-   import platform.clients.fp10.libraries.alternativapartners.type.IPartnerAdapt;
-   import platform.clients.fp10.libraries.alternativapartners.type.IPartnerEvents;
    
    public class Activator implements IBundleActivator
    {

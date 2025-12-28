@@ -5,7 +5,7 @@ package projects.tanks.clients.flash.commons.services.timeunit
    public class TimeUnitService implements ITimeUnitService
    {
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
       public function TimeUnitService()

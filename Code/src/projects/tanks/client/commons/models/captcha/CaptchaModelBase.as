@@ -1,22 +1,12 @@
 package projects.tanks.client.commons.models.captcha
 {
-   import alternativa.osgi.OSGi;
-   import alternativa.protocol.ICodec;
-   import alternativa.protocol.IProtocol;
-   import alternativa.protocol.ProtocolBuffer;
-   import alternativa.protocol.info.CollectionCodecInfo;
-   import alternativa.protocol.info.EnumCodecInfo;
-   import alternativa.protocol.info.TypeCodecInfo;
-   import alternativa.types.Byte;
    import alternativa.types.Long;
-   import platform.client.fp10.core.model.IModel;
    import platform.client.fp10.core.model.impl.Model;
-   import platform.client.fp10.core.registry.ModelRegistry;
-   import scpacker.networking.Network;
+   import platform.client.fp10.core.model.IModel;
    
    public class CaptchaModelBase extends Model
    {
-      protected var server:CaptchaModelServer = new CaptchaModelServer(this);
+      protected var server:CaptchaModelServer = new CaptchaModelServer(IModel(this));
       
       private var client:ICaptchaModelBase = ICaptchaModelBase(this);
       
@@ -29,7 +19,7 @@ package projects.tanks.client.commons.models.captcha
 
       protected function getInitParam() : CaptchaCC
       {
-         return CaptchaCC(initParams[Model.object]);
+         return CaptchaCC(initParams[platform.client.fp10.core.model.impl.Model.currentObject]);
       }
       
       override public function get id() : Long

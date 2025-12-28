@@ -6,7 +6,6 @@ package controls
    import assets.input.*;
    import controls.base.LabelBase;
    import controls.base.TextFieldUtf8Base;
-   import flash.display.BitmapData;
    import flash.display.Graphics;
    import flash.display.Shape;
    import flash.display.Sprite;

@@ -10,7 +10,7 @@ package platform.client.core.general.spaces.loading.dispatcher
       
       private var client:IDispatcherModelBase = IDispatcherModelBase(this);
       
-      private var modelId:Long = Long.getLong(191355032,163351191);
+      static public var modelId:Long = Long.getLong(191355032,163351191);
       
       
       public function DispatcherModelBase()
@@ -20,7 +20,7 @@ package platform.client.core.general.spaces.loading.dispatcher
       
       override public function get id() : Long
       {
-         return this.modelId;
+         return modelId;
       }
    }
 }

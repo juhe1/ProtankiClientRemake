@@ -6,7 +6,7 @@ package platform.client.fp10.core.resource.validation
    public class BatchHashCalculator implements IBatchHashCalculator
    {
       
-      [Inject]
+      [Inject] // added
       public static var launcherParams:ILauncherParams;
       
       private var currentHash:ByteArrayValidationHash;

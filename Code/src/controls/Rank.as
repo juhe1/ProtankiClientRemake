@@ -8,7 +8,7 @@ package controls
       
       private static var _ranks:Array;
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
       public function Rank()

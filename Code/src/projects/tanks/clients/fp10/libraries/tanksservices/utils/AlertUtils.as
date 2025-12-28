@@ -6,7 +6,7 @@ package projects.tanks.clients.fp10.libraries.tanksservices.utils
    public class AlertUtils
    {
       
-      [Inject]
+      [Inject] // added
       public static var fullscreenStateService:FullscreenStateService;
       
       public function AlertUtils()

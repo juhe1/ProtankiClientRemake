@@ -2,28 +2,10 @@ package platform.client.fp10.core.osgi
 {
    import alternativa.osgi.OSGi;
    import alternativa.osgi.bundle.IBundleActivator;
-   import alternativa.osgi.service.display.IDisplay;
    import alternativa.osgi.service.launcherparams.ILauncherParams;
-   import alternativa.osgi.service.logging.LogService;
-   import alternativa.osgi.service.network.INetworkService;
    import alternativa.protocol.IProtocol;
-   import alternativa.types.Long;
    import flash.utils.setTimeout;
-   import platform.client.fp10.core.CoreCommands;
-   import platform.client.fp10.core.logging.serverlog.ServerLogTarget;
-   import platform.client.fp10.core.logging.serverlog.UncaughtErrorServerLog;
-   import platform.client.fp10.core.logging.serverlog.UncaughtErrorServerLogImpl;
-   import platform.client.fp10.core.network.command.ControlCommand;
-   import platform.client.fp10.core.network.command.SpaceCommand;
-   import platform.client.fp10.core.network.connection.ConnectionConnectParameters;
-   import platform.client.fp10.core.network.connection.ConnectionInitializers;
-   import platform.client.fp10.core.network.connection.ControlConnectionSender;
    import platform.client.fp10.core.network.connection.IConnection;
-   import platform.client.fp10.core.network.connection.protection.PrimitiveProtectionContext;
-   import platform.client.fp10.core.protocol.codec.ControlRootCodec;
-   import platform.client.fp10.core.protocol.codec.DateCodec;
-   import platform.client.fp10.core.protocol.codec.GameObjectCodec;
-   import platform.client.fp10.core.protocol.codec.SpaceRootCodec;
    import platform.client.fp10.core.registry.GameTypeRegistry;
    import platform.client.fp10.core.registry.ModelRegistry;
    import platform.client.fp10.core.registry.ResourceRegistry;
@@ -40,10 +22,8 @@ package platform.client.fp10.core.osgi
    import platform.client.fp10.core.resource.ResourceType;
    import platform.client.fp10.core.resource.types.ImageResource;
    import platform.client.fp10.core.resource.types.LocalizedImageResource;
-   import platform.client.fp10.core.resource.types.MultiframeTextureResource;
    import platform.client.fp10.core.resource.types.SWFLibraryResource;
    import platform.client.fp10.core.resource.types.SoundResource;
-   import platform.client.fp10.core.resource.types.TextureResource;
    import platform.client.fp10.core.service.IResourceTimer;
    import platform.client.fp10.core.service.address.AddressService;
    import platform.client.fp10.core.service.address.impl.AddressServiceFakeImpl;
@@ -52,10 +32,6 @@ package platform.client.fp10.core.osgi
    import platform.client.fp10.core.service.errormessage.impl.MessageBoxService;
    import platform.client.fp10.core.service.loadingprogress.ILoadingProgressService;
    import platform.client.fp10.core.service.localstorage.IResourceLocalStorage;
-   import platform.client.fp10.core.service.serverlog.impl.ServerLogPanel;
-   import platform.client.fp10.core.service.transport.ITransportService;
-   import platform.client.fp10.core.service.transport.impl.TransportService;
-   import platform.client.fp10.core.type.IGameObject;
    import platform.client.fp10.core.resource.types.MultiframeImageResource;
    
    public class ClientActivator implements IBundleActivator

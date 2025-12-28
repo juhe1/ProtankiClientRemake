@@ -17,10 +17,10 @@ package alternativa.tanks.view.forms
    public class InviteForm extends Sprite
    {
       
-      [Inject]
+      [Inject] // added
       public static var loaderWindowService:ILoaderWindowService;
       
-      [Inject]
+      [Inject] // added
       public static var modalLoaderService:IModalLoaderService;
       
       private const windowMargin:int = 11;

@@ -12,7 +12,7 @@ package alternativa.tanks.service.impl
    public class CaptchaService extends Actor implements ICaptchaService
    {
       
-      [Inject]
+      [Inject] // added
       public var serverFacade:IEntranceServerFacade;
       
       private var _correctAnswerCallbacks:Dictionary = new Dictionary();

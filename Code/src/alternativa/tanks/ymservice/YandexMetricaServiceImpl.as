@@ -8,7 +8,7 @@ package alternativa.tanks.ymservice
    public class YandexMetricaServiceImpl implements YandexMetricaService
    {
       
-      [Inject]
+      [Inject] // added
       public static var newbieUserService:NewbieUserService;
       
       private static const YM_REACH_GOAL:String = "YMReachGoal";

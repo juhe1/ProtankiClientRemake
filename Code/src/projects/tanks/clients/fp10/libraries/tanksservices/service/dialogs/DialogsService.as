@@ -15,16 +15,16 @@ package projects.tanks.clients.fp10.libraries.tanksservices.service.dialogs
    public class DialogsService implements IDialogsService, OnConnectionClosedServiceListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
-      [Inject]
+      [Inject] // added
       public static var blurService:IBlurService;
       
-      [Inject]
+      [Inject] // added
       public static var dialogWindowsDispatcherService:IDialogWindowsDispatcherService;
       
-      [Inject]
+      [Inject] // added
       public static var loaderWindowService:ILoaderWindowService;
       
       private var dialogs:Vector.<DialogWindow> = new Vector.<DialogWindow>();

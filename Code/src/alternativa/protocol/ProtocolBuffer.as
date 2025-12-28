@@ -1,6 +1,5 @@
 package alternativa.protocol
 {
-   import flash.utils.ByteArray;
    import flash.utils.IDataInput;
    import flash.utils.IDataOutput;
    

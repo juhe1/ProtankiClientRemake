@@ -2,488 +2,58 @@ package projects.tanks.clients.fp10.models.tankspanelmodelflash
 {
    import alternativa.osgi.OSGi;
    import alternativa.osgi.bundle.IBundleActivator;
-   import alternativa.osgi.service.clientlog.IClientLog;
    import alternativa.osgi.service.display.IDisplay;
-   import alternativa.osgi.service.launcherparams.ILauncherParams;
    import alternativa.osgi.service.locale.ILocaleService;
-   import alternativa.tanks.calculators.ExchangeCalculator;
-   import alternativa.tanks.font.services.TanksFontsFormatService;
-   import alternativa.tanks.gui.AntiAddictionWindow;
-   import alternativa.tanks.gui.AvailableItemsAlert;
-   import alternativa.tanks.gui.CongratulationsWindowConfiscate;
-   import alternativa.tanks.gui.CongratulationsWindowPresent;
-   import alternativa.tanks.gui.CongratulationsWindowWithBanner;
-   import alternativa.tanks.gui.EmailBlock;
-   import alternativa.tanks.gui.EmailReminderWindow;
-   import alternativa.tanks.gui.EntranceAlertWindow;
-   import alternativa.tanks.gui.RankUpSupplyBonusAlert;
-   import alternativa.tanks.gui.RepatriateBonusWindow;
-   import alternativa.tanks.gui.RulesUpdateAlert;
-   import alternativa.tanks.gui.ThanksForPurchaseWindow;
-   import alternativa.tanks.gui.alerts.ItemsAlert;
-   import alternativa.tanks.gui.alerts.RankUpBonusAlert;
-   import alternativa.tanks.gui.battle.BattleFinishNotification;
-   import alternativa.tanks.gui.buycrystals.BuyCrystalsAlert;
-   import alternativa.tanks.gui.crystalbutton.CrystalButton;
-   import alternativa.tanks.gui.effects.BlinkEffect;
-   import alternativa.tanks.gui.effects.FlashEffect;
-   import alternativa.tanks.gui.effects.GlowEffect;
    import alternativa.tanks.gui.error.ErrorForm;
    import alternativa.tanks.gui.error.ErrorNotification;
-   import alternativa.tanks.gui.friends.AddRequestView;
-   import alternativa.tanks.gui.friends.FriendsWindow;
-   import alternativa.tanks.gui.friends.battleLink.BattleLink;
-   import alternativa.tanks.gui.friends.battleinvite.BattleInviteNotification;
    import alternativa.tanks.gui.friends.button.friends.NewRequestIndicator;
-   import alternativa.tanks.gui.friends.button.friends.RequestCountIndicator;
-   import alternativa.tanks.gui.friends.list.AcceptedList;
-   import alternativa.tanks.gui.friends.list.ClanMembersList;
-   import alternativa.tanks.gui.friends.list.FriendsList;
-   import alternativa.tanks.gui.friends.list.IncomingList;
-   import alternativa.tanks.gui.friends.list.dataprovider.FriendsDataProvider;
-   import alternativa.tanks.gui.friends.list.refferals.ReferralForm;
-   import alternativa.tanks.gui.friends.list.refferals.ReferralStatHeader;
-   import alternativa.tanks.gui.friends.list.refferals.referalbuttons.LinkReferralButton;
-   import alternativa.tanks.gui.friends.list.refferals.referalbuttons.OkReferralButton;
-   import alternativa.tanks.gui.friends.list.refferals.referalbuttons.VkReferralButton;
-   import alternativa.tanks.gui.friends.list.renderer.ClanMembersListRenderer;
-   import alternativa.tanks.gui.friends.list.renderer.FriendsAcceptedListRenderer;
-   import alternativa.tanks.gui.friends.list.renderer.FriendsIncomingListRenderer;
-   import alternativa.tanks.gui.friends.list.renderer.HeaderAcceptedList;
-   import alternativa.tanks.gui.itemslist.PartsListRenderer;
-   import alternativa.tanks.gui.newbiesabonement.NewbiesAbonementInfoWindow;
    import alternativa.tanks.gui.panel.ButtonBar;
    import alternativa.tanks.gui.panel.MainPanel;
    import alternativa.tanks.gui.panel.PlayerInfo;
-   import alternativa.tanks.gui.panel.StarsCashLabel;
-   import alternativa.tanks.gui.panel.buttons.ClanButton;
-   import alternativa.tanks.gui.panel.buttons.QuestsButton;
-   import alternativa.tanks.gui.payment.controls.BonusLabel;
-   import alternativa.tanks.gui.payment.controls.PremiumLabel;
-   import alternativa.tanks.gui.payment.controls.exchange.ExchangeGroup;
-   import alternativa.tanks.gui.payment.forms.PayModeForm;
-   import alternativa.tanks.gui.payment.forms.TianxiafuForm;
-   import alternativa.tanks.gui.payment.forms.gate2shop.Gate2ShopForm;
-   import alternativa.tanks.gui.payment.forms.leogaming.LeogamingCodeConfirmForm;
-   import alternativa.tanks.gui.payment.forms.leogaming.LeogamingMobileForm;
-   import alternativa.tanks.gui.payment.forms.leogaming.LeogamingPhoneForm;
-   import alternativa.tanks.gui.payment.forms.mobile.PhoneNumberInput;
-   import alternativa.tanks.gui.payment.forms.platbox.PlatBoxForm;
-   import alternativa.tanks.gui.payment.forms.platbox.PlatboxPhoneNumberForm;
-   import alternativa.tanks.gui.payment.forms.qiwi.QiwiPhoneNumberForm;
-   import alternativa.tanks.gui.personaldiscount.PersonalDiscountAlert;
-   import alternativa.tanks.gui.premiumaccount.PremiumAccountWelcomeAlert;
-   import alternativa.tanks.gui.presents.NewPresentsAlert;
-   import alternativa.tanks.gui.selectcountry.SelectCountryAlert;
-   import alternativa.tanks.gui.settings.SettingsTabButtonList;
-   import alternativa.tanks.gui.settings.SettingsWindow;
-   import alternativa.tanks.gui.settings.tabs.SettingsTabView;
-   import alternativa.tanks.gui.settings.tabs.SoundSettingsTab;
-   import alternativa.tanks.gui.settings.tabs.account.AccountSettingsTab;
-   import alternativa.tanks.gui.settings.tabs.control.ControlSettingsTab;
-   import alternativa.tanks.gui.settings.tabs.control.KeyBinding;
-   import alternativa.tanks.gui.settings.tabs.control.KeyBindingsPanel;
-   import alternativa.tanks.gui.settings.tabs.game.GameSettingsTab;
-   import alternativa.tanks.gui.shop.components.notification.ShopNotificationIndicator;
-   import alternativa.tanks.gui.shop.components.window.ShopWindowCountrySelector;
-   import alternativa.tanks.gui.shop.components.window.ShopWindowNavigationBar;
-   import alternativa.tanks.gui.shop.forms.ApproveOneTimePurchaseForm;
-   import alternativa.tanks.gui.shop.forms.SMSForm;
-   import alternativa.tanks.gui.shop.forms.WaitUrlForm;
-   import alternativa.tanks.gui.shop.payment.PayModeChooseView;
-   import alternativa.tanks.gui.shop.payment.PaymentFormOneTimePurchaseView;
-   import alternativa.tanks.gui.shop.payment.PaymentFormView;
-   import alternativa.tanks.gui.shop.payment.promo.PromoCodeActivateForm;
-   import alternativa.tanks.gui.shop.shopitems.GoodsChooseView;
-   import alternativa.tanks.gui.shop.shopitems.item.OtherShopItemButton;
-   import alternativa.tanks.gui.shop.shopitems.item.base.ShopItemButton;
-   import alternativa.tanks.gui.shop.shopitems.item.crystalitem.CrystalPackageButton;
-   import alternativa.tanks.gui.shop.shopitems.item.kits.description.KitPackageDescriptionView;
-   import alternativa.tanks.gui.shop.shopitems.item.licenseclan.LicenseClanButton;
-   import alternativa.tanks.gui.shop.windows.ShopWindow;
-   import alternativa.tanks.gui.shop.windows.bugreport.PaymentBugReportBlock;
-   import alternativa.tanks.gui.socialnetwork.AbstractSNGroupEnteringWindow;
-   import alternativa.tanks.help.DateTimeHelper;
-   import alternativa.tanks.loader.ILoaderWindowService;
-   import alternativa.tanks.loader.IModalLoaderService;
-   import alternativa.tanks.model.abonements.UserAbonementsModel;
-   import alternativa.tanks.model.achievement.AchievementModel;
-   import alternativa.tanks.model.androidapprating.AndroidAppRatingModel;
-   import alternativa.tanks.model.antiaddiction.AntiAddictionAlertModel;
-   import alternativa.tanks.model.antiaddiction.IAntiAddictionAlert;
-   import alternativa.tanks.model.antiaddiction.IAntiAddictionAlertAdapt;
-   import alternativa.tanks.model.antiaddiction.IAntiAddictionAlertEvents;
-   import alternativa.tanks.model.battlepass.BattlePassPackageModel;
-   import alternativa.tanks.model.battlepass.BattlePassToClientModel;
-   import alternativa.tanks.model.battlepass.notifier.BattlePassPurchaseNotifierModel;
    import alternativa.tanks.model.battlepass.notifier.BattlePassPurchaseService;
-   import alternativa.tanks.model.bonus.showing.image.BonusImageShowingModel;
-   import alternativa.tanks.model.bonus.showing.info.BonusInfo;
-   import alternativa.tanks.model.bonus.showing.info.BonusInfoAdapt;
-   import alternativa.tanks.model.bonus.showing.info.BonusInfoEvents;
-   import alternativa.tanks.model.bonus.showing.info.BonusInfoModel;
-   import alternativa.tanks.model.bonus.showing.items.BonusItem;
-   import alternativa.tanks.model.bonus.showing.items.BonusItemAdapt;
-   import alternativa.tanks.model.bonus.showing.items.BonusItemEvents;
-   import alternativa.tanks.model.bonus.showing.items.BonusItemModel;
-   import alternativa.tanks.model.bonus.showing.items.BonusItemsShowingModel;
-   import alternativa.tanks.model.donation.DonationProfileModel;
-   import alternativa.tanks.model.donationalert.DonationAlertModel;
-   import alternativa.tanks.model.donationalert.ThanksForDonationFormService;
-   import alternativa.tanks.model.donationalert.ThanksForDonationFormServiceAdapt;
-   import alternativa.tanks.model.donationalert.ThanksForDonationFormServiceEvents;
-   import alternativa.tanks.model.emailreminder.EmailReminderModel;
-   import alternativa.tanks.model.emailreminder.EmailReminderService;
-   import alternativa.tanks.model.emailreminder.EmailReminderServiceAdapt;
-   import alternativa.tanks.model.emailreminder.EmailReminderServiceEvents;
-   import alternativa.tanks.model.entrancealert.EntranceAlertModel;
-   import alternativa.tanks.model.friends.battleinvite.BattleInviteModel;
-   import alternativa.tanks.model.friends.loader.FriendsLoaderModel;
-   import alternativa.tanks.model.garage.availableitems.AvailableItemsModel;
-   import alternativa.tanks.model.garage.availableupgrades.AvailableUpgradesModel;
-   import alternativa.tanks.model.garage.rankupsupplybonus.RankUpSupplyBonusModel;
-   import alternativa.tanks.model.garage.resistance.ModuleResistances;
-   import alternativa.tanks.model.garage.resistance.ModuleResistancesAdapt;
-   import alternativa.tanks.model.garage.resistance.ModuleResistancesEvents;
-   import alternativa.tanks.model.garage.resistance.ResistancesListModel;
-   import alternativa.tanks.model.garage.upgradingitems.UpgradingItemsModel;
-   import alternativa.tanks.model.kitoffer.KitOfferDialog;
-   import alternativa.tanks.model.kitoffer.KitOfferModel;
-   import alternativa.tanks.model.mobilequest.MobileQuestModel;
-   import alternativa.tanks.model.mobilequest.MobileQuestProfileModel;
-   import alternativa.tanks.model.newbiesabonement.NewbiesAbonementShowInfoModel;
-   import alternativa.tanks.model.panel.PanelModel;
-   import alternativa.tanks.model.panel.payment.PaymentButtonModel;
-   import alternativa.tanks.model.panel.payment.load.PaymentLoaderModel;
-   import alternativa.tanks.model.payment.CrystalsPaymentModel;
-   import alternativa.tanks.model.payment.PaymentModel;
-   import alternativa.tanks.model.payment.androidspecialoffer.AndroidBannerModel;
-   import alternativa.tanks.model.payment.androidspecialoffer.AndroidSpecialOfferModel;
-   import alternativa.tanks.model.payment.androidspecialoffer.ShopItemLoaderForAndroidModel;
-   import alternativa.tanks.model.payment.category.PayFullDescription;
-   import alternativa.tanks.model.payment.category.PayFullDescriptionAdapt;
-   import alternativa.tanks.model.payment.category.PayFullDescriptionEvents;
-   import alternativa.tanks.model.payment.category.PayModeView;
-   import alternativa.tanks.model.payment.category.PayModeViewAdapt;
-   import alternativa.tanks.model.payment.category.PayModeViewEvents;
-   import alternativa.tanks.model.payment.modes.CrystalsOnlyPaymentMode;
-   import alternativa.tanks.model.payment.modes.CrystalsOnlyPaymentModeAdapt;
-   import alternativa.tanks.model.payment.modes.CrystalsOnlyPaymentModeEvents;
-   import alternativa.tanks.model.payment.modes.PayMode;
-   import alternativa.tanks.model.payment.modes.PayModeAdapt;
-   import alternativa.tanks.model.payment.modes.PayModeDescription;
-   import alternativa.tanks.model.payment.modes.PayModeDescriptionAdapt;
-   import alternativa.tanks.model.payment.modes.PayModeDescriptionEvents;
-   import alternativa.tanks.model.payment.modes.PayModeEvents;
-   import alternativa.tanks.model.payment.modes.PayModeManualDescription;
-   import alternativa.tanks.model.payment.modes.PayModeManualDescriptionAdapt;
-   import alternativa.tanks.model.payment.modes.PayModeManualDescriptionEvents;
-   import alternativa.tanks.model.payment.modes.PayUrl;
-   import alternativa.tanks.model.payment.modes.PayUrlAdapt;
-   import alternativa.tanks.model.payment.modes.PayUrlEvents;
-   import alternativa.tanks.model.payment.modes.PaymentModeModel;
-   import alternativa.tanks.model.payment.modes.alipay.AlipayPaymentModel;
-   import alternativa.tanks.model.payment.modes.asyncurl.AsyncUrlPayMode;
-   import alternativa.tanks.model.payment.modes.asyncurl.AsyncUrlPayModeAdapt;
-   import alternativa.tanks.model.payment.modes.asyncurl.AsyncUrlPayModeEvents;
-   import alternativa.tanks.model.payment.modes.asyncurl.AsyncUrlPayModel;
-   import alternativa.tanks.model.payment.modes.braintree.BraintreePayment;
-   import alternativa.tanks.model.payment.modes.braintree.BraintreePaymentAdapt;
-   import alternativa.tanks.model.payment.modes.braintree.BraintreePaymentEvents;
-   import alternativa.tanks.model.payment.modes.braintree.BraintreePaymentModel;
-   import alternativa.tanks.model.payment.modes.description.PayModeBottomDescription;
-   import alternativa.tanks.model.payment.modes.description.PayModeBottomDescriptionAdapt;
-   import alternativa.tanks.model.payment.modes.description.PayModeBottomDescriptionEvents;
-   import alternativa.tanks.model.payment.modes.description.PayModeBottomDescriptionInternal;
-   import alternativa.tanks.model.payment.modes.description.PayModeBottomDescriptionInternalAdapt;
-   import alternativa.tanks.model.payment.modes.description.PayModeBottomDescriptionInternalEvents;
-   import alternativa.tanks.model.payment.modes.description.PayModeBottomDescriptionModel;
-   import alternativa.tanks.model.payment.modes.errors.ErrorDescription;
-   import alternativa.tanks.model.payment.modes.errors.ErrorDescriptionAdapt;
-   import alternativa.tanks.model.payment.modes.errors.ErrorDescriptionEvents;
-   import alternativa.tanks.model.payment.modes.errors.ErrorsDescriptionModel;
-   import alternativa.tanks.model.payment.modes.gate2shop.Gate2ShopPayment;
-   import alternativa.tanks.model.payment.modes.gate2shop.Gate2ShopPaymentAdapt;
-   import alternativa.tanks.model.payment.modes.gate2shop.Gate2ShopPaymentEvents;
-   import alternativa.tanks.model.payment.modes.gate2shop.Gate2ShopPaymentModel;
-   import alternativa.tanks.model.payment.modes.leogaming.LeogamingPaymentMobileModel;
-   import alternativa.tanks.model.payment.modes.leogaming.LeogamingPaymentMode;
-   import alternativa.tanks.model.payment.modes.leogaming.LeogamingPaymentModeAdapt;
-   import alternativa.tanks.model.payment.modes.leogaming.LeogamingPaymentModeEvents;
-   import alternativa.tanks.model.payment.modes.onlyurl.OnlyUrlPayMode;
-   import alternativa.tanks.model.payment.modes.onlyurl.OnlyUrlPayModeAdapt;
-   import alternativa.tanks.model.payment.modes.onlyurl.OnlyUrlPayModeEvents;
-   import alternativa.tanks.model.payment.modes.onlyurl.OnlyUrlPaymentModel;
-   import alternativa.tanks.model.payment.modes.paygarden.PayGardenPayment;
-   import alternativa.tanks.model.payment.modes.paygarden.PayGardenPaymentAdapt;
-   import alternativa.tanks.model.payment.modes.paygarden.PayGardenPaymentEvents;
-   import alternativa.tanks.model.payment.modes.paygarden.PayGardenPaymentModel;
-   import alternativa.tanks.model.payment.modes.paypal.PayPalPayment;
-   import alternativa.tanks.model.payment.modes.paypal.PayPalPaymentAdapt;
-   import alternativa.tanks.model.payment.modes.paypal.PayPalPaymentEvents;
-   import alternativa.tanks.model.payment.modes.paypal.PayPalPaymentModel;
-   import alternativa.tanks.model.payment.modes.platbox.PlatBoxPaymentModel;
-   import alternativa.tanks.model.payment.modes.pricerange.PriceRange;
-   import alternativa.tanks.model.payment.modes.pricerange.PriceRangeAdapt;
-   import alternativa.tanks.model.payment.modes.pricerange.PriceRangeEvents;
-   import alternativa.tanks.model.payment.modes.pricerange.PriceRangeModel;
-   import alternativa.tanks.model.payment.modes.qiwi.QiwiPayment;
-   import alternativa.tanks.model.payment.modes.qiwi.QiwiPaymentAdapt;
-   import alternativa.tanks.model.payment.modes.qiwi.QiwiPaymentEvents;
-   import alternativa.tanks.model.payment.modes.qiwi.QiwiPaymentModel;
-   import alternativa.tanks.model.payment.modes.sms.SMSPayMode;
-   import alternativa.tanks.model.payment.modes.sms.SMSPayModeAdapt;
-   import alternativa.tanks.model.payment.modes.sms.SMSPayModeEvents;
-   import alternativa.tanks.model.payment.modes.sms.SMSPayModeModel;
-   import alternativa.tanks.model.payment.modes.terminal.TerminalPayMode;
-   import alternativa.tanks.model.payment.modes.terminal.TerminalPayModeAdapt;
-   import alternativa.tanks.model.payment.modes.terminal.TerminalPayModeEvents;
-   import alternativa.tanks.model.payment.modes.terminal.TerminalPaymentModel;
-   import alternativa.tanks.model.payment.modes.tianxiafu.TianxiafuMode;
-   import alternativa.tanks.model.payment.modes.tianxiafu.TianxiafuModeAdapt;
-   import alternativa.tanks.model.payment.modes.tianxiafu.TianxiafuModeEvents;
-   import alternativa.tanks.model.payment.modes.tianxiafu.TianxiafuModel;
-   import alternativa.tanks.model.payment.modes.yandex.GoToUrlPaymentModel;
-   import alternativa.tanks.model.payment.paymentstate.PaymentWindowService;
-   import alternativa.tanks.model.payment.paymentstate.PaymentWindowServiceImpl;
-   import alternativa.tanks.model.payment.saveprocessed.ProcessedPaymentService;
-   import alternativa.tanks.model.payment.saveprocessed.ProcessedPaymentServiceImp;
-   import alternativa.tanks.model.payment.shop.ShopItemDetailsView;
-   import alternativa.tanks.model.payment.shop.ShopItemDetailsViewAdapt;
-   import alternativa.tanks.model.payment.shop.ShopItemDetailsViewEvents;
-   import alternativa.tanks.model.payment.shop.ShopItemView;
-   import alternativa.tanks.model.payment.shop.ShopItemViewAdapt;
-   import alternativa.tanks.model.payment.shop.ShopItemViewEvents;
-   import alternativa.tanks.model.payment.shop.category.ShopCategory;
-   import alternativa.tanks.model.payment.shop.category.ShopCategoryAdapt;
-   import alternativa.tanks.model.payment.shop.category.ShopCategoryEvents;
-   import alternativa.tanks.model.payment.shop.category.ShopCategoryModel;
-   import alternativa.tanks.model.payment.shop.crystal.CrystalPackage;
-   import alternativa.tanks.model.payment.shop.crystal.CrystalPackageAdapt;
-   import alternativa.tanks.model.payment.shop.crystal.CrystalPackageEvents;
-   import alternativa.tanks.model.payment.shop.crystal.CrystalPackageModel;
-   import alternativa.tanks.model.payment.shop.description.ShopItemAdditionalDescription;
-   import alternativa.tanks.model.payment.shop.description.ShopItemAdditionalDescriptionAdapt;
-   import alternativa.tanks.model.payment.shop.description.ShopItemAdditionalDescriptionEvents;
-   import alternativa.tanks.model.payment.shop.description.ShopItemAdditionalDescriptionModel;
-   import alternativa.tanks.model.payment.shop.discount.ShopDiscount;
-   import alternativa.tanks.model.payment.shop.discount.ShopDiscountAdapt;
-   import alternativa.tanks.model.payment.shop.discount.ShopDiscountEvents;
-   import alternativa.tanks.model.payment.shop.discount.ShopDiscountModel;
-   import alternativa.tanks.model.payment.shop.emailrequired.EmailRequiredModel;
-   import alternativa.tanks.model.payment.shop.emailrequired.ShopItemEmailRequired;
-   import alternativa.tanks.model.payment.shop.emailrequired.ShopItemEmailRequiredAdapt;
-   import alternativa.tanks.model.payment.shop.emailrequired.ShopItemEmailRequiredEvents;
-   import alternativa.tanks.model.payment.shop.featuring.ShopItemFeaturing;
-   import alternativa.tanks.model.payment.shop.featuring.ShopItemFeaturingAdapt;
-   import alternativa.tanks.model.payment.shop.featuring.ShopItemFeaturingEvents;
-   import alternativa.tanks.model.payment.shop.featuring.ShopItemFeaturingModel;
-   import alternativa.tanks.model.payment.shop.goldbox.GoldBoxPackage;
-   import alternativa.tanks.model.payment.shop.goldbox.GoldBoxPackageAdapt;
-   import alternativa.tanks.model.payment.shop.goldbox.GoldBoxPackageEvents;
-   import alternativa.tanks.model.payment.shop.goldbox.GoldBoxPackageModel;
-   import alternativa.tanks.model.payment.shop.indemnity.Indemnity;
-   import alternativa.tanks.model.payment.shop.indemnity.IndemnityAdapt;
-   import alternativa.tanks.model.payment.shop.indemnity.IndemnityEvents;
-   import alternativa.tanks.model.payment.shop.indemnity.IndemnityModel;
-   import alternativa.tanks.model.payment.shop.item.ShopItem;
-   import alternativa.tanks.model.payment.shop.item.ShopItemAdapt;
-   import alternativa.tanks.model.payment.shop.item.ShopItemEvents;
-   import alternativa.tanks.model.payment.shop.item.ShopItemModel;
-   import alternativa.tanks.model.payment.shop.itemcategory.ShopItemCategory;
-   import alternativa.tanks.model.payment.shop.itemcategory.ShopItemCategoryAdapt;
-   import alternativa.tanks.model.payment.shop.itemcategory.ShopItemCategoryEvents;
-   import alternativa.tanks.model.payment.shop.itemcategory.ShopItemCategoryModel;
-   import alternativa.tanks.model.payment.shop.kit.KitPackage;
-   import alternativa.tanks.model.payment.shop.kit.KitPackageAdapt;
-   import alternativa.tanks.model.payment.shop.kit.KitPackageEvents;
-   import alternativa.tanks.model.payment.shop.kit.KitPackageModel;
-   import alternativa.tanks.model.payment.shop.kit.view.KitPackageViewModel;
-   import alternativa.tanks.model.payment.shop.kitviewresource.KitViewButtonWithPriceModel;
-   import alternativa.tanks.model.payment.shop.kitviewresource.KitViewResource;
-   import alternativa.tanks.model.payment.shop.kitviewresource.KitViewResourceAdapt;
-   import alternativa.tanks.model.payment.shop.kitviewresource.KitViewResourceEvents;
-   import alternativa.tanks.model.payment.shop.kitviewresource.KitViewResourceModel;
-   import alternativa.tanks.model.payment.shop.kitviewresource.localized.KitViewResourceLocalizedModel;
-   import alternativa.tanks.model.payment.shop.licenseclan.LicenseClanShopItemModel;
-   import alternativa.tanks.model.payment.shop.lootbox.LootBoxPackage;
-   import alternativa.tanks.model.payment.shop.lootbox.LootBoxPackageAdapt;
-   import alternativa.tanks.model.payment.shop.lootbox.LootBoxPackageEvents;
-   import alternativa.tanks.model.payment.shop.lootbox.LootBoxPackageModel;
-   import alternativa.tanks.model.payment.shop.lootboxandpaint.LootboxAndPaintModel;
-   import alternativa.tanks.model.payment.shop.notification.ShopNotifierModel;
-   import alternativa.tanks.model.payment.shop.notification.service.ShopNotifierService;
-   import alternativa.tanks.model.payment.shop.onetimepurchase.EventOneTimePurchaseModel;
-   import alternativa.tanks.model.payment.shop.onetimepurchase.ShopItemOneTimePurchase;
-   import alternativa.tanks.model.payment.shop.onetimepurchase.ShopItemOneTimePurchaseAdapt;
-   import alternativa.tanks.model.payment.shop.onetimepurchase.ShopItemOneTimePurchaseEvents;
-   import alternativa.tanks.model.payment.shop.onetimepurchase.ShopItemOneTimePurchaseModel;
-   import alternativa.tanks.model.payment.shop.paint.PaintPackage;
-   import alternativa.tanks.model.payment.shop.paint.PaintPackageAdapt;
-   import alternativa.tanks.model.payment.shop.paint.PaintPackageEvents;
-   import alternativa.tanks.model.payment.shop.paint.PaintPackageModel;
-   import alternativa.tanks.model.payment.shop.premium.PremiumPackage;
-   import alternativa.tanks.model.payment.shop.premium.PremiumPackageAdapt;
-   import alternativa.tanks.model.payment.shop.premium.PremiumPackageEvents;
-   import alternativa.tanks.model.payment.shop.premium.PremiumPackageModel;
-   import alternativa.tanks.model.payment.shop.quantityrestriction.QuantityRestriction;
-   import alternativa.tanks.model.payment.shop.quantityrestriction.QuantityRestrictionAdapt;
-   import alternativa.tanks.model.payment.shop.quantityrestriction.QuantityRestrictionEvents;
-   import alternativa.tanks.model.payment.shop.quantityrestriction.QuantityRestrictionModel;
-   import alternativa.tanks.model.payment.shop.renameshopitem.RenameShopItemModel;
-   import alternativa.tanks.model.payment.shop.serverlayoutkit.KitBundleViewModel;
-   import alternativa.tanks.model.payment.shop.shopabonement.ActiveShopAbonementsModel;
-   import alternativa.tanks.model.payment.shop.shopabonement.ShopAbonements;
-   import alternativa.tanks.model.payment.shop.shopabonement.ShopAbonementsAdapt;
-   import alternativa.tanks.model.payment.shop.shopabonement.ShopAbonementsEvents;
-   import alternativa.tanks.model.payment.shop.specialkit.RestrictionByPayModeModel;
-   import alternativa.tanks.model.payment.shop.specialkit.SinglePayMode;
-   import alternativa.tanks.model.payment.shop.specialkit.SinglePayModeAdapt;
-   import alternativa.tanks.model.payment.shop.specialkit.SinglePayModeEvents;
-   import alternativa.tanks.model.payment.shop.specialkit.SpecialKitPackage;
-   import alternativa.tanks.model.payment.shop.specialkit.SpecialKitPackageAdapt;
-   import alternativa.tanks.model.payment.shop.specialkit.SpecialKitPackageEvents;
-   import alternativa.tanks.model.payment.shop.specialkit.SpecialKitPackageModel;
-   import alternativa.tanks.model.payment.shop.specialkit.view.NewbieKitViewModel;
-   import alternativa.tanks.model.payment.shop.specialkit.view.PayPalKitView;
-   import alternativa.tanks.model.payment.shop.specialkit.view.PayPalKitViewAdapt;
-   import alternativa.tanks.model.payment.shop.specialkit.view.PayPalKitViewEvents;
-   import alternativa.tanks.model.payment.shop.specialkit.view.PayPalKitViewModel;
-   import alternativa.tanks.model.payment.shop.specialkit.view.SingleItemKitViewModel;
-   import alternativa.tanks.model.personaldiscount.PersonalDiscountModel;
-   import alternativa.tanks.model.premiumaccount.alert.PremiumAccountAlertModel;
-   import alternativa.tanks.model.premiumaccount.notification.PremiumCompleteNotification;
-   import alternativa.tanks.model.presents.NewPresentsShowingModel;
-   import alternativa.tanks.model.presents.PresentSettingsModel;
-   import alternativa.tanks.model.promo.ShopPromoCode;
-   import alternativa.tanks.model.promo.ShopPromoCodeAdapt;
-   import alternativa.tanks.model.promo.ShopPromoCodeEvents;
-   import alternativa.tanks.model.promo.ShopPromoCodeModel;
-   import alternativa.tanks.model.push.FirebasePushNotificationPanelUserProfileModel;
-   import alternativa.tanks.model.quest.challenge.ChallengesViewService;
-   import alternativa.tanks.model.quest.challenge.gui.ChallengesProgressView;
-   import alternativa.tanks.model.quest.challenge.gui.ChallengesTab;
-   import alternativa.tanks.model.quest.challenge.gui.ChallengesView;
-   import alternativa.tanks.model.quest.challenge.gui.TierNumberView;
-   import alternativa.tanks.model.quest.challenge.gui.TierRenderer;
-   import alternativa.tanks.model.quest.challenge.rewarding.ChallengesRewardingModel;
-   import alternativa.tanks.model.quest.challenge.rewarding.ChallengesRewardingUserModel;
-   import alternativa.tanks.model.quest.challenge.stars.StarsInfoModel;
-   import alternativa.tanks.model.quest.challenge.stars.StarsInfoService;
-   import alternativa.tanks.model.quest.common.MissionsWindowsService;
-   import alternativa.tanks.model.quest.common.gui.CommonQuestTab;
-   import alternativa.tanks.model.quest.common.gui.window.QuestItemViewInfoPanel;
-   import alternativa.tanks.model.quest.common.gui.window.QuestWindow;
-   import alternativa.tanks.model.quest.common.gui.window.buttons.DailyQuestChangeButton;
-   import alternativa.tanks.model.quest.common.gui.window.buttons.DailyQuestDisabledPrizeButton;
-   import alternativa.tanks.model.quest.common.gui.window.buttons.QuestGetPrizeButton;
-   import alternativa.tanks.model.quest.common.gui.window.navigatepanel.QuestTabButton;
-   import alternativa.tanks.model.quest.common.gui.window.navigatepanel.QuestTabButtonsList;
-   import alternativa.tanks.model.quest.common.notification.QuestNotifierModel;
-   import alternativa.tanks.model.quest.common.notification.QuestNotifierService;
-   import alternativa.tanks.model.quest.daily.DailyQuestShowingModel;
-   import alternativa.tanks.model.quest.daily.DailyQuestsService;
-   import alternativa.tanks.model.quest.daily.gui.DailyQuestItemView;
-   import alternativa.tanks.model.quest.daily.gui.DailyQuestTab;
-   import alternativa.tanks.model.quest.weekly.WeeklyQuestShowingModel;
-   import alternativa.tanks.model.quest.weekly.WeeklyQuestsService;
-   import alternativa.tanks.model.quest.weekly.gui.WeeklyQuestTab;
-   import alternativa.tanks.model.rankupbonus.RankUpBonusAlertModel;
-   import alternativa.tanks.model.referrals.ReferralsModel;
-   import alternativa.tanks.model.referrals.notifier.NewReferralsNotifierModel;
-   import alternativa.tanks.model.rulesupdate.RulesUpdateShowingModel;
-   import alternativa.tanks.model.settings.SettingsModel;
-   import alternativa.tanks.model.socialnetwork.SocialNetworkPanelModel;
-   import alternativa.tanks.model.socialnetwork.notification.SNGroupReminderModel;
-   import alternativa.tanks.model.tutorialhints.TutorialHintsModel;
-   import alternativa.tanks.model.usercountry.UserCountryModel;
-   import alternativa.tanks.model.useremailandpassword.IUserEmailAndPassword;
-   import alternativa.tanks.model.useremailandpassword.IUserEmailAndPasswordAdapt;
-   import alternativa.tanks.model.useremailandpassword.IUserEmailAndPasswordEvents;
-   import alternativa.tanks.model.useremailandpassword.PasswordService;
-   import alternativa.tanks.model.useremailandpassword.PasswordServiceAdapt;
-   import alternativa.tanks.model.useremailandpassword.PasswordServiceEvents;
-   import alternativa.tanks.model.useremailandpassword.UserEmailAndPasswordModel;
-   import alternativa.tanks.model.userproperties.IUserProperties;
-   import alternativa.tanks.model.userproperties.IUserPropertiesAdapt;
-   import alternativa.tanks.model.userproperties.IUserPropertiesEvents;
-   import alternativa.tanks.model.userproperties.UserPropertiesModel;
-   import alternativa.tanks.model.userscounter.UsersCounterModel;
-   import alternativa.tanks.model.videoadvertisement.VideoAdsBattleResultModel;
-   import alternativa.tanks.model.videoadvertisement.VideoAdsModel;
-   import alternativa.tanks.newbieservice.NewbieUserService;
-   import alternativa.tanks.service.achievement.AchievementService;
-   import alternativa.tanks.service.achievement.IAchievementService;
-   import alternativa.tanks.service.battlelinkactivator.BattleLinkActivatorService;
-   import alternativa.tanks.service.clan.ClanFriendsService;
-   import alternativa.tanks.service.clan.ClanPanelNotificationService;
-   import alternativa.tanks.service.country.CountryService;
-   import alternativa.tanks.service.fps.FPSService;
-   import alternativa.tanks.service.fps.FPSServiceImpl;
-   import alternativa.tanks.service.logging.UserChangeGameScreenServiceImpl;
-   import alternativa.tanks.service.money.IMoneyService;
-   import alternativa.tanks.service.money.MoneyService;
-   import alternativa.tanks.service.notificationcategories.INotificationGarageCategoriesService;
-   import alternativa.tanks.service.notificationcategories.NotificationGarageCategoriesService;
-   import alternativa.tanks.service.panel.IPanelView;
    import alternativa.tanks.service.panel.PanelView;
-   import alternativa.tanks.service.payment.IPaymentPackagesService;
-   import alternativa.tanks.service.payment.IPaymentService;
-   import alternativa.tanks.service.payment.PaymentService;
-   import alternativa.tanks.service.payment.display.PaymentDisplayServiceImpl;
-   import alternativa.tanks.service.paymentcomplete.PaymentCompleteService;
-   import alternativa.tanks.service.referrals.ReferralsService;
-   import alternativa.tanks.service.referrals.buttonhelper.ReferralsButtonHelperService;
-   import alternativa.tanks.service.referrals.buttonhelper.ReferralsButtonHelperServiceImpl;
    import alternativa.tanks.service.referrals.notification.NewReferralsNotifierService;
-   import alternativa.tanks.service.settings.ISettingsService;
-   import alternativa.tanks.service.settings.SettingsService;
-   import alternativa.tanks.service.settings.keybinding.KeyCodesConverter;
-   import alternativa.tanks.service.settings.keybinding.KeysBindingService;
-   import alternativa.tanks.service.socialnetwork.ISocialNetworkPanelService;
-   import alternativa.tanks.service.socialnetwork.vk.SNFriendsService;
-   import alternativa.tanks.service.socialnetwork.vk.SNFriendsServiceImpl;
-   import alternativa.tanks.service.upgradingitems.UpgradingItemsService;
-   import alternativa.tanks.service.upgradingitems.UpgradingItemsServiceImpl;
-   import alternativa.tanks.tracker.ITrackerService;
-   import alternativa.tanks.ymservice.YandexMetricaService;
    import platform.client.fp10.core.registry.ModelRegistry;
    import platform.client.fp10.core.service.address.AddressService;
    import platform.clients.fp10.libraries.alternativapartners.service.IPartnerService;
    import projects.tanks.clients.flash.commons.models.challenge.ChallengeInfoService;
-   import projects.tanks.clients.flash.commons.services.notification.INotificationService;
-   import projects.tanks.clients.flash.commons.services.notification.sound.INotificationSoundService;
    import projects.tanks.clients.flash.commons.services.payment.PaymentDisplayService;
-   import projects.tanks.clients.flash.commons.services.timeunit.ITimeUnitService;
-   import projects.tanks.clients.flash.commons.services.validate.IValidateService;
-   import projects.tanks.clients.fp10.libraries.tanksservices.model.uidcheck.UidCheckService;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.alertservices.IAlertService;
-   import projects.tanks.clients.fp10.libraries.tanksservices.service.battle.IBattleInfoService;
-   import projects.tanks.clients.fp10.libraries.tanksservices.service.battle.activator.IBattleLinkActivatorService;
-   import projects.tanks.clients.fp10.libraries.tanksservices.service.blur.IBlurService;
-   import projects.tanks.clients.fp10.libraries.tanksservices.service.clan.ClanUserInfoService;
-   import projects.tanks.clients.fp10.libraries.tanksservices.service.dialogs.IDialogsService;
-   import projects.tanks.clients.fp10.libraries.tanksservices.service.dialogwindowdispatcher.IDialogWindowsDispatcherService;
-   import projects.tanks.clients.fp10.libraries.tanksservices.service.friend.IFriendActionService;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.friend.IFriendInfoService;
-   import projects.tanks.clients.fp10.libraries.tanksservices.service.friend.battleinvite.IBattleInviteService;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.fullscreen.FullscreenService;
-   import projects.tanks.clients.fp10.libraries.tanksservices.service.fullscreen.FullscreenStateService;
-   import projects.tanks.clients.fp10.libraries.tanksservices.service.helper.IHelpService;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.layout.ILobbyLayoutService;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.logging.gamescreen.UserChangeGameScreenService;
-   import projects.tanks.clients.fp10.libraries.tanksservices.service.logging.paymentactions.UserPaymentActionsService;
-   import projects.tanks.clients.fp10.libraries.tanksservices.service.notifier.battle.IBattleNotifierService;
-   import projects.tanks.clients.fp10.libraries.tanksservices.service.notifier.online.IOnlineNotifierService;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.premium.PremiumService;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.rank.RankService;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.reconnect.ReconnectService;
-   import projects.tanks.clients.fp10.libraries.tanksservices.service.servername.ServerNumberToLocaleServerService;
-   import projects.tanks.clients.fp10.libraries.tanksservices.service.storage.IStorageService;
-   import projects.tanks.clients.fp10.libraries.tanksservices.service.user.IUserInfoService;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.userproperties.IUserPropertiesService;
    import services.buttonbar.IButtonBarService;
-   import services.contextmenu.IContextMenuService;
+   import alternativa.tanks.model.userproperties.UserPropertiesModel;
+   import alternativa.tanks.model.panel.PanelModel;
+   import alternativa.tanks.gui.CongratulationsWindowPresent;
+   import alternativa.tanks.newbieservice.NewbieUserService;
+   import alternativa.tanks.ymservice.YandexMetricaService;
+   import alternativa.tanks.help.DateTimeHelper;
+   import alternativa.tanks.service.achievement.IAchievementService;
+   import projects.tanks.clients.fp10.libraries.tanksservices.service.battle.IBattleInfoService;
+   import projects.tanks.clients.fp10.libraries.tanksservices.service.dialogwindowdispatcher.IDialogWindowsDispatcherService;
+   import projects.tanks.clients.fp10.libraries.tanksservices.service.fullscreen.FullscreenStateService;
+   import projects.tanks.clients.fp10.libraries.tanksservices.service.helper.IHelpService;
+   import alternativa.tanks.service.settings.keybinding.KeysBindingService;
+   import alternativa.tanks.service.panel.IPanelView;
+   import alternativa.tanks.service.payment.IPaymentService;
+   import alternativa.tanks.tracker.ITrackerService;
+   import projects.tanks.clients.fp10.libraries.tanksservices.service.user.IUserInfoService;
+   import alternativa.tanks.service.money.IMoneyService;
+   import alternativa.tanks.service.achievement.AchievementService;
+   import alternativa.tanks.service.fps.FPSServiceImpl;
+   import alternativa.tanks.service.money.MoneyService;
+   import alternativa.tanks.service.payment.PaymentService;
+   import alternativa.tanks.gui.dailyquests.DailyQuestChangesIndicator;
+   import alternativa.tanks.service.dailyquest.DailyQuestNotifierService;
+   import alternativa.tanks.gui.buycrystals.BuyCrystalsAlert;
+   import alternativa.tanks.service.settings.keybinding.KeyCodesConverter;
+   import alternativa.tanks.service.logging.UserChangeGameScreenServiceImpl;
    
    public class Activator implements IBundleActivator
    {
@@ -501,6 +71,86 @@ package projects.tanks.clients.fp10.models.tankspanelmodelflash
          var modelRegisterAdapt:ModelRegistry;
          var _osgi:OSGi = param1;
          osgi = _osgi;
+
+         // 2017 Daily Quests injections
+         osgi.injectService(DailyQuestNotifierService,function(param1:Object):void
+         {
+            DailyQuestChangesIndicator.dailyQuestInfoService = DailyQuestNotifierService(param1);
+         },function():DailyQuestNotifierService
+         {
+            return DailyQuestChangesIndicator.dailyQuestInfoService;
+         });
+         //osgi.injectService(ILocaleService,function(param1:Object):void
+         //{
+         //   DailyQuestEmptyItemView.localeService = ILocaleService(param1);
+         //},function():ILocaleService
+         //{
+         //   return DailyQuestEmptyItemView.localeService;
+         //});
+         //osgi.injectService(ILocaleService,function(param1:Object):void
+         //{
+         //   QuestWindow.localeService = ILocaleService(param1);
+         //},function():ILocaleService
+         //{
+         //   return QuestWindow.localeService;
+         //});
+         //osgi.injectService(IMoneyService,function(param1:Object):void
+         //{
+         //   QuestWindow.moneyService = IMoneyService(param1);
+         //},function():IMoneyService
+         //{
+         //   return QuestWindow.moneyService;
+         //});
+         //osgi.injectService(DailyQuestNotifierService,function(param1:Object):void
+         //{
+         //   QuestWindow.dailyQuestNotifierService = DailyQuestNotifierService(param1);
+         //},function():DailyQuestNotifierService
+         //{
+         //   return QuestWindow.dailyQuestNotifierService;
+         //});
+         //osgi.injectService(UserChangeGameScreenService,function(param1:Object):void
+         //{
+         //   QuestWindow.userChangeGameScreenService = UserChangeGameScreenService(param1);
+         //},function():UserChangeGameScreenService
+         //{
+         //   return QuestWindow.userChangeGameScreenService;
+         //});
+         //osgi.injectService(ILocaleService,function(param1:Object):void
+         //{
+         //   DailyQuestItemViewInfoPanel.localeService = ILocaleService(param1);
+         //},function():ILocaleService
+         //{
+         //   return DailyQuestItemViewInfoPanel.localeService;
+         //});
+         //osgi.injectService(ILocaleService,function(param1:Object):void
+         //{
+         //   WeeklyQuestInfoPanel.localeService = ILocaleService(param1);
+         //},function():ILocaleService
+         //{
+         //   return WeeklyQuestInfoPanel.localeService;
+         //});
+         //osgi.injectService(ILocaleService,function(param1:Object):void
+         //{
+         //   DailyQuestGetPrizeButton.localeService = ILocaleService(param1);
+         //},function():ILocaleService
+         //{
+         //   return DailyQuestGetPrizeButton.localeService;
+         //});
+         //osgi.injectService(ILocaleService,function(param1:Object):void
+         //{
+         //   DailyQuestChangeButton.localeService = ILocaleService(param1);
+         //},function():ILocaleService
+         //{
+         //   return DailyQuestChangeButton.localeService;
+         //});
+         //osgi.injectService(IMoneyService,function(param1:Object):void
+         //{
+         //   DailyQuestChangeButto.moneyService = IMoneyService(param1);
+         //},function():IMoneyService
+         //{
+         //   return DailyQuestChangeButton.moneyService;
+         //});
+
          //osgi.injectService(IPaymentPackagesService,function(param1:Object):void
          //{
          //   ExchangeCalculator.paymentPackagesService = IPaymentPackagesService(param1);
@@ -536,27 +186,27 @@ package projects.tanks.clients.fp10.models.tankspanelmodelflash
          //{
          //   return CongratulationsWindowConfiscate.localeService;
          //});
-         //osgi.injectService(ILocaleService,function(param1:Object):void
-         //{
-         //   CongratulationsWindowPresent.localeService = ILocaleService(param1);
-         //},function():ILocaleService
-         //{
-         //   return CongratulationsWindowPresent.localeService;
-         //});
-         //osgi.injectService(NewbieUserService,function(param1:Object):void
-         //{
-         //   CongratulationsWindowPresent.newbieUserService = NewbieUserService(param1);
-         //},function():NewbieUserService
-         //{
-         //   return CongratulationsWindowPresent.newbieUserService;
-         //});
-         //osgi.injectService(YandexMetricaService,function(param1:Object):void
-         //{
-         //   CongratulationsWindowPresent.ymService = YandexMetricaService(param1);
-         //},function():YandexMetricaService
-         //{
-         //   return CongratulationsWindowPresent.ymService;
-         //});
+         osgi.injectService(ILocaleService,function(param1:Object):void
+         {
+            CongratulationsWindowPresent.localeService = ILocaleService(param1);
+         },function():ILocaleService
+         {
+            return CongratulationsWindowPresent.localeService;
+         });
+         osgi.injectService(NewbieUserService,function(param1:Object):void
+         {
+            CongratulationsWindowPresent.newbieUserService = NewbieUserService(param1);
+         },function():NewbieUserService
+         {
+            return CongratulationsWindowPresent.newbieUserService;
+         });
+         osgi.injectService(YandexMetricaService,function(param1:Object):void
+         {
+            CongratulationsWindowPresent.ymService = YandexMetricaService(param1);
+         },function():YandexMetricaService
+         {
+            return CongratulationsWindowPresent.ymService;
+         });
          //osgi.injectService(ILocaleService,function(param1:Object):void
          //{
          //   CongratulationsWindowWithBanner.localeService = ILocaleService(param1);
@@ -676,27 +326,27 @@ package projects.tanks.clients.fp10.models.tankspanelmodelflash
          //{
          //   return BattleFinishNotification.localeService;
          //});
-         //osgi.injectService(ILobbyLayoutService,function(param1:Object):void
-         //{
-         //   BuyCrystalsAlert.lobbyLayoutService = ILobbyLayoutService(param1);
-         //},function():ILobbyLayoutService
-         //{
-         //   return BuyCrystalsAlert.lobbyLayoutService;
-         //});
-         //osgi.injectService(ILocaleService,function(param1:Object):void
-         //{
-         //   BuyCrystalsAlert.localeService = ILocaleService(param1);
-         //},function():ILocaleService
-         //{
-         //   return BuyCrystalsAlert.localeService;
-         //});
-         //osgi.injectService(PaymentDisplayService,function(param1:Object):void
-         //{
-         //   BuyCrystalsAlert.paymentDisplayService = PaymentDisplayService(param1);
-         //},function():PaymentDisplayService
-         //{
-         //   return BuyCrystalsAlert.paymentDisplayService;
-         //});
+         osgi.injectService(ILobbyLayoutService,function(param1:Object):void
+         {
+            BuyCrystalsAlert.lobbyLayoutService = ILobbyLayoutService(param1);
+         },function():ILobbyLayoutService
+         {
+            return BuyCrystalsAlert.lobbyLayoutService;
+         });
+         osgi.injectService(ILocaleService,function(param1:Object):void
+         {
+            BuyCrystalsAlert.localeService = ILocaleService(param1);
+         },function():ILocaleService
+         {
+            return BuyCrystalsAlert.localeService;
+         });
+         osgi.injectService(PaymentDisplayService,function(param1:Object):void
+         {
+            BuyCrystalsAlert.paymentDisplayService = PaymentDisplayService(param1);
+         },function():PaymentDisplayService
+         {
+            return BuyCrystalsAlert.paymentDisplayService;
+         });
          //osgi.injectService(IMoneyService,function(param1:Object):void
          //{
          //   CrystalButton.moneyService = IMoneyService(param1);
@@ -1327,13 +977,13 @@ package projects.tanks.clients.fp10.models.tankspanelmodelflash
          {
             return ButtonBar.buttonBarService;
          });
-         osgi.injectService(ClanPanelNotificationService,function(param1:Object):void
-         {
-            ButtonBar.clanPanelNotificationService = ClanPanelNotificationService(param1);
-         },function():ClanPanelNotificationService
-         {
-            return ButtonBar.clanPanelNotificationService;
-         });
+         //osgi.injectService(ClanPanelNotificationService,function(param1:Object):void
+         //{
+         //   ButtonBar.clanPanelNotificationService = ClanPanelNotificationService(param1);
+         //},function():ClanPanelNotificationService
+         //{
+         //   return ButtonBar.clanPanelNotificationService;
+         //});
          osgi.injectService(FullscreenService,function(param1:Object):void
          {
             ButtonBar.fullscreenService = FullscreenService(param1);
@@ -1369,13 +1019,13 @@ package projects.tanks.clients.fp10.models.tankspanelmodelflash
          {
             return MainPanel.challengeInfoService;
          });
-         osgi.injectService(ClanPanelNotificationService,function(param1:Object):void
-         {
-            MainPanel.clanPanelNotification = ClanPanelNotificationService(param1);
-         },function():ClanPanelNotificationService
-         {
-            return MainPanel.clanPanelNotification;
-         });
+         //osgi.injectService(ClanPanelNotificationService,function(param1:Object):void
+         //{
+         //   MainPanel.clanPanelNotification = ClanPanelNotificationService(param1);
+         //},function():ClanPanelNotificationService
+         //{
+         //   return MainPanel.clanPanelNotification;
+         //});
          osgi.injectService(IDisplay,function(param1:Object):void
          {
             MainPanel.display = IDisplay(param1);
@@ -1446,13 +1096,13 @@ package projects.tanks.clients.fp10.models.tankspanelmodelflash
          //{
          //   return StarsCashLabel.starsInfoService;
          //});
-         osgi.injectService(ClanPanelNotificationService,function(param1:Object):void
-         {
-            ClanButton.clanPanelNotificationService = ClanPanelNotificationService(param1);
-         },function():ClanPanelNotificationService
-         {
-            return ClanButton.clanPanelNotificationService;
-         });
+         //osgi.injectService(ClanPanelNotificationService,function(param1:Object):void
+         //{
+         //   ClanButton.clanPanelNotificationService = ClanPanelNotificationService(param1);
+         //},function():ClanPanelNotificationService
+         //{
+         //   return ClanButton.clanPanelNotificationService;
+         //});
          //osgi.injectService(ClanUserInfoService,function(param1:Object):void
          //{
          //   ClanButton.clanUserInfoService = ClanUserInfoService(param1);
@@ -1460,13 +1110,13 @@ package projects.tanks.clients.fp10.models.tankspanelmodelflash
          //{
          //   return ClanButton.clanUserInfoService;
          //});
-         osgi.injectService(ILobbyLayoutService,function(param1:Object):void
-         {
-            ClanButton.lobbyLayoutService = ILobbyLayoutService(param1);
-         },function():ILobbyLayoutService
-         {
-            return ClanButton.lobbyLayoutService;
-         });
+         //osgi.injectService(ILobbyLayoutService,function(param1:Object):void
+         //{
+         //   ClanButton.lobbyLayoutService = ILobbyLayoutService(param1);
+         //},function():ILobbyLayoutService
+         //{
+         //   return ClanButton.lobbyLayoutService;
+         //});
          //osgi.injectService(QuestNotifierService,function(param1:Object):void
          //{
          //   QuestsButton.questNotifierService = QuestNotifierService(param1);
@@ -2104,13 +1754,13 @@ package projects.tanks.clients.fp10.models.tankspanelmodelflash
          //{
          //   return AbstractSNGroupEnteringWindow.localeService;
          //});
-         //osgi.injectService(ILocaleService,function(param1:Object):void
-         //{
-         //   DateTimeHelper.localeService = ILocaleService(param1);
-         //},function():ILocaleService
-         //{
-         //   return DateTimeHelper.localeService;
-         //});
+         osgi.injectService(ILocaleService,function(param1:Object):void
+         {
+            DateTimeHelper.localeService = ILocaleService(param1);
+         },function():ILocaleService
+         {
+            return DateTimeHelper.localeService;
+         });
          //osgi.injectService(IAchievementService,function(param1:Object):void
          //{
          //   AchievementModel.achievementService = IAchievementService(param1);
@@ -2384,27 +2034,27 @@ package projects.tanks.clients.fp10.models.tankspanelmodelflash
          //{
          //   return NewbiesAbonementShowInfoModel.lobbyLayoutService;
          //});
-         //osgi.injectService(IAchievementService,function(param1:Object):void
-         //{
-         //   PanelModel.achievementService = IAchievementService(param1);
-         //},function():IAchievementService
-         //{
-         //   return PanelModel.achievementService;
-         //});
-         //osgi.injectService(IAlertService,function(param1:Object):void
-         //{
-         //   PanelModel.alertService = IAlertService(param1);
-         //},function():IAlertService
-         //{
-         //   return PanelModel.alertService;
-         //});
-         //osgi.injectService(IBattleInfoService,function(param1:Object):void
-         //{
-         //   PanelModel.battleInfoService = IBattleInfoService(param1);
-         //},function():IBattleInfoService
-         //{
-         //   return PanelModel.battleInfoService;
-         //});
+         osgi.injectService(IAchievementService,function(param1:Object):void
+         {
+            PanelModel.achievementService = IAchievementService(param1);
+         },function():IAchievementService
+         {
+            return PanelModel.achievementService;
+         });
+         osgi.injectService(IAlertService,function(param1:Object):void
+         {
+            PanelModel.alertService = IAlertService(param1);
+         },function():IAlertService
+         {
+            return PanelModel.alertService;
+         });
+         osgi.injectService(IBattleInfoService,function(param1:Object):void
+         {
+            PanelModel.battleInfoService = IBattleInfoService(param1);
+         },function():IBattleInfoService
+         {
+            return PanelModel.battleInfoService;
+         });
          //osgi.injectService(ClanPanelNotificationService,function(param1:Object):void
          //{
          //   PanelModel.clanPanelNotificationService = ClanPanelNotificationService(param1);
@@ -2419,118 +2069,118 @@ package projects.tanks.clients.fp10.models.tankspanelmodelflash
          //{
          //   return PanelModel.clanUserInfoService;
          //});
-         //osgi.injectService(IDialogWindowsDispatcherService,function(param1:Object):void
-         //{
-         //   PanelModel.dialogWindowsDispatcherService = IDialogWindowsDispatcherService(param1);
-         //},function():IDialogWindowsDispatcherService
-         //{
-         //   return PanelModel.dialogWindowsDispatcherService;
-         //});
-         //osgi.injectService(IDisplay,function(param1:Object):void
-         //{
-         //   PanelModel.display = IDisplay(param1);
-         //},function():IDisplay
-         //{
-         //   return PanelModel.display;
-         //});
-         //osgi.injectService(FullscreenService,function(param1:Object):void
-         //{
-         //   PanelModel.fullscreenService = FullscreenService(param1);
-         //},function():FullscreenService
-         //{
-         //   return PanelModel.fullscreenService;
-         //});
-         //osgi.injectService(FullscreenStateService,function(param1:Object):void
-         //{
-         //   PanelModel.fullscreenStateService = FullscreenStateService(param1);
-         //},function():FullscreenStateService
-         //{
-         //   return PanelModel.fullscreenStateService;
-         //});
-         //osgi.injectService(IHelpService,function(param1:Object):void
-         //{
-         //   PanelModel.helpService = IHelpService(param1);
-         //},function():IHelpService
-         //{
-         //   return PanelModel.helpService;
-         //});
-         //osgi.injectService(KeysBindingService,function(param1:Object):void
-         //{
-         //   PanelModel.keysBindingService = KeysBindingService(param1);
-         //},function():KeysBindingService
-         //{
-         //   return PanelModel.keysBindingService;
-         //});
-         //osgi.injectService(ILobbyLayoutService,function(param1:Object):void
-         //{
-         //   PanelModel.lobbyLayoutService = ILobbyLayoutService(param1);
-         //},function():ILobbyLayoutService
-         //{
-         //   return PanelModel.lobbyLayoutService;
-         //});
-         //osgi.injectService(ILocaleService,function(param1:Object):void
-         //{
-         //   PanelModel.localeService = ILocaleService(param1);
-         //},function():ILocaleService
-         //{
-         //   return PanelModel.localeService;
-         //});
-         //osgi.injectService(IPanelView,function(param1:Object):void
-         //{
-         //   PanelModel.panelView = IPanelView(param1);
-         //},function():IPanelView
-         //{
-         //   return PanelModel.panelView;
-         //});
-         //osgi.injectService(IPartnerService,function(param1:Object):void
-         //{
-         //   PanelModel.partnerService = IPartnerService(param1);
-         //},function():IPartnerService
-         //{
-         //   return PanelModel.partnerService;
-         //});
-         //osgi.injectService(PaymentDisplayService,function(param1:Object):void
-         //{
-         //   PanelModel.paymentDisplayService = PaymentDisplayService(param1);
-         //},function():PaymentDisplayService
-         //{
-         //   return PanelModel.paymentDisplayService;
-         //});
-         //osgi.injectService(IPaymentService,function(param1:Object):void
-         //{
-         //   PanelModel.paymentService = IPaymentService(param1);
-         //},function():IPaymentService
-         //{
-         //   return PanelModel.paymentService;
-         //});
-         //osgi.injectService(ITrackerService,function(param1:Object):void
-         //{
-         //   PanelModel.trackerService = ITrackerService(param1);
-         //},function():ITrackerService
-         //{
-         //   return PanelModel.trackerService;
-         //});
-         //osgi.injectService(UserChangeGameScreenService,function(param1:Object):void
-         //{
-         //   PanelModel.userChangeGameScreenService = UserChangeGameScreenService(param1);
-         //},function():UserChangeGameScreenService
-         //{
-         //   return PanelModel.userChangeGameScreenService;
-         //});
-         //osgi.injectService(IUserInfoService,function(param1:Object):void
-         //{
-         //   PanelModel.userInfoService = IUserInfoService(param1);
-         //},function():IUserInfoService
-         //{
-         //   return PanelModel.userInfoService;
-         //});
-         //osgi.injectService(IUserPropertiesService,function(param1:Object):void
-         //{
-         //   PanelModel.userPropertiesService = IUserPropertiesService(param1);
-         //},function():IUserPropertiesService
-         //{
-         //   return PanelModel.userPropertiesService;
-         //});
+         osgi.injectService(IDialogWindowsDispatcherService,function(param1:Object):void
+         {
+            PanelModel.dialogWindowsDispatcherService = IDialogWindowsDispatcherService(param1);
+         },function():IDialogWindowsDispatcherService
+         {
+            return PanelModel.dialogWindowsDispatcherService;
+         });
+         osgi.injectService(IDisplay,function(param1:Object):void
+         {
+            PanelModel.display = IDisplay(param1);
+         },function():IDisplay
+         {
+            return PanelModel.display;
+         });
+         osgi.injectService(FullscreenService,function(param1:Object):void
+         {
+            PanelModel.fullscreenService = FullscreenService(param1);
+         },function():FullscreenService
+         {
+            return PanelModel.fullscreenService;
+         });
+         osgi.injectService(FullscreenStateService,function(param1:Object):void
+         {
+            PanelModel.fullscreenStateService = FullscreenStateService(param1);
+         },function():FullscreenStateService
+         {
+            return PanelModel.fullscreenStateService;
+         });
+         osgi.injectService(IHelpService,function(param1:Object):void
+         {
+            PanelModel.helpService = IHelpService(param1);
+         },function():IHelpService
+         {
+            return PanelModel.helpService;
+         });
+         osgi.injectService(KeysBindingService,function(param1:Object):void
+         {
+            PanelModel.keysBindingService = KeysBindingService(param1);
+         },function():KeysBindingService
+         {
+            return PanelModel.keysBindingService;
+         });
+         osgi.injectService(ILobbyLayoutService,function(param1:Object):void
+         {
+            PanelModel.lobbyLayoutService = ILobbyLayoutService(param1);
+         },function():ILobbyLayoutService
+         {
+            return PanelModel.lobbyLayoutService;
+         });
+         osgi.injectService(ILocaleService,function(param1:Object):void
+         {
+            PanelModel.localeService = ILocaleService(param1);
+         },function():ILocaleService
+         {
+            return PanelModel.localeService;
+         });
+         osgi.injectService(IPanelView,function(param1:Object):void
+         {
+            PanelModel.panelView = IPanelView(param1);
+         },function():IPanelView
+         {
+            return PanelModel.panelView;
+         });
+         osgi.injectService(IPartnerService,function(param1:Object):void
+         {
+            PanelModel.partnerService = IPartnerService(param1);
+         },function():IPartnerService
+         {
+            return PanelModel.partnerService;
+         });
+         osgi.injectService(PaymentDisplayService,function(param1:Object):void
+         {
+            PanelModel.paymentDisplayService = PaymentDisplayService(param1);
+         },function():PaymentDisplayService
+         {
+            return PanelModel.paymentDisplayService;
+         });
+         osgi.injectService(IPaymentService,function(param1:Object):void
+         {
+            PanelModel.paymentService = IPaymentService(param1);
+         },function():IPaymentService
+         {
+            return PanelModel.paymentService;
+         });
+         osgi.injectService(ITrackerService,function(param1:Object):void
+         {
+            PanelModel.trackerService = ITrackerService(param1);
+         },function():ITrackerService
+         {
+            return PanelModel.trackerService;
+         });
+         osgi.injectService(UserChangeGameScreenService,function(param1:Object):void
+         {
+            PanelModel.userChangeGameScreenService = UserChangeGameScreenService(param1);
+         },function():UserChangeGameScreenService
+         {
+            return PanelModel.userChangeGameScreenService;
+         });
+         osgi.injectService(IUserInfoService,function(param1:Object):void
+         {
+            PanelModel.userInfoService = IUserInfoService(param1);
+         },function():IUserInfoService
+         {
+            return PanelModel.userInfoService;
+         });
+         osgi.injectService(IUserPropertiesService,function(param1:Object):void
+         {
+            PanelModel.userPropertiesService = IUserPropertiesService(param1);
+         },function():IUserPropertiesService
+         {
+            return PanelModel.userPropertiesService;
+         });
          //osgi.injectService(ILauncherParams,function(param1:Object):void
          //{
          //   PaymentButtonModel.launchParams = ILauncherParams(param1);
@@ -3392,55 +3042,48 @@ package projects.tanks.clients.fp10.models.tankspanelmodelflash
          //{
          //   return UserPropertiesModel.clanUserInfoService;
          //});
-         //osgi.injectService(IDisplay,function(param1:Object):void
-         //{
-         //   UserPropertiesModel.display = IDisplay(param1);
-         //},function():IDisplay
-         //{
-         //   return UserPropertiesModel.display;
-         //});
-         //osgi.injectService(IHelpService,function(param1:Object):void
-         //{
-         //   UserPropertiesModel.helpService = IHelpService(param1);
-         //},function():IHelpService
-         //{
-         //   return UserPropertiesModel.helpService;
-         //});
-         //osgi.injectService(IMoneyService,function(param1:Object):void
-         //{
-         //   UserPropertiesModel.moneyService = IMoneyService(param1);
-         //},function():IMoneyService
-         //{
-         //   return UserPropertiesModel.moneyService;
-         //});
-         //osgi.injectService(IPanelView,function(param1:Object):void
-         //{
-         //   UserPropertiesModel.panelView = IPanelView(param1);
-         //},function():IPanelView
-         //{
-         //   return UserPropertiesModel.panelView;
-         //});
-         //osgi.injectService(StarsInfoService,function(param1:Object):void
-         //{
-         //   UserPropertiesModel.starsInfoService = StarsInfoService(param1);
-         //},function():StarsInfoService
-         //{
-         //   return UserPropertiesModel.starsInfoService;
-         //});
-         //osgi.injectService(ITrackerService,function(param1:Object):void
-         //{
-         //   UserPropertiesModel.trackerService = ITrackerService(param1);
-         //},function():ITrackerService
-         //{
-         //   return UserPropertiesModel.trackerService;
-         //});
-         //osgi.injectService(IUserPropertiesService,function(param1:Object):void
-         //{
-         //   UserPropertiesModel.userPropertiesService = IUserPropertiesService(param1);
-         //},function():IUserPropertiesService
-         //{
-         //   return UserPropertiesModel.userPropertiesService;
-         //});
+         osgi.injectService(IDisplay,function(param1:Object):void
+         {
+            UserPropertiesModel.display = IDisplay(param1);
+         },function():IDisplay
+         {
+            return UserPropertiesModel.display;
+         });
+         osgi.injectService(IHelpService,function(param1:Object):void
+         {
+            UserPropertiesModel.helpService = IHelpService(param1);
+         },function():IHelpService
+         {
+            return UserPropertiesModel.helpService;
+         });
+         osgi.injectService(IMoneyService,function(param1:Object):void
+         {
+            UserPropertiesModel.moneyService = IMoneyService(param1);
+         },function():IMoneyService
+         {
+            return UserPropertiesModel.moneyService;
+         });
+         osgi.injectService(IPanelView,function(param1:Object):void
+         {
+            UserPropertiesModel.panelView = IPanelView(param1);
+         },function():IPanelView
+         {
+            return UserPropertiesModel.panelView;
+         });
+         osgi.injectService(ITrackerService,function(param1:Object):void
+         {
+            UserPropertiesModel.trackerService = ITrackerService(param1);
+         },function():ITrackerService
+         {
+            return UserPropertiesModel.trackerService;
+         });
+         osgi.injectService(IUserPropertiesService,function(param1:Object):void
+         {
+            UserPropertiesModel.userPropertiesService = IUserPropertiesService(param1);
+         },function():IUserPropertiesService
+         {
+            return UserPropertiesModel.userPropertiesService;
+         });
          //osgi.injectService(IStorageService,function(param1:Object):void
          //{
          //   UsersCounterModel.storageService = IStorageService(param1);
@@ -3455,34 +3098,34 @@ package projects.tanks.clients.fp10.models.tankspanelmodelflash
          //{
          //   return AchievementService.clanPanelNotification;
          //});
-         //osgi.injectService(IDisplay,function(param1:Object):void
-         //{
-         //   AchievementService.display = IDisplay(param1);
-         //},function():IDisplay
-         //{
-         //   return AchievementService.display;
-         //});
-         //osgi.injectService(IHelpService,function(param1:Object):void
-         //{
-         //   AchievementService.helpService = IHelpService(param1);
-         //},function():IHelpService
-         //{
-         //   return AchievementService.helpService;
-         //});
-         //osgi.injectService(ILobbyLayoutService,function(param1:Object):void
-         //{
-         //   AchievementService.lobbyLayoutService = ILobbyLayoutService(param1);
-         //},function():ILobbyLayoutService
-         //{
-         //   return AchievementService.lobbyLayoutService;
-         //});
-         //osgi.injectService(IPartnerService,function(param1:Object):void
-         //{
-         //   AchievementService.partnersService = IPartnerService(param1);
-         //},function():IPartnerService
-         //{
-         //   return AchievementService.partnersService;
-         //});
+         osgi.injectService(IDisplay,function(param1:Object):void
+         {
+            AchievementService.display = IDisplay(param1);
+         },function():IDisplay
+         {
+            return AchievementService.display;
+         });
+         osgi.injectService(IHelpService,function(param1:Object):void
+         {
+            AchievementService.helpService = IHelpService(param1);
+         },function():IHelpService
+         {
+            return AchievementService.helpService;
+         });
+         osgi.injectService(ILobbyLayoutService,function(param1:Object):void
+         {
+            AchievementService.lobbyLayoutService = ILobbyLayoutService(param1);
+         },function():ILobbyLayoutService
+         {
+            return AchievementService.lobbyLayoutService;
+         });
+         osgi.injectService(IPartnerService,function(param1:Object):void
+         {
+            AchievementService.partnersService = IPartnerService(param1);
+         },function():IPartnerService
+         {
+            return AchievementService.partnersService;
+         });
          //osgi.injectService(IAlertService,function(param1:Object):void
          //{
          //   BattleLinkActivatorService.alertService = IAlertService(param1);
@@ -3532,48 +3175,48 @@ package projects.tanks.clients.fp10.models.tankspanelmodelflash
          //{
          //   return BattleLinkActivatorService.userPropertyService;
          //});
-         //osgi.injectService(IDisplay,function(param1:Object):void
-         //{
-         //   FPSServiceImpl.dispay = IDisplay(param1);
-         //},function():IDisplay
-         //{
-         //   return FPSServiceImpl.dispay;
-         //});
-         //osgi.injectService(ILobbyLayoutService,function(param1:Object):void
-         //{
-         //   UserChangeGameScreenServiceImpl.lobbyLayoutService = ILobbyLayoutService(param1);
-         //},function():ILobbyLayoutService
-         //{
-         //   return UserChangeGameScreenServiceImpl.lobbyLayoutService;
-         //});
-         //osgi.injectService(IAlertService,function(param1:Object):void
-         //{
-         //   MoneyService.alertService = IAlertService(param1);
-         //},function():IAlertService
-         //{
-         //   return MoneyService.alertService;
-         //});
-         //osgi.injectService(ILocaleService,function(param1:Object):void
-         //{
-         //   MoneyService.localeService = ILocaleService(param1);
-         //},function():ILocaleService
-         //{
-         //   return MoneyService.localeService;
-         //});
-         //osgi.injectService(IPanelView,function(param1:Object):void
-         //{
-         //   MoneyService.panelView = IPanelView(param1);
-         //},function():IPanelView
-         //{
-         //   return MoneyService.panelView;
-         //});
-         //osgi.injectService(IPaymentService,function(param1:Object):void
-         //{
-         //   MoneyService.paymentService = IPaymentService(param1);
-         //},function():IPaymentService
-         //{
-         //   return MoneyService.paymentService;
-         //});
+         osgi.injectService(IDisplay,function(param1:Object):void
+         {
+            FPSServiceImpl.dispay = IDisplay(param1);
+         },function():IDisplay
+         {
+            return FPSServiceImpl.dispay;
+         });
+         osgi.injectService(ILobbyLayoutService,function(param1:Object):void
+         {
+            UserChangeGameScreenServiceImpl.lobbyLayoutService = ILobbyLayoutService(param1);
+         },function():ILobbyLayoutService
+         {
+            return UserChangeGameScreenServiceImpl.lobbyLayoutService;
+         });
+         osgi.injectService(IAlertService,function(param1:Object):void
+         {
+            MoneyService.alertService = IAlertService(param1);
+         },function():IAlertService
+         {
+            return MoneyService.alertService;
+         });
+         osgi.injectService(ILocaleService,function(param1:Object):void
+         {
+            MoneyService.localeService = ILocaleService(param1);
+         },function():ILocaleService
+         {
+            return MoneyService.localeService;
+         });
+         osgi.injectService(IPanelView,function(param1:Object):void
+         {
+            MoneyService.panelView = IPanelView(param1);
+         },function():IPanelView
+         {
+            return MoneyService.panelView;
+         });
+         osgi.injectService(IPaymentService,function(param1:Object):void
+         {
+            MoneyService.paymentService = IPaymentService(param1);
+         },function():IPaymentService
+         {
+            return MoneyService.paymentService;
+         });
          //osgi.injectService(IStorageService,function(param1:Object):void
          //{
          //   NotificationGarageCategoriesService.storageService = IStorageService(param1);
@@ -3595,13 +3238,13 @@ package projects.tanks.clients.fp10.models.tankspanelmodelflash
          {
             return PanelView.userChangeGameScreenService;
          });
-         //osgi.injectService(IPartnerService,function(param1:Object):void
-         //{
-         //   PaymentService.partnerService = IPartnerService(param1);
-         //},function():IPartnerService
-         //{
-         //   return PaymentService.partnerService;
-         //});
+         osgi.injectService(IPartnerService,function(param1:Object):void
+         {
+            PaymentService.partnerService = IPartnerService(param1);
+         },function():IPartnerService
+         {
+            return PaymentService.partnerService;
+         });
          //osgi.injectService(IAchievementService,function(param1:Object):void
          //{
          //   PaymentDisplayServiceImpl.achievementService = IAchievementService(param1);
@@ -3686,13 +3329,13 @@ package projects.tanks.clients.fp10.models.tankspanelmodelflash
          //{
          //   return SettingsService.storageService;
          //});
-         //osgi.injectService(ILocaleService,function(param1:Object):void
-         //{
-         //   KeyCodesConverter.localeService = ILocaleService(param1);
-         //},function():ILocaleService
-         //{
-         //   return KeyCodesConverter.localeService;
-         //});
+         osgi.injectService(ILocaleService,function(param1:Object):void
+         {
+            KeyCodesConverter.localeService = ILocaleService(param1);
+         },function():ILocaleService
+         {
+            return KeyCodesConverter.localeService;
+         });
          //osgi.injectService(IPartnerService,function(param1:Object):void
          //{
          //   SNFriendsServiceImpl.partnerService = IPartnerService(param1);
@@ -3714,7 +3357,7 @@ package projects.tanks.clients.fp10.models.tankspanelmodelflash
          //{
          //   return UpgradingItemsServiceImpl.localeService;
          //});
-         //modelRegister = osgi.getService(ModelRegistry) as ModelRegistry;
+         modelRegister = osgi.getService(ModelRegistry) as ModelRegistry;
          //modelRegister.add(new UserAbonementsModel());
          //modelRegister.add(new AchievementModel());
          //modelRegister.add(new AndroidAppRatingModel());
@@ -3754,7 +3397,7 @@ package projects.tanks.clients.fp10.models.tankspanelmodelflash
          //modelRegister.add(new MobileQuestModel());
          //modelRegister.add(new MobileQuestProfileModel());
          //modelRegister.add(new NewbiesAbonementShowInfoModel());
-         //modelRegister.add(new PanelModel());
+         modelRegister.add(new PanelModel());
          //modelRegister.add(new PaymentButtonModel());
          //modelRegister.add(new PaymentLoaderModel());
          //modelRegister.add(new CrystalsPaymentModel());
@@ -3932,7 +3575,7 @@ package projects.tanks.clients.fp10.models.tankspanelmodelflash
          //modelRegister.add(new UserEmailAndPasswordModel());
          //modelRegisterAdapt.registerAdapt(IUserProperties,IUserPropertiesAdapt);
          //modelRegisterAdapt.registerEvents(IUserProperties,IUserPropertiesEvents);
-         //modelRegister.add(new UserPropertiesModel());
+         modelRegister.add(new UserPropertiesModel());
          //modelRegister.add(new UsersCounterModel());
          //modelRegister.add(new VideoAdsBattleResultModel());
          //modelRegister.add(new VideoAdsModel());
