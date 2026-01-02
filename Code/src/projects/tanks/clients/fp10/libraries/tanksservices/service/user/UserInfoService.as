@@ -64,6 +64,9 @@ package projects.tanks.clients.fp10.libraries.tanksservices.service.user
             }
          }
          _loc2_.updateLastAccessTime();
+
+         _loc2_.setUid(param1); // Hack to make protanki work with 2019 code.
+
          return _loc2_;
       }
       

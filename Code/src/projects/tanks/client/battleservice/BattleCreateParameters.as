@@ -61,10 +61,13 @@ package projects.tanks.client.battleservice
       private var newname_3280__END:Boolean;
       
       private var newname_3281__END:Boolean;
+
+      private var _battleId:String;
       
-      public function BattleCreateParameters(param1:Boolean = false, param2:BattleMode = null, param3:EquipmentConstraintsMode = null, param4:Boolean = false, param5:BattleLimits = null, param6:String = null, param7:int = 0, param8:String = null, param9:Boolean = false, param10:Boolean = false, param11:Boolean = false, param12:Range = null, param13:Boolean = false, param14:MapTheme = null, param15:Boolean = false, param16:Boolean = false, param17:Boolean = false, param18:Boolean = false, param19:Boolean = false, param20:Boolean = false, param21:Boolean = false, param22:Boolean = false, param23:Boolean = false, param24:Boolean = false, param25:Boolean = false, param26:Boolean = false, param27:Boolean = false, param28:Boolean = false)
+      public function BattleCreateParameters(battleId:String = null, param1:Boolean = false, param2:BattleMode = null, param3:EquipmentConstraintsMode = null, param4:Boolean = false, param5:BattleLimits = null, param6:String = null, param7:int = 0, param8:String = null, param9:Boolean = false, param10:Boolean = false, param11:Boolean = false, param12:Range = null, param13:Boolean = false, param14:MapTheme = null, param15:Boolean = false, param16:Boolean = false, param17:Boolean = false, param18:Boolean = false, param19:Boolean = false, param20:Boolean = false, param21:Boolean = false, param22:Boolean = false, param23:Boolean = false, param24:Boolean = false, param25:Boolean = false, param26:Boolean = false, param27:Boolean = false, param28:Boolean = false)
       {
          super();
+         this._battleId = battleId;
          this.newname_6678__END = param1;
          this.newname_3252__END = param2;
          this.newname_3253__END = param3;
@@ -93,6 +96,16 @@ package projects.tanks.client.battleservice
          this.newname_3279__END = param26;
          this.newname_3280__END = param27;
          this.newname_3281__END = param28;
+      }
+
+      public function get battleId() : String
+      {
+         return this._battleId;
+      }
+
+      public function set battleId(param1:String) : void
+      {
+         this._battleId = param1;
       }
       
       public function get autoBalance() : Boolean
@@ -378,6 +391,7 @@ package projects.tanks.client.battleservice
       public function toString() : String
       {
          var _loc1_:String = "BattleCreateParameters [";
+         _loc1_ += "battleId = " + this._battleId + " ";
          _loc1_ += "autoBalance = " + this.newname_6678__END + " ";
          _loc1_ += "battleMode = " + this.newname_3252__END + " ";
          _loc1_ += "equipmentConstraintsMode = " + this.newname_3253__END + " ";

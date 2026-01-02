@@ -22,8 +22,8 @@ package scpacker.resource
       public function getResourceDependencies(param1:String, param2:int) : ObjectsDependencies
       {
          var _loc4_:* = new GameObject(Long.getLong(1,1),null,"ResourceObject",null);
-         Model.objects[Model.objects.length] = Model.currentObject;
-         Model.currentObject = _loc4_;
+         Model.objects[Model.objects.length] = Model.object;
+         Model.object = _loc4_;
          return new ObjectsDependencies(param2,this.getResources(param1));
       }
       

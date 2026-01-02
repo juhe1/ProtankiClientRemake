@@ -9,15 +9,6 @@ package projects.tanks.clients.fp10.libraries.tanksservicesflash
    import platform.client.fp10.core.registry.ModelRegistry;
    import platform.client.fp10.core.service.address.AddressService;
    import platform.clients.fp10.libraries.alternativapartners.service.IPartnerService;
-   //import projects.tanks.clients.fp10.libraries.tanksservices.model.FriendsModel;
-   //import projects.tanks.clients.fp10.libraries.tanksservices.model.IFriends;
-   //import projects.tanks.clients.fp10.libraries.tanksservices.model.IFriendsAdapt;
-   //import projects.tanks.clients.fp10.libraries.tanksservices.model.IFriendsEvents;
-   //import projects.tanks.clients.fp10.libraries.tanksservices.model.UserRefresh;
-   //import projects.tanks.clients.fp10.libraries.tanksservices.model.UserRefreshAdapt;
-   //import projects.tanks.clients.fp10.libraries.tanksservices.model.UserRefreshEvents;
-   //import projects.tanks.clients.fp10.libraries.tanksservices.model.formatbattle.EquipmentConstraintsNamingModel;
-   //import projects.tanks.clients.fp10.libraries.tanksservices.model.friends.accepted.FriendsAcceptedModel;
    import projects.tanks.clients.fp10.libraries.tanksservices.model.listener.UserNotifier;
    import projects.tanks.clients.fp10.libraries.tanksservices.model.listener.UserNotifierAdapt;
    import projects.tanks.clients.fp10.libraries.tanksservices.model.listener.UserNotifierEvents;
@@ -62,6 +53,15 @@ package projects.tanks.clients.fp10.libraries.tanksservicesflash
    import projects.tanks.clients.fp10.libraries.tanksservices.service.layout.ILobbyLayoutService;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.friend.IFriendInfoService;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.battle.IBattleInfoService;
+   import projects.tanks.clients.fp10.libraries.tanksservices.utils.BattleFormatUtil;
+   import projects.tanks.clients.fp10.libraries.tanksservices.model.formatbattle.EquipmentConstraintsNamingModel;
+   import projects.tanks.clients.fp10.libraries.tanksservices.model.notifier.online.OnlineNotifierModel;
+   import projects.tanks.clients.fp10.libraries.tanksservices.model.notifier.premium.PremiumNotifierModel;
+   import projects.tanks.clients.fp10.libraries.tanksservices.model.notifier.rank.RankNotifierModel;
+   import projects.tanks.clients.fp10.libraries.tanksservices.model.notifier.referrals.ReferralNotifierModel;
+   import projects.tanks.clients.fp10.libraries.tanksservices.model.notifier.socialnetworks.SNUidNotifierModel;
+   import projects.tanks.clients.fp10.libraries.tanksservices.model.notifier.uid.UidNotifierModel;
+   import projects.tanks.clients.fp10.libraries.tanksservices.service.notifier.online.IOnlineNotifierService;
    
    public class Activator implements IBundleActivator
    {
@@ -100,13 +100,13 @@ package projects.tanks.clients.fp10.libraries.tanksservicesflash
          //{
          //   return FriendsModel.friendsActionService;
          //});
-         //osgi.injectService(BattleFormatUtil,function(param1:Object):void
-         //{
-         //   EquipmentConstraintsNamingModel.battleFormatUtil = BattleFormatUtil(param1);
-         //},function():BattleFormatUtil
-         //{
-         //   return EquipmentConstraintsNamingModel.battleFormatUtil;
-         //});
+         osgi.injectService(BattleFormatUtil,function(param1:Object):void
+         {
+            EquipmentConstraintsNamingModel.battleFormatUtil = BattleFormatUtil(param1);
+         },function():BattleFormatUtil
+         {
+            return EquipmentConstraintsNamingModel.battleFormatUtil;
+         });
          //osgi.injectService(IFriendInfoService,function(param1:Object):void
          //{
          //   FriendsAcceptedModel.friendsInfoService = IFriendInfoService(param1);
@@ -162,6 +162,14 @@ package projects.tanks.clients.fp10.libraries.tanksservicesflash
          },function():IUserInfoService
          {
             return UserNotifierModel.userInfoService;
+         });
+         
+         osgi.injectService(ModelRegistry,function(param1:Object):void
+         {
+            UserNotifierModel.modelRegistry = ModelRegistry(param1);
+         },function():ModelRegistry
+         {
+            return UserNotifierModel.modelRegistry;
          });
          //osgi.injectService(UserBattleSelectActionsService,function(param1:Object):void
          //{
@@ -226,20 +234,27 @@ package projects.tanks.clients.fp10.libraries.tanksservicesflash
          {
             return BattleNotifierModel.battleNotifierService;
          });
-         //osgi.injectService(IOnlineNotifierService,function(param1:Object):void
-         //{
-         //   OnlineNotifierModel.onlineNotifierService = IOnlineNotifierService(param1);
-         //},function():IOnlineNotifierService
-         //{
-         //   return OnlineNotifierModel.onlineNotifierService;
-         //});
-         //osgi.injectService(PremiumService,function(param1:Object):void
-         //{
-         //   PremiumNotifierModel.premiumService = PremiumService(param1);
-         //},function():PremiumService
-         //{
-         //   return PremiumNotifierModel.premiumService;
-         //});
+         osgi.injectService(ModelRegistry,function(param1:Object):void
+         {
+            BattleNotifierModel.modelRegistry = ModelRegistry(param1);
+         },function():ModelRegistry
+         {
+            return BattleNotifierModel.modelRegistry;
+         });
+         osgi.injectService(IOnlineNotifierService,function(param1:Object):void
+         {
+            OnlineNotifierModel.onlineNotifierService = IOnlineNotifierService(param1);
+         },function():IOnlineNotifierService
+         {
+            return OnlineNotifierModel.onlineNotifierService;
+         });
+         osgi.injectService(PremiumService,function(param1:Object):void
+         {
+            PremiumNotifierModel.premiumService = PremiumService(param1);
+         },function():PremiumService
+         {
+            return PremiumNotifierModel.premiumService;
+         });
          //osgi.injectService(IUserProBattleService,function(param1:Object):void
          //{
          //   ProBattleNotifierModel.userProBattleService = IUserProBattleService(param1);
@@ -604,6 +619,13 @@ package projects.tanks.clients.fp10.libraries.tanksservicesflash
          {
             return UserInfoService.premiumService;
          });
+         osgi.injectService(ModelRegistry,function(param1:Object):void
+         {
+            UserInfoService.modelRegistry = ModelRegistry(param1);
+         },function():ModelRegistry
+         {
+            return UserInfoService.modelRegistry;
+         });
          osgi.injectService(IPartnerService,function(param1:Object):void
          {
             UserPropertiesService.partnerService = IPartnerService(param1);
@@ -625,13 +647,13 @@ package projects.tanks.clients.fp10.libraries.tanksservicesflash
          {
             return AlertUtils.fullscreenStateService;
          });
-         //osgi.injectService(ILocaleService,function(param1:Object):void
-         //{
-         //   BattleFormatUtil.localeService = ILocaleService(param1);
-         //},function():ILocaleService
-         //{
-         //   return BattleFormatUtil.localeService;
-         //});
+         osgi.injectService(ILocaleService,function(param1:Object):void
+         {
+            BattleFormatUtil.localeService = ILocaleService(param1);
+         },function():ILocaleService
+         {
+            return BattleFormatUtil.localeService;
+         });
          osgi.injectService(AddressService,function(param1:Object):void
          {
             BattleInfoUtils.addressService = AddressService(param1);
@@ -660,6 +682,13 @@ package projects.tanks.clients.fp10.libraries.tanksservicesflash
          {
             return BattleInfoUtils.serverNameService;
          });
+         osgi.injectService(ModelRegistry,function(param1:Object):void
+         {
+            RankNotifierModel.modelRegistry = ModelRegistry(param1);
+         },function():ModelRegistry
+         {
+            return RankNotifierModel.modelRegistry;
+         });
          //osgi.injectService(ILocaleService,function(param1:Object):void
          //{
          //   PieceWordDeclensionUtil.localeService = ILocaleService(param1);
@@ -674,7 +703,7 @@ package projects.tanks.clients.fp10.libraries.tanksservicesflash
          //modelRegisterAdapt.registerEvents(IFriends,IFriendsEvents);
          //modelRegisterAdapt.registerAdapt(UserRefresh,UserRefreshAdapt);
          //modelRegisterAdapt.registerEvents(UserRefresh,UserRefreshEvents);
-         //modelRegister.add(new EquipmentConstraintsNamingModel());
+         modelRegister.add(new EquipmentConstraintsNamingModel());
          //modelRegister.add(new FriendsAcceptedModel());
          //modelRegister.add(new FriendsAcceptedNotificatorModel());
          //modelRegister.add(new NotificationEnabledModel());
@@ -689,12 +718,12 @@ package projects.tanks.clients.fp10.libraries.tanksservicesflash
          //modelRegisterAdapt.registerAdapt(Notifier,NotifierAdapt);
          //modelRegisterAdapt.registerEvents(Notifier,NotifierEvents);
          modelRegister.add(new BattleNotifierModel());
-         //modelRegister.add(new OnlineNotifierModel());
-         //modelRegister.add(new PremiumNotifierModel());
-         //modelRegister.add(new RankNotifierModel());
-         //modelRegister.add(new ReferralNotifierModel());
-         //modelRegister.add(new SNUidNotifierModel());
-         //modelRegister.add(new UidNotifierModel());
+         modelRegister.add(new OnlineNotifierModel());
+         modelRegister.add(new PremiumNotifierModel());
+         modelRegister.add(new RankNotifierModel());
+         modelRegister.add(new ReferralNotifierModel());
+         modelRegister.add(new SNUidNotifierModel());
+         modelRegister.add(new UidNotifierModel());
          //modelRegisterAdapt.registerAdapt(PayModeProceed,PayModeProceedAdapt);
          //modelRegisterAdapt.registerEvents(PayModeProceed,PayModeProceedEvents);
          //modelRegister.add(new ProBattleNotifierModel());

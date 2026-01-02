@@ -1,17 +1,15 @@
 package projects.tanks.clients.fp10.libraries.tanksservices.model.notifier.online
 {
-   import alternativa.types.Long;
-   
    public class ClientOnlineNotifierData
    {
       
-      private var _userId:Long;
+      private var _userId:String;
       
       private var _online:Boolean;
       
       private var _serverNumber:int;
       
-      public function ClientOnlineNotifierData(param1:Long, param2:Boolean, param3:int)
+      public function ClientOnlineNotifierData(param1:String, param2:Boolean, param3:int)
       {
          super();
          this._userId = param1;
@@ -19,7 +17,7 @@ package projects.tanks.clients.fp10.libraries.tanksservices.model.notifier.onlin
          this._serverNumber = param3;
       }
       
-      public function get userId() : Long
+      public function get userId() : String
       {
          return this._userId;
       }

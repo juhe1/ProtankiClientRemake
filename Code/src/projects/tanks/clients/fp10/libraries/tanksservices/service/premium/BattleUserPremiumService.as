@@ -3,6 +3,7 @@ package projects.tanks.clients.fp10.libraries.tanksservices.service.premium
    import alternativa.types.Long;
    import flash.events.IEventDispatcher;
    import projects.tanks.client.battleservice.model.statistics.UserInfo;
+   import projects.tanks.client.tanksservices.model.notifier.premium.PremiumNotifierData;
    
    public interface BattleUserPremiumService extends IEventDispatcher
    {
@@ -14,6 +15,8 @@ package projects.tanks.clients.fp10.libraries.tanksservices.service.premium
       function resetUserPremium(param1:String) : *;
       
       function removeUsersPremium() : void;
+
+      function setUsersPremiumProtanki(param1:Vector.<PremiumNotifierData>) : *;
    }
 }
 

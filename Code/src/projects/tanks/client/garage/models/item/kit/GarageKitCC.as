@@ -1,0 +1,62 @@
+package projects.tanks.client.garage.models.item.kit
+{
+   import platform.client.fp10.core.resource.types.LocalizedImageResource;
+   
+   public class GarageKitCC
+   {
+      
+      private var _discountInPercent:int;
+      
+      private var _image:LocalizedImageResource;
+      
+      private var _kitItems:Vector.<KitItem>;
+      
+      public function GarageKitCC(param1:int = 0, param2:LocalizedImageResource = null, param3:Vector.<KitItem> = null)
+      {
+         super();
+         this._discountInPercent = param1;
+         this._image = param2;
+         this._kitItems = param3;
+      }
+      
+      public function get discountInPercent() : int
+      {
+         return this._discountInPercent;
+      }
+      
+      public function set discountInPercent(param1:int) : void
+      {
+         this._discountInPercent = param1;
+      }
+      
+      public function get image() : LocalizedImageResource
+      {
+         return this._image;
+      }
+      
+      public function set image(param1:LocalizedImageResource) : void
+      {
+         this._image = param1;
+      }
+      
+      public function get kitItems() : Vector.<KitItem>
+      {
+         return this._kitItems;
+      }
+      
+      public function set kitItems(param1:Vector.<KitItem>) : void
+      {
+         this._kitItems = param1;
+      }
+      
+      public function toString() : String
+      {
+         var _loc1_:String = "GarageKitCC [";
+         _loc1_ += "discountInPercent = " + this.discountInPercent + " ";
+         _loc1_ += "image = " + this.image + " ";
+         _loc1_ += "kitItems = " + this.kitItems + " ";
+         return _loc1_ + "]";
+      }
+   }
+}
+

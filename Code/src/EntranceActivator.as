@@ -19,7 +19,6 @@ package
    import platform.clients.fp10.models.alternativaspacesmodelsflash.Activator;
    import projects.tanks.clients.fp10.models.tanksbattleselectmodelflash.Activator;
    import alternativa.protocol.osgi.ProtocolActivator;
-   //import projects.tanks.clients.flash.resources.Activator;
    import scpacker.networking.Network;
    import projects.tanks.clients.fp10.libraries.tanksservicesflash.Activator;
    import platform.clients.fp10.commonsflash.Activator;
@@ -28,8 +27,8 @@ package
    import alternativa.init.TanksFonts;
    import alternativa.init.PanelModelActivator;
    import platform.clients.fp10.libraries.alternativapartners.osgi.PartnersActivator;
-   //import alternativa.init.BattleSelectModelActivator;
    import platform.clients.fp10.libraries.alternativapartnersflash.Activator;
+   import alternativa.init.BattleSelectModelActivator;
    
    public class EntranceActivator implements IBundleActivator
    {
@@ -68,7 +67,7 @@ package
          new projects.tanks.clients.fp10.models.tanksbattleselectmodelflash.Activator().start(osgi);
          new projects.tanks.clients.flash.resources.osgi.Activator().start(osgi);
          //new projects.tanks.clients.flash.resources.Activator().start(osgi);
-         //new BattleSelectModelActivator().start(osgi);
+         new BattleSelectModelActivator().start(osgi);
          new TanksFormsActivator().start(osgi);
          new GarageModelActivator().start(osgi);
          l = new Long(1749,816);

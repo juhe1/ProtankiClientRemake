@@ -4,7 +4,6 @@ package projects.tanks.client.tanksservices.model.notifier.premium
    
    public class PremiumNotifierData extends AbstractNotifier
    {
-      
       private var _premiumTimeLeftInSeconds:int;
       
       public function PremiumNotifierData(param1:int = 0)
@@ -25,10 +24,7 @@ package projects.tanks.client.tanksservices.model.notifier.premium
       
       override public function toString() : String
       {
-         var _loc1_:String = "PremiumNotifierData [";
-         _loc1_ += "premiumTimeLeftInSeconds = " + this.premiumTimeLeftInSeconds + " ";
-         _loc1_ += super.toString();
-         return _loc1_ + "]";
+         return "";
       }
    }
 }

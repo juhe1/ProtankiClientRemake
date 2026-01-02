@@ -19,7 +19,7 @@ package projects.tanks.client.entrance.model.entrance.registration
       
       protected function getInitParam() : RegistrationModelCC
       {
-         return RegistrationModelCC(initParams[platform.client.fp10.core.model.impl.Model.currentObject]);
+         return RegistrationModelCC(initParams[platform.client.fp10.core.model.impl.Model.object]);
       }
       
       override public function get id() : Long

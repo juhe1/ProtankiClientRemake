@@ -62,8 +62,8 @@ package projects.tanks.client.battleselect.model.info
       public function toString() : String
       {
          var _loc1_:String = "BattleInfoUser [";
-         _loc1_ += "Kills = " + this.newname_3284__END + " ";
-         _loc1_ += "Score = " + this.newname_3285__END + " ";
+         _loc1_ += "kills = " + this.newname_3284__END + " ";
+         _loc1_ += "score = " + this.newname_3285__END + " ";
          _loc1_ += "suspicious = " + this.newname_3286__END + " ";
          _loc1_ += "user = " + this.newname_3287__END + " ";
          return _loc1_ + "]";

@@ -25,7 +25,7 @@ package projects.tanks.client.entrance.model.entrance.externalentrance
       
       protected function getInitParam() : ExternalEntranceCC
       {
-         return ExternalEntranceCC(initParams[platform.client.fp10.core.model.impl.Model.currentObject]);
+         return ExternalEntranceCC(initParams[platform.client.fp10.core.model.impl.Model.object]);
       }
       
       override public function get id() : Long

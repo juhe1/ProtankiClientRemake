@@ -46,7 +46,7 @@ package projects.tanks.clients.fp10.libraries.tanksservices.service
          {
             return;
          }
-         var _loc1_:Vector.<Long> = new Vector.<Long>();
+         var _loc1_:Vector.<String> = new Vector.<String>();
          var _loc2_:Number = new Date().time - this.TRUNCATE_PERIOD;
          for(_loc3_ in this._consumers)
          {

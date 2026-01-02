@@ -2,7 +2,7 @@ package scpacker.networking.protocol.codec.custom
 {
    import flash.utils.ByteArray;
    import scpacker.networking.protocol.ProtocolInitializer;
-   import projects.tanks.client.battleselect.model.info.BattleInfoUser;
+   import projects.tanks.client.battleselect.model.battle.entrance.user.BattleInfoUser;
    import scpacker.networking.protocol.codec.ICodec;
    
    public class CodecBattleInfoUser implements ICodec
@@ -31,8 +31,9 @@ package scpacker.networking.protocol.codec.custom
       public function decode(param1:ByteArray) : Object
       {
          var _loc2_:BattleInfoUser = new BattleInfoUser();
-         _loc2_.kills = this.newname_4274__END.decode(param1) as int;
-         _loc2_.score = this.newname_4242__END.decode(param1) as int;
+         var kills:int = this.newname_4274__END.decode(param1) as int;
+         var score:int = this.newname_4242__END.decode(param1) as int;
+         _loc2_.score = Math.max(kills, score); // Protanki server has kills and score, but in tanki 2019 client there is only score field. So we use the one that is not 0.
          _loc2_.suspicious = this.newname_4275__END.decode(param1) as Boolean;
          _loc2_.user = this.newname_4276__END.decode(param1) as String;
          return _loc2_;
@@ -40,16 +41,7 @@ package scpacker.networking.protocol.codec.custom
       
       public function encode(param1:ByteArray, param2:Object) : int
       {
-         if(param2 == null)
-         {
-            throw new Error("Object is null. Use @ProtocolOptional annotation.");
-         }
-         var _loc3_:BattleInfoUser = BattleInfoUser(param2);
-         var _loc4_:int = 0;
-         _loc4_ = _loc4_ + this.newname_4274__END.encode(param1,_loc3_.kills);
-         _loc4_ = _loc4_ + this.newname_4242__END.encode(param1,_loc3_.score);
-         _loc4_ = _loc4_ + this.newname_4275__END.encode(param1,_loc3_.suspicious);
-         return _loc4_ + this.newname_4276__END.encode(param1,_loc3_.user);
+         throw new Error("Not implemented");
       }
    }
 }

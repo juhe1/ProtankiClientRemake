@@ -329,7 +329,7 @@ package forms.userlabel
          //   _loc3_ = "[" + _loc2_.clanTag + "] ";
          //}
          //return _loc3_ + param1;
-         return null;
+         return param1;
       }
       
       public function setAdditionalText(param1:String) : void

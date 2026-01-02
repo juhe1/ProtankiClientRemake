@@ -19,7 +19,7 @@ package projects.tanks.client.commons.models.captcha
 
       protected function getInitParam() : CaptchaCC
       {
-         return CaptchaCC(initParams[platform.client.fp10.core.model.impl.Model.currentObject]);
+         return CaptchaCC(initParams[platform.client.fp10.core.model.impl.Model.object]);
       }
       
       override public function get id() : Long

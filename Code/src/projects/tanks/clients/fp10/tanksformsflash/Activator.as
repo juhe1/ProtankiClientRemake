@@ -41,6 +41,11 @@ package projects.tanks.clients.fp10.tanksformsflash
    import services.contextmenu.ContextMenuService;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.friend.IFriendActionService;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.alertservices.IAlertService;
+   import forms.registration.bubbles.EmailInvalidBubble;
+   import forms.registration.bubbles.NameIsIncorrectBubble;
+   import forms.registration.bubbles.NameIsNotUniqueBubble;
+   import forms.registration.bubbles.PasswordIsTooEasyBubble;
+   import forms.registration.bubbles.PasswordsDoNotMatchBubble;
    
    public class Activator implements IBundleActivator
    {
@@ -259,41 +264,41 @@ package projects.tanks.clients.fp10.tanksformsflash
          {
             return RankIcon.rankService;
          });
-         //osgi.injectService(ILocaleService,function(param1:Object):void
-         //{
-         //   EmailInvalidBubble.localeService = ILocaleService(param1);
-         //},function():ILocaleService
-         //{
-         //   return EmailInvalidBubble.localeService;
-         //});
-         //osgi.injectService(ILocaleService,function(param1:Object):void
-         //{
-         //   NameIsIncorrectBubble.localeService = ILocaleService(param1);
-         //},function():ILocaleService
-         //{
-         //   return NameIsIncorrectBubble.localeService;
-         //});
-         //osgi.injectService(ILocaleService,function(param1:Object):void
-         //{
-         //   NameIsNotUniqueBubble.localeService = ILocaleService(param1);
-         //},function():ILocaleService
-         //{
-         //   return NameIsNotUniqueBubble.localeService;
-         //});
-         //osgi.injectService(ILocaleService,function(param1:Object):void
-         //{
-         //   PasswordIsTooEasyBubble.localeService = ILocaleService(param1);
-         //},function():ILocaleService
-         //{
-         //   return PasswordIsTooEasyBubble.localeService;
-         //});
-         //osgi.injectService(ILocaleService,function(param1:Object):void
-         //{
-         //   PasswordsDoNotMatchBubble.localeService = ILocaleService(param1);
-         //},function():ILocaleService
-         //{
-         //   return PasswordsDoNotMatchBubble.localeService;
-         //});
+         osgi.injectService(ILocaleService,function(param1:Object):void
+         {
+            EmailInvalidBubble.localeService = ILocaleService(param1);
+         },function():ILocaleService
+         {
+            return EmailInvalidBubble.localeService;
+         });
+         osgi.injectService(ILocaleService,function(param1:Object):void
+         {
+            NameIsIncorrectBubble.localeService = ILocaleService(param1);
+         },function():ILocaleService
+         {
+            return NameIsIncorrectBubble.localeService;
+         });
+         osgi.injectService(ILocaleService,function(param1:Object):void
+         {
+            NameIsNotUniqueBubble.localeService = ILocaleService(param1);
+         },function():ILocaleService
+         {
+            return NameIsNotUniqueBubble.localeService;
+         });
+         osgi.injectService(ILocaleService,function(param1:Object):void
+         {
+            PasswordIsTooEasyBubble.localeService = ILocaleService(param1);
+         },function():ILocaleService
+         {
+            return PasswordIsTooEasyBubble.localeService;
+         });
+         osgi.injectService(ILocaleService,function(param1:Object):void
+         {
+            PasswordsDoNotMatchBubble.localeService = ILocaleService(param1);
+         },function():ILocaleService
+         {
+            return PasswordsDoNotMatchBubble.localeService;
+         });
          //osgi.injectService(RankService,function(param1:Object):void
          //{
          //   StatListRenderer.rankService = RankService(param1);

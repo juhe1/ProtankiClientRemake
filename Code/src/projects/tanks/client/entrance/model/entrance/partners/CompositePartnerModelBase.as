@@ -25,7 +25,7 @@ package projects.tanks.client.entrance.model.entrance.partners
       
       protected function getInitParam() : CompositePartnerCC
       {
-         return CompositePartnerCC(initParams[platform.client.fp10.core.model.impl.Model.currentObject]);
+         return CompositePartnerCC(initParams[platform.client.fp10.core.model.impl.Model.object]);
       }
       
       override public function get id() : Long

@@ -42,6 +42,21 @@ package alternativa.init
    import projects.tanks.clients.fp10.libraries.tanksservices.service.friend.battleinvite.BattleInviteService;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.friend.IFriendActionService;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.friend.FriendActionService;
+   import projects.tanks.clients.fp10.libraries.tanksservices.utils.BattleFormatUtil;
+   import projects.tanks.clients.fp10.libraries.tanksservices.service.premium.BattleUserPremiumService;
+   import projects.tanks.clients.fp10.libraries.tanksservices.service.premium.BattleUserPremiumServiceImpl;
+   import projects.tanks.clients.fp10.libraries.tanksservices.service.logging.battlelist.UserBattleSelectActionsService;
+   import projects.tanks.clients.fp10.libraries.tanksservices.service.logging.battlelist.UserBattleSelectActionsServiceImpl;
+   import projects.tanks.clients.fp10.libraries.tanksservices.service.group.IGroupInfoService;
+   import projects.tanks.clients.fp10.libraries.tanksservices.service.group.GroupInfoService;
+   import projects.tanks.clients.fp10.libraries.tanksservices.service.probattle.IUserProBattleService;
+   import projects.tanks.clients.fp10.libraries.tanksservices.service.probattle.UserProBattleService;
+   import projects.tanks.clients.fp10.libraries.tanksservices.service.dialogs.IDialogsService;
+   import projects.tanks.clients.fp10.libraries.tanksservices.service.dialogs.DialogsService;
+   import projects.tanks.clients.fp10.libraries.tanksservices.service.notifier.battle.IBattleNotifierService;
+   import projects.tanks.clients.fp10.libraries.tanksservices.service.notifier.battle.BattleNotifierService;
+   import projects.tanks.clients.fp10.libraries.tanksservices.service.blur.IBlurService;
+   import projects.tanks.clients.fp10.libraries.tanksservices.service.blur.BlurService;
    
    public class TanksServicesActivator implements IBundleActivator
    {
@@ -60,7 +75,7 @@ package alternativa.init
          param1.registerService(IStorageService,new StorageService(param1.createSharedObject("name"),param1.createSharedObject("accounts")));
          param1.registerService(IBackgroundService,_loc2_);
          param1.registerService(IHelpService,new HelpService());
-         //param1.registerService(IBlurService,new BlurService());
+         param1.registerService(IBlurService,new BlurService());
          param1.registerService(ITrackerService,new TrackerService());
          param1.registerService(ILoaderWindowService,new LoaderWindow());
          param1.registerService(IModalLoaderService,new ModalLoader());
@@ -70,25 +85,25 @@ package alternativa.init
          param1.registerService(IUserPropertiesService,new UserPropertiesService());
          param1.registerService(IDialogWindowsDispatcherService,new DialogWindowsDispatcherService());
          param1.registerService(IOnlineNotifierService,new OnlineNotifierService());
-         //param1.registerService(IBattleNotifierService,new BattleNotifierService());
+         param1.registerService(IBattleNotifierService,new BattleNotifierService());
          param1.registerService(IBattleInviteService,new BattleInviteService());
          param1.registerService(IBlockUserService,new BlockUserService());
          param1.registerService(TanksAddressService,new TanksAddressServiceImpl());
          param1.registerService(IBattleInfoService,new BattleInfoService());
-         //param1.registerService(IDialogsService,new DialogsService());
-         //param1.registerService(IUserProBattleService,new UserProBattleService());
-         //param1.registerService(BattleFormatUtil,new BattleFormatUtil());
+         param1.registerService(IDialogsService,new DialogsService());
+         param1.registerService(IUserProBattleService,new UserProBattleService());
+         param1.registerService(BattleFormatUtil,new BattleFormatUtil());
          param1.registerService(PremiumService,new PremiumServiceImpl());
-         //param1.registerService(BattleUserPremiumService,new BattleUserPremiumServiceImpl());
+         param1.registerService(BattleUserPremiumService,new BattleUserPremiumServiceImpl());
          param1.registerService(RankService,new RankServiceImpl());
          //param1.registerService(MatchmakingGroupService,new MatchmakingGroupServiceImpl());
          //param1.registerService(UserPaymentActionsService,new UserPaymentActionsServiceImpl());
          //param1.registerService(UserGarageActionsService,new UserGarageActionsServiceImpl());
-         //param1.registerService(UserBattleSelectActionsService,new UserBattleSelectActionsServiceImpl());
+         param1.registerService(UserBattleSelectActionsService,new UserBattleSelectActionsServiceImpl());
          param1.registerService(YandexMetricaService,new YandexMetricaServiceImpl());
          param1.registerService(NewbieUserService,new NewbieUserServiceImpl());
          //param1.registerService(GroupInviteService,new GroupInviteServiceImpl());
-         //param1.registerService(IGroupInfoService,new GroupInfoService());
+         param1.registerService(IGroupInfoService,new GroupInfoService());
          _loc2_.showBg();
       }
       

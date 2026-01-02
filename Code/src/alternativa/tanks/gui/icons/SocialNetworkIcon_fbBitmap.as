@@ -1,0 +1,16 @@
+package alternativa.tanks.gui.icons
+{
+   import mx.core.BitmapAsset;
+   
+   [ExcludeClass]
+   [Embed(source="/_assets/1099_alternativa.tanks.gui.icons.SocialNetworkIcon_fbBitmap_alternativa.tanks.gui.icons.SocialNetworkIcon_fbBitmap.png")]
+   public class SocialNetworkIcon_fbBitmap extends BitmapAsset
+   {
+      
+      public function SocialNetworkIcon_fbBitmap()
+      {
+         super();
+      }
+   }
+}
+

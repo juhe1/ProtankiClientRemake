@@ -45,6 +45,22 @@ package projects.tanks.client.battleservice
       {
          return this._name;
       }
+
+      public static function fromString(param1:String):EquipmentConstraintsMode
+      {
+         var _loc2_:Vector.<EquipmentConstraintsMode> = values;
+         var _loc3_:int = 0;
+         while(_loc3_ < _loc2_.length)
+         {
+            if(_loc2_[_loc3_].name == param1)
+            {
+               return _loc2_[_loc3_];
+            }
+            _loc3_++;
+         }
+         return NONE;
+      }
+      
    }
 }
 

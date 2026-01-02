@@ -49,8 +49,8 @@ package alternativa.tanks.servermodels
       
       public function objectLoadedPost() : void
       {
-         serverFacade.entranceObject = platform.client.fp10.core.model.impl.Model.currentObject;
-         clientFacade.entranceObject = platform.client.fp10.core.model.impl.Model.currentObject;
+         serverFacade.entranceObject = platform.client.fp10.core.model.impl.Model.object;
+         clientFacade.entranceObject = platform.client.fp10.core.model.impl.Model.object;
          IServerCaptcha(modelRegistry.getModel(CaptchaModelBase.modelId)).bindFacade(clientFacade);
       }
       

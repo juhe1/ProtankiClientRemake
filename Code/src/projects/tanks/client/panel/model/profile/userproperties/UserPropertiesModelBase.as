@@ -25,7 +25,7 @@ package projects.tanks.client.panel.model.profile.userproperties
       
       protected function getInitParam() : UserPropertiesCC
       {
-         return UserPropertiesCC(initParams[platform.client.fp10.core.model.impl.Model.currentObject]);
+         return UserPropertiesCC(initParams[platform.client.fp10.core.model.impl.Model.object]);
       }
       
       override public function get id() : Long

@@ -72,7 +72,7 @@ package platform.client.fp10.core.resource.types
          return this.frameParams.fps;
       }
       
-      public function get Data() : BitmapData
+      public function get data() : BitmapData
       {
          return this.bitmapData;
       }

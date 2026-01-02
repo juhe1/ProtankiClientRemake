@@ -1,29 +1,33 @@
 package projects.tanks.client.tanksservices.model.notifier.premium
 {
-   public class PremiumNotifierCC
+   import projects.tanks.client.tanksservices.model.notifier.AbstractNotifier;
+   
+   public class PremiumNotifierCC extends AbstractNotifier
    {
-      private var newname_10794__END:int;
+      
+      private var _lifeTimeInSeconds:int;
       
       public function PremiumNotifierCC(param1:int = 0)
       {
          super();
-         this.newname_10794__END = param1;
+         this._lifeTimeInSeconds = param1;
       }
       
       public function get lifeTimeInSeconds() : int
       {
-         return this.newname_10794__END;
+         return this._lifeTimeInSeconds;
       }
       
       public function set lifeTimeInSeconds(param1:int) : void
       {
-         this.newname_10794__END = param1;
+         this._lifeTimeInSeconds = param1;
       }
       
-      public function toString() : String
+      override public function toString() : String
       {
          var _loc1_:String = "PremiumNotifierCC [";
-         _loc1_ += "lifeTimeInSeconds = " + this.newname_10794__END + " ";
+         _loc1_ += "lifeTimeInSeconds = " + this.lifeTimeInSeconds + " ";
+         _loc1_ += super.toString();
          return _loc1_ + "]";
       }
    }
