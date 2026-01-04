@@ -14,7 +14,6 @@ package alternativa.tanks.gui.tankpreview
    import alternativa.engine3d.objects.Decal;
    import alternativa.engine3d.objects.Mesh;
    import alternativa.engine3d.objects.SkyBox;
-   import alternativa.tanks.service.battery.BatteriesService;
    import alternativa.tanks.service.garage.GarageService;
    import controls.TankWindowInner;
    import flash.display.BitmapData;
@@ -29,9 +28,7 @@ package alternativa.tanks.gui.tankpreview
    import flash.geom.Vector3D;
    import flash.utils.Timer;
    import forms.TankWindowWithHeader;
-   import platform.client.fp10.core.resource.types.MultiframeTextureResource;
    import projects.tanks.clients.flash.commons.models.gpu.GPUCapabilities;
-   import projects.tanks.clients.flash.resources.drone.Drone3D;
    import projects.tanks.clients.flash.resources.resource.Tanks3DSResource;
    import projects.tanks.clients.flash.resources.tanks.Tank3D;
    import projects.tanks.clients.fp10.libraries.TanksLocale;
@@ -44,10 +41,10 @@ package alternativa.tanks.gui.tankpreview
    public class TankPreviewWindow extends TankWindowWithHeader
    {
       
-      [Inject]
+      [Inject] // added
       public static var lobbyLayoutService:ILobbyLayoutService;
       
-      [Inject]
+      [Inject] // added
       public static var garageService:GarageService;
       
       //[Inject]
@@ -188,7 +185,10 @@ package alternativa.tanks.gui.tankpreview
          this.walls = new Array();
          this.lamps = new Array();
          this.others = new Array();
-         this.rootContainer.addChild(this.skyBox);
+         if(this.skyBox != null)
+         {
+            this.rootContainer.addChild(this.skyBox);
+         }
          this.camera = new Camera3D();
          this.camera.view = new View(100,100,GPUCapabilities.constrained);
          this.camera.view.hideLogo();

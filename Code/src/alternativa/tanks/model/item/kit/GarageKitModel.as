@@ -5,21 +5,22 @@ package alternativa.tanks.model.item.kit
    import alternativa.tanks.model.item.discount.IDiscount;
    import alternativa.tanks.model.item.discount.IDiscountCollector;
    import alternativa.tanks.service.item.ItemService;
-   import platform.client.fp10.core.resource.types.LocalizedImageResource;
    import projects.tanks.client.commons.types.ItemCategoryEnum;
    import projects.tanks.client.garage.models.item.kit.GarageKitModelBase;
    import projects.tanks.client.garage.models.item.kit.IGarageKitModelBase;
    import projects.tanks.client.garage.models.item.kit.KitItem;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.userproperties.IUserPropertiesService;
+   import platform.client.fp10.core.resource.types.ImageResource;
+   import projects.tanks.client.garage.models.item.kit.GarageKitCC;
    
    [ModelInfo]
    public class GarageKitModel extends GarageKitModelBase implements IGarageKitModelBase, GarageKit, ICollectDiscount
    {
       
-      [Inject]
+      [Inject] // added
       public static var itemService:ItemService;
       
-      [Inject]
+      [Inject] // added
       public static var userPropertyService:IUserPropertiesService;
       
       public function GarageKitModel()
@@ -27,7 +28,7 @@ package alternativa.tanks.model.item.kit
          super();
       }
       
-      public function getImage() : LocalizedImageResource
+      public function getImage() : ImageResource
       {
          return getInitParam().image;
       }
@@ -89,7 +90,12 @@ package alternativa.tanks.model.item.kit
       
       public function collectDiscountsInfo(param1:IDiscountCollector) : void
       {
-         param1.addDiscount(new DiscountInfo(getInitParam().discountInPercent,0));
+         var initParams:GarageKitCC = getInitParam();
+         if(initParams == null)
+         {
+            return;
+         }
+         param1.addDiscount(new DiscountInfo(initParams.discountInPercent,0));
       }
    }
 }

@@ -18,13 +18,13 @@ package alternativa.tanks.gui.buttons
    public class GarageButton extends ThreeLineBigButton implements IMoneyListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
-      [Inject]
+      [Inject] // added
       public static var moneyService:IMoneyService;
       
-      [Inject]
+      [Inject] // added
       public static var premiumService:PremiumService;
       
       private var secondRow:Sprite = new DiscreteSprite();

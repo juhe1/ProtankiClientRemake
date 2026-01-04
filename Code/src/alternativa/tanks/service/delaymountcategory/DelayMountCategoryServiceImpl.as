@@ -12,10 +12,10 @@ package alternativa.tanks.service.delaymountcategory
    public class DelayMountCategoryServiceImpl implements IDelayMountCategoryService
    {
       
-      [Inject]
+      [Inject] // added
       public static var itemService:ItemService;
       
-      [Inject]
+      [Inject] // added
       public static var logService:LogService;
       
       private var timers:Dictionary = new Dictionary();
@@ -35,8 +35,8 @@ package alternativa.tanks.service.delaymountcategory
       {
          this.createTimer(ItemCategoryEnum.ARMOR,param1.delayMountArmorInSec);
          this.createTimer(ItemCategoryEnum.WEAPON,param1.delayMountWeaponInSec);
-         this.createTimer(ItemCategoryEnum.RESISTANCE_MODULE,param1.delayMountResistanceInSec);
-         this.createTimer(ItemCategoryEnum.DRONE,param1.delayMountDroneInSec);
+         //this.createTimer(ItemCategoryEnum.RESISTANCE_MODULE,param1.delayMountResistanceInSec);
+         //this.createTimer(ItemCategoryEnum.DRONE,param1.delayMountDroneInSec);
       }
       
       private function createTimer(param1:ItemCategoryEnum, param2:int) : void
@@ -57,9 +57,9 @@ package alternativa.tanks.service.delaymountcategory
             }
          }
          delete this.timers[ItemCategoryEnum.ARMOR];
-         delete this.timers[ItemCategoryEnum.RESISTANCE_MODULE];
+         //delete this.timers[ItemCategoryEnum.RESISTANCE_MODULE];
          delete this.timers[ItemCategoryEnum.WEAPON];
-         delete this.timers[ItemCategoryEnum.DRONE];
+         //delete this.timers[ItemCategoryEnum.DRONE];
       }
       
       public function resetTimers() : void

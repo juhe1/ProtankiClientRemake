@@ -1,9 +1,9 @@
 package projects.tanks.clients.flash.commons.models.coloring
 {
    import platform.client.fp10.core.model.impl.Model;
-   import platform.client.fp10.core.resource.types.MultiframeTextureResource;
-   import platform.client.fp10.core.resource.types.TextureResource;
    import platform.client.fp10.core.type.IGameObject;
+   import platform.client.fp10.core.resource.types.MultiframeImageResource;
+   import platform.client.fp10.core.resource.types.ImageResource;
    
    public class IColoringAdapt implements IColoring
    {
@@ -19,9 +19,9 @@ package projects.tanks.clients.flash.commons.models.coloring
          this.impl = param2;
       }
       
-      public function getColoring() : TextureResource
+      public function getColoring() : ImageResource
       {
-         var result:TextureResource = null;
+         var result:ImageResource = null;
          try
          {
             Model.object = this.object;
@@ -34,9 +34,9 @@ package projects.tanks.clients.flash.commons.models.coloring
          return result;
       }
       
-      public function getAnimatedColoring() : MultiframeTextureResource
+      public function getAnimatedColoring() : MultiframeImageResource
       {
-         var result:MultiframeTextureResource = null;
+         var result:MultiframeImageResource = null;
          try
          {
             Model.object = this.object;

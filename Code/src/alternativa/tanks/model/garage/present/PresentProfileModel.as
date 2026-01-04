@@ -15,7 +15,7 @@ package alternativa.tanks.model.garage.present
    public class PresentProfileModel extends PresentProfileModelBase implements IPresentProfileModelBase, ObjectLoadListener, ObjectUnloadListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var garageService:GarageService;
       
       public function PresentProfileModel()

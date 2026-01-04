@@ -27,7 +27,7 @@ package projects.tanks.clients.flash.resources.resource
    public class PropLibResource extends Resource
    {
       
-      [Inject]
+      [Inject] // added
       public static var resourceLocalStorage:IResourceLocalStorage;
       
       private static const PROP_LIB_FILE_NAME:String = "library.tara";

@@ -1,13 +1,13 @@
 package alternativa.tanks.model.item.kit
 {
-   import platform.client.fp10.core.resource.types.LocalizedImageResource;
    import projects.tanks.client.garage.models.item.kit.KitItem;
+   import platform.client.fp10.core.resource.types.ImageResource;
    
    [ModelInterface]
    public interface GarageKit
    {
       
-      function getImage() : LocalizedImageResource;
+      function getImage() : ImageResource;
       
       function getPrice() : int;
       

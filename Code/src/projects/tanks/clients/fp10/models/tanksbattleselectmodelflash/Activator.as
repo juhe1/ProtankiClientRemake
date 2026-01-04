@@ -187,6 +187,10 @@ package projects.tanks.clients.fp10.models.tanksbattleselectmodelflash
    import alternativa.osgi.service.logging.LogService;
    import alternativa.tanks.service.battle.BattleUserInfoService;
    import alternativa.tanks.service.battleinfo.BattleInfoFormService;
+   import alternativa.tanks.model.battle.BattleEntranceModel;
+   import alternativa.tanks.model.battle.BattleEntrance;
+   import alternativa.tanks.model.battle.BattleEntranceAdapt;
+   import alternativa.tanks.model.battle.BattleEntranceEvents;
    //import projects.tanks.clients.fp10.libraries.tanksservices.service.logging.gamescreen.UserChangeGameScreenService;
    //import projects.tanks.clients.fp10.libraries.tanksservices.service.matchmakinggroup.MatchmakingGroupService;
    //import projects.tanks.clients.fp10.libraries.tanksservices.service.notifier.battle.IBattleNotifierService;
@@ -399,62 +403,62 @@ package projects.tanks.clients.fp10.models.tanksbattleselectmodelflash
          //{
          //   return MatchmakingFormController.dialogService;
          //});
-         //osgi.injectService(IAlertService,function(param1:Object):void
-         //{
-         //   BattleEntranceModel.alertService = IAlertService(param1);
-         //},function():IAlertService
-         //{
-         //   return BattleEntranceModel.alertService;
-         //});
-         //osgi.injectService(IAlertService,function(param1:Object):void
-         //{
-         //   BattleEntranceModel.battleAlertService = IAlertService(param1);
-         //},function():IAlertService
-         //{
-         //   return BattleEntranceModel.battleAlertService;
-         //});
-         //osgi.injectService(IBattleInfoFormService,function(param1:Object):void
-         //{
-         //   BattleEntranceModel.battleInfoFormService = IBattleInfoFormService(param1);
-         //},function():IBattleInfoFormService
-         //{
-         //   return BattleEntranceModel.battleInfoFormService;
-         //});
-         //osgi.injectService(ILoaderWindowService,function(param1:Object):void
-         //{
-         //   BattleEntranceModel.loaderWindowService = ILoaderWindowService(param1);
-         //},function():ILoaderWindowService
-         //{
-         //   return BattleEntranceModel.loaderWindowService;
-         //});
-         //osgi.injectService(ILocaleService,function(param1:Object):void
-         //{
-         //   BattleEntranceModel.localeService = ILocaleService(param1);
-         //},function():ILocaleService
-         //{
-         //   return BattleEntranceModel.localeService;
-         //});
-         //osgi.injectService(IModalLoaderService,function(param1:Object):void
-         //{
-         //   BattleEntranceModel.modalLoaderService = IModalLoaderService(param1);
-         //},function():IModalLoaderService
-         //{
-         //   return BattleEntranceModel.modalLoaderService;
-         //});
-         //osgi.injectService(ITrackerService,function(param1:Object):void
-         //{
-         //   BattleEntranceModel.trackerService = ITrackerService(param1);
-         //},function():ITrackerService
-         //{
-         //   return BattleEntranceModel.trackerService;
-         //});
-         //osgi.injectService(UserBattleSelectActionsService,function(param1:Object):void
-         //{
-         //   BattleEntranceModel.userBattleSelectActionsService = UserBattleSelectActionsService(param1);
-         //},function():UserBattleSelectActionsService
-         //{
-         //   return BattleEntranceModel.userBattleSelectActionsService;
-         //});
+         osgi.injectService(IAlertService,function(param1:Object):void
+         {
+            BattleEntranceModel.alertService = IAlertService(param1);
+         },function():IAlertService
+         {
+            return BattleEntranceModel.alertService;
+         });
+         osgi.injectService(IAlertService,function(param1:Object):void
+         {
+            BattleEntranceModel.battleAlertService = IAlertService(param1);
+         },function():IAlertService
+         {
+            return BattleEntranceModel.battleAlertService;
+         });
+         osgi.injectService(IBattleInfoFormService,function(param1:Object):void
+         {
+            BattleEntranceModel.battleInfoFormService = IBattleInfoFormService(param1);
+         },function():IBattleInfoFormService
+         {
+            return BattleEntranceModel.battleInfoFormService;
+         });
+         osgi.injectService(ILoaderWindowService,function(param1:Object):void
+         {
+            BattleEntranceModel.loaderWindowService = ILoaderWindowService(param1);
+         },function():ILoaderWindowService
+         {
+            return BattleEntranceModel.loaderWindowService;
+         });
+         osgi.injectService(ILocaleService,function(param1:Object):void
+         {
+            BattleEntranceModel.localeService = ILocaleService(param1);
+         },function():ILocaleService
+         {
+            return BattleEntranceModel.localeService;
+         });
+         osgi.injectService(IModalLoaderService,function(param1:Object):void
+         {
+            BattleEntranceModel.modalLoaderService = IModalLoaderService(param1);
+         },function():IModalLoaderService
+         {
+            return BattleEntranceModel.modalLoaderService;
+         });
+         osgi.injectService(ITrackerService,function(param1:Object):void
+         {
+            BattleEntranceModel.trackerService = ITrackerService(param1);
+         },function():ITrackerService
+         {
+            return BattleEntranceModel.trackerService;
+         });
+         osgi.injectService(UserBattleSelectActionsService,function(param1:Object):void
+         {
+            BattleEntranceModel.userBattleSelectActionsService = UserBattleSelectActionsService(param1);
+         },function():UserBattleSelectActionsService
+         {
+            return BattleEntranceModel.userBattleSelectActionsService;
+         });
          osgi.injectService(IBattleInfoFormService,function(param1:Object):void
          {
             BattleSelectModel.battleInfoFormService = IBattleInfoFormService(param1);
@@ -1387,10 +1391,10 @@ package projects.tanks.clients.fp10.models.tanksbattleselectmodelflash
          //   return QuestButton.localeService;
          //});
          modelRegisterAdapt = osgi.getService(ModelRegistry) as ModelRegistry;
-         //modelRegisterAdapt.registerAdapt(BattleEntrance,BattleEntranceAdapt);
-         //modelRegisterAdapt.registerEvents(BattleEntrance,BattleEntranceEvents);
+         modelRegisterAdapt.registerAdapt(BattleEntrance,BattleEntranceAdapt);
+         modelRegisterAdapt.registerEvents(BattleEntrance,BattleEntranceEvents);
          modelRegister = osgi.getService(ModelRegistry) as ModelRegistry;
-         //modelRegister.add(new BattleEntranceModel());
+         modelRegister.add(new BattleEntranceModel());
          modelRegister.add(new BattleSelectModel());
          modelRegister.add(new BattleCreateModel());
          //modelRegister.add(new BuyProAbonementModel());

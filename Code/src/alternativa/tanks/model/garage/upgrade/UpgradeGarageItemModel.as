@@ -27,22 +27,22 @@ package alternativa.tanks.model.garage.upgrade
    public class UpgradeGarageItemModel extends UpgradeGarageItemModelBase implements IUpgradeGarageItemModelBase, UpgradeGarageItem, ObjectLoadPostListener, CountDownTimerOnCompleteBefore, ObjectUnloadListener, ObjectLoadListener, FlushUpgrades
    {
       
-      [Inject]
+      [Inject] // added
       public static var upgradingItemsService:UpgradingItemsService;
       
-      [Inject]
+      [Inject] // added
       public static var moneyService:IMoneyService;
       
-      [Inject]
+      [Inject] // added
       public static var garageService:GarageService;
       
-      [Inject]
+      [Inject] // added
       public static var itemService:ItemService;
       
-      [Inject]
+      [Inject] // added
       public static var clientLog:IClientLog;
       
-      [Inject]
+      [Inject] // added
       public static var lobbyLayoutService:ILobbyLayoutService;
       
       private var garageWindow:IGarageWindow;
@@ -102,7 +102,7 @@ package alternativa.tanks.model.garage.upgrade
       
       public function isUpgradesEnabled() : Boolean
       {
-         return true;
+         return false;
       }
       
       public function itemAlreadyUpgraded(param1:int) : void

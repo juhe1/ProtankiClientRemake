@@ -16,10 +16,10 @@ package alternativa.tanks.model.garage.premium
    public class PremiumInDepotModel extends PremiumInDepotModelBase implements IPremiumInDepotModelBase, ObjectLoadListener, ItemActionPanel
    {
       
-      [Inject]
+      [Inject] // added
       public static var paymentDisplayService:PaymentDisplayService;
       
-      [Inject]
+      [Inject] // added
       public static var passToShop:PassToShopService;
       
       public function PremiumInDepotModel()

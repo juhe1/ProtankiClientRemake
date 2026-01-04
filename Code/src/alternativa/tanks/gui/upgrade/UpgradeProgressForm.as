@@ -19,7 +19,7 @@ package alternativa.tanks.gui.upgrade
    public class UpgradeProgressForm extends DiscreteSprite
    {
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
       private static const leftProgressResource:Class = UpgradeProgressForm_leftProgressResource;

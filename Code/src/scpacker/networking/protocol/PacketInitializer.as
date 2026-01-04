@@ -31,6 +31,10 @@ package scpacker.networking.protocol
    import scpacker.networking.protocol.packets.login.LoginSuccessInPacket;
    import scpacker.networking.protocol.packets.login.LoginFailedInPacket;
    import scpacker.networking.protocol.packets.login.LoginOutPacket;
+   import scpacker.networking.protocol.packets.loginbyhash.LoginByHashPacketHandler;
+   import scpacker.networking.protocol.packets.loginbyhash.LoginByHashFailedInPacket;
+   import scpacker.networking.protocol.packets.loginbyhash.LoginByHashOutPacket;
+   import scpacker.networking.protocol.packets.loginbyhash.RememberUserHashInPakcet;
    import scpacker.networking.protocol.packets.ping.PingPacketHandler;
    import scpacker.networking.protocol.packets.ping.PingInPacket;
    import scpacker.networking.protocol.packets.ping.PongOutPacket;
@@ -94,6 +98,23 @@ package scpacker.networking.protocol
    import scpacker.networking.protocol.packets.garage.ShowGarageCategoryInPacket;
    import scpacker.networking.protocol.packets.garage.ShowNewPresentsAlertInPacket;
    import scpacker.networking.protocol.packets.garage.UnloadGarageSpaceInPacket;
+   import scpacker.networking.protocol.packets.garage.MountItemOutPacket;
+   import scpacker.networking.protocol.packets.garage.BuyKitOutPacket;
+   import scpacker.networking.protocol.packets.garage.BuyMultipleItemsOutPacket;
+   import scpacker.networking.protocol.packets.garage.FitItemOutPacket;
+   import scpacker.networking.protocol.packets.garage.GarageEasterEggOutPacket;
+   import scpacker.networking.protocol.packets.garage.RemovePresentOutPacket;
+   import scpacker.networking.protocol.packets.garage.RenameOutPacket;
+   import scpacker.networking.protocol.packets.battleInfo.JoinBattleOutPacket;
+   import scpacker.networking.protocol.packets.battleInfo.SpectateBattleOutPacket;
+   import scpacker.networking.protocol.packets.battleitem.ItemBattleMadePrivateInPacket;
+   import scpacker.networking.protocol.packets.battleitem.ItemLeftDmBattleInPacket;
+   import scpacker.networking.protocol.packets.battleitem.ItemLeftTeamBattleInPacket;
+   import scpacker.networking.protocol.packets.battleitem.ItemJoinedDmBattleInPacket;
+   import scpacker.networking.protocol.packets.battleitem.ItemJoinedTeamBattleInPacket;
+   import scpacker.networking.protocol.packets.battleitem.ItemSwapTeamsInPacket;
+   import scpacker.networking.protocol.packets.battleitem.ItemUpdateBattleNameInPacket;
+   import scpacker.networking.protocol.packets.battleitem.ItemUpdateBattleSuspicionInPacket;
    
    public class PacketInitializer
    {
@@ -153,6 +174,12 @@ package scpacker.networking.protocol
          packetRegistry.registerPacket(new LoginFailedInPacket());
          packetRegistry.registerPacket(new LoginOutPacket());
 
+         // LoginByHash Packets
+         packetInvoker.registerPacketHandler(new LoginByHashPacketHandler());
+         packetRegistry.registerPacket(new LoginByHashFailedInPacket());
+         packetRegistry.registerPacket(new LoginByHashOutPacket());
+         packetRegistry.registerPacket(new RememberUserHashInPakcet());
+
          // Ping Packets
          packetInvoker.registerPacketHandler(new PingPacketHandler());
          packetRegistry.registerPacket(new PingInPacket());
@@ -179,14 +206,6 @@ package scpacker.networking.protocol
          packetRegistry.registerPacket(new CreateBattleOutPacket());
          packetRegistry.registerPacket(new CheckBattleNameOutPacket());
 
-         // BattleList Packets
-         packetInvoker.registerPacketHandler(new BattleListPacketHandler());
-         packetRegistry.registerPacket(new BattleCreatedInPacket());
-         packetRegistry.registerPacket(new LoadAllBattlesInPacket());
-         packetRegistry.registerPacket(new RemoveBattleInPacket());
-         packetRegistry.registerPacket(new SelectBattleInOutPacket());
-         packetRegistry.registerPacket(new UnloadBattleSelectSpaceInPacket());
-
          // UserNotifier Packets
          packetInvoker.registerPacketHandler(new UserNotifierPacketHandler());
          packetRegistry.registerPacket(new RankStatusInPacket());
@@ -197,6 +216,14 @@ package scpacker.networking.protocol
          packetRegistry.registerPacket(new NotInBattleStatusInPacket());
          packetRegistry.registerPacket(new SubscribeStatusOutPacket());
          packetRegistry.registerPacket(new UnsubscribeOutPacket());
+
+         // BattleList Packets
+         packetInvoker.registerPacketHandler(new BattleListPacketHandler());
+         packetRegistry.registerPacket(new BattleCreatedInPacket());
+         packetRegistry.registerPacket(new LoadAllBattlesInPacket());
+         packetRegistry.registerPacket(new RemoveBattleInPacket());
+         packetRegistry.registerPacket(new SelectBattleInOutPacket());
+         packetRegistry.registerPacket(new UnloadBattleSelectSpaceInPacket());
 
          // BattleInfo Packets
          packetInvoker.registerPacketHandler(new BattleInfoPacketHandler());
@@ -217,17 +244,19 @@ package scpacker.networking.protocol
          packetRegistry.registerPacket(new UpdatePlayerDmKillsInPacket());
          packetRegistry.registerPacket(new UpdatePlayerTeamScoreInPacket());
          packetRegistry.registerPacket(new UpdatePlayerSuspiciousStateInPacket());
+         packetRegistry.registerPacket(new JoinBattleOutPacket());
+         packetRegistry.registerPacket(new SpectateBattleOutPacket());
 
          // BattleItem Packets
          packetInvoker.registerPacketHandler(new BattleItemPacketHandler());
-         packetRegistry.registerPacket(new scpacker.networking.protocol.packets.battleitem.BattleMadePrivateInPacket());
-         packetRegistry.registerPacket(new scpacker.networking.protocol.packets.battleitem.LeftDmBattleInPacket());
-         packetRegistry.registerPacket(new scpacker.networking.protocol.packets.battleitem.LeftTeamBattleInPacket());
-         packetRegistry.registerPacket(new scpacker.networking.protocol.packets.battleitem.JoinedDmBattleInPacket());
-         packetRegistry.registerPacket(new scpacker.networking.protocol.packets.battleitem.JoinedTeamBattleInPacket());
-         packetRegistry.registerPacket(new scpacker.networking.protocol.packets.battleitem.SwapTeamsInPacket());
-         packetRegistry.registerPacket(new scpacker.networking.protocol.packets.battleitem.UpdateBattleNameInPacket());
-         packetRegistry.registerPacket(new scpacker.networking.protocol.packets.battleitem.UpdateBattleSuspicionInPacket());
+         packetRegistry.registerPacket(new ItemBattleMadePrivateInPacket());
+         packetRegistry.registerPacket(new ItemLeftDmBattleInPacket());
+         packetRegistry.registerPacket(new ItemLeftTeamBattleInPacket());
+         packetRegistry.registerPacket(new ItemJoinedDmBattleInPacket());
+         packetRegistry.registerPacket(new ItemJoinedTeamBattleInPacket());
+         packetRegistry.registerPacket(new ItemSwapTeamsInPacket());
+         packetRegistry.registerPacket(new ItemUpdateBattleNameInPacket());
+         packetRegistry.registerPacket(new ItemUpdateBattleSuspicionInPacket());
 
          // Garage Packets
          packetInvoker.registerPacketHandler(new GaragePacketHandler());
@@ -241,6 +270,13 @@ package scpacker.networking.protocol
          packetRegistry.registerPacket(new SelectItemInPacket());
          packetRegistry.registerPacket(new ShowGarageCategoryInPacket());
          packetRegistry.registerPacket(new ShowNewPresentsAlertInPacket());
+         packetRegistry.registerPacket(new MountItemOutPacket());
+         packetRegistry.registerPacket(new BuyKitOutPacket());
+         packetRegistry.registerPacket(new BuyMultipleItemsOutPacket());
+         packetRegistry.registerPacket(new FitItemOutPacket());
+         packetRegistry.registerPacket(new GarageEasterEggOutPacket());
+         packetRegistry.registerPacket(new RemovePresentOutPacket());
+         packetRegistry.registerPacket(new RenameOutPacket());
 
       }
    }

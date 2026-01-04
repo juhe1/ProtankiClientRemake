@@ -30,7 +30,7 @@ package alternativa.tanks.model.garage.present
          return this.present.text;
       }
       
-      public function getPresenterId() : Long
+      public function getPresenterId() : String
       {
          return this.present.presenter;
       }

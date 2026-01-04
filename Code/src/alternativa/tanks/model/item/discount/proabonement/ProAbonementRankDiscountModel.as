@@ -11,7 +11,7 @@ package alternativa.tanks.model.item.discount.proabonement
    public class ProAbonementRankDiscountModel extends ProAbonementRankDiscountModelBase implements IProAbonementRankDiscountModelBase, ICollectDiscount, ProAbonementRankDiscount
    {
       
-      [Inject]
+      [Inject] // added
       public static var userPropertiesService:IUserPropertiesService;
       
       private static const MAX_RANK_INDEX:int = 31;

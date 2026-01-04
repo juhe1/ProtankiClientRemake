@@ -80,11 +80,11 @@ package alternativa.tanks.controllers.battleinfo
       
       private function updateProBattleStatus() : void
       {
-         if(this.initParams.createParams.proBattle && !userProBattleService.hasAbonement())
-         {
-            this.view.showProBattlePassAlert();
-         }
-         else
+         //if(this.initParams.createParams.proBattle && !userProBattleService.hasAbonement())
+         //{
+         //   this.view.showProBattlePassAlert();
+         //}
+         //else
          {
             this.view.hideNoSupplies();
          }

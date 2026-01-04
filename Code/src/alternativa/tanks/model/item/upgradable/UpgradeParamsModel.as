@@ -12,7 +12,7 @@ package alternativa.tanks.model.item.upgradable
    public class UpgradeParamsModel extends UpgradeableParamsConstructorModelBase implements IUpgradeableParamsConstructorModelBase, UpgradableItem, ItemProperties
    {
       
-      [Inject]
+      [Inject] // added
       public static var itemService:ItemService;
       
       public function UpgradeParamsModel()

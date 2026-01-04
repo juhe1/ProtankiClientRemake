@@ -14,16 +14,16 @@ package alternativa.tanks.model.item.delaymountcategory
    public class DelayMountCategoryModel extends DelayMountCategoryModelBase implements IDelayMountCategoryModelBase, ObjectLoadPostListener, ObjectUnloadListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var delayMountCategoryService:IDelayMountCategoryService;
       
-      [Inject]
+      [Inject] // added
       public static var lobbyLayoutService:ILobbyLayoutService;
       
-      [Inject]
+      [Inject] // added
       public static var battleInfoService:IBattleInfoService;
       
-      [Inject]
+      [Inject] // added
       public static var logService:LogService;
       
       public function DelayMountCategoryModel()

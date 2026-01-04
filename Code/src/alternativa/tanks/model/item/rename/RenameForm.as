@@ -25,16 +25,16 @@ package alternativa.tanks.model.item.rename
    public class RenameForm extends DialogWindow
    {
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
-      [Inject]
+      [Inject] // added
       public static var uidCheckService:UidCheckService;
       
-      [Inject]
+      [Inject] // added
       public static var passwordService:PasswordService;
       
-      [Inject]
+      [Inject] // added
       public static var validateService:IValidateService;
       
       private static const CHECK_ICON_OFFSET:int = 6;

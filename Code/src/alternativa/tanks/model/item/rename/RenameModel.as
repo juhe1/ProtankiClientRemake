@@ -22,19 +22,19 @@ package alternativa.tanks.model.item.rename
    public class RenameModel extends RenameModelBase implements IRenameModelBase, ItemActionPanel, ObjectLoadListener, ObjectUnloadListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
-      [Inject]
+      [Inject] // added
       public static var alertService:IAlertService;
       
-      [Inject]
+      [Inject] // added
       public static var storageService:IStorageService;
       
-      [Inject]
+      [Inject] // added
       public static var partnerService:IPartnerService;
       
-      [Inject]
+      [Inject] // added
       public static var garageService:GarageService;
       
       private var renameForm:RenameForm;

@@ -16,10 +16,10 @@ package alternativa.tanks.gui.upgrade
    public class UpgradeInfoForm extends DiscreteSprite
    {
       
-      [Inject]
+      [Inject] // added
       public static var propertyService:ItemPropertyParamsService;
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
       private static const arrowClass:Class = UpgradeInfoForm_arrowClass;

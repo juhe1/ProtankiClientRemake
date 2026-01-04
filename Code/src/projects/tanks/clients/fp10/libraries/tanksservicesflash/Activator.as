@@ -62,6 +62,8 @@ package projects.tanks.clients.fp10.libraries.tanksservicesflash
    import projects.tanks.clients.fp10.libraries.tanksservices.model.notifier.socialnetworks.SNUidNotifierModel;
    import projects.tanks.clients.fp10.libraries.tanksservices.model.notifier.uid.UidNotifierModel;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.notifier.online.IOnlineNotifierService;
+   import alternativa.tanks.tracker.ITrackerService;
+   import projects.tanks.clients.fp10.libraries.tanksservices.service.logging.garage.UserGarageActionsServiceImpl;
    
    public class Activator implements IBundleActivator
    {
@@ -584,13 +586,13 @@ package projects.tanks.clients.fp10.libraries.tanksservicesflash
          {
             return BubbleHelper.localeService;
          });
-         //osgi.injectService(ITrackerService,function(param1:Object):void
-         //{
-         //   UserGarageActionsServiceImpl.trackerService = ITrackerService(param1);
-         //},function():ITrackerService
-         //{
-         //   return UserGarageActionsServiceImpl.trackerService;
-         //});
+         osgi.injectService(ITrackerService,function(param1:Object):void
+         {
+            UserGarageActionsServiceImpl.trackerService = ITrackerService(param1);
+         },function():ITrackerService
+         {
+            return UserGarageActionsServiceImpl.trackerService;
+         });
          osgi.injectService(TanksAddressService,function(param1:Object):void
          {
             ServerNumberToLocaleServerServiceImpl.addressService = TanksAddressService(param1);

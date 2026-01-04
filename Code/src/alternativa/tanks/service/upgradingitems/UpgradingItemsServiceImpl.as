@@ -22,10 +22,10 @@ package alternativa.tanks.service.upgradingitems
    public class UpgradingItemsServiceImpl implements UpgradingItemsService, CountDownTimerOnCompleteAfter, OnConnectionClosedServiceListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
-      [Inject]
+      [Inject] // added
       public static var lobbyLayoutService:ILobbyLayoutService;
       
       private var upgradingItems:Vector.<ItemInfo> = new Vector.<ItemInfo>();
@@ -50,7 +50,7 @@ package alternativa.tanks.service.upgradingitems
          while(_loc4_ < param1.length)
          {
             _loc5_ = new CountDownTimer();
-            _loc5_.start(_loc3_ + param1[_loc4_].remaingTimeInMS);
+            _loc5_.start(_loc3_ + GarageItemInfo(param1[_loc4_]).remainingTimeInMS);
             this.add(param1[_loc4_],_loc5_);
             _loc4_++;
          }

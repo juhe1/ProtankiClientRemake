@@ -4,13 +4,13 @@ package alternativa.tanks.model.garage
    import alternativa.tanks.service.item.ItemService;
    import alternativa.tanks.service.item3d.ITank3DViewer;
    import flash.display.BitmapData;
-   import platform.client.fp10.core.resource.types.MultiframeTextureResource;
    import projects.tanks.clients.flash.resources.resource.Tanks3DSResource;
+   import platform.client.fp10.core.resource.types.MultiframeImageResource;
    
    public class Tank3DViewer implements ITank3DViewer
    {
       
-      [Inject]
+      [Inject] // added
       public static var itemService:ItemService;
       
       private var tankPreview:TankPreviewWindow;
@@ -23,7 +23,7 @@ package alternativa.tanks.model.garage
       
       private var color:BitmapData;
       
-      private var animation:MultiframeTextureResource;
+      private var animation:MultiframeImageResource;
       
       private var isPreviewing:Boolean;
       
@@ -122,7 +122,7 @@ package alternativa.tanks.model.garage
          }
       }
       
-      public function setPreviewAnimation(param1:MultiframeTextureResource) : void
+      public function setPreviewAnimation(param1:MultiframeImageResource) : void
       {
          this.isPreviewing = true;
          if(this.tankPreview != null)
@@ -131,7 +131,7 @@ package alternativa.tanks.model.garage
          }
       }
       
-      public function setAnimation(param1:MultiframeTextureResource) : void
+      public function setAnimation(param1:MultiframeImageResource) : void
       {
          this.color = null;
          this.animation = param1;

@@ -10,7 +10,7 @@ package alternativa.tanks.model.item.properties
    public class ItemPropertiesModel extends ItemPropertiesModelBase implements IItemPropertiesModelBase, ItemProperties
    {
       
-      [Inject]
+      [Inject] // added
       public static var propertyService:ItemPropertyParamsService;
       
       public function ItemPropertiesModel()

@@ -1,9 +1,9 @@
 package alternativa.tanks.model.item.kit
 {
    import platform.client.fp10.core.model.impl.Model;
-   import platform.client.fp10.core.resource.types.LocalizedImageResource;
    import platform.client.fp10.core.type.IGameObject;
    import projects.tanks.client.garage.models.item.kit.KitItem;
+   import platform.client.fp10.core.resource.types.ImageResource;
    
    public class GarageKitAdapt implements GarageKit
    {
@@ -19,9 +19,9 @@ package alternativa.tanks.model.item.kit
          this.impl = param2;
       }
       
-      public function getImage() : LocalizedImageResource
+      public function getImage() : ImageResource
       {
-         var result:LocalizedImageResource = null;
+         var result:ImageResource = null;
          try
          {
             Model.object = this.object;

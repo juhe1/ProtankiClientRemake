@@ -10,7 +10,7 @@ package alternativa.tanks.model.item.upgradable
    public class UpgradableItemPropertyValue implements ItemPropertyValue
    {
       
-      [Inject]
+      [Inject] // added
       public static var propertyParamsService:ItemPropertyParamsService;
       
       private var valueCalculator:PropertyCalculator;

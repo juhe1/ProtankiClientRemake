@@ -11,7 +11,7 @@ package alternativa.tanks.model.item.resistance
    public class MountedResistancesModel extends MountedResistancesModelBase implements IMountedResistancesModelBase, ObjectLoadPostListener, ObjectUnloadListener, MountedResistances
    {
       
-      [Inject]
+      [Inject] // added
       public static var resistanceService:ResistanceService;
       
       private var mountedResistances:Vector.<IGameObject>;

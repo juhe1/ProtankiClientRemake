@@ -24,7 +24,6 @@ package alternativa.tanks.model.garage
    import alternativa.tanks.model.item.upgradable.UpgradableItem;
    import alternativa.tanks.service.achievement.IAchievementService;
    import alternativa.tanks.service.delaymountcategory.IDelayMountCategoryService;
-   import alternativa.tanks.service.device.DeviceService;
    import alternativa.tanks.service.garage.GarageService;
    import alternativa.tanks.service.item.ItemService;
    import alternativa.tanks.service.item3d.ITank3DViewer;
@@ -44,7 +43,6 @@ package alternativa.tanks.model.garage
    import platform.client.fp10.core.model.ObjectLoadListener;
    import platform.client.fp10.core.model.ObjectUnloadPostListener;
    import platform.client.fp10.core.resource.Resource;
-   import platform.client.fp10.core.resource.types.TextureResource;
    import platform.client.fp10.core.type.IGameObject;
    import projects.tanks.client.commons.types.ItemCategoryEnum;
    import projects.tanks.client.commons.types.ItemViewCategoryEnum;
@@ -61,72 +59,76 @@ package alternativa.tanks.model.garage
    import services.alertservice.AlertAnswer;
    import utils.resource.IResourceLoadingComplete;
    import utils.resource.ResourceLoadingWrapper;
+   import alternativa.gfx.core.TextureResource;
+   import alternativa.engine3d.alternativa3d;
+   
+   use namespace alternativa3d;
    
    [ModelInfo]
    public class GarageModel extends GarageModelBase implements IGarageModelBase, ObjectLoadListener, Garage, ObjectUnloadPostListener, ITemporaryItemNotifyServiceListener, GaragePurchaseConfirmation, IResourceLoadingComplete
    {
       
-      [Inject]
+      [Inject] // added
       public static var upgradingItemsService:UpgradingItemsService;
       
-      [Inject]
+      [Inject] // added
       public static var dumpService:IDumpService;
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
-      [Inject]
+      [Inject] // added
       public static var helpService:IHelpService;
       
-      [Inject]
+      [Inject] // added
       public static var itemService:ItemService;
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
-      [Inject]
+      [Inject] // added
       public static var temporaryItemService:ITemporaryItemService;
       
-      [Inject]
+      [Inject] // added
       public static var temporaryItemNotifyService:ITemporaryItemNotifyService;
       
-      [Inject]
+      [Inject] // added
       public static var tank3DViewer:ITank3DViewer;
       
-      [Inject]
+      [Inject] // added
       public static var achievementService:IAchievementService;
       
-      [Inject]
+      [Inject] // added
       public static var moneyService:IMoneyService;
       
-      [Inject]
+      [Inject] // added
       public static var modalLoaderService:IModalLoaderService;
       
-      [Inject]
+      [Inject] // added
       public static var garageService:GarageService;
       
-      [Inject]
+      [Inject] // added
       public static var commandService:CommandService;
       
-      [Inject]
+      [Inject] // added
       public static var alertService:IAlertService;
       
-      [Inject]
+      [Inject] // added
       public static var battleInfoService:IBattleInfoService;
       
-      [Inject]
+      [Inject] // added
       public static var delayMountCategoryService:IDelayMountCategoryService;
       
-      [Inject]
+      [Inject] // added
       public static var lobbyLayoutService:ILobbyLayoutService;
       
-      [Inject]
+      [Inject] // added
       public static var userGarageActionsService:UserGarageActionsService;
       
-      [Inject]
-      public static var deviceService:DeviceService;
+      //[Inject]
+      //public static var deviceService:DeviceService;
       
-      [Inject]
+      [Inject] // added
       public static var resistanceService:ResistanceService;
       
       private static const HELPER_SWITCHING_ITEM_CATEGORIES:int = 2;
@@ -139,7 +141,7 @@ package alternativa.tanks.model.garage
       
       private static const SKYBOX_SIZE:int = 200000;
       
-      private static const LAZY_RESOURCES_TO_LOAD:int = 2;
+      private static const LAZY_RESOURCES_TO_LOAD:int = 1;//2;
       
       private var garageWindow:GarageWindow;
       
@@ -177,13 +179,13 @@ package alternativa.tanks.model.garage
       public function objectLoaded() : void
       {
          garageService.init(getInitParam().cameraPitch,getInitParam().cameraAltitude,getInitParam().cameraDistance,getInitParam().cameraFov);
-         deviceService.init();
+         //deviceService.init();
          this.garageWindow = new GarageWindow(UpgradeGarageItem(object.adapt(UpgradeGarageItem)).isUpgradesEnabled());
          garageService.registerView(this.garageWindow);
          this.garageBox3DSId = getInitParam().garageBox.id;
-         this.garageBoxFrontSideId = getInitParam().skyboxFrontSide.id;
+         //this.garageBoxFrontSideId = getInitParam().skyboxFrontSide.id;
          this.unloadedGarageBox3DS = getInitParam().garageBox;
-         this.unloadedGarageBoxFrontSide = getInitParam().skyboxFrontSide;
+         //this.unloadedGarageBoxFrontSide = getInitParam().skyboxFrontSide;
          if(!battleInfoService.isInBattle())
          {
             this.startTankPreviewWindowLoading();
@@ -199,7 +201,7 @@ package alternativa.tanks.model.garage
       {
          this.loadedGarageBoxResources = 0;
          this.loadResourceOrMarkLoaded(this.unloadedGarageBox3DS);
-         this.loadResourceOrMarkLoaded(this.unloadedGarageBoxFrontSide);
+         //this.loadResourceOrMarkLoaded(this.unloadedGarageBoxFrontSide);
       }
       
       private function onBattleUnload(param1:BattleInfoServiceEvent) : void
@@ -418,7 +420,7 @@ package alternativa.tanks.model.garage
       private function onSetupClick(param1:GarageWindowEvent) : void
       {
          this.mountItem(param1.item);
-         server.itemMounted(param1.item);
+         server.itemMounted(param1.item.name);
          userGarageActionsService.equipItem(param1.item);
       }
       
@@ -463,7 +465,7 @@ package alternativa.tanks.model.garage
          {
             _loc3_ = 0;
          }
-         server.itemBought(this.itemWaitingForConfirmation,_loc3_,_loc2_);
+         server.itemBought(this.itemWaitingForConfirmation.name,_loc3_,_loc2_);
          this.buyItem(this.itemWaitingForConfirmation,_loc3_);
          this.garageWindow.updateKitsContainsItem(this.itemWaitingForConfirmation);
       }
@@ -504,7 +506,7 @@ package alternativa.tanks.model.garage
             return;
          }
          moneyService.spend(_loc2_);
-         server.kitBought(this.itemWaitingForConfirmation,_loc2_);
+         server.kitBought(this.itemWaitingForConfirmation.name,_loc2_);
          for each(_loc3_ in _loc1_.getItems())
          {
             _loc4_ = _loc3_.item;
@@ -590,12 +592,12 @@ package alternativa.tanks.model.garage
          if(param3 && Boolean(itemService.isMountable(param1)) && this.haveAbilityToMount(param1))
          {
             this.mountItem(param1);
-            server.itemMounted(param1);
+            server.itemMounted(param1.name);
          }
-         if(itemService.getCategory(param1) == ItemCategoryEnum.RESISTANCE_MODULE)
-         {
-            resistanceService.mountBought(param1);
-         }
+         //if(itemService.getCategory(param1) == ItemCategoryEnum.RESISTANCE_MODULE)
+         //{
+         //   resistanceService.mountBought(param1);
+         //}
       }
       
       public function haveAbilityToMount(param1:IGameObject) : Boolean
@@ -612,7 +614,7 @@ package alternativa.tanks.model.garage
          {
             return false;
          }
-         if(itemService.getCategory(param1) == ItemCategoryEnum.PAINT)
+         if(itemService.getCategory(param1) == ItemCategoryEnum.COLOR)
          {
             return true;
          }
@@ -774,7 +776,7 @@ package alternativa.tanks.model.garage
       
       private function initTankPreview() : void
       {
-         this.garageWindow.initTankPreviewWindow(this.loadedGarageBox3DS,new SkyBox(SKYBOX_SIZE,null,null,null,new TextureMaterial(this.loadedGarageBoxFrontSide.data),null,null));
+         this.garageWindow.initTankPreviewWindow(this.loadedGarageBox3DS);//,new SkyBox(SKYBOX_SIZE,null,null,null,new TextureMaterial(this.loadedGarageBoxFrontSide.data),null,null));
       }
       
       public function unmountDrone() : void

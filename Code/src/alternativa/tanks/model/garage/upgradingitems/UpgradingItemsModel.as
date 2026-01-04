@@ -11,7 +11,7 @@ package alternativa.tanks.model.garage.upgradingitems
    public class UpgradingItemsModel extends UpgradingItemsModelBase implements IUpgradingItemsModelBase, UpgradingItem
    {
       
-      [Inject]
+      [Inject] // added
       public static var upgradingItemsService:UpgradingItemsService;
       
       private var object:IGameObject;

@@ -44,28 +44,28 @@ package alternativa.tanks.service.item
    public class ItemServiceImpl extends EventDispatcher implements ItemService
    {
       
-      [Inject]
+      [Inject] // added
       public static var userPropertyService:IUserPropertiesService;
       
-      [Inject]
+      [Inject] // added
       public static var propertyService:ItemPropertyParamsService;
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
-      [Inject]
+      [Inject] // added
       public static var upgradingItemsService:UpgradingItemsService;
       
-      [Inject]
+      [Inject] // added
       public static var garageService:GarageService;
       
-      [Inject]
+      [Inject] // added
       public static var clientLog:IClientLog;
       
-      [Inject]
+      [Inject] // added
       public static var itemService:ItemService;
       
-      [Inject]
+      [Inject] // added
       public static var resistancesService:ResistanceService;
       
       private var mountedItems:Vector.<IGameObject> = new Vector.<IGameObject>();
@@ -133,29 +133,29 @@ package alternativa.tanks.service.item
          var _loc4_:String = null;
          var _loc5_:UpgradableItemPropertyValue = null;
          var _loc2_:String = "";
-         if(this.getCategory(param1) == ItemCategoryEnum.RESISTANCE_MODULE)
-         {
-            _loc3_ = this.getProperties(param1);
-            if(_loc3_.length > 0)
-            {
-               _loc2_ = localeService.getText(TanksLocale.TEXT_GARAGE_RESISTANCE_DESCRIPTION_PREFIX) + "\n";
-               if(_loc3_.length == 1 && _loc3_[0].getProperty() == ItemGarageProperty.ALL_RESISTANCE)
-               {
-                  for each(_loc4_ in this.resistanceModuleDescription)
-                  {
-                     _loc2_ += localeService.getText(_loc4_) + "\n";
-                  }
-               }
-               else
-               {
-                  for each(_loc5_ in _loc3_)
-                  {
-                     _loc2_ += localeService.getText(this.resistanceModuleDescription[_loc5_.getProperty()]) + "\n";
-                  }
-               }
-               _loc2_ += "\n";
-            }
-         }
+         //if(this.getCategory(param1) == ItemCategoryEnum.RESISTANCE_MODULE)
+         //{
+         //   _loc3_ = this.getProperties(param1);
+         //   if(_loc3_.length > 0)
+         //   {
+         //      _loc2_ = localeService.getText(TanksLocale.TEXT_GARAGE_RESISTANCE_DESCRIPTION_PREFIX) + "\n";
+         //      if(_loc3_.length == 1 && _loc3_[0].getProperty() == ItemGarageProperty.ALL_RESISTANCE)
+         //      {
+         //         for each(_loc4_ in this.resistanceModuleDescription)
+         //         {
+         //            _loc2_ += localeService.getText(_loc4_) + "\n";
+         //         }
+         //      }
+         //      else
+         //      {
+         //         for each(_loc5_ in _loc3_)
+         //         {
+         //            _loc2_ += localeService.getText(this.resistanceModuleDescription[_loc5_.getProperty()]) + "\n";
+         //         }
+         //      }
+         //      _loc2_ += "\n";
+         //   }
+         //}
          return _loc2_ + IDescription(param1.adapt(IDescription)).getDescription();
       }
       
@@ -168,10 +168,84 @@ package alternativa.tanks.service.item
          return -1;
       }
       
-      public function getModifications(param1:IGameObject) : Vector.<IGameObject>
+      // Original
+      public function getModificationsOld(param1:IGameObject) : Vector.<IGameObject>
       {
          this.createItem2ModificationsIfNeed(param1.space.objects);
          return this.itemToModifications[param1];
+      }
+
+      // custom one
+      public function getModificationsOld2(param1:IGameObject) : Vector.<IGameObject>
+      {
+         if(this.itemToModifications != null && this.itemToModifications[param1] != null)
+         {
+            return this.itemToModifications[param1];
+         }
+         
+         if(this.itemToModifications == null)
+         {
+            this.itemToModifications = new Dictionary();
+         }
+
+         var modifications = new Vector.<IGameObject>();
+         for each(var gameObject:IGameObject in param1.space.objects)
+         {
+            if(gameObject.hasModel(IModification) && isModificationItem(gameObject))
+            {
+               var baseId:Long = IModification(gameObject.adapt(IModification)).getBaseItemId();
+               var targetBaseId:Long = IModification(param1.adapt(IModification)).getBaseItemId();
+               if(baseId.equalsTo(targetBaseId))
+               {
+                  modifications.push(gameObject);
+               }
+            }
+         }
+         this.itemToModifications[param1] = modifications;
+         return modifications;
+      }
+
+      // From Protanki
+      public function getModifications(param1:IGameObject) : Vector.<IGameObject>
+      {
+         if(this.itemToModifications == null)
+         {
+            this.itemToModifications = new Dictionary();
+         }
+         var _loc2_:Vector.<IGameObject> = null;
+         var _loc8_:Dictionary = null;
+         var _loc9_:int = 0;
+         var _loc7_:int = 0;
+         var _loc4_:IGameObject = null;
+         var _loc5_:int = 0;
+         var modifcations:Vector.<IGameObject> = null;
+         _loc2_ = param1.space.objects;
+         _loc8_ = new Dictionary();
+         var targetBaseId:Long = IModification(param1.adapt(IModification)).getBaseItemId();
+         _loc7_ = 0;
+         while(_loc7_ < _loc2_.length)
+         {
+            _loc4_ = _loc2_[_loc7_];
+            if(_loc4_.hasModel(IModification))
+            {
+               if(IModification(_loc4_.adapt(IModification)).getBaseItemId().equalsTo(targetBaseId))
+               {
+                  _loc5_ = this.getModificationIndex(_loc4_);
+                  _loc8_[_loc5_] = _loc4_;
+                  _loc9_++;
+               }
+            }
+            _loc7_++;
+         }
+         modifcations = new Vector.<IGameObject>();
+         _loc7_ = 0;
+         while(_loc7_ < _loc9_)
+         {
+            modifcations[_loc7_] = _loc8_[_loc7_];
+            _loc7_++;
+         }
+         this.itemToModifications[param1] = modifcations;
+         return modifcations;
       }
       
       private function createItem2ModificationsIfNeed(param1:Vector.<IGameObject>) : void
@@ -387,12 +461,12 @@ package alternativa.tanks.service.item
       
       public function isModificationItem(param1:IGameObject) : Boolean
       {
-         return Boolean(param1.hasModel(IModification)) && this.getModificationsCount(param1) > 1;
+         return param1.hasModel(IModification) && IModification(param1.adapt(IModification)).getModificationIndex() >= 0;
       }
       
       public function isKit(param1:IGameObject) : Boolean
       {
-         return param1.hasModel(GarageKit);
+         return this.getCategory(param1) == ItemCategoryEnum.KIT && param1.hasModel(GarageKit) && GarageKit(param1.adapt(GarageKit)).getImage != null;
       }
       
       public function isGrouped(param1:IGameObject) : Boolean
@@ -502,7 +576,7 @@ package alternativa.tanks.service.item
          var _loc3_:IGarageWindow = garageService.getView();
          if(_loc2_ != null)
          {
-            upgradingItemsService.onMount(_loc2_,param1);
+            //upgradingItemsService.onMount(_loc2_,param1);
             this.unmountItem(_loc2_);
          }
          _loc3_.mountItem(param1);
@@ -521,10 +595,10 @@ package alternativa.tanks.service.item
       
       public function isMounted(param1:IGameObject) : Boolean
       {
-         if(this.getCategory(param1) == ItemCategoryEnum.RESISTANCE_MODULE)
-         {
-            return resistancesService.isMounted(param1);
-         }
+         //if(this.getCategory(param1) == ItemCategoryEnum.RESISTANCE_MODULE)
+         //{
+         //   return resistancesService.isMounted(param1);
+         //}
          return this.getMountedItemByCategory(this.getCategory(param1)) == param1;
       }
       
@@ -585,8 +659,13 @@ package alternativa.tanks.service.item
       
       public function isEnabledItem(param1:IGameObject) : Boolean
       {
-         var _loc2_:Boolean = Boolean(TimePeriod(param1.adapt(TimePeriod)).isEnabled());
-         return _loc2_ && !this.isItemAppearInDelayPeriod(param1) || this.getTimeToStartInSeconds(param1) > 0 && this.isItemAlreadyAppear(param1);
+         var timePeriod:TimePeriod = TimePeriod(param1.adapt(TimePeriod));
+         if(timePeriod == null)
+         {
+            var timeEnabled:Boolean = Boolean(TimePeriod(param1.adapt(TimePeriod)).isEnabled());
+            return timeEnabled && !this.isItemAppearInDelayPeriod(param1) || this.getTimeToStartInSeconds(param1) > 0 && this.isItemAlreadyAppear(param1);
+         }
+         return true;
       }
       
       public function getMaxAvailableOrNextNotAvailableModification(param1:IGameObject) : IGameObject
@@ -625,7 +704,8 @@ package alternativa.tanks.service.item
       
       public function isPremiumItem(param1:IGameObject) : Boolean
       {
-         return PremiumItem(param1.adapt(PremiumItem)).isPremiumItem();
+         //return PremiumItem(param1.adapt(PremiumItem)).isPremiumItem();
+         return false;
       }
       
       public function isPresent(param1:IGameObject) : Boolean
@@ -664,6 +744,7 @@ package alternativa.tanks.service.item
          {
             throw new Error("id=" + userObject.id + ", message" + e.message,e.errorID);
          }
+         return null;
       }
       
       public function getMountedItemsByCategory(param1:ItemCategoryEnum) : Vector.<IGameObject>

@@ -2,7 +2,6 @@ package projects.tanks.client.garage.models.garage
 {
    import projects.tanks.client.commons.types.ItemCategoryEnum;
    import projects.tanks.clients.flash.resources.resource.Tanks3DSResource;
-   import alternativa.gfx.core.TextureResource;
    
    public class GarageModelCC
    {
@@ -21,19 +20,7 @@ package projects.tanks.client.garage.models.garage
       
       private var _mountableCategories:Vector.<ItemCategoryEnum>;
       
-      private var _skyboxBackSide:TextureResource;
-      
-      private var _skyboxBottomSide:TextureResource;
-      
-      private var _skyboxFrontSide:TextureResource;
-      
-      private var _skyboxLeftSide:TextureResource;
-      
-      private var _skyboxRightSide:TextureResource;
-      
-      private var _skyboxTopSide:TextureResource;
-      
-      public function GarageModelCC(param1:Number = 0, param2:Number = 0, param3:Number = 0, param4:Number = 0, param5:Tanks3DSResource = null, param6:Boolean = false, param7:Vector.<ItemCategoryEnum> = null, param8:TextureResource = null, param9:TextureResource = null, param10:TextureResource = null, param11:TextureResource = null, param12:TextureResource = null, param13:TextureResource = null)
+      public function GarageModelCC(param1:Number = 0, param2:Number = 0, param3:Number = 0, param4:Number = 0, param5:Tanks3DSResource = null, param6:Boolean = false, param7:Vector.<ItemCategoryEnum> = null)
       {
          super();
          this._cameraAltitude = param1;
@@ -43,12 +30,6 @@ package projects.tanks.client.garage.models.garage
          this._garageBox = param5;
          this._hideLinks = param6;
          this._mountableCategories = param7;
-         this._skyboxBackSide = param8;
-         this._skyboxBottomSide = param9;
-         this._skyboxFrontSide = param10;
-         this._skyboxLeftSide = param11;
-         this._skyboxRightSide = param12;
-         this._skyboxTopSide = param13;
       }
       
       public function get cameraAltitude() : Number
@@ -121,66 +102,6 @@ package projects.tanks.client.garage.models.garage
          this._mountableCategories = param1;
       }
       
-      public function get skyboxBackSide() : TextureResource
-      {
-         return this._skyboxBackSide;
-      }
-      
-      public function set skyboxBackSide(param1:TextureResource) : void
-      {
-         this._skyboxBackSide = param1;
-      }
-      
-      public function get skyboxBottomSide() : TextureResource
-      {
-         return this._skyboxBottomSide;
-      }
-      
-      public function set skyboxBottomSide(param1:TextureResource) : void
-      {
-         this._skyboxBottomSide = param1;
-      }
-      
-      public function get skyboxFrontSide() : TextureResource
-      {
-         return this._skyboxFrontSide;
-      }
-      
-      public function set skyboxFrontSide(param1:TextureResource) : void
-      {
-         this._skyboxFrontSide = param1;
-      }
-      
-      public function get skyboxLeftSide() : TextureResource
-      {
-         return this._skyboxLeftSide;
-      }
-      
-      public function set skyboxLeftSide(param1:TextureResource) : void
-      {
-         this._skyboxLeftSide = param1;
-      }
-      
-      public function get skyboxRightSide() : TextureResource
-      {
-         return this._skyboxRightSide;
-      }
-      
-      public function set skyboxRightSide(param1:TextureResource) : void
-      {
-         this._skyboxRightSide = param1;
-      }
-      
-      public function get skyboxTopSide() : TextureResource
-      {
-         return this._skyboxTopSide;
-      }
-      
-      public function set skyboxTopSide(param1:TextureResource) : void
-      {
-         this._skyboxTopSide = param1;
-      }
-      
       public function toString() : String
       {
          var _loc1_:String = "GarageModelCC [";
@@ -191,12 +112,6 @@ package projects.tanks.client.garage.models.garage
          _loc1_ += "garageBox = " + this.garageBox + " ";
          _loc1_ += "hideLinks = " + this.hideLinks + " ";
          _loc1_ += "mountableCategories = " + this.mountableCategories + " ";
-         _loc1_ += "skyboxBackSide = " + this.skyboxBackSide + " ";
-         _loc1_ += "skyboxBottomSide = " + this.skyboxBottomSide + " ";
-         _loc1_ += "skyboxFrontSide = " + this.skyboxFrontSide + " ";
-         _loc1_ += "skyboxLeftSide = " + this.skyboxLeftSide + " ";
-         _loc1_ += "skyboxRightSide = " + this.skyboxRightSide + " ";
-         _loc1_ += "skyboxTopSide = " + this.skyboxTopSide + " ";
          return _loc1_ + "]";
       }
    }

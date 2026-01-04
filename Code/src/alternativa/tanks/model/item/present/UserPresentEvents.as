@@ -41,9 +41,9 @@ package alternativa.tanks.model.item.present
          return result;
       }
       
-      public function getPresenterId() : Long
+      public function getPresenterId() : String
       {
-         var result:Long = null;
+         var result:String = null;
          var i:int = 0;
          var m:UserPresent = null;
          try

@@ -20,10 +20,10 @@ package alternativa.tanks.gui.tables
    public class KitInfoTable extends Sprite
    {
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
-      [Inject]
+      [Inject] // added
       public static var itemService:ItemService;
       
       private static const upgradeSelectionLeftClass:Class = KitInfoTable_upgradeSelectionLeftClass;

@@ -9,7 +9,7 @@ package alternativa.tanks.gui.effects
    public class GlowEffect extends EventDispatcher
    {
       
-      [Inject]
+      [Inject] // added
       public static var fpsService:FPSService;
       
       private static const EFFECT_TIME:Number = 1.25;

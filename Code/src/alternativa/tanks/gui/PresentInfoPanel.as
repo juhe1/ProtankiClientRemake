@@ -12,7 +12,7 @@ package alternativa.tanks.gui
    public class PresentInfoPanel extends Sprite
    {
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
       private var fromLabel:LabelBase;

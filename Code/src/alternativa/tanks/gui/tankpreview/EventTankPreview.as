@@ -9,14 +9,17 @@ package alternativa.tanks.gui.tankpreview
    import projects.tanks.clients.flash.resources.resource.Tanks3DSResource;
    import projects.tanks.clients.flash.resources.tanks.Tank3D;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.layout.ILobbyLayoutService;
+   import alternativa.engine3d.alternativa3d;
+   
+   use namespace alternativa3d;
    
    public class EventTankPreview extends TankPreviewWindow
    {
       
-      [Inject]
+      [Inject] // added
       public static var lobbyLayoutService:ILobbyLayoutService;
       
-      [Inject]
+      [Inject] // added
       public static var garageService:GarageService;
       
       public function EventTankPreview()
@@ -59,7 +62,7 @@ package alternativa.tanks.gui.tankpreview
          this.createTank();
          createDrone(new Vector3D(100,-100,100));
          kdTree.addChild(tank);
-         kdTree.addChild(drone);
+         //kdTree.addChild(drone);
          hangarContainer.addChild(kdTree);
       }
       

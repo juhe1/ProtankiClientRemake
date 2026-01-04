@@ -4,7 +4,6 @@ package alternativa.tanks.gui
    import alternativa.tanks.gui.buttons.GarageButton;
    import alternativa.tanks.gui.buttons.TimerButton;
    import alternativa.tanks.gui.buttons.TimerButtonEvent;
-   import alternativa.tanks.gui.device.ItemInfoDevicesPanel;
    import alternativa.tanks.gui.effects.BlinkEffect;
    import alternativa.tanks.gui.effects.GlowEffect;
    import alternativa.tanks.gui.resistance.GarageResistancesIconsUtils;
@@ -27,7 +26,6 @@ package alternativa.tanks.gui
    import alternativa.tanks.model.item.upgradable.UpgradableItemParams;
    import alternativa.tanks.model.item.upgradable.UpgradableItemPropertyValue;
    import alternativa.tanks.service.delaymountcategory.IDelayMountCategoryService;
-   import alternativa.tanks.service.device.DeviceService;
    import alternativa.tanks.service.item.ItemService;
    import alternativa.tanks.service.item3d.ITank3DViewer;
    import alternativa.tanks.service.itempropertyparams.ItemPropertyParams;
@@ -61,7 +59,6 @@ package alternativa.tanks.gui
    import forms.TankWindowWithHeader;
    import platform.client.fp10.core.resource.Resource;
    import platform.client.fp10.core.resource.types.ImageResource;
-   import platform.client.fp10.core.resource.types.LocalizedImageResource;
    import platform.client.fp10.core.type.IGameObject;
    import projects.tanks.client.commons.types.ItemCategoryEnum;
    import projects.tanks.clients.flash.commons.services.payment.PaymentDisplayService;
@@ -80,40 +77,40 @@ package alternativa.tanks.gui
    public class ItemInfoPanel extends Sprite implements IResourceLoadingComplete
    {
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
-      [Inject]
+      [Inject] // added
       public static var userPropertiesService:IUserPropertiesService;
       
-      [Inject]
+      [Inject] // added
       public static var itemService:ItemService;
       
-      [Inject]
+      [Inject] // added
       public static var moneyService:IMoneyService;
       
-      [Inject]
+      [Inject] // added
       public static var propertyService:ItemPropertyParamsService;
       
-      [Inject]
+      [Inject] // added
       public static var dialogService:IDialogsService;
       
-      [Inject]
+      [Inject] // added
       public static var lobbyLayoutService:ILobbyLayoutService;
       
-      [Inject]
+      [Inject] // added
       public static var battleInfoService:IBattleInfoService;
       
-      [Inject]
+      [Inject] // added
       public static var delayMountCategoryService:IDelayMountCategoryService;
       
-      [Inject]
+      [Inject] // added
       public static var paymentDisplayService:PaymentDisplayService;
       
-      [Inject]
+      [Inject] // added
       public static var userGarageActionsService:UserGarageActionsService;
       
-      [Inject]
+      [Inject] // added
       public static var tank3dView:ITank3DViewer;
       
       //[Inject]
@@ -585,7 +582,7 @@ package alternativa.tanks.gui
          {
             if(this.isKit)
             {
-               this.kitFullImage.bitmapData = LocalizedImageResource(param1).data;
+               this.kitFullImage.bitmapData = ImageResource(param1).data;
                this.showBitmap(this.kitFullImage);
                this.resize(this.size.x,this.size.y);
             }
@@ -687,7 +684,7 @@ package alternativa.tanks.gui
       
       private function loadAndSetupImageResources(param1:IGameObject) : void
       {
-         var _loc2_:LocalizedImageResource = null;
+         var _loc2_:ImageResource = null;
          var _loc3_:ImageResource = null;
          var _loc4_:ImageResource = null;
          this.kitFullImage.bitmapData = null;
@@ -1142,18 +1139,18 @@ package alternativa.tanks.gui
          if(param1.hasModel(UpgradableItem))
          {
             _loc2_ = UpgradableItem(param1.adapt(UpgradableItem));
-            if(_loc2_.isUpgrading())
-            {
-               this.upgradeButton.setUpgradingButton(_loc2_.getCountDownTimer(),_loc2_.hasSpeedUpDiscount());
-            }
-            else if(itemService.isFullUpgraded(param1))
-            {
-               this.upgradeButton.setUpgradedButton();
-            }
-            else
-            {
-               this.upgradeButton.setUpgradeButton(_loc2_.hasUpgradeDiscount());
-            }
+            //if(_loc2_.isUpgrading())
+            //{
+            //   this.upgradeButton.setUpgradingButton(_loc2_.getCountDownTimer(),_loc2_.hasSpeedUpDiscount());
+            //}
+            //else if(itemService.isFullUpgraded(param1))
+            //{
+            //   this.upgradeButton.setUpgradedButton();
+            //}
+            //else
+            //{
+            //   this.upgradeButton.setUpgradeButton(_loc2_.hasUpgradeDiscount());
+            //}
          }
       }
       
@@ -1470,6 +1467,10 @@ package alternativa.tanks.gui
       private function setTimeRemaining(param1:IGameObject) : void
       {
          var _loc2_:ITemporaryItem = ITemporaryItem(param1.adapt(ITemporaryItem));
+         if(_loc2_.getLifeTimeInSec() <= 0)
+         {
+            return;
+         }
          var _loc3_:Date = _loc2_.getStopDate();
          this.timeIndicator.text = DateTimeHelper.formatDateTimeWithExpiredLabel(_loc3_);
          this.resizeTimeIndicator();

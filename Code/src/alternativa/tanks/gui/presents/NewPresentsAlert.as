@@ -12,10 +12,10 @@ package alternativa.tanks.gui.presents
    public class NewPresentsAlert extends AlertDialogWindow
    {
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
-      [Inject]
+      [Inject] // added
       public static var modalLoaderService:IModalLoaderService;
       
       private static var bitmapDataClass:Class = NewPresentsAlert_bitmapDataClass;

@@ -13,10 +13,10 @@ package alternativa.tanks.model.item.resistance.view
    public class MountedResistancesPanel extends DiscreteSprite
    {
       
-      [Inject]
+      [Inject] // added
       public static var resistanceService:ResistanceService;
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
       private static const VERTICAL_MARGIN:int = 9;

@@ -54,6 +54,25 @@ package projects.tanks.clients.fp10.models.tankspanelmodelflash
    import alternativa.tanks.gui.buycrystals.BuyCrystalsAlert;
    import alternativa.tanks.service.settings.keybinding.KeyCodesConverter;
    import alternativa.tanks.service.logging.UserChangeGameScreenServiceImpl;
+   import alternativa.tanks.gui.crystalbutton.CrystalButton;
+   import alternativa.tanks.service.fps.FPSService;
+   import alternativa.tanks.gui.effects.BlinkEffect;
+   import alternativa.tanks.gui.effects.FlashEffect;
+   import alternativa.tanks.gui.effects.GlowEffect;
+   import alternativa.tanks.gui.presents.NewPresentsAlert;
+   import alternativa.tanks.loader.IModalLoaderService;
+   import alternativa.tanks.service.upgradingitems.UpgradingItemsService;
+   import alternativa.tanks.model.garage.upgradingitems.UpgradingItemsModel;
+   import alternativa.tanks.service.notificationcategories.INotificationGarageCategoriesService;
+   import alternativa.tanks.model.presents.NewPresentsShowingModel;
+   import alternativa.tanks.service.settings.ISettingsService;
+   import alternativa.tanks.model.presents.PresentSettingsModel;
+   import alternativa.tanks.model.useremailandpassword.UserEmailAndPasswordModel;
+   import alternativa.tanks.service.socialnetwork.ISocialNetworkPanelService;
+   import alternativa.tanks.service.notificationcategories.NotificationGarageCategoriesService;
+   import projects.tanks.clients.fp10.libraries.tanksservices.service.storage.IStorageService;
+   import alternativa.tanks.service.upgradingitems.UpgradingItemsServiceImpl;
+   import alternativa.tanks.gui.alerts.ItemsAlert;
    
    public class Activator implements IBundleActivator
    {
@@ -291,20 +310,20 @@ package projects.tanks.clients.fp10.models.tankspanelmodelflash
          //{
          //   return ThanksForPurchaseWindow.paymentDisplayService;
          //});
-         //osgi.injectService(ILocaleService,function(param1:Object):void
-         //{
-         //   ItemsAlert.localeService = ILocaleService(param1);
-         //},function():ILocaleService
-         //{
-         //   return ItemsAlert.localeService;
-         //});
-         //osgi.injectService(IModalLoaderService,function(param1:Object):void
-         //{
-         //   ItemsAlert.modalLoaderService = IModalLoaderService(param1);
-         //},function():IModalLoaderService
-         //{
-         //   return ItemsAlert.modalLoaderService;
-         //});
+         osgi.injectService(ILocaleService,function(param1:Object):void
+         {
+            ItemsAlert.localeService = ILocaleService(param1);
+         },function():ILocaleService
+         {
+            return ItemsAlert.localeService;
+         });
+         osgi.injectService(IModalLoaderService,function(param1:Object):void
+         {
+            ItemsAlert.modalLoaderService = IModalLoaderService(param1);
+         },function():IModalLoaderService
+         {
+            return ItemsAlert.modalLoaderService;
+         });
          //osgi.injectService(ILocaleService,function(param1:Object):void
          //{
          //   RankUpBonusAlert.localeService = ILocaleService(param1);
@@ -347,34 +366,34 @@ package projects.tanks.clients.fp10.models.tankspanelmodelflash
          {
             return BuyCrystalsAlert.paymentDisplayService;
          });
-         //osgi.injectService(IMoneyService,function(param1:Object):void
-         //{
-         //   CrystalButton.moneyService = IMoneyService(param1);
-         //},function():IMoneyService
-         //{
-         //   return CrystalButton.moneyService;
-         //});
-         //osgi.injectService(FPSService,function(param1:Object):void
-         //{
-         //   BlinkEffect.fpsService = FPSService(param1);
-         //},function():FPSService
-         //{
-         //   return BlinkEffect.fpsService;
-         //});
-         //osgi.injectService(FPSService,function(param1:Object):void
-         //{
-         //   FlashEffect.fpsService = FPSService(param1);
-         //},function():FPSService
-         //{
-         //   return FlashEffect.fpsService;
-         //});
-         //osgi.injectService(FPSService,function(param1:Object):void
-         //{
-         //   GlowEffect.fpsService = FPSService(param1);
-         //},function():FPSService
-         //{
-         //   return GlowEffect.fpsService;
-         //});
+         osgi.injectService(IMoneyService,function(param1:Object):void
+         {
+            CrystalButton.moneyService = IMoneyService(param1);
+         },function():IMoneyService
+         {
+            return CrystalButton.moneyService;
+         });
+         osgi.injectService(FPSService,function(param1:Object):void
+         {
+            BlinkEffect.fpsService = FPSService(param1);
+         },function():FPSService
+         {
+            return BlinkEffect.fpsService;
+         });
+         osgi.injectService(FPSService,function(param1:Object):void
+         {
+            FlashEffect.fpsService = FPSService(param1);
+         },function():FPSService
+         {
+            return FlashEffect.fpsService;
+         });
+         osgi.injectService(FPSService,function(param1:Object):void
+         {
+            GlowEffect.fpsService = FPSService(param1);
+         },function():FPSService
+         {
+            return GlowEffect.fpsService;
+         });
          osgi.injectService(AddressService,function(param1:Object):void
          {
             ErrorForm.addressService = AddressService(param1);
@@ -1264,20 +1283,20 @@ package projects.tanks.clients.fp10.models.tankspanelmodelflash
          //{
          //   return PremiumAccountWelcomeAlert.localeService;
          //});
-         //osgi.injectService(ILocaleService,function(param1:Object):void
-         //{
-         //   NewPresentsAlert.localeService = ILocaleService(param1);
-         //},function():ILocaleService
-         //{
-         //   return NewPresentsAlert.localeService;
-         //});
-         //osgi.injectService(IModalLoaderService,function(param1:Object):void
-         //{
-         //   NewPresentsAlert.modalLoaderService = IModalLoaderService(param1);
-         //},function():IModalLoaderService
-         //{
-         //   return NewPresentsAlert.modalLoaderService;
-         //});
+         osgi.injectService(ILocaleService,function(param1:Object):void
+         {
+            NewPresentsAlert.localeService = ILocaleService(param1);
+         },function():ILocaleService
+         {
+            return NewPresentsAlert.localeService;
+         });
+         osgi.injectService(IModalLoaderService,function(param1:Object):void
+         {
+            NewPresentsAlert.modalLoaderService = IModalLoaderService(param1);
+         },function():IModalLoaderService
+         {
+            return NewPresentsAlert.modalLoaderService;
+         });
          //osgi.injectService(CountryService,function(param1:Object):void
          //{
          //   SelectCountryAlert.countryService = CountryService(param1);
@@ -1992,13 +2011,13 @@ package projects.tanks.clients.fp10.models.tankspanelmodelflash
          //{
          //   return AvailableItemsModel.notificationGarageCategoriesService;
          //});
-         //osgi.injectService(UpgradingItemsService,function(param1:Object):void
-         //{
-         //   UpgradingItemsModel.upgradingItemsService = UpgradingItemsService(param1);
-         //},function():UpgradingItemsService
-         //{
-         //   return UpgradingItemsModel.upgradingItemsService;
-         //});
+         osgi.injectService(UpgradingItemsService,function(param1:Object):void
+         {
+            UpgradingItemsModel.upgradingItemsService = UpgradingItemsService(param1);
+         },function():UpgradingItemsService
+         {
+            return UpgradingItemsModel.upgradingItemsService;
+         });
          //osgi.injectService(ILoaderWindowService,function(param1:Object):void
          //{
          //   KitOfferDialog.loaderWindowService = ILoaderWindowService(param1);
@@ -2566,20 +2585,20 @@ package projects.tanks.clients.fp10.models.tankspanelmodelflash
          //{
          //   return PremiumCompleteNotification.paymentDisplayService;
          //});
-         //osgi.injectService(INotificationGarageCategoriesService,function(param1:Object):void
-         //{
-         //   NewPresentsShowingModel.notificationGarageCategoriesService = INotificationGarageCategoriesService(param1);
-         //},function():INotificationGarageCategoriesService
-         //{
-         //   return NewPresentsShowingModel.notificationGarageCategoriesService;
-         //});
-         //osgi.injectService(ISettingsService,function(param1:Object):void
-         //{
-         //   PresentSettingsModel.settingsService = ISettingsService(param1);
-         //},function():ISettingsService
-         //{
-         //   return PresentSettingsModel.settingsService;
-         //});
+         osgi.injectService(INotificationGarageCategoriesService,function(param1:Object):void
+         {
+            NewPresentsShowingModel.notificationGarageCategoriesService = INotificationGarageCategoriesService(param1);
+         },function():INotificationGarageCategoriesService
+         {
+            return NewPresentsShowingModel.notificationGarageCategoriesService;
+         });
+         osgi.injectService(ISettingsService,function(param1:Object):void
+         {
+            PresentSettingsModel.settingsService = ISettingsService(param1);
+         },function():ISettingsService
+         {
+            return PresentSettingsModel.settingsService;
+         });
          //osgi.injectService(ThanksForDonationFormService,function(param1:Object):void
          //{
          //   ShopPromoCodeModel.thanksForDonationFormService = ThanksForDonationFormService(param1);
@@ -3007,34 +3026,34 @@ package projects.tanks.clients.fp10.models.tankspanelmodelflash
          //{
          //   return UserCountryModel.userPaymentActionService;
          //});
-         //osgi.injectService(IAlertService,function(param1:Object):void
-         //{
-         //   UserEmailAndPasswordModel.alertService = IAlertService(param1);
-         //},function():IAlertService
-         //{
-         //   return UserEmailAndPasswordModel.alertService;
-         //});
-         //osgi.injectService(IPanelView,function(param1:Object):void
-         //{
-         //   UserEmailAndPasswordModel.panelView = IPanelView(param1);
-         //},function():IPanelView
-         //{
-         //   return UserEmailAndPasswordModel.panelView;
-         //});
-         //osgi.injectService(ISettingsService,function(param1:Object):void
-         //{
-         //   UserEmailAndPasswordModel.settingService = ISettingsService(param1);
-         //},function():ISettingsService
-         //{
-         //   return UserEmailAndPasswordModel.settingService;
-         //});
-         //osgi.injectService(ISocialNetworkPanelService,function(param1:Object):void
-         //{
-         //   UserEmailAndPasswordModel.socialNetworkPanelService = ISocialNetworkPanelService(param1);
-         //},function():ISocialNetworkPanelService
-         //{
-         //   return UserEmailAndPasswordModel.socialNetworkPanelService;
-         //});
+         osgi.injectService(IAlertService,function(param1:Object):void
+         {
+            UserEmailAndPasswordModel.alertService = IAlertService(param1);
+         },function():IAlertService
+         {
+            return UserEmailAndPasswordModel.alertService;
+         });
+         osgi.injectService(IPanelView,function(param1:Object):void
+         {
+            UserEmailAndPasswordModel.panelView = IPanelView(param1);
+         },function():IPanelView
+         {
+            return UserEmailAndPasswordModel.panelView;
+         });
+         osgi.injectService(ISettingsService,function(param1:Object):void
+         {
+            UserEmailAndPasswordModel.settingService = ISettingsService(param1);
+         },function():ISettingsService
+         {
+            return UserEmailAndPasswordModel.settingService;
+         });
+         osgi.injectService(ISocialNetworkPanelService,function(param1:Object):void
+         {
+            UserEmailAndPasswordModel.socialNetworkPanelService = ISocialNetworkPanelService(param1);
+         },function():ISocialNetworkPanelService
+         {
+            return UserEmailAndPasswordModel.socialNetworkPanelService;
+         });
          //osgi.injectService(ClanUserInfoService,function(param1:Object):void
          //{
          //   UserPropertiesModel.clanUserInfoService = ClanUserInfoService(param1);
@@ -3217,13 +3236,13 @@ package projects.tanks.clients.fp10.models.tankspanelmodelflash
          {
             return MoneyService.paymentService;
          });
-         //osgi.injectService(IStorageService,function(param1:Object):void
-         //{
-         //   NotificationGarageCategoriesService.storageService = IStorageService(param1);
-         //},function():IStorageService
-         //{
-         //   return NotificationGarageCategoriesService.storageService;
-         //});
+         osgi.injectService(IStorageService,function(param1:Object):void
+         {
+            NotificationGarageCategoriesService.storageService = IStorageService(param1);
+         },function():IStorageService
+         {
+            return NotificationGarageCategoriesService.storageService;
+         });
          osgi.injectService(IAlertService,function(param1:Object):void
          {
             PanelView.alertService = IAlertService(param1);
@@ -3343,20 +3362,20 @@ package projects.tanks.clients.fp10.models.tankspanelmodelflash
          //{
          //   return SNFriendsServiceImpl.partnerService;
          //});
-         //osgi.injectService(ILobbyLayoutService,function(param1:Object):void
-         //{
-         //   UpgradingItemsServiceImpl.lobbyLayoutService = ILobbyLayoutService(param1);
-         //},function():ILobbyLayoutService
-         //{
-         //   return UpgradingItemsServiceImpl.lobbyLayoutService;
-         //});
-         //osgi.injectService(ILocaleService,function(param1:Object):void
-         //{
-         //   UpgradingItemsServiceImpl.localeService = ILocaleService(param1);
-         //},function():ILocaleService
-         //{
-         //   return UpgradingItemsServiceImpl.localeService;
-         //});
+         osgi.injectService(ILobbyLayoutService,function(param1:Object):void
+         {
+            UpgradingItemsServiceImpl.lobbyLayoutService = ILobbyLayoutService(param1);
+         },function():ILobbyLayoutService
+         {
+            return UpgradingItemsServiceImpl.lobbyLayoutService;
+         });
+         osgi.injectService(ILocaleService,function(param1:Object):void
+         {
+            UpgradingItemsServiceImpl.localeService = ILocaleService(param1);
+         },function():ILocaleService
+         {
+            return UpgradingItemsServiceImpl.localeService;
+         });
          modelRegister = osgi.getService(ModelRegistry) as ModelRegistry;
          //modelRegister.add(new UserAbonementsModel());
          //modelRegister.add(new AchievementModel());

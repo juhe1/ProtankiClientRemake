@@ -16,10 +16,10 @@ package alternativa.tanks.gui.upgrade
    public class UpgradeButton extends CrystalButton implements CountDownTimerOnCompleteAfter
    {
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
-      [Inject]
+      [Inject] // added
       public static var itemService:ItemService;
       
       private static const MARGIN:* = 11;

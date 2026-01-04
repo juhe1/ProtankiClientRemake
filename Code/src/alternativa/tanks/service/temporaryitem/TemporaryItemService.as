@@ -8,7 +8,7 @@ package alternativa.tanks.service.temporaryitem
    public class TemporaryItemService implements ITemporaryItemService
    {
       
-      [Inject]
+      [Inject] // added
       public static var temporaryItemNotifyService:ITemporaryItemNotifyService;
       
       private var items:Dictionary;

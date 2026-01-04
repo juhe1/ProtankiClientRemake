@@ -5,7 +5,6 @@ package alternativa.tanks.model.item.buyable
    import projects.tanks.client.commons.types.ItemCategoryEnum;
    import projects.tanks.client.garage.models.item.buyable.BuyableModelBase;
    import projects.tanks.client.garage.models.item.buyable.IBuyableModelBase;
-   import projects.tanks.client.garage.models.item.droppablegold.IDroppableGoldItemModelBase;
    
    [ModelInfo]
    public class BuyableModel extends BuyableModelBase implements IBuyableModelBase, IBuyable

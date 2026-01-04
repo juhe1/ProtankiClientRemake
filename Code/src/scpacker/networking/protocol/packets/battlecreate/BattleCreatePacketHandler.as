@@ -29,6 +29,9 @@ package scpacker.networking.protocol.packets.battlecreate
    import projects.tanks.client.tanksservices.model.formatbattle.EquipmentConstraintsNamingModelBase;
    import projects.tanks.client.tanksservices.model.formatbattle.EquipmentConstraintsModeInfo;
    import projects.tanks.clients.fp10.libraries.tanksservices.model.formatbattle.EquipmentConstraintsNamingModel;
+   import projects.tanks.clients.fp10.libraries.tanksservices.service.probattle.UserProBattleService;
+   import projects.tanks.clients.fp10.libraries.tanksservices.service.probattle.IUserProBattleService;
+   import alternativa.osgi.OSGi;
    
    public class BattleCreatePacketHandler extends AbstractPacketHandler
    {
@@ -39,10 +42,10 @@ package scpacker.networking.protocol.packets.battlecreate
       //private var clanInfoModel:ClanInfoModel;
       
       private var battleSelectGameClass:IGameClass;
-      
       private var battleSelectObject:IGameObject;
-
       private var mapGameClass:IGameClass;
+      
+      private var userProBattleService:IUserProBattleService;
       
       public function BattleCreatePacketHandler()
       {
@@ -51,6 +54,7 @@ package scpacker.networking.protocol.packets.battlecreate
          this.battleCreateModel = BattleCreateModel(modelRegistry.getModel(BattleCreateModelBase.modelId));
          this.mapInfoModel = MapInfoModel(modelRegistry.getModel(MapInfoModelBase.modelId));
          this.equipmentConstraintsNamingMode = EquipmentConstraintsNamingModel(modelRegistry.getModel(EquipmentConstraintsNamingModelBase.modelId));
+         this.userProBattleService = OSGi.getInstance().getService(IUserProBattleService) as IUserProBattleService;
          //this.clanInfoModel = ClanInfoModel(modelRegistry.getModel(Long.getLong(0,300090014)));
 
          var battleSelectModels:Vector.<Long> = new Vector.<Long>();
@@ -99,6 +103,7 @@ package scpacker.networking.protocol.packets.battlecreate
           this.battleSelectObject = spaceInstance.createObject(SpaceAndGameObjectIds.BATTLE_SELECT_OBJECT_ID,this.battleSelectGameClass,"BattleSelectObject");
           
           var battlesData:Object = JSON.parse(param1.battlesJson);
+          this.userProBattleService.setAbonementRemainingTimeSec(battlesData.proBattleTimeLeftInSec);
           for each(var mapData in battlesData.maps)
           {
             mapObjectInstance = spaceInstance.createObject(Long.getLong(mapData.preview * 1000,mapData.preview * 1000),this.mapGameClass,mapData.mapId + mapData.theme);

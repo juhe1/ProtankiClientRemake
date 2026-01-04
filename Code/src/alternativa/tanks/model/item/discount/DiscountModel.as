@@ -17,7 +17,7 @@ package alternativa.tanks.model.item.discount
    public class DiscountModel extends DiscountModelBase implements IDiscountModelBase, ICollectDiscount, ObjectLoadPostListener, ObjectUnloadListener, CountDownTimerOnCompleteBefore, DiscountEndTimer
    {
       
-      [Inject]
+      [Inject] // added
       public static var garageService:GarageService;
       
       private const SECONDS_IN_MONTH:uint = 2592000;
@@ -145,6 +145,10 @@ package alternativa.tanks.model.item.discount
       
       public function collectDiscountsInfo(param1:IDiscountCollector) : void
       {
+         if(getData(DiscountInfo) == null)
+         {
+            return;
+         }
          param1.addDiscount(DiscountInfo(getData(DiscountInfo)));
       }
       

@@ -10,7 +10,7 @@ package alternativa.tanks.model.item3d
    public class Object3DSModel extends Object3DSModelBase implements IObject3DSModelBase, IObject3DS
    {
       
-      [Inject]
+      [Inject] // added
       public static var resourceRegistry:ResourceRegistry;
       
       public function Object3DSModel()

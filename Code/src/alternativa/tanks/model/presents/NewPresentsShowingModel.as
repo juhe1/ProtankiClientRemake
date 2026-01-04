@@ -11,7 +11,7 @@ package alternativa.tanks.model.presents
    public class NewPresentsShowingModel extends NewPresentsShowingModelBase implements INewPresentsShowingModelBase
    {
       
-      [Inject]
+      [Inject] // added
       public static var notificationGarageCategoriesService:INotificationGarageCategoriesService;
       
       public function NewPresentsShowingModel()

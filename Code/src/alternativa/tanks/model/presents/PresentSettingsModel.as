@@ -12,7 +12,7 @@ package alternativa.tanks.model.presents
    public class PresentSettingsModel extends PresentsSettingsModelBase implements IPresentsSettingsModelBase, ObjectLoadListener, ObjectUnloadListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var settingsService:ISettingsService;
       
       public function PresentSettingsModel()

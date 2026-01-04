@@ -4,6 +4,7 @@ package projects.tanks.client.commons.models.layout
    import scpacker.networking.Network;
    import alternativa.osgi.OSGi;
    import scpacker.networking.protocol.packets.clientlayout.LoadGarage;
+   import scpacker.networking.protocol.packets.clientlayout.LoadLobby;
    
    public class LobbyLayoutModelServer
    {  
@@ -22,6 +23,7 @@ package projects.tanks.client.commons.models.layout
       
       public function exitFromBattleToBattleLobby() : void
       {
+         network.send(new LoadLobby());
       }
       
       public function returnToBattle() : void

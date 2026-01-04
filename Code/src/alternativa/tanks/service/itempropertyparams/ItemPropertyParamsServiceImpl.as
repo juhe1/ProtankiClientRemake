@@ -15,13 +15,13 @@ package alternativa.tanks.service.itempropertyparams
    public class ItemPropertyParamsServiceImpl implements ItemPropertyParamsService
    {
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
-      [Inject]
+      [Inject] // added
       public static var logger:IClientLog;
       
-      [Inject]
+      [Inject] // added
       public static var temperatureConfig:TemperatureConfig;
       
       private static const RADIAN_TO_ANGLE_MULTIPLIER:Number = 180 / Math.PI;
@@ -94,7 +94,7 @@ package alternativa.tanks.service.itempropertyparams
          this.registerGarageProperty(ItemGarageProperty.WEAPON_IMPACT_FORCE,4,ItemInfoPanelBitmaps.impactForce,TanksLocale.TEXT_GARAGE_IMPACT_PROPERTY,ItemProperty.IMPACT_FORCE,100);
          this.registerGarageProperty(ItemGarageProperty.SHOTGUN_IMPACT_FORCE,4,ItemInfoPanelBitmaps.impactForce,TanksLocale.TEXT_GARAGE_IMPACT_PROPERTY,ItemProperty.IMPACT_FORCE,900);
          this.registerGarageProperty(ItemGarageProperty.WEAPON_WEAKENING_COEFF,28,ItemInfoPanelBitmaps.piercingCoeff,TanksLocale.TEXT_GARAGE_PENETRATING_PROPERTY,ItemProperty.WEAPON_WEAKENING_COEFF,100);
-         this.registerGarageProperty(ItemGarageProperty.CRITICAL_HIT_CHANCE,23,ItemInfoPanelBitmaps.percent,TanksLocale.TEXT_GARAGE_CRITICAL_CHANCE_PROPERTY,ItemProperty.MAX_CRITICAL_HIT_CHANCE,100,UpgradeAggregationModes.CRIT);
+         this.registerGarageProperty(ItemGarageProperty.CRITICAL_HIT_CHANCE,23,ItemInfoPanelBitmaps.percent,TanksLocale.TEXT_GARAGE_CRITICAL_CHANCE_PROPERTY,ItemProperty.MAX_CRITICAL_HIT_CHANCE,100);//,UpgradeAggregationModes.CRIT);
          this.registerGarageProperty(ItemGarageProperty.CRITICAL_HIT_DAMAGE,24,ItemInfoPanelBitmaps.smokyCrit,TanksLocale.TEXT_GARAGE_CRITICAL_DAMAGE_PROPERTY,ItemProperty.CRITICAL_HIT_DAMAGE);
          this.registerGarageProperty(ItemGarageProperty.FIRE_DAMAGE,25,ItemInfoPanelBitmaps.firebird,TanksLocale.TEXT_GARAGE_BURN_PROPERTY,ItemProperty.FLAME_TEMPERATURE_LIMIT,1 / temperatureConfig.temperatureAutoDecrement);
          this.registerGaragePropertyWithTwoSubProperty(ItemGarageProperty.SHELL_SPEED,26,ItemInfoPanelBitmaps.shellSpeed,TanksLocale.TEXT_GARAGE_BULLET_SPEED_PROPERTY,ItemProperty.SHELL_SPEED,ItemProperty.MAX_SHELL_SPEED);

@@ -10,7 +10,7 @@ package alternativa.tanks.gui.upgrade
    public class UpgradeWindowBase extends DialogWindow
    {
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
       private static const VERTICAL_MARGIN:int = 8;

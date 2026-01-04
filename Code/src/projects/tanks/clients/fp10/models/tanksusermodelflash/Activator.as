@@ -854,7 +854,7 @@ package projects.tanks.clients.fp10.models.tanksusermodelflash
          modelRegister.add(new LoginModel());
          //modelRegisterAdapt.registerAdapt(ILoginByHash,ILoginByHashAdapt);
          //modelRegisterAdapt.registerEvents(ILoginByHash,ILoginByHashEvents);
-         //modelRegister.add(new LoginByHashModel());
+         modelRegister.add(new LoginByHashModel());
          //modelRegisterAdapt.registerAdapt(ILoginWithoutRegistration,ILoginWithoutRegistrationAdapt);
          //modelRegisterAdapt.registerEvents(ILoginWithoutRegistration,ILoginWithoutRegistrationEvents);
          //modelRegister.add(new LoginWithoutRegistrationModel());

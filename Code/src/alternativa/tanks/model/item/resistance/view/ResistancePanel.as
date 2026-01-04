@@ -29,34 +29,34 @@ package alternativa.tanks.model.item.resistance.view
    public class ResistancePanel implements AutoClosable
    {
       
-      [Inject]
+      [Inject] // added
       public static var itemService:ItemService;
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
-      [Inject]
+      [Inject] // added
       public static var garageService:GarageService;
       
-      [Inject]
+      [Inject] // added
       public static var trackerService:ITrackerService;
       
-      [Inject]
+      [Inject] // added
       public static var battleInfoService:IBattleInfoService;
       
-      [Inject]
+      [Inject] // added
       public static var lobbyLayoutService:ILobbyLayoutService;
       
-      [Inject]
+      [Inject] // added
       public static var userGarageActionsService:UserGarageActionsService;
       
-      [Inject]
+      [Inject] // added
       public static var delayMountCategoryService:IDelayMountCategoryService;
       
-      [Inject]
+      [Inject] // added
       public static var resistancesService:ResistanceService;
       
-      [Inject]
+      [Inject] // added
       public static var userPropertiesService:IUserPropertiesService;
       
       private const BUTTON_WIDTH:Number = 120;

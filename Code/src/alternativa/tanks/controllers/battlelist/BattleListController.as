@@ -145,12 +145,14 @@ package alternativa.tanks.controllers.battlelist
       
       private function updateCreateBattleButton() : void
       {
-         var _loc1_:Boolean = Boolean(premiumService.hasPremium()) || Boolean(userProBattleService.hasAbonement());
-         if(!_loc1_)
-         {
-            battleCreateFormService.hideForm();
-         }
-         this._view.setBattleCreationEnabled(_loc1_);
+         // Disabled to allow battle creation even if no premium or probattle
+
+         //var _loc1_:Boolean = Boolean(premiumService.hasPremium()) || Boolean(userProBattleService.hasAbonement());
+         //if(!_loc1_)
+         //{
+         //   battleCreateFormService.hideForm();
+         //}
+         //this._view.setBattleCreationEnabled(_loc1_);
       }
       
       private function onUpdateRank(param1:UserPropertiesServiceEvent) : void

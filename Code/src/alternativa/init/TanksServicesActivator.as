@@ -57,6 +57,10 @@ package alternativa.init
    import projects.tanks.clients.fp10.libraries.tanksservices.service.notifier.battle.BattleNotifierService;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.blur.IBlurService;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.blur.BlurService;
+   import projects.tanks.clients.fp10.libraries.tanksservices.service.logging.garage.UserGarageActionsService;
+   import projects.tanks.clients.fp10.libraries.tanksservices.service.logging.garage.UserGarageActionsServiceImpl;
+   import projects.tanks.clients.fp10.libraries.tanksservices.service.logging.paymentactions.UserPaymentActionsService;
+   import projects.tanks.clients.fp10.libraries.tanksservices.service.logging.paymentactions.UserPaymentActionsServiceImpl;
    
    public class TanksServicesActivator implements IBundleActivator
    {
@@ -97,8 +101,8 @@ package alternativa.init
          param1.registerService(BattleUserPremiumService,new BattleUserPremiumServiceImpl());
          param1.registerService(RankService,new RankServiceImpl());
          //param1.registerService(MatchmakingGroupService,new MatchmakingGroupServiceImpl());
-         //param1.registerService(UserPaymentActionsService,new UserPaymentActionsServiceImpl());
-         //param1.registerService(UserGarageActionsService,new UserGarageActionsServiceImpl());
+         param1.registerService(UserPaymentActionsService,new UserPaymentActionsServiceImpl());
+         param1.registerService(UserGarageActionsService,new UserGarageActionsServiceImpl());
          param1.registerService(UserBattleSelectActionsService,new UserBattleSelectActionsServiceImpl());
          param1.registerService(YandexMetricaService,new YandexMetricaServiceImpl());
          param1.registerService(NewbieUserService,new NewbieUserServiceImpl());

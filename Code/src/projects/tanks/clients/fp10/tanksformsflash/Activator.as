@@ -46,6 +46,7 @@ package projects.tanks.clients.fp10.tanksformsflash
    import forms.registration.bubbles.NameIsNotUniqueBubble;
    import forms.registration.bubbles.PasswordIsTooEasyBubble;
    import forms.registration.bubbles.PasswordsDoNotMatchBubble;
+   import utils.TimeFormatter;
    
    public class Activator implements IBundleActivator
    {
@@ -425,13 +426,13 @@ package projects.tanks.clients.fp10.tanksformsflash
          //{
          //   return GUIDebugger.display;
          //});
-         //osgi.injectService(ILocaleService,function(param1:Object):void
-         //{
-         //   TimeFormatter.localeService = ILocaleService(param1);
-         //},function():ILocaleService
-         //{
-         //   return TimeFormatter.localeService;
-         //});
+         osgi.injectService(ILocaleService,function(param1:Object):void
+         {
+            TimeFormatter.localeService = ILocaleService(param1);
+         },function():ILocaleService
+         {
+            return TimeFormatter.localeService;
+         });
       }
       
       public function stop(param1:OSGi) : void

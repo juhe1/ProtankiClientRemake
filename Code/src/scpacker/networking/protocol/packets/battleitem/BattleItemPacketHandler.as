@@ -37,33 +37,33 @@ package scpacker.networking.protocol.packets.battleitem
       {
          switch(param1.getId())
          {
-            case BattleMadePrivateInPacket.id:
-               this.madePrivate(param1 as BattleMadePrivateInPacket);
+            case ItemBattleMadePrivateInPacket.id:
+               this.madePrivate(param1 as ItemBattleMadePrivateInPacket);
                break;
-            case LeftDmBattleInPacket.id:
-               this.onReleaseSlotDm(param1 as LeftDmBattleInPacket);
+            case ItemLeftDmBattleInPacket.id:
+               this.onReleaseSlotDm(param1 as ItemLeftDmBattleInPacket);
                break;
-            case LeftTeamBattleInPacket.id:
-               this.onReleaseSlotTeam(param1 as LeftTeamBattleInPacket);
+            case ItemLeftTeamBattleInPacket.id:
+               this.onReleaseSlotTeam(param1 as ItemLeftTeamBattleInPacket);
                break;
-            case JoinedDmBattleInPacket.id:
-               this.onReserveSlotDm(param1 as JoinedDmBattleInPacket);
+            case ItemJoinedDmBattleInPacket.id:
+               this.onReserveSlotDm(param1 as ItemJoinedDmBattleInPacket);
                break;
-            case JoinedTeamBattleInPacket.id:
-               this.onReserveSlotTeam(param1 as JoinedTeamBattleInPacket);
+            case ItemJoinedTeamBattleInPacket.id:
+               this.onReserveSlotTeam(param1 as ItemJoinedTeamBattleInPacket);
                break;
-            case SwapTeamsInPacket.id:
-               this.swapTeams(param1 as SwapTeamsInPacket);
+            case ItemSwapTeamsInPacket.id:
+               this.swapTeams(param1 as ItemSwapTeamsInPacket);
                break;
-            case UpdateBattleNameInPacket.id:
-               this.updateName(param1 as UpdateBattleNameInPacket);
+            case ItemUpdateBattleNameInPacket.id:
+               this.updateName(param1 as ItemUpdateBattleNameInPacket);
                break;
-            case UpdateBattleSuspicionInPacket.id:
-               this.updateSuspicious(param1 as UpdateBattleSuspicionInPacket);
+            case ItemUpdateBattleSuspicionInPacket.id:
+               this.updateSuspicious(param1 as ItemUpdateBattleSuspicionInPacket);
          }
       }
       
-      private function madePrivate(param1:BattleMadePrivateInPacket) : void
+      private function madePrivate(param1:ItemBattleMadePrivateInPacket) : void
       {
          var _loc2_:IGameObject = this.battleSelectSpace.getObjectByName(param1.battleId);
          if(_loc2_ != null)
@@ -74,7 +74,7 @@ package scpacker.networking.protocol.packets.battleitem
          }
       }
       
-      private function updateName(param1:UpdateBattleNameInPacket) : void
+      private function updateName(param1:ItemUpdateBattleNameInPacket) : void
       {
          var _loc2_:IGameObject = this.battleSelectSpace.getObjectByName(param1.battleId);
          if(_loc2_ != null)
@@ -85,7 +85,7 @@ package scpacker.networking.protocol.packets.battleitem
          }
       }
       
-      private function updateSuspicious(param1:UpdateBattleSuspicionInPacket) : void
+      private function updateSuspicious(param1:ItemUpdateBattleSuspicionInPacket) : void
       {
          var _loc2_:IGameObject = this.battleSelectSpace.getObjectByName(param1.battleId);
          if(_loc2_ != null)
@@ -96,7 +96,7 @@ package scpacker.networking.protocol.packets.battleitem
          }
       }
       
-      private function onReserveSlotDm(param1:JoinedDmBattleInPacket) : void
+      private function onReserveSlotDm(param1:ItemJoinedDmBattleInPacket) : void
       {
          var _loc2_:IGameObject = this.battleSelectSpace.getObjectByName(param1.battleId);
          if(_loc2_ != null)
@@ -110,7 +110,7 @@ package scpacker.networking.protocol.packets.battleitem
          }
       }
       
-      private function onReleaseSlotDm(param1:LeftDmBattleInPacket) : void
+      private function onReleaseSlotDm(param1:ItemLeftDmBattleInPacket) : void
       {
          var _loc2_:IGameObject = this.battleSelectSpace.getObjectByName(param1.battleId);
          if(_loc2_ != null)
@@ -121,7 +121,7 @@ package scpacker.networking.protocol.packets.battleitem
          }
       }
       
-      private function onReleaseSlotTeam(param1:LeftTeamBattleInPacket) : void
+      private function onReleaseSlotTeam(param1:ItemLeftTeamBattleInPacket) : void
       {
          var _loc2_:IGameObject = this.battleSelectSpace.getObjectByName(param1.battleId);
          if(_loc2_ != null)
@@ -132,7 +132,7 @@ package scpacker.networking.protocol.packets.battleitem
          }
       }
       
-      private function onReserveSlotTeam(param1:JoinedTeamBattleInPacket) : void
+      private function onReserveSlotTeam(param1:ItemJoinedTeamBattleInPacket) : void
       {
          var _loc2_:IGameObject = this.battleSelectSpace.getObjectByName(param1.battleId);
          if(_loc2_ != null)
@@ -146,7 +146,7 @@ package scpacker.networking.protocol.packets.battleitem
          }
       }
       
-      private function swapTeams(param1:SwapTeamsInPacket) : void
+      private function swapTeams(param1:ItemSwapTeamsInPacket) : void
       {
          var _loc2_:IGameObject = this.battleSelectSpace.getObjectByName(param1.battleId);
          if(_loc2_ != null)

@@ -14,7 +14,7 @@ package alternativa.tanks.model.garage.present
    public class PresentPurchaseModel extends PresentPurchaseModelBase implements IPresentPurchaseModelBase, PresentPurchase
    {
       
-      [Inject]
+      [Inject] // added
       public static var itemService:ItemService;
       
       private var uid:String;

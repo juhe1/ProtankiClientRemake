@@ -9,7 +9,7 @@ package alternativa.tanks.model.item.upgradable.calculators
    public class CriticalChanceCalculator extends BasePropertyCalculator implements PropertyCalculator, PropertyValueCalculator
    {
       
-      [Inject]
+      [Inject] // added
       public static var propertyParamsService:ItemPropertyParamsService;
       
       private var afterCrit:LinearPropertyValueCalculator;

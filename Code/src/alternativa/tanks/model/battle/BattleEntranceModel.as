@@ -20,28 +20,28 @@ package alternativa.tanks.model.battle
    public class BattleEntranceModel extends BattleEntranceModelBase implements IBattleEntranceModelBase, BattleEntrance
    {
       
-      [Inject]
+      [Inject] // added
       public static var alertService:IAlertService;
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
-      [Inject]
+      [Inject] // added
       public static var battleAlertService:IAlertService;
       
-      [Inject]
+      [Inject] // added
       public static var loaderWindowService:ILoaderWindowService;
       
-      [Inject]
+      [Inject] // added
       public static var battleInfoFormService:IBattleInfoFormService;
       
-      [Inject]
+      [Inject] // added
       public static var trackerService:ITrackerService;
       
-      [Inject]
+      [Inject] // added
       public static var userBattleSelectActionsService:UserBattleSelectActionsService;
       
-      [Inject]
+      [Inject] // added
       public static var modalLoaderService:IModalLoaderService;
       
       public function BattleEntranceModel()

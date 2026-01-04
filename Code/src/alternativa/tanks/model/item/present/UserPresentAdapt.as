@@ -33,9 +33,9 @@ package alternativa.tanks.model.item.present
          return result;
       }
       
-      public function getPresenterId() : Long
+      public function getPresenterId() : String
       {
-         var result:Long = null;
+         var result:String = null;
          try
          {
             Model.object = this.object;

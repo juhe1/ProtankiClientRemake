@@ -9,7 +9,7 @@ package alternativa.tanks.gui.upgrade
    public class UpgradeColors
    {
       
-      [Inject]
+      [Inject] // added
       public static var itemService:ItemService;
       
       public static const GREEN:int = 65291;

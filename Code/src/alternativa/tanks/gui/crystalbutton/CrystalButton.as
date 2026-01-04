@@ -9,7 +9,7 @@ package alternativa.tanks.gui.crystalbutton
    public class CrystalButton extends ThreeLineBigButton implements IMoneyListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var moneyService:IMoneyService;
       
       private var _discountIcon:Bitmap = UpgradeSaleIcon.createInstance();

@@ -13,7 +13,7 @@ package alternativa.tanks.service.itempropertyparams.aggregationmodes
    public class RangeUpgradeAggregationMode implements UpgradeAggregationMode
    {
       
-      [Inject]
+      [Inject] // added
       public static var propertyParamsService:ItemPropertyParamsService;
       
       public function RangeUpgradeAggregationMode()

@@ -7,7 +7,7 @@ package alternativa.tanks.gui.effects
    public class BlinkEffect
    {
       
-      [Inject]
+      [Inject] // added
       public static var fpsService:FPSService;
       
       private var state:int;

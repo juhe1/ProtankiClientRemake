@@ -12,10 +12,10 @@ package alternativa.tanks.gui.tables
    public class KitItemInfoRow extends Sprite
    {
       
-      [Inject]
+      [Inject] // added
       public static var itemService:ItemService;
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
       public function KitItemInfoRow(param1:int, param2:int, param3:KitItem, param4:int, param5:int)

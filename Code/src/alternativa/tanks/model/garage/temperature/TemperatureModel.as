@@ -8,7 +8,7 @@ package alternativa.tanks.model.garage.temperature
    public class TemperatureModel extends TemperatureModelBase implements ITemperatureModelBase, ObjectLoadListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var config:TemperatureConfig;
       
       public function TemperatureModel()

@@ -15,16 +15,16 @@ package alternativa.tanks.model.useremailandpassword
    public class UserEmailAndPasswordModel extends UserEmailAndPasswordModelBase implements IUserEmailAndPasswordModelBase, ObjectLoadListener, ObjectUnloadListener, IUserEmailAndPassword, PasswordService
    {
       
-      [Inject]
+      [Inject] // added
       public static var panelView:IPanelView;
       
-      [Inject]
+      [Inject] // added
       public static var socialNetworkPanelService:ISocialNetworkPanelService;
       
-      [Inject]
+      [Inject] // added
       public static var alertService:IAlertService;
       
-      [Inject]
+      [Inject] // added
       public static var settingService:ISettingsService;
       
       private var email:String;

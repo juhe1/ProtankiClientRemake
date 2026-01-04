@@ -12,7 +12,7 @@ package alternativa.tanks.gui.item.actionpanel
    public class SingleActionWithCheckBoxPanel extends SingleActionPanel
    {
       
-      [Inject]
+      [Inject] // added
       public static var lobbyLayoutService:ILobbyLayoutService;
       
       private static const CALLBACK_DELAY:int = 1000;

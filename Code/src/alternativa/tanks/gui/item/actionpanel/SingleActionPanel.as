@@ -9,7 +9,7 @@ package alternativa.tanks.gui.item.actionpanel
    public class SingleActionPanel implements AutoClosable
    {
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
       protected var actionButton:GreyBigButton = new GreyBigButton();

@@ -257,14 +257,14 @@ package alternativa.tanks.view.battleinfo
       {
          this.proBattlePassAlert.visible = false;
          this._buyAbonementButton.visible = false;
-         if(this.initParams.createParams.proBattle && !userProBattleService.hasAbonement()) //&& !clanUserInfoService.giveBonusesClan)
-         {
-            this.showProBattlePassAlert();
-         }
-         else
-         {
+         //if(this.initParams.createParams.proBattle && !userProBattleService.hasAbonement()) //&& !clanUserInfoService.giveBonusesClan)
+         //{
+         //   this.showProBattlePassAlert();
+         //}
+         //else
+         //{
             this.hideNoSupplies();
-         }
+         //}
          this.battleInfoParamsView.updateSpectatorButton();
          this.resize(true);
          this.updateAchievementPosition();

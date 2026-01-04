@@ -5,12 +5,13 @@ package projects.tanks.clients.flash.commons.models.coloring
    import projects.tanks.client.commons.models.coloring.IColoringModelBase;
    import alternativa.gfx.core.TextureResource;
    import platform.client.fp10.core.resource.types.MultiframeImageResource;
+   import platform.client.fp10.core.resource.types.ImageResource;
    
    [ModelInfo]
    public class ColoringModel extends ColoringModelBase implements IColoringModelBase, IColoring
    {
       
-      [Inject]
+      [Inject] // added
       public static var resourceRegistry:ResourceRegistry;
       
       public function ColoringModel()
@@ -23,7 +24,7 @@ package projects.tanks.clients.flash.commons.models.coloring
          return getInitParam().animatedColoring != null;
       }
       
-      public function getColoring() : TextureResource
+      public function getColoring() : ImageResource
       {
          if(getInitParam().coloring != null)
          {

@@ -15,10 +15,10 @@ package alternativa.tanks.model.item3d
    public class Item3DModel extends Item3DModelBase implements IItem3DModelBase, ObjectLoadListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var itemService:ItemService;
       
-      [Inject]
+      [Inject] // added
       public static var tank3DViewer:ITank3DViewer;
       
       public function Item3DModel()
@@ -41,11 +41,11 @@ package alternativa.tanks.model.item3d
                _loc2_ = IObject3DS(object.adapt(IObject3DS)).getResource3DS();
                tank3DViewer.setWeapon(_loc2_);
                break;
-            case ItemCategoryEnum.DRONE:
-               _loc2_ = IObject3DS(object.adapt(IObject3DS)).getResource3DS();
-               tank3DViewer.setDrone(_loc2_);
-               break;
-            case ItemCategoryEnum.PAINT:
+            //case ItemCategoryEnum.DRONE:
+            //   _loc2_ = IObject3DS(object.adapt(IObject3DS)).getResource3DS();
+            //   tank3DViewer.setDrone(_loc2_);
+            //   break;
+            case ItemCategoryEnum.COLOR:
                _loc3_ = IColoring(object.adapt(IColoring));
                if(_loc3_.isAnimated())
                {

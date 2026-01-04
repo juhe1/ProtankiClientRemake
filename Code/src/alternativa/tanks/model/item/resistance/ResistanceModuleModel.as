@@ -15,7 +15,7 @@ package alternativa.tanks.model.item.resistance
    public class ResistanceModuleModel extends ResistanceModuleModelBase implements IResistanceModuleModelBase, ModuleResistances, ItemActionPanel
    {
       
-      [Inject]
+      [Inject] // added
       public static var itemService:ItemService;
       
       private var actionPanel:ResistancePanel;

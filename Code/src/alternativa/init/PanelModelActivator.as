@@ -79,6 +79,18 @@ package alternativa.init
    import alternativa.tanks.service.achievement.AchievementService;
    import alternativa.tanks.service.money.IMoneyService;
    import alternativa.tanks.service.money.MoneyService;
+   import projects.tanks.clients.flash.commons.services.payment.PaymentDisplayService;
+   import alternativa.tanks.service.payment.display.PaymentDisplayServiceImpl;
+   import alternativa.tanks.service.upgradingitems.UpgradingItemsService;
+   import alternativa.tanks.service.upgradingitems.UpgradingItemsServiceImpl;
+   import alternativa.tanks.service.notificationcategories.INotificationGarageCategoriesService;
+   import alternativa.tanks.service.notificationcategories.NotificationGarageCategoriesService;
+   import alternativa.tanks.service.country.CountryService;
+   import alternativa.tanks.service.country.CountryServiceImpl;
+   import alternativa.tanks.service.settings.ISettingsService;
+   import alternativa.tanks.service.settings.SettingsService;
+   import alternativa.tanks.service.socialnetwork.ISocialNetworkPanelService;
+   import alternativa.tanks.service.socialnetwork.SocialNetworkPanelService;
    //import projects.tanks.clients.fp10.libraries.tanksservices.service.logging.settings.UserSettingsChangedService;
    
    public class PanelModelActivator implements IBundleActivator
@@ -94,22 +106,22 @@ package alternativa.init
       public function start(param1:OSGi) : void
       {
          param1.registerService(IPanelView,new PanelView());
-         //param1.registerService(ISettingsService,new SettingsService());
+         param1.registerService(ISettingsService,new SettingsService());
          param1.registerService(IMoneyService,new MoneyService());
          param1.registerService(IAchievementService,new AchievementService());
          param1.registerService(IPaymentService,new PaymentService());
-         //param1.registerService(ISocialNetworkPanelService,new SocialNetworkPanelService());
-         //param1.registerService(UpgradingItemsService,new UpgradingItemsServiceImpl());
+         param1.registerService(ISocialNetworkPanelService,new SocialNetworkPanelService());
+         param1.registerService(UpgradingItemsService,new UpgradingItemsServiceImpl());
          param1.registerService(FPSService,new FPSServiceImpl());
          //param1.registerService(IBattleLinkActivatorService,new BattleLinkActivatorService());
          //param1.registerService(IPaymentPackagesService,new PaymentPackagesService());
          //param1.registerService(PaymentCompleteService,new PaymentCompleteServiceImpl());
          param1.registerService(DailyQuestNotifierService,new DailyQuestNotifierServiceImpl());
-         //param1.registerService(CountryService,new CountryServiceImpl());
-         //param1.registerService(PaymentDisplayService,new PaymentDisplayServiceImpl());
+         param1.registerService(CountryService,new CountryServiceImpl());
+         param1.registerService(PaymentDisplayService,new PaymentDisplayServiceImpl());
          param1.registerService(UserChangeGameScreenService,new UserChangeGameScreenServiceImpl());
          //param1.registerService(UserSettingsChangedService,new UserSettingsChangedServiceImpl());
-         //param1.registerService(INotificationGarageCategoriesService,new NotificationGarageCategoriesService());
+         param1.registerService(INotificationGarageCategoriesService,new NotificationGarageCategoriesService());
          //param1.registerService(PaymentWindowService,new PaymentWindowServiceImpl());
          //param1.registerService(ShopNotifierService,new ShopNotifierServiceImpl());
          param1.registerService(KeysBindingService,new KeysBindingServiceImpl());
@@ -138,12 +150,12 @@ package alternativa.init
          param1.unregisterService(IMoneyService);
          param1.unregisterService(IAchievementService);
          param1.unregisterService(IPaymentService);
-         //param1.unregisterService(ISocialNetworkPanelService);
+         param1.unregisterService(ISocialNetworkPanelService);
          //param1.unregisterService(IPaymentPackagesService);
          //param1.unregisterService(UpgradingItemsService);
          param1.unregisterService(FPSService);
          param1.unregisterService(DailyQuestNotifierService);
-         //param1.unregisterService(CountryService);
+         param1.unregisterService(CountryService);
          param1.unregisterService(UserChangeGameScreenService);
          //param1.unregisterService(UserSettingsChangedService);
          //param1.unregisterService(PaymentWindowService);

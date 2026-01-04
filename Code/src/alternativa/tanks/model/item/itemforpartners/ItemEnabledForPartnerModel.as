@@ -9,7 +9,7 @@ package alternativa.tanks.model.item.itemforpartners
    public class ItemEnabledForPartnerModel extends ItemEnabledForPartnerModelBase implements IItemEnabledForPartnerModelBase, ItemEnabledForPartner
    {
       
-      [Inject]
+      [Inject] // added
       public static var partnerService:IPartnerService;
       
       public function ItemEnabledForPartnerModel()

@@ -21,7 +21,7 @@ package projects.tanks.clients.flash.resources.resource
    public class MapResource extends Resource
    {
       
-      [Inject]
+      [Inject] // added
       public static var resourceRegistry:ResourceRegistry;
       
       public static const TYPE:int = 7;

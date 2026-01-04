@@ -15,19 +15,19 @@ package alternativa.tanks.service.resistance
    public class ResistanceServiceImpl implements ResistanceService
    {
       
-      [Inject]
+      [Inject] // added
       public static var garageService:GarageService;
       
-      [Inject]
+      [Inject] // added
       public static var userGarageActionsService:UserGarageActionsService;
       
-      [Inject]
+      [Inject] // added
       public static var battleInfoService:IBattleInfoService;
       
-      [Inject]
+      [Inject] // added
       public static var delayMountCategoryService:IDelayMountCategoryService;
       
-      [Inject]
+      [Inject] // added
       public static var itemService:ItemService;
       
       private var view:MountedResistancesPanel = null;

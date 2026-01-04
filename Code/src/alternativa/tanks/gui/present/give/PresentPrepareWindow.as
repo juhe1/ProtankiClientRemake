@@ -20,7 +20,7 @@ package alternativa.tanks.gui.present.give
    public class PresentPrepareWindow extends DialogWindow
    {
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
       private static const MAX_MESSAGE_LENGTH:int = 350;

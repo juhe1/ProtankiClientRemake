@@ -16,16 +16,16 @@ package alternativa.tanks.model.item.resistance.view
    public class ResistanceButton extends ShopButton
    {
       
-      [Inject]
+      [Inject] // added
       public static var itemService:ItemService;
       
-      [Inject]
+      [Inject] // added
       public static var resistanceService:ResistanceService;
       
-      [Inject]
+      [Inject] // added
       public static var garageService:GarageService;
       
-      [Inject]
+      [Inject] // added
       public static var battleInfoService:IBattleInfoService;
       
       private static const unmountHoverIconClass:Class = ResistanceButton_unmountHoverIconClass;

@@ -32,6 +32,15 @@ package projects.tanks.clients.flash.commonsflash
    import projects.tanks.clients.flash.commons.services.datetime.DateFormatter;
    import projects.tanks.clients.flash.commons.models.detach.DetachModel;
    import alternativa.tanks.ymservice.YandexMetricaService;
+   import projects.tanks.clients.flash.commons.models.coloring.ColoringModel;
+   import platform.client.fp10.core.registry.ResourceRegistry;
+   import projects.tanks.clients.flash.commons.models.runtime.DataOwnerModel;
+   import projects.tanks.clients.flash.commons.models.coloring.IColoring;
+   import projects.tanks.clients.flash.commons.models.coloring.IColoringAdapt;
+   import projects.tanks.clients.flash.commons.models.coloring.IColoringEvents;
+   import projects.tanks.clients.flash.commons.models.detach.Detach;
+   import projects.tanks.clients.flash.commons.models.detach.DetachAdapt;
+   import projects.tanks.clients.flash.commons.models.detach.DetachEvents;
    
    public class Activator implements IBundleActivator
    {
@@ -112,13 +121,13 @@ package projects.tanks.clients.flash.commonsflash
          //{
          //   return ChallengeTimeModel.challengesService;
          //});
-         //osgi.injectService(ResourceRegistry,function(param1:Object):void
-         //{
-         //   ColoringModel.resourceRegistry = ResourceRegistry(param1);
-         //},function():ResourceRegistry
-         //{
-         //   return ColoringModel.resourceRegistry;
-         //});
+         osgi.injectService(ResourceRegistry,function(param1:Object):void
+         {
+            ColoringModel.resourceRegistry = ResourceRegistry(param1);
+         },function():ResourceRegistry
+         {
+            return ColoringModel.resourceRegistry;
+         });
          //osgi.injectService(IDisplay,function(param1:Object):void
          //{
          //   GPUDetectorModel.display = IDisplay(param1);
@@ -351,11 +360,11 @@ package projects.tanks.clients.flash.commonsflash
          //modelRegisterAdapt.registerEvents(IServerCaptcha,IServerCaptchaEvents);
          modelRegister.add(new ServerCaptchaModel());
          //modelRegister.add(new ChallengeTimeModel());
-         //modelRegister.add(new ColoringModel());
-         //modelRegisterAdapt.registerAdapt(IColoring,IColoringAdapt);
-         //modelRegisterAdapt.registerEvents(IColoring,IColoringEvents);
-         //modelRegisterAdapt.registerAdapt(Detach,DetachAdapt);
-         //modelRegisterAdapt.registerEvents(Detach,DetachEvents);
+         modelRegister.add(new ColoringModel());
+         modelRegisterAdapt.registerAdapt(IColoring,IColoringAdapt);
+         modelRegisterAdapt.registerEvents(IColoring,IColoringEvents);
+         modelRegisterAdapt.registerAdapt(Detach,DetachAdapt);
+         modelRegisterAdapt.registerEvents(Detach,DetachEvents);
          modelRegister.add(new DetachModel());
          //modelRegisterAdapt.registerAdapt(ExternalAuthApi,ExternalAuthApiAdapt);
          //modelRegisterAdapt.registerEvents(ExternalAuthApi,ExternalAuthApiEvents);
@@ -370,7 +379,7 @@ package projects.tanks.clients.flash.commonsflash
          //modelRegister.add(new MoveUserToServerModel());
          //modelRegisterAdapt.registerAdapt(DataOwner,DataOwnerAdapt);
          //modelRegisterAdapt.registerEvents(DataOwner,DataOwnerEvents);
-         //modelRegister.add(new DataOwnerModel());
+         modelRegister.add(new DataOwnerModel());
          //modelRegister.add(new ServerHaltModel());
       }
       

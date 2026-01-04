@@ -14,11 +14,11 @@ package projects.tanks.client.garage.models.user.present
       
       private var _present:IGameObject;
       
-      private var _presenter:Long;
+      private var _presenter:String;
       
       private var _text:String;
       
-      public function PresentItem(param1:Boolean = false, param2:Date = null, param3:Long = null, param4:IGameObject = null, param5:Long = null, param6:String = null)
+      public function PresentItem(param1:Boolean = false, param2:Date = null, param3:Long = null, param4:IGameObject = null, param5:String = null, param6:String = null)
       {
          super();
          this._banned = param1;
@@ -69,12 +69,12 @@ package projects.tanks.client.garage.models.user.present
          this._present = param1;
       }
       
-      public function get presenter() : Long
+      public function get presenter() : String
       {
          return this._presenter;
       }
       
-      public function set presenter(param1:Long) : void
+      public function set presenter(param1:String) : void
       {
          this._presenter = param1;
       }

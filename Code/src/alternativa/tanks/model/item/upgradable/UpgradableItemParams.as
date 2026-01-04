@@ -16,13 +16,13 @@ package alternativa.tanks.model.item.upgradable
    public class UpgradableItemParams implements CountDownTimerOnCompleteAfter
    {
       
-      [Inject]
+      [Inject] // added
       public static var upgradingItemService:UpgradingItemsService;
       
-      [Inject]
+      [Inject] // added
       public static var propertyService:ItemPropertyParamsService;
       
-      [Inject]
+      [Inject] // added
       public static var itemService:ItemService;
       
       private static const SECONDS_IN_MINUTE:int = 60;

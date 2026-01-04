@@ -42,6 +42,10 @@ package alternativa.tanks.model.item.itempersonaldiscount
          var _loc2_:DiscountInfo = null;
          for each(_loc2_ in Vector.<DiscountInfo>(getData(DiscountInfo)))
          {
+            if(_loc2_ == null)
+            {
+               continue;
+            }
             param1.addDiscount(_loc2_);
          }
       }

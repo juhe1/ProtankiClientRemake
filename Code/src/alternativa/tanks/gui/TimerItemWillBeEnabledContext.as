@@ -8,7 +8,7 @@ package alternativa.tanks.gui
    public class TimerItemWillBeEnabledContext implements CountDownTimerOnCompleteBefore
    {
       
-      [Inject]
+      [Inject] // added
       public static var itemService:ItemService;
       
       private var item:IGameObject;

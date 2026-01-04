@@ -12,10 +12,10 @@ package alternativa.tanks.model.item.temporary
    public class TemporaryItemModel extends TemporaryItemModelBase implements ITemporaryItemModelBase, ITemporaryItem, ObjectLoadListener, ObjectUnloadListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var temporaryItemService:ITemporaryItemService;
       
-      [Inject]
+      [Inject] // added
       public static var temporaryItemNotifyService:ITemporaryItemNotifyService;
       
       public function TemporaryItemModel()
@@ -49,6 +49,10 @@ package alternativa.tanks.model.item.temporary
       
       public function startTiming(param1:int) : void
       {
+         if(getInitParam() == null)
+         {
+            return;
+         }
          this.startTemporaryItem(object,getInitParam().lifeTimeInSec + param1);
       }
       
@@ -59,6 +63,10 @@ package alternativa.tanks.model.item.temporary
       
       public function getLifeTimeInSec() : int
       {
+         if(getInitParam() == null)
+         {
+            return 0;
+         }
          return getInitParam().lifeTimeInSec;
       }
       

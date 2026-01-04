@@ -8,7 +8,7 @@ package projects.tanks.clients.fp10.libraries.tanksservices.service.logging.gara
    public class UserGarageActionsServiceImpl extends EventDispatcher implements UserGarageActionsService
    {
       
-      [Inject]
+      [Inject] // added
       public static var trackerService:ITrackerService;
       
       public function UserGarageActionsServiceImpl()

@@ -32,14 +32,17 @@ package alternativa.tanks.gui.tankpreview
    import projects.tanks.clients.fp10.libraries.TanksLocale;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.layout.ILobbyLayoutService;
    import projects.tanks.clients.fp10.libraries.tanksservices.utils.disposeBitmapsData;
+   import alternativa.engine3d.alternativa3d;
+   
+   use namespace alternativa3d;
    
    public class TankPreviewHoliday extends TankWindowWithHeader
    {
       
-      [Inject]
+      [Inject] // added
       public static var lobbyLayoutService:ILobbyLayoutService;
       
-      [Inject]
+      [Inject] // added
       public static var garageService:GarageService;
       
       private static const ENTER_FRAME_PRIORITY:Number = -1;

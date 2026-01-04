@@ -40,31 +40,31 @@ package alternativa.tanks.gui
    public class GarageWindow extends DiscreteSprite implements IGarageWindow
    {
       
-      [Inject]
+      [Inject] // added
       public static var itemService:ItemService;
       
-      [Inject]
+      [Inject] // added
       public static var lobbyLayoutService:ILobbyLayoutService;
       
-      [Inject]
+      [Inject] // added
       public static var trackerService:ITrackerService;
       
-      [Inject]
+      [Inject] // added
       public static var userGarageActionsService:UserGarageActionsService;
       
-      [Inject]
+      [Inject] // added
       public static var alertService:IAlertService;
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
-      [Inject]
+      [Inject] // added
       public static var battleInfoService:IBattleInfoService;
       
-      [Inject]
+      [Inject] // added
       public static var tank3DViewer:ITank3DViewer;
       
-      [Inject]
+      [Inject] // added
       public static var paymentDisplayService:PaymentDisplayService;
       
       private static const GA_CATEGORY:String = "garage";
@@ -113,9 +113,10 @@ package alternativa.tanks.gui
          this.setEvents();
       }
       
-      public function initTankPreviewWindow(param1:Tanks3DSResource, param2:SkyBox) : void
+      public function initTankPreviewWindow(param1:Tanks3DSResource, param2:SkyBox = null) : void
       {
-         this.tankPreview = param1.id.low == 500360050 ? new TankPreviewWindow() : new EventTankPreview();
+         //this.tankPreview = param1.id.low == 500360050 ? new TankPreviewWindow() : new EventTankPreview();
+         this.tankPreview = new EventTankPreview();
          this.tankPreview.init(param1,param2);
          addChild(this.tankPreview);
          tank3DViewer.setView(this.tankPreview);

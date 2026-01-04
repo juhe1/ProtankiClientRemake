@@ -20,13 +20,13 @@ package alternativa.tanks.gui.upgrade
    public class SelectUpgradeWindow extends UpgradeWindowBase implements CountDownTimerOnTick
    {
       
-      [Inject]
+      [Inject] // added
       public static var moneyService:IMoneyService;
       
-      [Inject]
+      [Inject] // added
       public static var propertyService:ItemPropertyParamsService;
       
-      [Inject]
+      [Inject] // added
       public static var lobbyLayoutService:ILobbyLayoutService;
       
       private static const BUTTON_WIDTH:int = 136;

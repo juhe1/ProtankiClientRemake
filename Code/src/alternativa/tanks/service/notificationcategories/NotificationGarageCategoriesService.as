@@ -8,7 +8,7 @@ package alternativa.tanks.service.notificationcategories
    public class NotificationGarageCategoriesService extends EventDispatcher implements INotificationGarageCategoriesService
    {
       
-      [Inject]
+      [Inject] // added
       public static var storageService:IStorageService;
       
       private static const NEW_ITEM_NOTIFICATION_SHARED_KEY:String = "NEW_ITEM_NOTIFICATION_IN_CATEGORY";
