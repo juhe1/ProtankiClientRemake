@@ -15,7 +15,9 @@ package projects.tanks.client.battlefield.models.user.tank.commands
       
       private var _position:Vector3d;
       
-      public function MoveCommand(param1:Vector3d = null, param2:int = 0, param3:Vector3d = null, param4:Vector3d = null, param5:Vector3d = null)
+      private var _turnSpeedNumber:int;
+      
+      public function MoveCommand(param1:Vector3d = null, param2:int = 0, param3:Vector3d = null, param4:Vector3d = null, param5:Vector3d = null, param6:int = 0)
       {
          super();
          this._angularVelocity = param1;
@@ -23,6 +25,7 @@ package projects.tanks.client.battlefield.models.user.tank.commands
          this._linearVelocity = param3;
          this._orientation = param4;
          this._position = param5;
+         this._turnSpeedNumber = param6;
       }
       
       public function get angularVelocity() : Vector3d
@@ -75,6 +78,16 @@ package projects.tanks.client.battlefield.models.user.tank.commands
          this._position = param1;
       }
       
+      public function get turnSpeedNumber() : int
+      {
+         return this._turnSpeedNumber;
+      }
+      
+      public function set turnSpeedNumber(param1:int) : void
+      {
+         this._turnSpeedNumber = param1;
+      }
+      
       public function toString() : String
       {
          var _loc1_:String = "MoveCommand [";
@@ -83,6 +96,7 @@ package projects.tanks.client.battlefield.models.user.tank.commands
          _loc1_ += "linearVelocity = " + this.linearVelocity + " ";
          _loc1_ += "orientation = " + this.orientation + " ";
          _loc1_ += "position = " + this.position + " ";
+         _loc1_ += "turnSpeedNumber = " + this.turnSpeedNumber + " ";
          return _loc1_ + "]";
       }
    }

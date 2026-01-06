@@ -12,12 +12,12 @@ package projects.tanks.client.battlefield.models.bonus.battle.bonusregions
       
       private var _rotation:Vector3d;
       
-      public function BonusRegionData(param1:Vector3d = null, param2:Vector3d = null, param3:BonusesType = null)
+      public function BonusRegionData(param1:Vector3d = null, param2:BonusesType = null, param3:Vector3d = null)
       {
          super();
          this._position = param1;
-         this._rotation = param2;
-         this._regionType = param3;
+         this._regionType = param2;
+         this._rotation = param3;
       }
       
       public function get position() : Vector3d

@@ -1,0 +1,63 @@
+package projects.tanks.client.battlefield.models.ultimate.effects.viking
+{
+   import platform.client.fp10.core.resource.types.SoundResource;
+   import platform.client.fp10.core.resource.types.TextureResource;
+   
+   public class VikingUltimateCC
+   {
+      
+      private var _effectStartSound:SoundResource;
+      
+      private var _flame:TextureResource;
+      
+      private var _smoke:TextureResource;
+      
+      public function VikingUltimateCC(param1:SoundResource = null, param2:TextureResource = null, param3:TextureResource = null)
+      {
+         super();
+         this._effectStartSound = param1;
+         this._flame = param2;
+         this._smoke = param3;
+      }
+      
+      public function get effectStartSound() : SoundResource
+      {
+         return this._effectStartSound;
+      }
+      
+      public function set effectStartSound(param1:SoundResource) : void
+      {
+         this._effectStartSound = param1;
+      }
+      
+      public function get flame() : TextureResource
+      {
+         return this._flame;
+      }
+      
+      public function set flame(param1:TextureResource) : void
+      {
+         this._flame = param1;
+      }
+      
+      public function get smoke() : TextureResource
+      {
+         return this._smoke;
+      }
+      
+      public function set smoke(param1:TextureResource) : void
+      {
+         this._smoke = param1;
+      }
+      
+      public function toString() : String
+      {
+         var _loc1_:String = "VikingUltimateCC [";
+         _loc1_ += "effectStartSound = " + this.effectStartSound + " ";
+         _loc1_ += "flame = " + this.flame + " ";
+         _loc1_ += "smoke = " + this.smoke + " ";
+         return _loc1_ + "]";
+      }
+   }
+}
+

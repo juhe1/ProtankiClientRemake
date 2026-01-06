@@ -1,65 +1,66 @@
 package projects.tanks.client.battlefield.models.tankparts.weapons.common.discrete
 {
+   import platform.client.fp10.core.type.IGameObject;
    import projects.tanks.client.battlefield.types.Vector3d;
-   import alternativa.object.ClientObject;
    
    public class TargetHit
    {
-      private var newname_6244__END:Vector3d;
       
-      private var newname_6245__END:Vector3d;
+      private var _direction:Vector3d;
       
-      private var newname_10920__END:int;
+      private var _localHitPoint:Vector3d;
       
-      private var newname_5312__END:ClientObject;
+      private var _numberHits:int;
       
-      public function TargetHit(param1:Vector3d = null, param2:Vector3d = null, param3:int = 0, param4:ClientObject = null)
+      private var _target:IGameObject;
+      
+      public function TargetHit(param1:Vector3d = null, param2:Vector3d = null, param3:int = 0, param4:IGameObject = null)
       {
          super();
-         this.newname_6244__END = param1;
-         this.newname_6245__END = param2;
-         this.newname_10920__END = param3;
-         this.newname_5312__END = param4;
+         this._direction = param1;
+         this._localHitPoint = param2;
+         this._numberHits = param3;
+         this._target = param4;
       }
       
       public function get direction() : Vector3d
       {
-         return this.newname_6244__END;
+         return this._direction;
       }
       
       public function set direction(param1:Vector3d) : void
       {
-         this.newname_6244__END = param1;
+         this._direction = param1;
       }
       
       public function get localHitPoint() : Vector3d
       {
-         return this.newname_6245__END;
+         return this._localHitPoint;
       }
       
       public function set localHitPoint(param1:Vector3d) : void
       {
-         this.newname_6245__END = param1;
+         this._localHitPoint = param1;
       }
       
       public function get numberHits() : int
       {
-         return this.newname_10920__END;
+         return this._numberHits;
       }
       
       public function set numberHits(param1:int) : void
       {
-         this.newname_10920__END = param1;
+         this._numberHits = param1;
       }
       
-      public function get target() : ClientObject
+      public function get target() : IGameObject
       {
-         return this.newname_5312__END;
+         return this._target;
       }
       
-      public function set target(param1:ClientObject) : void
+      public function set target(param1:IGameObject) : void
       {
-         this.newname_5312__END = param1;
+         this._target = param1;
       }
       
       public function toString() : String

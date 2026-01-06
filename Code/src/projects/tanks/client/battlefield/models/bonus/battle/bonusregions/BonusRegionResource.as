@@ -1,27 +1,28 @@
 package projects.tanks.client.battlefield.models.bonus.battle.bonusregions
 {
+   import platform.client.fp10.core.resource.types.TextureResource;
    import projects.tanks.client.battlefield.models.bonus.bonus.BonusesType;
-   import platform.client.fp10.core.resource.types.ImageResource;
    
    public class BonusRegionResource
    {
-      private var _dropZoneResource:ImageResource;
+      
+      private var _dropZoneResource:TextureResource;
       
       private var _regionType:BonusesType;
       
-      public function BonusRegionResource(param1:ImageResource = null, param2:BonusesType = null)
+      public function BonusRegionResource(param1:TextureResource = null, param2:BonusesType = null)
       {
          super();
          this._dropZoneResource = param1;
          this._regionType = param2;
       }
       
-      public function get dropZoneResource() : ImageResource
+      public function get dropZoneResource() : TextureResource
       {
          return this._dropZoneResource;
       }
       
-      public function set dropZoneResource(param1:ImageResource) : void
+      public function set dropZoneResource(param1:TextureResource) : void
       {
          this._dropZoneResource = param1;
       }
@@ -39,8 +40,8 @@ package projects.tanks.client.battlefield.models.bonus.battle.bonusregions
       public function toString() : String
       {
          var _loc1_:String = "BonusRegionResource [";
-         _loc1_ += "dropZoneResource = " + this._dropZoneResource + " ";
-         _loc1_ += "regionType = " + this._regionType + " ";
+         _loc1_ += "dropZoneResource = " + this.dropZoneResource + " ";
+         _loc1_ += "regionType = " + this.regionType + " ";
          return _loc1_ + "]";
       }
    }

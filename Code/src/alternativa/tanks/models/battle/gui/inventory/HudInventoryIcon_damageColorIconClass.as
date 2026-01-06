@@ -1,0 +1,16 @@
+package alternativa.tanks.models.battle.gui.inventory
+{
+   import mx.core.BitmapAsset;
+   
+   [ExcludeClass]
+   [Embed(source="/_assets/9_alternativa.tanks.models.battle.gui.inventory.HudInventoryIcon_damageColorIconClass_alternativa.tanks.models.battle.gui.inventory.HudInventoryIcon_damageColorIconClass.png")]
+   public class HudInventoryIcon_damageColorIconClass extends BitmapAsset
+   {
+      
+      public function HudInventoryIcon_damageColorIconClass()
+      {
+         super();
+      }
+   }
+}
+

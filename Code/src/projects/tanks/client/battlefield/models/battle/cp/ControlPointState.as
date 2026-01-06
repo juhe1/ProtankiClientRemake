@@ -2,6 +2,7 @@ package projects.tanks.client.battlefield.models.battle.cp
 {
    public class ControlPointState
    {
+      
       public static const RED:ControlPointState = new ControlPointState(0,"RED");
       
       public static const BLUE:ControlPointState = new ControlPointState(1,"BLUE");
@@ -30,7 +31,7 @@ package projects.tanks.client.battlefield.models.battle.cp
       
       public function toString() : String
       {
-         return "";
+         return "ControlPointState [" + this._name + "]";
       }
       
       public function get value() : int

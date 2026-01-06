@@ -1,73 +1,103 @@
 package projects.tanks.client.battlefield.models.battle.battlefield.mine
 {
+   import alternativa.types.Long;
    import projects.tanks.client.battlefield.types.Vector3d;
    
    public class BattleMine
    {
-      private var newname_5401__END:Boolean;
       
-      private var newname_5402__END:String;
+      private var _activated:Boolean;
       
-      private var newname_5403__END:String;
+      private var _expirationMine:Boolean;
       
-      private var newname_4906__END:Vector3d;
+      private var _expirationTaskId:Long;
       
-      public function BattleMine(param1:Boolean = false, param2:String = null, param3:String = null, param4:Vector3d = null)
+      private var _mineId:Long;
+      
+      private var _ownerId:Long;
+      
+      private var _position:Vector3d;
+      
+      public function BattleMine(param1:Boolean = false, param2:Boolean = false, param3:Long = null, param4:Long = null, param5:Long = null, param6:Vector3d = null)
       {
          super();
-         this.newname_5401__END = param1;
-         this.newname_5402__END = param2;
-         this.newname_5403__END = param3;
-         this.newname_4906__END = param4;
+         this._activated = param1;
+         this._expirationMine = param2;
+         this._expirationTaskId = param3;
+         this._mineId = param4;
+         this._ownerId = param5;
+         this._position = param6;
       }
       
       public function get activated() : Boolean
       {
-         return this.newname_5401__END;
+         return this._activated;
       }
       
       public function set activated(param1:Boolean) : void
       {
-         this.newname_5401__END = param1;
+         this._activated = param1;
       }
       
-      public function get mineId() : String
+      public function get expirationMine() : Boolean
       {
-         return this.newname_5402__END;
+         return this._expirationMine;
       }
       
-      public function set mineId(param1:String) : void
+      public function set expirationMine(param1:Boolean) : void
       {
-         this.newname_5402__END = param1;
+         this._expirationMine = param1;
       }
       
-      public function get ownerId() : String
+      public function get expirationTaskId() : Long
       {
-         return this.newname_5403__END;
+         return this._expirationTaskId;
       }
       
-      public function set ownerId(param1:String) : void
+      public function set expirationTaskId(param1:Long) : void
       {
-         this.newname_5403__END = param1;
+         this._expirationTaskId = param1;
+      }
+      
+      public function get mineId() : Long
+      {
+         return this._mineId;
+      }
+      
+      public function set mineId(param1:Long) : void
+      {
+         this._mineId = param1;
+      }
+      
+      public function get ownerId() : Long
+      {
+         return this._ownerId;
+      }
+      
+      public function set ownerId(param1:Long) : void
+      {
+         this._ownerId = param1;
       }
       
       public function get position() : Vector3d
       {
-         return this.newname_4906__END;
+         return this._position;
       }
       
       public function set position(param1:Vector3d) : void
       {
-         this.newname_4906__END = param1;
+         this._position = param1;
       }
       
       public function toString() : String
       {
          var _loc1_:String = "BattleMine [";
-         _loc1_ += "activated = " + this.newname_5401__END + " ";
-         _loc1_ += "mineId = " + this.newname_5402__END + " ";
-         _loc1_ += "ownerId = " + this.newname_5403__END + " ";
-         _loc1_ += "position = " + this.newname_4906__END + " ";
+         _loc1_ += "activated = " + this.activated + " ";
+         _loc1_ += "expirationMine = " + this.expirationMine + " ";
+         _loc1_ += "expirationTaskId = " + this.expirationTaskId + " ";
+         _loc1_ += "mineId = " + this.mineId + " ";
+         _loc1_ += "ownerId = " + this.ownerId + " ";
+         _loc1_ += "position = " + this.position + " ";
          return _loc1_ + "]";
       }
    }

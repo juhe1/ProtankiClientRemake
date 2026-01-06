@@ -2,6 +2,7 @@ package projects.tanks.client.battlefield.models.tankparts.weapon.healing
 {
    public class IsisState
    {
+      
       public static const OFF:IsisState = new IsisState(0,"OFF");
       
       public static const IDLE:IsisState = new IsisState(1,"IDLE");
@@ -33,7 +34,7 @@ package projects.tanks.client.battlefield.models.tankparts.weapon.healing
       
       public function toString() : String
       {
-         return "";
+         return "IsisState [" + this._name + "]";
       }
       
       public function get value() : int

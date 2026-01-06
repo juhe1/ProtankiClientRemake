@@ -1,27 +1,27 @@
 package alternativa.tanks.services.tankregistry
 {
+   import alternativa.tanks.models.tank.ITankModel;
+   import alternativa.types.Long;
    import flash.utils.Dictionary;
-   import alternativa.object.ClientObject;
-   import projects.tanks.clients.fp10.libraries.tanksservices.service.userproperties.IUserPropertiesService;
+   import platform.client.fp10.core.type.IGameObject;
    
    public class TankUsersRegistryServiceImpl implements TankUsersRegistry
    {
-      public static var userPropertiesService:IUserPropertiesService;
-
+      
       private const users:Dictionary = new Dictionary();
       
-      private var userList:Vector.<ClientObject>;
+      private var userList:Vector.<IGameObject>;
       
       private var userCount:int;
       
-      private var localUser:ClientObject;
+      private var localUser:IGameObject;
       
       public function TankUsersRegistryServiceImpl()
       {
          super();
       }
       
-      public function addUser(param1:ClientObject) : void
+      public function addUser(param1:IGameObject) : void
       {
          this.userList = null;
          if(!this.users[param1.id])
@@ -29,13 +29,13 @@ package alternativa.tanks.services.tankregistry
             this.users[param1.id] = param1;
             ++this.userCount;
          }
-         if(userPropertiesService.userName == param1.id)
+         if(ITankModel(param1.adapt(ITankModel)).isLocal())
          {
             this.localUser = param1;
          }
       }
       
-      public function removeUser(param1:ClientObject) : void
+      public function removeUser(param1:IGameObject) : void
       {
          this.userList = null;
          if(Boolean(this.users[param1.id]))
@@ -43,7 +43,7 @@ package alternativa.tanks.services.tankregistry
             delete this.users[param1.id];
             --this.userCount;
          }
-         if(userPropertiesService.userName == param1.id)
+         if(ITankModel(param1.adapt(ITankModel)).isLocal())
          {
             this.localUser = null;
          }
@@ -54,12 +54,12 @@ package alternativa.tanks.services.tankregistry
          return this.userCount;
       }
       
-      public function getUsers() : Vector.<ClientObject>
+      public function getUsers() : Vector.<IGameObject>
       {
-         var _loc1_:ClientObject = null;
+         var _loc1_:IGameObject = null;
          if(this.userList == null)
          {
-            this.userList = new Vector.<ClientObject>();
+            this.userList = new Vector.<IGameObject>();
             for each(_loc1_ in this.users)
             {
                this.userList.push(_loc1_);
@@ -68,12 +68,12 @@ package alternativa.tanks.services.tankregistry
          return this.userList;
       }
       
-      public function getUser(param1:String) : ClientObject
+      public function getUser(param1:Long) : IGameObject
       {
          return this.users[param1];
       }
       
-      public function getLocalUser() : ClientObject
+      public function getLocalUser() : IGameObject
       {
          return this.localUser;
       }

@@ -2,23 +2,20 @@ package projects.tanks.client.battlefield.models.bonus.bonus
 {
    public class BonusesType
    {
-      public static const NITRO:BonusesType = new BonusesType(0,"NITRO");
       
-      public static const DAMAGE:BonusesType = new BonusesType(1,"DAMAGE");
+      public static const CRYSTAL:BonusesType = new BonusesType(0,"CRYSTAL");
       
-      public static const ARMOR:BonusesType = new BonusesType(2,"ARMOR");
+      public static const NITRO:BonusesType = new BonusesType(1,"NITRO");
       
-      public static const HEALTH:BonusesType = new BonusesType(3,"HEALTH");
+      public static const ARMOR_UP:BonusesType = new BonusesType(2,"ARMOR_UP");
       
-      public static const CRYSTAL:BonusesType = new BonusesType(4,"CRYSTAL");
+      public static const FIRST_AID:BonusesType = new BonusesType(3,"FIRST_AID");
       
-      public static const GOLD:BonusesType = new BonusesType(5,"GOLD");
+      public static const DAMAGE_UP:BonusesType = new BonusesType(4,"DAMAGE_UP");
       
-      public static const SPECIAL:BonusesType = new BonusesType(6,"SPECIAL");
+      public static const RECHARGE:BonusesType = new BonusesType(5,"RECHARGE");
       
-      public static const MOON:BonusesType = new BonusesType(7,"MOON");
-      
-      public static const PUMPKIN:BonusesType = new BonusesType(8,"PUMPKIN");
+      public static const GOLD:BonusesType = new BonusesType(6,"GOLD");
       
       private var _value:int;
       
@@ -34,15 +31,13 @@ package projects.tanks.client.battlefield.models.bonus.bonus
       public static function get values() : Vector.<BonusesType>
       {
          var _loc1_:Vector.<BonusesType> = new Vector.<BonusesType>();
-         _loc1_.push(NITRO);
-         _loc1_.push(DAMAGE);
-         _loc1_.push(ARMOR);
-         _loc1_.push(HEALTH);
          _loc1_.push(CRYSTAL);
+         _loc1_.push(NITRO);
+         _loc1_.push(ARMOR_UP);
+         _loc1_.push(FIRST_AID);
+         _loc1_.push(DAMAGE_UP);
+         _loc1_.push(RECHARGE);
          _loc1_.push(GOLD);
-         _loc1_.push(SPECIAL);
-         _loc1_.push(MOON);
-         _loc1_.push(PUMPKIN);
          return _loc1_;
       }
       

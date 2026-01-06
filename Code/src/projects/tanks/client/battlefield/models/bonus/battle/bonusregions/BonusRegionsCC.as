@@ -2,35 +2,44 @@ package projects.tanks.client.battlefield.models.bonus.battle.bonusregions
 {
    public class BonusRegionsCC
    {
-      private var newname_10007__END:Vector.<BonusRegionResource>;
       
-      private var newname_2667__END:Vector.<BonusRegionData>;
+      private var _bonusRegionResources:Vector.<BonusRegionResource>;
+      
+      private var _bonusRegions:Vector.<BonusRegionData>;
       
       public function BonusRegionsCC(param1:Vector.<BonusRegionResource> = null, param2:Vector.<BonusRegionData> = null)
       {
          super();
-         this.newname_10007__END = param1;
-         this.newname_2667__END = param2;
+         this._bonusRegionResources = param1;
+         this._bonusRegions = param2;
       }
       
       public function get bonusRegionResources() : Vector.<BonusRegionResource>
       {
-         return this.newname_10007__END;
+         return this._bonusRegionResources;
       }
       
       public function set bonusRegionResources(param1:Vector.<BonusRegionResource>) : void
       {
-         this.newname_10007__END = param1;
+         this._bonusRegionResources = param1;
       }
       
       public function get bonusRegions() : Vector.<BonusRegionData>
       {
-         return this.newname_2667__END;
+         return this._bonusRegions;
       }
       
       public function set bonusRegions(param1:Vector.<BonusRegionData>) : void
       {
-         this.newname_2667__END = param1;
+         this._bonusRegions = param1;
+      }
+      
+      public function toString() : String
+      {
+         var _loc1_:String = "BonusRegionsCC [";
+         _loc1_ += "bonusRegionResources = " + this.bonusRegionResources + " ";
+         _loc1_ += "bonusRegions = " + this.bonusRegions + " ";
+         return _loc1_ + "]";
       }
    }
 }

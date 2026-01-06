@@ -1,21 +1,22 @@
 package alternativa.tanks.services.tankregistry
 {
-   import alternativa.object.ClientObject;
+   import alternativa.types.Long;
+   import platform.client.fp10.core.type.IGameObject;
    
    public interface TankUsersRegistry
    {
       
-      function addUser(param1:ClientObject) : void;
+      function addUser(param1:IGameObject) : void;
       
-      function removeUser(param1:ClientObject) : void;
+      function removeUser(param1:IGameObject) : void;
       
       function getUserCount() : int;
       
-      function getUsers() : Vector.<ClientObject>;
+      function getUsers() : Vector.<IGameObject>;
       
-      function getUser(param1:String) : ClientObject;
+      function getUser(param1:Long) : IGameObject;
       
-      function getLocalUser() : ClientObject;
+      function getLocalUser() : IGameObject;
       
       function existLocalUser() : Boolean;
    }

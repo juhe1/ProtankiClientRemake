@@ -1,0 +1,22 @@
+package alternativa.tanks.models.weapon.shotgun
+{
+   import alternativa.tanks.models.weapon.shotgun.aiming.ShotgunAiming;
+   import alternativa.tanks.models.weapons.discrete.DiscreteWeaponObject;
+   import platform.client.fp10.core.type.IGameObject;
+   
+   public class ShotgunObject extends DiscreteWeaponObject
+   {
+      
+      public function ShotgunObject(param1:IGameObject)
+      {
+         super(param1);
+      }
+      
+      public function pelletDirectionCalculator() : PelletDirectionCalculator
+      {
+         var _loc1_:ShotgunAiming = ShotgunAiming(object.adapt(ShotgunAiming));
+         return _loc1_.getPelletDirectionCalculator();
+      }
+   }
+}
+

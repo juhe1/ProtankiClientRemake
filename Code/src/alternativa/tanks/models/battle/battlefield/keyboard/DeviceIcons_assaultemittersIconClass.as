@@ -1,0 +1,16 @@
+package alternativa.tanks.models.battle.battlefield.keyboard
+{
+   import mx.core.BitmapAsset;
+   
+   [ExcludeClass]
+   [Embed(source="/_assets/287_alternativa.tanks.models.battle.battlefield.keyboard.DeviceIcons_assaultemittersIconClass_alternativa.tanks.models.battle.battlefield.keyboard.DeviceIcons_assaultemittersIconClass.png")]
+   public class DeviceIcons_assaultemittersIconClass extends BitmapAsset
+   {
+      
+      public function DeviceIcons_assaultemittersIconClass()
+      {
+         super();
+      }
+   }
+}
+

@@ -2,6 +2,7 @@ package projects.tanks.client.battlefield.models.user.damageindicator
 {
    public class DamageIndicatorType
    {
+      
       public static const NORMAL:DamageIndicatorType = new DamageIndicatorType(0,"NORMAL");
       
       public static const CRITICAL:DamageIndicatorType = new DamageIndicatorType(1,"CRITICAL");
@@ -33,7 +34,7 @@ package projects.tanks.client.battlefield.models.user.damageindicator
       
       public function toString() : String
       {
-         return "";
+         return "DamageIndicatorType [" + this._name + "]";
       }
       
       public function get value() : int
