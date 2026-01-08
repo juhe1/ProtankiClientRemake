@@ -1,3 +1,4 @@
+
 package projects.tanks.client.garage.models.item.fitting
 {
    import platform.client.fp10.core.model.IModel;
@@ -22,4 +23,3 @@ package projects.tanks.client.garage.models.item.fitting
       }
    }
 }
-

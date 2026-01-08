@@ -1,3 +1,4 @@
+
 package projects.tanks.client.commons.models.layout
 {
    import platform.client.fp10.core.model.IModel;
@@ -52,4 +53,3 @@ package projects.tanks.client.commons.models.layout
       }
    }
 }
-

@@ -1,3 +1,4 @@
+
 package projects.tanks.client.battleservice.model.latency
 {
 
@@ -22,4 +23,3 @@ package projects.tanks.client.battleservice.model.latency
       }
    }
 }
-

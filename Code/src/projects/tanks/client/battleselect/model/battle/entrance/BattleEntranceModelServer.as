@@ -1,3 +1,4 @@
+
 package projects.tanks.client.battleselect.model.battle.entrance
 {
    import platform.client.fp10.core.model.IModel;
@@ -29,4 +30,3 @@ package projects.tanks.client.battleselect.model.battle.entrance
       }
    }
 }
-

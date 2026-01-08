@@ -1,3 +1,4 @@
+
 package projects.tanks.client.entrance.model.entrance.login
 {
    import alternativa.protocol.ICodec;
@@ -27,4 +28,3 @@ package projects.tanks.client.entrance.model.entrance.login
       }
    }
 }
-

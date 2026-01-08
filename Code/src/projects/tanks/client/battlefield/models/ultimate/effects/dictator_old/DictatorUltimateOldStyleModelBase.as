@@ -1,67 +1,35 @@
 package projects.tanks.client.battlefield.models.ultimate.effects.dictator_old
 {
-   import alternativa.osgi.OSGi;
-   import alternativa.protocol.ICodec;
-   import alternativa.protocol.IProtocol;
-   import alternativa.protocol.ProtocolBuffer;
-   import alternativa.protocol.info.CollectionCodecInfo;
-   import alternativa.protocol.info.TypeCodecInfo;
    import alternativa.types.Long;
    import platform.client.fp10.core.model.IModel;
    import platform.client.fp10.core.model.impl.Model;
-   import platform.client.fp10.core.registry.ModelRegistry;
-   import platform.client.fp10.core.type.IGameObject;
-   
+
    public class DictatorUltimateOldStyleModelBase extends Model
    {
-      
-      private var _protocol:IProtocol = IProtocol(OSGi.getInstance().getService(IProtocol));
-      
+
       protected var server:DictatorUltimateOldStyleModelServer;
-      
-      private var client:IDictatorUltimateOldStyleModelBase = IDictatorUltimateOldStyleModelBase(this);
-      
-      private var modelId:Long = Long.getLong(1552091197,1575861227);
-      
-      private var _showUltimateUsedId:Long = Long.getLong(1161801526,-337868299);
-      
-      private var _showUltimateUsed_tankObjectCodec:ICodec;
-      
-      private var _showUltimateUsed_tanksInspiredCodec:ICodec;
-      
+
+      private static const modelId:Long = Long.getLong(1552091197,1575861227);
+
       public function DictatorUltimateOldStyleModelBase()
       {
          super();
          this.initCodecs();
       }
-      
+
       protected function initCodecs() : void
       {
          this.server = new DictatorUltimateOldStyleModelServer(IModel(this));
-         var _loc1_:ModelRegistry = ModelRegistry(OSGi.getInstance().getService(ModelRegistry));
-         _loc1_.registerModelConstructorCodec(this.modelId,this._protocol.getCodec(new TypeCodecInfo(DictatorUltimateOldStyleCC,false)));
-         this._showUltimateUsed_tankObjectCodec = this._protocol.getCodec(new TypeCodecInfo(IGameObject,false));
-         this._showUltimateUsed_tanksInspiredCodec = this._protocol.getCodec(new CollectionCodecInfo(new TypeCodecInfo(IGameObject,false),false,1));
       }
-      
+
       protected function getInitParam() : DictatorUltimateOldStyleCC
       {
          return DictatorUltimateOldStyleCC(initParams[Model.object]);
       }
-      
-      override public function invoke(param1:Long, param2:ProtocolBuffer) : void
-      {
-         switch(param1)
-         {
-            case this._showUltimateUsedId:
-               this.client.showUltimateUsed(IGameObject(this._showUltimateUsed_tankObjectCodec.decode(param2)),this._showUltimateUsed_tanksInspiredCodec.decode(param2) as Vector.<IGameObject>);
-         }
-      }
-      
+
       override public function get id() : Long
       {
-         return this.modelId;
+         return modelId;
       }
    }
 }
-

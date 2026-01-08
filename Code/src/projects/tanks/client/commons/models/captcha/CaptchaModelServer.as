@@ -29,4 +29,3 @@ package projects.tanks.client.commons.models.captcha
       }
    }
 }
-

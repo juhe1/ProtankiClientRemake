@@ -3,9 +3,15 @@ import re
 import glob
 
 def find_modelbase_files(input_folder):
-    """Find all *ModelBase.as files in the input folder."""
+    """Find all *ModelBase.as files in the input folder, excluding interface files."""
     pattern = os.path.join(input_folder, "**", "*ModelBase.as")
-    return glob.glob(pattern, recursive=True)
+    all_files = glob.glob(pattern, recursive=True)
+    # Filter out interface files (files starting with "I" followed by uppercase letter, like IIsisModelBase)
+    def is_interface_file(filepath):
+        basename = os.path.basename(filepath)
+        # Interface files start with "I" followed by another uppercase letter
+        return len(basename) >= 2 and basename[0] == 'I' and basename[1].isupper()
+    return [f for f in all_files if not is_interface_file(f)]
 
 def clean_imports(content):
     """Remove all imports except the allowed ones."""
@@ -140,9 +146,23 @@ def change_modelid_to_static_const(content):
     return re.sub(pattern, replacement, content)
 
 def remove_empty_lines_excessive(content):
-    """Remove excessive empty lines (more than 2 consecutive)."""
-    # Replace 3 or more consecutive newlines with 2 newlines
-    return re.sub(r'\n{3,}', '\n\n', content)
+    """Remove excessive empty lines (more than 1 consecutive)."""
+    lines = content.split('\n')
+    new_lines = []
+    prev_empty = False
+    
+    for line in lines:
+        is_empty = line.strip() == ''
+        
+        if is_empty:
+            if not prev_empty:
+                new_lines.append('')  # Keep one empty line
+            prev_empty = True
+        else:
+            new_lines.append(line)
+            prev_empty = False
+    
+    return '\n'.join(new_lines)
 
 def process_modelbase_file(filepath):
     """Process a single ModelBase file."""

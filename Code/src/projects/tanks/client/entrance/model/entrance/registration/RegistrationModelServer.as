@@ -1,3 +1,4 @@
+
 package projects.tanks.client.entrance.model.entrance.registration
 {
    import alternativa.types.Long;
@@ -35,4 +36,3 @@ package projects.tanks.client.entrance.model.entrance.registration
       }
    }
 }
-

@@ -1,3 +1,4 @@
+
 package platform.client.core.general.spaces.loading.dispatcher
 {
    import alternativa.osgi.OSGi;
@@ -20,4 +21,3 @@ package platform.client.core.general.spaces.loading.dispatcher
       }
    }
 }
-
