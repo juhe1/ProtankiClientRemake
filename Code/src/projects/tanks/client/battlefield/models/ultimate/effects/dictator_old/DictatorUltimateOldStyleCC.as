@@ -1,7 +1,7 @@
 package projects.tanks.client.battlefield.models.ultimate.effects.dictator_old
 {
    import platform.client.fp10.core.resource.types.SoundResource;
-   import platform.client.fp10.core.resource.types.TextureResource;
+   import platform.client.fp10.core.resource.types.ImageResource;
    
    public class DictatorUltimateOldStyleCC
    {
@@ -12,9 +12,9 @@ package projects.tanks.client.battlefield.models.ultimate.effects.dictator_old
       
       private var _positiveColorTransform:String;
       
-      private var _sparkImage:TextureResource;
+      private var _sparkImage:ImageResource;
       
-      public function DictatorUltimateOldStyleCC(param1:SoundResource = null, param2:String = null, param3:String = null, param4:TextureResource = null)
+      public function DictatorUltimateOldStyleCC(param1:SoundResource = null, param2:String = null, param3:String = null, param4:ImageResource = null)
       {
          super();
          this._activateSound = param1;
@@ -53,12 +53,12 @@ package projects.tanks.client.battlefield.models.ultimate.effects.dictator_old
          this._positiveColorTransform = param1;
       }
       
-      public function get sparkImage() : TextureResource
+      public function get sparkImage() : ImageResource
       {
          return this._sparkImage;
       }
       
-      public function set sparkImage(param1:TextureResource) : void
+      public function set sparkImage(param1:ImageResource) : void
       {
          this._sparkImage = param1;
       }

@@ -11,8 +11,8 @@ package alternativa.tanks.battle.objects.tank.tankskin.materialfactory
    import alternativa.types.Long;
    import alternativa.utils.TextureMaterialRegistry;
    import flash.display.BitmapData;
-   import platform.client.fp10.core.resource.types.MultiframeTextureResource;
-   import platform.client.fp10.core.resource.types.TextureResource;
+   import platform.client.fp10.core.resource.types.MultiframeImageResource;
+   import platform.client.fp10.core.resource.types.ImageResource;
    import projects.tanks.clients.flash.commons.models.coloring.IColoring;
    
    public class DefaultTankSkinMaterialsFactory implements TankSkinMaterialsFactory
@@ -34,10 +34,10 @@ package alternativa.tanks.battle.objects.tank.tankskin.materialfactory
       
       public function createSkinMaterials(param1:TankSkin, param2:IColoring) : SkinMaterials
       {
-         var _loc13_:MultiframeTextureResource = null;
+         var _loc13_:MultiframeImageResource = null;
          var _loc14_:TextureMaterial = null;
          var _loc15_:TextureMaterial = null;
-         var _loc16_:TextureResource = null;
+         var _loc16_:ImageResource = null;
          var _loc3_:TankHullSkinCacheItem = param1.getHullDescriptor();
          var _loc4_:TurretSkinCacheItem = param1.getTurretDescriptor();
          var _loc5_:Long = _loc3_.partId;
@@ -65,7 +65,7 @@ package alternativa.tanks.battle.objects.tank.tankskin.materialfactory
          return new SkinMaterials(_loc14_,_loc15_,_loc11_,_loc12_);
       }
       
-      public function createDeadSkinMaterials(param1:TankSkin, param2:TextureResource) : SkinMaterials
+      public function createDeadSkinMaterials(param1:TankSkin, param2:ImageResource) : SkinMaterials
       {
          var _loc3_:TankHullSkinCacheItem = param1.getHullDescriptor();
          var _loc4_:TurretSkinCacheItem = param1.getTurretDescriptor();

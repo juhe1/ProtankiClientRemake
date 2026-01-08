@@ -1,22 +1,22 @@
 package projects.tanks.client.battlefield.models.tankparts.sfx.isis
 {
-   import platform.client.fp10.core.resource.types.MultiframeTextureResource;
+   import platform.client.fp10.core.resource.types.MultiframeImageResource;
    import platform.client.fp10.core.resource.types.SoundResource;
-   import platform.client.fp10.core.resource.types.TextureResource;
+   import platform.client.fp10.core.resource.types.ImageResource;
    import projects.tanks.client.battlefield.models.tankparts.sfx.lighting.entity.LightingSFXEntity;
    
    public class IsisSFXCC
    {
       
-      private var _damagingBall:MultiframeTextureResource;
+      private var _damagingBall:MultiframeImageResource;
       
-      private var _damagingRay:TextureResource;
+      private var _damagingRay:ImageResource;
       
       private var _damagingSound:SoundResource;
       
-      private var _healingBall:MultiframeTextureResource;
+      private var _healingBall:MultiframeImageResource;
       
-      private var _healingRay:TextureResource;
+      private var _healingRay:ImageResource;
       
       private var _healingSound:SoundResource;
       
@@ -24,7 +24,7 @@ package projects.tanks.client.battlefield.models.tankparts.sfx.isis
       
       private var _lightingSFXEntity:LightingSFXEntity;
       
-      public function IsisSFXCC(param1:MultiframeTextureResource = null, param2:TextureResource = null, param3:SoundResource = null, param4:MultiframeTextureResource = null, param5:TextureResource = null, param6:SoundResource = null, param7:SoundResource = null, param8:LightingSFXEntity = null)
+      public function IsisSFXCC(param1:MultiframeImageResource = null, param2:ImageResource = null, param3:SoundResource = null, param4:MultiframeImageResource = null, param5:ImageResource = null, param6:SoundResource = null, param7:SoundResource = null, param8:LightingSFXEntity = null)
       {
          super();
          this._damagingBall = param1;
@@ -37,22 +37,22 @@ package projects.tanks.client.battlefield.models.tankparts.sfx.isis
          this._lightingSFXEntity = param8;
       }
       
-      public function get damagingBall() : MultiframeTextureResource
+      public function get damagingBall() : MultiframeImageResource
       {
          return this._damagingBall;
       }
       
-      public function set damagingBall(param1:MultiframeTextureResource) : void
+      public function set damagingBall(param1:MultiframeImageResource) : void
       {
          this._damagingBall = param1;
       }
       
-      public function get damagingRay() : TextureResource
+      public function get damagingRay() : ImageResource
       {
          return this._damagingRay;
       }
       
-      public function set damagingRay(param1:TextureResource) : void
+      public function set damagingRay(param1:ImageResource) : void
       {
          this._damagingRay = param1;
       }
@@ -67,22 +67,22 @@ package projects.tanks.client.battlefield.models.tankparts.sfx.isis
          this._damagingSound = param1;
       }
       
-      public function get healingBall() : MultiframeTextureResource
+      public function get healingBall() : MultiframeImageResource
       {
          return this._healingBall;
       }
       
-      public function set healingBall(param1:MultiframeTextureResource) : void
+      public function set healingBall(param1:MultiframeImageResource) : void
       {
          this._healingBall = param1;
       }
       
-      public function get healingRay() : TextureResource
+      public function get healingRay() : ImageResource
       {
          return this._healingRay;
       }
       
-      public function set healingRay(param1:TextureResource) : void
+      public function set healingRay(param1:ImageResource) : void
       {
          this._healingRay = param1;
       }

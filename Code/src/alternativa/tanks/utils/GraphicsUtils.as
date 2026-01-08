@@ -10,7 +10,7 @@ package alternativa.tanks.utils
    import flash.filters.BitmapFilter;
    import flash.geom.Point;
    import flash.utils.Dictionary;
-   import platform.client.fp10.core.resource.types.MultiframeTextureResource;
+   import platform.client.fp10.core.resource.types.MultiframeImageResource;
    
    public class GraphicsUtils
    {
@@ -32,7 +32,7 @@ package alternativa.tanks.utils
          param1.rotationZ = param3.z;
       }
       
-      public static function getTextureAnimationFromResource(param1:TextureMaterialRegistry, param2:MultiframeTextureResource) : TextureAnimation
+      public static function getTextureAnimationFromResource(param1:TextureMaterialRegistry, param2:MultiframeImageResource) : TextureAnimation
       {
          var _loc3_:TextureAnimation = getTextureAnimation(param1,param2.data,param2.frameWidth,param2.frameHeight,param2.numFrames);
          _loc3_.fps = param2.fps;

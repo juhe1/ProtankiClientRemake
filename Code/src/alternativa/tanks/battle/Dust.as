@@ -13,7 +13,7 @@ package alternativa.tanks.battle
    import alternativa.utils.TextureMaterialRegistry;
    import flash.display.BlendMode;
    import flash.utils.Dictionary;
-   import platform.client.fp10.core.resource.types.MultiframeTextureResource;
+   import platform.client.fp10.core.resource.types.MultiframeImageResource;
    
    public class Dust
    {
@@ -62,7 +62,7 @@ package alternativa.tanks.battle
          param1.z += (Math.random() - 0.5) * 2 * param2;
       }
       
-      public function init(param1:MultiframeTextureResource, param2:TextureMaterialRegistry, param3:Number, param4:Number, param5:Number, param6:Number, param7:Number) : void
+      public function init(param1:MultiframeImageResource, param2:TextureMaterialRegistry, param3:Number, param4:Number, param5:Number, param6:Number, param7:Number) : void
       {
          this.animation = GraphicsUtils.getTextureAnimationFromResource(param2,param1);
          this.farDistance = param3;

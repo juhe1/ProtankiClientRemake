@@ -1,8 +1,8 @@
 package projects.tanks.client.battlefield.models.tankparts.weapons.rocketlauncher.sfx
 {
-   import platform.client.fp10.core.resource.types.MultiframeTextureResource;
+   import platform.client.fp10.core.resource.types.MultiframeImageResource;
    import platform.client.fp10.core.resource.types.SoundResource;
-   import platform.client.fp10.core.resource.types.TextureResource;
+   import platform.client.fp10.core.resource.types.ImageResource;
    import projects.tanks.client.battlefield.models.tankparts.sfx.lighting.entity.LightingSFXEntity;
    
    public class RocketLauncherSfxCC
@@ -12,9 +12,9 @@ package projects.tanks.client.battlefield.models.tankparts.weapons.rocketlaunche
       
       private var _aimingSound:SoundResource;
       
-      private var _explosionMarkTexture:TextureResource;
+      private var _explosionMarkTexture:ImageResource;
       
-      private var _explosionTexture:MultiframeTextureResource;
+      private var _explosionTexture:MultiframeImageResource;
       
       private var _leftHitSounds:SoundResource;
       
@@ -26,17 +26,17 @@ package projects.tanks.client.battlefield.models.tankparts.weapons.rocketlaunche
       
       private var _rightShotSounds:SoundResource;
       
-      private var _rocketFlameTexture:TextureResource;
+      private var _rocketFlameTexture:ImageResource;
       
       private var _rocketFlightSound:SoundResource;
       
-      private var _rocketSmokeTexture:TextureResource;
+      private var _rocketSmokeTexture:ImageResource;
       
-      private var _rocketTexture:TextureResource;
+      private var _rocketTexture:ImageResource;
       
       private var _targetLostSound:SoundResource;
       
-      public function RocketLauncherSfxCC(param1:SoundResource = null, param2:SoundResource = null, param3:TextureResource = null, param4:MultiframeTextureResource = null, param5:SoundResource = null, param6:SoundResource = null, param7:LightingSFXEntity = null, param8:SoundResource = null, param9:SoundResource = null, param10:TextureResource = null, param11:SoundResource = null, param12:TextureResource = null, param13:TextureResource = null, param14:SoundResource = null)
+      public function RocketLauncherSfxCC(param1:SoundResource = null, param2:SoundResource = null, param3:ImageResource = null, param4:MultiframeImageResource = null, param5:SoundResource = null, param6:SoundResource = null, param7:LightingSFXEntity = null, param8:SoundResource = null, param9:SoundResource = null, param10:ImageResource = null, param11:SoundResource = null, param12:ImageResource = null, param13:ImageResource = null, param14:SoundResource = null)
       {
          super();
          this._aimingCompleteSound = param1;
@@ -75,22 +75,22 @@ package projects.tanks.client.battlefield.models.tankparts.weapons.rocketlaunche
          this._aimingSound = param1;
       }
       
-      public function get explosionMarkTexture() : TextureResource
+      public function get explosionMarkTexture() : ImageResource
       {
          return this._explosionMarkTexture;
       }
       
-      public function set explosionMarkTexture(param1:TextureResource) : void
+      public function set explosionMarkTexture(param1:ImageResource) : void
       {
          this._explosionMarkTexture = param1;
       }
       
-      public function get explosionTexture() : MultiframeTextureResource
+      public function get explosionTexture() : MultiframeImageResource
       {
          return this._explosionTexture;
       }
       
-      public function set explosionTexture(param1:MultiframeTextureResource) : void
+      public function set explosionTexture(param1:MultiframeImageResource) : void
       {
          this._explosionTexture = param1;
       }
@@ -145,12 +145,12 @@ package projects.tanks.client.battlefield.models.tankparts.weapons.rocketlaunche
          this._rightShotSounds = param1;
       }
       
-      public function get rocketFlameTexture() : TextureResource
+      public function get rocketFlameTexture() : ImageResource
       {
          return this._rocketFlameTexture;
       }
       
-      public function set rocketFlameTexture(param1:TextureResource) : void
+      public function set rocketFlameTexture(param1:ImageResource) : void
       {
          this._rocketFlameTexture = param1;
       }
@@ -165,22 +165,22 @@ package projects.tanks.client.battlefield.models.tankparts.weapons.rocketlaunche
          this._rocketFlightSound = param1;
       }
       
-      public function get rocketSmokeTexture() : TextureResource
+      public function get rocketSmokeTexture() : ImageResource
       {
          return this._rocketSmokeTexture;
       }
       
-      public function set rocketSmokeTexture(param1:TextureResource) : void
+      public function set rocketSmokeTexture(param1:ImageResource) : void
       {
          this._rocketSmokeTexture = param1;
       }
       
-      public function get rocketTexture() : TextureResource
+      public function get rocketTexture() : ImageResource
       {
          return this._rocketTexture;
       }
       
-      public function set rocketTexture(param1:TextureResource) : void
+      public function set rocketTexture(param1:ImageResource) : void
       {
          this._rocketTexture = param1;
       }

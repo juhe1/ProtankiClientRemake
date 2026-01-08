@@ -9,8 +9,8 @@ package alternativa.tanks.models.weapon.thunder
    import flash.display.BitmapData;
    import platform.client.fp10.core.model.ObjectLoadListener;
    import platform.client.fp10.core.model.ObjectUnloadListener;
-   import platform.client.fp10.core.resource.types.MultiframeTextureResource;
-   import platform.client.fp10.core.resource.types.TextureResource;
+   import platform.client.fp10.core.resource.types.MultiframeImageResource;
+   import platform.client.fp10.core.resource.types.ImageResource;
    import projects.tanks.client.battlefield.models.tankparts.sfx.shoot.thunder.IThunderShootSFXModelBase;
    import projects.tanks.client.battlefield.models.tankparts.sfx.shoot.thunder.ThunderShootSFXCC;
    import projects.tanks.client.battlefield.models.tankparts.sfx.shoot.thunder.ThunderShootSFXModelBase;
@@ -30,7 +30,7 @@ package alternativa.tanks.models.weapon.thunder
          super();
       }
       
-      private static function getMuzzleFlashMaterial(param1:TextureResource) : TextureMaterial
+      private static function getMuzzleFlashMaterial(param1:ImageResource) : TextureMaterial
       {
          var _loc2_:BitmapData = param1.data;
          var _loc3_:TextureMaterial = materialRegistry.getMaterial(_loc2_);
@@ -38,7 +38,7 @@ package alternativa.tanks.models.weapon.thunder
          return _loc3_;
       }
       
-      private static function getExplosionAnimation(param1:MultiframeTextureResource, param2:Number) : TextureAnimation
+      private static function getExplosionAnimation(param1:MultiframeImageResource, param2:Number) : TextureAnimation
       {
          var _loc3_:TextureAnimation = GraphicsUtils.getTextureAnimationFromResource(materialRegistry,param1);
          _loc3_.material.resolution = param2 / param1.frameWidth;

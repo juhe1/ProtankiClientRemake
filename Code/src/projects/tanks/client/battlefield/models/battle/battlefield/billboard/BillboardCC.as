@@ -1,24 +1,24 @@
 package projects.tanks.client.battlefield.models.battle.battlefield.billboard
 {
-   import platform.client.fp10.core.resource.types.TextureResource;
+   import platform.client.fp10.core.resource.types.ImageResource;
    
    public class BillboardCC
    {
       
-      private var _defaultBillboardImage:TextureResource;
+      private var _defaultBillboardImage:ImageResource;
       
-      public function BillboardCC(param1:TextureResource = null)
+      public function BillboardCC(param1:ImageResource = null)
       {
          super();
          this._defaultBillboardImage = param1;
       }
       
-      public function get defaultBillboardImage() : TextureResource
+      public function get defaultBillboardImage() : ImageResource
       {
          return this._defaultBillboardImage;
       }
       
-      public function set defaultBillboardImage(param1:TextureResource) : void
+      public function set defaultBillboardImage(param1:ImageResource) : void
       {
          this._defaultBillboardImage = param1;
       }

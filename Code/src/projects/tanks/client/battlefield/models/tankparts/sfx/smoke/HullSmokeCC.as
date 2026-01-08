@@ -1,6 +1,6 @@
 package projects.tanks.client.battlefield.models.tankparts.sfx.smoke
 {
-   import platform.client.fp10.core.resource.types.MultiframeTextureResource;
+   import platform.client.fp10.core.resource.types.MultiframeImageResource;
    
    public class HullSmokeCC
    {
@@ -17,11 +17,11 @@ package projects.tanks.client.battlefield.models.tankparts.sfx.smoke
       
       private var _nearDistance:Number;
       
-      private var _particle:MultiframeTextureResource;
+      private var _particle:MultiframeImageResource;
       
       private var _size:Number;
       
-      public function HullSmokeCC(param1:Number = 0, param2:Number = 0, param3:Boolean = false, param4:int = 0, param5:Number = 0, param6:Number = 0, param7:MultiframeTextureResource = null, param8:Number = 0)
+      public function HullSmokeCC(param1:Number = 0, param2:Number = 0, param3:Boolean = false, param4:int = 0, param5:Number = 0, param6:Number = 0, param7:MultiframeImageResource = null, param8:Number = 0)
       {
          super();
          this._alpha = param1;
@@ -94,12 +94,12 @@ package projects.tanks.client.battlefield.models.tankparts.sfx.smoke
          this._nearDistance = param1;
       }
       
-      public function get particle() : MultiframeTextureResource
+      public function get particle() : MultiframeImageResource
       {
          return this._particle;
       }
       
-      public function set particle(param1:MultiframeTextureResource) : void
+      public function set particle(param1:MultiframeImageResource) : void
       {
          this._particle = param1;
       }

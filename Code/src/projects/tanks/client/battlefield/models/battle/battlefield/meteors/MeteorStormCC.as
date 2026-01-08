@@ -1,7 +1,7 @@
 package projects.tanks.client.battlefield.models.battle.battlefield.meteors
 {
    import platform.client.fp10.core.resource.types.SoundResource;
-   import platform.client.fp10.core.resource.types.TextureResource;
+   import platform.client.fp10.core.resource.types.ImageResource;
    import projects.tanks.client.battlefield.models.tankparts.sfx.lighting.entity.LightEffectItem;
    import projects.tanks.clients.flash.resources.resource.Tanks3DSResource;
    
@@ -10,7 +10,7 @@ package projects.tanks.client.battlefield.models.battle.battlefield.meteors
       
       private var _bigSplashRadius:Number;
       
-      private var _craterDecal:TextureResource;
+      private var _craterDecal:ImageResource;
       
       private var _currentMeteors:Vector.<MeteorDescriptor>;
       
@@ -26,15 +26,15 @@ package projects.tanks.client.battlefield.models.battle.battlefield.meteors
       
       private var _meteorSpeed:Number;
       
-      private var _nuclearBangFlame:TextureResource;
+      private var _nuclearBangFlame:ImageResource;
       
-      private var _nuclearBangLight:TextureResource;
+      private var _nuclearBangLight:ImageResource;
       
-      private var _nuclearBangSmoke:TextureResource;
+      private var _nuclearBangSmoke:ImageResource;
       
       private var _nuclearBangSound:SoundResource;
       
-      private var _nuclearBangWave:TextureResource;
+      private var _nuclearBangWave:ImageResource;
       
       private var _preferredFallAngle:Number;
       
@@ -44,13 +44,13 @@ package projects.tanks.client.battlefield.models.battle.battlefield.meteors
       
       private var _splashDamageMinPercent:Number;
       
-      private var _tailFlame:TextureResource;
+      private var _tailFlame:ImageResource;
       
       private var _tailLight:Vector.<LightEffectItem>;
       
-      private var _tailSmoke:TextureResource;
+      private var _tailSmoke:ImageResource;
       
-      public function MeteorStormCC(param1:Number = 0, param2:TextureResource = null, param3:Vector.<MeteorDescriptor> = null, param4:int = 0, param5:SoundResource = null, param6:SoundResource = null, param7:Number = 0, param8:Tanks3DSResource = null, param9:Number = 0, param10:TextureResource = null, param11:TextureResource = null, param12:TextureResource = null, param13:SoundResource = null, param14:TextureResource = null, param15:Number = 0, param16:Number = 0, param17:Number = 0, param18:Number = 0, param19:TextureResource = null, param20:Vector.<LightEffectItem> = null, param21:TextureResource = null)
+      public function MeteorStormCC(param1:Number = 0, param2:ImageResource = null, param3:Vector.<MeteorDescriptor> = null, param4:int = 0, param5:SoundResource = null, param6:SoundResource = null, param7:Number = 0, param8:Tanks3DSResource = null, param9:Number = 0, param10:ImageResource = null, param11:ImageResource = null, param12:ImageResource = null, param13:SoundResource = null, param14:ImageResource = null, param15:Number = 0, param16:Number = 0, param17:Number = 0, param18:Number = 0, param19:ImageResource = null, param20:Vector.<LightEffectItem> = null, param21:ImageResource = null)
       {
          super();
          this._bigSplashRadius = param1;
@@ -86,12 +86,12 @@ package projects.tanks.client.battlefield.models.battle.battlefield.meteors
          this._bigSplashRadius = param1;
       }
       
-      public function get craterDecal() : TextureResource
+      public function get craterDecal() : ImageResource
       {
          return this._craterDecal;
       }
       
-      public function set craterDecal(param1:TextureResource) : void
+      public function set craterDecal(param1:ImageResource) : void
       {
          this._craterDecal = param1;
       }
@@ -166,32 +166,32 @@ package projects.tanks.client.battlefield.models.battle.battlefield.meteors
          this._meteorSpeed = param1;
       }
       
-      public function get nuclearBangFlame() : TextureResource
+      public function get nuclearBangFlame() : ImageResource
       {
          return this._nuclearBangFlame;
       }
       
-      public function set nuclearBangFlame(param1:TextureResource) : void
+      public function set nuclearBangFlame(param1:ImageResource) : void
       {
          this._nuclearBangFlame = param1;
       }
       
-      public function get nuclearBangLight() : TextureResource
+      public function get nuclearBangLight() : ImageResource
       {
          return this._nuclearBangLight;
       }
       
-      public function set nuclearBangLight(param1:TextureResource) : void
+      public function set nuclearBangLight(param1:ImageResource) : void
       {
          this._nuclearBangLight = param1;
       }
       
-      public function get nuclearBangSmoke() : TextureResource
+      public function get nuclearBangSmoke() : ImageResource
       {
          return this._nuclearBangSmoke;
       }
       
-      public function set nuclearBangSmoke(param1:TextureResource) : void
+      public function set nuclearBangSmoke(param1:ImageResource) : void
       {
          this._nuclearBangSmoke = param1;
       }
@@ -206,12 +206,12 @@ package projects.tanks.client.battlefield.models.battle.battlefield.meteors
          this._nuclearBangSound = param1;
       }
       
-      public function get nuclearBangWave() : TextureResource
+      public function get nuclearBangWave() : ImageResource
       {
          return this._nuclearBangWave;
       }
       
-      public function set nuclearBangWave(param1:TextureResource) : void
+      public function set nuclearBangWave(param1:ImageResource) : void
       {
          this._nuclearBangWave = param1;
       }
@@ -256,12 +256,12 @@ package projects.tanks.client.battlefield.models.battle.battlefield.meteors
          this._splashDamageMinPercent = param1;
       }
       
-      public function get tailFlame() : TextureResource
+      public function get tailFlame() : ImageResource
       {
          return this._tailFlame;
       }
       
-      public function set tailFlame(param1:TextureResource) : void
+      public function set tailFlame(param1:ImageResource) : void
       {
          this._tailFlame = param1;
       }
@@ -276,12 +276,12 @@ package projects.tanks.client.battlefield.models.battle.battlefield.meteors
          this._tailLight = param1;
       }
       
-      public function get tailSmoke() : TextureResource
+      public function get tailSmoke() : ImageResource
       {
          return this._tailSmoke;
       }
       
-      public function set tailSmoke(param1:TextureResource) : void
+      public function set tailSmoke(param1:ImageResource) : void
       {
          this._tailSmoke = param1;
       }

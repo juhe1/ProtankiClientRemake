@@ -1,23 +1,23 @@
 package projects.tanks.client.battlefield.models.map
 {
-   import platform.client.fp10.core.resource.types.TextureResource;
+   import platform.client.fp10.core.resource.types.ImageResource;
    
    public class SkyboxSides
    {
       
-      private var _back:TextureResource;
+      private var _back:ImageResource;
       
-      private var _bottom:TextureResource;
+      private var _bottom:ImageResource;
       
-      private var _front:TextureResource;
+      private var _front:ImageResource;
       
-      private var _left:TextureResource;
+      private var _left:ImageResource;
       
-      private var _right:TextureResource;
+      private var _right:ImageResource;
       
-      private var _top:TextureResource;
+      private var _top:ImageResource;
       
-      public function SkyboxSides(param1:TextureResource = null, param2:TextureResource = null, param3:TextureResource = null, param4:TextureResource = null, param5:TextureResource = null, param6:TextureResource = null)
+      public function SkyboxSides(param1:ImageResource = null, param2:ImageResource = null, param3:ImageResource = null, param4:ImageResource = null, param5:ImageResource = null, param6:ImageResource = null)
       {
          super();
          this._back = param1;
@@ -28,62 +28,62 @@ package projects.tanks.client.battlefield.models.map
          this._top = param6;
       }
       
-      public function get back() : TextureResource
+      public function get back() : ImageResource
       {
          return this._back;
       }
       
-      public function set back(param1:TextureResource) : void
+      public function set back(param1:ImageResource) : void
       {
          this._back = param1;
       }
       
-      public function get bottom() : TextureResource
+      public function get bottom() : ImageResource
       {
          return this._bottom;
       }
       
-      public function set bottom(param1:TextureResource) : void
+      public function set bottom(param1:ImageResource) : void
       {
          this._bottom = param1;
       }
       
-      public function get front() : TextureResource
+      public function get front() : ImageResource
       {
          return this._front;
       }
       
-      public function set front(param1:TextureResource) : void
+      public function set front(param1:ImageResource) : void
       {
          this._front = param1;
       }
       
-      public function get left() : TextureResource
+      public function get left() : ImageResource
       {
          return this._left;
       }
       
-      public function set left(param1:TextureResource) : void
+      public function set left(param1:ImageResource) : void
       {
          this._left = param1;
       }
       
-      public function get right() : TextureResource
+      public function get right() : ImageResource
       {
          return this._right;
       }
       
-      public function set right(param1:TextureResource) : void
+      public function set right(param1:ImageResource) : void
       {
          this._right = param1;
       }
       
-      public function get top() : TextureResource
+      public function get top() : ImageResource
       {
          return this._top;
       }
       
-      public function set top(param1:TextureResource) : void
+      public function set top(param1:ImageResource) : void
       {
          this._top = param1;
       }

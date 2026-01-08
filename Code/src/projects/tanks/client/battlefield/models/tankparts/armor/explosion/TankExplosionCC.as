@@ -1,17 +1,17 @@
 package projects.tanks.client.battlefield.models.tankparts.armor.explosion
 {
-   import platform.client.fp10.core.resource.types.MultiframeTextureResource;
+   import platform.client.fp10.core.resource.types.MultiframeImageResource;
    
    public class TankExplosionCC
    {
       
-      private var _explosionTexture:MultiframeTextureResource;
+      private var _explosionTexture:MultiframeImageResource;
       
-      private var _shockWaveTexture:MultiframeTextureResource;
+      private var _shockWaveTexture:MultiframeImageResource;
       
-      private var _smokeTextureId:MultiframeTextureResource;
+      private var _smokeTextureId:MultiframeImageResource;
       
-      public function TankExplosionCC(param1:MultiframeTextureResource = null, param2:MultiframeTextureResource = null, param3:MultiframeTextureResource = null)
+      public function TankExplosionCC(param1:MultiframeImageResource = null, param2:MultiframeImageResource = null, param3:MultiframeImageResource = null)
       {
          super();
          this._explosionTexture = param1;
@@ -19,32 +19,32 @@ package projects.tanks.client.battlefield.models.tankparts.armor.explosion
          this._smokeTextureId = param3;
       }
       
-      public function get explosionTexture() : MultiframeTextureResource
+      public function get explosionTexture() : MultiframeImageResource
       {
          return this._explosionTexture;
       }
       
-      public function set explosionTexture(param1:MultiframeTextureResource) : void
+      public function set explosionTexture(param1:MultiframeImageResource) : void
       {
          this._explosionTexture = param1;
       }
       
-      public function get shockWaveTexture() : MultiframeTextureResource
+      public function get shockWaveTexture() : MultiframeImageResource
       {
          return this._shockWaveTexture;
       }
       
-      public function set shockWaveTexture(param1:MultiframeTextureResource) : void
+      public function set shockWaveTexture(param1:MultiframeImageResource) : void
       {
          this._shockWaveTexture = param1;
       }
       
-      public function get smokeTextureId() : MultiframeTextureResource
+      public function get smokeTextureId() : MultiframeImageResource
       {
          return this._smokeTextureId;
       }
       
-      public function set smokeTextureId(param1:MultiframeTextureResource) : void
+      public function set smokeTextureId(param1:MultiframeImageResource) : void
       {
          this._smokeTextureId = param1;
       }

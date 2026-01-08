@@ -9,8 +9,8 @@ package alternativa.tanks.models.weapon.railgun
    import flash.display.BitmapData;
    import platform.client.fp10.core.model.ObjectLoadPostListener;
    import platform.client.fp10.core.model.ObjectUnloadListener;
-   import platform.client.fp10.core.resource.types.MultiframeTextureResource;
-   import platform.client.fp10.core.resource.types.TextureResource;
+   import platform.client.fp10.core.resource.types.MultiframeImageResource;
+   import platform.client.fp10.core.resource.types.ImageResource;
    import projects.tanks.client.battlefield.models.tankparts.sfx.shoot.railgun.IRailgunShootSFXModelBase;
    import projects.tanks.client.battlefield.models.tankparts.sfx.shoot.railgun.RailgunShootSFXCC;
    import projects.tanks.client.battlefield.models.tankparts.sfx.shoot.railgun.RailgunShootSFXModelBase;
@@ -32,7 +32,7 @@ package alternativa.tanks.models.weapon.railgun
          super();
       }
       
-      private static function getTextureAnimation(param1:MultiframeTextureResource, param2:Number) : TextureAnimation
+      private static function getTextureAnimation(param1:MultiframeImageResource, param2:Number) : TextureAnimation
       {
          var _loc3_:TextureAnimation = GraphicsUtils.getTextureAnimationFromResource(materialRegistry,param1);
          _loc3_.material.resolution = param2 / param1.frameWidth;
@@ -68,7 +68,7 @@ package alternativa.tanks.models.weapon.railgun
          putData(RailgunSFXData,_loc2_);
       }
       
-      private function getChargingAnimation(param1:TextureResource, param2:TextureResource, param3:TextureResource) : TextureAnimation
+      private function getChargingAnimation(param1:ImageResource, param2:ImageResource, param3:ImageResource) : TextureAnimation
       {
          var _loc4_:BitmapData = this.chargingTextureRegistry.getTexture(param1,param2,param3);
          var _loc5_:int = _loc4_.height;

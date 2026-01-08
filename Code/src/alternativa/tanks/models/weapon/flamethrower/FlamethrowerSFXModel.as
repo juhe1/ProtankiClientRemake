@@ -11,7 +11,7 @@ package alternativa.tanks.models.weapon.flamethrower
    import alternativa.tanks.utils.GraphicsUtils;
    import platform.client.fp10.core.model.ObjectLoadListener;
    import platform.client.fp10.core.model.ObjectUnloadListener;
-   import platform.client.fp10.core.resource.types.MultiframeTextureResource;
+   import platform.client.fp10.core.resource.types.MultiframeImageResource;
    import projects.tanks.client.battlefield.models.tankparts.sfx.firebird.FlameThrowingSFXCC;
    import projects.tanks.client.battlefield.models.tankparts.sfx.firebird.FlameThrowingSFXModelBase;
    import projects.tanks.client.battlefield.models.tankparts.sfx.firebird.IFlameThrowingSFXModelBase;
@@ -31,14 +31,14 @@ package alternativa.tanks.models.weapon.flamethrower
          super();
       }
       
-      private static function getParticleAnimation(param1:MultiframeTextureResource) : TextureAnimation
+      private static function getParticleAnimation(param1:MultiframeImageResource) : TextureAnimation
       {
          var _loc2_:TextureAnimation = GraphicsUtils.getTextureAnimationFromResource(materialRegistry,param1);
          _loc2_.material.resolution = FlamethrowerEffectsParams.PARTICLE_END_SIZE / param1.frameWidth;
          return _loc2_;
       }
       
-      private static function getMuzzlePlaneAnimation(param1:MultiframeTextureResource) : TextureAnimation
+      private static function getMuzzlePlaneAnimation(param1:MultiframeImageResource) : TextureAnimation
       {
          var _loc2_:TextureAnimation = GraphicsUtils.getTextureAnimationFromResource(materialRegistry,param1);
          _loc2_.material.resolution = FlamethrowerEffectsParams.PLANE_LENGTH / param1.frameWidth;

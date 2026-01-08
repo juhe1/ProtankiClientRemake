@@ -1,21 +1,21 @@
 package projects.tanks.client.battlefield.models.tankparts.sfx.firebird
 {
-   import platform.client.fp10.core.resource.types.MultiframeTextureResource;
+   import platform.client.fp10.core.resource.types.MultiframeImageResource;
    import platform.client.fp10.core.resource.types.SoundResource;
    import projects.tanks.client.battlefield.models.tankparts.sfx.lighting.entity.LightingSFXEntity;
    
    public class FlameThrowingSFXCC
    {
       
-      private var _fireTexture:MultiframeTextureResource;
+      private var _fireTexture:MultiframeImageResource;
       
       private var _flameSound:SoundResource;
       
       private var _lightingSFXEntity:LightingSFXEntity;
       
-      private var _muzzlePlaneTexture:MultiframeTextureResource;
+      private var _muzzlePlaneTexture:MultiframeImageResource;
       
-      public function FlameThrowingSFXCC(param1:MultiframeTextureResource = null, param2:SoundResource = null, param3:LightingSFXEntity = null, param4:MultiframeTextureResource = null)
+      public function FlameThrowingSFXCC(param1:MultiframeImageResource = null, param2:SoundResource = null, param3:LightingSFXEntity = null, param4:MultiframeImageResource = null)
       {
          super();
          this._fireTexture = param1;
@@ -24,12 +24,12 @@ package projects.tanks.client.battlefield.models.tankparts.sfx.firebird
          this._muzzlePlaneTexture = param4;
       }
       
-      public function get fireTexture() : MultiframeTextureResource
+      public function get fireTexture() : MultiframeImageResource
       {
          return this._fireTexture;
       }
       
-      public function set fireTexture(param1:MultiframeTextureResource) : void
+      public function set fireTexture(param1:MultiframeImageResource) : void
       {
          this._fireTexture = param1;
       }
@@ -54,12 +54,12 @@ package projects.tanks.client.battlefield.models.tankparts.sfx.firebird
          this._lightingSFXEntity = param1;
       }
       
-      public function get muzzlePlaneTexture() : MultiframeTextureResource
+      public function get muzzlePlaneTexture() : MultiframeImageResource
       {
          return this._muzzlePlaneTexture;
       }
       
-      public function set muzzlePlaneTexture(param1:MultiframeTextureResource) : void
+      public function set muzzlePlaneTexture(param1:MultiframeImageResource) : void
       {
          this._muzzlePlaneTexture = param1;
       }

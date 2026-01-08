@@ -1,20 +1,20 @@
 package projects.tanks.client.battlefield.models.ultimate.effects.mammoth
 {
    import platform.client.fp10.core.resource.types.SoundResource;
-   import platform.client.fp10.core.resource.types.TextureResource;
+   import platform.client.fp10.core.resource.types.ImageResource;
    
    public class MammothUltimateCC
    {
       
       private var _effectStartSound:SoundResource;
       
-      private var _heart:TextureResource;
+      private var _heart:ImageResource;
       
-      private var _shine:TextureResource;
+      private var _shine:ImageResource;
       
-      private var _sparkles:TextureResource;
+      private var _sparkles:ImageResource;
       
-      public function MammothUltimateCC(param1:SoundResource = null, param2:TextureResource = null, param3:TextureResource = null, param4:TextureResource = null)
+      public function MammothUltimateCC(param1:SoundResource = null, param2:ImageResource = null, param3:ImageResource = null, param4:ImageResource = null)
       {
          super();
          this._effectStartSound = param1;
@@ -33,32 +33,32 @@ package projects.tanks.client.battlefield.models.ultimate.effects.mammoth
          this._effectStartSound = param1;
       }
       
-      public function get heart() : TextureResource
+      public function get heart() : ImageResource
       {
          return this._heart;
       }
       
-      public function set heart(param1:TextureResource) : void
+      public function set heart(param1:ImageResource) : void
       {
          this._heart = param1;
       }
       
-      public function get shine() : TextureResource
+      public function get shine() : ImageResource
       {
          return this._shine;
       }
       
-      public function set shine(param1:TextureResource) : void
+      public function set shine(param1:ImageResource) : void
       {
          this._shine = param1;
       }
       
-      public function get sparkles() : TextureResource
+      public function get sparkles() : ImageResource
       {
          return this._sparkles;
       }
       
-      public function set sparkles(param1:TextureResource) : void
+      public function set sparkles(param1:ImageResource) : void
       {
          this._sparkles = param1;
       }

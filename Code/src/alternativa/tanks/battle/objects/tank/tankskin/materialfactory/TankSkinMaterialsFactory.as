@@ -2,7 +2,7 @@ package alternativa.tanks.battle.objects.tank.tankskin.materialfactory
 {
    import alternativa.tanks.battle.objects.tank.tankskin.SkinMaterials;
    import alternativa.tanks.battle.objects.tank.tankskin.TankSkin;
-   import platform.client.fp10.core.resource.types.TextureResource;
+   import platform.client.fp10.core.resource.types.ImageResource;
    import projects.tanks.clients.flash.commons.models.coloring.IColoring;
    
    public interface TankSkinMaterialsFactory
@@ -10,7 +10,7 @@ package alternativa.tanks.battle.objects.tank.tankskin.materialfactory
       
       function createSkinMaterials(param1:TankSkin, param2:IColoring) : SkinMaterials;
       
-      function createDeadSkinMaterials(param1:TankSkin, param2:TextureResource) : SkinMaterials;
+      function createDeadSkinMaterials(param1:TankSkin, param2:ImageResource) : SkinMaterials;
    }
 }
 

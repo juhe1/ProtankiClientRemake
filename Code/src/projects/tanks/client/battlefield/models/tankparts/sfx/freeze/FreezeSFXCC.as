@@ -1,6 +1,6 @@
 package projects.tanks.client.battlefield.models.tankparts.sfx.freeze
 {
-   import platform.client.fp10.core.resource.types.MultiframeTextureResource;
+   import platform.client.fp10.core.resource.types.MultiframeImageResource;
    import platform.client.fp10.core.resource.types.SoundResource;
    import projects.tanks.client.battlefield.models.tankparts.sfx.lighting.entity.LightingSFXEntity;
    
@@ -11,13 +11,13 @@ package projects.tanks.client.battlefield.models.tankparts.sfx.freeze
       
       private var _particleSpeed:Number;
       
-      private var _particleTextureResource:MultiframeTextureResource;
+      private var _particleTextureResource:MultiframeImageResource;
       
-      private var _planeTextureResource:MultiframeTextureResource;
+      private var _planeTextureResource:MultiframeImageResource;
       
       private var _shotSoundResource:SoundResource;
       
-      public function FreezeSFXCC(param1:LightingSFXEntity = null, param2:Number = 0, param3:MultiframeTextureResource = null, param4:MultiframeTextureResource = null, param5:SoundResource = null)
+      public function FreezeSFXCC(param1:LightingSFXEntity = null, param2:Number = 0, param3:MultiframeImageResource = null, param4:MultiframeImageResource = null, param5:SoundResource = null)
       {
          super();
          this._lightingSFXEntity = param1;
@@ -47,22 +47,22 @@ package projects.tanks.client.battlefield.models.tankparts.sfx.freeze
          this._particleSpeed = param1;
       }
       
-      public function get particleTextureResource() : MultiframeTextureResource
+      public function get particleTextureResource() : MultiframeImageResource
       {
          return this._particleTextureResource;
       }
       
-      public function set particleTextureResource(param1:MultiframeTextureResource) : void
+      public function set particleTextureResource(param1:MultiframeImageResource) : void
       {
          this._particleTextureResource = param1;
       }
       
-      public function get planeTextureResource() : MultiframeTextureResource
+      public function get planeTextureResource() : MultiframeImageResource
       {
          return this._planeTextureResource;
       }
       
-      public function set planeTextureResource(param1:MultiframeTextureResource) : void
+      public function set planeTextureResource(param1:MultiframeImageResource) : void
       {
          this._planeTextureResource = param1;
       }

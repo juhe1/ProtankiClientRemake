@@ -1,18 +1,18 @@
 package projects.tanks.client.battlefield.models.ultimate.effects.viking
 {
    import platform.client.fp10.core.resource.types.SoundResource;
-   import platform.client.fp10.core.resource.types.TextureResource;
+   import platform.client.fp10.core.resource.types.ImageResource;
    
    public class VikingUltimateCC
    {
       
       private var _effectStartSound:SoundResource;
       
-      private var _flame:TextureResource;
+      private var _flame:ImageResource;
       
-      private var _smoke:TextureResource;
+      private var _smoke:ImageResource;
       
-      public function VikingUltimateCC(param1:SoundResource = null, param2:TextureResource = null, param3:TextureResource = null)
+      public function VikingUltimateCC(param1:SoundResource = null, param2:ImageResource = null, param3:ImageResource = null)
       {
          super();
          this._effectStartSound = param1;
@@ -30,22 +30,22 @@ package projects.tanks.client.battlefield.models.ultimate.effects.viking
          this._effectStartSound = param1;
       }
       
-      public function get flame() : TextureResource
+      public function get flame() : ImageResource
       {
          return this._flame;
       }
       
-      public function set flame(param1:TextureResource) : void
+      public function set flame(param1:ImageResource) : void
       {
          this._flame = param1;
       }
       
-      public function get smoke() : TextureResource
+      public function get smoke() : ImageResource
       {
          return this._smoke;
       }
       
-      public function set smoke(param1:TextureResource) : void
+      public function set smoke(param1:ImageResource) : void
       {
          this._smoke = param1;
       }

@@ -1,7 +1,7 @@
 package projects.tanks.client.battlefield.models.tankparts.armor.common
 {
    import platform.client.fp10.core.resource.types.SoundResource;
-   import platform.client.fp10.core.resource.types.TextureResource;
+   import platform.client.fp10.core.resource.types.ImageResource;
    import projects.tanks.client.battlefield.models.tankparts.sfx.lighting.entity.LightingSFXEntity;
    
    public class HullCommonCC
@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.tankparts.armor.common
       
       private var _damping:Number;
       
-      private var _deadColoring:TextureResource;
+      private var _deadColoring:ImageResource;
       
       private var _deathSound:SoundResource;
       
@@ -17,7 +17,7 @@ package projects.tanks.client.battlefield.models.tankparts.armor.common
       
       private var _mass:Number;
       
-      public function HullCommonCC(param1:Number = 0, param2:TextureResource = null, param3:SoundResource = null, param4:LightingSFXEntity = null, param5:Number = 0)
+      public function HullCommonCC(param1:Number = 0, param2:ImageResource = null, param3:SoundResource = null, param4:LightingSFXEntity = null, param5:Number = 0)
       {
          super();
          this._damping = param1;
@@ -37,12 +37,12 @@ package projects.tanks.client.battlefield.models.tankparts.armor.common
          this._damping = param1;
       }
       
-      public function get deadColoring() : TextureResource
+      public function get deadColoring() : ImageResource
       {
          return this._deadColoring;
       }
       
-      public function set deadColoring(param1:TextureResource) : void
+      public function set deadColoring(param1:ImageResource) : void
       {
          this._deadColoring = param1;
       }

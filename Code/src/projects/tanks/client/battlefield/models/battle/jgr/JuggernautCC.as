@@ -1,13 +1,13 @@
 package projects.tanks.client.battlefield.models.battle.jgr
 {
    import platform.client.fp10.core.resource.types.SoundResource;
-   import platform.client.fp10.core.resource.types.TextureResource;
+   import platform.client.fp10.core.resource.types.ImageResource;
    import platform.client.fp10.core.type.IGameObject;
    
    public class JuggernautCC
    {
       
-      private var _bossHudMarker:TextureResource;
+      private var _bossHudMarker:ImageResource;
       
       private var _bossKilledSound:SoundResource;
       
@@ -15,7 +15,7 @@ package projects.tanks.client.battlefield.models.battle.jgr
       
       private var _currentBoss:IGameObject;
       
-      public function JuggernautCC(param1:TextureResource = null, param2:SoundResource = null, param3:SoundResource = null, param4:IGameObject = null)
+      public function JuggernautCC(param1:ImageResource = null, param2:SoundResource = null, param3:SoundResource = null, param4:IGameObject = null)
       {
          super();
          this._bossHudMarker = param1;
@@ -24,12 +24,12 @@ package projects.tanks.client.battlefield.models.battle.jgr
          this._currentBoss = param4;
       }
       
-      public function get bossHudMarker() : TextureResource
+      public function get bossHudMarker() : ImageResource
       {
          return this._bossHudMarker;
       }
       
-      public function set bossHudMarker(param1:TextureResource) : void
+      public function set bossHudMarker(param1:ImageResource) : void
       {
          this._bossHudMarker = param1;
       }

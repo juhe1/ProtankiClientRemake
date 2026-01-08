@@ -1,26 +1,26 @@
 package projects.tanks.client.battlefield.models.tankparts.sfx.shoot.twins
 {
-   import platform.client.fp10.core.resource.types.MultiframeTextureResource;
+   import platform.client.fp10.core.resource.types.MultiframeImageResource;
    import platform.client.fp10.core.resource.types.SoundResource;
-   import platform.client.fp10.core.resource.types.TextureResource;
+   import platform.client.fp10.core.resource.types.ImageResource;
    import projects.tanks.client.battlefield.models.tankparts.sfx.lighting.entity.LightingSFXEntity;
    
    public class TwinsShootSFXCC
    {
       
-      private var _explosionTexture:MultiframeTextureResource;
+      private var _explosionTexture:MultiframeImageResource;
       
-      private var _hitMarkTexture:TextureResource;
+      private var _hitMarkTexture:ImageResource;
       
       private var _lightingSFXEntity:LightingSFXEntity;
       
-      private var _muzzleFlashTexture:TextureResource;
+      private var _muzzleFlashTexture:ImageResource;
       
       private var _shotSound:SoundResource;
       
-      private var _shotTexture:MultiframeTextureResource;
+      private var _shotTexture:MultiframeImageResource;
       
-      public function TwinsShootSFXCC(param1:MultiframeTextureResource = null, param2:TextureResource = null, param3:LightingSFXEntity = null, param4:TextureResource = null, param5:SoundResource = null, param6:MultiframeTextureResource = null)
+      public function TwinsShootSFXCC(param1:MultiframeImageResource = null, param2:ImageResource = null, param3:LightingSFXEntity = null, param4:ImageResource = null, param5:SoundResource = null, param6:MultiframeImageResource = null)
       {
          super();
          this._explosionTexture = param1;
@@ -31,22 +31,22 @@ package projects.tanks.client.battlefield.models.tankparts.sfx.shoot.twins
          this._shotTexture = param6;
       }
       
-      public function get explosionTexture() : MultiframeTextureResource
+      public function get explosionTexture() : MultiframeImageResource
       {
          return this._explosionTexture;
       }
       
-      public function set explosionTexture(param1:MultiframeTextureResource) : void
+      public function set explosionTexture(param1:MultiframeImageResource) : void
       {
          this._explosionTexture = param1;
       }
       
-      public function get hitMarkTexture() : TextureResource
+      public function get hitMarkTexture() : ImageResource
       {
          return this._hitMarkTexture;
       }
       
-      public function set hitMarkTexture(param1:TextureResource) : void
+      public function set hitMarkTexture(param1:ImageResource) : void
       {
          this._hitMarkTexture = param1;
       }
@@ -61,12 +61,12 @@ package projects.tanks.client.battlefield.models.tankparts.sfx.shoot.twins
          this._lightingSFXEntity = param1;
       }
       
-      public function get muzzleFlashTexture() : TextureResource
+      public function get muzzleFlashTexture() : ImageResource
       {
          return this._muzzleFlashTexture;
       }
       
-      public function set muzzleFlashTexture(param1:TextureResource) : void
+      public function set muzzleFlashTexture(param1:ImageResource) : void
       {
          this._muzzleFlashTexture = param1;
       }
@@ -81,12 +81,12 @@ package projects.tanks.client.battlefield.models.tankparts.sfx.shoot.twins
          this._shotSound = param1;
       }
       
-      public function get shotTexture() : MultiframeTextureResource
+      public function get shotTexture() : MultiframeImageResource
       {
          return this._shotTexture;
       }
       
-      public function set shotTexture(param1:MultiframeTextureResource) : void
+      public function set shotTexture(param1:MultiframeImageResource) : void
       {
          this._shotTexture = param1;
       }

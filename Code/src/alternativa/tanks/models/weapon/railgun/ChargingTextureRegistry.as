@@ -4,7 +4,7 @@ package alternativa.tanks.models.weapon.railgun
    import flash.display.BlendMode;
    import flash.geom.ColorTransform;
    import flash.geom.Matrix;
-   import platform.client.fp10.core.resource.types.TextureResource;
+   import platform.client.fp10.core.resource.types.ImageResource;
    
    public class ChargingTextureRegistry
    {
@@ -20,12 +20,12 @@ package alternativa.tanks.models.weapon.railgun
          super();
       }
       
-      private static function getKey(param1:TextureResource, param2:TextureResource, param3:TextureResource) : String
+      private static function getKey(param1:ImageResource, param2:ImageResource, param3:ImageResource) : String
       {
          return param1.id.toString() + "_" + param2.id.toString() + "_" + param3.id.toString();
       }
       
-      private static function createTexture(param1:TextureResource, param2:TextureResource, param3:TextureResource) : BitmapData
+      private static function createTexture(param1:ImageResource, param2:ImageResource, param3:ImageResource) : BitmapData
       {
          var _loc4_:BitmapData = param1.data;
          var _loc5_:BitmapData = param2.data;
@@ -116,14 +116,14 @@ package alternativa.tanks.models.weapon.railgun
          param2.draw(param1,_loc9_,_loc6_,param5,null,true);
       }
       
-      public function getTexture(param1:TextureResource, param2:TextureResource, param3:TextureResource) : BitmapData
+      public function getTexture(param1:ImageResource, param2:ImageResource, param3:ImageResource) : BitmapData
       {
          var _loc4_:ChargingTextureEntry = this.getEntry(param1,param2,param3);
          ++_loc4_.referenceCount;
          return _loc4_.texture;
       }
       
-      public function releaseTexture(param1:TextureResource, param2:TextureResource, param3:TextureResource) : void
+      public function releaseTexture(param1:ImageResource, param2:ImageResource, param3:ImageResource) : void
       {
          var _loc4_:String = getKey(param1,param2,param3);
          var _loc5_:ChargingTextureEntry = this.cache[_loc4_];
@@ -138,7 +138,7 @@ package alternativa.tanks.models.weapon.railgun
          }
       }
       
-      private function getEntry(param1:TextureResource, param2:TextureResource, param3:TextureResource) : ChargingTextureEntry
+      private function getEntry(param1:ImageResource, param2:ImageResource, param3:ImageResource) : ChargingTextureEntry
       {
          var _loc4_:String = getKey(param1,param2,param3);
          var _loc5_:ChargingTextureEntry = this.cache[_loc4_];

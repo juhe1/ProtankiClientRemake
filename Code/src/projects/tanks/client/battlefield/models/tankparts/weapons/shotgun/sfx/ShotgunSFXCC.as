@@ -1,8 +1,8 @@
 package projects.tanks.client.battlefield.models.tankparts.weapons.shotgun.sfx
 {
-   import platform.client.fp10.core.resource.types.MultiframeTextureResource;
+   import platform.client.fp10.core.resource.types.MultiframeImageResource;
    import platform.client.fp10.core.resource.types.SoundResource;
-   import platform.client.fp10.core.resource.types.TextureResource;
+   import platform.client.fp10.core.resource.types.ImageResource;
    import projects.tanks.client.battlefield.models.tankparts.sfx.lighting.entity.LightingSFXEntity;
    
    public class ShotgunSFXCC
@@ -14,21 +14,21 @@ package projects.tanks.client.battlefield.models.tankparts.weapons.shotgun.sfx
       
       private var _magazineReloadSound:SoundResource;
       
-      private var _pelletTrailTexture:TextureResource;
+      private var _pelletTrailTexture:ImageResource;
       
       private var _reloadSound:SoundResource;
       
-      private var _shotAcrossTexture:MultiframeTextureResource;
+      private var _shotAcrossTexture:MultiframeImageResource;
       
-      private var _shotAlongTexture:MultiframeTextureResource;
+      private var _shotAlongTexture:MultiframeImageResource;
       
       private var _shotSound:SoundResource;
       
-      private var _smokeTexture:MultiframeTextureResource;
+      private var _smokeTexture:MultiframeImageResource;
       
-      private var _sparkleTexture:TextureResource;
+      private var _sparkleTexture:ImageResource;
       
-      public function ShotgunSFXCC(param1:Vector.<TextureResource> = null, param2:LightingSFXEntity = null, param3:SoundResource = null, param4:TextureResource = null, param5:SoundResource = null, param6:MultiframeTextureResource = null, param7:MultiframeTextureResource = null, param8:SoundResource = null, param9:MultiframeTextureResource = null, param10:TextureResource = null)
+      public function ShotgunSFXCC(param1:Vector.<TextureResource> = null, param2:LightingSFXEntity = null, param3:SoundResource = null, param4:ImageResource = null, param5:SoundResource = null, param6:MultiframeImageResource = null, param7:MultiframeImageResource = null, param8:SoundResource = null, param9:MultiframeImageResource = null, param10:ImageResource = null)
       {
          super();
          this._explosionMarkTextures = param1;
@@ -73,12 +73,12 @@ package projects.tanks.client.battlefield.models.tankparts.weapons.shotgun.sfx
          this._magazineReloadSound = param1;
       }
       
-      public function get pelletTrailTexture() : TextureResource
+      public function get pelletTrailTexture() : ImageResource
       {
          return this._pelletTrailTexture;
       }
       
-      public function set pelletTrailTexture(param1:TextureResource) : void
+      public function set pelletTrailTexture(param1:ImageResource) : void
       {
          this._pelletTrailTexture = param1;
       }
@@ -93,22 +93,22 @@ package projects.tanks.client.battlefield.models.tankparts.weapons.shotgun.sfx
          this._reloadSound = param1;
       }
       
-      public function get shotAcrossTexture() : MultiframeTextureResource
+      public function get shotAcrossTexture() : MultiframeImageResource
       {
          return this._shotAcrossTexture;
       }
       
-      public function set shotAcrossTexture(param1:MultiframeTextureResource) : void
+      public function set shotAcrossTexture(param1:MultiframeImageResource) : void
       {
          this._shotAcrossTexture = param1;
       }
       
-      public function get shotAlongTexture() : MultiframeTextureResource
+      public function get shotAlongTexture() : MultiframeImageResource
       {
          return this._shotAlongTexture;
       }
       
-      public function set shotAlongTexture(param1:MultiframeTextureResource) : void
+      public function set shotAlongTexture(param1:MultiframeImageResource) : void
       {
          this._shotAlongTexture = param1;
       }
@@ -123,22 +123,22 @@ package projects.tanks.client.battlefield.models.tankparts.weapons.shotgun.sfx
          this._shotSound = param1;
       }
       
-      public function get smokeTexture() : MultiframeTextureResource
+      public function get smokeTexture() : MultiframeImageResource
       {
          return this._smokeTexture;
       }
       
-      public function set smokeTexture(param1:MultiframeTextureResource) : void
+      public function set smokeTexture(param1:MultiframeImageResource) : void
       {
          this._smokeTexture = param1;
       }
       
-      public function get sparkleTexture() : TextureResource
+      public function get sparkleTexture() : ImageResource
       {
          return this._sparkleTexture;
       }
       
-      public function set sparkleTexture(param1:TextureResource) : void
+      public function set sparkleTexture(param1:ImageResource) : void
       {
          this._sparkleTexture = param1;
       }

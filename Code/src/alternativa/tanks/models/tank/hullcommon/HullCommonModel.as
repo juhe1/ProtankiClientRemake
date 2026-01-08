@@ -1,6 +1,6 @@
 package alternativa.tanks.models.tank.hullcommon
 {
-   import platform.client.fp10.core.resource.types.TextureResource;
+   import platform.client.fp10.core.resource.types.ImageResource;
    import platform.client.fp10.core.type.IGameObject;
    import projects.tanks.client.battlefield.models.tankparts.armor.common.HullCommonCC;
    import projects.tanks.client.battlefield.models.tankparts.armor.common.HullCommonModelBase;
@@ -15,7 +15,7 @@ package alternativa.tanks.models.tank.hullcommon
          super();
       }
       
-      public function getDeadColoring() : TextureResource
+      public function getDeadColoring() : ImageResource
       {
          return getInitParam().deadColoring;
       }

@@ -11,7 +11,7 @@ package alternativa.tanks.models.weapon.shaft
    import flash.media.Sound;
    import platform.client.fp10.core.model.ObjectLoadPostListener;
    import platform.client.fp10.core.model.ObjectUnloadListener;
-   import platform.client.fp10.core.resource.types.MultiframeTextureResource;
+   import platform.client.fp10.core.resource.types.MultiframeImageResource;
    import projects.tanks.client.battlefield.models.tankparts.sfx.shoot.shaft.IShaftShootSFXModelBase;
    import projects.tanks.client.battlefield.models.tankparts.sfx.shoot.shaft.ShaftShootSFXCC;
    import projects.tanks.client.battlefield.models.tankparts.sfx.shoot.shaft.ShaftShootSFXModelBase;
@@ -31,7 +31,7 @@ package alternativa.tanks.models.weapon.shaft
          super();
       }
       
-      private static function getTextureAnimation(param1:MultiframeTextureResource, param2:Number) : TextureAnimation
+      private static function getTextureAnimation(param1:MultiframeImageResource, param2:Number) : TextureAnimation
       {
          var _loc3_:TextureAnimation = GraphicsUtils.getTextureAnimationFromResource(materialRegistry,param1);
          _loc3_.material.resolution = param2 / param1.frameWidth;

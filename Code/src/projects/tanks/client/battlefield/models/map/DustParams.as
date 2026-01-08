@@ -1,6 +1,6 @@
 package projects.tanks.client.battlefield.models.map
 {
-   import platform.client.fp10.core.resource.types.MultiframeTextureResource;
+   import platform.client.fp10.core.resource.types.MultiframeImageResource;
    
    public class DustParams
    {
@@ -13,11 +13,11 @@ package projects.tanks.client.battlefield.models.map
       
       private var _dustNearDistance:Number;
       
-      private var _dustParticle:MultiframeTextureResource;
+      private var _dustParticle:MultiframeImageResource;
       
       private var _dustSize:Number;
       
-      public function DustParams(param1:Number = 0, param2:Number = 0, param3:Number = 0, param4:Number = 0, param5:MultiframeTextureResource = null, param6:Number = 0)
+      public function DustParams(param1:Number = 0, param2:Number = 0, param3:Number = 0, param4:Number = 0, param5:MultiframeImageResource = null, param6:Number = 0)
       {
          super();
          this._alpha = param1;
@@ -68,12 +68,12 @@ package projects.tanks.client.battlefield.models.map
          this._dustNearDistance = param1;
       }
       
-      public function get dustParticle() : MultiframeTextureResource
+      public function get dustParticle() : MultiframeImageResource
       {
          return this._dustParticle;
       }
       
-      public function set dustParticle(param1:MultiframeTextureResource) : void
+      public function set dustParticle(param1:MultiframeImageResource) : void
       {
          this._dustParticle = param1;
       }

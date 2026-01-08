@@ -1,36 +1,36 @@
 package projects.tanks.client.battlefield.models.tankparts.sfx.shoot.railgun
 {
-   import platform.client.fp10.core.resource.types.MultiframeTextureResource;
+   import platform.client.fp10.core.resource.types.MultiframeImageResource;
    import platform.client.fp10.core.resource.types.SoundResource;
-   import platform.client.fp10.core.resource.types.TextureResource;
+   import platform.client.fp10.core.resource.types.ImageResource;
    import projects.tanks.client.battlefield.models.tankparts.sfx.lighting.entity.LightingSFXEntity;
    
    public class RailgunShootSFXCC
    {
       
-      private var _chargingPart1:TextureResource;
+      private var _chargingPart1:ImageResource;
       
-      private var _chargingPart2:TextureResource;
+      private var _chargingPart2:ImageResource;
       
-      private var _chargingPart3:TextureResource;
+      private var _chargingPart3:ImageResource;
       
-      private var _hitMarkTexture:TextureResource;
+      private var _hitMarkTexture:ImageResource;
       
       private var _lightingSFXEntity:LightingSFXEntity;
       
-      private var _powTexture:MultiframeTextureResource;
+      private var _powTexture:MultiframeImageResource;
       
-      private var _ringsTexture:MultiframeTextureResource;
+      private var _ringsTexture:MultiframeImageResource;
       
       private var _shotSound:SoundResource;
       
-      private var _smokeImage:TextureResource;
+      private var _smokeImage:ImageResource;
       
-      private var _sphereTexture:MultiframeTextureResource;
+      private var _sphereTexture:MultiframeImageResource;
       
-      private var _trailImage:TextureResource;
+      private var _trailImage:ImageResource;
       
-      public function RailgunShootSFXCC(param1:TextureResource = null, param2:TextureResource = null, param3:TextureResource = null, param4:TextureResource = null, param5:LightingSFXEntity = null, param6:MultiframeTextureResource = null, param7:MultiframeTextureResource = null, param8:SoundResource = null, param9:TextureResource = null, param10:MultiframeTextureResource = null, param11:TextureResource = null)
+      public function RailgunShootSFXCC(param1:ImageResource = null, param2:ImageResource = null, param3:ImageResource = null, param4:ImageResource = null, param5:LightingSFXEntity = null, param6:MultiframeImageResource = null, param7:MultiframeImageResource = null, param8:SoundResource = null, param9:ImageResource = null, param10:MultiframeImageResource = null, param11:ImageResource = null)
       {
          super();
          this._chargingPart1 = param1;
@@ -46,42 +46,42 @@ package projects.tanks.client.battlefield.models.tankparts.sfx.shoot.railgun
          this._trailImage = param11;
       }
       
-      public function get chargingPart1() : TextureResource
+      public function get chargingPart1() : ImageResource
       {
          return this._chargingPart1;
       }
       
-      public function set chargingPart1(param1:TextureResource) : void
+      public function set chargingPart1(param1:ImageResource) : void
       {
          this._chargingPart1 = param1;
       }
       
-      public function get chargingPart2() : TextureResource
+      public function get chargingPart2() : ImageResource
       {
          return this._chargingPart2;
       }
       
-      public function set chargingPart2(param1:TextureResource) : void
+      public function set chargingPart2(param1:ImageResource) : void
       {
          this._chargingPart2 = param1;
       }
       
-      public function get chargingPart3() : TextureResource
+      public function get chargingPart3() : ImageResource
       {
          return this._chargingPart3;
       }
       
-      public function set chargingPart3(param1:TextureResource) : void
+      public function set chargingPart3(param1:ImageResource) : void
       {
          this._chargingPart3 = param1;
       }
       
-      public function get hitMarkTexture() : TextureResource
+      public function get hitMarkTexture() : ImageResource
       {
          return this._hitMarkTexture;
       }
       
-      public function set hitMarkTexture(param1:TextureResource) : void
+      public function set hitMarkTexture(param1:ImageResource) : void
       {
          this._hitMarkTexture = param1;
       }
@@ -96,22 +96,22 @@ package projects.tanks.client.battlefield.models.tankparts.sfx.shoot.railgun
          this._lightingSFXEntity = param1;
       }
       
-      public function get powTexture() : MultiframeTextureResource
+      public function get powTexture() : MultiframeImageResource
       {
          return this._powTexture;
       }
       
-      public function set powTexture(param1:MultiframeTextureResource) : void
+      public function set powTexture(param1:MultiframeImageResource) : void
       {
          this._powTexture = param1;
       }
       
-      public function get ringsTexture() : MultiframeTextureResource
+      public function get ringsTexture() : MultiframeImageResource
       {
          return this._ringsTexture;
       }
       
-      public function set ringsTexture(param1:MultiframeTextureResource) : void
+      public function set ringsTexture(param1:MultiframeImageResource) : void
       {
          this._ringsTexture = param1;
       }
@@ -126,32 +126,32 @@ package projects.tanks.client.battlefield.models.tankparts.sfx.shoot.railgun
          this._shotSound = param1;
       }
       
-      public function get smokeImage() : TextureResource
+      public function get smokeImage() : ImageResource
       {
          return this._smokeImage;
       }
       
-      public function set smokeImage(param1:TextureResource) : void
+      public function set smokeImage(param1:ImageResource) : void
       {
          this._smokeImage = param1;
       }
       
-      public function get sphereTexture() : MultiframeTextureResource
+      public function get sphereTexture() : MultiframeImageResource
       {
          return this._sphereTexture;
       }
       
-      public function set sphereTexture(param1:MultiframeTextureResource) : void
+      public function set sphereTexture(param1:MultiframeImageResource) : void
       {
          this._sphereTexture = param1;
       }
       
-      public function get trailImage() : TextureResource
+      public function get trailImage() : ImageResource
       {
          return this._trailImage;
       }
       
-      public function set trailImage(param1:TextureResource) : void
+      public function set trailImage(param1:ImageResource) : void
       {
          this._trailImage = param1;
       }

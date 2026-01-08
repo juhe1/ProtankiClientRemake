@@ -1,8 +1,8 @@
 package projects.tanks.client.battlefield.models.tankparts.sfx.shoot.smoky
 {
-   import platform.client.fp10.core.resource.types.MultiframeTextureResource;
+   import platform.client.fp10.core.resource.types.MultiframeImageResource;
    import platform.client.fp10.core.resource.types.SoundResource;
-   import platform.client.fp10.core.resource.types.TextureResource;
+   import platform.client.fp10.core.resource.types.ImageResource;
    import projects.tanks.client.battlefield.models.tankparts.sfx.lighting.entity.LightingSFXEntity;
    
    public class SmokyShootSFXCC
@@ -10,23 +10,23 @@ package projects.tanks.client.battlefield.models.tankparts.sfx.shoot.smoky
       
       private var _criticalHitSize:int;
       
-      private var _criticalHitTexture:MultiframeTextureResource;
+      private var _criticalHitTexture:MultiframeImageResource;
       
-      private var _explosionMarkTexture:TextureResource;
+      private var _explosionMarkTexture:ImageResource;
       
       private var _explosionSize:int;
       
       private var _explosionSound:SoundResource;
       
-      private var _explosionTexture:MultiframeTextureResource;
+      private var _explosionTexture:MultiframeImageResource;
       
       private var _lightingSFXEntity:LightingSFXEntity;
       
       private var _shotSound:SoundResource;
       
-      private var _shotTexture:TextureResource;
+      private var _shotTexture:ImageResource;
       
-      public function SmokyShootSFXCC(param1:int = 0, param2:MultiframeTextureResource = null, param3:TextureResource = null, param4:int = 0, param5:SoundResource = null, param6:MultiframeTextureResource = null, param7:LightingSFXEntity = null, param8:SoundResource = null, param9:TextureResource = null)
+      public function SmokyShootSFXCC(param1:int = 0, param2:MultiframeImageResource = null, param3:ImageResource = null, param4:int = 0, param5:SoundResource = null, param6:MultiframeImageResource = null, param7:LightingSFXEntity = null, param8:SoundResource = null, param9:ImageResource = null)
       {
          super();
          this._criticalHitSize = param1;
@@ -50,22 +50,22 @@ package projects.tanks.client.battlefield.models.tankparts.sfx.shoot.smoky
          this._criticalHitSize = param1;
       }
       
-      public function get criticalHitTexture() : MultiframeTextureResource
+      public function get criticalHitTexture() : MultiframeImageResource
       {
          return this._criticalHitTexture;
       }
       
-      public function set criticalHitTexture(param1:MultiframeTextureResource) : void
+      public function set criticalHitTexture(param1:MultiframeImageResource) : void
       {
          this._criticalHitTexture = param1;
       }
       
-      public function get explosionMarkTexture() : TextureResource
+      public function get explosionMarkTexture() : ImageResource
       {
          return this._explosionMarkTexture;
       }
       
-      public function set explosionMarkTexture(param1:TextureResource) : void
+      public function set explosionMarkTexture(param1:ImageResource) : void
       {
          this._explosionMarkTexture = param1;
       }
@@ -90,12 +90,12 @@ package projects.tanks.client.battlefield.models.tankparts.sfx.shoot.smoky
          this._explosionSound = param1;
       }
       
-      public function get explosionTexture() : MultiframeTextureResource
+      public function get explosionTexture() : MultiframeImageResource
       {
          return this._explosionTexture;
       }
       
-      public function set explosionTexture(param1:MultiframeTextureResource) : void
+      public function set explosionTexture(param1:MultiframeImageResource) : void
       {
          this._explosionTexture = param1;
       }
@@ -120,12 +120,12 @@ package projects.tanks.client.battlefield.models.tankparts.sfx.shoot.smoky
          this._shotSound = param1;
       }
       
-      public function get shotTexture() : TextureResource
+      public function get shotTexture() : ImageResource
       {
          return this._shotTexture;
       }
       
-      public function set shotTexture(param1:TextureResource) : void
+      public function set shotTexture(param1:ImageResource) : void
       {
          this._shotTexture = param1;
       }

@@ -1,7 +1,7 @@
 package projects.tanks.client.battlefield.models.ultimate.effects.wasp
 {
    import platform.client.fp10.core.resource.types.SoundResource;
-   import platform.client.fp10.core.resource.types.TextureResource;
+   import platform.client.fp10.core.resource.types.ImageResource;
    import projects.tanks.clients.flash.resources.resource.Tanks3DSResource;
    
    public class WaspUltimateCC
@@ -11,19 +11,19 @@ package projects.tanks.client.battlefield.models.ultimate.effects.wasp
       
       private var _bomb:Tanks3DSResource;
       
-      private var _craterDecal:TextureResource;
+      private var _craterDecal:ImageResource;
       
       private var _effectStartSound:SoundResource;
       
-      private var _nuclearBangFlame:TextureResource;
+      private var _nuclearBangFlame:ImageResource;
       
-      private var _nuclearBangLight:TextureResource;
+      private var _nuclearBangLight:ImageResource;
       
-      private var _nuclearBangSmoke:TextureResource;
+      private var _nuclearBangSmoke:ImageResource;
       
       private var _nuclearBangSound:SoundResource;
       
-      private var _nuclearBangWave:TextureResource;
+      private var _nuclearBangWave:ImageResource;
       
       private var _smallSplashRadius:Number;
       
@@ -31,7 +31,7 @@ package projects.tanks.client.battlefield.models.ultimate.effects.wasp
       
       private var _splashDamageMinPercent:Number;
       
-      public function WaspUltimateCC(param1:Number = 0, param2:Tanks3DSResource = null, param3:TextureResource = null, param4:SoundResource = null, param5:TextureResource = null, param6:TextureResource = null, param7:TextureResource = null, param8:SoundResource = null, param9:TextureResource = null, param10:Number = 0, param11:Number = 0, param12:Number = 0)
+      public function WaspUltimateCC(param1:Number = 0, param2:Tanks3DSResource = null, param3:ImageResource = null, param4:SoundResource = null, param5:ImageResource = null, param6:ImageResource = null, param7:ImageResource = null, param8:SoundResource = null, param9:ImageResource = null, param10:Number = 0, param11:Number = 0, param12:Number = 0)
       {
          super();
          this._bigSplashRadius = param1;
@@ -68,12 +68,12 @@ package projects.tanks.client.battlefield.models.ultimate.effects.wasp
          this._bomb = param1;
       }
       
-      public function get craterDecal() : TextureResource
+      public function get craterDecal() : ImageResource
       {
          return this._craterDecal;
       }
       
-      public function set craterDecal(param1:TextureResource) : void
+      public function set craterDecal(param1:ImageResource) : void
       {
          this._craterDecal = param1;
       }
@@ -88,32 +88,32 @@ package projects.tanks.client.battlefield.models.ultimate.effects.wasp
          this._effectStartSound = param1;
       }
       
-      public function get nuclearBangFlame() : TextureResource
+      public function get nuclearBangFlame() : ImageResource
       {
          return this._nuclearBangFlame;
       }
       
-      public function set nuclearBangFlame(param1:TextureResource) : void
+      public function set nuclearBangFlame(param1:ImageResource) : void
       {
          this._nuclearBangFlame = param1;
       }
       
-      public function get nuclearBangLight() : TextureResource
+      public function get nuclearBangLight() : ImageResource
       {
          return this._nuclearBangLight;
       }
       
-      public function set nuclearBangLight(param1:TextureResource) : void
+      public function set nuclearBangLight(param1:ImageResource) : void
       {
          this._nuclearBangLight = param1;
       }
       
-      public function get nuclearBangSmoke() : TextureResource
+      public function get nuclearBangSmoke() : ImageResource
       {
          return this._nuclearBangSmoke;
       }
       
-      public function set nuclearBangSmoke(param1:TextureResource) : void
+      public function set nuclearBangSmoke(param1:ImageResource) : void
       {
          this._nuclearBangSmoke = param1;
       }
@@ -128,12 +128,12 @@ package projects.tanks.client.battlefield.models.ultimate.effects.wasp
          this._nuclearBangSound = param1;
       }
       
-      public function get nuclearBangWave() : TextureResource
+      public function get nuclearBangWave() : ImageResource
       {
          return this._nuclearBangWave;
       }
       
-      public function set nuclearBangWave(param1:TextureResource) : void
+      public function set nuclearBangWave(param1:ImageResource) : void
       {
          this._nuclearBangWave = param1;
       }

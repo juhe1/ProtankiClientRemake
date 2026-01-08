@@ -1,16 +1,16 @@
 package projects.tanks.client.battlefield.models.tankparts.sfx.shoot.ricochet
 {
-   import platform.client.fp10.core.resource.types.MultiframeTextureResource;
+   import platform.client.fp10.core.resource.types.MultiframeImageResource;
    import platform.client.fp10.core.resource.types.SoundResource;
-   import platform.client.fp10.core.resource.types.TextureResource;
+   import platform.client.fp10.core.resource.types.ImageResource;
    import projects.tanks.client.battlefield.models.tankparts.sfx.lighting.entity.LightingSFXEntity;
    
    public class RicochetSFXCC
    {
       
-      private var _bumpFlashTexture:MultiframeTextureResource;
+      private var _bumpFlashTexture:MultiframeImageResource;
       
-      private var _explosionTexture:MultiframeTextureResource;
+      private var _explosionTexture:MultiframeImageResource;
       
       private var _explostinSound:SoundResource;
       
@@ -18,15 +18,15 @@ package projects.tanks.client.battlefield.models.tankparts.sfx.shoot.ricochet
       
       private var _ricochetSound:SoundResource;
       
-      private var _shotFlashTexture:TextureResource;
+      private var _shotFlashTexture:ImageResource;
       
       private var _shotSound:SoundResource;
       
-      private var _shotTexture:MultiframeTextureResource;
+      private var _shotTexture:MultiframeImageResource;
       
-      private var _tailTrailTexutre:TextureResource;
+      private var _tailTrailTexutre:ImageResource;
       
-      public function RicochetSFXCC(param1:MultiframeTextureResource = null, param2:MultiframeTextureResource = null, param3:SoundResource = null, param4:LightingSFXEntity = null, param5:SoundResource = null, param6:TextureResource = null, param7:SoundResource = null, param8:MultiframeTextureResource = null, param9:TextureResource = null)
+      public function RicochetSFXCC(param1:MultiframeImageResource = null, param2:MultiframeImageResource = null, param3:SoundResource = null, param4:LightingSFXEntity = null, param5:SoundResource = null, param6:ImageResource = null, param7:SoundResource = null, param8:MultiframeImageResource = null, param9:ImageResource = null)
       {
          super();
          this._bumpFlashTexture = param1;
@@ -40,22 +40,22 @@ package projects.tanks.client.battlefield.models.tankparts.sfx.shoot.ricochet
          this._tailTrailTexutre = param9;
       }
       
-      public function get bumpFlashTexture() : MultiframeTextureResource
+      public function get bumpFlashTexture() : MultiframeImageResource
       {
          return this._bumpFlashTexture;
       }
       
-      public function set bumpFlashTexture(param1:MultiframeTextureResource) : void
+      public function set bumpFlashTexture(param1:MultiframeImageResource) : void
       {
          this._bumpFlashTexture = param1;
       }
       
-      public function get explosionTexture() : MultiframeTextureResource
+      public function get explosionTexture() : MultiframeImageResource
       {
          return this._explosionTexture;
       }
       
-      public function set explosionTexture(param1:MultiframeTextureResource) : void
+      public function set explosionTexture(param1:MultiframeImageResource) : void
       {
          this._explosionTexture = param1;
       }
@@ -90,12 +90,12 @@ package projects.tanks.client.battlefield.models.tankparts.sfx.shoot.ricochet
          this._ricochetSound = param1;
       }
       
-      public function get shotFlashTexture() : TextureResource
+      public function get shotFlashTexture() : ImageResource
       {
          return this._shotFlashTexture;
       }
       
-      public function set shotFlashTexture(param1:TextureResource) : void
+      public function set shotFlashTexture(param1:ImageResource) : void
       {
          this._shotFlashTexture = param1;
       }
@@ -110,22 +110,22 @@ package projects.tanks.client.battlefield.models.tankparts.sfx.shoot.ricochet
          this._shotSound = param1;
       }
       
-      public function get shotTexture() : MultiframeTextureResource
+      public function get shotTexture() : MultiframeImageResource
       {
          return this._shotTexture;
       }
       
-      public function set shotTexture(param1:MultiframeTextureResource) : void
+      public function set shotTexture(param1:MultiframeImageResource) : void
       {
          this._shotTexture = param1;
       }
       
-      public function get tailTrailTexutre() : TextureResource
+      public function get tailTrailTexutre() : ImageResource
       {
          return this._tailTrailTexutre;
       }
       
-      public function set tailTrailTexutre(param1:TextureResource) : void
+      public function set tailTrailTexutre(param1:ImageResource) : void
       {
          this._tailTrailTexutre = param1;
       }

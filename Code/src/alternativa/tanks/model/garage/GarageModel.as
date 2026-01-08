@@ -161,11 +161,11 @@ package alternativa.tanks.model.garage
       
       private var unloadedGarageBox3DS:Tanks3DSResource;
       
-      private var unloadedGarageBoxFrontSide:TextureResource;
+      private var unloadedGarageBoxFrontSide:ImageResource;
       
       private var loadedGarageBox3DS:Tanks3DSResource;
       
-      private var loadedGarageBoxFrontSide:TextureResource;
+      private var loadedGarageBoxFrontSide:ImageResource;
       
       private var garageBox3DSId:Long;
       

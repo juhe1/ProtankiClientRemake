@@ -1,8 +1,8 @@
 package projects.tanks.client.battlefield.models.tankparts.sfx.shoot.shaft
 {
-   import platform.client.fp10.core.resource.types.MultiframeTextureResource;
+   import platform.client.fp10.core.resource.types.MultiframeImageResource;
    import platform.client.fp10.core.resource.types.SoundResource;
-   import platform.client.fp10.core.resource.types.TextureResource;
+   import platform.client.fp10.core.resource.types.ImageResource;
    import projects.tanks.client.battlefield.models.tankparts.sfx.lighting.entity.LightingSFXEntity;
    
    public class ShaftShootSFXCC
@@ -10,23 +10,23 @@ package projects.tanks.client.battlefield.models.tankparts.sfx.shoot.shaft
       
       private var _explosionSound:SoundResource;
       
-      private var _explosionTexture:MultiframeTextureResource;
+      private var _explosionTexture:MultiframeImageResource;
       
-      private var _hitMarkTexture:TextureResource;
+      private var _hitMarkTexture:ImageResource;
       
       private var _lightingSFXEntity:LightingSFXEntity;
       
-      private var _muzzleFlashTexture:MultiframeTextureResource;
+      private var _muzzleFlashTexture:MultiframeImageResource;
       
       private var _shotSound:SoundResource;
       
       private var _targetingSound:SoundResource;
       
-      private var _trailTexture:TextureResource;
+      private var _trailTexture:ImageResource;
       
       private var _zoomModeSound:SoundResource;
       
-      public function ShaftShootSFXCC(param1:SoundResource = null, param2:MultiframeTextureResource = null, param3:TextureResource = null, param4:LightingSFXEntity = null, param5:MultiframeTextureResource = null, param6:SoundResource = null, param7:SoundResource = null, param8:TextureResource = null, param9:SoundResource = null)
+      public function ShaftShootSFXCC(param1:SoundResource = null, param2:MultiframeImageResource = null, param3:ImageResource = null, param4:LightingSFXEntity = null, param5:MultiframeImageResource = null, param6:SoundResource = null, param7:SoundResource = null, param8:ImageResource = null, param9:SoundResource = null)
       {
          super();
          this._explosionSound = param1;
@@ -50,22 +50,22 @@ package projects.tanks.client.battlefield.models.tankparts.sfx.shoot.shaft
          this._explosionSound = param1;
       }
       
-      public function get explosionTexture() : MultiframeTextureResource
+      public function get explosionTexture() : MultiframeImageResource
       {
          return this._explosionTexture;
       }
       
-      public function set explosionTexture(param1:MultiframeTextureResource) : void
+      public function set explosionTexture(param1:MultiframeImageResource) : void
       {
          this._explosionTexture = param1;
       }
       
-      public function get hitMarkTexture() : TextureResource
+      public function get hitMarkTexture() : ImageResource
       {
          return this._hitMarkTexture;
       }
       
-      public function set hitMarkTexture(param1:TextureResource) : void
+      public function set hitMarkTexture(param1:ImageResource) : void
       {
          this._hitMarkTexture = param1;
       }
@@ -80,12 +80,12 @@ package projects.tanks.client.battlefield.models.tankparts.sfx.shoot.shaft
          this._lightingSFXEntity = param1;
       }
       
-      public function get muzzleFlashTexture() : MultiframeTextureResource
+      public function get muzzleFlashTexture() : MultiframeImageResource
       {
          return this._muzzleFlashTexture;
       }
       
-      public function set muzzleFlashTexture(param1:MultiframeTextureResource) : void
+      public function set muzzleFlashTexture(param1:MultiframeImageResource) : void
       {
          this._muzzleFlashTexture = param1;
       }
@@ -110,12 +110,12 @@ package projects.tanks.client.battlefield.models.tankparts.sfx.shoot.shaft
          this._targetingSound = param1;
       }
       
-      public function get trailTexture() : TextureResource
+      public function get trailTexture() : ImageResource
       {
          return this._trailTexture;
       }
       
-      public function set trailTexture(param1:TextureResource) : void
+      public function set trailTexture(param1:ImageResource) : void
       {
          this._trailTexture = param1;
       }

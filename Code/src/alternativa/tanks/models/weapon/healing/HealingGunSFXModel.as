@@ -10,7 +10,7 @@ package alternativa.tanks.models.weapon.healing
    import flash.display.BitmapData;
    import platform.client.fp10.core.model.ObjectLoadPostListener;
    import platform.client.fp10.core.model.ObjectUnloadListener;
-   import platform.client.fp10.core.resource.types.MultiframeTextureResource;
+   import platform.client.fp10.core.resource.types.MultiframeImageResource;
    import projects.tanks.client.battlefield.models.tankparts.sfx.isis.IIsisSFXModelBase;
    import projects.tanks.client.battlefield.models.tankparts.sfx.isis.IsisSFXCC;
    import projects.tanks.client.battlefield.models.tankparts.sfx.isis.IsisSFXModelBase;
@@ -54,7 +54,7 @@ package alternativa.tanks.models.weapon.healing
       {
          var _loc1_:IsisSFXCC = getInitParam();
          var _loc2_:HealingGunSFXData = new HealingGunSFXData();
-         var _loc3_:MultiframeTextureResource = _loc1_.healingBall;
+         var _loc3_:MultiframeImageResource = _loc1_.healingBall;
          var _loc4_:TextureMaterial = createMaterial(_loc1_.healingBall.data);
          var _loc5_:TextureMaterial = createMaterial(_loc1_.healingBall.data);
          var _loc6_:TextureMaterial = createMaterial(_loc1_.healingRay.data);

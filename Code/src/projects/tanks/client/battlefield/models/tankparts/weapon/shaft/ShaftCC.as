@@ -1,6 +1,6 @@
 package projects.tanks.client.battlefield.models.tankparts.weapon.shaft
 {
-   import platform.client.fp10.core.resource.types.TextureResource;
+   import platform.client.fp10.core.resource.types.ImageResource;
    
    public class ShaftCC
    {
@@ -25,7 +25,7 @@ package projects.tanks.client.battlefield.models.tankparts.weapon.shaft
       
       private var _minimumFOV:Number;
       
-      private var _reticleImage:TextureResource;
+      private var _reticleImage:ImageResource;
       
       private var _rotationCoeffKmin:Number;
       
@@ -43,7 +43,7 @@ package projects.tanks.client.battlefield.models.tankparts.weapon.shaft
       
       private var _verticalTargetingSpeed:Number;
       
-      public function ShaftCC(param1:int = 0, param2:Number = 0, param3:Number = 0, param4:Number = 0, param5:Number = 0, param6:Number = 0, param7:Number = 0, param8:Number = 0, param9:Number = 0, param10:Number = 0, param11:TextureResource = null, param12:Number = 0, param13:Number = 0, param14:Number = 0, param15:Number = 0, param16:Number = 0, param17:Number = 0, param18:int = 0, param19:Number = 0)
+      public function ShaftCC(param1:int = 0, param2:Number = 0, param3:Number = 0, param4:Number = 0, param5:Number = 0, param6:Number = 0, param7:Number = 0, param8:Number = 0, param9:Number = 0, param10:Number = 0, param11:ImageResource = null, param12:Number = 0, param13:Number = 0, param14:Number = 0, param15:Number = 0, param16:Number = 0, param17:Number = 0, param18:int = 0, param19:Number = 0)
       {
          super();
          this._afterShotPause = param1;
@@ -167,12 +167,12 @@ package projects.tanks.client.battlefield.models.tankparts.weapon.shaft
          this._minimumFOV = param1;
       }
       
-      public function get reticleImage() : TextureResource
+      public function get reticleImage() : ImageResource
       {
          return this._reticleImage;
       }
       
-      public function set reticleImage(param1:TextureResource) : void
+      public function set reticleImage(param1:ImageResource) : void
       {
          this._reticleImage = param1;
       }

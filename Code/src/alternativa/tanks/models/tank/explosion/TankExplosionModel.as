@@ -22,7 +22,7 @@ package alternativa.tanks.models.tank.explosion
    import flash.media.Sound;
    import platform.client.fp10.core.model.ObjectLoadListener;
    import platform.client.fp10.core.model.ObjectUnloadListener;
-   import platform.client.fp10.core.resource.types.MultiframeTextureResource;
+   import platform.client.fp10.core.resource.types.MultiframeImageResource;
    import platform.client.fp10.core.type.IGameObject;
    import projects.tanks.client.battlefield.models.tankparts.armor.explosion.ITankExplosionModelBase;
    import projects.tanks.client.battlefield.models.tankparts.armor.explosion.TankExplosionModelBase;
@@ -90,7 +90,7 @@ package alternativa.tanks.models.tank.explosion
          putData(ExplosionData,_loc4_);
       }
       
-      private function getTextureAnimation(param1:MultiframeTextureResource, param2:Number) : TextureAnimation
+      private function getTextureAnimation(param1:MultiframeImageResource, param2:Number) : TextureAnimation
       {
          var _loc3_:TextureAnimation = GraphicsUtils.getTextureAnimationFromResource(materialRegistry,param1);
          _loc3_.material.resolution = param2 / param1.frameWidth;

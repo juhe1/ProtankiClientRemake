@@ -1,7 +1,7 @@
 package projects.tanks.client.battlefield.models.bonus.bonus.common
 {
    import platform.client.fp10.core.resource.types.SoundResource;
-   import platform.client.fp10.core.resource.types.TextureResource;
+   import platform.client.fp10.core.resource.types.ImageResource;
    import projects.tanks.clients.flash.resources.resource.Tanks3DSResource;
    
    public class BonusCommonCC
@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.bonus.bonus.common
       
       private var _boxResource:Tanks3DSResource;
       
-      private var _cordResource:TextureResource;
+      private var _cordResource:ImageResource;
       
       private var _parachuteInnerResource:Tanks3DSResource;
       
@@ -17,7 +17,7 @@ package projects.tanks.client.battlefield.models.bonus.bonus.common
       
       private var _pickupSoundResource:SoundResource;
       
-      public function BonusCommonCC(param1:Tanks3DSResource = null, param2:TextureResource = null, param3:Tanks3DSResource = null, param4:Tanks3DSResource = null, param5:SoundResource = null)
+      public function BonusCommonCC(param1:Tanks3DSResource = null, param2:ImageResource = null, param3:Tanks3DSResource = null, param4:Tanks3DSResource = null, param5:SoundResource = null)
       {
          super();
          this._boxResource = param1;
@@ -37,12 +37,12 @@ package projects.tanks.client.battlefield.models.bonus.bonus.common
          this._boxResource = param1;
       }
       
-      public function get cordResource() : TextureResource
+      public function get cordResource() : ImageResource
       {
          return this._cordResource;
       }
       
-      public function set cordResource(param1:TextureResource) : void
+      public function set cordResource(param1:ImageResource) : void
       {
          this._cordResource = param1;
       }

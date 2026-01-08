@@ -9,8 +9,8 @@ package alternativa.tanks.models.weapon.ricochet
    import flash.display.BitmapData;
    import platform.client.fp10.core.model.ObjectLoadPostListener;
    import platform.client.fp10.core.model.ObjectUnloadListener;
-   import platform.client.fp10.core.resource.types.MultiframeTextureResource;
-   import platform.client.fp10.core.resource.types.TextureResource;
+   import platform.client.fp10.core.resource.types.MultiframeImageResource;
+   import platform.client.fp10.core.resource.types.ImageResource;
    import projects.tanks.client.battlefield.models.tankparts.sfx.shoot.ricochet.IRicochetSFXModelBase;
    import projects.tanks.client.battlefield.models.tankparts.sfx.shoot.ricochet.RicochetSFXCC;
    import projects.tanks.client.battlefield.models.tankparts.sfx.shoot.ricochet.RicochetSFXModelBase;
@@ -30,29 +30,29 @@ package alternativa.tanks.models.weapon.ricochet
          super();
       }
       
-      private static function getShotAnimation(param1:MultiframeTextureResource) : TextureAnimation
+      private static function getShotAnimation(param1:MultiframeImageResource) : TextureAnimation
       {
          return getTextureAnimation(param1,RicochetShot.SPRITE_SIZE);
       }
       
-      private static function getTextureAnimation(param1:MultiframeTextureResource, param2:Number) : TextureAnimation
+      private static function getTextureAnimation(param1:MultiframeImageResource, param2:Number) : TextureAnimation
       {
          var _loc3_:TextureAnimation = GraphicsUtils.getTextureAnimationFromResource(materialRegistry,param1);
          _loc3_.material.resolution = param2 / param1.frameWidth;
          return _loc3_;
       }
       
-      private static function getExplosionAnimation(param1:MultiframeTextureResource) : TextureAnimation
+      private static function getExplosionAnimation(param1:MultiframeImageResource) : TextureAnimation
       {
          return getTextureAnimation(param1,RicochetShot.EXPLOSION_SPRITE_SIZE);
       }
       
-      private static function getBumpFlashAnimation(param1:MultiframeTextureResource) : TextureAnimation
+      private static function getBumpFlashAnimation(param1:MultiframeImageResource) : TextureAnimation
       {
          return getTextureAnimation(param1,RicochetShot.EXPLOSION_SPRITE_SIZE);
       }
       
-      private static function getMuzzleFlashMaterial(param1:TextureResource) : TextureMaterial
+      private static function getMuzzleFlashMaterial(param1:ImageResource) : TextureMaterial
       {
          var _loc2_:BitmapData = param1.data;
          var _loc3_:TextureMaterial = materialRegistry.getMaterial(_loc2_);

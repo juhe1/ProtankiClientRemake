@@ -1,26 +1,26 @@
 package projects.tanks.client.battlefield.models.ultimate.effects.dictator
 {
    import platform.client.fp10.core.resource.types.SoundResource;
-   import platform.client.fp10.core.resource.types.TextureResource;
+   import platform.client.fp10.core.resource.types.ImageResource;
    
    public class DictatorUltimateCC
    {
       
       private var _activationSound:SoundResource;
       
-      private var _beam:TextureResource;
+      private var _beam:ImageResource;
       
       private var _beamScale:Number;
       
       private var _secondaryBeamScale:Number;
       
-      private var _star:TextureResource;
+      private var _star:ImageResource;
       
-      private var _wave:TextureResource;
+      private var _wave:ImageResource;
       
       private var _waveSize:Number;
       
-      public function DictatorUltimateCC(param1:SoundResource = null, param2:TextureResource = null, param3:Number = 0, param4:Number = 0, param5:TextureResource = null, param6:TextureResource = null, param7:Number = 0)
+      public function DictatorUltimateCC(param1:SoundResource = null, param2:ImageResource = null, param3:Number = 0, param4:Number = 0, param5:ImageResource = null, param6:ImageResource = null, param7:Number = 0)
       {
          super();
          this._activationSound = param1;
@@ -42,12 +42,12 @@ package projects.tanks.client.battlefield.models.ultimate.effects.dictator
          this._activationSound = param1;
       }
       
-      public function get beam() : TextureResource
+      public function get beam() : ImageResource
       {
          return this._beam;
       }
       
-      public function set beam(param1:TextureResource) : void
+      public function set beam(param1:ImageResource) : void
       {
          this._beam = param1;
       }
@@ -72,22 +72,22 @@ package projects.tanks.client.battlefield.models.ultimate.effects.dictator
          this._secondaryBeamScale = param1;
       }
       
-      public function get star() : TextureResource
+      public function get star() : ImageResource
       {
          return this._star;
       }
       
-      public function set star(param1:TextureResource) : void
+      public function set star(param1:ImageResource) : void
       {
          this._star = param1;
       }
       
-      public function get wave() : TextureResource
+      public function get wave() : ImageResource
       {
          return this._wave;
       }
       
-      public function set wave(param1:TextureResource) : void
+      public function set wave(param1:ImageResource) : void
       {
          this._wave = param1;
       }

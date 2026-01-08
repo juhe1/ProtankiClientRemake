@@ -9,7 +9,7 @@ package alternativa.tanks.models.weapon.twins
    import flash.display.BitmapData;
    import platform.client.fp10.core.model.ObjectLoadPostListener;
    import platform.client.fp10.core.model.ObjectUnloadListener;
-   import platform.client.fp10.core.resource.types.MultiframeTextureResource;
+   import platform.client.fp10.core.resource.types.MultiframeImageResource;
    import projects.tanks.client.battlefield.models.tankparts.sfx.shoot.twins.ITwinsShootSFXModelBase;
    import projects.tanks.client.battlefield.models.tankparts.sfx.shoot.twins.TwinsShootSFXCC;
    import projects.tanks.client.battlefield.models.tankparts.sfx.shoot.twins.TwinsShootSFXModelBase;
@@ -36,17 +36,17 @@ package alternativa.tanks.models.weapon.twins
          return _loc2_;
       }
       
-      private static function getPlasmaAnimation(param1:MultiframeTextureResource) : TextureAnimation
+      private static function getPlasmaAnimation(param1:MultiframeImageResource) : TextureAnimation
       {
          return getTextureAnimation(param1,TwinsShotParams.SPRITE_SIZE);
       }
       
-      private static function getExplosionAnimation(param1:MultiframeTextureResource) : TextureAnimation
+      private static function getExplosionAnimation(param1:MultiframeImageResource) : TextureAnimation
       {
          return getTextureAnimation(param1,TwinsShotParams.EXPLOSION_SPRITE_SIZE);
       }
       
-      private static function getTextureAnimation(param1:MultiframeTextureResource, param2:Number) : TextureAnimation
+      private static function getTextureAnimation(param1:MultiframeImageResource, param2:Number) : TextureAnimation
       {
          var _loc3_:TextureAnimation = GraphicsUtils.getTextureAnimationFromResource(materialRegistry,param1);
          _loc3_.material.resolution = param2 / param1.frameWidth;

@@ -1,19 +1,19 @@
 package projects.tanks.client.battlefield.models.ultimate.effects.titan
 {
    import platform.client.fp10.core.resource.types.SoundResource;
-   import platform.client.fp10.core.resource.types.TextureResource;
+   import platform.client.fp10.core.resource.types.ImageResource;
    import projects.tanks.clients.flash.resources.resource.Tanks3DSResource;
    
    public class TitanUltimateCC
    {
       
-      private var _cell:TextureResource;
+      private var _cell:ImageResource;
       
       private var _effectStartSound:SoundResource;
       
       private var _geosphere:Tanks3DSResource;
       
-      public function TitanUltimateCC(param1:TextureResource = null, param2:SoundResource = null, param3:Tanks3DSResource = null)
+      public function TitanUltimateCC(param1:ImageResource = null, param2:SoundResource = null, param3:Tanks3DSResource = null)
       {
          super();
          this._cell = param1;
@@ -21,12 +21,12 @@ package projects.tanks.client.battlefield.models.ultimate.effects.titan
          this._geosphere = param3;
       }
       
-      public function get cell() : TextureResource
+      public function get cell() : ImageResource
       {
          return this._cell;
       }
       
-      public function set cell(param1:TextureResource) : void
+      public function set cell(param1:ImageResource) : void
       {
          this._cell = param1;
       }

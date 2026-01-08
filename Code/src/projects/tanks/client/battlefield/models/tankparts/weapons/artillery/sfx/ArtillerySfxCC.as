@@ -1,8 +1,8 @@
 package projects.tanks.client.battlefield.models.tankparts.weapons.artillery.sfx
 {
-   import platform.client.fp10.core.resource.types.MultiframeTextureResource;
+   import platform.client.fp10.core.resource.types.MultiframeImageResource;
    import platform.client.fp10.core.resource.types.SoundResource;
-   import platform.client.fp10.core.resource.types.TextureResource;
+   import platform.client.fp10.core.resource.types.ImageResource;
    import projects.tanks.client.battlefield.models.tankparts.sfx.lighting.entity.LightingSFXEntity;
    
    public class ArtillerySfxCC
@@ -12,17 +12,17 @@ package projects.tanks.client.battlefield.models.tankparts.weapons.artillery.sfx
       
       private var _explosionSound:SoundResource;
       
-      private var _explosionTexture:MultiframeTextureResource;
+      private var _explosionTexture:MultiframeImageResource;
       
       private var _farShotSound:SoundResource;
       
-      private var _flameTexture:TextureResource;
+      private var _flameTexture:ImageResource;
       
       private var _flyBySound:SoundResource;
       
       private var _lightingSFXEntity:LightingSFXEntity;
       
-      private var _markTexture:TextureResource;
+      private var _markTexture:ImageResource;
       
       private var _reloadSound:SoundResource;
       
@@ -34,13 +34,13 @@ package projects.tanks.client.battlefield.models.tankparts.weapons.artillery.sfx
       
       private var _shot4Sound:SoundResource;
       
-      private var _smokeTexture:MultiframeTextureResource;
+      private var _smokeTexture:MultiframeImageResource;
       
-      private var _streamTexture:TextureResource;
+      private var _streamTexture:ImageResource;
       
-      private var _trailTexture:TextureResource;
+      private var _trailTexture:ImageResource;
       
-      public function ArtillerySfxCC(param1:SoundResource = null, param2:SoundResource = null, param3:MultiframeTextureResource = null, param4:SoundResource = null, param5:TextureResource = null, param6:SoundResource = null, param7:LightingSFXEntity = null, param8:TextureResource = null, param9:SoundResource = null, param10:SoundResource = null, param11:SoundResource = null, param12:SoundResource = null, param13:SoundResource = null, param14:MultiframeTextureResource = null, param15:TextureResource = null, param16:TextureResource = null)
+      public function ArtillerySfxCC(param1:SoundResource = null, param2:SoundResource = null, param3:MultiframeImageResource = null, param4:SoundResource = null, param5:ImageResource = null, param6:SoundResource = null, param7:LightingSFXEntity = null, param8:ImageResource = null, param9:SoundResource = null, param10:SoundResource = null, param11:SoundResource = null, param12:SoundResource = null, param13:SoundResource = null, param14:MultiframeImageResource = null, param15:ImageResource = null, param16:ImageResource = null)
       {
          super();
          this._chargingSound = param1;
@@ -81,12 +81,12 @@ package projects.tanks.client.battlefield.models.tankparts.weapons.artillery.sfx
          this._explosionSound = param1;
       }
       
-      public function get explosionTexture() : MultiframeTextureResource
+      public function get explosionTexture() : MultiframeImageResource
       {
          return this._explosionTexture;
       }
       
-      public function set explosionTexture(param1:MultiframeTextureResource) : void
+      public function set explosionTexture(param1:MultiframeImageResource) : void
       {
          this._explosionTexture = param1;
       }
@@ -101,12 +101,12 @@ package projects.tanks.client.battlefield.models.tankparts.weapons.artillery.sfx
          this._farShotSound = param1;
       }
       
-      public function get flameTexture() : TextureResource
+      public function get flameTexture() : ImageResource
       {
          return this._flameTexture;
       }
       
-      public function set flameTexture(param1:TextureResource) : void
+      public function set flameTexture(param1:ImageResource) : void
       {
          this._flameTexture = param1;
       }
@@ -131,12 +131,12 @@ package projects.tanks.client.battlefield.models.tankparts.weapons.artillery.sfx
          this._lightingSFXEntity = param1;
       }
       
-      public function get markTexture() : TextureResource
+      public function get markTexture() : ImageResource
       {
          return this._markTexture;
       }
       
-      public function set markTexture(param1:TextureResource) : void
+      public function set markTexture(param1:ImageResource) : void
       {
          this._markTexture = param1;
       }
@@ -191,32 +191,32 @@ package projects.tanks.client.battlefield.models.tankparts.weapons.artillery.sfx
          this._shot4Sound = param1;
       }
       
-      public function get smokeTexture() : MultiframeTextureResource
+      public function get smokeTexture() : MultiframeImageResource
       {
          return this._smokeTexture;
       }
       
-      public function set smokeTexture(param1:MultiframeTextureResource) : void
+      public function set smokeTexture(param1:MultiframeImageResource) : void
       {
          this._smokeTexture = param1;
       }
       
-      public function get streamTexture() : TextureResource
+      public function get streamTexture() : ImageResource
       {
          return this._streamTexture;
       }
       
-      public function set streamTexture(param1:TextureResource) : void
+      public function set streamTexture(param1:ImageResource) : void
       {
          this._streamTexture = param1;
       }
       
-      public function get trailTexture() : TextureResource
+      public function get trailTexture() : ImageResource
       {
          return this._trailTexture;
       }
       
-      public function set trailTexture(param1:TextureResource) : void
+      public function set trailTexture(param1:ImageResource) : void
       {
          this._trailTexture = param1;
       }

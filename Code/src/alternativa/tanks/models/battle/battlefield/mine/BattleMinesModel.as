@@ -38,8 +38,8 @@ package alternativa.tanks.models.battle.battlefield.mine
    import flash.utils.Dictionary;
    import platform.client.fp10.core.model.ObjectLoadListener;
    import platform.client.fp10.core.model.ObjectUnloadListener;
-   import platform.client.fp10.core.resource.types.MultiframeTextureResource;
-   import platform.client.fp10.core.resource.types.TextureResource;
+   import platform.client.fp10.core.resource.types.MultiframeImageResource;
+   import platform.client.fp10.core.resource.types.ImageResource;
    import platform.client.fp10.core.type.IGameObject;
    import projects.tanks.client.battlefield.models.battle.battlefield.mine.BattleMine;
    import projects.tanks.client.battlefield.models.battle.battlefield.mine.BattleMinesModelBase;
@@ -159,7 +159,7 @@ package alternativa.tanks.models.battle.battlefield.mine
          }
       }
       
-      private static function getExplosionAnimation(param1:MultiframeTextureResource, param2:int, param3:FrameSize) : TextureAnimation
+      private static function getExplosionAnimation(param1:MultiframeImageResource, param2:int, param3:FrameSize) : TextureAnimation
       {
          var _loc4_:TextureAnimation = GraphicsUtils.getTextureAnimationFromResource(textureMaterialRegistry,param1);
          _loc4_.material.resolution = param2;
@@ -168,7 +168,7 @@ package alternativa.tanks.models.battle.battlefield.mine
          return _loc4_;
       }
       
-      private static function getTextureMaterial(param1:TextureResource) : TextureMaterial
+      private static function getTextureMaterial(param1:ImageResource) : TextureMaterial
       {
          return textureMaterialRegistry.getMaterial(param1.data);
       }

@@ -6,7 +6,7 @@ package alternativa.tanks.models.weapon.shaft
    import flash.display.BitmapData;
    import flash.display.Sprite;
    import flash.utils.Dictionary;
-   import platform.client.fp10.core.resource.types.TextureResource;
+   import platform.client.fp10.core.resource.types.ImageResource;
    
    public class ReticleDisplay extends Sprite
    {
@@ -19,7 +19,7 @@ package alternativa.tanks.models.weapon.shaft
       
       private var laserSpotColor:uint;
       
-      public function ReticleDisplay(param1:TextureResource, param2:uint)
+      public function ReticleDisplay(param1:ImageResource, param2:uint)
       {
          super();
          this.laserSpotColor = param2;
@@ -61,7 +61,7 @@ package alternativa.tanks.models.weapon.shaft
          }
       }
       
-      private function createReticleBitmap(param1:TextureResource) : void
+      private function createReticleBitmap(param1:ImageResource) : void
       {
          var _loc2_:BitmapData = param1.data;
          this._reticle = new Bitmap(_loc2_);

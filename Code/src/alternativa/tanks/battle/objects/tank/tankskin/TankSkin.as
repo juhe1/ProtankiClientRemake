@@ -23,7 +23,7 @@ package alternativa.tanks.battle.objects.tank.tankskin
    import alternativa.utils.TextureMaterialRegistry;
    import flash.geom.ColorTransform;
    import flash.geom.Vector3D;
-   import platform.client.fp10.core.resource.types.TextureResource;
+   import platform.client.fp10.core.resource.types.ImageResource;
    import platform.client.fp10.core.type.IGameObject;
    import projects.tanks.clients.flash.commons.models.coloring.IColoring;
    import projects.tanks.clients.flash.resources.object3ds.IObject3DS;
@@ -83,7 +83,7 @@ package alternativa.tanks.battle.objects.tank.tankskin
       {
          super();
          var _loc4_:HullCommon = HullCommon(param1.adapt(HullCommon));
-         var _loc5_:TextureResource = _loc4_.getDeadColoring();
+         var _loc5_:ImageResource = _loc4_.getDeadColoring();
          var _loc6_:Tanks3DSResource = IObject3DS(param1.adapt(IObject3DS)).getResource3DS();
          this.hullDescriptor = tankPartsRegistry.getHullDescriptor(_loc6_);
          var _loc7_:Tanks3DSResource = IObject3DS(param2.adapt(IObject3DS)).getResource3DS();

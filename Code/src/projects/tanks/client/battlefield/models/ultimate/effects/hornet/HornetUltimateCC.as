@@ -2,7 +2,7 @@ package projects.tanks.client.battlefield.models.ultimate.effects.hornet
 {
    import alternativa.types.Long;
    import platform.client.fp10.core.resource.types.SoundResource;
-   import platform.client.fp10.core.resource.types.TextureResource;
+   import platform.client.fp10.core.resource.types.ImageResource;
    
    public class HornetUltimateCC
    {
@@ -11,9 +11,9 @@ package projects.tanks.client.battlefield.models.ultimate.effects.hornet
       
       private var _effectTimeMs:Long;
       
-      private var _ring:TextureResource;
+      private var _ring:ImageResource;
       
-      public function HornetUltimateCC(param1:SoundResource = null, param2:Long = null, param3:TextureResource = null)
+      public function HornetUltimateCC(param1:SoundResource = null, param2:Long = null, param3:ImageResource = null)
       {
          super();
          this._effectStartSound = param1;
@@ -41,12 +41,12 @@ package projects.tanks.client.battlefield.models.ultimate.effects.hornet
          this._effectTimeMs = param1;
       }
       
-      public function get ring() : TextureResource
+      public function get ring() : ImageResource
       {
          return this._ring;
       }
       
-      public function set ring(param1:TextureResource) : void
+      public function set ring(param1:ImageResource) : void
       {
          this._ring = param1;
       }

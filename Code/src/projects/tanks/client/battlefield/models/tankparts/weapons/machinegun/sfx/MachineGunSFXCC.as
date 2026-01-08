@@ -1,8 +1,8 @@
 package projects.tanks.client.battlefield.models.tankparts.weapons.machinegun.sfx
 {
-   import platform.client.fp10.core.resource.types.MultiframeTextureResource;
+   import platform.client.fp10.core.resource.types.MultiframeImageResource;
    import platform.client.fp10.core.resource.types.SoundResource;
-   import platform.client.fp10.core.resource.types.TextureResource;
+   import platform.client.fp10.core.resource.types.ImageResource;
    import projects.tanks.client.battlefield.models.tankparts.sfx.lighting.entity.LightingSFXEntity;
    
    public class MachineGunSFXCC
@@ -10,13 +10,13 @@ package projects.tanks.client.battlefield.models.tankparts.weapons.machinegun.sf
       
       private var _chainStartSound:SoundResource;
       
-      private var _crumbsTexture:TextureResource;
+      private var _crumbsTexture:ImageResource;
       
-      private var _dustTexture:MultiframeTextureResource;
+      private var _dustTexture:MultiframeImageResource;
       
-      private var _fireAcrossTexture:MultiframeTextureResource;
+      private var _fireAcrossTexture:MultiframeImageResource;
       
-      private var _fireAlongTexture:MultiframeTextureResource;
+      private var _fireAlongTexture:MultiframeImageResource;
       
       private var _hitSound:SoundResource;
       
@@ -28,19 +28,19 @@ package projects.tanks.client.battlefield.models.tankparts.weapons.machinegun.sf
       
       private var _shootSound:SoundResource;
       
-      private var _smokeTexture:MultiframeTextureResource;
+      private var _smokeTexture:MultiframeImageResource;
       
-      private var _sparklesTexture:MultiframeTextureResource;
+      private var _sparklesTexture:MultiframeImageResource;
       
       private var _tankHitSound:SoundResource;
       
-      private var _tankSparklesTexture:MultiframeTextureResource;
+      private var _tankSparklesTexture:MultiframeImageResource;
       
-      private var _tracerTexture:TextureResource;
+      private var _tracerTexture:ImageResource;
       
       private var _turbineStartSound:SoundResource;
       
-      public function MachineGunSFXCC(param1:SoundResource = null, param2:TextureResource = null, param3:MultiframeTextureResource = null, param4:MultiframeTextureResource = null, param5:MultiframeTextureResource = null, param6:SoundResource = null, param7:LightingSFXEntity = null, param8:SoundResource = null, param9:SoundResource = null, param10:SoundResource = null, param11:MultiframeTextureResource = null, param12:MultiframeTextureResource = null, param13:SoundResource = null, param14:MultiframeTextureResource = null, param15:TextureResource = null, param16:SoundResource = null)
+      public function MachineGunSFXCC(param1:SoundResource = null, param2:ImageResource = null, param3:MultiframeImageResource = null, param4:MultiframeImageResource = null, param5:MultiframeImageResource = null, param6:SoundResource = null, param7:LightingSFXEntity = null, param8:SoundResource = null, param9:SoundResource = null, param10:SoundResource = null, param11:MultiframeImageResource = null, param12:MultiframeImageResource = null, param13:SoundResource = null, param14:MultiframeImageResource = null, param15:ImageResource = null, param16:SoundResource = null)
       {
          super();
          this._chainStartSound = param1;
@@ -71,42 +71,42 @@ package projects.tanks.client.battlefield.models.tankparts.weapons.machinegun.sf
          this._chainStartSound = param1;
       }
       
-      public function get crumbsTexture() : TextureResource
+      public function get crumbsTexture() : ImageResource
       {
          return this._crumbsTexture;
       }
       
-      public function set crumbsTexture(param1:TextureResource) : void
+      public function set crumbsTexture(param1:ImageResource) : void
       {
          this._crumbsTexture = param1;
       }
       
-      public function get dustTexture() : MultiframeTextureResource
+      public function get dustTexture() : MultiframeImageResource
       {
          return this._dustTexture;
       }
       
-      public function set dustTexture(param1:MultiframeTextureResource) : void
+      public function set dustTexture(param1:MultiframeImageResource) : void
       {
          this._dustTexture = param1;
       }
       
-      public function get fireAcrossTexture() : MultiframeTextureResource
+      public function get fireAcrossTexture() : MultiframeImageResource
       {
          return this._fireAcrossTexture;
       }
       
-      public function set fireAcrossTexture(param1:MultiframeTextureResource) : void
+      public function set fireAcrossTexture(param1:MultiframeImageResource) : void
       {
          this._fireAcrossTexture = param1;
       }
       
-      public function get fireAlongTexture() : MultiframeTextureResource
+      public function get fireAlongTexture() : MultiframeImageResource
       {
          return this._fireAlongTexture;
       }
       
-      public function set fireAlongTexture(param1:MultiframeTextureResource) : void
+      public function set fireAlongTexture(param1:MultiframeImageResource) : void
       {
          this._fireAlongTexture = param1;
       }
@@ -161,22 +161,22 @@ package projects.tanks.client.battlefield.models.tankparts.weapons.machinegun.sf
          this._shootSound = param1;
       }
       
-      public function get smokeTexture() : MultiframeTextureResource
+      public function get smokeTexture() : MultiframeImageResource
       {
          return this._smokeTexture;
       }
       
-      public function set smokeTexture(param1:MultiframeTextureResource) : void
+      public function set smokeTexture(param1:MultiframeImageResource) : void
       {
          this._smokeTexture = param1;
       }
       
-      public function get sparklesTexture() : MultiframeTextureResource
+      public function get sparklesTexture() : MultiframeImageResource
       {
          return this._sparklesTexture;
       }
       
-      public function set sparklesTexture(param1:MultiframeTextureResource) : void
+      public function set sparklesTexture(param1:MultiframeImageResource) : void
       {
          this._sparklesTexture = param1;
       }
@@ -191,22 +191,22 @@ package projects.tanks.client.battlefield.models.tankparts.weapons.machinegun.sf
          this._tankHitSound = param1;
       }
       
-      public function get tankSparklesTexture() : MultiframeTextureResource
+      public function get tankSparklesTexture() : MultiframeImageResource
       {
          return this._tankSparklesTexture;
       }
       
-      public function set tankSparklesTexture(param1:MultiframeTextureResource) : void
+      public function set tankSparklesTexture(param1:MultiframeImageResource) : void
       {
          this._tankSparklesTexture = param1;
       }
       
-      public function get tracerTexture() : TextureResource
+      public function get tracerTexture() : ImageResource
       {
          return this._tracerTexture;
       }
       
-      public function set tracerTexture(param1:TextureResource) : void
+      public function set tracerTexture(param1:ImageResource) : void
       {
          this._tracerTexture = param1;
       }

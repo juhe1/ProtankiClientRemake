@@ -10,8 +10,8 @@ package alternativa.tanks.models.weapon.smoky.sfx
    import alternativa.tanks.utils.GraphicsUtils;
    import platform.client.fp10.core.model.ObjectLoadListener;
    import platform.client.fp10.core.model.ObjectUnloadListener;
-   import platform.client.fp10.core.resource.types.MultiframeTextureResource;
-   import platform.client.fp10.core.resource.types.TextureResource;
+   import platform.client.fp10.core.resource.types.MultiframeImageResource;
+   import platform.client.fp10.core.resource.types.ImageResource;
    import projects.tanks.client.battlefield.models.tankparts.sfx.shoot.smoky.ISmokyShootSFXModelBase;
    import projects.tanks.client.battlefield.models.tankparts.sfx.shoot.smoky.SmokyShootSFXCC;
    import projects.tanks.client.battlefield.models.tankparts.sfx.shoot.smoky.SmokyShootSFXModelBase;
@@ -31,14 +31,14 @@ package alternativa.tanks.models.weapon.smoky.sfx
          super();
       }
       
-      private static function getMuzzleFlashMaterial(param1:TextureResource) : TextureMaterial
+      private static function getMuzzleFlashMaterial(param1:ImageResource) : TextureMaterial
       {
          var _loc2_:TextureMaterial = materialRegistry.getMaterial(param1.data);
          _loc2_.resolution = SmokyEffectsParams.PLANE_WIDTH / param1.data.height;
          return _loc2_;
       }
       
-      private static function createAnimation(param1:MultiframeTextureResource, param2:int) : TextureAnimation
+      private static function createAnimation(param1:MultiframeImageResource, param2:int) : TextureAnimation
       {
          var _loc3_:TextureAnimation = GraphicsUtils.getTextureAnimationFromResource(materialRegistry,param1);
          _loc3_.material.resolution = param2 / param1.frameWidth;

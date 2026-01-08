@@ -3,7 +3,7 @@ package alternativa.tanks.models.controlpoints.sfx
    import alternativa.engine3d.materials.TextureMaterial;
    import alternativa.osgi.service.console.variables.ConsoleVarFloat;
    import alternativa.utils.TextureMaterialRegistry;
-   import platform.client.fp10.core.resource.types.TextureResource;
+   import platform.client.fp10.core.resource.types.ImageResource;
    import projects.tanks.client.battlefield.models.battle.cp.resources.DominationResources;
    import projects.tanks.client.battleservice.model.battle.team.BattleTeam;
    
@@ -31,7 +31,7 @@ package alternativa.tanks.models.controlpoints.sfx
          this.redBeamProperties = createBeamProperties(param1,param2.redRay,param2.redRayTip,50,100,1,1,1);
       }
       
-      private static function createBeamProperties(param1:TextureMaterialRegistry, param2:TextureResource, param3:TextureResource, param4:Number, param5:Number, param6:Number, param7:Number, param8:Number) : BeamProperties
+      private static function createBeamProperties(param1:TextureMaterialRegistry, param2:ImageResource, param3:ImageResource, param4:Number, param5:Number, param6:Number, param7:Number, param8:Number) : BeamProperties
       {
          var _loc9_:TextureMaterial = param1.getMaterial(param2.data);
          _loc9_.repeat = true;

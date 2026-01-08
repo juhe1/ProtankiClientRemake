@@ -10,7 +10,7 @@ package alternativa.tanks.models.weapon.freeze
    import alternativa.tanks.utils.GraphicsUtils;
    import platform.client.fp10.core.model.ObjectLoadListener;
    import platform.client.fp10.core.model.ObjectUnloadListener;
-   import platform.client.fp10.core.resource.types.MultiframeTextureResource;
+   import platform.client.fp10.core.resource.types.MultiframeImageResource;
    import projects.tanks.client.battlefield.models.tankparts.sfx.freeze.FreezeSFXCC;
    import projects.tanks.client.battlefield.models.tankparts.sfx.freeze.FreezeSFXModelBase;
    import projects.tanks.client.battlefield.models.tankparts.sfx.freeze.IFreezeSFXModelBase;
@@ -47,14 +47,14 @@ package alternativa.tanks.models.weapon.freeze
          putData(StreamWeaponSFXData,_loc2_);
       }
       
-      private function getParticleAnimation(param1:MultiframeTextureResource) : TextureAnimation
+      private function getParticleAnimation(param1:MultiframeImageResource) : TextureAnimation
       {
          var _loc2_:TextureAnimation = GraphicsUtils.getTextureAnimationFromResource(materialRegistry,param1);
          _loc2_.material.resolution = FreezeEffectsParams.PARTICLE_END_SIZE / param1.frameWidth;
          return _loc2_;
       }
       
-      private function getMuzzlePlaneAnimation(param1:MultiframeTextureResource) : TextureAnimation
+      private function getMuzzlePlaneAnimation(param1:MultiframeImageResource) : TextureAnimation
       {
          var _loc2_:TextureAnimation = GraphicsUtils.getTextureAnimationFromResource(materialRegistry,param1);
          _loc2_.material.resolution = FreezeEffectsParams.PLANE_LENGTH / param1.frameWidth;

@@ -1,28 +1,28 @@
 package projects.tanks.client.battlefield.models.tankparts.sfx.shoot.thunder
 {
-   import platform.client.fp10.core.resource.types.MultiframeTextureResource;
+   import platform.client.fp10.core.resource.types.MultiframeImageResource;
    import platform.client.fp10.core.resource.types.SoundResource;
-   import platform.client.fp10.core.resource.types.TextureResource;
+   import platform.client.fp10.core.resource.types.ImageResource;
    import projects.tanks.client.battlefield.models.tankparts.sfx.lighting.entity.LightingSFXEntity;
    
    public class ThunderShootSFXCC
    {
       
-      private var _explosionMarkTexture:TextureResource;
+      private var _explosionMarkTexture:ImageResource;
       
       private var _explosionSize:Number;
       
       private var _explosionSound:SoundResource;
       
-      private var _explosionTexture:MultiframeTextureResource;
+      private var _explosionTexture:MultiframeImageResource;
       
       private var _lightingSFXEntity:LightingSFXEntity;
       
       private var _shotSound:SoundResource;
       
-      private var _shotTexture:TextureResource;
+      private var _shotTexture:ImageResource;
       
-      public function ThunderShootSFXCC(param1:TextureResource = null, param2:Number = 0, param3:SoundResource = null, param4:MultiframeTextureResource = null, param5:LightingSFXEntity = null, param6:SoundResource = null, param7:TextureResource = null)
+      public function ThunderShootSFXCC(param1:ImageResource = null, param2:Number = 0, param3:SoundResource = null, param4:MultiframeImageResource = null, param5:LightingSFXEntity = null, param6:SoundResource = null, param7:ImageResource = null)
       {
          super();
          this._explosionMarkTexture = param1;
@@ -34,12 +34,12 @@ package projects.tanks.client.battlefield.models.tankparts.sfx.shoot.thunder
          this._shotTexture = param7;
       }
       
-      public function get explosionMarkTexture() : TextureResource
+      public function get explosionMarkTexture() : ImageResource
       {
          return this._explosionMarkTexture;
       }
       
-      public function set explosionMarkTexture(param1:TextureResource) : void
+      public function set explosionMarkTexture(param1:ImageResource) : void
       {
          this._explosionMarkTexture = param1;
       }
@@ -64,12 +64,12 @@ package projects.tanks.client.battlefield.models.tankparts.sfx.shoot.thunder
          this._explosionSound = param1;
       }
       
-      public function get explosionTexture() : MultiframeTextureResource
+      public function get explosionTexture() : MultiframeImageResource
       {
          return this._explosionTexture;
       }
       
-      public function set explosionTexture(param1:MultiframeTextureResource) : void
+      public function set explosionTexture(param1:MultiframeImageResource) : void
       {
          this._explosionTexture = param1;
       }
@@ -94,12 +94,12 @@ package projects.tanks.client.battlefield.models.tankparts.sfx.shoot.thunder
          this._shotSound = param1;
       }
       
-      public function get shotTexture() : TextureResource
+      public function get shotTexture() : ImageResource
       {
          return this._shotTexture;
       }
       
-      public function set shotTexture(param1:TextureResource) : void
+      public function set shotTexture(param1:ImageResource) : void
       {
          this._shotTexture = param1;
       }

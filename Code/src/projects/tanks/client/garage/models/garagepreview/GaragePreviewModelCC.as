@@ -18,9 +18,9 @@ package projects.tanks.client.garage.models.garagepreview
       
       private var _hasBatteries:Boolean;
       
-      private var _skyboxFrontSide:TextureResource;
+      private var _skyboxFrontSide:ImageResource;
       
-      public function GaragePreviewModelCC(param1:Number = 0, param2:Number = 0, param3:Number = 0, param4:Number = 0, param5:Tanks3DSResource = null, param6:Boolean = false, param7:TextureResource = null)
+      public function GaragePreviewModelCC(param1:Number = 0, param2:Number = 0, param3:Number = 0, param4:Number = 0, param5:Tanks3DSResource = null, param6:Boolean = false, param7:ImageResource = null)
       {
          super();
          this._cameraAltitude = param1;
@@ -92,12 +92,12 @@ package projects.tanks.client.garage.models.garagepreview
          this._hasBatteries = param1;
       }
       
-      public function get skyboxFrontSide() : TextureResource
+      public function get skyboxFrontSide() : ImageResource
       {
          return this._skyboxFrontSide;
       }
       
-      public function set skyboxFrontSide(param1:TextureResource) : void
+      public function set skyboxFrontSide(param1:ImageResource) : void
       {
          this._skyboxFrontSide = param1;
       }

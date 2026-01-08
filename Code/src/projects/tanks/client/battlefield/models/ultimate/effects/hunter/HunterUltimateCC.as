@@ -1,20 +1,20 @@
 package projects.tanks.client.battlefield.models.ultimate.effects.hunter
 {
    import platform.client.fp10.core.resource.types.SoundResource;
-   import platform.client.fp10.core.resource.types.TextureResource;
+   import platform.client.fp10.core.resource.types.ImageResource;
    
    public class HunterUltimateCC
    {
       
       private var _effectStartSound:SoundResource;
       
-      private var _electro:TextureResource;
+      private var _electro:ImageResource;
       
-      private var _energy:TextureResource;
+      private var _energy:ImageResource;
       
-      private var _lightning:TextureResource;
+      private var _lightning:ImageResource;
       
-      public function HunterUltimateCC(param1:SoundResource = null, param2:TextureResource = null, param3:TextureResource = null, param4:TextureResource = null)
+      public function HunterUltimateCC(param1:SoundResource = null, param2:ImageResource = null, param3:ImageResource = null, param4:ImageResource = null)
       {
          super();
          this._effectStartSound = param1;
@@ -33,32 +33,32 @@ package projects.tanks.client.battlefield.models.ultimate.effects.hunter
          this._effectStartSound = param1;
       }
       
-      public function get electro() : TextureResource
+      public function get electro() : ImageResource
       {
          return this._electro;
       }
       
-      public function set electro(param1:TextureResource) : void
+      public function set electro(param1:ImageResource) : void
       {
          this._electro = param1;
       }
       
-      public function get energy() : TextureResource
+      public function get energy() : ImageResource
       {
          return this._energy;
       }
       
-      public function set energy(param1:TextureResource) : void
+      public function set energy(param1:ImageResource) : void
       {
          this._energy = param1;
       }
       
-      public function get lightning() : TextureResource
+      public function get lightning() : ImageResource
       {
          return this._lightning;
       }
       
-      public function set lightning(param1:TextureResource) : void
+      public function set lightning(param1:ImageResource) : void
       {
          this._lightning = param1;
       }

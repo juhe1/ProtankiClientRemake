@@ -1,16 +1,16 @@
 package projects.tanks.client.battlefield.models.bonus.bonus.battlebonuses.crystal
 {
    import platform.client.fp10.core.resource.types.SoundResource;
-   import platform.client.fp10.core.resource.types.TextureResource;
+   import platform.client.fp10.core.resource.types.ImageResource;
    
    public class BattleGoldBonusCC
    {
       
       private var _sound:SoundResource;
       
-      private var _sprite:TextureResource;
+      private var _sprite:ImageResource;
       
-      public function BattleGoldBonusCC(param1:SoundResource = null, param2:TextureResource = null)
+      public function BattleGoldBonusCC(param1:SoundResource = null, param2:ImageResource = null)
       {
          super();
          this._sound = param1;
@@ -27,12 +27,12 @@ package projects.tanks.client.battlefield.models.bonus.bonus.battlebonuses.cryst
          this._sound = param1;
       }
       
-      public function get sprite() : TextureResource
+      public function get sprite() : ImageResource
       {
          return this._sprite;
       }
       
-      public function set sprite(param1:TextureResource) : void
+      public function set sprite(param1:ImageResource) : void
       {
          this._sprite = param1;
       }

@@ -1,7 +1,7 @@
 package projects.tanks.client.battlefield.models.battle.cp.resources
 {
    import platform.client.fp10.core.resource.types.ImageResource;
-   import platform.client.fp10.core.resource.types.TextureResource;
+   import platform.client.fp10.core.resource.types.ImageResource;
    import projects.tanks.clients.flash.resources.resource.Tanks3DSResource;
    
    public class DominationResources
@@ -11,27 +11,27 @@ package projects.tanks.client.battlefield.models.battle.cp.resources
       
       private var _blueCircle:ImageResource;
       
-      private var _bluePedestalTexture:TextureResource;
+      private var _bluePedestalTexture:ImageResource;
       
-      private var _blueRay:TextureResource;
+      private var _blueRay:ImageResource;
       
-      private var _blueRayTip:TextureResource;
+      private var _blueRayTip:ImageResource;
       
       private var _neutralCircle:ImageResource;
       
-      private var _neutralPedestalTexture:TextureResource;
+      private var _neutralPedestalTexture:ImageResource;
       
       private var _pedestal:Tanks3DSResource;
       
       private var _redCircle:ImageResource;
       
-      private var _redPedestalTexture:TextureResource;
+      private var _redPedestalTexture:ImageResource;
       
-      private var _redRay:TextureResource;
+      private var _redRay:ImageResource;
       
-      private var _redRayTip:TextureResource;
+      private var _redRayTip:ImageResource;
       
-      public function DominationResources(param1:ImageResource = null, param2:ImageResource = null, param3:TextureResource = null, param4:TextureResource = null, param5:TextureResource = null, param6:ImageResource = null, param7:TextureResource = null, param8:Tanks3DSResource = null, param9:ImageResource = null, param10:TextureResource = null, param11:TextureResource = null, param12:TextureResource = null)
+      public function DominationResources(param1:ImageResource = null, param2:ImageResource = null, param3:ImageResource = null, param4:ImageResource = null, param5:ImageResource = null, param6:ImageResource = null, param7:ImageResource = null, param8:Tanks3DSResource = null, param9:ImageResource = null, param10:ImageResource = null, param11:ImageResource = null, param12:ImageResource = null)
       {
          super();
          this._bigLetters = param1;
@@ -68,32 +68,32 @@ package projects.tanks.client.battlefield.models.battle.cp.resources
          this._blueCircle = param1;
       }
       
-      public function get bluePedestalTexture() : TextureResource
+      public function get bluePedestalTexture() : ImageResource
       {
          return this._bluePedestalTexture;
       }
       
-      public function set bluePedestalTexture(param1:TextureResource) : void
+      public function set bluePedestalTexture(param1:ImageResource) : void
       {
          this._bluePedestalTexture = param1;
       }
       
-      public function get blueRay() : TextureResource
+      public function get blueRay() : ImageResource
       {
          return this._blueRay;
       }
       
-      public function set blueRay(param1:TextureResource) : void
+      public function set blueRay(param1:ImageResource) : void
       {
          this._blueRay = param1;
       }
       
-      public function get blueRayTip() : TextureResource
+      public function get blueRayTip() : ImageResource
       {
          return this._blueRayTip;
       }
       
-      public function set blueRayTip(param1:TextureResource) : void
+      public function set blueRayTip(param1:ImageResource) : void
       {
          this._blueRayTip = param1;
       }
@@ -108,12 +108,12 @@ package projects.tanks.client.battlefield.models.battle.cp.resources
          this._neutralCircle = param1;
       }
       
-      public function get neutralPedestalTexture() : TextureResource
+      public function get neutralPedestalTexture() : ImageResource
       {
          return this._neutralPedestalTexture;
       }
       
-      public function set neutralPedestalTexture(param1:TextureResource) : void
+      public function set neutralPedestalTexture(param1:ImageResource) : void
       {
          this._neutralPedestalTexture = param1;
       }
@@ -138,32 +138,32 @@ package projects.tanks.client.battlefield.models.battle.cp.resources
          this._redCircle = param1;
       }
       
-      public function get redPedestalTexture() : TextureResource
+      public function get redPedestalTexture() : ImageResource
       {
          return this._redPedestalTexture;
       }
       
-      public function set redPedestalTexture(param1:TextureResource) : void
+      public function set redPedestalTexture(param1:ImageResource) : void
       {
          this._redPedestalTexture = param1;
       }
       
-      public function get redRay() : TextureResource
+      public function get redRay() : ImageResource
       {
          return this._redRay;
       }
       
-      public function set redRay(param1:TextureResource) : void
+      public function set redRay(param1:ImageResource) : void
       {
          this._redRay = param1;
       }
       
-      public function get redRayTip() : TextureResource
+      public function get redRayTip() : ImageResource
       {
          return this._redRayTip;
       }
       
-      public function set redRayTip(param1:TextureResource) : void
+      public function set redRayTip(param1:ImageResource) : void
       {
          this._redRayTip = param1;
       }

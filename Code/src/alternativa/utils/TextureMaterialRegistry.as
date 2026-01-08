@@ -5,15 +5,15 @@ package alternativa.utils
    import alternativa.tanks.materials.PaintMaterial;
    import alternativa.types.Long;
    import flash.display.BitmapData;
-   import platform.client.fp10.core.resource.types.MultiframeTextureResource;
-   import platform.client.fp10.core.resource.types.TextureResource;
+   import platform.client.fp10.core.resource.types.MultiframeImageResource;
+   import platform.client.fp10.core.resource.types.ImageResource;
    
    public interface TextureMaterialRegistry
    {
       
-      function getAnimatedPaint(param1:MultiframeTextureResource, param2:BitmapData, param3:BitmapData, param4:Long) : AnimatedPaintMaterial;
+      function getAnimatedPaint(param1:MultiframeImageResource, param2:BitmapData, param3:BitmapData, param4:Long) : AnimatedPaintMaterial;
       
-      function getPaint(param1:TextureResource, param2:BitmapData, param3:BitmapData, param4:Long) : PaintMaterial;
+      function getPaint(param1:ImageResource, param2:BitmapData, param3:BitmapData, param4:Long) : PaintMaterial;
       
       function getMaterial(param1:BitmapData, param2:Boolean = true) : TextureMaterial;
       

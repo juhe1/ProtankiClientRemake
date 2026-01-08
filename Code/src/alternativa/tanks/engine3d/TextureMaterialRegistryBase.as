@@ -10,8 +10,8 @@ package alternativa.tanks.engine3d
    import alternativa.utils.clearDictionary;
    import flash.display.BitmapData;
    import flash.utils.Dictionary;
-   import platform.client.fp10.core.resource.types.MultiframeTextureResource;
-   import platform.client.fp10.core.resource.types.TextureResource;
+   import platform.client.fp10.core.resource.types.MultiframeImageResource;
+   import platform.client.fp10.core.resource.types.ImageResource;
    
    public class TextureMaterialRegistryBase implements TextureMaterialRegistry
    {
@@ -42,7 +42,7 @@ package alternativa.tanks.engine3d
          return this.materialStat;
       }
       
-      public function getAnimatedPaint(param1:MultiframeTextureResource, param2:BitmapData, param3:BitmapData, param4:Long) : AnimatedPaintMaterial
+      public function getAnimatedPaint(param1:MultiframeImageResource, param2:BitmapData, param3:BitmapData, param4:Long) : AnimatedPaintMaterial
       {
          var _loc9_:MaterialEntry = null;
          ++this.materialStat.requestCount;
@@ -63,7 +63,7 @@ package alternativa.tanks.engine3d
          return _loc8_;
       }
       
-      public function getPaint(param1:TextureResource, param2:BitmapData, param3:BitmapData, param4:Long) : PaintMaterial
+      public function getPaint(param1:ImageResource, param2:BitmapData, param3:BitmapData, param4:Long) : PaintMaterial
       {
          var _loc7_:MaterialEntry = null;
          ++this.materialStat.requestCount;

@@ -6,8 +6,8 @@ package alternativa.tanks.models.weapon.shotgun.sfx
    import alternativa.tanks.sfx.LightAnimation;
    import alternativa.tanks.utils.GraphicsUtils;
    import flash.media.Sound;
-   import platform.client.fp10.core.resource.types.MultiframeTextureResource;
-   import platform.client.fp10.core.resource.types.TextureResource;
+   import platform.client.fp10.core.resource.types.MultiframeImageResource;
+   import platform.client.fp10.core.resource.types.ImageResource;
    import platform.client.fp10.core.type.AutoClosable;
    import projects.tanks.client.battlefield.models.tankparts.weapons.shotgun.sfx.ShotgunSFXCC;
    
@@ -39,7 +39,7 @@ package alternativa.tanks.models.weapon.shotgun.sfx
       
       public function ShotgunSFXData(param1:ShotgunSFXCC, param2:LightAnimation)
       {
-         var _loc3_:TextureResource = null;
+         var _loc3_:ImageResource = null;
          var _loc4_:TextureMaterial = null;
          super();
          this.shotSound = param1.shotSound.sound;
@@ -59,12 +59,12 @@ package alternativa.tanks.models.weapon.shotgun.sfx
          this.shotLightAnimation = param2;
       }
       
-      private function getTextureMaterial(param1:TextureResource) : TextureMaterial
+      private function getTextureMaterial(param1:ImageResource) : TextureMaterial
       {
          return materialRegistry.getMaterial(param1.data);
       }
       
-      private function getFilteredTextureAnimation(param1:MultiframeTextureResource) : TextureAnimation
+      private function getFilteredTextureAnimation(param1:MultiframeImageResource) : TextureAnimation
       {
          return GraphicsUtils.getTextureAnimationFromResource(materialRegistry,param1);
       }
