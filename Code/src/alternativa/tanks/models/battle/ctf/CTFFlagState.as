@@ -9,8 +9,6 @@ package alternativa.tanks.models.battle.ctf
       
       public static const CARRIED:CTFFlagState = new CTFFlagState(2,"CARRIED");
       
-      public static const EXILED:CTFFlagState = new CTFFlagState(3,"EXILED");
-      
       private var _value:int;
       
       private var _stringValue:String;

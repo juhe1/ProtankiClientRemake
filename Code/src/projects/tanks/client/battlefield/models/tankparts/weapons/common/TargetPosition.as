@@ -6,6 +6,8 @@ package projects.tanks.client.battlefield.models.tankparts.weapons.common
    public class TargetPosition
    {
       
+      private var _localHitPoint:Vector3d;
+
       private var _orientation:Vector3d;
       
       private var _position:Vector3d;
@@ -14,13 +16,24 @@ package projects.tanks.client.battlefield.models.tankparts.weapons.common
       
       private var _turretAngle:Number;
       
-      public function TargetPosition(param1:Vector3d = null, param2:Vector3d = null, param3:IGameObject = null, param4:Number = 0)
+      public function TargetPosition(localhitpoint:Vector3d = null, param1:Vector3d = null, param2:Vector3d = null, param3:IGameObject = null, param4:Number = 0)
       {
          super();
+         this._localHitPoint = localhitpoint;
          this._orientation = param1;
          this._position = param2;
          this._target = param3;
          this._turretAngle = param4;
+      }
+
+      public function get localHitPoint() : Vector3d
+      {
+         return this._localHitPoint;
+      }
+      
+      public function set localHitPoint(param1:Vector3d) : void
+      {
+         this._localHitPoint = param1;
       }
       
       public function get orientation() : Vector3d

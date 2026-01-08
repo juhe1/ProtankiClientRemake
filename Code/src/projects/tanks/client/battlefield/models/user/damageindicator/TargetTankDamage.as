@@ -9,9 +9,9 @@ package projects.tanks.client.battlefield.models.user.damageindicator
       
       private var _damageIndicatorType:DamageIndicatorType;
       
-      private var _target:IGameObject;
+      private var _target:String;
       
-      public function TargetTankDamage(param1:Number = 0, param2:DamageIndicatorType = null, param3:IGameObject = null)
+      public function TargetTankDamage(param1:Number = 0, param2:DamageIndicatorType = null, param3:String = null)
       {
          super();
          this._damageAmount = param1;
@@ -39,12 +39,12 @@ package projects.tanks.client.battlefield.models.user.damageindicator
          this._damageIndicatorType = param1;
       }
       
-      public function get target() : IGameObject
+      public function get target() : String
       {
          return this._target;
       }
       
-      public function set target(param1:IGameObject) : void
+      public function set target(param1:String) : void
       {
          this._target = param1;
       }

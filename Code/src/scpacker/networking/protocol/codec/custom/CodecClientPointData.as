@@ -47,7 +47,7 @@ package scpacker.networking.protocol.codec.custom
          _loc2_.position = this.newname_4241__END.decode(param1) as Vector3d;
          _loc2_.score = this.newname_4242__END.decode(param1) as Number;
          _loc2_.scoreChangeRate = this.newname_4243__END.decode(param1) as Number;
-         _loc2_.currentState = this.newname_4244__END.decode(param1) as ControlPointState;
+         _loc2_.state = this.newname_4244__END.decode(param1) as ControlPointState;
          _loc2_.tankIds = this.newname_4245__END.decode(param1) as Vector.<String>;
          return _loc2_;
       }
@@ -64,7 +64,7 @@ package scpacker.networking.protocol.codec.custom
          this.newname_4241__END.encode(param1,_loc3_.position);
          this.newname_4242__END.encode(param1,_loc3_.score);
          this.newname_4243__END.encode(param1,_loc3_.scoreChangeRate);
-         this.newname_4244__END.encode(param1,_loc3_.currentState);
+         this.newname_4244__END.encode(param1,_loc3_.state);
          this.newname_4245__END.encode(param1,_loc3_.tankIds);
          return 4;
       }

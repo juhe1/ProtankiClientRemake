@@ -1,23 +1,26 @@
-package alternativa.tanks.models.battle.ctf
+package alternativa.tanks.models.battle.assault
 {
    import alternativa.tanks.battle.BattleService;
    import alternativa.tanks.battle.LogicUnit;
    
-   public class FlagPickupTimeoutTask implements LogicUnit
+   public class ASFlagPickupTimeoutTask implements LogicUnit
    {
       
       [Inject]
       public static var battleService:BattleService;
       
-      private var callback:ICTFModel;
+      private var callback:IAssaultModel;
       
       private var triggerTime:int;
       
-      public function FlagPickupTimeoutTask(param1:ICTFModel, param2:int)
+      private var flagId:int;
+      
+      public function ASFlagPickupTimeoutTask(param1:int, param2:IAssaultModel, param3:int)
       {
          super();
-         this.callback = param1;
-         this.triggerTime = param2;
+         this.flagId = param1;
+         this.callback = param2;
+         this.triggerTime = param3;
       }
       
       public function runLogic(param1:int, param2:int) : void
@@ -25,7 +28,7 @@ package alternativa.tanks.models.battle.ctf
          if(param1 >= this.triggerTime)
          {
             battleService.getBattleRunner().removeLogicUnit(this);
-            this.callback.onPickupTimeoutPassed();
+            this.callback.onPickupTimeoutPassed(this.flagId);
          }
       }
    }

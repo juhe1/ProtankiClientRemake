@@ -31,7 +31,7 @@ package scpacker.networking.protocol.codec.custom
       {
          var _loc2_:ShellHit = new ShellHit();
          _loc2_.shotId = this.newname_4290__END.decode(param1) as int;
-         _loc2_.state = this.newname_4291__END.decode(param1) as Vector.<ShellState>;
+         _loc2_.states = this.newname_4291__END.decode(param1) as Vector.<ShellState>;
          _loc2_.targets = this.newname_4292__END.decode(param1) as Vector.<TargetPosition>;
          return _loc2_;
       }
@@ -41,7 +41,7 @@ package scpacker.networking.protocol.codec.custom
          var _loc4_:int = 0;
          var _loc3_:ShellHit = ShellHit(param2);
          _loc4_ += this.newname_4290__END.encode(param1,_loc3_.shotId);
-         _loc4_ = _loc4_ + this.newname_4291__END.encode(param1,_loc3_.state);
+         _loc4_ = _loc4_ + this.newname_4291__END.encode(param1,_loc3_.states);
          return _loc4_ + this.newname_4292__END.encode(param1,_loc3_.targets);
       }
    }

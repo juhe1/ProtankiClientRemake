@@ -1,6 +1,5 @@
 package projects.tanks.client.battlefield.models.bonus.battle
 {
-   import alternativa.types.Long;
    import platform.client.fp10.core.type.IGameObject;
    import projects.tanks.client.battlefield.types.Vector3d;
    
@@ -9,13 +8,13 @@ package projects.tanks.client.battlefield.models.bonus.battle
       
       private var _battleBonusObject:IGameObject;
       
-      private var _bonusId:Long;
+      private var _bonusId:String;
       
       private var _lifeTime:int;
       
       private var _spawnPosition:Vector3d;
       
-      public function BonusSpawnData(param1:IGameObject = null, param2:Long = null, param3:int = 0, param4:Vector3d = null)
+      public function BonusSpawnData(param1:IGameObject = null, param2:String = null, param3:int = 0, param4:Vector3d = null)
       {
          super();
          this._battleBonusObject = param1;
@@ -34,12 +33,12 @@ package projects.tanks.client.battlefield.models.bonus.battle
          this._battleBonusObject = param1;
       }
       
-      public function get bonusId() : Long
+      public function get bonusId() : String
       {
          return this._bonusId;
       }
       
-      public function set bonusId(param1:Long) : void
+      public function set bonusId(param1:String) : void
       {
          this._bonusId = param1;
       }

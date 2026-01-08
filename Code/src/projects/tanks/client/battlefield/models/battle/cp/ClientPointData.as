@@ -1,6 +1,5 @@
 package projects.tanks.client.battlefield.models.battle.cp
 {
-   import alternativa.types.Long;
    import projects.tanks.client.battlefield.types.Vector3d;
    
    public class ClientPointData
@@ -18,9 +17,9 @@ package projects.tanks.client.battlefield.models.battle.cp
       
       private var _state:ControlPointState;
       
-      private var _tankIds:Vector.<Long>;
+      private var _tankIds:Vector.<String>;
       
-      public function ClientPointData(param1:int = 0, param2:String = null, param3:Vector3d = null, param4:Number = 0, param5:Number = 0, param6:ControlPointState = null, param7:Vector.<Long> = null)
+      public function ClientPointData(param1:int = 0, param2:String = null, param3:Vector3d = null, param4:Number = 0, param5:Number = 0, param6:ControlPointState = null, param7:Vector.<String> = null)
       {
          super();
          this._id = param1;
@@ -92,12 +91,12 @@ package projects.tanks.client.battlefield.models.battle.cp
          this._state = param1;
       }
       
-      public function get tankIds() : Vector.<Long>
+      public function get tankIds() : Vector.<String>
       {
          return this._tankIds;
       }
       
-      public function set tankIds(param1:Vector.<Long>) : void
+      public function set tankIds(param1:Vector.<String>) : void
       {
          this._tankIds = param1;
       }

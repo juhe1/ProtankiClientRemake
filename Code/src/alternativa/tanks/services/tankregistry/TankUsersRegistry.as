@@ -14,7 +14,7 @@ package alternativa.tanks.services.tankregistry
       
       function getUsers() : Vector.<IGameObject>;
       
-      function getUser(param1:Long) : IGameObject;
+      function getUser(param1:String) : IGameObject;
       
       function getLocalUser() : IGameObject;
       

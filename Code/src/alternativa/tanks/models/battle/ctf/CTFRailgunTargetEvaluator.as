@@ -3,8 +3,6 @@ package alternativa.tanks.models.battle.ctf
    import alternativa.physics.Body;
    import alternativa.tanks.battle.CTFTargetEvaluator;
    import alternativa.tanks.battle.objects.tank.Tank;
-   import alternativa.tanks.models.battle.commonflag.CommonFlag;
-   import alternativa.tanks.models.weapon.FlagTargetEvaluator;
    import alternativa.tanks.models.weapon.shared.RailgunTargetEvaluator;
    import projects.tanks.client.battleservice.model.battle.team.BattleTeam;
    
@@ -13,7 +11,7 @@ package alternativa.tanks.models.battle.ctf
       
       private var localTeamType:BattleTeam;
       
-      private var flagTargetEvaluator:FlagTargetEvaluator = new FlagTargetEvaluator();
+      private var flagCarrier:Body;
       
       public function CTFRailgunTargetEvaluator()
       {
@@ -31,7 +29,7 @@ package alternativa.tanks.models.battle.ctf
          {
             return 0;
          }
-         if(this.flagTargetEvaluator.isCarrier(param1))
+         if(param1 == this.flagCarrier)
          {
             return 10;
          }
@@ -43,9 +41,9 @@ package alternativa.tanks.models.battle.ctf
          this.localTeamType = param1;
       }
       
-      public function setFlagCarrier(param1:CommonFlag, param2:Body) : void
+      public function setFlagCarrier(param1:Body) : void
       {
-         this.flagTargetEvaluator.setFlagCarrier(param1,param2);
+         this.flagCarrier = param1;
       }
       
       public function isFriendly(param1:Body) : Boolean

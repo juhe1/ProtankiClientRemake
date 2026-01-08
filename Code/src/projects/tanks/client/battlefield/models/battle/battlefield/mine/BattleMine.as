@@ -12,13 +12,13 @@ package projects.tanks.client.battlefield.models.battle.battlefield.mine
       
       private var _expirationTaskId:Long;
       
-      private var _mineId:Long;
+      private var _mineId:String;
       
-      private var _ownerId:Long;
+      private var _ownerId:String;
       
       private var _position:Vector3d;
       
-      public function BattleMine(param1:Boolean = false, param2:Boolean = false, param3:Long = null, param4:Long = null, param5:Long = null, param6:Vector3d = null)
+      public function BattleMine(param1:Boolean = false, param2:Boolean = false, param3:Long = null, param4:String = null, param5:String = null, param6:Vector3d = null)
       {
          super();
          this._activated = param1;
@@ -59,22 +59,22 @@ package projects.tanks.client.battlefield.models.battle.battlefield.mine
          this._expirationTaskId = param1;
       }
       
-      public function get mineId() : Long
+      public function get mineId() : String
       {
          return this._mineId;
       }
       
-      public function set mineId(param1:Long) : void
+      public function set mineId(param1:String) : void
       {
          this._mineId = param1;
       }
       
-      public function get ownerId() : Long
+      public function get ownerId() : String
       {
          return this._ownerId;
       }
       
-      public function set ownerId(param1:Long) : void
+      public function set ownerId(param1:String) : void
       {
          this._ownerId = param1;
       }
