@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.tankparts.sfx.isis
 
       protected var server:IsisSFXModelServer;
 
-      private static const modelId:Long = Long.getLong(1337638668,-1951387531);
+      public static const modelId:Long = Long.getLong(1337638668,-1951387531);
 
       public function IsisSFXModelBase()
       {

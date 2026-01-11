@@ -33,6 +33,9 @@ package projects.tanks.clients.flash.commons.osgi
    import projects.tanks.clients.fp10.libraries.tanksservices.service.fullscreen.FullscreenStateService;
    import projects.tanks.clients.flash.commons.services.fullscreen.FullscreenServiceImpl;
    import projects.tanks.clients.flash.commons.services.fullscreen.FullscreenStateServiceImpl;
+   import projects.tanks.clients.flash.commons.services.serverhalt.IServerHaltService;
+   import projects.tanks.clients.flash.commons.services.serverhalt.ServerHaltService;
+   import projects.tanks.clients.flash.commons.services.autobattleenter.AutomaticEnterExitService;
    
    public class Activator implements IBundleActivator
    {
@@ -48,9 +51,9 @@ package projects.tanks.clients.flash.commons.osgi
          param1.registerService(ILobbyLayoutService,_loc2_);
          param1.registerService(LobbyLayoutServiceBase,_loc2_);
          param1.registerService(INotificationService,new NotificationService(_loc2_));
-         //param1.registerService(IServerHaltService,new ServerHaltService());
+         param1.registerService(IServerHaltService,new ServerHaltService());
          param1.registerService(IValidateService,new ValidateService());
-         //param1.registerService(AutomaticEnterExitService,new AutomaticEnterExitService(param1));
+         param1.registerService(AutomaticEnterExitService,new AutomaticEnterExitService(param1));
          param1.registerService(INotificationSoundService,new NotificationSoundService());
          //param1.registerService(IStageQualityService,new StageQualityService(_loc2_));
          //param1.registerService(ITimeUnitService,new TimeUnitService());

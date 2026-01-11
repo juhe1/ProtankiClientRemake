@@ -45,7 +45,8 @@ package alternativa.tanks.models.tank.reloader
       [Obfuscation(rename="false")]
       public function onReload() : void
       {
-         battleEventDispatcher.dispatchEvent(new TankReloadedEvent(object.id));
+         var tankModel:ITankModel = ITankModel(object.adapt(ITankModel));
+         battleEventDispatcher.dispatchEvent(new TankReloadedEvent(tankModel.getUserInfo().name));
       }
    }
 }

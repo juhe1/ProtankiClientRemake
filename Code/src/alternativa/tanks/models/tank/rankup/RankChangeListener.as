@@ -6,6 +6,7 @@ package alternativa.tanks.models.tank.rankup
    import platform.client.fp10.core.type.AutoClosable;
    import platform.client.fp10.core.type.IGameObject;
    import platform.client.fp10.core.type.ISpace;
+   import utils.TankNameGameObjectMapper;
    
    public class RankChangeListener implements BattleUserInfoListener, AutoClosable
    {
@@ -22,9 +23,9 @@ package alternativa.tanks.models.tank.rankup
          battleUserInfoService.addBattleUserInfoListener(this);
       }
       
-      public function userRankChanged(param1:Long, param2:int) : void
+      public function userRankChanged(param1:String, param2:int) : void
       {
-         var _loc3_:IGameObject = this.space.getObject(param1);
+         var _loc3_:IGameObject = TankNameGameObjectMapper.getGameObjectByTankName(param1);
          var _loc4_:ITankRankUpEffectModel = ITankRankUpEffectModel(_loc3_.adapt(ITankRankUpEffectModel));
          _loc4_.showRankUpEffect(param2);
       }
@@ -36,11 +37,11 @@ package alternativa.tanks.models.tank.rankup
          battleUserInfoService.removeBattleUserInfoListener(this);
       }
       
-      public function userInfoChanged(param1:Long, param2:String, param3:int, param4:Boolean) : void
+      public function userInfoChanged(param1:String, param2:String, param3:int, param4:Boolean) : void
       {
       }
       
-      public function userSuspiciousnessChanged(param1:Long, param2:Boolean) : void
+      public function userSuspiciousnessChanged(param1:String, param2:Boolean) : void
       {
       }
    }

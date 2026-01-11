@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.ultimate.common
 
       protected var server:UltimateModelServer;
 
-      private static const modelId:Long = Long.getLong(1502954923,909786804);
+      public static const modelId:Long = Long.getLong(1502954923,909786804);
 
       public function UltimateModelBase()
       {

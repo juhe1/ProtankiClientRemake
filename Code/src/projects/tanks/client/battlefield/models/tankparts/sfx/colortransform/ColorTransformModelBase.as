@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.tankparts.sfx.colortransform
 
       protected var server:ColorTransformModelServer;
 
-      private static const modelId:Long = Long.getLong(1855402535,537941602);
+      public static const modelId:Long = Long.getLong(1855402535,537941602);
 
       public function ColorTransformModelBase()
       {

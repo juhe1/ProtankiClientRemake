@@ -19,10 +19,10 @@ package alternativa.tanks.models.effects.common
          this.impl = param2;
       }
       
-      public function getBonus(param1:Long) : Bonus
+      public function getBonus(param1:String) : Bonus
       {
          var result:Bonus = null;
-         var bonusInstanceId:Long = param1;
+         var bonusInstanceId:String = param1;
          try
          {
             Model.object = this.object;

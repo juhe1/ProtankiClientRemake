@@ -7,11 +7,11 @@ package projects.tanks.client.battleservice
       
       private var _min:int;
       
-      public function Range(param1:int = 0, param2:int = 0)
+      public function Range(__max:int = 0, __min:int = 0)
       {
          super();
-         this._max = param1;
-         this._min = param2;
+         this._max = __max;
+         this._min = __min;
       }
       
       public function get max() : int

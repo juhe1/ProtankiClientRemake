@@ -10,7 +10,6 @@ package alternativa.tanks.models.battle.statistics.targetingmode
    import platform.client.fp10.core.model.impl.Model;
    import platform.client.fp10.core.type.IGameObject;
    import projects.tanks.client.battlefield.models.statistics.targetingmode.ITargetingStatisticsModelBase;
-   import projects.tanks.client.battlefield.models.statistics.targetingmode.TargetingMode;
    import projects.tanks.client.battlefield.models.statistics.targetingmode.TargetingStatisticsModelBase;
    
    [ModelInfo]
@@ -54,10 +53,10 @@ package alternativa.tanks.models.battle.statistics.targetingmode
          switch(param1)
          {
             case TargetingMode.KEYBOARD:
-               server.switchTargetingMode(TargetingMode.KEYBOARD);
+               server.switchTargetingMode(projects.tanks.client.battlefield.models.statistics.targetingmode.TargetingMode.KEYBOARD);
                break;
             case TargetingMode.MOUSE_LOOK:
-               server.switchTargetingMode(TargetingMode.MOUSE_LOOK);
+               server.switchTargetingMode(projects.tanks.client.battlefield.models.statistics.targetingmode.TargetingMode.MOUSE_LOOK);
          }
       }
       

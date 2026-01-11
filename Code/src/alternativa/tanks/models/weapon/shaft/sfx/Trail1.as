@@ -6,6 +6,9 @@ package alternativa.tanks.models.weapon.shaft.sfx
    import alternativa.engine3d.core.Wrapper;
    import alternativa.engine3d.materials.Material;
    import alternativa.engine3d.objects.Mesh;
+   import alternativa.engine3d.alternativa3d;
+
+   use namespace alternativa3d;
    
    internal class Trail1 extends Mesh
    {

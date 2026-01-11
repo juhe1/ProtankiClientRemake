@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.tankparts.weapon.common
 
       protected var server:WeaponCommonModelServer;
 
-      private static const modelId:Long = Long.getLong(288238981,44520685);
+      public static const modelId:Long = Long.getLong(288238981,44520685);
 
       public function WeaponCommonModelBase()
       {

@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.tankparts.armor.simple
 
       protected var server:SimpleArmorModelServer;
 
-      private static const modelId:Long = Long.getLong(1842275960,1015636683);
+      public static const modelId:Long = Long.getLong(1842275960,1015636683);
 
       public function SimpleArmorModelBase()
       {

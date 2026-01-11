@@ -8,7 +8,7 @@ package projects.tanks.client.battlefield.models.tankparts.weapons.shotgun.sfx
    public class ShotgunSFXCC
    {
       
-      private var _explosionMarkTextures:Vector.<TextureResource>;
+      private var _explosionMarkTextures:Vector.<ImageResource>;
       
       private var _lightingSFXEntity:LightingSFXEntity;
       
@@ -28,7 +28,7 @@ package projects.tanks.client.battlefield.models.tankparts.weapons.shotgun.sfx
       
       private var _sparkleTexture:ImageResource;
       
-      public function ShotgunSFXCC(param1:Vector.<TextureResource> = null, param2:LightingSFXEntity = null, param3:SoundResource = null, param4:ImageResource = null, param5:SoundResource = null, param6:MultiframeImageResource = null, param7:MultiframeImageResource = null, param8:SoundResource = null, param9:MultiframeImageResource = null, param10:ImageResource = null)
+      public function ShotgunSFXCC(param1:Vector.<ImageResource> = null, param2:LightingSFXEntity = null, param3:SoundResource = null, param4:ImageResource = null, param5:SoundResource = null, param6:MultiframeImageResource = null, param7:MultiframeImageResource = null, param8:SoundResource = null, param9:MultiframeImageResource = null, param10:ImageResource = null)
       {
          super();
          this._explosionMarkTextures = param1;
@@ -43,12 +43,12 @@ package projects.tanks.client.battlefield.models.tankparts.weapons.shotgun.sfx
          this._sparkleTexture = param10;
       }
       
-      public function get explosionMarkTextures() : Vector.<TextureResource>
+      public function get explosionMarkTextures() : Vector.<ImageResource>
       {
          return this._explosionMarkTextures;
       }
       
-      public function set explosionMarkTextures(param1:Vector.<TextureResource>) : void
+      public function set explosionMarkTextures(param1:Vector.<ImageResource>) : void
       {
          this._explosionMarkTextures = param1;
       }

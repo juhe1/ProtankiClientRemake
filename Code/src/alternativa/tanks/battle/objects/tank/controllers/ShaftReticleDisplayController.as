@@ -7,6 +7,9 @@ package alternativa.tanks.battle.objects.tank.controllers
    import alternativa.tanks.battle.BattleView;
    import alternativa.tanks.camera.GameCamera;
    import alternativa.tanks.models.weapon.shaft.ReticleDisplay;
+   import alternativa.engine3d.alternativa3d;
+
+   use namespace alternativa3d;
    
    public class ShaftReticleDisplayController
    {

@@ -91,6 +91,8 @@ package alternativa.init
    import alternativa.tanks.service.settings.SettingsService;
    import alternativa.tanks.service.socialnetwork.ISocialNetworkPanelService;
    import alternativa.tanks.service.socialnetwork.SocialNetworkPanelService;
+   import projects.tanks.clients.fp10.libraries.tanksservices.service.logging.settings.UserSettingsChangedService;
+   import alternativa.tanks.service.logging.UserSettingsChangedServiceImpl;
    //import projects.tanks.clients.fp10.libraries.tanksservices.service.logging.settings.UserSettingsChangedService;
    
    public class PanelModelActivator implements IBundleActivator
@@ -120,7 +122,7 @@ package alternativa.init
          param1.registerService(CountryService,new CountryServiceImpl());
          param1.registerService(PaymentDisplayService,new PaymentDisplayServiceImpl());
          param1.registerService(UserChangeGameScreenService,new UserChangeGameScreenServiceImpl());
-         //param1.registerService(UserSettingsChangedService,new UserSettingsChangedServiceImpl());
+         param1.registerService(UserSettingsChangedService,new UserSettingsChangedServiceImpl());
          param1.registerService(INotificationGarageCategoriesService,new NotificationGarageCategoriesService());
          //param1.registerService(PaymentWindowService,new PaymentWindowServiceImpl());
          //param1.registerService(ShopNotifierService,new ShopNotifierServiceImpl());
@@ -157,7 +159,7 @@ package alternativa.init
          param1.unregisterService(DailyQuestNotifierService);
          param1.unregisterService(CountryService);
          param1.unregisterService(UserChangeGameScreenService);
-         //param1.unregisterService(UserSettingsChangedService);
+         param1.unregisterService(UserSettingsChangedService);
          //param1.unregisterService(PaymentWindowService);
          param1.unregisterService(KeysBindingService);
          //param1.unregisterService(ProcessedPaymentService);

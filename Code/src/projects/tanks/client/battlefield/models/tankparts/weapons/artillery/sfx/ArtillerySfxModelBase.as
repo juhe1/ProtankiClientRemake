@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.tankparts.weapons.artillery.sfx
 
       protected var server:ArtillerySfxModelServer;
 
-      private static const modelId:Long = Long.getLong(1047583544,1567719516);
+      public static const modelId:Long = Long.getLong(1047583544,1567719516);
 
       public function ArtillerySfxModelBase()
       {

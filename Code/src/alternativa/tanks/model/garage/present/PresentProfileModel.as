@@ -49,7 +49,7 @@ package alternativa.tanks.model.garage.present
       
       private function onDeletePresentClick(param1:GarageWindowEvent) : void
       {
-         PresentGiven(object.adapt(PresentGiven)).removePresent(param1.item.id);
+         PresentGiven(object.adapt(PresentGiven)).removePresent(param1.item.name);
       }
    }
 }

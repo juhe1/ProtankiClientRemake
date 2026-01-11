@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.tankparts.weapons.common.shell
 
       protected var server:ShellWeaponCommunicationModelServer;
 
-      private static const modelId:Long = Long.getLong(288784246,84754739);
+      public static const modelId:Long = Long.getLong(288784246,84754739);
 
       public function ShellWeaponCommunicationModelBase()
       {

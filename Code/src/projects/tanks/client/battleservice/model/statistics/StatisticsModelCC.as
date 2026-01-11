@@ -96,12 +96,12 @@ package projects.tanks.client.battleservice.model.statistics
          this.newname_3255__END = param1;
       }
       
-      public function get mapName() : String
+      public function get battleName() : String
       {
          return this.newname_6975__END;
       }
       
-      public function set mapName(param1:String) : void
+      public function set battleName(param1:String) : void
       {
          this.newname_6975__END = param1;
       }

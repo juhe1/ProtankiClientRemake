@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.battle.jgr.killstreak
 
       protected var server:KillStreakModelServer;
 
-      private static const modelId:Long = Long.getLong(1192985770,445553764);
+      public static const modelId:Long = Long.getLong(1192985770,445553764);
 
       public function KillStreakModelBase()
       {

@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.tankparts.weapon.healing
 
       protected var server:IsisModelServer;
 
-      private static const modelId:Long = Long.getLong(1645686167,1474428435);
+      public static const modelId:Long = Long.getLong(1645686167,1474428435);
 
       public function IsisModelBase()
       {

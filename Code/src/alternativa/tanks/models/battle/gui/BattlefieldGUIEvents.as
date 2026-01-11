@@ -22,13 +22,13 @@ package alternativa.tanks.models.battle.gui
          this.impl = param2;
       }
       
-      public function logUserAction(param1:Long, param2:UserAction, param3:Long) : void
+      public function logUserAction(param1:String, param2:UserAction, param3:String) : void
       {
          var i:int = 0;
          var m:BattlefieldGUI = null;
-         var userId:Long = param1;
+         var userId:String = param1;
          var action:UserAction = param2;
-         var targetUserId:Long = param3;
+         var targetUserId:String = param3;
          try
          {
             Model.object = this.object;
@@ -37,6 +37,29 @@ package alternativa.tanks.models.battle.gui
             {
                m = BattlefieldGUI(this.impl[i]);
                m.logUserAction(userId,action,targetUserId);
+               i++;
+            }
+         }
+         finally
+         {
+            Model.popObject();
+         }
+      }
+
+      public function logUserActionText(param1:String, param2:String) : void
+      {
+         var i:int = 0;
+         var m:BattlefieldGUI = null;
+         var userId:String = param1;
+         var action:String = param2;
+         try
+         {
+            Model.object = this.object;
+            i = 0;
+            while(i < this.impl.length)
+            {
+               m = BattlefieldGUI(this.impl[i]);
+               m.logUserActionText(userId,action);
                i++;
             }
          }
@@ -138,11 +161,11 @@ package alternativa.tanks.models.battle.gui
          }
       }
       
-      public function showUserBattleLogMessage(param1:Long, param2:UserAction) : void
+      public function showUserBattleLogMessage(param1:String, param2:UserAction) : void
       {
          var i:int = 0;
          var m:BattlefieldGUI = null;
-         var userId:Long = param1;
+         var userId:String = param1;
          var action:UserAction = param2;
          try
          {
@@ -205,12 +228,12 @@ package alternativa.tanks.models.battle.gui
          }
       }
       
-      public function logKillAction(param1:Long, param2:Long, param3:DamageType) : void
+      public function logKillAction(param1:String, param2:String, param3:DamageType) : void
       {
          var i:int = 0;
          var m:BattlefieldGUI = null;
-         var killerId:Long = param1;
-         var targetUserId:Long = param2;
+         var killerId:String = param1;
+         var targetUserId:String = param2;
          var damageType:DamageType = param3;
          try
          {

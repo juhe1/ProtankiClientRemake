@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.tankparts.weapon.splash
 
       protected var server:SplashModelServer;
 
-      private static const modelId:Long = Long.getLong(520601216,-983741199);
+      public static const modelId:Long = Long.getLong(520601216,-983741199);
 
       public function SplashModelBase()
       {

@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.battle.gui.group
 
       protected var server:MatchmakingGroupInfoModelServer;
 
-      private static const modelId:Long = Long.getLong(1776691703,-1828525018);
+      public static const modelId:Long = Long.getLong(1776691703,-1828525018);
 
       public function MatchmakingGroupInfoModelBase()
       {

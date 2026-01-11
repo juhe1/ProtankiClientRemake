@@ -10,7 +10,7 @@ package projects.tanks.client.battlefield.models.tankparts.weapons.machinegun
 
       protected var server:MachineGunModelServer;
 
-      private static const modelId:Long = Long.getLong(1635158664,1411719504);
+      public static const modelId:Long = Long.getLong(1635158664,1411719504);
 
       public function MachineGunModelBase()
       {

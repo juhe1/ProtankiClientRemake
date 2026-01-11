@@ -7,7 +7,7 @@ package alternativa.tanks.services.initialeffects
       
       public var receiveTime:int;
       
-      public var userId:Long;
+      public var userId:String;
       
       public var effectId:int;
       
@@ -15,7 +15,7 @@ package alternativa.tanks.services.initialeffects
       
       public var effectLevel:int;
       
-      public function ClientBattleEffect(param1:int, param2:Long, param3:int, param4:int, param5:int)
+      public function ClientBattleEffect(param1:int, param2:String, param3:int, param4:int, param5:int)
       {
          super();
          this.receiveTime = param1;

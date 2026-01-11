@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.statistics.targetingmode
 
       protected var server:TargetingStatisticsModelServer;
 
-      private static const modelId:Long = Long.getLong(2097029315,-1445393748);
+      public static const modelId:Long = Long.getLong(2097029315,-1445393748);
 
       public function TargetingStatisticsModelBase()
       {

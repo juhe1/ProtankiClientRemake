@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.continuebattle
 
       protected var server:ContinueBattleModelServer;
 
-      private static const modelId:Long = Long.getLong(1750173911,1168019295);
+      public static const modelId:Long = Long.getLong(1750173911,1168019295);
 
       public function ContinueBattleModelBase()
       {

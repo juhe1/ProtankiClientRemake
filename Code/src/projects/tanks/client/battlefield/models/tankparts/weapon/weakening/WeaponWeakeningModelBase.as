@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.tankparts.weapon.weakening
 
       protected var server:WeaponWeakeningModelServer;
 
-      private static const modelId:Long = Long.getLong(1486543535,-1939817925);
+      public static const modelId:Long = Long.getLong(1486543535,-1939817925);
 
       public function WeaponWeakeningModelBase()
       {

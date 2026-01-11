@@ -9,7 +9,7 @@ package projects.tanks.client.battleservice.model.battle.tdm
 
       protected var server:BattleTDMModelServer;
 
-      private static const modelId:Long = Long.getLong(815932807,-684891581);
+      public static const modelId:Long = Long.getLong(815932807,-684891581);
 
       public function BattleTDMModelBase()
       {

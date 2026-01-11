@@ -17,7 +17,7 @@ package alternativa.tanks.models.tank
          super();
       }
       
-      public function userInfoChanged(param1:Long, param2:String, param3:int, param4:Boolean) : void
+      public function userInfoChanged(param1:String, param2:String, param3:int, param4:Boolean) : void
       {
          var _loc6_:UserInfo = null;
          var _loc7_:UserTitle = null;
@@ -37,7 +37,7 @@ package alternativa.tanks.models.tank
          }
       }
       
-      public function userSuspiciousnessChanged(param1:Long, param2:Boolean) : void
+      public function userSuspiciousnessChanged(param1:String, param2:Boolean) : void
       {
          var _loc4_:ITankModel = null;
          var _loc5_:UserTitle = null;
@@ -53,7 +53,7 @@ package alternativa.tanks.models.tank
          }
       }
       
-      public function userRankChanged(param1:Long, param2:int) : void
+      public function userRankChanged(param1:String, param2:int) : void
       {
          var _loc4_:UserInfo = null;
          var _loc5_:UserTitle = null;
@@ -70,7 +70,7 @@ package alternativa.tanks.models.tank
          }
       }
       
-      private function getTankModel(param1:Long) : ITankModel
+      private function getTankModel(param1:String) : ITankModel
       {
          var _loc2_:IGameObject = usersRegistry.getUser(param1);
          if(_loc2_ != null)

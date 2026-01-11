@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.tankparts.weapons.shotgun.shot
 
       protected var server:ShotgunShotModelServer;
 
-      private static const modelId:Long = Long.getLong(1366230363,-857495328);
+      public static const modelId:Long = Long.getLong(1366230363,-857495328);
 
       public function ShotgunShotModelBase()
       {

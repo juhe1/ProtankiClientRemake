@@ -28,7 +28,6 @@ package alternativa.tanks.models.battle.assault
    import alternativa.tanks.battle.objects.tank.Tank;
    import alternativa.tanks.battle.scene3d.BattleScene3D;
    import alternativa.tanks.engine3d.TextureAnimation;
-   import alternativa.tanks.engine3d.TextureMaterialRegistry;
    import alternativa.tanks.models.battle.assault.hud.ASKeyPointHudMarker;
    import alternativa.tanks.models.battle.battlefield.BattleModel;
    import alternativa.tanks.models.battle.battlefield.BattleType;
@@ -78,6 +77,8 @@ package alternativa.tanks.models.battle.assault
    import projects.tanks.clients.flash.resources.resource.Tanks3DSResource;
    import projects.tanks.clients.fp10.libraries.TanksLocale;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.battle.IBattleInfoService;
+   import alternativa.tanks.models.battle.gui.gui.statistics.messages.UserAction;
+   import alternativa.utils.TextureMaterialRegistry;
    
    [ModelInfo]
    public class AssaultModel extends AssaultModelBase implements IAssaultModelBase, ObjectLoadPostListener, ObjectUnloadListener, BattleEventListener, BattleModel, IAssaultModel
@@ -207,34 +208,35 @@ package alternativa.tanks.models.battle.assault
       }
       
       [Obfuscation(rename="false")]
-      public function flagTaken(param1:int, param2:Long) : void
+      public function flagTaken(param1:int, userId:String) : void
       {
          var _loc3_:ASFlag = this.flags[param1];
-         var _loc4_:Tank = this.loadedTanks[param2];
+         var _loc4_:Tank = this.loadedTanks[userId];
          if(this.localTank != null && this.localTank == _loc4_)
          {
-            this.setLocalFlagCarrier(_loc3_,param2,_loc4_);
+            this.setLocalFlagCarrier(_loc3_,userId,_loc4_);
          }
          else
          {
-            this.setRemoteFlagCarrier(_loc3_,param2,_loc4_);
+            this.setRemoteFlagCarrier(_loc3_,userId,_loc4_);
          }
          if(this.localTank != null || Boolean(battleInfoService.isSpectatorMode()))
          {
             this.disableFlagPickup(_loc3_);
-            this.showFlagAction(MESSAGE_TAKEN,_loc4_.getUser());
+            this.showFlagAction(MESSAGE_TAKEN,_loc4_.getUserId());
             battleService.soundManager.playSound(this.flagTakeSound);
          }
-         this.guiModel.asShowFlagCarried();
+         //this.guiModel.asShowFlagCarried(); // 2017 code
+         this.guiModel.showUserBattleLogMessage(userId,UserAction.ASL_RED_PLAYER_PICK_FLAG);
       }
       
-      private function setLocalFlagCarrier(param1:ASFlag, param2:Long, param3:Tank) : void
+      private function setLocalFlagCarrier(param1:ASFlag, param2:String, param3:Tank) : void
       {
          param1.setLocalCarrier(param2,param3);
          this.setupEvaluators(param1,param3);
       }
       
-      private function setRemoteFlagCarrier(param1:ASFlag, param2:Long, param3:Tank) : void
+      private function setRemoteFlagCarrier(param1:ASFlag, param2:String, param3:Tank) : void
       {
          param1.setRemoteCarrier(param2,param3);
          this.setupEvaluators(param1,param3);
@@ -253,7 +255,8 @@ package alternativa.tanks.models.battle.assault
       {
          var _loc3_:ASFlag = this.flags[param1];
          this.notifyUserFlagDropped(_loc3_);
-         this.guiModel.asShowFlagDropped();
+         //this.guiModel.asShowFlagDropped();
+         this.guiModel.showBattleLogMessage(UserAction.ASL_RED_PLAYER_DROP_FLAG);
          this.setupAfterFlagDrop(_loc3_);
          _loc3_.dropAt(new Vector3(param2.x,param2.y,param2.z));
       }
@@ -264,7 +267,7 @@ package alternativa.tanks.models.battle.assault
          {
             return;
          }
-         this.showFlagAction(MESSAGE_LOST,param1.carrier.getUser());
+         this.showFlagAction(MESSAGE_LOST,param1.carrier.getUserId());
          battleService.soundManager.playSound(this.flagDropSound);
       }
       
@@ -294,7 +297,7 @@ package alternativa.tanks.models.battle.assault
       }
       
       [Obfuscation(rename="false")]
-      public function returnFlagToBase(param1:int, param2:IGameObject) : void
+      public function returnFlagToBase(param1:int, param2:String) : void
       {
          this.returnFlag(this.flags[param1]);
          this.showFlagReturnMessage(param2);
@@ -316,10 +319,10 @@ package alternativa.tanks.models.battle.assault
                this.enableFlagPickup(param1);
             }
          }
-         this.guiModel.asShowFlagAtBase();
+         //this.guiModel.asShowFlagAtBase();
       }
       
-      private function showFlagReturnMessage(param1:IGameObject) : void
+      private function showFlagReturnMessage(param1:String) : void
       {
          if(Boolean(param1))
          {
@@ -332,7 +335,7 @@ package alternativa.tanks.models.battle.assault
       }
       
       [Obfuscation(rename="false")]
-      public function flagDelivered(param1:int, param2:int, param3:Long) : void
+      public function flagDelivered(param1:int, param2:int, param3:String) : void
       {
          var _loc5_:Tank = null;
          var _loc4_:ASFlag = this.flags[param1];
@@ -342,7 +345,7 @@ package alternativa.tanks.models.battle.assault
             _loc5_ = this.loadedTanks[param3];
             if(_loc5_ != null)
             {
-               this.showFlagAction(MESSAGE_CAPTURED,_loc5_.getUser());
+               this.showFlagAction(MESSAGE_CAPTURED,_loc5_.getUserId());
                battleService.soundManager.playSound(this.winSound);
             }
          }
@@ -384,7 +387,7 @@ package alternativa.tanks.models.battle.assault
       private function onTankLoaded(param1:TankLoadedEvent) : void
       {
          var _loc2_:ASKeyPointHudMarker = null;
-         this.loadedTanks[param1.tank.getUser().id] = param1.tank;
+         this.loadedTanks[param1.tank.getUserId()] = param1.tank;
          if(param1.isLocal)
          {
             for each(_loc2_ in this.keyPointHUDMarkers)
@@ -412,7 +415,7 @@ package alternativa.tanks.models.battle.assault
                this.dropFlag(_loc3_.getId(),BattleUtils.getVector3d(_loc6_));
             }
          }
-         delete this.loadedTanks[_loc2_.getUser().id];
+         delete this.loadedTanks[_loc2_.getUserId()];
       }
       
       private function onTankAddedToBattle(param1:TankAddedToBattleEvent) : void
@@ -420,7 +423,7 @@ package alternativa.tanks.models.battle.assault
          var _loc2_:ASFlag = null;
          for each(_loc2_ in this.flags)
          {
-            if(_loc2_.state == CTFFlagState.CARRIED && _loc2_.carrierId == param1.tank.getUser().id)
+            if(_loc2_.state == CTFFlagState.CARRIED && _loc2_.carrierId == param1.tank.getUserId())
             {
                this.setRemoteFlagCarrier(_loc2_,_loc2_.carrierId,param1.tank);
                this.disableFlagPickup(_loc2_);
@@ -460,11 +463,11 @@ package alternativa.tanks.models.battle.assault
          }
       }
       
-      private function showFlagAction(param1:String, param2:IGameObject) : void
+      private function showFlagAction(param1:String, userId:String) : void
       {
          var _loc3_:FlagMessage = this.getFlagMessageForAction(param1);
-         this.addCTFMessage(_loc3_,param2);
-         this.guiModel.logUserAction(param2.id,_loc3_.text,null);
+         this.addCTFMessage(_loc3_,userId);
+         this.guiModel.logUserActionText(userId,_loc3_.text);
       }
       
       private function getFlagMessageForAction(param1:String) : FlagMessage
@@ -476,9 +479,9 @@ package alternativa.tanks.models.battle.assault
          return this.localTank.teamType == BattleTeam.BLUE ? this.messagesForBlue[param1] : this.messagesForRed[param1];
       }
       
-      private function addCTFMessage(param1:FlagMessage, param2:IGameObject) : void
+      private function addCTFMessage(param1:FlagMessage, userId:String) : void
       {
-         var _loc3_:String = param2 != null ? userInfoService.getUserName(param2.id) : null;
+         var _loc3_:String = userId != null ? userInfoService.getUserName(userId) : null;
          if(Boolean(_loc3_))
          {
             this.guiModel.showBattleMessage(param1.color,_loc3_ + " " + param1.text);
@@ -525,17 +528,17 @@ package alternativa.tanks.models.battle.assault
       {
          this.createPlayerMessages();
          this.createSpectatorMessages();
-         this.flagReturnedMessage = new FlagMessage(localeService.getText(TanksLocale.STRING_CTF_RED_FLAG_RETURNED),MessageColor.YELLOW);
+         this.flagReturnedMessage = new FlagMessage(localeService.getText(TanksLocale.TEXT_CTF_RED_FLAG_RETURNED),MessageColor.YELLOW);
       }
       
       private function createPlayerMessages() : void
       {
          this.messagesForRed = {};
          this.messagesForBlue = {};
-         this.createFlagActionMessages(MESSAGE_TAKEN,TanksLocale.STRING_CTF_GOT_FLAG_NEUTRAL,true);
-         this.createFlagActionMessages(MESSAGE_LOST,TanksLocale.STRING_CTF_LOST_FLAG_NEUTRAL,false);
-         this.createFlagActionMessages(MESSAGE_RETURNED,TanksLocale.STRING_CTF_RETURNED_FLAG_NEUTRAL,false);
-         this.createFlagActionMessages(MESSAGE_CAPTURED,TanksLocale.STRING_CTF_CAPTURED_FLAG_NEUTRAL,true);
+         this.createFlagActionMessages(MESSAGE_TAKEN,TanksLocale.TEXT_CTF_GOT_FLAG_NEUTRAL,true);
+         this.createFlagActionMessages(MESSAGE_LOST,TanksLocale.TEXT_CTF_LOST_FLAG_NEUTRAL,false);
+         this.createFlagActionMessages(MESSAGE_RETURNED,TanksLocale.TEXT_CTF_RETURNED_FLAG_NEUTRAL,false);
+         this.createFlagActionMessages(MESSAGE_CAPTURED,TanksLocale.TEXT_CTF_CAPTURED_FLAG_NEUTRAL,true);
       }
       
       private function createFlagActionMessages(param1:String, param2:String, param3:Boolean) : void
@@ -547,10 +550,10 @@ package alternativa.tanks.models.battle.assault
       private function createSpectatorMessages() : void
       {
          this.spectatorMessages = {};
-         this.spectatorMessages[MESSAGE_TAKEN] = new FlagMessage(localeService.getText(TanksLocale.STRING_CTF_GOT_FLAG_NEUTRAL),MessageColor.RED);
-         this.spectatorMessages[MESSAGE_LOST] = new FlagMessage(localeService.getText(TanksLocale.STRING_CTF_LOST_FLAG_NEUTRAL),MessageColor.RED);
-         this.spectatorMessages[MESSAGE_RETURNED] = new FlagMessage(localeService.getText(TanksLocale.STRING_CTF_RETURNED_FLAG_NEUTRAL),MessageColor.BLUE);
-         this.spectatorMessages[MESSAGE_CAPTURED] = new FlagMessage(localeService.getText(TanksLocale.STRING_CTF_CAPTURED_FLAG_NEUTRAL),MessageColor.RED);
+         this.spectatorMessages[MESSAGE_TAKEN] = new FlagMessage(localeService.getText(TanksLocale.TEXT_CTF_GOT_FLAG_NEUTRAL),MessageColor.RED);
+         this.spectatorMessages[MESSAGE_LOST] = new FlagMessage(localeService.getText(TanksLocale.TEXT_CTF_LOST_FLAG_NEUTRAL),MessageColor.RED);
+         this.spectatorMessages[MESSAGE_RETURNED] = new FlagMessage(localeService.getText(TanksLocale.TEXT_CTF_RETURNED_FLAG_NEUTRAL),MessageColor.BLUE);
+         this.spectatorMessages[MESSAGE_CAPTURED] = new FlagMessage(localeService.getText(TanksLocale.TEXT_CTF_CAPTURED_FLAG_NEUTRAL),MessageColor.RED);
       }
       
       private function onKeyDown(param1:KeyboardEvent) : void
@@ -655,7 +658,7 @@ package alternativa.tanks.models.battle.assault
          if(param2.flagCarrierId != null)
          {
             this.setRemoteFlagCarrier(_loc8_,param2.flagCarrierId,this.loadedTanks[param2.flagCarrierId]);
-            this.guiModel.asShowFlagCarried();
+            //this.guiModel.asShowFlagCarried();
          }
          else if(param2.flagPosition != null)
          {
@@ -664,7 +667,7 @@ package alternativa.tanks.models.battle.assault
             _loc9_.y = param2.flagPosition.y;
             _loc9_.z = param2.flagPosition.z;
             _loc8_.dropAt(_loc9_);
-            this.guiModel.asShowFlagAtBase();
+            //this.guiModel.asShowFlagAtBase();
          }
          _loc7_.addRenderer(_loc8_,1);
          _loc7_.hidableGraphicObjects.add(_loc8_);

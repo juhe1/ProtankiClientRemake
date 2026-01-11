@@ -26,13 +26,13 @@ package alternativa.tanks.models.battle.gui.gui.statistics.field.score
       
       private var teamScoreField:TeamScoreIndicator;
       
-      private var localUserId:Long;
+      private var localUserId:String;
       
       private var layoutManager:LayoutManager;
       
       private var showFund:Boolean;
       
-      public function BattleStatistics(param1:Long, param2:StatisticsModelCC, param3:BattleType, param4:Boolean)
+      public function BattleStatistics(param1:String, param2:StatisticsModelCC, param3:BattleType, param4:Boolean)
       {
          super();
          this.battleType = param3;
@@ -105,7 +105,7 @@ package alternativa.tanks.models.battle.gui.gui.statistics.field.score
          }
       }
       
-      public function updateUserKills(param1:Long, param2:int) : void
+      public function updateUserKills(param1:String, param2:int) : void
       {
          if(this.battleType == BattleType.DM || this.battleType == BattleType.TDM || this.battleType == BattleType.JGR)
          {

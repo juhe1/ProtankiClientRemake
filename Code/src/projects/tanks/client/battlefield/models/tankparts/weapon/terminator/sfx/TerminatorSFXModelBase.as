@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.tankparts.weapon.terminator.sfx
 
       protected var server:TerminatorSFXModelServer;
 
-      private static const modelId:Long = Long.getLong(1446106501,1517097209);
+      public static const modelId:Long = Long.getLong(1446106501,1517097209);
 
       public function TerminatorSFXModelBase()
       {

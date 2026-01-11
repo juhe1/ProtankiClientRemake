@@ -6,15 +6,15 @@ package alternativa.tanks.models.battle.battlefield
    public interface BattleUserInfoService
    {
       
-      function getUserName(param1:Long) : String;
+      function getUserName(param1:String) : String;
       
-      function getUserRank(param1:Long) : int;
+      function getUserRank(param1:String) : int;
       
-      function isUserSuspected(param1:Long) : Boolean;
+      function isUserSuspected(param1:String) : Boolean;
       
-      function getChatModeratorLevel(param1:Long) : ChatModeratorLevel;
+      function getChatModeratorLevel(param1:String) : ChatModeratorLevel;
       
-      function hasUserPremium(param1:Long) : Boolean;
+      function hasUserPremium(param1:String) : Boolean;
       
       function addBattleUserInfoListener(param1:BattleUserInfoListener) : void;
       

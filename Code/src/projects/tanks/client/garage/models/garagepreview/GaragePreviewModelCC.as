@@ -2,6 +2,7 @@ package projects.tanks.client.garage.models.garagepreview
 {
    import projects.tanks.clients.flash.resources.resource.Tanks3DSResource;
    import alternativa.gfx.core.TextureResource;
+   import platform.client.fp10.core.resource.types.ImageResource;
    
    public class GaragePreviewModelCC
    {

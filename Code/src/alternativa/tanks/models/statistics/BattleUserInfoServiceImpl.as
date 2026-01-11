@@ -23,31 +23,31 @@ package alternativa.tanks.models.statistics
          OSGi.getInstance().registerService(BattleUserInfoService,this);
       }
       
-      public function getUserName(param1:Long) : String
+      public function getUserName(param1:String) : String
       {
          var _loc2_:ShortUserInfo = this.getShortUserInfo(param1);
          return _loc2_ != null ? _loc2_.uid : "";
       }
       
-      public function getUserRank(param1:Long) : int
+      public function getUserRank(param1:String) : int
       {
          var _loc2_:ShortUserInfo = this.getShortUserInfo(param1);
          return _loc2_ != null ? _loc2_.rank : -1;
       }
       
-      public function isUserSuspected(param1:Long) : Boolean
+      public function isUserSuspected(param1:String) : Boolean
       {
          var _loc2_:ShortUserInfo = this.getShortUserInfo(param1);
          return _loc2_ != null ? _loc2_.suspicious : false;
       }
       
-      public function getChatModeratorLevel(param1:Long) : ChatModeratorLevel
+      public function getChatModeratorLevel(param1:String) : ChatModeratorLevel
       {
          var _loc2_:ShortUserInfo = this.getShortUserInfo(param1);
          return _loc2_ != null ? _loc2_.chatModeratorLevel : ChatModeratorLevel.NONE;
       }
       
-      public function hasUserPremium(param1:Long) : Boolean
+      public function hasUserPremium(param1:String) : Boolean
       {
          var _loc2_:ShortUserInfo = this.getShortUserInfo(param1);
          return _loc2_ != null ? _loc2_.hasPremium : false;
@@ -80,7 +80,7 @@ package alternativa.tanks.models.statistics
          }
       }
       
-      public function dispatchRankChange(param1:Long, param2:int) : void
+      public function dispatchRankChange(param1:String, param2:int) : void
       {
          var _loc3_:BattleUserInfoListener = null;
          for each(_loc3_ in this.userInfoListeners)
@@ -89,7 +89,7 @@ package alternativa.tanks.models.statistics
          }
       }
       
-      public function dispatchSuspiciousnessChange(param1:Long, param2:Boolean) : void
+      public function dispatchSuspiciousnessChange(param1:String, param2:Boolean) : void
       {
          var _loc3_:BattleUserInfoListener = null;
          for each(_loc3_ in this.userInfoListeners)
@@ -112,7 +112,7 @@ package alternativa.tanks.models.statistics
          return _loc1_.getUsersCount();
       }
       
-      private function getShortUserInfo(param1:Long) : ShortUserInfo
+      private function getShortUserInfo(param1:String) : ShortUserInfo
       {
          var _loc2_:IClientUserInfo = IClientUserInfo(this.battleObject.adapt(IClientUserInfo));
          return _loc2_.getShortUserInfo(param1);

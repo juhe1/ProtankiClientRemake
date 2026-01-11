@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.drone.demoman
 
       protected var server:DroneExplosionModelServer;
 
-      private static const modelId:Long = Long.getLong(327725701,-804290777);
+      public static const modelId:Long = Long.getLong(327725701,-804290777);
 
       public function DroneExplosionModelBase()
       {

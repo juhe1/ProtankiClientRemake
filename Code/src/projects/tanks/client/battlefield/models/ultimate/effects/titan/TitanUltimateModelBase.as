@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.ultimate.effects.titan
 
       protected var server:TitanUltimateModelServer;
 
-      private static const modelId:Long = Long.getLong(1981801083,1760802737);
+      public static const modelId:Long = Long.getLong(1981801083,1760802737);
 
       public function TitanUltimateModelBase()
       {

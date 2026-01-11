@@ -12,7 +12,7 @@ package projects.tanks.client.garage.models.garage.present
          this.model = param1;
       }
 
-      public function removePresent(param1:Long) : void
+      public function removePresent(param1:String) : void
       {
       }
    }

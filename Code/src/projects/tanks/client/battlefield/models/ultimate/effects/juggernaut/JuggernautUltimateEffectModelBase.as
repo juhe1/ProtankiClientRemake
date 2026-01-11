@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.ultimate.effects.juggernaut
 
       protected var server:JuggernautUltimateEffectModelServer;
 
-      private static const modelId:Long = Long.getLong(2082898043,-1742089564);
+      public static const modelId:Long = Long.getLong(2082898043,-1742089564);
 
       public function JuggernautUltimateEffectModelBase()
       {

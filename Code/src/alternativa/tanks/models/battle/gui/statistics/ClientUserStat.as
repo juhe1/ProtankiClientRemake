@@ -50,7 +50,7 @@ package alternativa.tanks.models.battle.gui.statistics
          this._score = param1.score;
       }
       
-      public function get userId() : Long
+      public function get userId() : String
       {
          return this._clientUserInfo.userId;
       }

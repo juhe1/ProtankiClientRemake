@@ -42,7 +42,7 @@ package alternativa.tanks.models.weapons.shell
       
       private static const _barrelDirection:Vector3 = new Vector3();
       
-      private const RADIAL_ANGLE_STEP:Number = 2 * Math.PI / this.getNumRadialRays();
+      private var RADIAL_ANGLE_STEP:Number;
       
       private var shotId:int;
       
@@ -71,6 +71,7 @@ package alternativa.tanks.models.weapons.shell
       public function Shell(param1:Pool)
       {
          super(param1);
+         RADIAL_ANGLE_STEP = 2 * Math.PI / this.getNumRadialRays();
          this.radialPoints = new Vector.<Vector3>(this.getNumRadialRays(),true);
          var _loc2_:int = 0;
          while(_loc2_ < this.getNumRadialRays())

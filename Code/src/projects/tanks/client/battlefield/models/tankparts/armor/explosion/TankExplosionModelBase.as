@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.tankparts.armor.explosion
 
       protected var server:TankExplosionModelServer;
 
-      private static const modelId:Long = Long.getLong(1983242842,420087132);
+      public static const modelId:Long = Long.getLong(1983242842,420087132);
 
       public function TankExplosionModelBase()
       {

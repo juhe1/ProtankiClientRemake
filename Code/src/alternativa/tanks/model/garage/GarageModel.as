@@ -59,8 +59,8 @@ package alternativa.tanks.model.garage
    import services.alertservice.AlertAnswer;
    import utils.resource.IResourceLoadingComplete;
    import utils.resource.ResourceLoadingWrapper;
-   import alternativa.gfx.core.TextureResource;
    import alternativa.engine3d.alternativa3d;
+   import platform.client.fp10.core.resource.types.ImageResource;
    
    use namespace alternativa3d;
    
@@ -766,7 +766,7 @@ package alternativa.tanks.model.garage
          }
          else if(this.garageBoxFrontSideId == param1.id)
          {
-            this.loadedGarageBoxFrontSide = TextureResource(param1);
+            this.loadedGarageBoxFrontSide = ImageResource(param1);
          }
          if(this.loadedGarageBoxResources == LAZY_RESOURCES_TO_LOAD)
          {

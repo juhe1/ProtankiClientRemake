@@ -115,6 +115,36 @@ package scpacker.networking.protocol
    import scpacker.networking.protocol.packets.battleitem.ItemSwapTeamsInPacket;
    import scpacker.networking.protocol.packets.battleitem.ItemUpdateBattleNameInPacket;
    import scpacker.networking.protocol.packets.battleitem.ItemUpdateBattleSuspicionInPacket;
+   import scpacker.networking.protocol.packets.timechecker.TimeCheckerPacketHandler;
+   import scpacker.networking.protocol.packets.timechecker.TimeCheckerPingInPacket;
+   import scpacker.networking.protocol.packets.timechecker.TimeCheckerPongOutPacket;
+   import scpacker.networking.protocol.packets.battle.BattlePacketHandler;
+   import scpacker.networking.protocol.packets.battle.InitBattleInPacket;
+   import scpacker.networking.protocol.packets.battle.CreateTankInPacket;
+   import scpacker.networking.protocol.packets.battle.InitializeSupplyEffectsInPacket;
+   import scpacker.networking.protocol.packets.battle.InitBonusBoxesInPacket;
+   import scpacker.networking.protocol.packets.battle.AddBonusBoxesInPacket;
+   import scpacker.networking.protocol.packets.battle.AddBonusBoxInPacket;
+   import scpacker.networking.protocol.packets.battle.RemoveBonusBoxInPacket;
+   import scpacker.networking.protocol.packets.battle.TakeBonusBoxInPacket;
+   import scpacker.networking.protocol.packets.battle.UnloadBattleSpaceInPacket;
+   import scpacker.networking.protocol.packets.battlestatistics.BattleStatisticsPacketHandler;
+   import scpacker.networking.protocol.packets.battlestatistics.BattleFundInPacket;
+   import scpacker.networking.protocol.packets.battlestatistics.InitStatisticsInPacket;
+   import scpacker.networking.protocol.packets.battlestatistics.StatisticsModelLoadedPostInPacket;
+   import scpacker.networking.protocol.packets.battlestatistics.ComplaintConfirmedInPacket;
+   import scpacker.networking.protocol.packets.battlestatistics.RankUpInPacket;
+   import scpacker.networking.protocol.packets.battlestatistics.RoundFinishInPacket;
+   import scpacker.networking.protocol.packets.battlestatistics.RoundStartInPacket;
+   import scpacker.networking.protocol.packets.battlestatistics.StatusProbablyCheaterChangedInPacket;
+   import scpacker.networking.protocol.packets.dm.DmPacketHandler;
+   import scpacker.networking.protocol.packets.dm.LoadDmModelPostInPacket;
+   import scpacker.networking.protocol.packets.statisticsdm.ChangeUserStatInPacket;
+   import scpacker.networking.protocol.packets.statisticsdm.DmStatisticsUserConnectInPacket;
+   import scpacker.networking.protocol.packets.statisticsdm.DmStatisticsUserDisconnectInPacket;
+   import scpacker.networking.protocol.packets.statisticsdm.InitDMStatisticsInPacket;
+   import scpacker.networking.protocol.packets.statisticsdm.RefreshUsersStatInPacket;
+   import scpacker.networking.protocol.packets.statisticsdm.StatisticsDmPacketHandler;
    
    public class PacketInitializer
    {
@@ -278,6 +308,45 @@ package scpacker.networking.protocol
          packetRegistry.registerPacket(new RemovePresentOutPacket());
          packetRegistry.registerPacket(new RenameOutPacket());
 
+         // TimeChecker Packets
+         packetInvoker.registerPacketHandler(new TimeCheckerPacketHandler());
+         packetRegistry.registerPacket(new TimeCheckerPingInPacket());
+         packetRegistry.registerPacket(new TimeCheckerPongOutPacket());
+
+         // Battle Packets
+         packetInvoker.registerPacketHandler(new BattlePacketHandler());
+         packetRegistry.registerPacket(new InitBattleInPacket());
+         packetRegistry.registerPacket(new CreateTankInPacket());
+         packetRegistry.registerPacket(new InitializeSupplyEffectsInPacket());
+         packetRegistry.registerPacket(new InitBonusBoxesInPacket());
+         packetRegistry.registerPacket(new AddBonusBoxesInPacket());
+         packetRegistry.registerPacket(new AddBonusBoxInPacket());
+         packetRegistry.registerPacket(new RemoveBonusBoxInPacket());
+         packetRegistry.registerPacket(new TakeBonusBoxInPacket());
+         packetRegistry.registerPacket(new UnloadBattleSpaceInPacket());
+
+         // BattleStatistics Packets
+         packetInvoker.registerPacketHandler(new BattleStatisticsPacketHandler());
+         packetRegistry.registerPacket(new BattleFundInPacket());
+         packetRegistry.registerPacket(new InitStatisticsInPacket());
+         packetRegistry.registerPacket(new StatisticsModelLoadedPostInPacket());
+         packetRegistry.registerPacket(new ComplaintConfirmedInPacket());
+         packetRegistry.registerPacket(new RankUpInPacket());
+         packetRegistry.registerPacket(new RoundFinishInPacket());
+         packetRegistry.registerPacket(new RoundStartInPacket());
+         packetRegistry.registerPacket(new StatusProbablyCheaterChangedInPacket());
+
+         // StatisticsDM Packets
+         packetInvoker.registerPacketHandler(new StatisticsDmPacketHandler());
+         packetRegistry.registerPacket(new ChangeUserStatInPacket());
+         packetRegistry.registerPacket(new InitDMStatisticsInPacket());
+         packetRegistry.registerPacket(new RefreshUsersStatInPacket());
+         packetRegistry.registerPacket(new DmStatisticsUserConnectInPacket());
+         packetRegistry.registerPacket(new DmStatisticsUserDisconnectInPacket());
+
+         // Dm Packets
+         packetInvoker.registerPacketHandler(new DmPacketHandler());
+         packetRegistry.registerPacket(new LoadDmModelPostInPacket());
       }
    }
 }

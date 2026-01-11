@@ -73,7 +73,7 @@ package alternativa.tanks.sfx
          var _loc3_:Object3D = param1.getSkin().getTurret3D();
          var _loc4_:Number = this.getEffectHeight(_loc3_.x,_loc3_.y,_loc3_.z);
          this.createLightBeams(_loc4_,_loc3_);
-         this.createLabel(param1.getUser().id,_loc4_,param2,_loc3_);
+         this.createLabel(param1.getUserId(),_loc4_,param2,_loc3_);
          this.createSparks(_loc4_,_loc3_);
          this.createWave(_loc3_);
       }
@@ -109,7 +109,7 @@ package alternativa.tanks.sfx
          }
       }
       
-      private function createLabel(param1:Long, param2:Number, param3:int, param4:Object3D) : void
+      private function createLabel(param1:String, param2:Number, param3:int, param4:Object3D) : void
       {
          var _loc5_:BigRankIcon = new BigRankIcon();
          var _loc6_:BattleUserInfoService = BattleUserInfoService(OSGi.getInstance().getService(BattleUserInfoService));

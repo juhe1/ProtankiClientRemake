@@ -24,7 +24,7 @@ package alternativa.tanks.models.battle.gui.chat
       
       private var chatUserLabel:BattleChatUserLabel;
       
-      public function BattleChatLine(param1:Long, param2:BattleTeam, param3:String, param4:Boolean, param5:Boolean)
+      public function BattleChatLine(param1:String, param2:BattleTeam, param3:String, param4:Boolean, param5:Boolean)
       {
          var _loc7_:Label = null;
          this.output = new Label();

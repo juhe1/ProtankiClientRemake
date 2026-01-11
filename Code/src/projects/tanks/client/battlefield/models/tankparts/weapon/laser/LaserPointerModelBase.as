@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.tankparts.weapon.laser
 
       protected var server:LaserPointerModelServer;
 
-      private static const modelId:Long = Long.getLong(1691794381,-1794202080);
+      public static const modelId:Long = Long.getLong(1691794381,-1794202080);
 
       public function LaserPointerModelBase()
       {

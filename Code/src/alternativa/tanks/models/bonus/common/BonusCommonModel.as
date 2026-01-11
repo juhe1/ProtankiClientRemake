@@ -98,7 +98,7 @@ package alternativa.tanks.models.bonus.common
          return TextureMaterial(_loc2_.material);
       }
       
-      public function getBonus(param1:Long) : Bonus
+      public function getBonus(param1:String) : Bonus
       {
          var _loc2_:BattleBonusData = BattleBonusData(getData(BattleBonusData));
          var _loc3_:BattleBonus = BattleBonus(battleService.getObjectPool().getObject(BattleBonus));

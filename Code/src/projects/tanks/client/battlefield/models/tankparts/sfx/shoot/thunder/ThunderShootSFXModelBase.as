@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.tankparts.sfx.shoot.thunder
 
       protected var server:ThunderShootSFXModelServer;
 
-      private static const modelId:Long = Long.getLong(1907120794,-320511521);
+      public static const modelId:Long = Long.getLong(1907120794,-320511521);
 
       public function ThunderShootSFXModelBase()
       {

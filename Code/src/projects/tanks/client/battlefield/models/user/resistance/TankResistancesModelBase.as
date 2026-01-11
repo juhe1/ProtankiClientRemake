@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.user.resistance
 
       protected var server:TankResistancesModelServer;
 
-      private static const modelId:Long = Long.getLong(1659531301,-819911951);
+      public static const modelId:Long = Long.getLong(1659531301,-819911951);
 
       public function TankResistancesModelBase()
       {

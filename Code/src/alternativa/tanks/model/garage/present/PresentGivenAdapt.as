@@ -18,9 +18,9 @@ package alternativa.tanks.model.garage.present
          this.impl = param2;
       }
       
-      public function removePresent(param1:Long) : void
+      public function removePresent(param1:String) : void
       {
-         var present:Long = param1;
+         var present:String = param1;
          try
          {
             Model.object = this.object;

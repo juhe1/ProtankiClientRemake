@@ -7,11 +7,11 @@ package alternativa.tanks.models.statistics
    public interface IClientUserInfo
    {
       
-      function getShortUserInfo(param1:Long) : ShortUserInfo;
+      function getShortUserInfo(param1:String) : ShortUserInfo;
       
-      function suspiciousnessChanged(param1:Long, param2:Boolean) : void;
+      function suspiciousnessChanged(param1:String, param2:Boolean) : void;
       
-      function rankChanged(param1:Long, param2:int) : void;
+      function rankChanged(param1:String, param2:int) : void;
       
       function getUsersCount() : int;
       

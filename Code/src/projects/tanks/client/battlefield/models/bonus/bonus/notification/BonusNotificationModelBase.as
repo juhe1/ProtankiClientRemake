@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.bonus.bonus.notification
 
       protected var server:BonusNotificationModelServer;
 
-      private static const modelId:Long = Long.getLong(769592937,-1424822430);
+      public static const modelId:Long = Long.getLong(769592937,-1424822430);
 
       public function BonusNotificationModelBase()
       {

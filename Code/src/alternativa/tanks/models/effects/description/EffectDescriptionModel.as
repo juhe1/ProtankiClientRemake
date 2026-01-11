@@ -12,6 +12,7 @@ package alternativa.tanks.models.effects.description
    import projects.tanks.client.battlefield.models.effects.description.EffectDescriptionCC;
    import projects.tanks.client.battlefield.models.effects.description.EffectDescriptionModelBase;
    import projects.tanks.client.battlefield.models.effects.description.IEffectDescriptionModelBase;
+   import utils.TankNameGameObjectMapper;
    
    [ModelInfo]
    public class EffectDescriptionModel extends EffectDescriptionModelBase implements IEffectDescriptionModelBase, ObjectUnloadListener
@@ -42,7 +43,7 @@ package alternativa.tanks.models.effects.description
       
       public function activated(param1:int, param2:Boolean) : void
       {
-         inventorySoundService.playActivationSound(getInitParam().tank,getInitParam().index);
+         inventorySoundService.playActivationSound(TankNameGameObjectMapper.getGameObjectByTankName(getInitParam().tank),getInitParam().index);
          this.activateIcon(param1,param2);
       }
       
@@ -52,12 +53,12 @@ package alternativa.tanks.models.effects.description
          var _loc4_:Boolean = this.getActiveAfterDeath();
          var _loc5_:int = object.hasModel(IEffectLevel) ? int(IEffectLevel(object.adapt(IEffectLevel)).getEffectLevel()) : 0;
          var _loc6_:Boolean = object.hasModel(IDuration) ? Boolean(IDuration(object.adapt(IDuration)).isInfinite()) : false;
-         battleEventDispatcher.dispatchEvent(new EffectActivatedEvent(_loc3_.tank.id,_loc3_.index,param1,param2,_loc4_,_loc5_,_loc6_));
+         battleEventDispatcher.dispatchEvent(new EffectActivatedEvent(_loc3_.tank,_loc3_.index,param1,param2,_loc4_,_loc5_,_loc6_));
       }
       
       public function deactivated() : void
       {
-         var _loc1_:ITankModel = ITankModel(getInitParam().tank.adapt(ITankModel));
+         var _loc1_:ITankModel = ITankModel(TankNameGameObjectMapper.getGameObjectByTankName(getInitParam().tank).adapt(ITankModel));
          if(_loc1_.isLocal())
          {
             inventorySoundService.playDeactivationSound(getInitParam().index);
@@ -69,7 +70,7 @@ package alternativa.tanks.models.effects.description
       {
          var _loc1_:EffectDescriptionCC = getInitParam();
          var _loc2_:Boolean = this.getActiveAfterDeath();
-         battleEventDispatcher.dispatchEvent(new EffectStoppedEvent(_loc1_.tank.id,_loc1_.index,_loc2_));
+         battleEventDispatcher.dispatchEvent(new EffectStoppedEvent(_loc1_.tank,_loc1_.index,_loc2_));
       }
       
       private function getActiveAfterDeath() : Boolean

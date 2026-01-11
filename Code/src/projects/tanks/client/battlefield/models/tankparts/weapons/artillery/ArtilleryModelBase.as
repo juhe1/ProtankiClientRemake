@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.tankparts.weapons.artillery
 
       protected var server:ArtilleryModelServer;
 
-      private static const modelId:Long = Long.getLong(1546475564,-1431010080);
+      public static const modelId:Long = Long.getLong(1546475564,-1431010080);
 
       public function ArtilleryModelBase()
       {

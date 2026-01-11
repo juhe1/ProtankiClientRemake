@@ -67,7 +67,7 @@ package alternativa.tanks.models.battle.gui.gui.statistics.table
          this.battleNamePlate.setBattleName(param1);
       }
       
-      public function showDm(param1:Boolean, param2:Boolean, param3:Long, param4:Vector.<ClientUserStat>, param5:Boolean, param6:int) : void
+      public function showDm(param1:Boolean, param2:Boolean, param3:String, param4:Vector.<ClientUserStat>, param5:Boolean, param6:int) : void
       {
          if(!visible)
          {
@@ -77,7 +77,7 @@ package alternativa.tanks.models.battle.gui.gui.statistics.table
          }
       }
       
-      public function showTeam(param1:Boolean, param2:Long, param3:Vector.<ClientUserStat>, param4:Vector.<ClientUserStat>, param5:Boolean, param6:int, param7:BattleTeam, param8:Boolean) : void
+      public function showTeam(param1:Boolean, param2:String, param3:Vector.<ClientUserStat>, param4:Vector.<ClientUserStat>, param5:Boolean, param6:int, param7:BattleTeam, param8:Boolean) : void
       {
          if(!visible)
          {
@@ -89,7 +89,7 @@ package alternativa.tanks.models.battle.gui.gui.statistics.table
          }
       }
       
-      private function createView(param1:int, param2:Long, param3:Vector.<ClientUserStat>, param4:Boolean, param5:BattleTeam, param6:Boolean) : ViewStatistics
+      private function createView(param1:int, param2:String, param3:Vector.<ClientUserStat>, param4:Boolean, param5:BattleTeam, param6:Boolean) : ViewStatistics
       {
          var _loc7_:ViewStatistics = new ViewStatistics(param1,param2,param4,param5,param6);
          _loc7_.updatePlayersInfo(param3);
@@ -239,7 +239,7 @@ package alternativa.tanks.models.battle.gui.gui.statistics.table
          addChild(this.controlPanel);
       }
       
-      public function removePlayer(param1:Long, param2:BattleTeam) : void
+      public function removePlayer(param1:String, param2:BattleTeam) : void
       {
          if(!visible)
          {

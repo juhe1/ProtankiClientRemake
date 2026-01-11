@@ -33,11 +33,11 @@ package alternativa.tanks.display.resistance
          }
       }
       
-      public static function getBitmapFor(param1:IGameObject) : Bitmap
+      public static function getBitmapFor(param1:IGameObject, userId:String) : Bitmap
       {
          var _loc2_:IGameObject = param1.space.rootObject;
          var _loc3_:IClientUserInfo = IClientUserInfo(_loc2_.adapt(IClientUserInfo));
-         var _loc4_:ShortUserInfo = _loc3_.getShortUserInfo(param1.id);
+         var _loc4_:ShortUserInfo = _loc3_.getShortUserInfo(userId);
          return getBitmap(_loc4_.teamType);
       }
    }

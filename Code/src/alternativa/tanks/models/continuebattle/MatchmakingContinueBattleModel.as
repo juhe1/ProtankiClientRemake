@@ -1,6 +1,6 @@
 package alternativa.tanks.models.continuebattle
 {
-   import alternativa.tanks.service.matchmaking.MatchmakingFormService;
+   //import alternativa.tanks.service.matchmaking.MatchmakingFormService;
    import projects.tanks.client.battlefield.models.continuebattle.IMatchmakingContinueBattleModelBase;
    import projects.tanks.client.battlefield.models.continuebattle.MatchmakingContinueBattleModelBase;
    
@@ -8,8 +8,8 @@ package alternativa.tanks.models.continuebattle
    public class MatchmakingContinueBattleModel extends MatchmakingContinueBattleModelBase implements IMatchmakingContinueBattleModelBase, ContinueBattle
    {
       
-      [Inject]
-      public static var matchmakingFormService:MatchmakingFormService;
+      //[Inject]
+      //public static var matchmakingFormService:MatchmakingFormService;
       
       public function MatchmakingContinueBattleModel()
       {
@@ -18,7 +18,7 @@ package alternativa.tanks.models.continuebattle
       
       public function continueBattle() : void
       {
-         server.continueBattle(matchmakingFormService.getLastRegistrationMode());
+         //server.continueBattle(matchmakingFormService.getLastRegistrationMode());
       }
    }
 }

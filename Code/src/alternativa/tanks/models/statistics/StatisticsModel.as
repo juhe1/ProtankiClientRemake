@@ -41,6 +41,7 @@ package alternativa.tanks.models.statistics
    import projects.tanks.clients.fp10.libraries.tanksservices.service.userproperties.IUserPropertiesService;
    import projects.tanks.clients.fp10.libraries.tanksservices.utils.BattleFormatUtil;
    import projects.tanks.clients.fp10.libraries.tanksservices.utils.BattleInfoUtils;
+   import scpacker.utils.EnumUtils;
    
    [ModelInfo]
    public class StatisticsModel extends StatisticsModelBase implements IStatisticsModelBase, IStatisticsModel, ObjectLoadListener, ObjectLoadPostListener, ObjectUnloadListener, BattlefieldGUI, LogicUnit
@@ -116,14 +117,14 @@ package alternativa.tanks.models.statistics
       
       private function getDefaultBattleName() : String
       {
-         var _loc1_:String = getInitParam().matchBattle ? BattleInfoUtils.buildBattleName(getInitParam().mapName,getInitParam().modeName) : getInitParam().mapName;
-         var _loc2_:String = getInitParam().equipmentConstraintsMode;
-         var _loc3_:Boolean = Boolean(getInitParam().parkourMode);
-         if(battleFormatUtil.isFormatBattle(_loc2_,_loc3_))
-         {
-            _loc1_ = _loc1_ + " " + battleFormatUtil.getShortFormatName(_loc2_,_loc3_);
-         }
-         return _loc1_;
+         //var _loc1_:String = getInitParam().matchBattle ? BattleInfoUtils.buildBattleName(getInitParam().battleName,getInitParam().modeName) : getInitParam().battleName;
+         //var _loc2_:String = getInitParam().equipmentConstraintsMode;
+         //var _loc3_:Boolean = Boolean(getInitParam().parkourMode);
+         //if(battleFormatUtil.isFormatBattle(_loc2_,_loc3_))
+         //{
+         //   _loc1_ = _loc1_ + " " + battleFormatUtil.getShortFormatName(_loc2_,_loc3_);
+         //}
+         return getInitParam().battleName;
       }
       
       public function userConnect(param1:ShortUserInfo) : void
@@ -136,7 +137,7 @@ package alternativa.tanks.models.statistics
          this.battleMessages.addUserActionMessage(param1,UserAction.PLAYER_LEAVE_THE_BATTLE);
       }
       
-      public function updateUserKills(param1:Long, param2:int) : void
+      public function updateUserKills(param1:String, param2:int) : void
       {
          this.battleStatistics.updateUserKills(param1,param2);
       }
@@ -146,15 +147,22 @@ package alternativa.tanks.models.statistics
          this.battleStatistics.setTeamScore(param1,param2);
       }
       
-      public function logUserAction(param1:Long, param2:UserAction, param3:Long) : void
+      public function logUserAction(param1:String, param2:UserAction, param3:String) : void
       {
          var _loc4_:IClientUserInfo = IClientUserInfo(object.adapt(IClientUserInfo));
          var _loc5_:ShortUserInfo = _loc4_.getShortUserInfo(param1);
          var _loc6_:ShortUserInfo = param3 == null ? null : _loc4_.getShortUserInfo(param3);
          this.battleMessages.addTwoUsersActionMessage(_loc5_,param2,_loc6_);
       }
+
+      public function logUserActionText(param1:String, text:String) : void
+      {
+         var _loc4_:IClientUserInfo = IClientUserInfo(object.adapt(IClientUserInfo));
+         var _loc5_:ShortUserInfo = _loc4_.getShortUserInfo(param1);
+         this.battleMessages.addUserTextActionMessage(_loc5_,text);
+      }
       
-      public function logKillAction(param1:Long, param2:Long, param3:DamageType) : void
+      public function logKillAction(param1:String, param2:String, param3:DamageType) : void
       {
          var _loc4_:IClientUserInfo = IClientUserInfo(object.adapt(IClientUserInfo));
          var _loc5_:ShortUserInfo = _loc4_.getShortUserInfo(param1);
@@ -182,7 +190,7 @@ package alternativa.tanks.models.statistics
          this.battleMessages.addPointActionMessage(param1,param2);
       }
       
-      public function showUserBattleLogMessage(param1:Long, param2:UserAction) : void
+      public function showUserBattleLogMessage(param1:String, param2:UserAction) : void
       {
          var _loc3_:IClientUserInfo = IClientUserInfo(object.adapt(IClientUserInfo));
          var _loc4_:ShortUserInfo = _loc3_.getShortUserInfo(param1);
@@ -205,7 +213,7 @@ package alternativa.tanks.models.statistics
       [Obfuscation(rename="false")]
       public function objectLoaded() : void
       {
-         battleInfoService.running = getInitParam().running;
+         battleInfoService.running = true; // hard coded
          this.playerJoinedMessage = localeService.getText(TanksLocale.TEXT_BATTLE_PLAYER_JOINED);
          this.playerLeftMessage = localeService.getText(TanksLocale.TEXT_BATTLE_PLAYER_LEFT);
          var _loc1_:BattleUserInfoServiceImpl = new BattleUserInfoServiceImpl(object);
@@ -215,7 +223,8 @@ package alternativa.tanks.models.statistics
          putData(TankKillLogger,new TankKillLogger(object));
          putData(FpsIndicatorToggleSupport,new FpsIndicatorToggleSupport(this.fpsIndicator));
          var _loc2_:DisplayObjectContainer = battleGUIService.getGuiContainer();
-         var _loc3_:BattleType = BattleModel(object.adapt(BattleModel)).getBattleType();
+         //var _loc3_:BattleType = BattleModel(object.adapt(BattleModel)).getBattleType(); // original
+         var _loc3_:BattleType = EnumUtils.battleModeToBattleType(getInitParam().battleMode);
          var _loc4_:Boolean = Boolean(getInitParam().valuableRound);
          this.battleStatistics = new BattleStatistics(userPropertiesService.userId,getInitParam(),_loc3_,_loc4_);
          _loc2_.addChild(this.battleStatistics);
@@ -244,7 +253,7 @@ package alternativa.tanks.models.statistics
       
       private function battleHasTimeLimit() : Boolean
       {
-         return getInitParam().limits.timeLimitInSec != 0;
+         return getInitParam().limits.timeLimitInSec > 0;
       }
       
       [Obfuscation(rename="false")]
@@ -269,16 +278,16 @@ package alternativa.tanks.models.statistics
          putData(SpectatorScreenLayouts,new SpectatorScreenLayouts(_loc1_.getChat(),this.battleMessages,this.battlefieldMessages,this.battleStatistics,this.fpsIndicator));
       }
       
-      private function markSuspectedUsers(param1:Vector.<Long>) : void
+      private function markSuspectedUsers(param1:Vector.<String>) : void
       {
-         var _loc2_:Long = null;
+         var _loc2_:String = null;
          for each(_loc2_ in param1)
          {
             this.setUserSuspiciousness(_loc2_,true);
          }
       }
       
-      private function setUserSuspiciousness(param1:Long, param2:Boolean) : void
+      private function setUserSuspiciousness(param1:String, param2:Boolean) : void
       {
          var _loc3_:IClientUserInfo = IClientUserInfo(object.adapt(IClientUserInfo));
          _loc3_.suspiciousnessChanged(param1,param2);
@@ -343,18 +352,18 @@ package alternativa.tanks.models.statistics
       }
       
       [Obfuscation(rename="false")]
-      public function statusProbablyCheaterChanged(param1:Long, param2:Boolean) : void
+      public function statusProbablyCheaterChanged(param1:String, param2:Boolean) : void
       {
          this.setUserSuspiciousness(param1,param2);
       }
       
       [Obfuscation(rename="false")]
-      public function onRankChanged(param1:Long, param2:int, param3:Boolean) : void
+      public function onRankChanged(param1:String, param2:int, param3:Boolean) : void
       {
          var _loc5_:BattleUserInfoServiceImpl = null;
          var _loc4_:IClientUserInfo = IClientUserInfo(object.adapt(IClientUserInfo));
          _loc4_.rankChanged(param1,param2);
-         if(Boolean(localTankInfoService.isLocalTankLoaded()) && param1 == localTankInfoService.getLocalTankObject().id)
+         if(Boolean(localTankInfoService.isLocalTankLoaded()) && param1 == localTankInfoService.getLocalTank().getUserId())
          {
             ControlsMiniHelpSupport(getData(ControlsMiniHelpSupport)).close();
          }
@@ -363,6 +372,11 @@ package alternativa.tanks.models.statistics
             _loc5_ = this.battleUserInfoService();
             _loc5_.dispatchRankChange(param1,param2);
          }
+      }
+
+      public function onComplaintConfirmed() : void
+      {
+         this.battlefieldMessages.addMessage(16776960,localeService.getText("TEXT_TEAM_KICK_COMPLAINT_SENT"));
       }
       
       public function turnOnTimerToRestoreBalance(param1:int) : void

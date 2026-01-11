@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.tankparts.sfx.smoke
 
       protected var server:HullSmokeModelServer;
 
-      private static const modelId:Long = Long.getLong(1546360680,1128943603);
+      public static const modelId:Long = Long.getLong(1546360680,1128943603);
 
       public function HullSmokeModelBase()
       {

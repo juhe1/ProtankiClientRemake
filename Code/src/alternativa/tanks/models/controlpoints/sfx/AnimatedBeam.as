@@ -5,6 +5,9 @@ package alternativa.tanks.models.controlpoints.sfx
    import alternativa.engine3d.core.Vertex;
    import alternativa.engine3d.materials.TextureMaterial;
    import alternativa.engine3d.objects.Mesh;
+   import alternativa.engine3d.alternativa3d;
+
+   use namespace alternativa3d;
    
    internal class AnimatedBeam extends Mesh
    {

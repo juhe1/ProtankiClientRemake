@@ -5,15 +5,15 @@ package projects.tanks.client.battlefield.models.battle.battlefield.mine
    public interface IBattleMinesModelBase
    {
       
-      function activateMine(param1:Long) : void;
+      function activateMine(param1:String) : void;
       
-      function explodeMine(param1:Long, param2:Long) : void;
+      function explodeMine(param1:String, param2:String) : void;
       
-      function putMine(param1:Long, param2:Number, param3:Number, param4:Number, param5:Long) : void;
+      function putMine(param1:String, param2:Number, param3:Number, param4:Number, param5:String) : void;
       
-      function removeAllMines(param1:Long) : void;
+      function removeAllMines(param1:String) : void;
       
-      function removeMines(param1:Long, param2:Vector.<Long>) : void;
+      function removeMines(param1:String, param2:Vector.<String>) : void;
    }
 }
 

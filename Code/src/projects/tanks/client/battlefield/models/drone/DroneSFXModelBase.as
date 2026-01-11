@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.drone
 
       protected var server:DroneSFXModelServer;
 
-      private static const modelId:Long = Long.getLong(2558086,-1197244864);
+      public static const modelId:Long = Long.getLong(2558086,-1197244864);
 
       public function DroneSFXModelBase()
       {

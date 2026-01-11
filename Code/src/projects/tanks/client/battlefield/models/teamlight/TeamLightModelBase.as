@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.teamlight
 
       protected var server:TeamLightModelServer;
 
-      private static const modelId:Long = Long.getLong(40022888,448727509);
+      public static const modelId:Long = Long.getLong(40022888,448727509);
 
       public function TeamLightModelBase()
       {

@@ -5,7 +5,7 @@ package alternativa.tanks.battle.events
    public class EffectActivatedEvent
    {
       
-      public var userId:Long;
+      public var userId:String;
       
       public var effectId:int;
       
@@ -19,7 +19,7 @@ package alternativa.tanks.battle.events
       
       public var infinite:Boolean;
       
-      public function EffectActivatedEvent(param1:Long, param2:int, param3:int, param4:Boolean = false, param5:Boolean = false, param6:int = 0, param7:Boolean = false)
+      public function EffectActivatedEvent(param1:String, param2:int, param3:int, param4:Boolean = false, param5:Boolean = false, param6:int = 0, param7:Boolean = false)
       {
          super();
          this.userId = param1;

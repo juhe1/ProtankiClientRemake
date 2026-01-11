@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.ultimate.effects.hornet
 
       protected var server:HornetUltimateModelServer;
 
-      private static const modelId:Long = Long.getLong(1679670805,-112284013);
+      public static const modelId:Long = Long.getLong(1679670805,-112284013);
 
       public function HornetUltimateModelBase()
       {

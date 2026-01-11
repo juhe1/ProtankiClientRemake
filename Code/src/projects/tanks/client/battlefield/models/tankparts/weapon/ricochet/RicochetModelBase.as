@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.tankparts.weapon.ricochet
 
       protected var server:RicochetModelServer;
 
-      private static const modelId:Long = Long.getLong(592429654,1339096271);
+      public static const modelId:Long = Long.getLong(592429654,1339096271);
 
       public function RicochetModelBase()
       {

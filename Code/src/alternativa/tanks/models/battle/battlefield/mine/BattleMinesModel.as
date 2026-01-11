@@ -261,7 +261,7 @@ package alternativa.tanks.models.battle.battlefield.mine
       }
       
       [Obfuscation(rename="false")]
-      public function putMine(param1:Long, param2:Number, param3:Number, param4:Number, param5:Long) : void
+      public function putMine(param1:String, param2:Number, param3:Number, param4:Number, param5:String) : void
       {
          var _loc6_:Tank = this.loadedTanks[param5];
          if(_loc6_ == null)
@@ -278,7 +278,7 @@ package alternativa.tanks.models.battle.battlefield.mine
       }
       
       [Obfuscation(rename="false")]
-      public function activateMine(param1:Long) : void
+      public function activateMine(param1:String) : void
       {
          var _loc3_:BattleMine = null;
          var _loc2_:ProximityMine = this.minesOnField[param1];
@@ -301,7 +301,7 @@ package alternativa.tanks.models.battle.battlefield.mine
       }
       
       [Obfuscation(rename="false")]
-      public function removeAllMines(param1:Long) : void
+      public function removeAllMines(param1:String) : void
       {
          var _loc3_:ProximityMine = null;
          var _loc4_:ProximityMine = null;
@@ -319,9 +319,9 @@ package alternativa.tanks.models.battle.battlefield.mine
       }
       
       [Obfuscation(rename="false")]
-      public function removeMines(param1:Long, param2:Vector.<Long>) : void
+      public function removeMines(param1:String, param2:Vector.<String>) : void
       {
-         var _loc4_:Long = null;
+         var _loc4_:String = null;
          var _loc5_:ProximityMine = null;
          var _loc3_:UserMinesList = this.minesByUser[param1];
          for each(_loc4_ in param2)
@@ -342,7 +342,7 @@ package alternativa.tanks.models.battle.battlefield.mine
       }
       
       [Obfuscation(rename="false")]
-      public function explodeMine(param1:Long, param2:Long) : void
+      public function explodeMine(param1:String, param2:String) : void
       {
          var _loc4_:UserMinesList = null;
          var _loc5_:Tank = null;
@@ -410,7 +410,7 @@ package alternativa.tanks.models.battle.battlefield.mine
          battleEventDispatcher.dispatchEvent(StateCorrectionEvent.MANDATORY_UPDATE);
       }
       
-      private function addMine(param1:Long, param2:Number, param3:Vector3, param4:Long, param5:BattleTeam, param6:Material, param7:Boolean) : void
+      private function addMine(param1:String, param2:Number, param3:Vector3, param4:String, param5:BattleTeam, param6:Material, param7:Boolean) : void
       {
          var _loc9_:UserMinesList = null;
          var _loc10_:ProximityMine = null;
@@ -549,7 +549,7 @@ package alternativa.tanks.models.battle.battlefield.mine
             while(_loc2_ < this.deferredMines.length)
             {
                _loc3_ = this.deferredMines[_loc2_];
-               if(_loc3_.ownerId == param1.getUser().id)
+               if(_loc3_.ownerId == param1.getUserId())
                {
                   this.deferredMines.splice(_loc2_,1);
                   _loc2_--;

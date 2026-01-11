@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.battle.cp
 
       protected var server:ControlPointsModelServer;
 
-      private static const modelId:Long = Long.getLong(375259874,-2064506790);
+      public static const modelId:Long = Long.getLong(375259874,-2064506790);
 
       public function ControlPointsModelBase()
       {

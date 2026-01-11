@@ -10,7 +10,9 @@ package alternativa.tanks.models.battle.gui
    public interface BattlefieldGUI
    {
       
-      function logUserAction(param1:Long, param2:UserAction, param3:Long) : void;
+      function logUserAction(param1:String, param2:UserAction, param3:String) : void;
+
+      function logUserActionText(param1:String, text:String) : void;
       
       function setIndicatorState(param1:BattleTeam, param2:int) : void;
       
@@ -20,13 +22,13 @@ package alternativa.tanks.models.battle.gui
       
       function showPointBattleLogMessage(param1:String, param2:UserAction) : void;
       
-      function showUserBattleLogMessage(param1:Long, param2:UserAction) : void;
+      function showUserBattleLogMessage(param1:String, param2:UserAction) : void;
       
       function showBattleLogMessage(param1:UserAction) : void;
       
       function addWidget(param1:Widget) : void;
       
-      function logKillAction(param1:Long, param2:Long, param3:DamageType) : void;
+      function logKillAction(param1:String, param2:String, param3:DamageType) : void;
    }
 }
 

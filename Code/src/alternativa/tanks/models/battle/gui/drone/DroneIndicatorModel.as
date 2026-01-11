@@ -300,7 +300,7 @@ package alternativa.tanks.models.battle.gui.drone
       
       private function onTankUnloaded(param1:TankUnloadedEvent) : void
       {
-         delete global[this.destroyDroneForTank(param1.tank)];
+         //delete global[this.destroyDroneForTank(param1.tank)];
       }
       
       public function canOverheal() : Boolean

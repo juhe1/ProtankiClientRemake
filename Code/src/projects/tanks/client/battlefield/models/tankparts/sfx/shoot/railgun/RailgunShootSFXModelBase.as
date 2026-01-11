@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.tankparts.sfx.shoot.railgun
 
       protected var server:RailgunShootSFXModelServer;
 
-      private static const modelId:Long = Long.getLong(551471937,-1281432907);
+      public static const modelId:Long = Long.getLong(551471937,-1281432907);
 
       public function RailgunShootSFXModelBase()
       {

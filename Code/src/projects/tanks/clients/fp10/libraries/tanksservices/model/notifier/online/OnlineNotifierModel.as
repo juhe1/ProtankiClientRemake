@@ -8,6 +8,8 @@ package projects.tanks.clients.fp10.libraries.tanksservices.model.notifier.onlin
    import projects.tanks.clients.fp10.libraries.tanksservices.model.listener.UserNotifier;
    import projects.tanks.clients.fp10.libraries.tanksservices.model.notifier.UserInfoConsumer;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.notifier.online.IOnlineNotifierService;
+   import projects.tanks.client.tanksservices.model.listener.UserNotifierModelBase;
+   import platform.client.fp10.core.registry.ModelRegistry;
    
    [ModelInfo]
    public class OnlineNotifierModel extends OnlineNotifierModelBase implements IOnlineNotifierModelBase, UserRefresh
@@ -15,6 +17,9 @@ package projects.tanks.clients.fp10.libraries.tanksservices.model.notifier.onlin
       
       [Inject] // added
       public static var onlineNotifierService:IOnlineNotifierService;
+
+      [Inject] // added
+      public static var modelRegistry:ModelRegistry;
       
       public function OnlineNotifierModel()
       {
@@ -47,7 +52,7 @@ package projects.tanks.clients.fp10.libraries.tanksservices.model.notifier.onlin
          var _loc4_:UserInfoConsumer = null;
          var _loc2_:String = param1.userId;
          onlineNotifierService.addUserOnlineData(param1);
-         var _loc3_:UserNotifier = UserNotifier(object.adapt(UserNotifier));
+         var _loc3_:UserNotifier = UserNotifier(modelRegistry.getModel(UserNotifierModelBase.modelId));
          if(_loc3_.hasDataConsumer(_loc2_))
          {
             _loc4_ = _loc3_.getDataConsumer(_loc2_);

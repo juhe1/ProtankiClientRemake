@@ -68,7 +68,7 @@ package alternativa.tanks.services.tankregistry
          return this.userList;
       }
       
-      public function getUser(param1:Long) : IGameObject
+      public function getUser(param1:String) : IGameObject
       {
          return this.users[param1];
       }

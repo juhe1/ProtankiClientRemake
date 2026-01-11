@@ -19,10 +19,10 @@ package alternativa.tanks.models.statistics
          this.impl = param2;
       }
       
-      public function getShortUserInfo(param1:Long) : ShortUserInfo
+      public function getShortUserInfo(param1:String) : ShortUserInfo
       {
          var result:ShortUserInfo = null;
-         var userId:Long = param1;
+         var userId:String = param1;
          try
          {
             Model.object = this.object;
@@ -35,9 +35,9 @@ package alternativa.tanks.models.statistics
          return result;
       }
       
-      public function suspiciousnessChanged(param1:Long, param2:Boolean) : void
+      public function suspiciousnessChanged(param1:String, param2:Boolean) : void
       {
-         var userId:Long = param1;
+         var userId:String = param1;
          var suspicious:Boolean = param2;
          try
          {
@@ -50,9 +50,9 @@ package alternativa.tanks.models.statistics
          }
       }
       
-      public function rankChanged(param1:Long, param2:int) : void
+      public function rankChanged(param1:String, param2:int) : void
       {
-         var userId:Long = param1;
+         var userId:String = param1;
          var newRank:int = param2;
          try
          {

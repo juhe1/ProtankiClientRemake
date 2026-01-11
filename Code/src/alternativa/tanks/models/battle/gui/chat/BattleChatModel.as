@@ -72,27 +72,27 @@ package alternativa.tanks.models.battle.gui.chat
       }
       
       [Obfuscation(rename="false")]
-      public function addMessage(param1:Long, param2:String, param3:BattleTeam) : void
+      public function addMessage(param1:String, param2:String, param3:BattleTeam) : void
       {
          this.addUserMessageWithMessageLabel(param1,param2,param3);
       }
       
       [Obfuscation(rename="false")]
-      public function addTeamMessage(param1:Long, param2:String, param3:BattleTeam) : void
+      public function addTeamMessage(param1:String, param2:String, param3:BattleTeam) : void
       {
          this.addUserMessageWithMessageLabel(param1,param2,param3,true);
       }
       
-      private function addUserMessageWithMessageLabel(param1:Long, param2:String, param3:BattleTeam, param4:Boolean = false) : void
+      private function addUserMessageWithMessageLabel(param1:String, param2:String, param3:BattleTeam, param4:Boolean = false) : void
       {
-         var _loc5_:Boolean = param1.low == -1 && param1.high == -1;
+         var _loc5_:Boolean = param1 == "";
          this.battleChat.addUserMessage(param1,param3,param2 + "\n",param4,_loc5_);
       }
       
       [Obfuscation(rename="false")]
       public function addSpectatorTeamMessage(param1:String, param2:String) : void
       {
-         this.battleChat.addUserMessage(new Long(-1,-1),BattleTeam.NONE,param2 + "\n",true,true);
+         this.battleChat.addUserMessage("",BattleTeam.NONE,param2 + "\n",true,true);
       }
       
       [Obfuscation(rename="false")]

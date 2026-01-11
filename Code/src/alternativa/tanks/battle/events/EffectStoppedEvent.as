@@ -5,13 +5,13 @@ package alternativa.tanks.battle.events
    public class EffectStoppedEvent
    {
       
-      public var userId:Long;
+      public var userId:String;
       
       public var effectId:int;
       
       public var activeAfterDeath:Boolean;
       
-      public function EffectStoppedEvent(param1:Long, param2:int, param3:Boolean = false)
+      public function EffectStoppedEvent(param1:String, param2:int, param3:Boolean = false)
       {
          super();
          this.userId = param1;

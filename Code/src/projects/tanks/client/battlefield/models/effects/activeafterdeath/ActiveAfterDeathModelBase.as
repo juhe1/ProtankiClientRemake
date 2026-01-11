@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.effects.activeafterdeath
 
       protected var server:ActiveAfterDeathModelServer;
 
-      private static const modelId:Long = Long.getLong(1901483815,1408063475);
+      public static const modelId:Long = Long.getLong(1901483815,1408063475);
 
       public function ActiveAfterDeathModelBase()
       {

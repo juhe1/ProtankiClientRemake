@@ -13,7 +13,7 @@ package alternativa.tanks.model.garage.present
          super();
       }
       
-      public function removePresent(param1:Long) : void
+      public function removePresent(param1:String) : void
       {
          server.removePresent(param1);
       }

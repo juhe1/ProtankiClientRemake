@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.tankparts.weapon.smoky
 
       protected var server:SmokyModelServer;
 
-      private static const modelId:Long = Long.getLong(505740619,208573179);
+      public static const modelId:Long = Long.getLong(505740619,208573179);
 
       public function SmokyModelBase()
       {

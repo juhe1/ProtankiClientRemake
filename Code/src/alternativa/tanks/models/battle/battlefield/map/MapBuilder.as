@@ -33,6 +33,9 @@ package alternativa.tanks.models.battle.battlefield.map
    import flash.utils.clearTimeout;
    import flash.utils.setTimeout;
    import platform.client.fp10.core.type.AutoClosable;
+   import alternativa.engine3d.alternativa3d;
+
+   use namespace alternativa3d;
    
    public class MapBuilder implements AutoClosable
    {

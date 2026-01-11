@@ -168,7 +168,7 @@ package alternativa.tanks.models.tank.ultimate
          {
             this.setCharge(0);
          }
-         battleEventDispatcher.dispatchEvent(new EffectStoppedEvent(param1.id,InventoryItemType.ULTIMATE));
+         //battleEventDispatcher.dispatchEvent(new EffectStoppedEvent(param1.id,InventoryItemType.ULTIMATE));
       }
       
       private function onChargeTick(param1:TimerEvent) : void
@@ -334,7 +334,7 @@ package alternativa.tanks.models.tank.ultimate
       
       private function showTitleIcon() : void
       {
-         battleEventDispatcher.dispatchEvent(new EffectActivatedEvent(object.id,InventoryItemType.ULTIMATE,int.MAX_VALUE));
+         //battleEventDispatcher.dispatchEvent(new EffectActivatedEvent(object.id,InventoryItemType.ULTIMATE,int.MAX_VALUE));
       }
       
       public function isUltimateEnabled() : Boolean

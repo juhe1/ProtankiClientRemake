@@ -40,6 +40,8 @@ package alternativa.tanks.models.statistics.dm
    import projects.tanks.clients.fp10.libraries.tanksservices.service.premium.BattleUserPremiumService;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.reconnect.ReconnectService;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.userproperties.IUserPropertiesService;
+   import projects.tanks.clients.fp10.libraries.tanksservices.service.user.IUserInfoService;
+   import alternativa.tanks.models.battle.battlefield.BattleUserInfoService;
    
    [ModelInfo]
    public class StatisticsDmModel extends StatisticsDMModelBase implements IStatisticsDMModelBase, IObjectLoadListener, IClientUserInfo, BattleEventListener, IStatisticRound
@@ -80,6 +82,9 @@ package alternativa.tanks.models.statistics.dm
       
       [Inject]
       public static var battlePremiumService:BattleUserPremiumService;
+
+      [Inject]
+      public static var userInfoService:BattleUserInfoService;
       
       private var battleEventSupport:BattleEventSupport;
       
@@ -128,7 +133,8 @@ package alternativa.tanks.models.statistics.dm
       
       private function onTankLoaded(param1:TankLoadedEvent) : void
       {
-         var _loc2_:ClientUserStat = this.getUserStat(param1.tank.getUser().id);
+         var userName:String = userInfoService.getUserName(param1.tank.getUserId());
+         var _loc2_:ClientUserStat = this.getUserStat(userName);
          _loc2_.loaded = true;
          this.statisticsTable.updatePlayerDm(_loc2_);
       }
@@ -264,7 +270,7 @@ package alternativa.tanks.models.statistics.dm
       }
       
       [Obfuscation(rename="false")]
-      public function userConnect(param1:Long, param2:Vector.<UserInfo>) : void
+      public function userConnect(param1:String, param2:Vector.<UserInfo>) : void
       {
          var _loc3_:UserInfo = StatisticsVectorUtils.getUserInfo(param1,param2);
          this.clientUsersInfo[param1] = StatisticsVectorUtils.createClientUserInfo(_loc3_,BattleTeam.NONE);
@@ -278,7 +284,7 @@ package alternativa.tanks.models.statistics.dm
       }
       
       [Obfuscation(rename="false")]
-      public function userDisconnect(param1:Long) : void
+      public function userDisconnect(param1:String) : void
       {
          if(battleInfoService.running)
          {
@@ -293,7 +299,7 @@ package alternativa.tanks.models.statistics.dm
          battlePremiumService.resetUserPremium(param1);
       }
       
-      public function getShortUserInfo(param1:Long) : ShortUserInfo
+      public function getShortUserInfo(param1:String) : ShortUserInfo
       {
          var _loc2_:ClientUserInfo = this.clientUsersInfo[param1];
          if(_loc2_ != null)
@@ -309,7 +315,7 @@ package alternativa.tanks.models.statistics.dm
          return _loc2_ != null && _loc2_.loaded;
       }
       
-      public function suspiciousnessChanged(param1:Long, param2:Boolean) : void
+      public function suspiciousnessChanged(param1:String, param2:Boolean) : void
       {
          var _loc3_:ClientUserStat = this.getUserStat(param1);
          if(_loc3_ != null)
@@ -319,7 +325,7 @@ package alternativa.tanks.models.statistics.dm
          }
       }
       
-      public function rankChanged(param1:Long, param2:int) : void
+      public function rankChanged(param1:String, param2:int) : void
       {
          var _loc3_:ClientUserStat = this.getUserStat(param1);
          _loc3_.rank = param2;
@@ -357,7 +363,7 @@ package alternativa.tanks.models.statistics.dm
             {
                _loc6_ = StatisticsVectorUtils.getRewardById(userPropertiesService.userId,param4);
                _loc7_ = _loc6_.reward + _loc6_.premiumBonusReward + _loc6_.newbiesAbonementBonusReward;
-               notificationService.addNotification(new BattleFinishDmNotification(this.getLocalUserPlace(),this.clientUsersStat.length,_loc7_,_loc6_.starsReward,_loc5_));
+               notificationService.addNotification(new BattleFinishDmNotification(this.getLocalUserPlace(),this.clientUsersStat.length,_loc7_,0,_loc5_));
             }
          }
       }
@@ -367,7 +373,7 @@ package alternativa.tanks.models.statistics.dm
          return StatisticsVectorUtils.getUserPosition(this.clientUsersStat,userPropertiesService.userId) + 1;
       }
       
-      private function getUserStat(param1:Long) : ClientUserStat
+      private function getUserStat(param1:String) : ClientUserStat
       {
          return StatisticsVectorUtils.getClientUserStat(this.clientUsersStat,param1);
       }

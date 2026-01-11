@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.battle.battlefield.billboard.bi
 
       protected var server:BillboardImageModelServer;
 
-      private static const modelId:Long = Long.getLong(1692209065,-740073254);
+      public static const modelId:Long = Long.getLong(1692209065,-740073254);
 
       public function BillboardImageModelBase()
       {

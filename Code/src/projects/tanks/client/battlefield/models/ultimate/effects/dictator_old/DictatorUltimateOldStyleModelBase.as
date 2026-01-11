@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.ultimate.effects.dictator_old
 
       protected var server:DictatorUltimateOldStyleModelServer;
 
-      private static const modelId:Long = Long.getLong(1552091197,1575861227);
+      public static const modelId:Long = Long.getLong(1552091197,1575861227);
 
       public function DictatorUltimateOldStyleModelBase()
       {

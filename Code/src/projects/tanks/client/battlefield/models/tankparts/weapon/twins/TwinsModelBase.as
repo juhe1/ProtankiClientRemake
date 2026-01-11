@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.tankparts.weapon.twins
 
       protected var server:TwinsModelServer;
 
-      private static const modelId:Long = Long.getLong(1952266263,-1912192267);
+      public static const modelId:Long = Long.getLong(1952266263,-1912192267);
 
       public function TwinsModelBase()
       {

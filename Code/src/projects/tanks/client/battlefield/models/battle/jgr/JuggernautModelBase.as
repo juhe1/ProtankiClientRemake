@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.battle.jgr
 
       protected var server:JuggernautModelServer;
 
-      private static const modelId:Long = Long.getLong(1833384627,1931960874);
+      public static const modelId:Long = Long.getLong(1833384627,1931960874);
 
       public function JuggernautModelBase()
       {

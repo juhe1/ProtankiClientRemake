@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.tankparts.weapon.shot
 
       protected var server:DiscreteShotModelServer;
 
-      private static const modelId:Long = Long.getLong(968114218,-1703577718);
+      public static const modelId:Long = Long.getLong(968114218,-1703577718);
 
       public function DiscreteShotModelBase()
       {

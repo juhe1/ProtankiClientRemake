@@ -29,7 +29,7 @@ package alternativa.tanks.models.battle.gui.chat
          super();
       }
       
-      public function addLine(param1:Long, param2:BattleTeam, param3:String, param4:Boolean, param5:Boolean) : void
+      public function addLine(param1:String, param2:BattleTeam, param3:String, param4:Boolean, param5:Boolean) : void
       {
          this.removeFirsLineIfNeeded();
          var _loc6_:BattleChatLine = new BattleChatLine(param1,param2,param3,param4,param5);

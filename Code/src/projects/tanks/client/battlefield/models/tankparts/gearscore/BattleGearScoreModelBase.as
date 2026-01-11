@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.tankparts.gearscore
 
       protected var server:BattleGearScoreModelServer;
 
-      private static const modelId:Long = Long.getLong(1135202411,-1956043623);
+      public static const modelId:Long = Long.getLong(1135202411,-1956043623);
 
       public function BattleGearScoreModelBase()
       {

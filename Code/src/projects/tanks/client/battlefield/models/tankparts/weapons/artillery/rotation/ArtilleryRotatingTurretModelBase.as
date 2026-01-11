@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.tankparts.weapons.artillery.rot
 
       protected var server:ArtilleryRotatingTurretModelServer;
 
-      private static const modelId:Long = Long.getLong(1240706018,-961658094);
+      public static const modelId:Long = Long.getLong(1240706018,-961658094);
 
       public function ArtilleryRotatingTurretModelBase()
       {

@@ -9,7 +9,7 @@ package alternativa.tanks.models.battle.gui.gui.statistics.table
       
       public var icon:Object = null;
       
-      public var id:Long;
+      public var id:String;
       
       public var rank:int = 0;
       

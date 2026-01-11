@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.battle.gui.chat
 
       protected var server:BattleChatModelServer;
 
-      private static const modelId:Long = Long.getLong(1254001332,-1596966842);
+      public static const modelId:Long = Long.getLong(1254001332,-1596966842);
 
       public function BattleChatModelBase()
       {

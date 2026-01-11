@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.tankparts.weapon.angles.vertica
 
       protected var server:VerticalAutoAimingModelServer;
 
-      private static const modelId:Long = Long.getLong(504614809,-1413592676);
+      public static const modelId:Long = Long.getLong(504614809,-1413592676);
 
       public function VerticalAutoAimingModelBase()
       {

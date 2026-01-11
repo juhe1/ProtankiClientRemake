@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.bonus.bonus.common
 
       protected var server:BonusCommonModelServer;
 
-      private static const modelId:Long = Long.getLong(2087671478,1672369054);
+      public static const modelId:Long = Long.getLong(2087671478,1672369054);
 
       public function BonusCommonModelBase()
       {

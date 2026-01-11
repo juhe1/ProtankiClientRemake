@@ -56,9 +56,9 @@ package alternativa.tanks.models.battle.battlefield.mine
       
       public var prev:ProximityMine;
       
-      public var id:Long;
+      public var id:String;
       
-      public var ownerId:Long;
+      public var ownerId:String;
       
       public var collisionPrimitive:CollisionSphere = new CollisionSphere(1,CollisionGroup.WEAPON,PhysicsMaterial.DEFAULT_MATERIAL);
       
@@ -94,7 +94,7 @@ package alternativa.tanks.models.battle.battlefield.mine
          this.mesh = Mesh(param1.clone());
       }
       
-      public static function create(param1:Long, param2:Long, param3:Number, param4:Mesh, param5:Material, param6:BattleTeam, param7:MineModelData, param8:IMineCallback) : ProximityMine
+      public static function create(param1:String, param2:String, param3:Number, param4:Mesh, param5:Material, param6:BattleTeam, param7:MineModelData, param8:IMineCallback) : ProximityMine
       {
          var _loc9_:ProximityMine = null;
          if(pool == null)
@@ -190,7 +190,7 @@ package alternativa.tanks.models.battle.battlefield.mine
       
       private function canExplode(param1:Tank) : Boolean
       {
-         return this.state == ProximityMineState.ARMED && this.ownerId != param1.getUser().id && !param1.isSameTeam(this.teamType) && param1.state == ClientTankState.ACTIVE;
+         return this.state == ProximityMineState.ARMED && this.ownerId != param1.getUserId() && !param1.isSameTeam(this.teamType) && param1.state == ClientTankState.ACTIVE;
       }
       
       private function collidesWith(param1:Tank) : Boolean
@@ -236,7 +236,7 @@ package alternativa.tanks.models.battle.battlefield.mine
       
       private function isAlwaysVisible() : Boolean
       {
-         return Boolean(battleInfoService.isSpectatorMode()) || this.state != ProximityMineState.ARMED || this.isLocalTankAlive() && (this.ownerId == this.localTank.getUser().id || this.localTank.isSameTeam(this.teamType));
+         return Boolean(battleInfoService.isSpectatorMode()) || this.state != ProximityMineState.ARMED || this.isLocalTankAlive() && (this.ownerId == this.localTank.getUserId() || this.localTank.isSameTeam(this.teamType));
       }
       
       private function isLocalTankAlive() : Boolean
@@ -263,7 +263,7 @@ package alternativa.tanks.models.battle.battlefield.mine
          }
       }
       
-      private function init(param1:Long, param2:Long, param3:Number, param4:Material, param5:BattleTeam, param6:MineModelData, param7:IMineCallback) : void
+      private function init(param1:String, param2:String, param3:Number, param4:Material, param5:BattleTeam, param6:MineModelData, param7:IMineCallback) : void
       {
          this.id = param1;
          this.ownerId = param2;

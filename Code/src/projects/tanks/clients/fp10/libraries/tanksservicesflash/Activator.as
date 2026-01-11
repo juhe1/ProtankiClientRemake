@@ -250,6 +250,13 @@ package projects.tanks.clients.fp10.libraries.tanksservicesflash
          {
             return OnlineNotifierModel.onlineNotifierService;
          });
+         osgi.injectService(ModelRegistry,function(param1:Object):void
+         {
+            OnlineNotifierModel.modelRegistry = ModelRegistry(param1);
+         },function():ModelRegistry
+         {
+            return OnlineNotifierModel.modelRegistry;
+         });
          osgi.injectService(PremiumService,function(param1:Object):void
          {
             PremiumNotifierModel.premiumService = PremiumService(param1);

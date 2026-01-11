@@ -20,6 +20,7 @@ package alternativa.tanks.models.bonus.gold
    import projects.tanks.client.battlefield.types.Vector3d;
    import projects.tanks.clients.fp10.libraries.TanksLocale;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.userproperties.IUserPropertiesService;
+   import utils.TankNameGameObjectMapper;
    
    [ModelInfo]
    public class BattleGoldBonusesModel extends BattleGoldBonusesModelBase implements IBattleGoldBonusesModelBase, ObjectLoadListener
@@ -64,14 +65,14 @@ package alternativa.tanks.models.bonus.gold
          var _loc5_:Sound3D = Sound3D.create(getInitParam().sound.sound,0.5);
          var _loc6_:Vector3 = new Vector3(_loc3_.x,_loc3_.y,_loc3_.z + 300);
          battleService.addSound3DEffect(Sound3DEffect.create(_loc6_,_loc5_,DELAY));
-         var _loc7_:String = userInfoService.getUserName(param1.id);
+         var _loc7_:String = userInfoService.getUserName(TankNameGameObjectMapper.getTankNameByGameObject(param1));
          if(_loc7_ != null)
          {
             _loc8_ = object.space;
             _loc9_ = _loc8_.rootObject;
             _loc10_ = BattlefieldGUI(_loc9_.adapt(BattlefieldGUI));
             _loc10_.showBattleMessage(MessageColor.ORANGE,_loc7_ + localeService.getText(param2));
-            _loc10_.showUserBattleLogMessage(param1.id,UserAction.PLAYER_GOLD_BOX);
+            _loc10_.showUserBattleLogMessage(TankNameGameObjectMapper.getTankNameByGameObject(param1),UserAction.PLAYER_GOLD_BOX);
          }
       }
       

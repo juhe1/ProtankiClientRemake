@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.battle.battlefield.debug
 
       protected var server:BattleDebugModelServer;
 
-      private static const modelId:Long = Long.getLong(779331045,19368635);
+      public static const modelId:Long = Long.getLong(779331045,19368635);
 
       public function BattleDebugModelBase()
       {

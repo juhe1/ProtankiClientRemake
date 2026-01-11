@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.effects.description
 
       protected var server:EffectDescriptionModelServer;
 
-      private static const modelId:Long = Long.getLong(1345545806,-1145690082);
+      public static const modelId:Long = Long.getLong(1345545806,-1145690082);
 
       public function EffectDescriptionModelBase()
       {

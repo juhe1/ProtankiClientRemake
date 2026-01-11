@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.tankparts.weapons.common.chargi
 
       protected var server:WeaponChargingCommunicationModelServer;
 
-      private static const modelId:Long = Long.getLong(1249124405,67678961);
+      public static const modelId:Long = Long.getLong(1249124405,67678961);
 
       public function WeaponChargingCommunicationModelBase()
       {

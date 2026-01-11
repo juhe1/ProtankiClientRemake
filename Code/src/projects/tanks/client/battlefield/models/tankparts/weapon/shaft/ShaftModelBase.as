@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.tankparts.weapon.shaft
 
       protected var server:ShaftModelServer;
 
-      private static const modelId:Long = Long.getLong(170467452,-1685189911);
+      public static const modelId:Long = Long.getLong(170467452,-1685189911);
 
       public function ShaftModelBase()
       {

@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.battle.gui.inventory
 
       protected var server:InventoryModelServer;
 
-      private static const modelId:Long = Long.getLong(1500686585,-1760437566);
+      public static const modelId:Long = Long.getLong(1500686585,-1760437566);
 
       public function InventoryModelBase()
       {

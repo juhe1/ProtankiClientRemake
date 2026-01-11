@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.tankparts.weapon.terminator
 
       protected var server:TerminatorModelServer;
 
-      private static const modelId:Long = Long.getLong(1596182265,-1705134735);
+      public static const modelId:Long = Long.getLong(1596182265,-1705134735);
 
       public function TerminatorModelBase()
       {

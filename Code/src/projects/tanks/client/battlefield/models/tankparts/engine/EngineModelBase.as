@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.tankparts.engine
 
       protected var server:EngineModelServer;
 
-      private static const modelId:Long = Long.getLong(923418047,-17313881);
+      public static const modelId:Long = Long.getLong(923418047,-17313881);
 
       public function EngineModelBase()
       {

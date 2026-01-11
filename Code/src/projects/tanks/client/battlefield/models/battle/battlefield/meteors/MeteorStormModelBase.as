@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.battle.battlefield.meteors
 
       protected var server:MeteorStormModelServer;
 
-      private static const modelId:Long = Long.getLong(2135606158,-499224081);
+      public static const modelId:Long = Long.getLong(2135606158,-499224081);
 
       public function MeteorStormModelBase()
       {

@@ -6,7 +6,7 @@ package alternativa.tanks.model.garage.present
    public interface PresentGiven
    {
       
-      function removePresent(param1:Long) : void;
+      function removePresent(param1:String) : void;
    }
 }
 

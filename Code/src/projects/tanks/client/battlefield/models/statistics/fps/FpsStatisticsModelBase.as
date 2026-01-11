@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.statistics.fps
 
       protected var server:FpsStatisticsModelServer;
 
-      private static const modelId:Long = Long.getLong(1377034498,-1539317145);
+      public static const modelId:Long = Long.getLong(1377034498,-1539317145);
 
       public function FpsStatisticsModelBase()
       {

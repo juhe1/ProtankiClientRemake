@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.tankparts.weapon.thunder
 
       protected var server:ThunderModelServer;
 
-      private static const modelId:Long = Long.getLong(254322684,-956504003);
+      public static const modelId:Long = Long.getLong(254322684,-956504003);
 
       public function ThunderModelBase()
       {

@@ -7,9 +7,9 @@ package projects.tanks.client.battlefield.models.effects.description
       
       private var _index:int;
       
-      private var _tank:IGameObject;
+      private var _tank:String;
       
-      public function EffectDescriptionCC(param1:int = 0, param2:IGameObject = null)
+      public function EffectDescriptionCC(param1:int = 0, param2:String = null)
       {
          super();
          this._index = param1;
@@ -26,12 +26,12 @@ package projects.tanks.client.battlefield.models.effects.description
          this._index = param1;
       }
       
-      public function get tank() : IGameObject
+      public function get tank() : String
       {
          return this._tank;
       }
       
-      public function set tank(param1:IGameObject) : void
+      public function set tank(param1:String) : void
       {
          this._tank = param1;
       }

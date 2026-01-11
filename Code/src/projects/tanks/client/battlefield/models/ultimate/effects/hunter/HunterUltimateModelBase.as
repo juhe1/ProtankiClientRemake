@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.ultimate.effects.hunter
 
       protected var server:HunterUltimateModelServer;
 
-      private static const modelId:Long = Long.getLong(1026046526,1304951507);
+      public static const modelId:Long = Long.getLong(1026046526,1304951507);
 
       public function HunterUltimateModelBase()
       {

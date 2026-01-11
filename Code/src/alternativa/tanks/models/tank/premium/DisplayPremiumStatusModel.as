@@ -34,9 +34,9 @@ package alternativa.tanks.models.tank.premium
       
       private function updatePremiumStatusAtUserTitle() : void
       {
-         var _loc1_:ITankModel = ITankModel(object.adapt(ITankModel));
-         var _loc2_:UserTitle = _loc1_.getTitle();
-         _loc2_.setPremium(userInfoService.hasPremium(object.id));
+         var tankModel:ITankModel = ITankModel(object.adapt(ITankModel));
+         var _loc2_:UserTitle = tankModel.getTitle();
+         _loc2_.setPremium(userInfoService.hasPremium(tankModel.getUserInfo().name));
       }
       
       private function onChangePremiumStatus(param1:Event = null) : void

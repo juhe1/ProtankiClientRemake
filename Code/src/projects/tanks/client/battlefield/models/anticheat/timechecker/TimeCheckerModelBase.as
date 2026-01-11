@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.anticheat.timechecker
 
       protected var server:TimeCheckerModelServer;
 
-      private static const modelId:Long = Long.getLong(747925004,799189270);
+      public static const modelId:Long = Long.getLong(747925004,799189270);
 
       public function TimeCheckerModelBase()
       {

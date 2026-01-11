@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.user.premium
 
       protected var server:DisplayPremiumStatusModelServer;
 
-      private static const modelId:Long = Long.getLong(1601138461,-1906543250);
+      public static const modelId:Long = Long.getLong(1601138461,-1906543250);
 
       public function DisplayPremiumStatusModelBase()
       {

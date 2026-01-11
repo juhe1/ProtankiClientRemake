@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.tankparts.weapons.shotgun.sfx
 
       protected var server:ShotgunSFXModelServer;
 
-      private static const modelId:Long = Long.getLong(179431987,214974876);
+      public static const modelId:Long = Long.getLong(179431987,214974876);
 
       public function ShotgunSFXModelBase()
       {

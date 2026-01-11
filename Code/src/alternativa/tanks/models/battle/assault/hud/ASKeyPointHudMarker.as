@@ -9,6 +9,9 @@ package alternativa.tanks.models.battle.assault.hud
    import alternativa.tanks.battle.BattleService;
    import alternativa.tanks.battle.BattleView;
    import alternativa.tanks.battle.scene3d.Renderer;
+   import alternativa.engine3d.alternativa3d;
+
+   use namespace alternativa3d;
    
    public class ASKeyPointHudMarker implements Renderer
    {

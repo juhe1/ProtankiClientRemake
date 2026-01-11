@@ -71,7 +71,7 @@ package scpacker.networking.protocol.codec.custom
          _loc2_.equipmentConstraintsMode = this.newname_4112__END.decode(param1) as EquipmentConstraintsMode;
          _loc2_.fund = this.newname_4553__END.decode(param1) as int;
          _loc2_.limits = this.newname_4114__END.decode(param1) as BattleLimits;
-         _loc2_.mapName = this.newname_4224__END.decode(param1) as String;
+         _loc2_.battleName = this.newname_4224__END.decode(param1) as String;
          _loc2_.maxPeopleCount = this.newname_4116__END.decode(param1) as int;
          _loc2_.parkourMode = this.newname_4118__END.decode(param1) as Boolean;
          _loc2_.premiumBonusInPercent = this.newname_4557__END.decode(param1) as int;
@@ -91,7 +91,7 @@ package scpacker.networking.protocol.codec.custom
          this.newname_4112__END.encode(param1,_loc3_.equipmentConstraintsMode);
          this.newname_4553__END.encode(param1,_loc3_.fund);
          this.newname_4114__END.encode(param1,_loc3_.limits);
-         this.newname_4224__END.encode(param1,_loc3_.mapName);
+         this.newname_4224__END.encode(param1,_loc3_.battleName);
          this.newname_4554__END.encode(param1,_loc3_.matchBattle);
          this.newname_4116__END.encode(param1,_loc3_.maxPeopleCount);
          this.newname_4555__END.encode(param1,_loc3_.modeName);

@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.tankparts.sfx.shoot.twins
 
       protected var server:TwinsShootSFXModelServer;
 
-      private static const modelId:Long = Long.getLong(1791035142,-1712503825);
+      public static const modelId:Long = Long.getLong(1791035142,-1712503825);
 
       public function TwinsShootSFXModelBase()
       {

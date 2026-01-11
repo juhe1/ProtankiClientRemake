@@ -21,7 +21,7 @@ package alternativa.tanks.bonuses
       
       private var colorTransform:AnimatedColorTransform = new AnimatedColorTransform();
       
-      private var animation:KeyFrameAnimation = new KeyFrameAnimation(animationTrack,this.colorTransform);
+      private var animation:KeyFrameAnimation;
       
       private var bonus:BattleBonus;
       
@@ -33,6 +33,7 @@ package alternativa.tanks.bonuses
       public function start(param1:BattleBonus) : void
       {
          this.bonus = param1;
+         this.animation = new KeyFrameAnimation(animationTrack,this.colorTransform)
          param1.onRemove.add(this.destroy);
          param1.onPickup.add(this.destroy);
          param1.onDestroy.add(this.destroy);

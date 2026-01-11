@@ -10,6 +10,9 @@ package alternativa.tanks.models.battle.assault
    import alternativa.tanks.battle.scene3d.Renderer;
    import flash.geom.Point;
    import flash.geom.Vector3D;
+   import alternativa.engine3d.alternativa3d;
+
+   use namespace alternativa3d;
    
    public class ASProgressPlane extends Mesh implements Renderer
    {

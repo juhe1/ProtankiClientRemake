@@ -5,9 +5,9 @@ package alternativa.tanks.battle.events.death
    public class TankReloadedEvent
    {
       
-      public var userId:Long;
+      public var userId:String;
       
-      public function TankReloadedEvent(param1:Long)
+      public function TankReloadedEvent(param1:String)
       {
          super();
          this.userId = param1;

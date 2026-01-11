@@ -6,6 +6,9 @@ package scpacker.networking.protocol.packets.turretdata
    import newname_7089__END.newname_7090__END;
    import scpacker.networking.protocol.AbstractPacket;
    import alternativa.tanks.models.weapon.weakening.WeaponWeakeningModel;
+   import scpacker.weapon.WeaponModelUtil;
+   import scpacker.weapon.WeaponData;
+   import projects.tanks.client.battlefield.models.tankparts.weapon.weakening.WeaponWeakeningCC;
    
    public class TurretDataPacketHandler extends AbstractPacketHandler
    {
@@ -29,20 +32,21 @@ package scpacker.networking.protocol.packets.turretdata
       
       private function LoadTurretData(param1:LoadTurretDataInPacket) : void
       {
-         var _loc4_:Object = null;
-         var _loc5_:newname_7090__END = null;
-         var _loc3_:* = undefined;
-         var _loc2_:Object = JSON.parse(param1.json);
-         for each(_loc4_ in _loc2_.weapons)
+         var weaponJson:Object = null;
+         var weaponData:WeaponData = null;
+         var specialEntity:* = undefined;
+         var json:Object = JSON.parse(param1.json);
+         for each(weaponJson in json.weapons)
          {
-            _loc5_ = new newname_7090__END(_loc4_.reload,_loc4_.auto_aiming_down,_loc4_.auto_aiming_up,_loc4_.num_rays_up,_loc4_.num_rays_down);
-            if(_loc4_.has_wwd)
+            weaponData = new WeaponData(weaponJson.reload,weaponJson.auto_aiming_down,weaponJson.auto_aiming_up,weaponJson.num_rays_up,weaponJson.num_rays_down);
+            if(weaponJson.has_wwd)
             {
-               this.weaponWeakeningModel.newname_5979__END(WeaponsManager.newname_2440__END(_loc4_.id),_loc4_.max_damage_radius,_loc4_.min_damage_percent,_loc4_.min_damage_radius);
+               var weaponWeakeningCC:WeaponWeakeningCC = new WeaponWeakeningCC(weaponJson.max_damage_radius,weaponJson.min_damage_percent,weaponJson.min_damage_radius);
+               WeaponModelUtil.weaponWeakeningDatas[weaponJson.id] = weaponWeakeningCC;
             }
-            _loc3_ = _loc4_.special_entity;
-            WeaponsManager.newname_5965__END[_loc4_.id] = _loc5_;
-            WeaponsManager.newname_123__END[_loc4_.id] = _loc3_;
+            specialEntity = weaponJson.special_entity;
+            WeaponModelUtil.weaponDatas[weaponJson.id] = weaponData;
+            WeaponModelUtil.weaponJsonSpecialEntities[weaponJson.id] = specialEntity;
          }
       }
    }

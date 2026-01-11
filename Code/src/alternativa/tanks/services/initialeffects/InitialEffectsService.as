@@ -13,7 +13,7 @@ package alternativa.tanks.services.initialeffects
          super();
       }
       
-      public function takeInitialEffects(param1:Long) : Vector.<ClientBattleEffect>
+      public function takeInitialEffects(param1:String) : Vector.<ClientBattleEffect>
       {
          var _loc2_:Vector.<ClientBattleEffect> = null;
          var _loc3_:int = 0;
@@ -46,7 +46,7 @@ package alternativa.tanks.services.initialeffects
          return _loc2_;
       }
       
-      public function addInitialEffect(param1:Long, param2:int, param3:int, param4:int) : void
+      public function addInitialEffect(param1:String, param2:int, param3:int, param4:int) : void
       {
          if(this.initialEffects == null)
          {
@@ -55,7 +55,7 @@ package alternativa.tanks.services.initialeffects
          this.initialEffects.push(new ClientBattleEffect(getTimer(),param1,param2,param3,param4));
       }
       
-      public function removeInitialEffect(param1:Long, param2:int) : void
+      public function removeInitialEffect(param1:String, param2:int) : void
       {
          var _loc4_:int = 0;
          var _loc3_:int = this.indexOfInitialEffect(param1,param2);
@@ -67,7 +67,7 @@ package alternativa.tanks.services.initialeffects
          }
       }
       
-      private function indexOfInitialEffect(param1:Long, param2:int) : int
+      private function indexOfInitialEffect(param1:String, param2:int) : int
       {
          var _loc3_:int = 0;
          var _loc4_:int = 0;

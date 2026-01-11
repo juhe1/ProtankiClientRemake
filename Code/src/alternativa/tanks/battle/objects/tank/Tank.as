@@ -62,9 +62,12 @@ package alternativa.tanks.battle.objects.tank
    import platform.client.fp10.core.type.IGameObject;
    import projects.tanks.client.battlefield.types.Vector3d;
    import projects.tanks.client.battleservice.model.battle.team.BattleTeam;
+   import alternativa.tanks.models.battle.battlefield.BattleUserInfoService;
    
    public class Tank implements PhysicsController, PostPhysicsController, PhysicsInterpolator, Renderer, BodyCollisionFilter, CameraTarget, WeaponPlatform
    {
+      [Inject]
+      public static var userInfoService:BattleUserInfoService;
       
       public static var logService:LogService;
       
@@ -97,6 +100,7 @@ package alternativa.tanks.battle.objects.tank
       private static const _projXToPlane:Vector3 = new Vector3();
       
       public var user:IGameObject;
+      public var userId:String;
       
       public var health:Number = 0;
       
@@ -178,10 +182,10 @@ package alternativa.tanks.battle.objects.tank
       
       public var turretCollisions:Vector.<CollisionBox> = new Vector.<CollisionBox>();
       
-      public function Tank(param1:IGameObject, param2:Number, param3:Number, param4:TankSoundEffects, param5:TankSkin, param6:TurretController, param7:LocalTurretController, param8:Weapon, param9:UserTitle, param10:BattleEventDispatcher, param11:int)
+      public function Tank(param1:IGameObject, _userId:String, param2:Number, param3:Number, param4:TankSoundEffects, param5:TankSkin, param6:TurretController, param7:LocalTurretController, param8:Weapon, param9:UserTitle, param10:BattleEventDispatcher, param11:int)
       {
          super();
-         this.user = param1;
+         this.userId = _userId;
          this.skin = param5;
          this.sounds = param4;
          this.battleEventDispatcher = param10;
@@ -470,6 +474,11 @@ package alternativa.tanks.battle.objects.tank
       {
          return this.user;
       }
+
+      public function getUserId() : String
+      {
+         return this.userId;
+      }
       
       public function getMainCollisionBox() : CollisionBox
       {
@@ -570,6 +579,7 @@ package alternativa.tanks.battle.objects.tank
       public function destroy() : void
       {
          this.user = null;
+         this.userId = null;
          this.state = ClientTankState.DEAD;
          this.skin.dispose();
          this.skin = null;

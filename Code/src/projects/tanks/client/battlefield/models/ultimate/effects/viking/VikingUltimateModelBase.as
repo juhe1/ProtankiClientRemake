@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.ultimate.effects.viking
 
       protected var server:VikingUltimateModelServer;
 
-      private static const modelId:Long = Long.getLong(1758244583,2134467693);
+      public static const modelId:Long = Long.getLong(1758244583,2134467693);
 
       public function VikingUltimateModelBase()
       {

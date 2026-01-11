@@ -1,11 +1,14 @@
+
 package alternativa.tanks.models.battle.ctf
 {
    import alternativa.physics.Body;
    import alternativa.tanks.battle.CTFTargetEvaluator;
    import alternativa.tanks.battle.objects.tank.Tank;
    import alternativa.tanks.models.battle.battlefield.CommonTargetEvaluatorConst;
+   import alternativa.tanks.models.weapon.FlagTargetEvaluator;
    import alternativa.tanks.models.weapon.shared.CommonTargetEvaluator;
    import projects.tanks.client.battleservice.model.battle.team.BattleTeam;
+   import projects.tanks.client.battlefield.models.battle.ctf.ClientFlag;
    
    public class CTFCommonTargetEvaluator implements CommonTargetEvaluator, CTFTargetEvaluator
    {
@@ -44,4 +47,3 @@ package alternativa.tanks.models.battle.ctf
       }
    }
 }
-

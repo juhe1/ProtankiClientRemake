@@ -104,6 +104,7 @@ package alternativa.tanks.models.tank
    import projects.tanks.client.battlefield.types.Vector3d;
    import projects.tanks.client.battleservice.model.battle.team.BattleTeam;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.battle.IBattleInfoService;
+   import utils.TankNameGameObjectMapper;
    
    [ModelInfo]
    public class TankModel extends TankModelBase implements ITankModelBase, ObjectLoadListener, ObjectUnloadListener, ITankModel, LocalTankInfoService, ChassisControlListener, BattleEventListener, ITurretControllerListener
@@ -241,7 +242,7 @@ package alternativa.tanks.models.tank
          var _loc6_:ClientBattleEffect = null;
          var _loc7_:int = 0;
          var _loc8_:int = 0;
-         var _loc2_:Vector.<ClientBattleEffect> = initialEffectsService.takeInitialEffects(param1.id);
+         var _loc2_:Vector.<ClientBattleEffect> = initialEffectsService.takeInitialEffects(TankNameGameObjectMapper.getTankNameByGameObject(param1));
          if(_loc2_ != null)
          {
             _loc3_ = getTimer();
@@ -284,7 +285,7 @@ package alternativa.tanks.models.tank
       public function objectLoaded() : void
       {
          this.registerUser();
-         putData(UserInfo,new UserInfo(battleUserInfoService.getUserName(object.id),battleUserInfoService.getUserRank(object.id),getInitParam().local,battleUserInfoService.getChatModeratorLevel(object.id),battleUserInfoService.hasUserPremium(object.id)));
+         putData(UserInfo,new UserInfo(battleUserInfoService.getUserName(getUserInfo().name),battleUserInfoService.getUserRank(getUserInfo().name),getInitParam().local,battleUserInfoService.getChatModeratorLevel(getUserInfo().name),battleUserInfoService.hasUserPremium(getUserInfo().name)));
          var _loc1_:TankConfiguration = TankConfiguration(object.adapt(TankConfiguration));
          var _loc2_:int = getDefaultMaxHealth();
          var _loc3_:IGameObject = _loc1_.hasDrone() ? _loc1_.getDrone() : null;
@@ -387,7 +388,7 @@ package alternativa.tanks.models.tank
          var _loc2_:IClientUserInfo = IClientUserInfo(_loc1_.adapt(IClientUserInfo));
          if(!_loc2_.isLoaded(object.id))
          {
-            _loc3_ = _loc2_.getShortUserInfo(object.id);
+            _loc3_ = _loc2_.getShortUserInfo(getUserInfo().name);
             _loc4_ = IStatisticsModel(_loc1_.adapt(IStatisticsModel));
             _loc4_.userConnect(_loc3_);
          }
@@ -523,10 +524,10 @@ package alternativa.tanks.models.tank
       }
       
       [Obfuscation(rename="false")]
-      public function kill(param1:Long, param2:int, param3:DamageType) : void
+      public function kill(param1:String, param2:int, param3:DamageType) : void
       {
          this.die(param2);
-         battleEventDispatcher.dispatchEvent(new TankKilledEvent(param1,object.id,param3));
+         battleEventDispatcher.dispatchEvent(new TankKilledEvent(param1,getUserInfo().name,param3));
       }
       
       public function die(param1:int) : void
@@ -1037,7 +1038,8 @@ package alternativa.tanks.models.tank
          var _loc9_:Armor = Armor(param1.adapt(Armor));
          var _loc10_:TankSkin = new TankSkin(param1,param2,param3);
          var _loc11_:TankSoundEffects = createTankSoundEffects(param1,param2);
-         return new Tank(object,_loc8_.getMass(),_loc8_.getDamping(),_loc11_,_loc10_,param4,param5,param6,param7,battleEventDispatcher,_loc9_.getMaxHealth());
+         var userInfo:UserInfo = this.getUserInfo();
+         return new Tank(object,userInfo.name,_loc8_.getMass(),_loc8_.getDamping(),_loc11_,_loc10_,param4,param5,param6,param7,battleEventDispatcher,_loc9_.getMaxHealth());
       }
       
       public function configureRemoteTankTitles() : void
@@ -1110,7 +1112,7 @@ package alternativa.tanks.models.tank
          else
          {
             _loc2_ = new UserTitle(REMOTE_TITLE_OFFSET_Z,_loc3_.getMapContainer(),param1,false,Model.object);
-            _loc2_.setSuspicious(battleUserInfoService.isUserSuspected(object.id));
+            _loc2_.setSuspicious(battleUserInfoService.isUserSuspected(getUserInfo().name));
          }
          return _loc2_;
       }
@@ -1166,7 +1168,7 @@ package alternativa.tanks.models.tank
          var _loc4_:ITankModel = null;
          var _loc5_:UserTitle = null;
          var _loc6_:int = 0;
-         var _loc2_:IGameObject = tankUsersRegistry.getUser(param1.userId);
+         var _loc2_:IGameObject = tankUsersRegistry.getUser(getUserInfo().name);
          var _loc3_:Boolean = true;
          if(_loc2_ != null)
          {
@@ -1211,7 +1213,7 @@ package alternativa.tanks.models.tank
             return;
          }
          initialEffectsService.removeInitialEffect(param1.userId,param1.effectId);
-         var _loc2_:IGameObject = tankUsersRegistry.getUser(param1.userId);
+         var _loc2_:IGameObject = tankUsersRegistry.getUser(getUserInfo().name);
          if(_loc2_ != null)
          {
             _loc3_ = ITankModel(_loc2_.adapt(ITankModel));

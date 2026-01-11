@@ -57,7 +57,7 @@ package alternativa.tanks.models.battle.gui.gui.statistics.table
       
       private var type:int;
       
-      private var localUserId:Long;
+      private var localUserId:String;
       
       private var finish:Boolean;
       
@@ -81,7 +81,7 @@ package alternativa.tanks.models.battle.gui.gui.statistics.table
       
       private var showStars:Boolean;
       
-      public function ViewStatistics(param1:int, param2:Long, param3:Boolean, param4:BattleTeam, param5:Boolean)
+      public function ViewStatistics(param1:int, param2:String, param3:Boolean, param4:BattleTeam, param5:Boolean)
       {
          super();
          if(scrollBarStyles == null)
@@ -188,7 +188,7 @@ package alternativa.tanks.models.battle.gui.gui.statistics.table
          return _loc2_;
       }
       
-      public function removePlayer(param1:Long) : void
+      public function removePlayer(param1:String) : void
       {
          var _loc2_:int = this.indexById(param1);
          this.dp.removeItemAt(_loc2_);
@@ -211,7 +211,7 @@ package alternativa.tanks.models.battle.gui.gui.statistics.table
          return this.inner.height;
       }
       
-      private function indexById(param1:Long) : int
+      private function indexById(param1:String) : int
       {
          var _loc2_:StatisticsData = null;
          var _loc3_:int = int(this.dp.length);

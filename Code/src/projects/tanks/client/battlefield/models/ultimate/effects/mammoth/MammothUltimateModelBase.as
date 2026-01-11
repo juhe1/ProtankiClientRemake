@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.ultimate.effects.mammoth
 
       protected var server:MammothUltimateModelServer;
 
-      private static const modelId:Long = Long.getLong(465096987,1359010901);
+      public static const modelId:Long = Long.getLong(465096987,1359010901);
 
       public function MammothUltimateModelBase()
       {

@@ -1,0 +1,22 @@
+package projects.tanks.client.battleservice.model.performance
+{
+   import alternativa.osgi.OSGi;
+   import alternativa.protocol.IProtocol;
+   import alternativa.protocol.OptionalMap;
+   import alternativa.protocol.ProtocolBuffer;
+   import flash.utils.ByteArray;
+   import platform.client.fp10.core.model.IModel;
+   
+   public class PerformanceModelServer
+   {
+      
+      private var model:IModel;
+      
+      public function PerformanceModelServer(param1:IModel)
+      {
+         super();
+         this.model = param1;
+      }
+   }
+}
+

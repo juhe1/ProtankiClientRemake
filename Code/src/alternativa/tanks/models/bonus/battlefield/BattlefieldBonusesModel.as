@@ -9,7 +9,6 @@ package alternativa.tanks.models.bonus.battlefield
    import alternativa.tanks.models.battle.battlefield.BattleUserInfoService;
    import alternativa.tanks.models.battle.battlefield.BattlefieldEvents;
    import alternativa.tanks.models.effects.common.IBonusCommonModel;
-   import alternativa.types.Long;
    import flash.utils.Dictionary;
    import platform.client.fp10.core.type.IGameObject;
    import projects.tanks.client.battlefield.models.bonus.battle.BonusSpawnData;
@@ -53,7 +52,7 @@ package alternativa.tanks.models.bonus.battlefield
          }
       }
       
-      private function spawnBonus(param1:IGameObject, param2:Long, param3:Vector3d, param4:int, param5:Boolean) : void
+      private function spawnBonus(param1:IGameObject, param2:String, param3:Vector3d, param4:int, param5:Boolean) : void
       {
          var _loc6_:IBonusCommonModel = null;
          var _loc7_:Bonus = null;
@@ -86,9 +85,9 @@ package alternativa.tanks.models.bonus.battlefield
       }
       
       [Obfuscation(rename="false")]
-      public function removeBonuses(param1:Vector.<Long>) : void
+      public function removeBonuses(param1:Vector.<String>) : void
       {
-         var _loc2_:Long = null;
+         var _loc2_:String = null;
          if(param1 != null)
          {
             for each(_loc2_ in param1)
@@ -98,7 +97,7 @@ package alternativa.tanks.models.bonus.battlefield
          }
       }
       
-      private function removeBonus(param1:Long) : void
+      private function removeBonus(param1:String) : void
       {
          var _loc2_:Bonus = this.bonuses[param1];
          if(_loc2_ != null)
@@ -109,7 +108,7 @@ package alternativa.tanks.models.bonus.battlefield
       }
       
       [Obfuscation(rename="false")]
-      public function bonusTaken(param1:Long) : void
+      public function bonusTaken(param1:String) : void
       {
          var _loc2_:Bonus = this.bonuses[param1];
          if(_loc2_ != null)
@@ -120,7 +119,7 @@ package alternativa.tanks.models.bonus.battlefield
       }
       
       [Obfuscation(rename="false")]
-      public function attemptToTakeBonusFailedTankNotActive(param1:Long) : void
+      public function attemptToTakeBonusFailedTankNotActive(param1:String) : void
       {
          var _loc2_:Bonus = this.bonuses[param1];
          if(_loc2_ != null)

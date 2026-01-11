@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.effects.effectlevel
 
       protected var server:EffectLevelModelServer;
 
-      private static const modelId:Long = Long.getLong(735266884,-238307683);
+      public static const modelId:Long = Long.getLong(735266884,-238307683);
 
       public function EffectLevelModelBase()
       {

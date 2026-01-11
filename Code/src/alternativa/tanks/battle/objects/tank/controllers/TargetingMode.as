@@ -1,3 +1,4 @@
+
 package alternativa.tanks.battle.objects.tank.controllers
 {
    public class TargetingMode
@@ -15,4 +16,3 @@ package alternativa.tanks.battle.objects.tank.controllers
       }
    }
 }
-

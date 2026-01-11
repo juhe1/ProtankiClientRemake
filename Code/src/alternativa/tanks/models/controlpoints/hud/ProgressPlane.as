@@ -9,6 +9,9 @@ package alternativa.tanks.models.controlpoints.hud
    import alternativa.tanks.utils.MathUtils;
    import flash.geom.Point;
    import flash.geom.Vector3D;
+   import alternativa.engine3d.alternativa3d;
+
+   use namespace alternativa3d;
    
    public class ProgressPlane extends Mesh
    {

@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.user.bossstate
 
       protected var server:BossStateModelServer;
 
-      private static const modelId:Long = Long.getLong(1177132817,1695744884);
+      public static const modelId:Long = Long.getLong(1177132817,1695744884);
 
       public function BossStateModelBase()
       {

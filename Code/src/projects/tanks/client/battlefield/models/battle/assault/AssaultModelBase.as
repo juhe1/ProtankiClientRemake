@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.battle.assault
 
       protected var server:AssaultModelServer;
 
-      private static const modelId:Long = Long.getLong(1012996430,-1521107309);
+      public static const modelId:Long = Long.getLong(1012996430,-1521107309);
 
       public function AssaultModelBase()
       {

@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.ultimate.effects.wasp
 
       protected var server:WaspUltimateModelServer;
 
-      private static const modelId:Long = Long.getLong(706050434,1960652493);
+      public static const modelId:Long = Long.getLong(706050434,1960652493);
 
       public function WaspUltimateModelBase()
       {

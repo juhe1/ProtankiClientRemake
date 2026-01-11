@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.tankparts.weapons.common.stream
 
       protected var server:StreamWeaponCommunicationModelServer;
 
-      private static const modelId:Long = Long.getLong(2040386917,729965137);
+      public static const modelId:Long = Long.getLong(2040386917,729965137);
 
       public function StreamWeaponCommunicationModelBase()
       {

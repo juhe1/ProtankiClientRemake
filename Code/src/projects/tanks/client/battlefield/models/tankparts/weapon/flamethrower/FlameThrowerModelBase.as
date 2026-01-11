@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.tankparts.weapon.flamethrower
 
       protected var server:FlameThrowerModelServer;
 
-      private static const modelId:Long = Long.getLong(1034700989,1212373553);
+      public static const modelId:Long = Long.getLong(1034700989,1212373553);
 
       public function FlameThrowerModelBase()
       {

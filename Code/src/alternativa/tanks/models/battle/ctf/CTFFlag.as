@@ -53,7 +53,7 @@ package alternativa.tanks.models.battle.ctf
       
       private var _carrier:Tank;
       
-      private var _carrierId:Long;
+      private var _carrierId:String;
       
       private var _state:CTFFlagState = CTFFlagState.AT_BASE;
       
@@ -179,7 +179,7 @@ package alternativa.tanks.models.battle.ctf
          this.skin.setFrameIndex(int((param1 - this.startTime) / this.frameInterval));
          if(this._carrier != null)
          {
-            this._carrier.getSkin().readGlobalFlagMountPoint(flagPosition);
+            this._carrier.getSkin().readGlobalFlagMountPoint(flagPosition, new Vector3());
             flagPosition.z -= 50;
             this.setPosition(flagPosition);
          }
@@ -190,7 +190,7 @@ package alternativa.tanks.models.battle.ctf
          return this._carrier;
       }
       
-      public function get carrierId() : Long
+      public function get carrierId() : String
       {
          return this._carrierId;
       }
@@ -220,19 +220,19 @@ package alternativa.tanks.models.battle.ctf
          return this._state;
       }
       
-      public function setLocalCarrier(param1:Long, param2:Tank) : void
+      public function setLocalCarrier(param1:String, param2:Tank) : void
       {
          this.isLocalCarrier = true;
          this.setCarrier(param1,param2,0.5);
       }
       
-      public function setRemoteCarrier(param1:Long, param2:Tank) : void
+      public function setRemoteCarrier(param1:String, param2:Tank) : void
       {
          this.isLocalCarrier = false;
          this.setCarrier(param1,param2,1);
       }
       
-      private function setCarrier(param1:Long, param2:Tank, param3:Number) : void
+      private function setCarrier(param1:String, param2:Tank, param3:Number) : void
       {
          this._carrierId = param1;
          this._carrier = param2;

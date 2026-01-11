@@ -12,7 +12,7 @@ package projects.tanks.client.battlefield.models.user.tank
       
       function deathConfirmed() : void;
       
-      function kill(param1:Long, param2:int, param3:DamageType) : void;
+      function kill(param1:String, param2:int, param3:DamageType) : void;
       
       function move(param1:MoveCommand) : void;
       

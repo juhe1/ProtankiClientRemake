@@ -5,7 +5,7 @@ package alternativa.tanks.models.battle.gui.userlabel
    public class BattleActionUserLabel extends BattleChatUserLabel
    {
       
-      public function BattleActionUserLabel(param1:Long)
+      public function BattleActionUserLabel(param1:String)
       {
          super(param1,false);
       }

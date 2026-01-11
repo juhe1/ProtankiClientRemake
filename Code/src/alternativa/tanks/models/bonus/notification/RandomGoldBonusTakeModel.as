@@ -7,6 +7,7 @@ package alternativa.tanks.models.bonus.notification
    import platform.client.fp10.core.type.ISpace;
    import projects.tanks.client.battlefield.bonus.randomgold.notification.IRandomGoldBonusTakeModelBase;
    import projects.tanks.client.battlefield.bonus.randomgold.notification.RandomGoldBonusTakeModelBase;
+   import utils.TankNameGameObjectMapper;
    
    [ModelInfo]
    public class RandomGoldBonusTakeModel extends RandomGoldBonusTakeModelBase implements IRandomGoldBonusTakeModelBase
@@ -26,7 +27,7 @@ package alternativa.tanks.models.bonus.notification
          _loc7_.showBattleMessage(MessageColor.ORANGE,param3.replace(/%USERNAME%/g,param1));
          if(param2 != null)
          {
-            _loc7_.logUserAction(param2.id,UserAction.PLAYER_GOLD_BOX,null);
+            _loc7_.logUserAction(TankNameGameObjectMapper.getTankNameByGameObject(param2),UserAction.PLAYER_GOLD_BOX,null);
          }
       }
    }

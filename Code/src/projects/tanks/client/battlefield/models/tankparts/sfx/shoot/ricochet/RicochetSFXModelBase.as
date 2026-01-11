@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.tankparts.sfx.shoot.ricochet
 
       protected var server:RicochetSFXModelServer;
 
-      private static const modelId:Long = Long.getLong(1224006945,1002444060);
+      public static const modelId:Long = Long.getLong(1224006945,1002444060);
 
       public function RicochetSFXModelBase()
       {

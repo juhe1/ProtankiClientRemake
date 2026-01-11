@@ -63,9 +63,9 @@ package alternativa.tanks.models.statistics
          }
       }
       
-      public function updateUserKills(param1:Long, param2:int) : void
+      public function updateUserKills(param1:String, param2:int) : void
       {
-         var userId:Long = param1;
+         var userId:String = param1;
          var userKills:int = param2;
          try
          {

@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.tankparts.sfx.shoot.shaft
 
       protected var server:ShaftShootSFXModelServer;
 
-      private static const modelId:Long = Long.getLong(2117558336,-406639565);
+      public static const modelId:Long = Long.getLong(2117558336,-406639565);
 
       public function ShaftShootSFXModelBase()
       {

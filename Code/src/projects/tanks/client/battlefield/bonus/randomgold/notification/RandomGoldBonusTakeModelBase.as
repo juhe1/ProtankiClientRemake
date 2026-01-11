@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.bonus.randomgold.notification
 
       protected var server:RandomGoldBonusTakeModelServer;
 
-      private static const modelId:Long = Long.getLong(659324709,-1637199403);
+      public static const modelId:Long = Long.getLong(659324709,-1637199403);
 
       public function RandomGoldBonusTakeModelBase()
       {

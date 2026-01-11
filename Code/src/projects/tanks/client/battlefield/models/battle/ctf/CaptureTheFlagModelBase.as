@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.battle.ctf
 
       protected var server:CaptureTheFlagModelServer;
 
-      private static const modelId:Long = Long.getLong(1965338956,1417730743);
+      public static const modelId:Long = Long.getLong(1965338956,1417730743);
 
       public function CaptureTheFlagModelBase()
       {

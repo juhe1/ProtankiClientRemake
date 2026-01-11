@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.tankparts.sfx.firebird
 
       protected var server:FlameThrowingSFXModelServer;
 
-      private static const modelId:Long = Long.getLong(253811659,1003298843);
+      public static const modelId:Long = Long.getLong(253811659,1003298843);
 
       public function FlameThrowingSFXModelBase()
       {

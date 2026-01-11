@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.coloradjust
 
       protected var server:ColorAdjustModelServer;
 
-      private static const modelId:Long = Long.getLong(1389685079,-1009241415);
+      public static const modelId:Long = Long.getLong(1389685079,-1009241415);
 
       public function ColorAdjustModelBase()
       {

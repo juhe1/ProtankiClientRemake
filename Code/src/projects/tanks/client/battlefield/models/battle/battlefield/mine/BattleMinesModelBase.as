@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.battle.battlefield.mine
 
       protected var server:BattleMinesModelServer;
 
-      private static const modelId:Long = Long.getLong(479007306,2075268288);
+      public static const modelId:Long = Long.getLong(479007306,2075268288);
 
       public function BattleMinesModelBase()
       {

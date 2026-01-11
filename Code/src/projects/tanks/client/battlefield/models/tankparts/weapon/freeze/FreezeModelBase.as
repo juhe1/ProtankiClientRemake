@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.tankparts.weapon.freeze
 
       protected var server:FreezeModelServer;
 
-      private static const modelId:Long = Long.getLong(2120141642,699496177);
+      public static const modelId:Long = Long.getLong(2120141642,699496177);
 
       public function FreezeModelBase()
       {

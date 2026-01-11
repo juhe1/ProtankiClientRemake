@@ -32,7 +32,7 @@ package alternativa.tanks.models.battle.gui.userlabel
       
       private var resitanceLabel:LabelBase;
       
-      public function BattleChatUserLabel(param1:Long, param2:Boolean = true)
+      public function BattleChatUserLabel(param1:String, param2:Boolean = true)
       {
          var _loc4_:IGameObject = null;
          var _loc5_:Tank = null;
@@ -112,7 +112,7 @@ package alternativa.tanks.models.battle.gui.userlabel
             _loc3_ = int(_loc2_.getResistance(false));
             if(_loc3_ > 0)
             {
-               _loc4_ = ResistanceShieldIcon.getBitmapFor(_loc1_);
+               _loc4_ = ResistanceShieldIcon.getBitmapFor(_loc1_, super.userId);
                _loc4_.y += 4;
                _loc4_.x = _uidLabel.x + _uidLabel.textWidth + 7;
                shadowContainer.addChild(_loc4_);

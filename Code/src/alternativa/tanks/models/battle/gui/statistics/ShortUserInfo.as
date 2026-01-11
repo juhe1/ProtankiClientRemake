@@ -7,7 +7,7 @@ package alternativa.tanks.models.battle.gui.statistics
    public class ShortUserInfo
    {
       
-      public var userId:Long;
+      public var userId:String;
       
       public var uid:String;
       

@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.tankparts.armor.rankup
 
       protected var server:TankRankUpEffectModelServer;
 
-      private static const modelId:Long = Long.getLong(1545673170,1705258317);
+      public static const modelId:Long = Long.getLong(1545673170,1705258317);
 
       public function TankRankUpEffectModelBase()
       {

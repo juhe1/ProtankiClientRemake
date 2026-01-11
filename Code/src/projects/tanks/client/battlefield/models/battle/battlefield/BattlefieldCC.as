@@ -11,7 +11,7 @@ package projects.tanks.client.battlefield.models.battle.battlefield
       
       private var _active:Boolean;
       
-      private var _battleId:Long;
+      private var _battleId:String;
       
       private var _battlefieldSounds:BattlefieldSounds;
       
@@ -43,7 +43,7 @@ package projects.tanks.client.battlefield.models.battle.battlefield
       
       private var _withoutSupplies:Boolean;
       
-      public function BattlefieldCC(param1:Boolean = false, param2:Long = null, param3:BattlefieldSounds = null, param4:Number = 0, param5:int = 0, param6:IGameObject = null, param7:LightingSFXEntity = null, param8:Boolean = false, param9:Range = null, param10:Boolean = false, param11:int = 0, param12:Number = 0, param13:Boolean = false, param14:Boolean = false, param15:Boolean = false, param16:Boolean = false, param17:Boolean = false)
+      public function BattlefieldCC(param1:Boolean = false, param2:String = null, param3:BattlefieldSounds = null, param4:Number = 0, param5:int = 0, param6:IGameObject = null, param7:LightingSFXEntity = null, param8:Boolean = false, param9:Range = null, param10:Boolean = false, param11:int = 0, param12:Number = 0, param13:Boolean = false, param14:Boolean = false, param15:Boolean = false, param16:Boolean = false, param17:Boolean = false)
       {
          super();
          this._active = param1;
@@ -75,12 +75,12 @@ package projects.tanks.client.battlefield.models.battle.battlefield
          this._active = param1;
       }
       
-      public function get battleId() : Long
+      public function get battleId() : String
       {
          return this._battleId;
       }
       
-      public function set battleId(param1:Long) : void
+      public function set battleId(param1:String) : void
       {
          this._battleId = param1;
       }

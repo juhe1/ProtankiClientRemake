@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.tankparts.weapons.rocketlaunche
 
       protected var server:RocketLauncherSfxModelServer;
 
-      private static const modelId:Long = Long.getLong(1535860802,1721952390);
+      public static const modelId:Long = Long.getLong(1535860802,1721952390);
 
       public function RocketLauncherSfxModelBase()
       {

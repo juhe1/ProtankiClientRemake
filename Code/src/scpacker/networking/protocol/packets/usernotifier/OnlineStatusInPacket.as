@@ -14,7 +14,7 @@ package scpacker.networking.protocol.packets.usernotifier
          super();
          this.userInfo = param1;
          registerProperty(param1);
-         registerPropertyCodec("scpacker.networking.protocol.codec.custom.Codeco2h3f8i");
+         registerPropertyCodec("scpacker.networking.protocol.codec.custom.CodecOnlineNotifierData");
       }
       
       override public function writeToPropertyByIndex(param1:Object, param2:int) : void

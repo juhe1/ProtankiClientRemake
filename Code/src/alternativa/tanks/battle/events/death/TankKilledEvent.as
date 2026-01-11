@@ -6,13 +6,13 @@ package alternativa.tanks.battle.events.death
    public class TankKilledEvent
    {
       
-      public var killerId:Long;
+      public var killerId:String;
       
-      public var victimId:Long;
+      public var victimId:String;
       
       public var damageType:DamageType;
       
-      public function TankKilledEvent(param1:Long, param2:Long, param3:DamageType)
+      public function TankKilledEvent(param1:String, param2:String, param3:DamageType)
       {
          super();
          this.killerId = param1;

@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.user.temperature
 
       protected var server:TankTemperatureModelServer;
 
-      private static const modelId:Long = Long.getLong(1044732133,1674200214);
+      public static const modelId:Long = Long.getLong(1044732133,1674200214);
 
       public function TankTemperatureModelBase()
       {

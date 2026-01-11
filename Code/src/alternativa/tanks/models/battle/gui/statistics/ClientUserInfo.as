@@ -7,7 +7,7 @@ package alternativa.tanks.models.battle.gui.statistics
    public class ClientUserInfo
    {
       
-      private var _userId:Long;
+      private var _userId:String;
       
       private var _uid:String;
       
@@ -23,7 +23,7 @@ package alternativa.tanks.models.battle.gui.statistics
       
       private var _hasPremium:Boolean;
       
-      public function ClientUserInfo(param1:Long, param2:String, param3:int, param4:Boolean, param5:Boolean, param6:BattleTeam, param7:ChatModeratorLevel, param8:Boolean)
+      public function ClientUserInfo(param1:String, param2:String, param3:int, param4:Boolean, param5:Boolean, param6:BattleTeam, param7:ChatModeratorLevel, param8:Boolean)
       {
          super();
          this._userId = param1;
@@ -36,12 +36,12 @@ package alternativa.tanks.models.battle.gui.statistics
          this._hasPremium = param8;
       }
       
-      public function get userId() : Long
+      public function get userId() : String
       {
          return this._userId;
       }
       
-      public function set userId(param1:Long) : void
+      public function set userId(param1:String) : void
       {
          this._userId = param1;
       }

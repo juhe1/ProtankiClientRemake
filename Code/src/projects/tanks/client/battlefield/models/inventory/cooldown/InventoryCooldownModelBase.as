@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.inventory.cooldown
 
       protected var server:InventoryCooldownModelServer;
 
-      private static const modelId:Long = Long.getLong(169566618,2066569805);
+      public static const modelId:Long = Long.getLong(169566618,2066569805);
 
       public function InventoryCooldownModelBase()
       {

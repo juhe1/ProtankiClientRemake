@@ -12,6 +12,7 @@ package alternativa.tanks.models.statistics
    import platform.client.fp10.core.type.IGameObject;
    import projects.tanks.client.battlefield.types.DamageType;
    import projects.tanks.clients.fp10.libraries.TanksLocale;
+   import utils.TankNameGameObjectMapper;
    
    public class TankKillLogger implements AutoClosable, BattleEventListener
    {
@@ -71,7 +72,7 @@ package alternativa.tanks.models.statistics
          else if(param1 is TankSuicideEvent)
          {
             _loc4_ = TankSuicideEvent(param1);
-            _loc2_.showUserBattleLogMessage(_loc4_.victim.id,UserAction.PLAYER_SELF_DESTROY);
+            _loc2_.showUserBattleLogMessage(TankNameGameObjectMapper.getTankNameByGameObject(_loc4_.victim),UserAction.PLAYER_SELF_DESTROY);
          }
          else if(param1 is TankReloadedEvent)
          {

@@ -12,12 +12,12 @@ package projects.tanks.client.battleservice.model.statistics.dm
          this.newname_8549__END = param1;
       }
       
-      public function get userInfos() : Vector.<UserInfo>
+      public function get usersInfo() : Vector.<UserInfo>
       {
          return this.newname_8549__END;
       }
       
-      public function set userInfos(param1:Vector.<UserInfo>) : void
+      public function set usersInfo(param1:Vector.<UserInfo>) : void
       {
          this.newname_8549__END = param1;
       }

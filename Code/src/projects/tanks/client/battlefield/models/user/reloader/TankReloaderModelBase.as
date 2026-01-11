@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.user.reloader
 
       protected var server:TankReloaderModelServer;
 
-      private static const modelId:Long = Long.getLong(1286074115,-176946994);
+      public static const modelId:Long = Long.getLong(1286074115,-176946994);
 
       public function TankReloaderModelBase()
       {

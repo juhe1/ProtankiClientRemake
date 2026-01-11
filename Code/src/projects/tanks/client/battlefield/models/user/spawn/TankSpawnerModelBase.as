@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.user.spawn
 
       protected var server:TankSpawnerModelServer;
 
-      private static const modelId:Long = Long.getLong(490108405,-1605879749);
+      public static const modelId:Long = Long.getLong(490108405,-1605879749);
 
       public function TankSpawnerModelBase()
       {

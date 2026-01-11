@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.user.suicide
 
       protected var server:SuicideModelServer;
 
-      private static const modelId:Long = Long.getLong(528941690,1765829096);
+      public static const modelId:Long = Long.getLong(528941690,1765829096);
 
       public function SuicideModelBase()
       {

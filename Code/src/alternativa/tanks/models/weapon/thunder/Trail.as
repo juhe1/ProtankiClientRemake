@@ -6,6 +6,9 @@ package alternativa.tanks.models.weapon.thunder
    import alternativa.engine3d.materials.Material;
    import alternativa.engine3d.objects.Mesh;
    import flash.display.BlendMode;
+   import alternativa.engine3d.alternativa3d;
+
+   use namespace alternativa3d;
    
    internal class Trail extends Mesh
    {

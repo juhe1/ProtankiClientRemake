@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.user.damageindicator
 
       protected var server:DamageIndicatorModelServer;
 
-      private static const modelId:Long = Long.getLong(756280393,-1366394900);
+      public static const modelId:Long = Long.getLong(756280393,-1366394900);
 
       public function DamageIndicatorModelBase()
       {

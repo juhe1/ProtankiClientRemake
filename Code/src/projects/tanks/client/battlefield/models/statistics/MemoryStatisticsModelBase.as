@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.statistics
 
       protected var server:MemoryStatisticsModelServer;
 
-      private static const modelId:Long = Long.getLong(2138145909,-1607792064);
+      public static const modelId:Long = Long.getLong(2138145909,-1607792064);
 
       public function MemoryStatisticsModelBase()
       {

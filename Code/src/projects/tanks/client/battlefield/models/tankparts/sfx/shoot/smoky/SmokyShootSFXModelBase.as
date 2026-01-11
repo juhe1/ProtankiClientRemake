@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.tankparts.sfx.shoot.smoky
 
       protected var server:SmokyShootSFXModelServer;
 
-      private static const modelId:Long = Long.getLong(407046073,1894066655);
+      public static const modelId:Long = Long.getLong(407046073,1894066655);
 
       public function SmokyShootSFXModelBase()
       {

@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.tankparts.weapon.railgun
 
       protected var server:RailgunModelServer;
 
-      private static const modelId:Long = Long.getLong(387277533,1853292335);
+      public static const modelId:Long = Long.getLong(387277533,1853292335);
 
       public function RailgunModelBase()
       {

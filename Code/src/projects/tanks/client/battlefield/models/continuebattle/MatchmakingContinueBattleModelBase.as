@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.continuebattle
 
       protected var server:MatchmakingContinueBattleModelServer;
 
-      private static const modelId:Long = Long.getLong(451825136,-2117628925);
+      public static const modelId:Long = Long.getLong(451825136,-2117628925);
 
       public function MatchmakingContinueBattleModelBase()
       {

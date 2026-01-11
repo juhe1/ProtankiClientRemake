@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.bonus.battle.battlefield
 
       protected var server:BattlefieldBonusesModelServer;
 
-      private static const modelId:Long = Long.getLong(499495185,-1001709329);
+      public static const modelId:Long = Long.getLong(499495185,-1001709329);
 
       public function BattlefieldBonusesModelBase()
       {

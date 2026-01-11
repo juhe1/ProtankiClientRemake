@@ -75,12 +75,10 @@ package alternativa.tanks.models.battle.battlefield
    import flash.media.Sound;
    import flash.net.SharedObject;
    import flash.utils.Dictionary;
-   import platform.client.fp10.core.logging.serverlog.ServerLogTarget;
    import platform.client.fp10.core.model.ObjectLoadListener;
    import platform.client.fp10.core.model.ObjectLoadPostListener;
    import platform.client.fp10.core.model.ObjectUnloadPostListener;
    import platform.client.fp10.core.model.impl.Model;
-   import platform.client.fp10.core.network.connection.ControlConnectionSender;
    import platform.client.fp10.core.type.IGameObject;
    import projects.tanks.client.battlefield.models.battle.battlefield.BattlefieldModelBase;
    import projects.tanks.client.battlefield.models.battle.battlefield.IBattlefieldModelBase;
@@ -248,7 +246,7 @@ package alternativa.tanks.models.battle.battlefield
       public function BattlefieldModel()
       {
          super();
-         logService.addLogTarget(new ServerLogTarget(new ControlConnectionSender(),SERVER_CHANNEL + ":e"));
+         //logService.addLogTarget(new ServerLogTarget(new ControlConnectionSender(),SERVER_CHANNEL + ":e"));
          this.serverLogger = logService.getLogger(SERVER_CHANNEL);
          this.logger = logService.getLogger(CHANNEL);
          this.initBattleEventHandlers();
@@ -460,8 +458,8 @@ package alternativa.tanks.models.battle.battlefield
          battleInfoService.spectatorMode = getInitParam().spectator;
          if(getInitParam().proBattle)
          {
-            battleInfoService.setCurrentSelectionBattle(getInitParam().battleId,getInitParam().range.min,getInitParam().range.max);
-            battleInfoService.currentBattleId = getInitParam().battleId;
+            //battleInfoService.setCurrentSelectionBattle(getInitParam().battleId,getInitParam().range.min,getInitParam().range.max);
+            //battleInfoService.currentBattleId = getInitParam().battleId;
          }
          else
          {
@@ -499,7 +497,7 @@ package alternativa.tanks.models.battle.battlefield
       
       private function saveServerNumber() : void
       {
-         var _loc1_:Number = Number(addressService.getServerNumber());
+         var _loc1_:Number = Number(0);
          var _loc2_:SharedObject = SharedObject.getLocal("launcherStorage");
          _loc2_.data[LAST_SERVER] = _loc1_;
          _loc2_.flush();

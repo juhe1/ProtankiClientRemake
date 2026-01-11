@@ -73,6 +73,8 @@ package projects.tanks.clients.fp10.models.tankspanelmodelflash
    import projects.tanks.clients.fp10.libraries.tanksservices.service.storage.IStorageService;
    import alternativa.tanks.service.upgradingitems.UpgradingItemsServiceImpl;
    import alternativa.tanks.gui.alerts.ItemsAlert;
+   import projects.tanks.clients.fp10.libraries.tanksservices.service.friend.battleinvite.IBattleInviteService;
+   import alternativa.tanks.service.settings.SettingsService;
    
    public class Activator implements IBundleActivator
    {
@@ -3334,20 +3336,20 @@ package projects.tanks.clients.fp10.models.tankspanelmodelflash
          //{
          //   return ReferralsButtonHelperServiceImpl.partnerService;
          //});
-         //osgi.injectService(IBattleInviteService,function(param1:Object):void
-         //{
-         //   SettingsService.battleInviteService = IBattleInviteService(param1);
-         //},function():IBattleInviteService
-         //{
-         //   return SettingsService.battleInviteService;
-         //});
-         //osgi.injectService(IStorageService,function(param1:Object):void
-         //{
-         //   SettingsService.storageService = IStorageService(param1);
-         //},function():IStorageService
-         //{
-         //   return SettingsService.storageService;
-         //});
+         osgi.injectService(IBattleInviteService,function(param1:Object):void
+         {
+            SettingsService.battleInviteService = IBattleInviteService(param1);
+         },function():IBattleInviteService
+         {
+            return SettingsService.battleInviteService;
+         });
+         osgi.injectService(IStorageService,function(param1:Object):void
+         {
+            SettingsService.storageService = IStorageService(param1);
+         },function():IStorageService
+         {
+            return SettingsService.storageService;
+         });
          osgi.injectService(ILocaleService,function(param1:Object):void
          {
             KeyCodesConverter.localeService = ILocaleService(param1);

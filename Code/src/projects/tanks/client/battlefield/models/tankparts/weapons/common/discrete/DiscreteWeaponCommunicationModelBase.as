@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.tankparts.weapons.common.discre
 
       protected var server:DiscreteWeaponCommunicationModelServer;
 
-      private static const modelId:Long = Long.getLong(486222912,-663069007);
+      public static const modelId:Long = Long.getLong(486222912,-663069007);
 
       public function DiscreteWeaponCommunicationModelBase()
       {

@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.user.turnover
 
       protected var server:TankTurnOverModelServer;
 
-      private static const modelId:Long = Long.getLong(979293197,-632476978);
+      public static const modelId:Long = Long.getLong(979293197,-632476978);
 
       public function TankTurnOverModelBase()
       {

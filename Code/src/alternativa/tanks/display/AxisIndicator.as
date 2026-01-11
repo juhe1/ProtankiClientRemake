@@ -2,6 +2,9 @@ package alternativa.tanks.display
 {
    import alternativa.engine3d.core.Camera3D;
    import flash.display.Shape;
+   import alternativa.engine3d.alternativa3d;
+
+   use namespace alternativa3d;
    
    public class AxisIndicator extends Shape
    {

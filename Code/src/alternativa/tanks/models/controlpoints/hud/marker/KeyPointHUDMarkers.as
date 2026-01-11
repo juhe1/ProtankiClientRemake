@@ -10,6 +10,9 @@ package alternativa.tanks.models.controlpoints.hud.marker
    import alternativa.tanks.battle.BattleView;
    import alternativa.tanks.battle.scene3d.Renderer;
    import alternativa.tanks.models.controlpoints.hud.KeyPoint;
+   import alternativa.engine3d.alternativa3d;
+   
+   use namespace alternativa3d;
    
    public class KeyPointHUDMarkers implements Renderer
    {

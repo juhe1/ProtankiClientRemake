@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.tankparts.weapons.artillery
 
       protected var server:WeaponRotationLimitModelServer;
 
-      private static const modelId:Long = Long.getLong(1326062457,-784723685);
+      public static const modelId:Long = Long.getLong(1326062457,-784723685);
 
       public function WeaponRotationLimitModelBase()
       {

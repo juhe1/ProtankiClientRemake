@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.user.pause
 
       protected var server:TankPauseModelServer;
 
-      private static const modelId:Long = Long.getLong(1396750689,-217255698);
+      public static const modelId:Long = Long.getLong(1396750689,-217255698);
 
       public function TankPauseModelBase()
       {

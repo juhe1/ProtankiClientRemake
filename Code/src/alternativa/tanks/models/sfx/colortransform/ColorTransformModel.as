@@ -28,7 +28,7 @@ package alternativa.tanks.models.sfx.colortransform
          }
          if(_loc3_.length != 0)
          {
-            ColorTransformConsumer(object.event(ColorTransformConsumer)).initColorTransform(_loc3_);
+            (object.event(ColorTransformConsumer) as ColorTransformConsumer).initColorTransform(_loc3_);
          }
       }
    }

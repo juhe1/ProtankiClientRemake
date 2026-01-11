@@ -2,6 +2,7 @@ package projects.tanks.client.battlefield.models.bonus.battle.battlefield
 {
    import platform.client.fp10.core.model.IModel;
    import platform.client.fp10.core.type.IGameObject;
+   import alternativa.types.Long;
 
    public class BattlefieldBonusesModelServer
    {
@@ -14,7 +15,7 @@ package projects.tanks.client.battlefield.models.bonus.battle.battlefield
          this.model = param1;
       }
 
-      public function attemptToTakeBonus(param1:Long) : void
+      public function attemptToTakeBonus(param1:String) : void
       {
       }
    }

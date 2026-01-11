@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.map
 
       protected var server:BattleMapModelServer;
 
-      private static const modelId:Long = Long.getLong(1092696378,-225264163);
+      public static const modelId:Long = Long.getLong(1092696378,-225264163);
 
       public function BattleMapModelBase()
       {

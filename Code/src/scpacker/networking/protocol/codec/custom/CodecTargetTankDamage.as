@@ -5,6 +5,7 @@ package scpacker.networking.protocol.codec.custom
    import flash.utils.ByteArray;
    import scpacker.networking.protocol.ProtocolInitializer;
    import scpacker.networking.protocol.codec.ICodec;
+   import utils.TankNameGameObjectMapper;
    
    public class CodecTargetTankDamage implements ICodec
    {
@@ -31,7 +32,7 @@ package scpacker.networking.protocol.codec.custom
          var _loc2_:TargetTankDamage = new TargetTankDamage();
          _loc2_.damageAmount = this.newname_4315__END.decode(param1) as Number;
          _loc2_.damageIndicatorType = this.newname_4316__END.decode(param1) as DamageIndicatorType;
-         _loc2_.target = this.newname_4298__END.decode(param1) as String;
+         _loc2_.target = TankNameGameObjectMapper.getGameObjectByTankName(this.newname_4298__END.decode(param1) as String);
          return _loc2_;
       }
       

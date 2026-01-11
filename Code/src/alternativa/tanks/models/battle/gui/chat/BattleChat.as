@@ -14,7 +14,6 @@ package alternativa.tanks.models.battle.gui.chat
    import alternativa.tanks.services.battleinput.BattleInputLockType;
    import alternativa.tanks.services.battleinput.BattleInputService;
    import alternativa.tanks.services.targeting.TargetingInputManager;
-   import alternativa.types.Long;
    import controls.chat.BattleChatInput;
    import controls.chat.ChatInputType;
    import flash.display.Sprite;
@@ -127,7 +126,7 @@ package alternativa.tanks.models.battle.gui.chat
          return this._chatOpened;
       }
       
-      public function addUserMessage(param1:Long, param2:BattleTeam, param3:String, param4:Boolean, param5:Boolean) : void
+      public function addUserMessage(param1:String, param2:BattleTeam, param3:String, param4:Boolean, param5:Boolean) : void
       {
          var _loc6_:String = null;
          if(!param5)

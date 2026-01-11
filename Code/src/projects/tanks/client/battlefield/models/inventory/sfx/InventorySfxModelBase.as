@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.inventory.sfx
 
       protected var server:InventorySfxModelServer;
 
-      private static const modelId:Long = Long.getLong(506159627,-1514632607);
+      public static const modelId:Long = Long.getLong(506159627,-1514632607);
 
       public function InventorySfxModelBase()
       {

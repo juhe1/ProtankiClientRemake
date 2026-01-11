@@ -53,10 +53,10 @@ package alternativa.tanks.models.battle.gui.statistics
       
       public static function createClientUserInfo(param1:UserInfo, param2:BattleTeam) : ClientUserInfo
       {
-         return new ClientUserInfo(param1.user,param1.uid,param1.rank,false,false,param2,param1.chatModeratorLevel,param1.hasPremium);
+         return new ClientUserInfo(param1.user,param1.uid,param1.rank,false,false,param2,param1.chatModeratorLevel,false)//param1.hasPremium);
       }
       
-      public static function getUserInfo(param1:Long, param2:Vector.<UserInfo>) : UserInfo
+      public static function getUserInfo(param1:String, param2:Vector.<UserInfo>) : UserInfo
       {
          var _loc5_:UserInfo = null;
          var _loc3_:int = int(param2.length);
@@ -73,7 +73,7 @@ package alternativa.tanks.models.battle.gui.statistics
          return null;
       }
       
-      public static function deleteUserStat(param1:Vector.<ClientUserStat>, param2:Long) : Vector.<ClientUserStat>
+      public static function deleteUserStat(param1:Vector.<ClientUserStat>, param2:String) : Vector.<ClientUserStat>
       {
          var _loc6_:ClientUserStat = null;
          var _loc3_:Vector.<ClientUserStat> = new Vector.<ClientUserStat>();
@@ -104,13 +104,13 @@ package alternativa.tanks.models.battle.gui.statistics
             if(_loc6_ != null)
             {
                _loc6_.reward = _loc5_.reward + _loc5_.premiumBonusReward + _loc5_.newbiesAbonementBonusReward;
-               _loc6_.stars = _loc5_.starsReward;
+               //_loc6_.stars = _loc5_.starsReward;
             }
             _loc4_++;
          }
       }
       
-      public static function getClientUserStat(param1:Vector.<ClientUserStat>, param2:Long) : ClientUserStat
+      public static function getClientUserStat(param1:Vector.<ClientUserStat>, param2:String) : ClientUserStat
       {
          var _loc5_:ClientUserStat = null;
          var _loc3_:int = int(param1.length);
@@ -145,7 +145,7 @@ package alternativa.tanks.models.battle.gui.statistics
          return null;
       }
       
-      public static function getRewardById(param1:Long, param2:Vector.<UserReward>) : UserReward
+      public static function getRewardById(param1:String, param2:Vector.<UserReward>) : UserReward
       {
          var _loc5_:UserReward = null;
          var _loc3_:int = int(param2.length);
@@ -162,7 +162,7 @@ package alternativa.tanks.models.battle.gui.statistics
          return null;
       }
       
-      public static function getUserPosition(param1:Vector.<ClientUserStat>, param2:Long) : int
+      public static function getUserPosition(param1:Vector.<ClientUserStat>, param2:String) : int
       {
          var _loc5_:ClientUserStat = null;
          var _loc3_:int = int(param1.length);

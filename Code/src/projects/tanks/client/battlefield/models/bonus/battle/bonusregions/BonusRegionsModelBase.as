@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.bonus.battle.bonusregions
 
       protected var server:BonusRegionsModelServer;
 
-      private static const modelId:Long = Long.getLong(1214265883,963276324);
+      public static const modelId:Long = Long.getLong(1214265883,963276324);
 
       public function BonusRegionsModelBase()
       {

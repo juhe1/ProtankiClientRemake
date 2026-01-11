@@ -38,7 +38,6 @@ package scpacker.weapon
    import alternativa.tanks.models.weapon.ricochet.RicochetModel;
    import alternativa.tanks.models.weapon.shotgun.aiming.ShotgunAimingModel ;
    import alternativa.tanks.models.weapon.shotgun.aiming.ShotgunAiming;
-   import alternativa.tanks.models.weapon.plasma.TwinsModel;
    import alternativa.tanks.models.weapon.flamethrower.FlamethrowerModel;
    import alternativa.tanks.models.weapon.shotgun.ShotgunModel;
    import projects.tanks.client.battlefield.models.tankparts.weapon.smoky.SmokyModelBase;
@@ -63,6 +62,7 @@ package scpacker.weapon
    import alternativa.tanks.models.weapon.splash.SplashModel;
    import projects.tanks.client.battlefield.models.tankparts.weapon.splash.SplashModelBase;
    import projects.tanks.client.battlefield.models.tankparts.weapons.shotgun.ShotgunHittingModelBase;
+   import alternativa.tanks.models.weapon.twins.TwinsModel;
    
    public class WeaponModelUtil
    {
@@ -80,10 +80,11 @@ package scpacker.weapon
       private static var streamWeaponModel:StreamWeaponModel;
       private static var splashModel:SplashModel;
       private static var shotGunAimingModel:ShotgunAimingModel;
-
-      public static var weaponJsonObjects:Dictionary = new Dictionary();
-      
       //private static var newname_121__END:ArtilleryModel;
+
+      public static var weaponJsonSpecialEntities:Dictionary = new Dictionary();
+      public static var weaponDatas:Dictionary = new Dictionary();
+      public static var weaponWeakeningDatas:Dictionary = new Dictionary();
       
       public static var resourceRegistry:ResourceRegistry = OSGi.getInstance().getService(ResourceRegistry) as ResourceRegistry;
       
@@ -94,7 +95,7 @@ package scpacker.weapon
          super();
       }
       
-      public static function getWeaponModel(weaponObject:GameObject) : Model
+      public static function initializeWeaponModel(weaponObject:GameObject, weaponName:String) : void
       {
          var _loc18_:LaserPointerCC = null;
          var _loc11_:LaserPointerModel = null;
@@ -105,12 +106,12 @@ package scpacker.weapon
          var flameThrowerCC:FlameThrowerCC = null;
          var _loc14_:StreamWeaponData = null;
          var freezeCC:FreezeCC = null;
-         var _loc16_:IsisCC = null;
+         var isisCC:IsisCC = null;
          var splashCC:SplashCC = null;
          var shotGunAimingCC:ShotGunAimingCC = null;
          var _loc2_:ShotgunShotCC = null;
          var _loc15_:ShotgunAimingModel = null;
-         var _loc6_:MachineGunCC = null;
+         var machineGunCC:MachineGunCC = null;
          if(smokyModel == null)
          {
             smokyModel = SmokyModel(modelRegistry.getModel(SmokyModelBase.modelId));
@@ -129,15 +130,13 @@ package scpacker.weapon
             shotGunAimingModel = ShotgunAimingModel(modelRegistry.getModel(ShotgunHittingModelBase.modelId));
             //newname_121__END = ArtilleryModel(modelRegistry.getModel(Long.getLong(1546475564,-1431010080)));
          }
-         var model:Model = null;
-         var _loc8_:* = weaponJsonObjects[weaponObject.id];
+         var _loc8_:* = weaponJsonSpecialEntities[weaponName];
 
          Model.object = weaponObject;
 
-         switch(weaponObject.name.split("_")[0])
+         switch(weaponName.split("_")[0])
          {
             case "smoky":
-               model = smokyModel;
                break;
             case "shaft":
                _loc18_ = new LaserPointerCC();
@@ -172,8 +171,6 @@ package scpacker.weapon
 
                shaftModel.putInitParams(_loc9_);
                shaftModel.objectLoaded();
-
-               model = shaftModel;
                break;
             case "railgun":
                _loc5_ = new RailgunCC();
@@ -182,8 +179,6 @@ package scpacker.weapon
                
                railgunModel.putInitParams(_loc5_);
                railgunModel.objectLoaded();
-
-               model = railgunModel;
                break;
             case "ricochet":
                _loc10_ = new RicochetCC();
@@ -197,8 +192,6 @@ package scpacker.weapon
                
                ricochetModel.putInitParams(_loc10_);
                ricochetModel.objectLoaded();
-
-               model = ricochetModel;
                break;
             case "twins":
                _loc12_ = new TwinsCC();
@@ -208,8 +201,6 @@ package scpacker.weapon
 
                twinsModel.putInitParams(_loc12_);
                twinsModel.objectLoaded();
-
-               model = twinsModel;
                break;
             case "flamethrower":
                flameThrowerCC = new FlameThrowerCC();
@@ -220,8 +211,6 @@ package scpacker.weapon
                flamethrowerModel.objectLoaded();
 
                initializeStreamWeapon(weaponObject, _loc8_);
-
-               model = flamethrowerModel;
                break;
             case "freeze":
                freezeCC = new FreezeCC();
@@ -232,27 +221,20 @@ package scpacker.weapon
 
                freezeModel.putInitParams(freezeCC);
                freezeModel.objectLoaded();
-
-               model = freezeModel;
                break;
             case "isida":
-               _loc16_ = new IsisCC();
-               _loc16_.capacity = _loc8_.capacity;
-               _loc16_.chargeRate = _loc8_.chargeRate;
-               _loc16_.checkPeriodMsec = _loc8_.checkPeriodMsec;
-               _loc16_.coneAngle = _loc8_.coneAngle;
-               _loc16_.dischargeRate = _loc8_.dischargeDamageRate;
+               isisCC = new IsisCC();
+               isisCC.capacity = _loc8_.capacity;
+               isisCC.chargeRate = _loc8_.chargeRate;
+               isisCC.checkPeriodMsec = _loc8_.checkPeriodMsec;
+               isisCC.coneAngle = _loc8_.coneAngle;
+               isisCC.dischargeDamageRate = _loc8_.dischargeDamageRate;
+               isisCC.dischargeHealingRate = _loc8_.dischargeHealingRate;
+               isisCC.dischargeIdleRate = _loc8_.dischargeIdleRate;
+               isisCC.radius = _loc8_.radius;
 
-               // TODO: add these params
-               //_loc16_.dischargeHealingRate = _loc8_.dischargeHealingRate;
-               //_loc16_.dischargeIdleRate = _loc8_.dischargeIdleRate;
-
-               _loc16_.radius = _loc8_.radius;
-
-               healingGunModel.putInitParams(_loc16_);
+               healingGunModel.putInitParams(isisCC);
                healingGunModel.objectLoaded();
-
-               model = healingGunModel;
                break;
             case "thunder":
                splashCC = new SplashCC();
@@ -263,8 +245,6 @@ package scpacker.weapon
                
                splashModel.putInitParams(splashCC);
                splashModel.objectLoaded();
-
-               model = thunderModel;
                break;
             case "shotgun":
                shotGunAimingCC = new ShotGunAimingCC();
@@ -277,18 +257,14 @@ package scpacker.weapon
                _loc2_.magazineReloadTime = _loc8_.magazineReloadTime;
                _loc2_.magazineSize = _loc8_.magazineSize;
                shotgunModel.putInitParams(_loc2_);
-
-               model = shotgunModel;
                break;
             case "machinegun":
-               _loc6_ = new MachineGunCC();
-               _loc6_.spinDownTime = _loc8_.spinDownTime;
-               _loc6_.spinUpTime = _loc8_.spinUpTime;
-               _loc6_.temperatureHittingTime = _loc8_.temperatureHittingTime;
-               _loc6_.weaponTurnDecelerationCoeff = _loc8_.weaponTurnDecelerationCoeff;
-               machineGunModel.putInitParams(_loc6_);
-
-               model = machineGunModel;
+               machineGunCC = new MachineGunCC();
+               machineGunCC.spinDownTime = _loc8_.spinDownTime;
+               machineGunCC.spinUpTime = _loc8_.spinUpTime;
+               machineGunCC.temperatureHittingTime = _loc8_.temperatureHittingTime;
+               machineGunCC.weaponTurnDecelerationCoeff = _loc8_.weaponTurnDecelerationCoeff;
+               machineGunModel.putInitParams(machineGunCC);
                break;
             //case "artillery":
             //   _loc7_ = newname_121__END;
@@ -305,7 +281,6 @@ package scpacker.weapon
          }
          
          Model.popObject();
-         return model;
       }
       
       private static function initializeStreamWeapon(weaponObject:GameObject, _loc8_:Object):void {

@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.drone
 
       protected var server:DroneIndicatorModelServer;
 
-      private static const modelId:Long = Long.getLong(1936258281,-1608612342);
+      public static const modelId:Long = Long.getLong(1936258281,-1608612342);
 
       public function DroneIndicatorModelBase()
       {

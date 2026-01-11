@@ -7,6 +7,9 @@ package alternativa.tanks.bonuses
    import alternativa.engine3d.objects.Mesh;
    import alternativa.math.Matrix4;
    import alternativa.math.Vector3;
+   import alternativa.engine3d.alternativa3d;
+   
+   use namespace alternativa3d;
    
    public class Cords extends BonusObject3DBase
    {

@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.tankparts.sfx.freeze
 
       protected var server:FreezeSFXModelServer;
 
-      private static const modelId:Long = Long.getLong(196518382,153197781);
+      public static const modelId:Long = Long.getLong(196518382,153197781);
 
       public function FreezeSFXModelBase()
       {

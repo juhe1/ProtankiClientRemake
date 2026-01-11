@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.effects.duration.time
 
       protected var server:DurationModelServer;
 
-      private static const modelId:Long = Long.getLong(2016151916,-1755051516);
+      public static const modelId:Long = Long.getLong(2016151916,-1755051516);
 
       public function DurationModelBase()
       {

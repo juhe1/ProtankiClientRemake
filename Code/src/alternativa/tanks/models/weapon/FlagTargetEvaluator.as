@@ -1,8 +1,8 @@
 package alternativa.tanks.models.weapon
 {
    import alternativa.physics.Body;
-   import alternativa.tanks.models.battle.commonflag.CommonFlag;
    import flash.utils.Dictionary;
+   import projects.tanks.client.battlefield.models.battle.ctf.ClientFlag;
    
    public class FlagTargetEvaluator
    {
@@ -14,7 +14,7 @@ package alternativa.tanks.models.weapon
          super();
       }
       
-      public function setFlagCarrier(param1:CommonFlag, param2:Body) : void
+      public function setFlagCarrier(param1:ClientFlag, param2:Body) : void
       {
          if(param2 != null)
          {

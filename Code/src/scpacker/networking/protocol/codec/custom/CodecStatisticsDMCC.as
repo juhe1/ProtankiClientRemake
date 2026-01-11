@@ -23,7 +23,7 @@ package scpacker.networking.protocol.codec.custom
       public function decode(param1:ByteArray) : Object
       {
          var _loc2_:StatisticsDMCC = new StatisticsDMCC();
-         _loc2_.userInfos = this.newname_4105__END.decode(param1) as Vector.<UserInfo>;
+         _loc2_.usersInfo = this.newname_4105__END.decode(param1) as Vector.<UserInfo>;
          return _loc2_;
       }
       
@@ -34,7 +34,7 @@ package scpacker.networking.protocol.codec.custom
             throw new Error("Object is null. Use @ProtocolOptional annotation.");
          }
          var _loc3_:StatisticsDMCC = StatisticsDMCC(param2);
-         this.newname_4105__END.encode(param1,_loc3_.userInfos);
+         this.newname_4105__END.encode(param1,_loc3_.usersInfo);
          return 4;
       }
    }

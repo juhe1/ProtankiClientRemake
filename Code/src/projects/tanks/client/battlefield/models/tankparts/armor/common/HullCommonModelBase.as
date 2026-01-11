@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.tankparts.armor.common
 
       protected var server:HullCommonModelServer;
 
-      private static const modelId:Long = Long.getLong(2136429398,-1896774533);
+      public static const modelId:Long = Long.getLong(2136429398,-1896774533);
 
       public function HullCommonModelBase()
       {

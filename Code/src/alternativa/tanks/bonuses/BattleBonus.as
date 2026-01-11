@@ -79,7 +79,7 @@ package alternativa.tanks.bonuses
       
       private var data:BattleBonusData;
       
-      private var _bonusId:Long;
+      private var _bonusId:String;
       
       private var controllersActive:Boolean;
       
@@ -117,7 +117,7 @@ package alternativa.tanks.bonuses
          return param1.z > BonusConst.COS_ONE_DEGREE;
       }
       
-      public function init(param1:Long, param2:Long, param3:BattleBonusData, param4:BattleService) : void
+      public function init(param1:Long, param2:String, param3:BattleBonusData, param4:BattleService) : void
       {
          this.bonusObjectId = param1;
          this._bonusId = param2;
@@ -206,7 +206,8 @@ package alternativa.tanks.bonuses
       
       private function getStartingAngleZ() : Number
       {
-         return Math.PI * 10 * this._bonusId.low / 180;
+         // Random angle
+         return Math.PI * 10 * origin.x * origin.y / 180;
       }
       
       private function initAirborne(param1:Vector3, param2:Vector3, param3:Vector3, param4:int) : void
@@ -279,7 +280,7 @@ package alternativa.tanks.bonuses
          }
       }
       
-      public function get bonusId() : Long
+      public function get bonusId() : String
       {
          return this._bonusId;
       }

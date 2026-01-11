@@ -15,7 +15,6 @@ package alternativa.init
    import alternativa.tanks.engine3d.EffectsMaterialRegistry;
    import alternativa.tanks.engine3d.MutableTextureMaterialRegistry;
    import alternativa.tanks.engine3d.MutableTextureRegistryCleaner;
-   import alternativa.tanks.engine3d.TextureMaterialRegistry;
    import alternativa.tanks.engine3d.TextureMaterialRegistryCleaner;
    import alternativa.tanks.models.battle.battlefield.BattleUnloadEvent;
    import alternativa.tanks.services.battlegui.BattleGUIService;
@@ -48,6 +47,13 @@ package alternativa.init
    import alternativa.tanks.utils.DataValidator;
    import alternativa.tanks.utils.DataValidatorImpl;
    import projects.tanks.clients.flash.commons.models.gpu.GPUCapabilities;
+   import alternativa.utils.TextureMaterialRegistry;
+   import alternativa.osgi.service.command.CommandService;
+   import alternativa.tanks.engine3d.TextureMaterialRegistryBase;
+   import alternativa.osgi.service.command.FormattedOutput;
+   import alternativa.tanks.services.memoryleakguard.MemoryLeakTrackerService;
+   import alternativa.tanks.services.performance.PerformanceDataServiceImpl;
+   import alternativa.tanks.services.performance.PerformanceDataService;
    
    [Obfuscation(rename="false")]
    public class BattlefieldModelActivator implements IBundleActivator
@@ -69,6 +75,7 @@ package alternativa.init
       public function start(param1:OSGi) : void
       {
          this.osgi = param1;
+         param1.registerService(MemoryLeakTrackerService,new MemoryLeakTrackerService(param1));
          param1.registerService(IInitialEffectsService,new InitialEffectsService());
          var _loc2_:BattleEventDispatcher = new BattleEventDispatcherImpl();
          param1.registerService(BattleEventDispatcher,_loc2_);
@@ -77,6 +84,7 @@ package alternativa.init
          param1.registerService(SpectatorService,new SpectatorServiceImpl());
          param1.registerService(BattleGUIService,new BattleGUIServiceImpl());
          param1.registerService(PingService,new PingServiceImpl());
+         param1.registerService(PerformanceDataService,new PerformanceDataServiceImpl());
          param1.registerService(TankUsersRegistry,new TankUsersRegistryServiceImpl());
          param1.registerService(IBonusRegionService,new BonusRegionService(_loc2_));
          param1.registerService(ILightingEffectsService,new LightingEffectsService());

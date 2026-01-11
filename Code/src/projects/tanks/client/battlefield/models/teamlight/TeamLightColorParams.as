@@ -7,11 +7,11 @@ package projects.tanks.client.battlefield.models.teamlight
       
       private var _intensity:Number;
       
-      public function TeamLightColorParams(param1:String = null, param2:Number = 0)
+      public function TeamLightColorParams(__color:String = null, __intensity:Number = 0)
       {
          super();
-         this._color = param1;
-         this._intensity = param2;
+         this._color = __color;
+         this._intensity = __intensity;
       }
       
       public function get color() : String

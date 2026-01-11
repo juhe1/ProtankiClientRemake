@@ -15,7 +15,8 @@ package alternativa.tanks.models.weapon.rocketlauncher.sfx
    import flash.display.BlendMode;
    import flash.media.Sound;
    import platform.client.fp10.core.type.AutoClosable;
-   
+   import alternativa.engine3d.alternativa3d;
+
    public class RocketFlightEffect extends PooledObject implements AutoClosable
    {
       
@@ -28,7 +29,7 @@ package alternativa.tanks.models.weapon.rocketlauncher.sfx
       
       private static const SMOKE_INTERVAL:Number = 0.016;
       
-      private const flames:Vector.<Sprite3D>;
+      private var flames:Vector.<Sprite3D>;
       
       private var soundEffect:MobileSound3DEffect;
       

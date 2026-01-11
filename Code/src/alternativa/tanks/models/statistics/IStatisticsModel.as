@@ -14,7 +14,7 @@ package alternativa.tanks.models.statistics
       
       function userDisconnect(param1:ShortUserInfo) : void;
       
-      function updateUserKills(param1:Long, param2:int) : void;
+      function updateUserKills(param1:String, param2:int) : void;
       
       function changeTeamScore(param1:BattleTeam, param2:int) : void;
       

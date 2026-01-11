@@ -9,7 +9,7 @@ package projects.tanks.client.battlefield.models.user.speedcharacteristics
 
       protected var server:SpeedCharacteristicsModelServer;
 
-      private static const modelId:Long = Long.getLong(1667805908,-902263720);
+      public static const modelId:Long = Long.getLong(1667805908,-902263720);
 
       public function SpeedCharacteristicsModelBase()
       {
