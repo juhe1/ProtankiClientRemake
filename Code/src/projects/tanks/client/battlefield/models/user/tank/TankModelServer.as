@@ -9,6 +9,7 @@ package projects.tanks.client.battlefield.models.user.tank
    import scpacker.networking.protocol.packets.tank.MovementControlInPacket;
    import scpacker.networking.protocol.packets.tank.MovementControlOutPacket;
    import scpacker.networking.protocol.packets.tank.ActivateTankOutPacket;
+   import scpacker.networking.protocol.packets.tank.ClientMoveTankAndTurretOutPacket;
 
    public class TankModelServer
    {
@@ -39,6 +40,11 @@ package projects.tanks.client.battlefield.models.user.tank
       public function moveCommand(param1:int, param2:int, param3:MoveCommand) : void
       {
          this.network.send(new ClientMoveOutPacket(param1,param2,param3));
+      }
+
+      public function moveTankAndTurretCommand(param1:int, param2:int, param3:MoveCommand, param4:Number) : void
+      {
+         this.network.send(new ClientMoveTankAndTurretOutPacket(param1,param2,param3,param4));
       }
 
       public function movementControlCommand(param1:int, param2:int, param3:int) : void

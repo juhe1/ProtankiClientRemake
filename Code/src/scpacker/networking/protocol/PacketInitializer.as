@@ -184,6 +184,14 @@ package scpacker.networking.protocol
    import scpacker.networking.protocol.packets.flamethrower.FlamethrowerStartOutPacket;
    import scpacker.networking.protocol.packets.flamethrower.FlamethrowerStopOutPacket;
    import scpacker.networking.protocol.packets.flamethrower.FlamethrowerHitOutPacket;
+   import scpacker.networking.protocol.packets.smoky.SmokyPacketHandler;
+   import scpacker.networking.protocol.packets.smoky.SmokyLocalCriticalHitInPacket;
+   import scpacker.networking.protocol.packets.smoky.SmokyShootInPacket;
+   import scpacker.networking.protocol.packets.smoky.SmokyShootStaticInPacket;
+   import scpacker.networking.protocol.packets.smoky.SmokyShootTargetInPacket;
+   import scpacker.networking.protocol.packets.smoky.SmokyFireOutPacket;
+   import scpacker.networking.protocol.packets.smoky.SmokyFireStaticOutPacket;
+   import scpacker.networking.protocol.packets.smoky.SmokyFireTargetOutPacket;
    import scpacker.networking.protocol.packets.damageindicator.DamageIndicatorPacketHandler;
    import scpacker.networking.protocol.packets.damageindicator.ShowDamageForShooterInPacket;
    import scpacker.networking.protocol.packets.controlpoints.ControlPointsPacketHandler;
@@ -222,6 +230,24 @@ package scpacker.networking.protocol
    import scpacker.networking.protocol.packets.tankreloader.TankReloaderDieInPacket;
    import scpacker.networking.protocol.packets.tankreloader.TankReloaDeathScheduledInPacket;
    import scpacker.networking.protocol.packets.tankreloader.ReloadTankInPacket;
+   import scpacker.networking.protocol.packets.twins.TwinsPacketHandler;
+   import scpacker.networking.protocol.packets.twins.TwinsShootTargetIn;
+   import scpacker.networking.protocol.packets.twins.TwinsFireDummyIn;
+   import scpacker.networking.protocol.packets.railgun.RailgunPacketHandler;
+   import scpacker.networking.protocol.packets.railgun.RailgunFireDummyInPacket;
+   import scpacker.networking.protocol.packets.railgun.RailgunShootTargetInPacket;
+   import scpacker.networking.protocol.packets.railgun.RailgunStartChargingInPacket;
+   import scpacker.networking.protocol.packets.railgun.RailgunFireDummyOutPacket;
+   import scpacker.networking.protocol.packets.railgun.RailgunFireOutPacket;
+   import scpacker.networking.protocol.packets.railgun.RailgunStartChargingOutPacket;
+   import scpacker.networking.protocol.packets.isida.IsidaPacketHandler;
+   import scpacker.networking.protocol.packets.isida.ResetIsidaTargetInPacket;
+   import scpacker.networking.protocol.packets.isida.SetIsidaTargetInPacket;
+   import scpacker.networking.protocol.packets.isida.StopIsidaInPacket;
+   import scpacker.networking.protocol.packets.isida.IsidaResetTargetOutPacket;
+   import scpacker.networking.protocol.packets.isida.IsidaSetTargetOutPacket;
+   import scpacker.networking.protocol.packets.isida.IsidaStopOutPacket;
+   import scpacker.networking.protocol.packets.isida.IsidaTickOutPacket;
    
    public class PacketInitializer
    {
@@ -474,6 +500,16 @@ package scpacker.networking.protocol
          packetRegistry.registerPacket(new FlamethrowerStopOutPacket());
          packetRegistry.registerPacket(new FlamethrowerHitOutPacket());
 
+         // Smoky Packets
+         packetInvoker.registerPacketHandler(new SmokyPacketHandler());
+         packetRegistry.registerPacket(new SmokyLocalCriticalHitInPacket());
+         packetRegistry.registerPacket(new SmokyShootInPacket());
+         packetRegistry.registerPacket(new SmokyShootStaticInPacket());
+         packetRegistry.registerPacket(new SmokyShootTargetInPacket());
+         packetRegistry.registerPacket(new SmokyFireOutPacket());
+         packetRegistry.registerPacket(new SmokyFireStaticOutPacket());
+         packetRegistry.registerPacket(new SmokyFireTargetOutPacket());
+
          // DamageIndicator Packets
          packetInvoker.registerPacketHandler(new DamageIndicatorPacketHandler());
          packetRegistry.registerPacket(new ShowDamageForShooterInPacket());
@@ -525,6 +561,30 @@ package scpacker.networking.protocol
          packetRegistry.registerPacket(new TankReloaderDieInPacket());
          packetRegistry.registerPacket(new TankReloaDeathScheduledInPacket());
          packetRegistry.registerPacket(new ReloadTankInPacket());
+
+         // Twins Packets
+         packetInvoker.registerPacketHandler(new TwinsPacketHandler());
+         packetRegistry.registerPacket(new TwinsShootTargetIn());
+         packetRegistry.registerPacket(new TwinsFireDummyIn());
+
+         // Railgun Packets
+         packetInvoker.registerPacketHandler(new RailgunPacketHandler());
+         packetRegistry.registerPacket(new RailgunFireDummyInPacket());
+         packetRegistry.registerPacket(new RailgunShootTargetInPacket());
+         packetRegistry.registerPacket(new RailgunStartChargingInPacket());
+         packetRegistry.registerPacket(new RailgunFireDummyOutPacket());
+         packetRegistry.registerPacket(new RailgunFireOutPacket());
+         packetRegistry.registerPacket(new RailgunStartChargingOutPacket());
+
+         // Isida Packets
+         packetInvoker.registerPacketHandler(new IsidaPacketHandler());
+         packetRegistry.registerPacket(new ResetIsidaTargetInPacket());
+         packetRegistry.registerPacket(new SetIsidaTargetInPacket());
+         packetRegistry.registerPacket(new StopIsidaInPacket());
+         packetRegistry.registerPacket(new IsidaResetTargetOutPacket());
+         packetRegistry.registerPacket(new IsidaSetTargetOutPacket());
+         packetRegistry.registerPacket(new IsidaStopOutPacket());
+         packetRegistry.registerPacket(new IsidaTickOutPacket());
       }
    }
 }

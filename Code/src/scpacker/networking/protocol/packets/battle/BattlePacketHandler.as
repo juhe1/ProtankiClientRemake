@@ -164,6 +164,13 @@ package scpacker.networking.protocol.packets.battle
    import alternativa.tanks.models.tank.bosstate.BossStateModel;
    import projects.tanks.client.battlefield.models.user.bossstate.BossStateCC;
    import utils.TankNameGameObjectMapper;
+   import platform.client.fp10.core.model.IModel;
+   import platform.client.fp10.core.model.IObjectLoadListener;
+   import scpacker.networking.protocol.packets.tank.TankPacketHandler;
+   import platform.client.fp10.core.model.ObjectUnloadPostListener;
+   import projects.tanks.clients.fp10.libraries.tanksservices.service.layout.ILobbyLayoutService;
+   import projects.tanks.clients.flash.commons.services.layout.event.LobbyLayoutServiceEvent;
+   import platform.client.fp10.core.type.impl.Space;
    
    public class BattlePacketHandler extends AbstractPacketHandler
    {
@@ -206,6 +213,7 @@ package scpacker.networking.protocol.packets.battle
 
       private var userPropertiesService:IUserPropertiesService;
       private var lightingEffectsService:ILightingEffectsService;
+      private var lobbyLayoutService:ILobbyLayoutService = ILobbyLayoutService(OSGi.getInstance().getService(ILobbyLayoutService));
 
       private var battleSpace:ISpace;
 
@@ -267,54 +275,6 @@ package scpacker.networking.protocol.packets.battle
          this.userPropertiesService = IUserPropertiesService(OSGi.getInstance().getService(IUserPropertiesService));
          this.tankUsersRegistry = TankUsersRegistry(OSGi.getInstance().getService(TankUsersRegistry));
          this.lightingEffectsService = ILightingEffectsService(OSGi.getInstance().getService(ILightingEffectsService));
-
-         var hullGameClassVector:Vector.<Long> = new Vector.<Long>();
-         hullGameClassVector.push(this.object3DSModel.id);
-         hullGameClassVector.push(this.engineModel.id);
-         hullGameClassVector.push(this.tankExplosionModel.id);
-         hullGameClassVector.push(this.hullSmokeModel.id);
-         hullGameClassVector.push(this.hullCommonModel.id);
-         hullGameClassVector.push(this.simpleArmorModel.id);
-         this.hullGameClass = gameTypeRegistry.createClass(Long.getLong(14025,684260),hullGameClassVector);
-
-         var coloringGameClassVector:Vector.<Long> = new Vector.<Long>();
-         coloringGameClassVector.push(this.coloringModel.id);
-         this.coloringGameClass = gameTypeRegistry.createClass(Long.getLong(14025,684460),coloringGameClassVector);
-
-         var mapGameClassVector:Vector.<Long> = new Vector.<Long>();
-         mapGameClassVector.push(this.battleMapModel.id);
-         mapGameClassVector.push(this.mapBonusLightModel.id);
-         mapGameClassVector.push(this.teamLightModel.id);
-         mapGameClassVector.push(this.colorAdjustModel.id);
-         this.mapGameClass = gameTypeRegistry.createClass(Long.getLong(150325,6843660),mapGameClassVector);
-
-         var battlefieldGameClassVector:Vector.<Long> = new Vector.<Long>();
-         battlefieldGameClassVector.push(this.battlefieldModel.id);
-         battlefieldGameClassVector.push(this.battlefieldBonusesModel.id);
-         battlefieldGameClassVector.push(StatisticsModelBase.modelId);
-         battlefieldGameClassVector.push(this.inventoryModel.id);
-         battlefieldGameClassVector.push(this.battleMinesModel.id);
-         this.battlefieldGameClass = gameTypeRegistry.createClass(Long.getLong(150325,6843665),battlefieldGameClassVector);
-
-         var tankGameClassVector:Vector.<Long> = new Vector.<Long>();
-         tankGameClassVector.push(this.tankModel.id);
-         tankGameClassVector.push(this.tankConfigurationModel.id);
-         tankGameClassVector.push(this.suicideModel.id);
-         tankGameClassVector.push(this.speedCharacteristicsModel.id);
-         tankGameClassVector.push(this.tankTemperatureModel.id);
-         tankGameClassVector.push(this.tankReloaderModel.id);
-         tankGameClassVector.push(this.tankRankUpEffectModel.id);
-         tankGameClassVector.push(this.tankSpawnerModel.id);
-         tankGameClassVector.push(this.tankPauseModel.id);
-         tankGameClassVector.push(this.tankTurnOverModel.id);
-         tankGameClassVector.push(this.damageIndicatorModel.id);
-         tankGameClassVector.push(this.battleGearScoreModel.id);
-         tankGameClassVector.push(this.tankResistancesModel.id);
-         tankGameClassVector.push(this.tankDeviceModel.id);
-         tankGameClassVector.push(this.bossStateModel.id);
-         this.tankGameClass = gameTypeRegistry.createClass(Long.getLong(150325,6843665),tankGameClassVector);
-
-         this.battleSpace = spaceRegistry.getSpace(Long.getLong(10568210,51255591));
       }
       
       public function invoke(param1:AbstractPacket) : void
@@ -346,7 +306,7 @@ package scpacker.networking.protocol.packets.battle
                //this.addBonus(param1 as AddBonusBoxInPacket);
                break;
             case UnloadBattleSpaceInPacket.id:
-               //this.unloadBattleSpace();
+               this.unloadBattle();
          }
       }
       
@@ -359,9 +319,62 @@ package scpacker.networking.protocol.packets.battle
             _loc3_.addInitialEffect(_loc4_.userID,_loc4_.itemIndex,_loc4_.durationTime,_loc4_.effectLevel);
          }
       }
+
+      private function initGameClasses() : void
+      {
+         var hullGameClassVector:Vector.<Long> = new Vector.<Long>();
+         hullGameClassVector.push(this.object3DSModel.id);
+         hullGameClassVector.push(this.engineModel.id);
+         hullGameClassVector.push(this.tankExplosionModel.id);
+         hullGameClassVector.push(this.hullSmokeModel.id);
+         hullGameClassVector.push(this.hullCommonModel.id);
+         hullGameClassVector.push(this.simpleArmorModel.id);
+         this.hullGameClass = gameTypeRegistry.createClass(Long.getLong(14025,684260),hullGameClassVector);
+
+         var coloringGameClassVector:Vector.<Long> = new Vector.<Long>();
+         coloringGameClassVector.push(this.coloringModel.id);
+         this.coloringGameClass = gameTypeRegistry.createClass(Long.getLong(14025,684460),coloringGameClassVector);
+
+         var mapGameClassVector:Vector.<Long> = new Vector.<Long>();
+         mapGameClassVector.push(this.battleMapModel.id);
+         mapGameClassVector.push(this.mapBonusLightModel.id);
+         mapGameClassVector.push(this.teamLightModel.id);
+         mapGameClassVector.push(this.colorAdjustModel.id);
+         this.mapGameClass = gameTypeRegistry.createClass(Long.getLong(150325,6843660),mapGameClassVector);
+
+         var battlefieldGameClassVector:Vector.<Long> = new Vector.<Long>();
+         battlefieldGameClassVector.push(this.battlefieldModel.id);
+         battlefieldGameClassVector.push(this.battlefieldBonusesModel.id);
+         battlefieldGameClassVector.push(StatisticsModelBase.modelId);
+         battlefieldGameClassVector.push(this.inventoryModel.id);
+         battlefieldGameClassVector.push(this.battleMinesModel.id);
+         this.battlefieldGameClass = gameTypeRegistry.createClass(Long.getLong(150325,6843665),battlefieldGameClassVector);
+
+         var tankGameClassVector:Vector.<Long> = new Vector.<Long>();
+         tankGameClassVector.push(this.tankConfigurationModel.id);
+         tankGameClassVector.push(this.tankModel.id);
+         tankGameClassVector.push(this.suicideModel.id);
+         tankGameClassVector.push(this.speedCharacteristicsModel.id);
+         tankGameClassVector.push(this.tankTemperatureModel.id);
+         tankGameClassVector.push(this.tankReloaderModel.id);
+         tankGameClassVector.push(this.tankRankUpEffectModel.id);
+         tankGameClassVector.push(this.tankSpawnerModel.id);
+         tankGameClassVector.push(this.tankPauseModel.id);
+         tankGameClassVector.push(this.tankTurnOverModel.id);
+         tankGameClassVector.push(this.damageIndicatorModel.id);
+         tankGameClassVector.push(this.battleGearScoreModel.id);
+         tankGameClassVector.push(this.tankResistancesModel.id);
+         tankGameClassVector.push(this.tankDeviceModel.id);
+         tankGameClassVector.push(this.bossStateModel.id);
+         this.tankGameClass = gameTypeRegistry.createClass(Long.getLong(150325,6843665),tankGameClassVector);
+      }
       
       private function initBattle(param1:InitBattleInPacket) : void
       {
+         this.battleSpace = new Space(Long.getLong(10568210,51255591),null,null,false);
+         spaceRegistry.addSpace(this.battleSpace);
+         this.initGameClasses();
+
          var jsonObject:Object = JSON.parse(param1.json);
          var mapGraphicDataJsonObject:Object = JSON.parse(jsonObject.map_graphic_data);
          var skyboxJsonObject:Object = JSON.parse(jsonObject.skybox);
@@ -461,7 +474,7 @@ package scpacker.networking.protocol.packets.battle
          battlefieldBonusesModelCC.bonusFallSpeed = 150;
          battlefieldBonusesModelCC.bonuses = new Vector.<BonusSpawnData>();
 
-         battlefieldGameObject = battleSpace.rootObject; // battlefield object must be space root object
+         battlefieldGameObject = this.battleSpace.rootObject; // battlefield object must be space root object
          battlefieldGameObject.gameClass = battlefieldGameClass; 
          Model.object = battlefieldGameObject;
          this.battlefieldBonusesModel.putInitParams(battlefieldBonusesModelCC);
@@ -783,49 +796,44 @@ package scpacker.networking.protocol.packets.battle
       //{
       //   this.battlefieldModel.bonusTaken(newname_1931__END.strToId(param1.bonusId));
       //}
-      //
-      //private function unloadBattleSpace() : void
-      //{
-      //   var _loc5_:BonusCommonModel = BonusCommonModel(modelRegistry.getModel(Long.getLong(2087671478,1672369054)));
-      //   var _loc1_:TankModel = TankModel(OSGi.getInstance().getService(LocalTankInfoService));
-      //   for each(var _loc7_ in this.tankUsersRegistry.getUsers())
-      //   {
-      //      _loc1_.objectUnloaded(_loc7_);
-      //      this.tankRankUpEffectModel.objectUnloaded();
-      //   }
-      //   BonusRegionsModel(modelRegistry.getModel(Long.getLong(1214265883,963276324))).objectUnloaded();
-      //   StatisticsModel(OSGi.getInstance().getService(BattlefieldGUI)).objectUnloaded();
-      //   this.battleDMModel.objectUnloaded();
-      //   this.battleTDMModel.objectUnloaded();
-      //   ObjectUnloadListener(OSGi.getInstance().getService(IClientUserInfo)).objectUnloaded();
-      //   OSGi.getInstance().unregisterService(IClientUserInfo);
-      //   ChatModel(modelRegistry.getModel(Long.getLong(1896886505,1439133662))).objectUnloaded();
-      //   WeaponsManager.destroy();
-      //   var _loc2_:CaptureTheFlagModel = OSGi.getInstance().getService(ICTFModel) as CaptureTheFlagModel;
-      //   if(_loc2_ != null)
-      //   {
-      //      _loc2_.objectUnloaded();
-      //      OSGi.getInstance().unregisterService(ICTFModel);
-      //   }
-      //   var _loc3_:ControlPointsModel = OSGi.getInstance().getService(IDominationModel) as ControlPointsModel;
-      //   if(_loc3_ != null)
-      //   {
-      //      _loc3_.objectUnloaded();
-      //      OSGi.getInstance().unregisterService(IDominationModel);
-      //   }
-      //   var _loc4_:AssaultModel = OSGi.getInstance().getService(newname_1807__END) as AssaultModel;
-      //   if(_loc4_ != null)
-      //   {
-      //      _loc4_.objectUnloaded();
-      //      OSGi.getInstance().unregisterService(newname_1807__END);
-      //   }
-      //   var _loc6_:InventoryModel = InventoryModel(modelRegistry.getModel(Long.getLong(1500686585,-1760437566)));
-      //   _loc6_.objectUnloaded();
-      //   this.battleMinesModel.objectUnloaded();
-      //   this.tankExplosionModel.objectUnloaded();
-      //   this.battlefieldModel.objectUnloaded();
-      //   CoreUtils.unloadSpace(newname_1931__END.strToId("battle"));
-      //}
+
+      private function unloadBattle() : void
+      {
+         lobbyLayoutService.addEventListener(LobbyLayoutServiceEvent.END_LAYOUT_SWITCH_POST,this.unloadBattleSpace);
+      }
+
+      private function unloadBattleSpace(param1:LobbyLayoutServiceEvent = null) : void
+      {
+         lobbyLayoutService.removeEventListener(LobbyLayoutServiceEvent.END_LAYOUT_SWITCH_POST,this.unloadBattleSpace);
+         var gameObjects:Vector.<IGameObject> = this.battleSpace.objects.concat();
+         for each (var gameObject:IGameObject in gameObjects)
+         {
+            if(gameObject.hasModel(TankModel))
+            {
+               TankPacketHandler.unloadTankGameObject(gameObject);
+            }
+         }
+
+         gameObjects = this.battleSpace.objects.concat();
+         for each (var gameObject1:IGameObject in gameObjects)
+         {
+            this.battleSpace.destroyObject(gameObject1.id);
+         }
+
+         spaceRegistry.removeSpace(this.battleSpace);
+         TankNameGameObjectMapper.clearMappings();
+
+         gameTypeRegistry.destroyClass(Long.getLong(14025,684260));
+         gameTypeRegistry.destroyClass(Long.getLong(14025,684460));
+         gameTypeRegistry.destroyClass(Long.getLong(150325,6843660));
+         gameTypeRegistry.destroyClass(Long.getLong(150325,6843665));
+         gameTypeRegistry.destroyClass(Long.getLong(150325,6843665));
+         
+         for each (var key:String in this.turretGameClassDictionary)
+         {
+            gameTypeRegistry.destroyClass(this.turretGameClassDictionary[key]);
+         }
+      }
    }
 }
 

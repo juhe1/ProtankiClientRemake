@@ -488,7 +488,7 @@ package alternativa.tanks.models.tank
          this.destroyTank(false);
          if(!battleInfoService.isSpectatorMode())
          {
-            IUltimateModel(object.adapt(IUltimateModel)).resetCharge();
+            //IUltimateModel(object.adapt(IUltimateModel)).resetCharge();
          }
       }
       
@@ -827,7 +827,7 @@ package alternativa.tanks.models.tank
          if(param2)
          {
             Model.object = this.localObject;
-            server.moveCommand(param1,LocalTankParams.getSpecificationId(),this._moveCommand);
+            server.moveTankAndTurretCommand(param1,LocalTankParams.getSpecificationId(),this._moveCommand, this.getTurretController().getDirection());
             Model.popObject();
             MoveCommandUtils.copyMoveCommand(this._moveCommand,this.lastSentMoveCommand);
             this.sendTurretStateToServer();

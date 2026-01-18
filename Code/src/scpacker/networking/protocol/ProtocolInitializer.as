@@ -73,6 +73,7 @@ package scpacker.networking.protocol
          this.addCodec(new CodecRange(this));
          this.addCodec(new CodecBattleInfoData(this));
          this.addCodec(new CodecPremiumNotifierData(this));
+         this.addCodec(new CodecTargetHit(this));
          this.addCodec(new CodecOnlineNotifierData(this));
          this.addCodec(new CodecRankNotifierData(this));
          this.addCodec(new CodecUidNotifierData(this));

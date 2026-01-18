@@ -6,6 +6,8 @@ package projects.tanks.clients.fp10.libraries.tanksservices.service.layout
       public static const BEGIN_LAYOUT_SWITCH:String = "LobbyLayoutServiceEvent.BEGIN_LAYOUT_SWITCH";
       
       public static const END_LAYOUT_SWITCH:String = "LobbyLayoutServiceEvent.END_LAYOUT_SWITCH";
+
+      public static const END_LAYOUT_SWITCH_POST:String = "LobbyLayoutServiceEvent.END_LAYOUT_SWITCH_POST";
       
       public function LobbyLayoutServiceEvents()
       {

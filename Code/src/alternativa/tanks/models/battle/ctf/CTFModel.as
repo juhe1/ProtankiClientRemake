@@ -324,6 +324,7 @@ package alternativa.tanks.models.battle.ctf
             this.showFlagReturnMessage(param1,param2);
          }
          battleService.soundManager.playSound(this.flagReturnSound);
+         this.guiModel.setIndicatorState(param1, FlagIndicator.STATE_DEFAULT);
       }
       
       private function showFlagReturnMessageForSpectator(param1:BattleTeam, param2:IGameObject) : void
@@ -756,8 +757,8 @@ package alternativa.tanks.models.battle.ctf
          var _loc1_:CTFCommonTargetEvaluator = new CTFCommonTargetEvaluator();
          battleService.setCommonTargetEvaluator(_loc1_);
          this.targetEvaluators.push(_loc1_);
-         //var _loc2_:TDMHealingGunTargetEvaluator = new TDMHealingGunTargetEvaluator();
-         //battleService.setHealingGunTargetEvaluator(_loc2_);
+         var _loc2_:TDMHealingGunTargetEvaluator = new TDMHealingGunTargetEvaluator();
+         battleService.setHealingGunTargetEvaluator(_loc2_);
          //this.targetEvaluators.push(_loc2_);
          var _loc3_:CTFRailgunTargetEvaluator = new CTFRailgunTargetEvaluator();
          battleService.setRailgunTargetEvaluator(_loc3_);

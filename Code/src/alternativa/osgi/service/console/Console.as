@@ -92,7 +92,7 @@ package alternativa.osgi.service.console
          super();
          this.commandService = param1;
          this.stage = param2;
-         this.buffer = new CircularStringBuffer(1000);
+         this.buffer = new CircularStringBuffer(10000);
          this.calcTextMetrics(param2);
          this.initInput();
          this.initOutput();

@@ -27,6 +27,9 @@ package scpacker.networking.protocol.packets.tank
    import alternativa.tanks.models.tank.spawn.TankSpawnerModel;
    import projects.tanks.client.battlefield.models.user.spawn.TankSpawnerModelBase;
    import projects.tanks.client.battlefield.models.tankparts.weapon.turret.RotatingTurretModelBase;
+   import scpacker.utils.CoreUtils;
+   import projects.tanks.clients.fp10.libraries.tanksservices.service.layout.ILobbyLayoutService;
+   import projects.tanks.clients.flash.commons.services.layout.event.LobbyLayoutServiceEvent;
    
    public class TankPacketHandler extends AbstractPacketHandler
    {
@@ -234,18 +237,26 @@ package scpacker.networking.protocol.packets.tank
          var tankGameObject:IGameObject = TankNameGameObjectMapper.getGameObjectByTankName(param1.tankId);
          if(tankGameObject != null)
          {
-            Model.object = tankGameObject;
-
-            var tankConfiguration:TankConfiguration = TankConfiguration(tankGameObject.adapt(TankConfiguration));
-
-            tankConfiguration.getColoringObject().space.destroyObject(tankConfiguration.getColoringObject().id);
-            tankConfiguration.getHullObject().space.destroyObject(tankConfiguration.getHullObject().id);
-            tankConfiguration.getTurretObject().space.destroyObject(tankConfiguration.getTurretObject().id);
-            tankGameObject.space.destroyObject(tankGameObject.id);
-
-            Model.popObject();
-            TankNameGameObjectMapper.removeMapping(param1.tankId);
+            unloadTankGameObject(tankGameObject);
          }
+      }
+      
+      public static function unloadTankGameObject(tankGameObject:IGameObject) : void
+      {
+         Model.object = tankGameObject;
+
+         var tankConfiguration:TankConfiguration = TankConfiguration(tankGameObject.adapt(TankConfiguration));
+         var coloringGameObject:IGameObject = tankConfiguration.getColoringObject();
+         var hullGameObject:IGameObject = tankConfiguration.getHullObject();
+         var turretGameObject:IGameObject = tankConfiguration.getTurretObject();
+
+         tankGameObject.space.destroyObject(tankGameObject.id);
+         coloringGameObject.space.destroyObject(coloringGameObject.id);
+         hullGameObject.space.destroyObject(hullGameObject.id);
+         turretGameObject.space.destroyObject(turretGameObject.id);
+
+         Model.popObject();
+         TankNameGameObjectMapper.removeMapping(tankGameObject.name);
       }
       
       private function activateEffect(param1:ActivateEffectInPacket) : void

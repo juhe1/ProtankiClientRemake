@@ -10,6 +10,8 @@ package projects.tanks.clients.flash.commons.services.layout.event
       public static const BEGIN_LAYOUT_SWITCH:String = LobbyLayoutServiceEvents.BEGIN_LAYOUT_SWITCH;
       
       public static const END_LAYOUT_SWITCH:String = LobbyLayoutServiceEvents.END_LAYOUT_SWITCH;
+
+      public static const END_LAYOUT_SWITCH_POST:String = LobbyLayoutServiceEvents.END_LAYOUT_SWITCH_POST;
       
       public var state:LayoutState;
       

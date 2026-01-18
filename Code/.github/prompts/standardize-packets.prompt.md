@@ -44,6 +44,8 @@ Instructions
 - Update imports to match new names.
 - Remove unused imports.
 
+8) Register packet handler and all the packets in PacketInitializer.as
+
 Example (ExternalEntrance)
 - IDs mapping:
   - `LoadExternalEntranceInPacket.id` replaces `-1715719586`

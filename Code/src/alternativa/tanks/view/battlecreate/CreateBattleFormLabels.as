@@ -85,6 +85,46 @@ package alternativa.tanks.view.battlecreate
          return localeService.getText(TanksLocale.TEXT_CREATE_BATTLE_PANEL_GOLD_BOXES);
       }
       
+      public static function get checkBoxMinesLabel() : String
+      {
+         return localeService.getText(TanksLocale.BATTLE_CREATE_PANEL_MINE);
+      }
+      
+      public static function get checkBoxFirstAidLabel() : String
+      {
+         return localeService.getText(TanksLocale.BATTLE_CREATE_PANEL_MEDKIT);
+      }
+      
+      public static function get checkBoxPreciseTimerLabel() : String
+      {
+         return localeService.getText(TanksLocale.ESPORT_DROP_TIMING);
+      }
+      
+      public static function get checkBoxWeakenedResistancesLabel() : String
+      {
+         return localeService.getText(TanksLocale.REDUCED_RESISTANCES);
+      }
+      
+      public static function get checkBoxCrystalBoxesLabel() : String
+      {
+         return localeService.getText(TanksLocale.BATTLE_CRYSTAL_BOX_TEXT);
+      }
+      
+      public static function get checkBoxGoldSirenLabel() : String
+      {
+         return localeService.getText(TanksLocale.BATTLE_CREATE_PANEL_GOLD_SIREN);
+      }
+      
+      public static function get checkBoxGoldDropZoneLabel() : String
+      {
+         return localeService.getText(TanksLocale.BATTLE_CREATE_PANEL_GOLD_REGION);
+      }
+      
+      public static function get checkBoxGoldRandomFundLabel() : String
+      {
+         return localeService.getText(TanksLocale.BATTLE_CREATE_PANEL_RANDOM_GOLD);
+      }
+      
       public static function get checkBoxUpgradesLabel() : String
       {
          return localeService.getText(TanksLocale.TEXT_BATTLE_UPGRADES_TEXT);

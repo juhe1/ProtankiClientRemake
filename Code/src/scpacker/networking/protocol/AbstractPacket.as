@@ -28,7 +28,12 @@ package scpacker.networking.protocol
          var _loc2_:int = int(this.propertyCodecs.length);
          while(_loc3_ < _loc2_)
          {
-            this.propertyCodecs[_loc3_].encode(payloadBuffer,this.propertyValues[_loc3_]);
+            var codec:ICodec = this.propertyCodecs[_loc3_];
+            if(codec == null)
+            {
+               throw new Error("Codec is not registered for property index " + _loc3_);
+            }
+            codec.encode(payloadBuffer,this.propertyValues[_loc3_]);
             _loc3_++;
          }
          protocolInitializer.getProtection().encrypt(payloadBuffer);

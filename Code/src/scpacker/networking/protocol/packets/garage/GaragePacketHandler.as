@@ -500,6 +500,8 @@ package scpacker.networking.protocol.packets.garage
          Model.object = this.garageGameObject;
          this.delayMountCategoryModel.putInitParams(new DelayMountCategoryCC(parsed.delayMountArmorInSec,0,parsed.delayMountColorInSec,parsed.delayMountWeaponInSec));
          this.delayMountCategoryModel.objectLoadedPost();
+         this.upgradeGarageItemModel.objectLoaded();
+         this.upgradeGarageItemModel.objectLoadedPost();
 
          this.garageModel.initMarket(marketItems);
          this.garageModel.selectFirstItemInDepot();

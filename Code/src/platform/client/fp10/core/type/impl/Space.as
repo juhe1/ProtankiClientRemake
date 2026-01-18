@@ -140,6 +140,7 @@ package platform.client.fp10.core.type.impl
       
       private function processUnloadingError(param1:Error, param2:Long) : void
       {
+         throw param1;
       }
       
       private function removeObject(param1:GameObject) : void

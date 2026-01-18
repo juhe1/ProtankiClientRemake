@@ -59,7 +59,7 @@ package
          ILoaderWindowService(_loc1_.getService(ILoaderWindowService)).show();
          new GameActivator().start(_loc1_);
          StartupSettings.preLauncher = Sprite(parent.parent.parent);
-         this.b629458b();
+         this.createSpaces();
          CoreUtils.init();
          var _loc2_:GPUCapabilities = new GPUCapabilities(IDisplay(_loc1_.getService(IDisplay)).stage,loaderInfo.parameters["gpuEnabled"],loaderInfo.parameters["constrained"]);
          _loc2_.addEventListener("complete",this.connectToServer,false,0,true);
@@ -79,10 +79,9 @@ package
          new Connector().connectToServer();
       }
       
-      private function b629458b() : void
+      private function createSpaces() : void
       {
          var _loc1_:SpaceRegistry = SpaceRegistry(OSGi.getInstance().getService(SpaceRegistry));
-         _loc1_.addSpace(new Space(Long.getLong(10568210,51255591),null,null,false));
          _loc1_.addSpace(new Space(Long.getLong(52835823,6349643),null,null,false));
          _loc1_.addSpace(new Space(Long.getLong(59235923,646943),null,null,false));
          _loc1_.addSpace(new Space(Long.getLong(884380667,214),null,null,false));

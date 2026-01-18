@@ -5,8 +5,13 @@ package scpacker.utils
    import platform.client.fp10.core.model.IObjectLoadListener;
    import platform.client.fp10.core.model.ObjectLoadListener;
    import platform.client.fp10.core.model.ObjectLoadPostListener;
+   import platform.client.fp10.core.model.ObjectUnloadListener;
+   import platform.client.fp10.core.model.ObjectUnloadPostListener;
+   import platform.client.fp10.core.model.IModel;
+   import platform.client.fp10.core.model.impl.Model;
    import platform.client.fp10.core.registry.SpaceRegistry;
    import platform.client.fp10.core.registry.GameTypeRegistry;
+   import platform.client.fp10.core.registry.ModelRegistry;
    import platform.client.fp10.core.type.IGameObject;
    import platform.client.fp10.core.type.IGameClass;
    import platform.client.fp10.core.type.impl.GameClass;
@@ -18,6 +23,8 @@ package scpacker.utils
       private static var gameTypeRegistry:GameTypeRegistry;
       
       private static var spaceRegistry:SpaceRegistry;
+
+      private static var modelRegistry:ModelRegistry;
       
       public function CoreUtils()
       {
@@ -28,6 +35,7 @@ package scpacker.utils
       {
          gameTypeRegistry = GameTypeRegistry(OSGi.getInstance().getService(GameTypeRegistry));
          spaceRegistry = SpaceRegistry(OSGi.getInstance().getService(SpaceRegistry));
+         modelRegistry = ModelRegistry(OSGi.getInstance().getService(ModelRegistry));
          CoreUtils.registerGameClass(Long.ZERO,new Vector.<Long>(0));
          CoreUtils.registerGameClass(LongUtils.strToId("battle_bonus"),new <Long>[Long.getLong(2087671478,1672369054),Long.getLong(1742678945,1383804656)]);
       }

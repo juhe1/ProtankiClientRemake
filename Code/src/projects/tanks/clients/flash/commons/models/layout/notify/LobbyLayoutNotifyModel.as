@@ -127,6 +127,7 @@ package projects.tanks.clients.flash.commons.models.layout.notify
                modalLoaderService.hideForcibly();
             }
             lobbyLayoutService.dispatchEvent(new LobbyLayoutServiceEvent(LobbyLayoutServiceEvent.END_LAYOUT_SWITCH,this.lastState));
+            lobbyLayoutService.dispatchEvent(new LobbyLayoutServiceEvent(LobbyLayoutServiceEvent.END_LAYOUT_SWITCH_POST,this.lastState));
          }
       }
       

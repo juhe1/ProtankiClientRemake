@@ -107,6 +107,8 @@ package alternativa.tanks.view.battlecreate
       
       private var _preciseTimerCheckBox:CheckBoxBase;
       
+      private var _weakenedResistancesCheckBox:CheckBoxBase;
+      
       private var _goldBoxesCheckBox:CheckBoxBase;
       
       //private var _upgradesCheckBox:CheckBoxBase;
@@ -114,6 +116,14 @@ package alternativa.tanks.view.battlecreate
       private var _privateBattleCheckBox:CheckBoxBase;
       
       private var _reArmorCheckBox:CheckBoxBase;
+      
+      private var _crystalBoxesCheckBox:CheckBoxBase;
+      
+      private var _goldBoxSirenCheckBox:CheckBoxBase;
+      
+      private var _goldBoxDropZoneCheckBox:CheckBoxBase;
+      
+      private var _goldBoxRandomFundCheckBox:CheckBoxBase;
       
       private var _startButton:RedButtonBase;
       
@@ -169,11 +179,11 @@ package alternativa.tanks.view.battlecreate
          addChild(this._suppliesCheckBox);
          this._minesCheckBox = new CheckBoxBase(BattleParamsCheckButtonIcons.suppliesBitmapData);
          this._minesCheckBox.checked = true;
-         this._minesCheckBox.label = "Mines";
+         this._minesCheckBox.label = CreateBattleFormLabels.checkBoxMinesLabel;
          addChild(this._minesCheckBox);
          this._firstAidCheckBox = new CheckBoxBase(BattleParamsCheckButtonIcons.suppliesBitmapData);
          this._firstAidCheckBox.checked = true;
-         this._firstAidCheckBox.label = "First Aid Kit";
+         this._firstAidCheckBox.label = CreateBattleFormLabels.checkBoxFirstAidLabel;
          addChild(this._firstAidCheckBox);
          //this._dependentCooldownCheckBox = new CheckBoxBase(BattleParamsCheckButtonIcons.dependentCooldownsBitmapData);
          //this._dependentCooldownCheckBox.checked = false;
@@ -185,8 +195,12 @@ package alternativa.tanks.view.battlecreate
          addChild(this._bonusesCheckBox);
          this._preciseTimerCheckBox = new CheckBoxBase(BattleParamsCheckButtonIcons.bonusesBitmapData);
          this._preciseTimerCheckBox.checked = true;
-         this._preciseTimerCheckBox.label = "By Precise Timer";
+         this._preciseTimerCheckBox.label = CreateBattleFormLabels.checkBoxPreciseTimerLabel;
          addChild(this._preciseTimerCheckBox);
+         this._weakenedResistancesCheckBox = new CheckBoxBase(BattleParamsCheckButtonIcons.bonusesBitmapData);
+         this._weakenedResistancesCheckBox.checked = true;
+         this._weakenedResistancesCheckBox.label = CreateBattleFormLabels.checkBoxWeakenedResistancesLabel;
+         addChild(this._weakenedResistancesCheckBox);
          this._goldBoxesCheckBox = new CheckBoxBase(BattleParamsCheckButtonIcons.goldBonusesBitmapData);
          this._goldBoxesCheckBox.checked = true;
          this._goldBoxesCheckBox.label = CreateBattleFormLabels.checkBoxGoldBoxesLabel;
@@ -213,6 +227,22 @@ package alternativa.tanks.view.battlecreate
          this._reArmorCheckBox.checked = true;
          this._reArmorCheckBox.label = CreateBattleFormLabels.checkBoxReArmorLabel;
          addChild(this._reArmorCheckBox);
+         this._crystalBoxesCheckBox = new CheckBoxBase(BattleParamsCheckButtonIcons.bonusesBitmapData);
+         this._crystalBoxesCheckBox.checked = true;
+         this._crystalBoxesCheckBox.label = CreateBattleFormLabels.checkBoxCrystalBoxesLabel;
+         addChild(this._crystalBoxesCheckBox);
+         this._goldBoxSirenCheckBox = new CheckBoxBase(BattleParamsCheckButtonIcons.goldBonusesBitmapData);
+         this._goldBoxSirenCheckBox.checked = true;
+         this._goldBoxSirenCheckBox.label = CreateBattleFormLabels.checkBoxGoldSirenLabel;
+         addChild(this._goldBoxSirenCheckBox);
+         this._goldBoxDropZoneCheckBox = new CheckBoxBase(BattleParamsCheckButtonIcons.goldBonusesBitmapData);
+         this._goldBoxDropZoneCheckBox.checked = true;
+         this._goldBoxDropZoneCheckBox.label = CreateBattleFormLabels.checkBoxGoldDropZoneLabel;
+         addChild(this._goldBoxDropZoneCheckBox);
+         this._goldBoxRandomFundCheckBox = new CheckBoxBase(BattleParamsCheckButtonIcons.goldBonusesBitmapData);
+         this._goldBoxRandomFundCheckBox.checked = true;
+         this._goldBoxRandomFundCheckBox.label = CreateBattleFormLabels.checkBoxGoldRandomFundLabel;
+         addChild(this._goldBoxRandomFundCheckBox);
          this._clanCheckBox = new CheckBoxBase(BattleParamsCheckButtonIcons.clanVsClanBitmapData);
          this._clanCheckBox.checked = false;
          this._clanCheckBox.label = CreateBattleFormLabels.checkBoxClanLabel;
@@ -384,6 +414,11 @@ package alternativa.tanks.view.battlecreate
          return this._preciseTimerCheckBox.checked;
       }
       
+      public function get isWeakenedResistancesEnabled() : Boolean
+      {
+         return this._weakenedResistancesCheckBox.checked;
+      }
+      
       public function get isGoldBoxesEnabled() : Boolean
       {
          return this._goldBoxesCheckBox.checked;
@@ -392,6 +427,26 @@ package alternativa.tanks.view.battlecreate
       public function get isReArmor() : Boolean
       {
          return this._reArmorCheckBox.checked;
+      }
+      
+      public function get isCrystalBoxesEnabled() : Boolean
+      {
+         return this._crystalBoxesCheckBox.checked;
+      }
+      
+      public function get isGoldBoxSirenEnabled() : Boolean
+      {
+         return this._goldBoxSirenCheckBox.checked;
+      }
+      
+      public function get isGoldBoxDropZoneEnabled() : Boolean
+      {
+         return this._goldBoxDropZoneCheckBox.checked;
+      }
+      
+      public function get isGoldBoxRandomFundEnabled() : Boolean
+      {
+         return this._goldBoxRandomFundCheckBox.checked;
       }
       
       public function get isWithoutUpgrades() : Boolean
@@ -501,10 +556,15 @@ package alternativa.tanks.view.battlecreate
          //this._dependentCooldownCheckBox = null;
          this._bonusesCheckBox = null;
          this._preciseTimerCheckBox = null;
+         this._weakenedResistancesCheckBox = null;
          this._goldBoxesCheckBox = null;
          //this._upgradesCheckBox = null;
          this._privateBattleCheckBox = null;
          this._reArmorCheckBox = null;
+         this._crystalBoxesCheckBox = null;
+         this._goldBoxSirenCheckBox = null;
+         this._goldBoxDropZoneCheckBox = null;
+         this._goldBoxRandomFundCheckBox = null;
          this._startButton = null;
          this._chooseMapComboBox = null;
          this._chooseThemeMapComboBox = null;
@@ -567,10 +627,9 @@ package alternativa.tanks.view.battlecreate
          this._preciseTimerCheckBox.y = this._bonusesCheckBox.y + this._bonusesCheckBox.height + 8;
          this._preciseTimerCheckBox.visible = this._bonusesCheckBox.checked;
          var _loc1_:DisplayObject = this._preciseTimerCheckBox.visible ? this._preciseTimerCheckBox : this._bonusesCheckBox;
-         this._goldBoxesCheckBox.x = FIRST_COLUMN_X;
-         this._goldBoxesCheckBox.y = _loc1_.y + _loc1_.height + 8;
-         this._goldBoxesCheckBox.visible = !this.getSelectedFormatItem().parkour;
-         _loc1_ = this._goldBoxesCheckBox.visible ? this._goldBoxesCheckBox : _loc1_;
+         this._weakenedResistancesCheckBox.x = FIRST_COLUMN_X;
+         this._weakenedResistancesCheckBox.y = _loc1_.y + _loc1_.height + 8;
+         _loc1_ = this._weakenedResistancesCheckBox;
          this._suppliesCheckBox.x = FIRST_COLUMN_X;
          this._suppliesCheckBox.y = _loc1_.y + _loc1_.height + 8;
          this._minesCheckBox.x = FIRST_COLUMN_X + 20;
@@ -604,8 +663,24 @@ package alternativa.tanks.view.battlecreate
          //this._devicesCheckBox.y = this._upgradesCheckBox.y + this._upgradesCheckBox.height + 8;
          this._reArmorCheckBox.x = _loc3_;
          this._reArmorCheckBox.y = this._bonusesCheckBox.y;//this._devicesCheckBox.y + this._devicesCheckBox.height + 8;
+         this._crystalBoxesCheckBox.x = _loc3_;
+         this._crystalBoxesCheckBox.y = this._reArmorCheckBox.y + this._reArmorCheckBox.height + 8;
+         this._goldBoxesCheckBox.x = _loc3_;
+         this._goldBoxesCheckBox.y = this._crystalBoxesCheckBox.y + this._crystalBoxesCheckBox.height + 8;
+         this._goldBoxSirenCheckBox.x = _loc3_ + 20;
+         this._goldBoxSirenCheckBox.y = this._goldBoxesCheckBox.y + this._goldBoxesCheckBox.height + 8;
+         this._goldBoxSirenCheckBox.visible = this._goldBoxesCheckBox.checked;
+         _loc1_ = this._goldBoxSirenCheckBox.visible ? this._goldBoxSirenCheckBox : this._goldBoxesCheckBox;
+         this._goldBoxDropZoneCheckBox.x = _loc3_ + 20;
+         this._goldBoxDropZoneCheckBox.y = _loc1_.y + _loc1_.height + 8;
+         this._goldBoxDropZoneCheckBox.visible = this._goldBoxesCheckBox.checked;
+         _loc1_ = this._goldBoxDropZoneCheckBox.visible ? this._goldBoxDropZoneCheckBox : _loc1_;
+         this._goldBoxRandomFundCheckBox.x = _loc3_ + 20;
+         this._goldBoxRandomFundCheckBox.y = _loc1_.y + _loc1_.height + 8;
+         this._goldBoxRandomFundCheckBox.visible = this._goldBoxesCheckBox.checked;
+         _loc1_ = this._goldBoxRandomFundCheckBox.visible ? this._goldBoxRandomFundCheckBox : _loc1_;
          this._autoBalanceCheckBox.x = _loc3_;
-         this._autoBalanceCheckBox.y = this._reArmorCheckBox.y + this._reArmorCheckBox.height + 8;
+         this._autoBalanceCheckBox.y = _loc1_.y + _loc1_.height + 8;
          _loc1_ = this._autoBalanceCheckBox.visible ? this._autoBalanceCheckBox : this._reArmorCheckBox;
          this.ultimatesCheckBox.x = _loc3_;
          this.ultimatesCheckBox.y = _loc1_.y + _loc1_.height + 8;
@@ -875,6 +950,10 @@ package alternativa.tanks.view.battlecreate
       private function onGoldBoxesChange(param1:CheckBoxEvent) : void
       {
          this.trackOnce("goldBoxesChange");
+         this._goldBoxSirenCheckBox.visible = this._goldBoxesCheckBox.checked;
+         this._goldBoxDropZoneCheckBox.visible = this._goldBoxesCheckBox.checked;
+         this._goldBoxRandomFundCheckBox.visible = this._goldBoxesCheckBox.checked;
+         this.updateOptions();
       }
       
       private function onAutoBalanceChange(param1:CheckBoxEvent) : void

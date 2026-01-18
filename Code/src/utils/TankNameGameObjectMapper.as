@@ -63,5 +63,13 @@ package utils
          }
          return false;
       }
+      
+      /**
+       * Clears all mappings
+       */
+      public static function clearMappings() : void
+      {
+         mappings = {};
+      }
    }
 }

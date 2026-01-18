@@ -388,9 +388,9 @@ package alternativa.tanks.models.battle.battlefield
          if(!this.criticalErrorLogged)
          {
             this.criticalErrorLogged = true;
-            this.serverLogger.error(param1.message);
             var message:String = param1.message + "\n" + param1.getStackTrace();
-            LogService(OSGi.getInstance().getService(LogService)).getLogger("battlefield").error(message);
+            this.serverLogger.error(message);
+            //LogService(OSGi.getInstance().getService(LogService)).getLogger("battlefield").error(message);
             this.showErrorNotification();
          }
       }

@@ -1728,6 +1728,15 @@ package projects.tanks.clients.fp10.libraries
       public static const TEXT_DAILY_QUEST_COMPLETED:String = "DAILY_QUEST_COMPLETED";
       
       public static const TEXT_WEEKLY_QUEST_COMPLETED:String = "WEEKLY_QUEST_COMPLETED";
+
+      public static const BATTLE_CREATE_PANEL_MINE:String = "BATTLE_CREATE_PANEL_MINE";
+      public static const BATTLE_CREATE_PANEL_MEDKIT:String = "BATTLE_CREATE_PANEL_MEDKIT";
+      public static const ESPORT_DROP_TIMING:String = "ESPORT_DROP_TIMING";
+      public static const REDUCED_RESISTANCES:String = "REDUCED_RESISTANCES";
+      public static const BATTLE_CRYSTAL_BOX_TEXT:String = "BATTLE_CRYSTAL_BOX_TEXT";
+      public static const BATTLE_CREATE_PANEL_GOLD_SIREN:String = "BATTLE_CREATE_PANEL_GOLD_SIREN";
+      public static const BATTLE_CREATE_PANEL_GOLD_REGION:String = "BATTLE_CREATE_PANEL_GOLD_REGION";
+      public static const BATTLE_CREATE_PANEL_RANDOM_GOLD:String = "BATTLE_CREATE_PANEL_RANDOM_GOLD";
       
       public function TanksLocale()
       {
