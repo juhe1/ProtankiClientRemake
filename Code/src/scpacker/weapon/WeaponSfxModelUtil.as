@@ -10,9 +10,6 @@ package scpacker.weapon
    import projects.tanks.client.battlefield.models.tankparts.sfx.shoot.ricochet.RicochetSFXCC;
    import alternativa.types.Long;
    import projects.tanks.client.battlefield.models.tankparts.sfx.isis.IsisSFXCC;
-   import projects.tanks.client.battlefield.models.tankparts.sfx.lighting.LightingEfect;
-   import projects.tanks.client.battlefield.models.tankparts.sfx.lighting.LightingSFXModelCC;
-   import projects.tanks.client.battlefield.models.tankparts.sfx.lighting.LightingEfectRecord;
    import alternativa.tanks.models.weapon.shotgun.sfx.ShotgunSFXModel;
    import projects.tanks.client.battlefield.models.tankparts.sfx.shoot.thunder.ThunderShootSFXCC;
    import projects.tanks.client.battlefield.models.tankparts.weapons.shotgun.sfx.ShotgunSFXCC;
@@ -46,32 +43,62 @@ package scpacker.weapon
    import projects.tanks.client.battlefield.models.tankparts.sfx.lighting.entity.LightingEffectEntity;
    import projects.tanks.client.battlefield.models.tankparts.sfx.lighting.entity.LightEffectItem;
    import alternativa.tanks.models.weapon.twins.TwinsSFXModel;
+   import projects.tanks.client.battlefield.models.tankparts.sfx.shoot.smoky.SmokyShootSFXModelBase;
+   import projects.tanks.client.battlefield.models.tankparts.sfx.shoot.railgun.RailgunShootSFXModelBase;
+   import projects.tanks.client.battlefield.models.tankparts.weapons.artillery.sfx.ArtillerySfxModelBase;
+   import projects.tanks.client.battlefield.models.tankparts.weapons.machinegun.sfx.MachineGunSFXModelBase;
+   import projects.tanks.client.battlefield.models.tankparts.weapons.shotgun.sfx.ShotgunSFXModelBase;
+   import projects.tanks.client.battlefield.models.tankparts.sfx.shoot.shaft.ShaftShootSFXModelBase;
+   import projects.tanks.client.battlefield.models.tankparts.sfx.shoot.ricochet.RicochetSFXModelBase;
+   import projects.tanks.client.battlefield.models.tankparts.sfx.freeze.FreezeSFXModelBase;
+   import projects.tanks.client.battlefield.models.tankparts.sfx.shoot.thunder.ThunderShootSFXModelBase;
+   import projects.tanks.client.battlefield.models.tankparts.sfx.isis.IsisSFXModelBase;
+   import projects.tanks.client.battlefield.models.tankparts.sfx.shoot.twins.TwinsShootSFXModelBase;
+   import projects.tanks.client.battlefield.models.tankparts.sfx.firebird.FlameThrowingSFXModelBase;
+   import projects.tanks.client.battlefield.models.tankparts.sfx.bcsh.BCSHModelBase;
+   import scpacker.utils.CoreUtils;
    
-   public class WeaponsSfxManager
+   public class WeaponSfxModelUtil
    {
       public static var resourceRegistry:ResourceRegistry = OSGi.getInstance().getService(ResourceRegistry) as ResourceRegistry;
       public static var modelRegistry:ModelRegistry = OSGi.getInstance().getService(ModelRegistry) as ModelRegistry;
+
+      private static var smokySfxModel:SmokySFXModel;
+      private static var railgunSfxModel:RailgunSFXModel;
+      private static var flamethrowerSfxModel:FlamethrowerSFXModel;
+      private static var twinsSfxModel:TwinsSFXModel;
+      private static var isisSfxModel:HealingGunSFXModel;
+      private static var thunderSfxModel:ThunderSFXModel;
+      private static var freezeSfxModel:FreezeSFXModel;
+      private static var ricochetSfxModel:RicochetSFXModel;
+      private static var shaftSfxModel:ShaftSFXModel;
+      private static var shotgunSfxModel:ShotgunSFXModel;
+      private static var machineGunSfxModel:MachineGunSFXModel;
+      private static var artillerySfxModel:ArtillerySfxModel;
       
-      private static var railgunSfxDictionary:Dictionary = new Dictionary();
-      private static var smokyShootSfxDictionary:Dictionary = new Dictionary();
-      private static var flameThrowingSfxDictionary:Dictionary = new Dictionary();
-      private static var twinsShootSfxDictionary:Dictionary = new Dictionary();
-      private static var isisSfxDictionary:Dictionary = new Dictionary();
-      private static var thunderShootSfxDictionary:Dictionary = new Dictionary();
-      private static var freezeSfxDictionary:Dictionary = new Dictionary();
-      private static var ricochetSfxDictionary:Dictionary = new Dictionary();
-      private static var shaftShootSfxDictionary:Dictionary = new Dictionary();
-      private static var shotgunSfxDictionary:Dictionary = new Dictionary();
-      private static var machineGunSfxDictionary:Dictionary = new Dictionary();
-      private static var artillerySfxDictionary:Dictionary = new Dictionary();
-      
-      public function WeaponsSfxManager()
+      public function WeaponSfxModelUtil()
       {
          super();
       }
       
-      public static function CreateSfxCCForWeapon(weaponName:String, sfxDataJsonObject:Object, gameObject:IGameObject) : void
+      public static function addSfxModelsForWeapon(weaponName:String, sfxDataJsonObject:Object, gameObject:IGameObject) : void
       {
+         if(smokySfxModel == null)
+         {
+            smokySfxModel = modelRegistry.getModel(SmokyShootSFXModelBase.modelId) as SmokySFXModel;
+            railgunSfxModel = modelRegistry.getModel(RailgunShootSFXModelBase.modelId) as RailgunSFXModel;
+            flamethrowerSfxModel = modelRegistry.getModel(FlameThrowingSFXModelBase.modelId) as FlamethrowerSFXModel;
+            twinsSfxModel = modelRegistry.getModel(TwinsShootSFXModelBase.modelId) as TwinsSFXModel;
+            isisSfxModel = modelRegistry.getModel(IsisSFXModelBase.modelId) as HealingGunSFXModel;
+            thunderSfxModel = modelRegistry.getModel(ThunderShootSFXModelBase.modelId) as ThunderSFXModel;
+            freezeSfxModel = modelRegistry.getModel(FreezeSFXModelBase.modelId) as FreezeSFXModel;
+            ricochetSfxModel = modelRegistry.getModel(RicochetSFXModelBase.modelId) as RicochetSFXModel;
+            shaftSfxModel = modelRegistry.getModel(ShaftShootSFXModelBase.modelId) as ShaftSFXModel;
+            shotgunSfxModel = modelRegistry.getModel(ShotgunSFXModelBase.modelId) as ShotgunSFXModel;
+            machineGunSfxModel = modelRegistry.getModel(MachineGunSFXModelBase.modelId) as MachineGunSFXModel;
+            artillerySfxModel = modelRegistry.getModel(ArtillerySfxModelBase.modelId) as ArtillerySfxModel;
+         }
+         
          initializeBCSHModelForGameObject(sfxDataJsonObject,gameObject);
          var lightingEffectEntity:LightingSFXEntity = createLightingEffectEntity(sfxDataJsonObject,gameObject);
          Model.object = gameObject;
@@ -118,6 +145,7 @@ package scpacker.weapon
       
       public static function initializeBCSHModelForGameObject(param1:Object, gameObject:IGameObject) : void
       {
+         CoreUtils.addModelToGameClass(gameObject, BCSHModelBase.modelId);
          var _loc5_:BCSHStruct = null;
          if(param1 == null)
          {
@@ -171,12 +199,9 @@ package scpacker.weapon
       
       public static function createRailgunSfx(gameObject:IGameObject, lightingEffectEntity:LightingSFXEntity, param2:Object = null) : RailgunSFXModel
       {
+         CoreUtils.addModelToGameClass(gameObject, RailgunShootSFXModelBase.modelId);
          var _loc3_:RailgunShootSFXCC = null;
-         if(railgunSfxDictionary == null)
-         {
-            railgunSfxDictionary = new Dictionary();
-         }
-         var _loc4_:RailgunSFXModel = railgunSfxDictionary[gameObject.id];
+         var _loc4_:RailgunSFXModel = railgunSfxModel;
          if(param2 != null)
          {
             _loc3_ = new RailgunShootSFXCC();
@@ -191,24 +216,19 @@ package scpacker.weapon
             _loc3_.sphereTexture = MultiframeImageResource(resourceRegistry.getResource(Long.getLong(0,param2.sphereTexture)));
             _loc3_.trailImage = ImageResource(resourceRegistry.getResource(Long.getLong(0,param2.trailImage)));
             _loc3_.lightingSFXEntity = lightingEffectEntity;
-            _loc4_ = new RailgunSFXModel();
             Model.object = gameObject;
             _loc4_.putInitParams(_loc3_);
             _loc4_.objectLoadedPost();
             Model.popObject();
-            railgunSfxDictionary[gameObject.id] = _loc4_;
          }
          return _loc4_;
       }
       
       public static function createSmokySfx(gameObject:IGameObject, lightingEffectEntity:LightingSFXEntity, param2:Object = null) : SmokySFXModel
       {
+         CoreUtils.addModelToGameClass(gameObject, SmokyShootSFXModelBase.modelId);
          var _loc3_:SmokyShootSFXCC = null;
-         if(smokyShootSfxDictionary == null)
-         {
-            smokyShootSfxDictionary = new Dictionary();
-         }
-         var _loc4_:SmokySFXModel = smokyShootSfxDictionary[gameObject.id];
+         var _loc4_:SmokySFXModel = smokySfxModel;
          if(param2 != null)
          {
             _loc3_ = new SmokyShootSFXCC();
@@ -221,29 +241,23 @@ package scpacker.weapon
             _loc3_.shotSound = SoundResource(resourceRegistry.getResource(Long.getLong(0,param2.shotSound)));
             _loc3_.shotTexture = ImageResource(resourceRegistry.getResource(Long.getLong(0,param2.shotTexture)));
             _loc3_.lightingSFXEntity = lightingEffectEntity;
-            _loc4_ = new SmokySFXModel();
             Model.object = gameObject;
             _loc4_.putInitParams(_loc3_);
             _loc4_.objectLoaded();
             Model.popObject();
-            smokyShootSfxDictionary[gameObject.id] = _loc4_;
          }
          return _loc4_;
       }
       
       public static function createFlamethrowerSfx(gameObject:IGameObject, lightingEffectEntity:LightingSFXEntity, param2:Object = null) : FlamethrowerSFXModel
       {
+         CoreUtils.addModelToGameClass(gameObject, FlameThrowingSFXModelBase.modelId);
          var _loc3_:FlameThrowingSFXCC = null;
          var _loc6_:* = undefined;
          var _loc4_:ColorTransformEntry = null;
-         if(flameThrowingSfxDictionary == null)
-         {
-            flameThrowingSfxDictionary = new Dictionary();
-         }
-         var _loc7_:FlamethrowerSFXModel = flameThrowingSfxDictionary[gameObject.id];
+         var _loc7_:FlamethrowerSFXModel = flamethrowerSfxModel;
          if(param2 != null)
          {
-            _loc7_ = new FlamethrowerSFXModel();
             _loc3_ = new FlameThrowingSFXCC();
             _loc3_.fireTexture = MultiframeImageResource(resourceRegistry.getResource(Long.getLong(0,param2.fireTexture)));
             _loc3_.flameSound = SoundResource(resourceRegistry.getResource(Long.getLong(0,param2.flameSound)));
@@ -272,22 +286,17 @@ package scpacker.weapon
             _loc7_.objectLoaded();
             _loc7_.initColorTransform(_loc6_);
             Model.popObject();
-
-            flameThrowingSfxDictionary[gameObject.id] = _loc7_;
          }
          return _loc7_;
       }
       
       public static function createTwinsSfx(gameObject:IGameObject, lightingEffectEntity:LightingSFXEntity, param2:Object = null) : TwinsSFXModel
       {
+         CoreUtils.addModelToGameClass(gameObject, TwinsShootSFXModelBase.modelId);
          var _loc3_:TwinsShootSFXCC = null;
-         if(twinsShootSfxDictionary == null)
-         {
-            twinsShootSfxDictionary = new Dictionary();
-         }
+         var _loc4_:TwinsSFXModel = twinsSfxModel;
          if(param2 != null)
          {
-            twinsShootSfxDictionary[gameObject.id] = new TwinsSFXModel();
             _loc3_ = new TwinsShootSFXCC();
             _loc3_.explosionTexture = MultiframeImageResource(resourceRegistry.getResource(Long.getLong(0,param2.explosionTexture)));
             _loc3_.hitMarkTexture = ImageResource(resourceRegistry.getResource(Long.getLong(0,param2.hitMarkTexture)));
@@ -296,23 +305,20 @@ package scpacker.weapon
             _loc3_.shotTexture = MultiframeImageResource(resourceRegistry.getResource(Long.getLong(0,param2.shotTexture)));
             _loc3_.lightingSFXEntity = lightingEffectEntity;
             Model.object = gameObject;
-            twinsShootSfxDictionary[gameObject.id].putInitParams(_loc3_);
-            twinsShootSfxDictionary[gameObject.id].objectLoadedPost();
+            _loc4_.putInitParams(_loc3_);
+            _loc4_.objectLoadedPost();
             Model.popObject();
          }
-         return twinsShootSfxDictionary[gameObject.id];
+         return _loc4_;
       }
       
       public static function createIsisSfx(gameObject:IGameObject, lightingEffectEntity:LightingSFXEntity, param2:Object = null) :HealingGunSFXModel 
       {
+         CoreUtils.addModelToGameClass(gameObject, IsisSFXModelBase.modelId);
          var _loc3_:IsisSFXCC = null;
-         if(isisSfxDictionary == null)
-         {
-            isisSfxDictionary = new Dictionary();
-         }
+         var _loc4_:HealingGunSFXModel = isisSfxModel;
          if(param2 != null)
          {
-            isisSfxDictionary[gameObject.id] = new HealingGunSFXModel();
             _loc3_ = new IsisSFXCC();
             _loc3_.damagingBall = MultiframeImageResource(resourceRegistry.getResource(Long.getLong(0,param2.damagingBall)));
             _loc3_.damagingRay = ImageResource(resourceRegistry.getResource(Long.getLong(0,param2.damagingRay)));
@@ -323,23 +329,20 @@ package scpacker.weapon
             _loc3_.idleSound = SoundResource(resourceRegistry.getResource(Long.getLong(0,param2.idleSound)));
             _loc3_.lightingSFXEntity = lightingEffectEntity;
             Model.object = gameObject;
-            isisSfxDictionary[gameObject.id].putInitParams(_loc3_);
-            isisSfxDictionary[gameObject.id].objectLoadedPost();
+            _loc4_.putInitParams(_loc3_);
+            _loc4_.objectLoadedPost();
             Model.popObject();
          }
-         return isisSfxDictionary[gameObject.id];
+         return _loc4_;
       }
       
       public static function createThunderSfx(gameObject:IGameObject, lightingEffectEntity:LightingSFXEntity, param2:Object = null) : ThunderSFXModel
       {
+         CoreUtils.addModelToGameClass(gameObject, ThunderShootSFXModelBase.modelId);
          var _loc3_:ThunderShootSFXCC = null;
-         if(thunderShootSfxDictionary == null)
-         {
-            thunderShootSfxDictionary = new Dictionary();
-         }
+         var _loc4_:ThunderSFXModel = thunderSfxModel;
          if(param2 != null)
          {
-            thunderShootSfxDictionary[gameObject.id] = new ThunderSFXModel();
             _loc3_ = new ThunderShootSFXCC();
             _loc3_.explosionMarkTexture = ImageResource(resourceRegistry.getResource(Long.getLong(0,param2.explosionMarkTexture)));
             _loc3_.explosionSize = param2.explosionSize;
@@ -349,23 +352,20 @@ package scpacker.weapon
             _loc3_.shotTexture = ImageResource(resourceRegistry.getResource(Long.getLong(0,param2.shotTexture)));
             _loc3_.lightingSFXEntity = lightingEffectEntity;
             Model.object = gameObject;
-            thunderShootSfxDictionary[gameObject.id].putInitParams(_loc3_);
-            thunderShootSfxDictionary[gameObject.id].objectLoaded();
+            _loc4_.putInitParams(_loc3_);
+            _loc4_.objectLoaded();
             Model.popObject();
          }
-         return thunderShootSfxDictionary[gameObject.id];
+         return _loc4_;
       }
       
       public static function createFreezeSfx(gameObject:IGameObject, lightingEffectEntity:LightingSFXEntity, param2:Object = null) : FreezeSFXModel
       {
+         CoreUtils.addModelToGameClass(gameObject, FreezeSFXModelBase.modelId);
          var _loc3_:FreezeSFXCC = null;
-         if(freezeSfxDictionary == null)
-         {
-            freezeSfxDictionary = new Dictionary();
-         }
+         var _loc4_:FreezeSFXModel = freezeSfxModel;
          if(param2 != null)
          {
-            freezeSfxDictionary[gameObject.id] = new FreezeSFXModel();
             _loc3_ = new FreezeSFXCC();
             _loc3_.particleSpeed = param2.particleSpeed;
             _loc3_.particleTextureResource = MultiframeImageResource(resourceRegistry.getResource(Long.getLong(0,param2.particleTextureResource)));
@@ -373,21 +373,18 @@ package scpacker.weapon
             _loc3_.shotSoundResource = SoundResource(resourceRegistry.getResource(Long.getLong(0,param2.shotSoundResource)));
             _loc3_.lightingSFXEntity = lightingEffectEntity;
             Model.object = gameObject;
-            freezeSfxDictionary[gameObject.id].putInitParams(_loc3_);
-            freezeSfxDictionary[gameObject.id].objectLoaded();
+            _loc4_.putInitParams(_loc3_);
+            _loc4_.objectLoaded();
             Model.popObject();
          }
-         return freezeSfxDictionary[gameObject.id];
+         return _loc4_;
       }
       
       public static function createRicochetSfx(gameObject:IGameObject, lightingEffectEntity:LightingSFXEntity, param2:Object = null) : RicochetSFXModel
       {
+         CoreUtils.addModelToGameClass(gameObject, RicochetSFXModelBase.modelId);
          var _loc3_:RicochetSFXCC = null;
-         if(ricochetSfxDictionary == null)
-         {
-            ricochetSfxDictionary = new Dictionary();
-         }
-         var _loc4_:RicochetSFXModel = ricochetSfxDictionary[gameObject.id];
+         var _loc4_:RicochetSFXModel = ricochetSfxModel;
          if(param2 != null)
          {
             _loc3_ = new RicochetSFXCC();
@@ -398,29 +395,23 @@ package scpacker.weapon
             _loc3_.shotFlashTexture = ImageResource(resourceRegistry.getResource(Long.getLong(0,param2.shotFlashTexture)));
             _loc3_.shotSound = SoundResource(resourceRegistry.getResource(Long.getLong(0,param2.shotSound)));
             _loc3_.shotTexture = MultiframeImageResource(resourceRegistry.getResource(Long.getLong(0,param2.shotTexture)));
-            _loc3_.tailTrailTexutre = ImageResource(resourceRegistry.getResource(Long.getLong(0,param2.tailTrailTexture)));
+            _loc3_.tailTrailTexutre = ImageResource(resourceRegistry.getResource(Long.getLong(0,param2.tailTrailTexutre)));
             _loc3_.lightingSFXEntity = lightingEffectEntity;
-            _loc4_ = new RicochetSFXModel();
             Model.object = gameObject;
             _loc4_.putInitParams(_loc3_);
             _loc4_.objectLoadedPost();
             Model.popObject();
-            ricochetSfxDictionary[gameObject.id] = _loc4_;
          }
          return _loc4_;
       }
       
       public static function createShaftSfx(gameObject:IGameObject, lightingEffectEntity:LightingSFXEntity, param2:Object = null) : ShaftSFXModel
       {
-         var _loc3_:ShaftSFXModel = null;
+         CoreUtils.addModelToGameClass(gameObject, ShaftShootSFXModelBase.modelId);
+         var _loc3_:ShaftSFXModel = shaftSfxModel;
          var _loc4_:ShaftShootSFXCC = null;
-         if(shaftShootSfxDictionary == null)
-         {
-            shaftShootSfxDictionary = new Dictionary();
-         }
          if(param2 != null)
          {
-            shaftShootSfxDictionary[gameObject.id] = new ShaftSFXModel();
             _loc4_ = new ShaftShootSFXCC();
             _loc4_.explosionSound = SoundResource(resourceRegistry.getResource(Long.getLong(0,param2.explosionSound)));
             _loc4_.explosionTexture = MultiframeImageResource(resourceRegistry.getResource(Long.getLong(0,param2.explosionTexture)));
@@ -432,24 +423,20 @@ package scpacker.weapon
             _loc4_.zoomModeSound = SoundResource(resourceRegistry.getResource(Long.getLong(0,param2.zoomModeSound)));
             _loc4_.lightingSFXEntity = lightingEffectEntity;
             Model.object = gameObject;
-            shaftShootSfxDictionary[gameObject.id].putInitParams(_loc4_);
-            shaftShootSfxDictionary[gameObject.id].objectLoadedPost();
+            _loc3_.putInitParams(_loc4_);
+            _loc3_.objectLoadedPost();
             Model.popObject();
          }
-         return shaftShootSfxDictionary[gameObject.id];
+         return _loc3_;
       }
       
       public static function createShotgunSfx(gameObject:IGameObject, lightingEffectEntity:LightingSFXEntity, param2:Object = null) : ShotgunSFXModel
       {
+         CoreUtils.addModelToGameClass(gameObject, ShotgunSFXModelBase.modelId);
          var _loc3_:ShotgunSFXCC = null;
-         var _loc4_:ShotgunSFXModel = null;
-         if(shotgunSfxDictionary == null)
-         {
-            shotgunSfxDictionary = new Dictionary();
-         }
+         var _loc4_:ShotgunSFXModel = shotgunSfxModel;
          if(param2 != null)
          {
-            shotgunSfxDictionary[gameObject.id] = new ShotgunSFXModel();
             _loc3_ = new ShotgunSFXCC();
             _loc3_.explosionMarkTextures = new Vector.<ImageResource>(4);
             _loc3_.explosionMarkTextures[0] = ImageResource(resourceRegistry.getResource(Long.getLong(0,param2.explosionMarkTexture0)));
@@ -466,24 +453,20 @@ package scpacker.weapon
             _loc3_.sparkleTexture = ImageResource(resourceRegistry.getResource(Long.getLong(0,param2.sparkleTexture)));
             _loc3_.lightingSFXEntity = lightingEffectEntity;
             Model.object = gameObject;
-            shotgunSfxDictionary[gameObject.id].putInitParams(_loc3_);
-            shotgunSfxDictionary[gameObject.id].objectLoadedPost();
+            _loc4_.putInitParams(_loc3_);
+            _loc4_.objectLoadedPost();
             Model.popObject();
          }
-         return shotgunSfxDictionary[gameObject.id];
+         return _loc4_;
       }
       
       public static function createMachineGunSfx(gameObject:IGameObject, lightingEffectEntity:LightingSFXEntity, param2:Object = null) : MachineGunSFXModel
       {
-         var _loc3_:MachineGunSFXModel = null;
+         CoreUtils.addModelToGameClass(gameObject, MachineGunSFXModelBase.modelId);
+         var _loc3_:MachineGunSFXModel = machineGunSfxModel;
          var _loc4_:MachineGunSFXCC = null;
-         if(machineGunSfxDictionary == null)
-         {
-            machineGunSfxDictionary = new Dictionary();
-         }
          if(param2 != null)
          {
-            machineGunSfxDictionary[gameObject.id] = new MachineGunSFXModel();
             _loc4_ = new MachineGunSFXCC();
             _loc4_.chainStartSound = SoundResource(resourceRegistry.getResource(Long.getLong(0,param2.chainStartSound)));
             _loc4_.crumbsTexture = ImageResource(resourceRegistry.getResource(Long.getLong(0,param2.crumbsTexture)));
@@ -502,11 +485,11 @@ package scpacker.weapon
             _loc4_.turbineStartSound = SoundResource(resourceRegistry.getResource(Long.getLong(0,param2.turbineStartSound)));
             _loc4_.lightingSFXEntity = lightingEffectEntity;
             Model.object = gameObject;
-            machineGunSfxDictionary[gameObject.id].putInitParams(_loc4_);
-            machineGunSfxDictionary[gameObject.id].objectLoadedPost();
+            _loc3_.putInitParams(_loc4_);
+            _loc3_.objectLoadedPost();
             Model.popObject();
          }
-         return machineGunSfxDictionary[gameObject.id];
+         return _loc3_;
       }
       
       //public static function createArtillerySfx(param1:ClientObject, param2:Object = null) : ArtillerySfxModel
@@ -540,125 +523,6 @@ package scpacker.weapon
       //   }
       //   return artillerySfxDictionary[param1.id];
       //}
-      
-      public static function newname_2438__END(param1:ClientObject) : void
-      {
-         if(param1 == null)
-         {
-            return;
-         }
-         if(shaftShootSfxDictionary != null)
-         {
-            if(shaftShootSfxDictionary[param1.id] != null)
-            {
-               shaftShootSfxDictionary[param1.id].objectUnloaded(param1);
-               delete shaftShootSfxDictionary[param1.id];
-            }
-         }
-         if(thunderShootSfxDictionary != null)
-         {
-            if(thunderShootSfxDictionary[param1.id] != null)
-            {
-               thunderShootSfxDictionary[param1.id].objectUnloaded(param1);
-               delete thunderShootSfxDictionary[param1.id];
-            }
-         }
-         if(ricochetSfxDictionary != null)
-         {
-            if(ricochetSfxDictionary[param1.id] != null)
-            {
-               ricochetSfxDictionary[param1.id].objectUnloaded(param1);
-               delete ricochetSfxDictionary[param1.id];
-            }
-         }
-         if(freezeSfxDictionary != null)
-         {
-            if(freezeSfxDictionary[param1.id] != null)
-            {
-               freezeSfxDictionary[param1.id].objectUnloaded(param1);
-               delete freezeSfxDictionary[param1.id];
-            }
-         }
-         if(isisSfxDictionary != null)
-         {
-            if(isisSfxDictionary[param1.id] != null)
-            {
-               isisSfxDictionary[param1.id].objectUnloaded(param1);
-               delete isisSfxDictionary[param1.id];
-            }
-         }
-         if(twinsShootSfxDictionary != null)
-         {
-            if(twinsShootSfxDictionary[param1.id] != null)
-            {
-               twinsShootSfxDictionary[param1.id].objectUnloaded(param1);
-               delete twinsShootSfxDictionary[param1.id];
-            }
-         }
-         if(flameThrowingSfxDictionary != null)
-         {
-            if(flameThrowingSfxDictionary[param1.id] != null)
-            {
-               flameThrowingSfxDictionary[param1.id].objectUnloaded(param1);
-               delete flameThrowingSfxDictionary[param1.id];
-            }
-         }
-         if(smokyShootSfxDictionary != null)
-         {
-            if(smokyShootSfxDictionary[param1.id] != null)
-            {
-               smokyShootSfxDictionary[param1.id].objectUnloaded(param1);
-               delete smokyShootSfxDictionary[param1.id];
-            }
-         }
-         if(railgunSfxDictionary != null)
-         {
-            if(railgunSfxDictionary[param1.id] != null)
-            {
-               railgunSfxDictionary[param1.id].objectUnloaded(param1);
-               delete railgunSfxDictionary[param1.id];
-            }
-         }
-         if(shotgunSfxDictionary != null)
-         {
-            if(shotgunSfxDictionary[param1.id] != null)
-            {
-               shotgunSfxDictionary[param1.id].objectUnloaded(param1);
-               delete shotgunSfxDictionary[param1.id];
-            }
-         }
-         if(machineGunSfxDictionary != null)
-         {
-            if(machineGunSfxDictionary[param1.id] != null)
-            {
-               machineGunSfxDictionary[param1.id].objectUnloaded(param1);
-               delete machineGunSfxDictionary[param1.id];
-            }
-         }
-         if(artillerySfxDictionary != null)
-         {
-            if(artillerySfxDictionary[param1.id] != null)
-            {
-               artillerySfxDictionary[param1.id].objectUnloaded(param1);
-               delete artillerySfxDictionary[param1.id];
-            }
-         }
-      }
-      
-      public static function destroy() : void
-      {
-         isisSfxDictionary = null;
-         twinsShootSfxDictionary = null;
-         flameThrowingSfxDictionary = null;
-         smokyShootSfxDictionary = null;
-         railgunSfxDictionary = null;
-         thunderShootSfxDictionary = null;
-         ricochetSfxDictionary = null;
-         freezeSfxDictionary = null;
-         shaftShootSfxDictionary = null;
-         shotgunSfxDictionary = null;
-         artillerySfxDictionary = null;
-      }
    }
 }
 

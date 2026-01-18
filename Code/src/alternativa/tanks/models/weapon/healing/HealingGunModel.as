@@ -179,12 +179,12 @@ package alternativa.tanks.models.weapon.healing
       
       private function onTankAddedToBattle(param1:TankAddedToBattleEvent) : void
       {
-         this.tanksInBattle[param1.tank.getUser().id] = param1.tank;
+         this.tanksInBattle[param1.tank.getUserId()] = param1.tank;
       }
       
       private function onTankRemovedFromBattle(param1:TankRemovedFromBattleEvent) : void
       {
-         delete this.tanksInBattle[param1.tank.getUser().id];
+         delete this.tanksInBattle[param1.tank.getUserId()];
       }
       
       private function getRemoteWeapon() : RemoteHealingGun

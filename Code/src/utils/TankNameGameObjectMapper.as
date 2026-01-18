@@ -13,6 +13,16 @@ package utils
       }
       
       /**
+       * Adds a mapping between a tank name and a game object
+       * @param tankName The tank name key
+       * @param gameObject The game object to map
+       */
+      public static function addMapping(tankName:String, gameObject:IGameObject) : void
+      {
+         mappings[tankName] = gameObject;
+      }
+      
+      /**
        * Gets a game object by tank name
        * @param tankName The tank name key
        * @return The mapped game object, or null if not found
@@ -37,6 +47,21 @@ package utils
             }
          }
          return null;
+      }
+      
+      /**
+       * Removes a mapping by tank name
+       * @param tankName The tank name key to remove
+       * @return True if the mapping was removed, false if it didn't exist
+       */
+      public static function removeMapping(tankName:String) : Boolean
+      {
+         if (mappings.hasOwnProperty(tankName))
+         {
+            delete mappings[tankName];
+            return true;
+         }
+         return false;
       }
    }
 }

@@ -103,6 +103,14 @@ package scpacker.utils
             _loc2_.destroyObject(_loc3_.id);
          }
       }
+      
+      public static function addModelToGameClass(gameObject:IGameObject, modelId:Long):void
+      {
+         if(gameObject.gameClass.models.indexOf(modelId) == -1)
+         {
+            gameObject.gameClass.models.push(modelId);
+         }
+      }
    }
 }
 

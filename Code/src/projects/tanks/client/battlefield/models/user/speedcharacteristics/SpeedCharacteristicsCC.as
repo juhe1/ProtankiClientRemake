@@ -27,9 +27,7 @@ package projects.tanks.client.battlefield.models.user.speedcharacteristics
       
       private var _turnAcceleration:Number;
       
-      private var _turnStabilizationAcceleration:Number;
-      
-      public function SpeedCharacteristicsCC(param1:Number = 0, param2:Number = 0, param3:Number = 0, param4:Number = 0, param5:Number = 0, param6:Number = 0, param7:Number = 0, param8:Number = 0, param9:Number = 0, param10:Number = 0, param11:Number = 0, param12:Number = 0, param13:Number = 0)
+      public function SpeedCharacteristicsCC(param1:Number = 0, param2:Number = 0, param3:Number = 0, param4:Number = 0, param5:Number = 0, param6:Number = 0, param7:Number = 0, param8:Number = 0, param9:Number = 0, param10:Number = 0, param11:Number = 0, param12:Number = 0)
       {
          super();
          this._baseAcceleration = param1;
@@ -44,7 +42,6 @@ package projects.tanks.client.battlefield.models.user.speedcharacteristics
          this._reverseTurnAcceleration = param10;
          this._sideAcceleration = param11;
          this._turnAcceleration = param12;
-         this._turnStabilizationAcceleration = param13;
       }
       
       public function get baseAcceleration() : Number
@@ -167,16 +164,6 @@ package projects.tanks.client.battlefield.models.user.speedcharacteristics
          this._turnAcceleration = param1;
       }
       
-      public function get turnStabilizationAcceleration() : Number
-      {
-         return this._turnStabilizationAcceleration;
-      }
-      
-      public function set turnStabilizationAcceleration(param1:Number) : void
-      {
-         this._turnStabilizationAcceleration = param1;
-      }
-      
       public function toString() : String
       {
          var _loc1_:String = "SpeedCharacteristicsCC [";
@@ -192,7 +179,6 @@ package projects.tanks.client.battlefield.models.user.speedcharacteristics
          _loc1_ += "reverseTurnAcceleration = " + this.reverseTurnAcceleration + " ";
          _loc1_ += "sideAcceleration = " + this.sideAcceleration + " ";
          _loc1_ += "turnAcceleration = " + this.turnAcceleration + " ";
-         _loc1_ += "turnStabilizationAcceleration = " + this.turnStabilizationAcceleration + " ";
          return _loc1_ + "]";
       }
    }

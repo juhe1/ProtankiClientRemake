@@ -1,6 +1,7 @@
 package projects.tanks.clients.fp10.models.battlefieldmodelflash
 {   
    import alternativa.osgi.OSGi;
+   import alternativa.tanks.models.battle.ctf.CTFFlag;
    import alternativa.tanks.battle.objects.tank.Tank;
    import alternativa.tanks.models.sfx.bcsh.BCSHModel;
    import alternativa.tanks.models.sfx.bcsh.IBcsh;
@@ -1916,6 +1917,34 @@ package projects.tanks.clients.fp10.models.battlefieldmodelflash
          {
             return CTFModel.userInfoService;
          });
+         osgi.injectService(IDisplay,function(param1:Object):void
+         {
+            CTFModel.display = IDisplay(param1);
+         },function():IDisplay
+         {
+            return CTFModel.display;
+         });
+         osgi.injectService(BattleEventDispatcher,function(param1:Object):void
+         {
+            CTFModel.battleEventDispatcher = BattleEventDispatcher(param1);
+         },function():BattleEventDispatcher
+         {
+            return CTFModel.battleEventDispatcher;
+         });
+         osgi.injectService(TextureMaterialRegistry,function(param1:Object):void
+         {
+            CTFModel.materialRegistry = TextureMaterialRegistry(param1);
+         },function():TextureMaterialRegistry
+         {
+            return CTFModel.materialRegistry;
+         });
+         osgi.injectService(BattleInputService,function(param1:Object):void
+         {
+            CTFModel.battleInputLockService = BattleInputService(param1);
+         },function():BattleInputService
+         {
+            return CTFModel.battleInputLockService;
+         });
          //osgi.injectService(ILocaleService,function(param1:Object):void
          //{
          //   FlagMessage.localeService = ILocaleService(param1);
@@ -1929,6 +1958,13 @@ package projects.tanks.clients.fp10.models.battlefieldmodelflash
          },function():BattleService
          {
             return FlagPickupTimeoutTask.battleService;
+         });
+         osgi.injectService(ILightingEffectsService,function(param1:Object):void
+         {
+            CTFFlag.lightingEffectsService = ILightingEffectsService(param1);
+         },function():ILightingEffectsService
+         {
+            return CTFFlag.lightingEffectsService;
          });
          osgi.injectService(BattleService,function(param1:Object):void
          {

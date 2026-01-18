@@ -56,6 +56,7 @@ package alternativa.tanks.models.controlpoints
    import projects.tanks.client.battleservice.model.battle.team.BattleTeam;
    import projects.tanks.clients.fp10.libraries.TanksLocale;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.battle.IBattleInfoService;
+   import utils.TankNameGameObjectMapper;
    
    [ModelInfo]
    public class ControlPointsModel extends ControlPointsModelBase implements IControlPointsModelBase, ObjectLoadListener, ObjectLoadPostListener, ObjectUnloadListener, BattleModel, IDominationModel, BattleEventListener
@@ -111,9 +112,9 @@ package alternativa.tanks.models.controlpoints
          this.battleEventSupport.addEventHandler(TankRemovedFromBattleEvent,this.onTankRemovedFromBattle);
       }
       
-      private static function getGameObject(param1:IGameObject, param2:Long) : IGameObject
+      private static function getGameObject(tankId:String) : IGameObject
       {
-         return param1.space.getObject(param2);
+         return TankNameGameObjectMapper.getGameObjectByTankName(tankId);
       }
       
       private static function getBattleTeam(param1:ControlPointState) : BattleTeam
@@ -132,7 +133,7 @@ package alternativa.tanks.models.controlpoints
       private function onTankAddedToBattle(param1:TankAddedToBattleEvent) : void
       {
          this.tanksInBattle[param1.tank.getUser()] = param1.tank;
-         var _loc2_:int = this.getPointOccupationBuffer().takeTankPointId(param1.tank.getUser().id);
+         var _loc2_:int = this.getPointOccupationBuffer().takeTankPointId(param1.tank.getUserId());
          if(_loc2_ >= 0)
          {
             this.createBeamEffect(_loc2_,param1.tank,AllBeamProperties(this.getMyData(AllBeamProperties)));
@@ -242,7 +243,7 @@ package alternativa.tanks.models.controlpoints
          var _loc3_:KeyPoint = null;
          var _loc4_:KeyPointTrigger = null;
          var _loc5_:PointOccupationBuffer = null;
-         var _loc6_:Long = null;
+         var _loc6_:String = null;
          this.keyPointHUDMarkers = new KeyPointHUDMarkers(battleService.getBattleScene3D().getCamera());
          battleService.getBattleScene3D().addRenderer(this.keyPointHUDMarkers,0);
          var _loc1_:Vector.<KeyPoint> = new Vector.<KeyPoint>();
@@ -307,11 +308,11 @@ package alternativa.tanks.models.controlpoints
       }
       
       [Obfuscation(rename="false")]
-      public function tankEnteredPointZone(param1:int, param2:Long) : void
+      public function tankEnteredPointZone(param1:int, param2:String) : void
       {
          var _loc3_:KeyPoint = this.keyPoints[param1];
          ++_loc3_.tanksCount;
-         var _loc4_:Tank = this.tanksInBattle[getGameObject(object,param2)];
+         var _loc4_:Tank = this.tanksInBattle[getGameObject(param2)];
          if(_loc4_ != null)
          {
             this.createBeamEffect(param1,_loc4_,AllBeamProperties(getData(AllBeamProperties)));
@@ -333,11 +334,11 @@ package alternativa.tanks.models.controlpoints
       }
       
       [Obfuscation(rename="false")]
-      public function tankLeftPointZone(param1:int, param2:Long) : void
+      public function tankLeftPointZone(param1:int, param2:String) : void
       {
          var _loc3_:KeyPoint = this.keyPoints[param1];
          --_loc3_.tanksCount;
-         var _loc4_:Tank = this.tanksInBattle[getGameObject(object,param2)];
+         var _loc4_:Tank = this.tanksInBattle[getGameObject(param2)];
          if(_loc4_ != null)
          {
             this.getBeamEffects().removeEffect(_loc4_.getUser());

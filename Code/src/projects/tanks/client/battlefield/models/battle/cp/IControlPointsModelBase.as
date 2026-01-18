@@ -16,9 +16,9 @@ package projects.tanks.client.battlefield.models.battle.cp
       
       function stopBattle() : void;
       
-      function tankEnteredPointZone(param1:int, param2:Long) : void;
+      function tankEnteredPointZone(param1:int, param2:String) : void;
       
-      function tankLeftPointZone(param1:int, param2:Long) : void;
+      function tankLeftPointZone(param1:int, param2:String) : void;
    }
 }
 

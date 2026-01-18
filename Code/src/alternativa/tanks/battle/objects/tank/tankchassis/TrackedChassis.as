@@ -1,3 +1,4 @@
+
 package alternativa.tanks.battle.objects.tank.tankchassis
 {
    import alternativa.math.Matrix3;
@@ -11,9 +12,6 @@ package alternativa.tanks.battle.objects.tank.tankchassis
    
    public class TrackedChassis
    {
-      
-      public static const TURN_SPEED_COUNT:* = 7;
-      
       private static const MIN_ACCELERATION:Number = 400;
       
       private static const _xAxis:Vector3 = new Vector3();
@@ -50,9 +48,7 @@ package alternativa.tanks.battle.objects.tank.tankchassis
       
       public var turnDirection:int;
       
-      public var turnSpeedNumber:int;
-      
-      public var inverseBackTurnMovement:Boolean;
+      public var reverseBackTurn:Boolean;
       
       private const _acceleration:EncryptedNumber = new EncryptedNumberImpl();
       
@@ -63,8 +59,6 @@ package alternativa.tanks.battle.objects.tank.tankchassis
       private const _turnAcceleration:EncryptedNumber = new EncryptedNumberImpl();
       
       private const _reverseTurnAcceleration:EncryptedNumber = new EncryptedNumberImpl();
-      
-      private const _stabilizationAcceleration:EncryptedNumber = new EncryptedNumberImpl();
       
       public function TrackedChassis(param1:Body, param2:SuspensionParams, param3:ValueSmoother, param4:Vector3)
       {
@@ -106,11 +100,6 @@ package alternativa.tanks.battle.objects.tank.tankchassis
       public function setReverseTurnAcceleration(param1:Number) : void
       {
          this._reverseTurnAcceleration.setNumber(param1);
-      }
-      
-      public function setStabilizationAcceleration(param1:Number) : void
-      {
-         this._stabilizationAcceleration.setNumber(param1);
       }
       
       public function getAcceleration() : Number
@@ -164,6 +153,7 @@ package alternativa.tanks.battle.objects.tank.tankchassis
       
       private function doApplyMovementForces(param1:Number, param2:Number, param3:Number) : void
       {
+         var _loc6_:Vector3 = null;
          var _loc7_:Vector3 = null;
          var _loc8_:Matrix3 = null;
          var _loc9_:Number = NaN;
@@ -183,11 +173,9 @@ package alternativa.tanks.battle.objects.tank.tankchassis
          var _loc33_:Number = NaN;
          var _loc34_:Number = NaN;
          var _loc35_:Number = NaN;
-         var _loc36_:Number = NaN;
-         var _loc37_:Number = NaN;
          var _loc4_:int = this.movementLocked ? 0 : this.movementDirection;
          var _loc5_:int = this.movementLocked ? 0 : this.turnDirection;
-         var _loc6_:Vector3 = this.body.state.velocity;
+         _loc6_ = this.body.state.velocity;
          _loc7_ = this.body.state.angularVelocity;
          _loc8_ = this.body.baseMatrix;
          _xAxis.x = _loc8_.m00;
@@ -307,7 +295,7 @@ package alternativa.tanks.battle.objects.tank.tankchassis
             _loc34_ = 0;
             if(_loc5_ == 0)
             {
-               _loc34_ = -MathUtils.sign(_loc13_) * this._stabilizationAcceleration.getNumber() * _loc9_ * param3;
+               _loc34_ = -MathUtils.sign(_loc13_) * _loc19_ * _loc9_ * param3;
                if(MathUtils.sign(_loc13_) != MathUtils.sign(_loc13_ + _loc34_))
                {
                   _loc34_ = -_loc13_;
@@ -315,34 +303,27 @@ package alternativa.tanks.battle.objects.tank.tankchassis
             }
             else
             {
-               if(this.isReversedTurn(_loc5_,_loc13_,_loc4_,this.inverseBackTurnMovement))
+               if(this.isReversedTurn(_loc5_,_loc13_))
                {
                   _loc19_ = Number(this._reverseTurnAcceleration.getNumber());
                }
                _loc34_ = _loc5_ * _loc19_ * _loc9_ * param3;
-               if(_loc4_ == -1 && this.inverseBackTurnMovement)
+               if(_loc4_ == -1 && this.reverseBackTurn)
                {
                   _loc34_ = -_loc34_;
                }
             }
-            _loc35_ = param2;
-            if(_loc5_ != 0)
-            {
-               _loc35_ = param2 * this.turnSpeedNumber / TURN_SPEED_COUNT;
-            }
-            _loc36_ = _loc35_ * _loc33_;
-            _loc37_ = MathUtils.clamp(_loc13_ + _loc34_,-_loc36_,_loc36_);
-            _relativeAngularVelocity.setLengthAlongDirection(_zAxis,_loc37_);
+            _loc35_ = MathUtils.clamp(_loc13_ + _loc34_,-param2 * _loc33_,param2 * _loc33_);
+            _relativeAngularVelocity.setLengthAlongDirection(_zAxis,_loc35_);
             _loc7_.x = _surfaceAngularVelocity.x + _relativeAngularVelocity.x;
             _loc7_.y = _surfaceAngularVelocity.y + _relativeAngularVelocity.y;
             _loc7_.z = _surfaceAngularVelocity.z + _relativeAngularVelocity.z;
          }
       }
       
-      private function isReversedTurn(param1:int, param2:Number, param3:int, param4:Boolean) : Boolean
+      private function isReversedTurn(param1:int, param2:Number) : Boolean
       {
-         var _loc5_:int = param4 && param3 < 0 ? -1 : 1;
-         return param1 * param2 * _loc5_ < 0;
+         return param1 * param2 < 0;
       }
       
       private function calculateSurfaceVelocities(param1:Vector3, param2:Vector3) : void
@@ -509,4 +490,3 @@ package alternativa.tanks.battle.objects.tank.tankchassis
       }
    }
 }
-

@@ -54,7 +54,7 @@ package alternativa.tanks.battle.objects.tank.controllers
             _loc2_ = TargetingInputModeChangedEvent(param1);
             if(!this.currentInputState && _loc2_.enabled && !_loc2_.allowKeyboard)
             {
-               setControlState(0,0);
+               setControlState(0);
             }
             this.currentInputState = _loc2_.enabled;
          }
@@ -87,13 +87,13 @@ package alternativa.tanks.battle.objects.tank.controllers
          if(_loc3_ != controlState)
          {
             _loc5_ = _loc3_ | this.reverseBackTurnMask;
-            setControlState(_loc5_,TrackedChassis.TURN_SPEED_COUNT);
+            setControlState(_loc5_);
          }
       }
       
       private function onClientWindowDeactivate(param1:Event) : void
       {
-         setControlState(0,0);
+         setControlState(0);
       }
       
       override protected function onAppliedControlStateChanged(param1:int) : void

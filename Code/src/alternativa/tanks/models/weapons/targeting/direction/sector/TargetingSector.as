@@ -45,7 +45,7 @@ package alternativa.tanks.models.weapons.targeting.direction.sector
       
       public function toString() : String
       {
-         return StringUtil.substitute("[{0}, {1}], distance={2}, user={3}",this.left.toFixed(2),this.right.toFixed(2),this.distance.toFixed(0),this.tank.getUser().id);
+         return StringUtil.substitute("[{0}, {1}], distance={2}, user={3}",this.left.toFixed(2),this.right.toFixed(2),this.distance.toFixed(0),this.tank.getUserId());
       }
    }
 }

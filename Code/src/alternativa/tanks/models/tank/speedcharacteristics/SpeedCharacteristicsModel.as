@@ -46,7 +46,6 @@ package alternativa.tanks.models.tank.speedcharacteristics
          _loc2_.setSideAcceleration(BattleUtils.toClientScale(getInitParam().sideAcceleration));
          _loc2_.setTurnAcceleration(getInitParam().turnAcceleration);
          _loc2_.setReverseTurnAcceleration(getInitParam().reverseTurnAcceleration);
-         _loc2_.setStabilizationAcceleration(getInitParam().turnStabilizationAcceleration);
          this.setTankSpec(_loc1_,getInitParam().currentSpeed,getInitParam().currentTurnSpeed,getInitParam().currentTurretRotationSpeed,getInitParam().currentAcceleration,true);
       }
       

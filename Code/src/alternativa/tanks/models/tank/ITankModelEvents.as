@@ -21,6 +21,50 @@ package alternativa.tanks.models.tank
          this.object = param1;
          this.impl = param2;
       }
+
+      public function onReadyToActivate() : void
+      {
+         var result:Tank = null;
+         var i:int = 0;
+         var m:ITankModel = null;
+         try
+         {
+            Model.object = this.object;
+            i = 0;
+            while(i < this.impl.length)
+            {
+               m = ITankModel(this.impl[i]);
+               m.onReadyToActivate();
+               i++;
+            }
+         }
+         finally
+         {
+            Model.popObject();
+         }
+      }
+
+      public function addActivationTask() : void
+      {
+         var result:Tank = null;
+         var i:int = 0;
+         var m:ITankModel = null;
+         try
+         {
+            Model.object = this.object;
+            i = 0;
+            while(i < this.impl.length)
+            {
+               m = ITankModel(this.impl[i]);
+               m.addActivationTask();
+               i++;
+            }
+         }
+         finally
+         {
+            Model.popObject();
+         }
+      }
       
       public function getTank() : Tank
       {
@@ -508,7 +552,7 @@ package alternativa.tanks.models.tank
          }
       }
       
-      public function setChassisState(param1:Vector3d, param2:Vector3d, param3:Vector3d, param4:Vector3d, param5:int, param6:int) : void
+      public function setChassisState(param1:Vector3d, param2:Vector3d, param3:Vector3d, param4:Vector3d, param5:int) : void
       {
          var i:int = 0;
          var m:ITankModel = null;
@@ -517,7 +561,6 @@ package alternativa.tanks.models.tank
          var linearVelocity:Vector3d = param3;
          var angularVelocity:Vector3d = param4;
          var controlState:int = param5;
-         var turnSpeedNumber:int = param6;
          try
          {
             Model.object = this.object;
@@ -525,7 +568,7 @@ package alternativa.tanks.models.tank
             while(i < this.impl.length)
             {
                m = ITankModel(this.impl[i]);
-               m.setChassisState(position,orientation,linearVelocity,angularVelocity,controlState,turnSpeedNumber);
+               m.setChassisState(position,orientation,linearVelocity,angularVelocity,controlState);
                i++;
             }
          }

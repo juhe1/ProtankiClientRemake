@@ -11,6 +11,8 @@ package scpacker.utils
    import projects.tanks.client.battleservice.EquipmentConstraintsMode;
    import projects.tanks.client.commons.types.ItemGarageProperty;
    import projects.tanks.client.battleservice.model.types.BattleSuspicionLevel;
+   import projects.tanks.client.battlefield.models.user.tank.TankLogicState;
+   import projects.tanks.client.battleservice.model.battle.team.BattleTeam;
    
    public class EnumUtils
    {
@@ -78,6 +80,21 @@ package scpacker.utils
                return ClientTankState.DEAD;
             default:
                return ClientTankState.DEAD;
+         }
+      }
+
+      public static function stringToTankLogicState(param1:String) : TankLogicState
+      {
+         switch(param1)
+         {
+            case "newcome":
+               return TankLogicState.ACTIVATING;
+            case "active":
+               return TankLogicState.ACTIVE;
+            case "suicide":
+               return TankLogicState.DEAD;
+            default:
+               return TankLogicState.DEAD;
          }
       }
       
@@ -169,6 +186,21 @@ package scpacker.utils
                return MapTheme.WINTER_DAY;
             case "WINTER_NIGHT":
                return MapTheme.WINTER_NIGHT;
+            default:
+               throw new Error(param1);
+         }
+      }
+      
+      public static function stringToBattleTeam(param1:String) : BattleTeam
+      {
+         switch(param1)
+         {
+            case "RED":
+               return BattleTeam.RED;
+            case "BLUE":
+               return BattleTeam.BLUE;
+            case "NONE":
+               return BattleTeam.NONE;
             default:
                throw new Error(param1);
          }

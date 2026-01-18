@@ -52,7 +52,7 @@ package alternativa.tanks.models.sfx.smoke
             }
             renderer = new HullSmokeRenderer(event.tank,getInitParam());
             battleService.getBattleScene3D().addRenderer(renderer);
-            this.renders[event.tank.getUser().id] = renderer;
+            this.renders[event.tank.getUserId()] = renderer;
          }
          finally
          {
@@ -62,13 +62,13 @@ package alternativa.tanks.models.sfx.smoke
       
       private function onTankRemovedFromBattle(param1:TankRemovedFromBattleEvent) : void
       {
-         var _loc2_:HullSmokeRenderer = HullSmokeRenderer(this.renders[param1.tank.getUser().id]);
+         var _loc2_:HullSmokeRenderer = HullSmokeRenderer(this.renders[param1.tank.getUserId()]);
          if(_loc2_ == null)
          {
             return;
          }
          battleService.getBattleScene3D().removeRenderer(_loc2_);
-         delete this.renders[param1.tank.getUser().id];
+         delete this.renders[param1.tank.getUserId()];
       }
       
       public function controlChanged(param1:IGameObject, param2:int) : void

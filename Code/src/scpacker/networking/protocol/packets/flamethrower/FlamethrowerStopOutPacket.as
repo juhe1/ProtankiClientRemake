@@ -1,18 +1,19 @@
-package scpacker.networking.protocol.packets.clientlayout
+package scpacker.networking.protocol.packets.flamethrower
 {
    import scpacker.networking.protocol.AbstractPacket;
-   import projects.tanks.client.commons.models.layout.LayoutState;
    
-   public class LeaveBattle extends AbstractPacket
+   public class FlamethrowerStopOutPacket extends AbstractPacket
    {
-      public var Layout:LayoutState;
+      public static const id:int = -1300958299;
       
-      public function LeaveBattle(param1:LayoutState = null)
+      public var clientTime:int;
+      
+      public function FlamethrowerStopOutPacket(param1:int = 0)
       {
          super();
-         this.Layout = param1;
+         this.clientTime = param1;
          registerProperty(param1);
-         registerPropertyCodec("scpacker.networking.protocol.codec.custom.CodecLayoutState");
+         registerPropertyCodec("scpacker.networking.protocol.codec.primitive.IntCodec");
       }
       
       override public function writeToPropertyByIndex(param1:Object, param2:int) : void
@@ -20,24 +21,23 @@ package scpacker.networking.protocol.packets.clientlayout
          switch(param2)
          {
             case 0:
-               this.Layout = param1 as LayoutState;
+               this.clientTime = param1 as int;
          }
       }
       
       override public function initializeSelf() : AbstractPacket
       {
-         return new LeaveBattle();
+         return new FlamethrowerStopOutPacket();
       }
       
       override public function getPacketHandlerId() : int
       {
-         return 17;
+         return 57;
       }
       
       override public function getId() : int
       {
-         return 377959142;
+         return id;
       }
    }
 }
-

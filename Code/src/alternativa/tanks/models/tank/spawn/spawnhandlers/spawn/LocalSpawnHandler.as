@@ -20,6 +20,7 @@ package alternativa.tanks.models.tank.spawn.spawnhandlers.spawn
          var _loc2_:ITankModel = ITankModel(param1.user.adapt(ITankModel));
          _loc2_.addTankToExclusionSet(param1);
          _loc2_.enableStateCorrection();
+         _loc2_.addActivationTask();
          battleService.unlockFollowCamera();
          battleService.activateFollowCamera();
          battleService.getBattleRunner().setLocalBody(param1.getBody());

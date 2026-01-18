@@ -18,15 +18,15 @@ package alternativa.tanks.battle.objects.tank.controllers
       [Inject]
       public static var inputManager:TargetingInputManager;
       
-      public static const BIT_LEFT:int = 0;
+      public static const BIT_LEFT:int = 5;//0;
       
-      public static const BIT_RIGHT:int = 1;
+      public static const BIT_RIGHT:int = 6;//1;
       
-      public static const BIT_CENTER:int = 2;
+      public static const BIT_CENTER:int = 7;//2;
       
-      public static const BIT_UP:int = 3;
+      public static const BIT_UP:int = 8;//3;
       
-      public static const BIT_DOWN:int = 4;
+      public static const BIT_DOWN:int = 9;//4;
       
       private static const ROTATION_FIXER:Number = 5;
       

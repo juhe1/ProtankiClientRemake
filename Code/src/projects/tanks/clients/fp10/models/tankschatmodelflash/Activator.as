@@ -25,6 +25,8 @@ package projects.tanks.clients.fp10.models.tankschatmodelflash
    //import alternativa.tanks.tracker.ITrackerService;
    //import alternativa.tanks.utils.Antiflood;
    import platform.client.fp10.core.registry.ModelRegistry;
+   import alternativa.tanks.service.settings.ISettingsService;
+   import alternativa.tanks.model.chat.ChatSettingsTracker;
    //import projects.tanks.clients.flash.commons.services.payment.PaymentDisplayService;
    //import projects.tanks.clients.fp10.libraries.tanksservices.model.serverrestarttime.OnceADayActionService;
    //import projects.tanks.clients.fp10.libraries.tanksservices.service.battle.activator.IBattleLinkActivatorService;
@@ -268,13 +270,13 @@ package projects.tanks.clients.fp10.models.tankschatmodelflash
          //{
          //   return ChatModel.userPropertyService;
          //});
-         //osgi.injectService(ISettingsService,function(param1:Object):void
-         //{
-         //   ChatSettingsTracker.settingsService = ISettingsService(param1);
-         //},function():ISettingsService
-         //{
-         //   return ChatSettingsTracker.settingsService;
-         //});
+         osgi.injectService(ISettingsService,function(param1:Object):void
+         {
+            ChatSettingsTracker.settingsService = ISettingsService(param1);
+         },function():ISettingsService
+         {
+            return ChatSettingsTracker.settingsService;
+         });
          //osgi.injectService(IBattleLinkActivatorService,function(param1:Object):void
          //{
          //   ClanChatModel.battleLinkActivatorService = IBattleLinkActivatorService(param1);

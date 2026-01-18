@@ -33,6 +33,7 @@ package platform.client.fp10.core.osgi
    import platform.client.fp10.core.service.loadingprogress.ILoadingProgressService;
    import platform.client.fp10.core.service.localstorage.IResourceLocalStorage;
    import platform.client.fp10.core.resource.types.MultiframeImageResource;
+   import platform.client.fp10.core.CoreCommands;
    
    public class ClientActivator implements IBundleActivator
    {
@@ -52,6 +53,7 @@ package platform.client.fp10.core.osgi
          this.registerCodecs();
          this.registerServices();
          this.registerResources();
+         setTimeout(this.completeInitialization,0);
       }
       
       public function stop(param1:OSGi) : void
@@ -62,7 +64,7 @@ package platform.client.fp10.core.osgi
       {
          var _loc1_:IProtocol = IProtocol(this.osgi.getService(IProtocol));
       }
-      
+
       private function registerServices() : void
       {
          this.osgi.registerService(GameTypeRegistry,new GameTypeRegistryImpl());
@@ -85,6 +87,16 @@ package platform.client.fp10.core.osgi
          _loc1_.registerTypeClasses(ResourceType.LOCALIZED_IMAGE,LocalizedImageResource);
          _loc1_.registerTypeClasses(ResourceType.MULTIFRAME_IMAGE,MultiframeImageResource);
          _loc1_.registerTypeClasses(ResourceType.SOUND,SoundResource);
+      }
+
+      private function completeInitialization() : void
+      {
+         this.registerCommmands();
+      }
+
+      private function registerCommmands() : void
+      {
+         new CoreCommands();
       }
    }
 }

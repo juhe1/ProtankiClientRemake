@@ -35,6 +35,7 @@ package alternativa.tanks.service.delaymountcategory
       {
          this.createTimer(ItemCategoryEnum.ARMOR,param1.delayMountArmorInSec);
          this.createTimer(ItemCategoryEnum.WEAPON,param1.delayMountWeaponInSec);
+         this.createTimer(ItemCategoryEnum.COLOR,param1.delayMountResistanceInSec);
          //this.createTimer(ItemCategoryEnum.RESISTANCE_MODULE,param1.delayMountResistanceInSec);
          //this.createTimer(ItemCategoryEnum.DRONE,param1.delayMountDroneInSec);
       }

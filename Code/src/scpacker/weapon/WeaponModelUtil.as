@@ -1,7 +1,6 @@
 package scpacker.weapon
 {
    import projects.tanks.client.battlefield.models.tankparts.weapon.healing.IsisCC;
-   import scpacker.tanks.WeaponsManager;
    import alternativa.tanks.models.weapon.healing.HealingGunModel;
    import projects.tanks.client.battlefield.models.tankparts.weapon.twins.TwinsCC;
    import alternativa.tanks.models.weapon.railgun.RailgunModel;
@@ -27,9 +26,6 @@ package scpacker.weapon
    import alternativa.tanks.models.weapons.shell.ShellWeaponCommunication;
    import projects.tanks.client.battlefield.models.tankparts.weapon.laser.LaserPointerCC;
    import alternativa.object.ClientObject;
-   import alternativa.tanks.models.weapon.newname_95__END;
-   import alternativa.tanks.models.weapons.charging.newname_97__END;
-   import alternativa.tanks.models.weapon.shotgun.ShotgunShotModel;
    import alternativa.tanks.models.weapon.shaft.ShaftModel;
    import platform.client.fp10.core.registry.ModelRegistry;
    import platform.client.fp10.core.registry.ResourceRegistry;
@@ -55,7 +51,6 @@ package scpacker.weapon
    import projects.tanks.client.battlefield.models.tankparts.weapon.laser.LaserPointerModelBase;
    import projects.tanks.client.battlefield.models.tankparts.weapons.machinegun.cc.MachineGunCC;
    import flash.utils.Dictionary;
-   import platform.client.fp10.core.type.impl.GameObject;
    import alternativa.tanks.models.weapon.streamweapon.StreamWeaponModel;
    import projects.tanks.client.battlefield.models.tankparts.weapon.streamweapon.StreamWeaponModelBase;
    import projects.tanks.client.battlefield.models.tankparts.weapon.streamweapon.StreamWeaponCC;
@@ -63,6 +58,19 @@ package scpacker.weapon
    import projects.tanks.client.battlefield.models.tankparts.weapon.splash.SplashModelBase;
    import projects.tanks.client.battlefield.models.tankparts.weapons.shotgun.ShotgunHittingModelBase;
    import alternativa.tanks.models.weapon.twins.TwinsModel;
+   import projects.tanks.client.battlefield.models.tankparts.weapon.angles.verticals.VerticalAutoAimingModelBase;
+   import projects.tanks.client.battlefield.models.tankparts.weapon.angles.verticals.autoaiming.WeaponVerticalAnglesModelBase;
+   import alternativa.tanks.models.weapon.angles.verticals.WeaponVerticalAnglesModel;
+   import alternativa.tanks.models.weapon.angles.verticals.autoaiming.VerticalAutoAimingModel;
+   import projects.tanks.client.battlefield.models.tankparts.weapon.weakening.WeaponWeakeningCC;
+   import projects.tanks.client.battlefield.models.tankparts.weapon.angles.verticals.VerticalAnglesCC;
+   import projects.tanks.client.battlefield.models.tankparts.weapon.weakening.WeaponWeakeningModelBase;
+   import alternativa.tanks.models.weapon.weakening.WeaponWeakeningModel;
+   import projects.tanks.client.battlefield.models.tankparts.weapon.shot.DiscreteShotModelBase;
+   import projects.tanks.client.battlefield.models.tankparts.weapon.shot.ShotCC;
+   import projects.tanks.client.battlefield.models.tankparts.weapons.common.stream.StreamWeaponCommunicationModelBase;
+   import platform.client.fp10.core.type.IGameObject;
+   import scpacker.utils.CoreUtils;
    
    public class WeaponModelUtil
    {
@@ -95,7 +103,7 @@ package scpacker.weapon
          super();
       }
       
-      public static function initializeWeaponModel(weaponObject:GameObject, weaponName:String) : void
+      public static function addModelsForWeapon(weaponObject:IGameObject, weaponName:String) : void
       {
          var _loc18_:LaserPointerCC = null;
          var _loc11_:LaserPointerModel = null;
@@ -130,140 +138,217 @@ package scpacker.weapon
             shotGunAimingModel = ShotgunAimingModel(modelRegistry.getModel(ShotgunHittingModelBase.modelId));
             //newname_121__END = ArtilleryModel(modelRegistry.getModel(Long.getLong(1546475564,-1431010080)));
          }
-         var _loc8_:* = weaponJsonSpecialEntities[weaponName];
+         var specialEntityJsonObject:* = weaponJsonSpecialEntities[weaponName];
 
          Model.object = weaponObject;
 
          switch(weaponName.split("_")[0])
          {
             case "smoky":
+               initializeDiscreteShotModel(weaponObject, weaponDatas[weaponName]);
+               initializeVerticalAutoAimingModel(weaponObject, weaponDatas[weaponName]);
+               initializeWeaponWeakening(weaponObject, weaponWeakeningDatas[weaponName]);
+               CoreUtils.addModelToGameClass(weaponObject, SmokyModelBase.modelId);
                break;
             case "shaft":
+               initializeDiscreteShotModel(weaponObject, weaponDatas[weaponName]);
+               initializeVerticalAutoAimingModel(weaponObject, weaponDatas[weaponName]);
+               initializeWeaponWeakening(weaponObject, weaponWeakeningDatas[weaponName]);
+
                _loc18_ = new LaserPointerCC();
-               _loc18_.fadeInTimeMs = _loc8_.fadeInTimeMs;
-               _loc18_.laserPointerBlueColor = _loc8_.laserPointerBlueColor;
-               _loc18_.laserPointerRedColor = _loc8_.laserPointerRedColor;
-               _loc18_.locallyVisible = _loc8_.locallyVisible;
+               _loc18_.fadeInTimeMs = specialEntityJsonObject.fadeInTimeMs;
+               _loc18_.laserPointerBlueColor = specialEntityJsonObject.laserPointerBlueColor;
+               _loc18_.laserPointerRedColor = specialEntityJsonObject.laserPointerRedColor;
+               _loc18_.locallyVisible = specialEntityJsonObject.locallyVisible;
                _loc11_ = LaserPointerModel(modelRegistry.getModel(LaserPointerModelBase.modelId));
 
                _loc11_.putInitParams(_loc18_);
 
                _loc9_ = new ShaftCC();
-               _loc9_.afterShotPause = _loc8_.afterShotPause;
-               _loc9_.aimingImpact = _loc8_.aimingImpact;
-               _loc9_.chargeRate = _loc8_.charge_rate;
-               _loc9_.dischargeRate = _loc8_.discharge_rate;
-               _loc9_.fastShotEnergy = _loc8_.fastShotEnergy;
-               _loc9_.horizontalTargetingSpeed = _loc8_.horizontal_targeting_speed;
-               _loc9_.initialFOV = _loc8_.initial_fov;
-               _loc9_.maxEnergy = _loc8_.max_energy;
-               _loc9_.minAimedShotEnergy = _loc8_.minAimedShotEnergy;
-               _loc9_.minimumFOV = _loc8_.minimum_fov;
-               _loc9_.reticleImage = ImageResource(resourceRegistry.getResource(Long.getLong(0,_loc8_.reticleImageId)));
-               _loc9_.rotationCoeffKmin = _loc8_.rotationCoeffKmin;
-               _loc9_.rotationCoeffT1 = _loc8_.rotationCoeffT1;
-               _loc9_.rotationCoeffT2 = _loc8_.rotationCoeffT2;
-               _loc9_.shrubsHidingRadiusMax = _loc8_.shrubs_hiding_radius_max;
-               _loc9_.shrubsHidingRadiusMin = _loc8_.shrubs_hiding_radius_min;
-               _loc9_.targetingAcceleration = _loc8_.targetingAcceleration;
-               _loc9_.targetingTransitionTime = _loc8_.targetingTransitionTime;
-               _loc9_.verticalTargetingSpeed = _loc8_.vertical_targeting_speed;
+               _loc9_.afterShotPause = specialEntityJsonObject.afterShotPause;
+               _loc9_.aimingImpact = specialEntityJsonObject.aimingImpact;
+               _loc9_.chargeRate = specialEntityJsonObject.charge_rate;
+               _loc9_.dischargeRate = specialEntityJsonObject.discharge_rate;
+               _loc9_.fastShotEnergy = specialEntityJsonObject.fastShotEnergy;
+               _loc9_.horizontalTargetingSpeed = specialEntityJsonObject.horizontal_targeting_speed;
+               _loc9_.initialFOV = specialEntityJsonObject.initial_fov;
+               _loc9_.maxEnergy = specialEntityJsonObject.max_energy;
+               _loc9_.minAimedShotEnergy = specialEntityJsonObject.minAimedShotEnergy;
+               _loc9_.minimumFOV = specialEntityJsonObject.minimum_fov;
+               _loc9_.reticleImage = ImageResource(resourceRegistry.getResource(Long.getLong(0,specialEntityJsonObject.reticleImageId)));
+               _loc9_.rotationCoeffKmin = specialEntityJsonObject.rotationCoeffKmin;
+               _loc9_.rotationCoeffT1 = specialEntityJsonObject.rotationCoeffT1;
+               _loc9_.rotationCoeffT2 = specialEntityJsonObject.rotationCoeffT2;
+               _loc9_.shrubsHidingRadiusMax = specialEntityJsonObject.shrubs_hiding_radius_max;
+               _loc9_.shrubsHidingRadiusMin = specialEntityJsonObject.shrubs_hiding_radius_min;
+               _loc9_.targetingAcceleration = specialEntityJsonObject.targetingAcceleration;
+               _loc9_.targetingTransitionTime = specialEntityJsonObject.targetingTransitionTime;
+               _loc9_.verticalTargetingSpeed = specialEntityJsonObject.vertical_targeting_speed;
+
+               CoreUtils.addModelToGameClass(weaponObject, ShaftModelBase.modelId);
+               CoreUtils.addModelToGameClass(weaponObject, LaserPointerModelBase.modelId);
+               CoreUtils.addModelToGameClass(weaponObject, VerticalAutoAimingModelBase.modelId);
 
                shaftModel.putInitParams(_loc9_);
                shaftModel.objectLoaded();
                break;
             case "railgun":
+               initializeDiscreteShotModel(weaponObject, weaponDatas[weaponName]);
+               initializeVerticalAutoAimingModel(weaponObject, weaponDatas[weaponName]);
+               CoreUtils.addModelToGameClass(weaponObject, RailgunModelBase.modelId);
+
                _loc5_ = new RailgunCC();
-               _loc5_.chargingTimeMsec = _loc8_.chargingTimeMsec;
-               _loc5_.weakeningCoeff = _loc8_.weakeningCoeff;
+               _loc5_.chargingTimeMsec = specialEntityJsonObject.chargingTimeMsec;
+               _loc5_.weakeningCoeff = specialEntityJsonObject.weakeningCoeff;
                
                railgunModel.putInitParams(_loc5_);
                railgunModel.objectLoaded();
                break;
             case "ricochet":
+               initializeDiscreteShotModel(weaponObject, weaponDatas[weaponName]);
+               initializeVerticalAutoAimingModel(weaponObject, weaponDatas[weaponName]);
+               initializeWeaponWeakening(weaponObject, weaponWeakeningDatas[weaponName]);
+               CoreUtils.addModelToGameClass(weaponObject, RicochetModelBase.modelId);
+               CoreUtils.addModelToGameClass(weaponObject, SplashModelBase.modelId);
+
+               // Protanki doesn't have splash for ricochet, so we create empty params
+               splashCC = new SplashCC();
+               splashCC.impactForce = 0;
+               splashCC.minSplashDamagePercent = 0;
+               splashCC.radiusOfMaxSplashDamage = 0;
+               splashCC.splashDamageRadius = 0;
+
+               splashModel.putInitParams(splashCC);
+               splashModel.objectLoaded();
+
                _loc10_ = new RicochetCC();
-               _loc10_.energyCapacity = _loc8_.energyCapacity;
-               _loc10_.energyPerShot = _loc8_.energyPerShot;
-               _loc10_.energyRechargeSpeed = _loc8_.energyRechargeSpeed;
+               _loc10_.energyCapacity = specialEntityJsonObject.energyCapacity;
+               _loc10_.energyPerShot = specialEntityJsonObject.energyPerShot;
+               _loc10_.energyRechargeSpeed = specialEntityJsonObject.energyRechargeSpeed;
                //_loc10_.maxRicochetCount = _loc8_.maxRicochetCount;
-               _loc10_.shellRadius = _loc8_.shellRadius;
-               _loc10_.shellSpeed = _loc8_.shellSpeed;
-               _loc10_.shotDistance = _loc8_.shotDistance;
+               _loc10_.shellRadius = specialEntityJsonObject.shellRadius;
+               _loc10_.shellSpeed = specialEntityJsonObject.shellSpeed;
+               _loc10_.shotDistance = specialEntityJsonObject.shotDistance;
                
                ricochetModel.putInitParams(_loc10_);
                ricochetModel.objectLoaded();
                break;
             case "twins":
+               initializeDiscreteShotModel(weaponObject, weaponDatas[weaponName]);
+               initializeVerticalAutoAimingModel(weaponObject, weaponDatas[weaponName]);
+               initializeWeaponWeakening(weaponObject, weaponWeakeningDatas[weaponName]);
+               CoreUtils.addModelToGameClass(weaponObject, TwinsModelBase.modelId);
+               CoreUtils.addModelToGameClass(weaponObject, SplashModelBase.modelId);
+
+               // Protanki doesn't have splash for twins, so we create empty params
+               splashCC = new SplashCC();
+               splashCC.impactForce = 0;
+               splashCC.minSplashDamagePercent = 0;
+               splashCC.radiusOfMaxSplashDamage = 0;
+               splashCC.splashDamageRadius = 0;
+               
+               splashModel.putInitParams(splashCC);
+               splashModel.objectLoaded();
+
                _loc12_ = new TwinsCC();
-               _loc12_.distance = _loc8_.distance;
-               _loc12_.shellRadius = _loc8_.shellRadius;
-               _loc12_.speed = _loc8_.speed;
+               _loc12_.distance = specialEntityJsonObject.distance;
+               _loc12_.shellRadius = specialEntityJsonObject.shellRadius;
+               _loc12_.speed = specialEntityJsonObject.speed;
 
                twinsModel.putInitParams(_loc12_);
                twinsModel.objectLoaded();
                break;
             case "flamethrower":
+               initializeVerticalAutoAimingModel(weaponObject, weaponDatas[weaponName]);
+               initializeWeaponWeakening(weaponObject, weaponWeakeningDatas[weaponName]);
+               CoreUtils.addModelToGameClass(weaponObject, FlameThrowerModelBase.modelId);
+
                flameThrowerCC = new FlameThrowerCC();
-               flameThrowerCC.coneAngle = _loc8_.coneAngle;
-               flameThrowerCC.range = _loc8_.range;
+               flameThrowerCC.coneAngle = specialEntityJsonObject.coneAngle;
+               flameThrowerCC.range = specialEntityJsonObject.range;
 
                flamethrowerModel.putInitParams(flameThrowerCC);
                flamethrowerModel.objectLoaded();
 
-               initializeStreamWeapon(weaponObject, _loc8_);
+               initializeStreamWeapon(weaponObject, specialEntityJsonObject);
                break;
             case "freeze":
-               freezeCC = new FreezeCC();
-               freezeCC.damageAreaConeAngle = _loc8_.damageAreaConeAngle;
-               freezeCC.damageAreaRange = _loc8_.damageAreaRange;
+               initializeVerticalAutoAimingModel(weaponObject, weaponDatas[weaponName]);
+               initializeWeaponWeakening(weaponObject, weaponWeakeningDatas[weaponName]);
+               CoreUtils.addModelToGameClass(weaponObject, FreezeModelBase.modelId);
 
-               initializeStreamWeapon(weaponObject, _loc8_);
+               freezeCC = new FreezeCC();
+               freezeCC.damageAreaConeAngle = specialEntityJsonObject.damageAreaConeAngle;
+               freezeCC.damageAreaRange = specialEntityJsonObject.damageAreaRange;
+
+               initializeStreamWeapon(weaponObject, specialEntityJsonObject);
 
                freezeModel.putInitParams(freezeCC);
                freezeModel.objectLoaded();
                break;
             case "isida":
+               initializeVerticalAutoAimingModel(weaponObject, weaponDatas[weaponName]);
+               CoreUtils.addModelToGameClass(weaponObject, IsisModelBase.modelId);
+
                isisCC = new IsisCC();
-               isisCC.capacity = _loc8_.capacity;
-               isisCC.chargeRate = _loc8_.chargeRate;
-               isisCC.checkPeriodMsec = _loc8_.checkPeriodMsec;
-               isisCC.coneAngle = _loc8_.coneAngle;
-               isisCC.dischargeDamageRate = _loc8_.dischargeDamageRate;
-               isisCC.dischargeHealingRate = _loc8_.dischargeHealingRate;
-               isisCC.dischargeIdleRate = _loc8_.dischargeIdleRate;
-               isisCC.radius = _loc8_.radius;
+               isisCC.capacity = specialEntityJsonObject.capacity;
+               isisCC.chargeRate = specialEntityJsonObject.chargeRate;
+               isisCC.checkPeriodMsec = specialEntityJsonObject.checkPeriodMsec;
+               isisCC.coneAngle = specialEntityJsonObject.coneAngle;
+               isisCC.dischargeDamageRate = specialEntityJsonObject.dischargeDamageRate;
+               isisCC.dischargeHealingRate = specialEntityJsonObject.dischargeHealingRate;
+               isisCC.dischargeIdleRate = specialEntityJsonObject.dischargeIdleRate;
+               isisCC.radius = specialEntityJsonObject.radius;
 
                healingGunModel.putInitParams(isisCC);
                healingGunModel.objectLoaded();
                break;
             case "thunder":
+               initializeDiscreteShotModel(weaponObject, weaponDatas[weaponName]);
+               initializeVerticalAutoAimingModel(weaponObject, weaponDatas[weaponName]);
+               initializeWeaponWeakening(weaponObject, weaponWeakeningDatas[weaponName]);
+               CoreUtils.addModelToGameClass(weaponObject, SplashModelBase.modelId);
+               CoreUtils.addModelToGameClass(weaponObject, ThunderModelBase.modelId);
+
                splashCC = new SplashCC();
-               splashCC.impactForce = _loc8_.impactForce;
-               splashCC.minSplashDamagePercent = _loc8_.minSplashDamagePercent;
-               splashCC.radiusOfMaxSplashDamage = _loc8_.radiusOfMaxSplashDamage;
-               splashCC.splashDamageRadius = _loc8_.splashDamageRadius;
+               splashCC.impactForce = specialEntityJsonObject.impactForce;
+               splashCC.minSplashDamagePercent = specialEntityJsonObject.minSplashDamagePercent;
+               splashCC.radiusOfMaxSplashDamage = specialEntityJsonObject.radiusOfMaxSplashDamage;
+               splashCC.splashDamageRadius = specialEntityJsonObject.splashDamageRadius;
                
                splashModel.putInitParams(splashCC);
                splashModel.objectLoaded();
                break;
             case "shotgun":
+               initializeDiscreteShotModel(weaponObject, weaponDatas[weaponName]);
+               initializeVerticalAutoAimingModel(weaponObject, weaponDatas[weaponName]);
+               initializeWeaponWeakening(weaponObject, weaponWeakeningDatas[weaponName]);
+               CoreUtils.addModelToGameClass(weaponObject, ShotgunShotModelBase.modelId);
+               CoreUtils.addModelToGameClass(weaponObject, ShotgunHittingModelBase.modelId);
+
                shotGunAimingCC = new ShotGunAimingCC();
-               shotGunAimingCC.coneHorizontalAngle = _loc8_.coneHorizontalAngle;
-               shotGunAimingCC.coneVerticalAngle = _loc8_.coneVerticalAngle;
-               shotGunAimingCC.pelletCount = _loc8_.pelletCount;
+               shotGunAimingCC.coneHorizontalAngle = specialEntityJsonObject.coneHorizontalAngle;
+               shotGunAimingCC.coneVerticalAngle = specialEntityJsonObject.coneVerticalAngle;
+               shotGunAimingCC.pelletCount = specialEntityJsonObject.pelletCount;
                shotGunAimingModel.putInitParams(shotGunAimingCC);
 
                _loc2_ = new ShotgunShotCC();
-               _loc2_.magazineReloadTime = _loc8_.magazineReloadTime;
-               _loc2_.magazineSize = _loc8_.magazineSize;
+               _loc2_.magazineReloadTime = specialEntityJsonObject.magazineReloadTime;
+               _loc2_.magazineSize = specialEntityJsonObject.magazineSize;
                shotgunModel.putInitParams(_loc2_);
                break;
             case "machinegun":
+               initializeDiscreteShotModel(weaponObject, weaponDatas[weaponName]);
+               initializeVerticalAutoAimingModel(weaponObject, weaponDatas[weaponName]);
+               initializeWeaponWeakening(weaponObject, weaponWeakeningDatas[weaponName]);
+               CoreUtils.addModelToGameClass(weaponObject, MachineGunModelBase.modelId);
+               CoreUtils.addModelToGameClass(weaponObject, StreamWeaponCommunicationModelBase.modelId);
+
                machineGunCC = new MachineGunCC();
-               machineGunCC.spinDownTime = _loc8_.spinDownTime;
-               machineGunCC.spinUpTime = _loc8_.spinUpTime;
-               machineGunCC.temperatureHittingTime = _loc8_.temperatureHittingTime;
-               machineGunCC.weaponTurnDecelerationCoeff = _loc8_.weaponTurnDecelerationCoeff;
+               machineGunCC.spinDownTime = specialEntityJsonObject.spinDownTime;
+               machineGunCC.spinUpTime = specialEntityJsonObject.spinUpTime;
+               machineGunCC.temperatureHittingTime = specialEntityJsonObject.temperatureHittingTime;
+               machineGunCC.weaponTurnDecelerationCoeff = specialEntityJsonObject.weaponTurnDecelerationCoeff;
                machineGunModel.putInitParams(machineGunCC);
                break;
             //case "artillery":
@@ -283,15 +368,46 @@ package scpacker.weapon
          Model.popObject();
       }
       
-      private static function initializeStreamWeapon(weaponObject:GameObject, _loc8_:Object):void {
+      private static function initializeStreamWeapon(weaponObject:IGameObject, specialEntityJsonObject:Object):void {
          var streamWeaponCC:StreamWeaponCC = new StreamWeaponCC();
-         streamWeaponCC.energyCapacity = _loc8_.energyCapacity;
-         streamWeaponCC.energyDischargeSpeed = _loc8_.energyDischargeSpeed;
-         streamWeaponCC.energyRechargeSpeed = _loc8_.energyRechargeSpeed;
-         streamWeaponCC.weaponTickIntervalMsec = _loc8_.tickIntervalMsec;
+         streamWeaponCC.energyCapacity = specialEntityJsonObject.energyCapacity;
+         streamWeaponCC.energyDischargeSpeed = specialEntityJsonObject.energyDischargeSpeed;
+         streamWeaponCC.energyRechargeSpeed = specialEntityJsonObject.energyRechargeSpeed;
+         streamWeaponCC.weaponTickIntervalMsec = specialEntityJsonObject.tickIntervalMsec;
 
+         CoreUtils.addModelToGameClass(weaponObject, StreamWeaponModelBase.modelId);
          streamWeaponModel.putInitParams(streamWeaponCC);
          streamWeaponModel.objectLoaded();
+      }
+
+      private static function initializeVerticalAutoAimingModel(weaponObject:IGameObject, weaponData:WeaponData):void {
+         var weaponVerticalAnglesModel:WeaponVerticalAnglesModel = WeaponVerticalAnglesModel(modelRegistry.getModel(WeaponVerticalAnglesModelBase.modelId));
+         var verticalAutoAimingModel:VerticalAutoAimingModel = VerticalAutoAimingModel(modelRegistry.getModel(VerticalAutoAimingModelBase.modelId));
+
+         var verticalAnglesCC:VerticalAnglesCC = new VerticalAnglesCC();
+         verticalAnglesCC.angleDown = weaponData.autoAimingDown;
+         verticalAnglesCC.angleUp = weaponData.autoAimingUp;
+
+         CoreUtils.addModelToGameClass(weaponObject, WeaponVerticalAnglesModelBase.modelId);
+         CoreUtils.addModelToGameClass(weaponObject, VerticalAutoAimingModelBase.modelId);
+         weaponVerticalAnglesModel.putInitParams(verticalAnglesCC);
+      }
+      
+      private static function initializeWeaponWeakening(weaponObject:IGameObject, weaponWeakeningCC:WeaponWeakeningCC):void {
+         var weaponWeakeningModel:WeaponWeakeningModel = WeaponWeakeningModel(modelRegistry.getModel(WeaponWeakeningModelBase.modelId));
+         CoreUtils.addModelToGameClass(weaponObject, WeaponWeakeningModelBase.modelId);
+         weaponWeakeningModel.putInitParams(weaponWeakeningCC);
+         weaponWeakeningModel.objectLoaded();
+      }
+
+      private static function initializeDiscreteShotModel(weaponObject:IGameObject, weaponData:WeaponData):void {
+         var discreteShotModel:DiscreteShotModelBase = DiscreteShotModelBase(modelRegistry.getModel(DiscreteShotModelBase.modelId));
+         CoreUtils.addModelToGameClass(weaponObject, DiscreteShotModelBase.modelId);
+
+         var shotCC:ShotCC = new ShotCC();
+         shotCC.reloadMsec = weaponData.reload;
+
+         discreteShotModel.putInitParams(shotCC);
       }
    }
 }

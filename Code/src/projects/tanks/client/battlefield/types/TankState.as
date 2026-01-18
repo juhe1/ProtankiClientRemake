@@ -7,7 +7,6 @@ package projects.tanks.client.battlefield.types
       
       private var _chassisControl:int;
       
-      private var _chassisTurnSpeedNumber:int;
       
       private var _linearVelocity:Vector3d;
       
@@ -15,12 +14,11 @@ package projects.tanks.client.battlefield.types
       
       private var _position:Vector3d;
       
-      public function TankState(param1:Vector3d = null, param2:int = 0, param3:int = 0, param4:Vector3d = null, param5:Vector3d = null, param6:Vector3d = null)
+      public function TankState(param1:Vector3d = null, param2:int = 0, param4:Vector3d = null, param5:Vector3d = null, param6:Vector3d = null)
       {
          super();
          this._angularVelocity = param1;
          this._chassisControl = param2;
-         this._chassisTurnSpeedNumber = param3;
          this._linearVelocity = param4;
          this._orientation = param5;
          this._position = param6;
@@ -44,16 +42,6 @@ package projects.tanks.client.battlefield.types
       public function set chassisControl(param1:int) : void
       {
          this._chassisControl = param1;
-      }
-      
-      public function get chassisTurnSpeedNumber() : int
-      {
-         return this._chassisTurnSpeedNumber;
-      }
-      
-      public function set chassisTurnSpeedNumber(param1:int) : void
-      {
-         this._chassisTurnSpeedNumber = param1;
       }
       
       public function get linearVelocity() : Vector3d
@@ -91,7 +79,6 @@ package projects.tanks.client.battlefield.types
          var _loc1_:String = "TankState [";
          _loc1_ += "angularVelocity = " + this.angularVelocity + " ";
          _loc1_ += "chassisControl = " + this.chassisControl + " ";
-         _loc1_ += "chassisTurnSpeedNumber = " + this.chassisTurnSpeedNumber + " ";
          _loc1_ += "linearVelocity = " + this.linearVelocity + " ";
          _loc1_ += "orientation = " + this.orientation + " ";
          _loc1_ += "position = " + this.position + " ";

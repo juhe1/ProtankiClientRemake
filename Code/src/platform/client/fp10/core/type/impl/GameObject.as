@@ -7,6 +7,7 @@ package platform.client.fp10.core.type.impl
    import platform.client.fp10.core.model.impl.Model;
    import platform.client.fp10.core.registry.ModelRegistry;
    import platform.client.fp10.core.type.*;
+   import alternativa.tanks.model.item.properties.ItemProperties;
    
    public class GameObject implements IGameObject, IGameObjectInternal
    {
@@ -54,6 +55,11 @@ package platform.client.fp10.core.type.impl
       public function get gameClass() : IGameClass
       {
          return this._gameClass;
+      }
+
+      public function set gameClass(value:IGameClass) : void
+      {
+         this._gameClass = value;
       }
       
       public function get space() : ISpace

@@ -1,9 +1,7 @@
 package scpacker.networking.protocol.packets.turretdata
 {
    import scpacker.networking.protocol.AbstractPacketHandler;
-   import scpacker.tanks.WeaponsManager;
    import alternativa.types.Long;
-   import newname_7089__END.newname_7090__END;
    import scpacker.networking.protocol.AbstractPacket;
    import alternativa.tanks.models.weapon.weakening.WeaponWeakeningModel;
    import scpacker.weapon.WeaponModelUtil;
@@ -12,20 +10,18 @@ package scpacker.networking.protocol.packets.turretdata
    
    public class TurretDataPacketHandler extends AbstractPacketHandler
    {
-      private var weaponWeakeningModel:WeaponWeakeningModel;
-      
+
       public function TurretDataPacketHandler()
       {
          super();
          this.id = 58;
-         this.weaponWeakeningModel = WeaponWeakeningModel(modelRegistry.getModel(Long.getLong(1486543535,-1939817925)));
       }
       
       public function invoke(param1:AbstractPacket) : void
       {
-         switch(param1.getId() - -2124388778)
+         switch(param1.getId())
          {
-            case 0:
+            case LoadTurretDataInPacket.id:
                this.LoadTurretData(param1 as LoadTurretDataInPacket);
          }
       }

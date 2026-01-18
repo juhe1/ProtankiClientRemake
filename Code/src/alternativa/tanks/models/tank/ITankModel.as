@@ -10,7 +10,9 @@ package alternativa.tanks.models.tank
    [ModelInterface]
    public interface ITankModel
    {
-      
+      function onReadyToActivate() : void;
+      function addActivationTask() : void;
+
       function getTank() : Tank;
       
       function lockMovementControl(param1:int) : void;
@@ -55,7 +57,7 @@ package alternativa.tanks.models.tank
       
       function doSetHealth(param1:Number) : void;
       
-      function setChassisState(param1:Vector3d, param2:Vector3d, param3:Vector3d, param4:Vector3d, param5:int, param6:int) : void;
+      function setChassisState(param1:Vector3d, param2:Vector3d, param3:Vector3d, param4:Vector3d, param5:int) : void;
       
       function getMovementAnticheatTask() : MovementTimeoutAndDistanceAnticheatTask;
       

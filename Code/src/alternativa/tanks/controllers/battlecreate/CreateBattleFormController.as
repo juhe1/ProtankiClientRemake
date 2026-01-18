@@ -331,14 +331,14 @@ package alternativa.tanks.controllers.battlecreate
       
       private function updateRangeRank() : void
       {
-         var _loc1_:CreateBattleMapParams = this.getSelectedMapParams();
-         var _loc2_:Range = this.battleCreateParams.maxRange;
-         var _loc3_:int = Math.max(_loc2_.min,_loc1_.minRank);
-         var _loc4_:int = Math.min(_loc2_.max,_loc1_.maxRank);
-         this._view.setRankIntervalRestriction(_loc3_,_loc4_,MIN_RANK_INTERVAL_LENGTH);
-         var _loc5_:Range = this.battleCreateParams.defaultRange;
-         this._view.setMinRang(Math.max(_loc5_.min,this._view.getMinRangValue()));
-         this._view.setMaxRang(Math.min(_loc5_.max,this._view.getMaxRangValue()));
+         var selectedMapParams:CreateBattleMapParams = this.getSelectedMapParams();
+         var maxRange:Range = this.battleCreateParams.maxRange;
+         var maxRangeMapMinRangeMax:int = Math.max(maxRange.min,selectedMapParams.minRank);
+         var maxRangeMapMaxRangeMin:int = Math.min(maxRange.max,selectedMapParams.maxRank);
+         this._view.setRankIntervalRestriction(maxRangeMapMinRangeMax,maxRangeMapMaxRangeMin,MIN_RANK_INTERVAL_LENGTH);
+         var defaultRange:Range = this.battleCreateParams.defaultRange;
+         this._view.setMinRang(Math.max(defaultRange.min,this._view.getMinRangValue()));
+         this._view.setMaxRang(Math.min(defaultRange.max,this._view.getMaxRangValue()));
       }
       
       private function updateThemes() : void

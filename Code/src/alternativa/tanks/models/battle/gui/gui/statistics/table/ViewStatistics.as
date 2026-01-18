@@ -155,9 +155,10 @@ package alternativa.tanks.models.battle.gui.gui.statistics.table
          if(_loc2_ != -1)
          {
             this.dp.replaceItemAt(this.createDataItem(param1),_loc2_);
+            this.sortDp();
          }
       }
-      
+
       public function updatePlayersInfo(param1:Vector.<ClientUserStat>) : void
       {
          this.dp.removeAll();
@@ -167,6 +168,19 @@ package alternativa.tanks.models.battle.gui.gui.statistics.table
          {
             this.dp.addItem(this.createDataItem(param1[_loc3_]));
             _loc3_++;
+         }
+         this.sortDp();
+      }
+
+      private function sortDp() : void
+      {
+         if(this.type == 2)
+         {
+            this.dp.sortOn(["kills","deaths"],[2 | 0x10,16]);
+         }
+         else
+         {
+            this.dp.sortOn(["score","kills","deaths"],[2 | 0x10,2 | 0x10,16]);
          }
       }
       

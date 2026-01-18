@@ -21,6 +21,32 @@ package alternativa.tanks.models.tank
          this.object = param1;
          this.impl = param2;
       }
+
+      public function onReadyToActivate() : void
+      {
+         try
+         {
+            Model.object = this.object;
+            this.impl.onReadyToActivate();
+         }
+         finally
+         {
+            Model.popObject();
+         }
+      }
+
+      public function addActivationTask() : void
+      {
+         try
+         {
+            Model.object = this.object;
+            this.impl.addActivationTask();
+         }
+         finally
+         {
+            Model.popObject();
+         }
+      }
       
       public function getTank() : Tank
       {
@@ -332,18 +358,17 @@ package alternativa.tanks.models.tank
          }
       }
       
-      public function setChassisState(param1:Vector3d, param2:Vector3d, param3:Vector3d, param4:Vector3d, param5:int, param6:int) : void
+      public function setChassisState(param1:Vector3d, param2:Vector3d, param3:Vector3d, param4:Vector3d, param5:int) : void
       {
          var position:Vector3d = param1;
          var orientation:Vector3d = param2;
          var linearVelocity:Vector3d = param3;
          var angularVelocity:Vector3d = param4;
          var controlState:int = param5;
-         var turnSpeedNumber:int = param6;
          try
          {
             Model.object = this.object;
-            this.impl.setChassisState(position,orientation,linearVelocity,angularVelocity,controlState,turnSpeedNumber);
+            this.impl.setChassisState(position,orientation,linearVelocity,angularVelocity,controlState);
          }
          finally
          {

@@ -163,6 +163,8 @@ package scpacker.networking
                   //LogService(OSGi.getInstance().getService(LogService)).getLogger("net").error("error packet does not exists: packetLength %1 packetId %2 \n\n",[_loc3_,_loc1_]);
                } else {
                   LogService(OSGi.getInstance().getService(LogService)).getLogger("net").error("error packet %1 packetLength %2 packetId %3 \n\n %4",[_loc11_,_loc3_,_loc1_,e.getStackTrace()]);
+                  trace(e.message);
+                  trace(e.getStackTrace());
                }
                _loc5_ = IRemoteLogging(OSGi.getInstance().getService(IRemoteLogging));
                _loc8_ = "";

@@ -19,6 +19,8 @@ package projects.tanks.client.battlefield.models.user.tank
       private var _tankState:TankState;
       
       private var _team:BattleTeam;
+
+      private var _userId:String;
       
       public function TankCC(param1:int = 0, param2:Boolean = false, param3:TankLogicState = null, param4:int = 0, param5:int = 0, param6:TankState = null, param7:BattleTeam = null)
       {
@@ -30,6 +32,16 @@ package projects.tanks.client.battlefield.models.user.tank
          this._movementTimeoutUntilTankCorrection = param5;
          this._tankState = param6;
          this._team = param7;
+      }
+
+      public function get userId() : String
+      {
+         return this._userId;
+      }
+      
+      public function set userId(param1:String) : void
+      {
+         this._userId = param1;
       }
       
       public function get health() : int

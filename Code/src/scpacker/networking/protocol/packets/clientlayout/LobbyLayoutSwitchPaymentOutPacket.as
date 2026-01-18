@@ -2,9 +2,9 @@ package scpacker.networking.protocol.packets.clientlayout
 {
    import scpacker.networking.protocol.AbstractPacket;
    
-   public class LobbyLayoutSwitchPayment extends AbstractPacket
+   public class LobbyLayoutSwitchPaymentOutPacket extends AbstractPacket
    {
-      public function LobbyLayoutSwitchPayment()
+      public function LobbyLayoutSwitchPaymentOutPacket()
       {
          super();
       }
@@ -15,7 +15,7 @@ package scpacker.networking.protocol.packets.clientlayout
       
       override public function initializeSelf() : AbstractPacket
       {
-         return new LobbyLayoutSwitchPayment();
+         return new LobbyLayoutSwitchPaymentOutPacket();
       }
       
       override public function getPacketHandlerId() : int

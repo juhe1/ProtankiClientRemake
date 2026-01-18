@@ -41,6 +41,10 @@ package platform.clients.fp10.libraries.alternativaclientflash
    import platform.client.fp10.core.type.impl.GameObject;
    import platform.client.fp10.core.type.impl.Space;
    import platform.client.fp10.core.resource.types.MultiframeImageResource;
+   import platform.client.fp10.core.CoreCommands;
+   import alternativa.osgi.service.command.CommandService;
+   import platform.client.fp10.core.registry.GameTypeRegistry;
+   import platform.client.fp10.core.registry.SpaceRegistry;
    
    public class Activator implements IBundleActivator
    {
@@ -88,48 +92,48 @@ package platform.clients.fp10.libraries.alternativaclientflash
          //{
          //   return TLSSocket.clientLog;
          //});
-         //osgi.injectService(CommandService,function(param1:Object):void
-         //{
-         //   CoreCommands.commandService = CommandService(param1);
-         //},function():CommandService
-         //{
-         //   return CoreCommands.commandService;
-         //});
-         //osgi.injectService(GameTypeRegistry,function(param1:Object):void
-         //{
-         //   CoreCommands.gameTypeRegistry = GameTypeRegistry(param1);
-         //},function():GameTypeRegistry
-         //{
-         //   return CoreCommands.gameTypeRegistry;
-         //});
-         //osgi.injectService(ModelRegistry,function(param1:Object):void
-         //{
-         //   CoreCommands.modelRegister = ModelRegistry(param1);
-         //},function():ModelRegistry
-         //{
-         //   return CoreCommands.modelRegister;
-         //});
-         //osgi.injectService(ResourceRegistry,function(param1:Object):void
-         //{
-         //   CoreCommands.resourceRegistry = ResourceRegistry(param1);
-         //},function():ResourceRegistry
-         //{
-         //   return CoreCommands.resourceRegistry;
-         //});
-         //osgi.injectService(SpaceRegistry,function(param1:Object):void
-         //{
-         //   CoreCommands.spaceRegistry = SpaceRegistry(param1);
-         //},function():SpaceRegistry
-         //{
-         //   return CoreCommands.spaceRegistry;
-         //});
-         //osgi.injectService(ITransportService,function(param1:Object):void
-         //{
-         //   CoreCommands.transportService = ITransportService(param1);
-         //},function():ITransportService
-         //{
-         //   return CoreCommands.transportService;
-         //});
+         osgi.injectService(CommandService,function(param1:Object):void
+         {
+            CoreCommands.commandService = CommandService(param1);
+         },function():CommandService
+         {
+            return CoreCommands.commandService;
+         });
+         osgi.injectService(GameTypeRegistry,function(param1:Object):void
+         {
+            CoreCommands.gameTypeRegistry = GameTypeRegistry(param1);
+         },function():GameTypeRegistry
+         {
+            return CoreCommands.gameTypeRegistry;
+         });
+         osgi.injectService(ModelRegistry,function(param1:Object):void
+         {
+            CoreCommands.modelRegister = ModelRegistry(param1);
+         },function():ModelRegistry
+         {
+            return CoreCommands.modelRegister;
+         });
+         osgi.injectService(ResourceRegistry,function(param1:Object):void
+         {
+            CoreCommands.resourceRegistry = ResourceRegistry(param1);
+         },function():ResourceRegistry
+         {
+            return CoreCommands.resourceRegistry;
+         });
+         osgi.injectService(SpaceRegistry,function(param1:Object):void
+         {
+            CoreCommands.spaceRegistry = SpaceRegistry(param1);
+         },function():SpaceRegistry
+         {
+            return CoreCommands.spaceRegistry;
+         });
+         osgi.injectService(ITransportService,function(param1:Object):void
+         {
+            CoreCommands.transportService = ITransportService(param1);
+         },function():ITransportService
+         {
+            return CoreCommands.transportService;
+         });
          //osgi.injectService(LogService,function(param1:Object):void
          //{
          //   UncaughtErrorServerLogImpl.loggerService = LogService(param1);

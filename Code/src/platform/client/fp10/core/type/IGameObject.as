@@ -10,6 +10,7 @@ package platform.client.fp10.core.type
       function get name() : String;
       
       function get gameClass() : IGameClass;
+      function set gameClass(value:IGameClass) : void;
       
       function get space() : ISpace;
       

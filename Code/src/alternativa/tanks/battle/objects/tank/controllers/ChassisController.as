@@ -48,7 +48,7 @@ package alternativa.tanks.battle.objects.tank.controllers
          this.lockMask.setBits(param1);
          if(_loc2_ && !this.isEnabled())
          {
-            this.applyControlState(0,0);
+            this.applyControlState(0);
          }
       }
       
@@ -58,7 +58,7 @@ package alternativa.tanks.battle.objects.tank.controllers
          this.lockMask.clearBits(param1);
          if(this.isEnabled() && !_loc2_)
          {
-            this.applyControlState(this.controlState,this.turnSpeedNumber);
+            this.applyControlState(this.controlState);
          }
       }
       
@@ -67,24 +67,23 @@ package alternativa.tanks.battle.objects.tank.controllers
          return this.isEnabled() ? this.controlState : 0;
       }
       
-      public function setControlState(param1:int, param2:int) : void
+      public function setControlState(param1:int) : void
       {
          this.controlState = param1;
-         this.turnSpeedNumber = param2;
          if(this.isEnabled())
          {
-            this.applyControlState(param1,param2);
+            this.applyControlState(param1);
          }
       }
       
-      private function applyControlState(param1:int, param2:int) : void
+      private function applyControlState(param1:int) : void
       {
          var _loc3_:int = this.appliedControlState;
          this.appliedControlState = param1;
          var _loc4_:int = MathUtils.getBitValue(param1,BIT_FORWARD) - MathUtils.getBitValue(param1,BIT_BACK);
          var _loc5_:Number = MathUtils.getBitValue(param1,BIT_LEFT) - MathUtils.getBitValue(param1,BIT_RIGHT);
          var _loc6_:Boolean = MathUtils.getBitValue(param1,BIT_REVERSE_TURN) == 1;
-         this.tank.setMovementParams(_loc4_,_loc5_,param2,_loc6_);
+         this.tank.setMovementParams(_loc4_,_loc5_,_loc6_);
          if(_loc3_ != this.appliedControlState)
          {
             this.onAppliedControlStateChanged(this.appliedControlState);

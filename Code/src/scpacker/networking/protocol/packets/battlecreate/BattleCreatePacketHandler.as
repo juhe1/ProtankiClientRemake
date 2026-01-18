@@ -129,6 +129,18 @@ package scpacker.networking.protocol.packets.battlecreate
             Model.popObject();
           }
 
+         var equipmentConstraintsCC:EquipmentConstraintsCC = new EquipmentConstraintsCC();
+         equipmentConstraintsCC.equipmentConstraintsModeInfos = new Vector.<EquipmentConstraintsModeInfo>();
+         //equipmentConstraintsCC.equipmentConstraintsModeInfos.push(new EquipmentConstraintsModeInfo(0,"NONE","Default"));
+         equipmentConstraintsCC.equipmentConstraintsModeInfos.push(new EquipmentConstraintsModeInfo(0,"HORNET_RAILGUN","Hornet & Railgun"));
+         equipmentConstraintsCC.equipmentConstraintsModeInfos.push(new EquipmentConstraintsModeInfo(1,"WASP_RAILGUN","Wasp & Railgun"));
+         equipmentConstraintsCC.equipmentConstraintsModeInfos.push(new EquipmentConstraintsModeInfo(2,"HORNET_WASP_RAILGUN","Hornet, Wasp & Railgun"));
+
+         Model.object = this.battleSelectObject;
+         this.equipmentConstraintsNamingMode.putInitParams(equipmentConstraintsCC);
+         this.equipmentConstraintsNamingMode.objectLoaded();
+         Model.popObject();
+
           Model.object = this.battleSelectObject;
 
           var battleCreateParams:BattleCreateCC = new BattleCreateCC();
@@ -142,24 +154,13 @@ package scpacker.networking.protocol.packets.battlecreate
 
           battleCreateParams.maxRangeLength = battlesData.maxRangeLength;
           battleCreateParams.maxRange = new Range(mapData.maxRank,mapData.minRank);
-          battleCreateParams.defaultRange = new Range(mapData.maxRank,mapData.minRank);
+          var defaultMaxRank:int = Math.min(mapData.minRank + battlesData.maxRangeLength - 1, mapData.maxRank);
+          battleCreateParams.defaultRange = new Range(defaultMaxRank, mapData.minRank);
           //battleCreateParams.proBattleTimeLeftInSec = battlesData.proBattleTimeLeftInSec;
           this.battleCreateModel.putInitParams(battleCreateParams);
           this.battleCreateModel.objectLoaded();
           this.battleCreateModel.objectLoadedPost();
           Model.popObject();
-
-         var equipmentConstraintsCC:EquipmentConstraintsCC = new EquipmentConstraintsCC();
-         equipmentConstraintsCC.equipmentConstraintsModeInfos = new Vector.<EquipmentConstraintsModeInfo>();
-         equipmentConstraintsCC.equipmentConstraintsModeInfos.push(new EquipmentConstraintsModeInfo(0,"NONE","Default"));
-         equipmentConstraintsCC.equipmentConstraintsModeInfos.push(new EquipmentConstraintsModeInfo(1,"HORNET_RAILGUN","Hornet & Railgun"));
-         equipmentConstraintsCC.equipmentConstraintsModeInfos.push(new EquipmentConstraintsModeInfo(2,"WASP_RAILGUN","Wasp & Railgun"));
-         equipmentConstraintsCC.equipmentConstraintsModeInfos.push(new EquipmentConstraintsModeInfo(3,"HORNET_WASP_RAILGUN","Hornet, Wasp & Railgun"));
-
-         Model.object = this.battleSelectObject;
-         this.equipmentConstraintsNamingMode.putInitParams(equipmentConstraintsCC);
-         this.equipmentConstraintsNamingMode.objectLoaded();
-         Model.popObject();
       }
       
       private function createFailedBattleCreateDisabled() : void

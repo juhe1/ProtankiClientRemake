@@ -258,10 +258,10 @@ package projects.tanks.clients.flash.commons.services.layout
       
       public function inBattle() : Boolean
       {
-         if(this.serviceGameObject == null)
-         {
-            return false;
-         }
+         //if(this.serviceGameObject == null)
+         //{
+         //   return false;
+         //}
          return ILobbyLayoutNotify(modelRegistry.getModel((LobbyLayoutNotifyModelBase.modelId))).inBattle();
       }
       

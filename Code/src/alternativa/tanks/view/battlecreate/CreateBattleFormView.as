@@ -93,17 +93,23 @@ package alternativa.tanks.view.battlecreate
       
       private var _friendlyFireCheckBox:CheckBoxBase;
       
-      private var _dronesCheckBox:CheckBoxBase;
+      //private var _dronesCheckBox:CheckBoxBase;
       
       private var _suppliesCheckBox:CheckBoxBase;
       
-      private var _dependentCooldownCheckBox:CheckBoxBase;
+      private var _minesCheckBox:CheckBoxBase;
+      
+      private var _firstAidCheckBox:CheckBoxBase;
+      
+      //private var _dependentCooldownCheckBox:CheckBoxBase;
       
       private var _bonusesCheckBox:CheckBoxBase;
       
+      private var _preciseTimerCheckBox:CheckBoxBase;
+      
       private var _goldBoxesCheckBox:CheckBoxBase;
       
-      private var _upgradesCheckBox:CheckBoxBase;
+      //private var _upgradesCheckBox:CheckBoxBase;
       
       private var _privateBattleCheckBox:CheckBoxBase;
       
@@ -111,7 +117,7 @@ package alternativa.tanks.view.battlecreate
       
       private var _startButton:RedButtonBase;
       
-      private var _devicesCheckBox:CheckBoxBase;
+      //private var _devicesCheckBox:CheckBoxBase;
       
       private var _clanCheckBox:CheckBoxBase;
       
@@ -161,14 +167,26 @@ package alternativa.tanks.view.battlecreate
          this._suppliesCheckBox.checked = true;
          this._suppliesCheckBox.label = CreateBattleFormLabels.checkBoxNoSuppliesLabel;
          addChild(this._suppliesCheckBox);
-         this._dependentCooldownCheckBox = new CheckBoxBase(BattleParamsCheckButtonIcons.dependentCooldownsBitmapData);
-         this._dependentCooldownCheckBox.checked = false;
-         this._dependentCooldownCheckBox.label = CreateBattleFormLabels.checkBoxDependentCooldownLabel;
-         addChild(this._dependentCooldownCheckBox);
+         this._minesCheckBox = new CheckBoxBase(BattleParamsCheckButtonIcons.suppliesBitmapData);
+         this._minesCheckBox.checked = true;
+         this._minesCheckBox.label = "Mines";
+         addChild(this._minesCheckBox);
+         this._firstAidCheckBox = new CheckBoxBase(BattleParamsCheckButtonIcons.suppliesBitmapData);
+         this._firstAidCheckBox.checked = true;
+         this._firstAidCheckBox.label = "First Aid Kit";
+         addChild(this._firstAidCheckBox);
+         //this._dependentCooldownCheckBox = new CheckBoxBase(BattleParamsCheckButtonIcons.dependentCooldownsBitmapData);
+         //this._dependentCooldownCheckBox.checked = false;
+         //this._dependentCooldownCheckBox.label = CreateBattleFormLabels.checkBoxDependentCooldownLabel;
+         //addChild(this._dependentCooldownCheckBox);
          this._bonusesCheckBox = new CheckBoxBase(BattleParamsCheckButtonIcons.bonusesBitmapData);
          this._bonusesCheckBox.checked = true;
          this._bonusesCheckBox.label = CreateBattleFormLabels.checkBoxBonusesLabel;
          addChild(this._bonusesCheckBox);
+         this._preciseTimerCheckBox = new CheckBoxBase(BattleParamsCheckButtonIcons.bonusesBitmapData);
+         this._preciseTimerCheckBox.checked = true;
+         this._preciseTimerCheckBox.label = "By Precise Timer";
+         addChild(this._preciseTimerCheckBox);
          this._goldBoxesCheckBox = new CheckBoxBase(BattleParamsCheckButtonIcons.goldBonusesBitmapData);
          this._goldBoxesCheckBox.checked = true;
          this._goldBoxesCheckBox.label = CreateBattleFormLabels.checkBoxGoldBoxesLabel;
@@ -176,18 +194,18 @@ package alternativa.tanks.view.battlecreate
          this._friendlyFireCheckBox = new CheckBoxBase(BattleParamsCheckButtonIcons.friendlyFireBitmapData);
          this._friendlyFireCheckBox.label = CreateBattleFormLabels.checkBoxFriendlyFireLabel;
          addChild(this._friendlyFireCheckBox);
-         this._dronesCheckBox = new CheckBoxBase(BattleParamsCheckButtonIcons.droneBitmapData);
-         this._dronesCheckBox.checked = true;
-         this._dronesCheckBox.label = CreateBattleFormLabels.checkBoxDronesLabel;
-         addChild(this._dronesCheckBox);
-         this._upgradesCheckBox = new CheckBoxBase(BattleParamsCheckButtonIcons.upgradesBitmapData);
-         this._upgradesCheckBox.checked = true;
-         this._upgradesCheckBox.label = CreateBattleFormLabels.checkBoxUpgradesLabel;
-         addChild(this._upgradesCheckBox);
-         this._devicesCheckBox = new CheckBoxBase(BattleParamsCheckButtonIcons.devicesBitmapData);
-         this._devicesCheckBox.checked = true;
-         this._devicesCheckBox.label = CreateBattleFormLabels.checkBoxDevicesLabel;
-         addChild(this._devicesCheckBox);
+         //this._dronesCheckBox = new CheckBoxBase(BattleParamsCheckButtonIcons.droneBitmapData);
+         //this._dronesCheckBox.checked = true;
+         //this._dronesCheckBox.label = CreateBattleFormLabels.checkBoxDronesLabel;
+         //addChild(this._dronesCheckBox);
+         //this._upgradesCheckBox = new CheckBoxBase(BattleParamsCheckButtonIcons.upgradesBitmapData);
+         //this._upgradesCheckBox.checked = true;
+         //this._upgradesCheckBox.label = CreateBattleFormLabels.checkBoxUpgradesLabel;
+         //addChild(this._upgradesCheckBox);
+         //this._devicesCheckBox = new CheckBoxBase(BattleParamsCheckButtonIcons.devicesBitmapData);
+         //this._devicesCheckBox.checked = true;
+         //this._devicesCheckBox.label = CreateBattleFormLabels.checkBoxDevicesLabel;
+         //addChild(this._devicesCheckBox);
          this._privateBattleCheckBox = new CheckBoxBase(BattleParamsCheckButtonIcons.privateBitmapData);
          this._privateBattleCheckBox.label = CreateBattleFormLabels.checkBoxPrivateBattleLabel;
          addChild(this._privateBattleCheckBox);
@@ -249,10 +267,10 @@ package alternativa.tanks.view.battlecreate
          this._goldBoxesCheckBox.addEventListener(CheckBoxEvent.STATE_CHANGED,this.onGoldBoxesChange);
          this._autoBalanceCheckBox.addEventListener(CheckBoxEvent.STATE_CHANGED,this.onAutoBalanceChange);
          this._reArmorCheckBox.addEventListener(CheckBoxEvent.STATE_CHANGED,this.onReArmorChange);
-         this._upgradesCheckBox.addEventListener(CheckBoxEvent.STATE_CHANGED,this.controller.onUpgradesOrDevicesChange);
-         this._devicesCheckBox.addEventListener(CheckBoxEvent.STATE_CHANGED,this.controller.onUpgradesOrDevicesChange);
+         //this._upgradesCheckBox.addEventListener(CheckBoxEvent.STATE_CHANGED,this.controller.onUpgradesOrDevicesChange);
+         //this._devicesCheckBox.addEventListener(CheckBoxEvent.STATE_CHANGED,this.controller.onUpgradesOrDevicesChange);
          this._chooseFormatComboBox.addEventListener(Event.CHANGE,this.controller.onFormatChange);
-         this._dependentCooldownCheckBox.addEventListener(CheckBoxEvent.STATE_CHANGED,this.controller.onDependentCooldownChange);
+         //this._dependentCooldownCheckBox.addEventListener(CheckBoxEvent.STATE_CHANGED,this.controller.onDependentCooldownChange);
          this._friendlyFireCheckBox.addEventListener(CheckBoxEvent.STATE_CHANGED,this.onFriendlyFireChange);
          this._clanCheckBox.addEventListener(CheckBoxEvent.STATE_CHANGED,this.onClanChange);
          this.ultimatesCheckBox.addEventListener(CheckBoxEvent.STATE_CHANGED,this.controller.onUltimatesChanged);
@@ -283,10 +301,10 @@ package alternativa.tanks.view.battlecreate
          this._autoBalanceCheckBox.removeEventListener(CheckBoxEvent.STATE_CHANGED,this.onAutoBalanceChange);
          this._reArmorCheckBox.removeEventListener(CheckBoxEvent.STATE_CHANGED,this.onReArmorChange);
          this._chooseFormatComboBox.removeEventListener(Event.CHANGE,this.controller.onFormatChange);
-         this._dependentCooldownCheckBox.removeEventListener(CheckBoxEvent.STATE_CHANGED,this.controller.onDependentCooldownChange);
+         //this._dependentCooldownCheckBox.removeEventListener(CheckBoxEvent.STATE_CHANGED,this.controller.onDependentCooldownChange);
          this._friendlyFireCheckBox.removeEventListener(CheckBoxEvent.STATE_CHANGED,this.onFriendlyFireChange);
-         this._upgradesCheckBox.removeEventListener(CheckBoxEvent.STATE_CHANGED,this.controller.onUpgradesOrDevicesChange);
-         this._devicesCheckBox.removeEventListener(CheckBoxEvent.STATE_CHANGED,this.controller.onUpgradesOrDevicesChange);
+         //this._upgradesCheckBox.removeEventListener(CheckBoxEvent.STATE_CHANGED,this.controller.onUpgradesOrDevicesChange);
+         //this._devicesCheckBox.removeEventListener(CheckBoxEvent.STATE_CHANGED,this.controller.onUpgradesOrDevicesChange);
          this.ultimatesCheckBox.removeEventListener(CheckBoxEvent.STATE_CHANGED,this.controller.onUltimatesChanged);
       }
       
@@ -338,7 +356,7 @@ package alternativa.tanks.view.battlecreate
       
       public function get isWithoutDrones() : Boolean
       {
-         return !this._dronesCheckBox.checked;
+         return true; //!this._dronesCheckBox.checked;
       }
       
       public function get isNoSuppliesBattle() : Boolean
@@ -346,9 +364,24 @@ package alternativa.tanks.view.battlecreate
          return !this._suppliesCheckBox.checked;
       }
       
+      public function get isMinesEnabled() : Boolean
+      {
+         return this._minesCheckBox.checked;
+      }
+      
+      public function get isFirstAidEnabled() : Boolean
+      {
+         return this._firstAidCheckBox.checked;
+      }
+      
       public function get isWithoutBonuses() : Boolean
       {
          return !this._bonusesCheckBox.checked;
+      }
+      
+      public function get isPreciseTimerEnabled() : Boolean
+      {
+         return this._preciseTimerCheckBox.checked;
       }
       
       public function get isGoldBoxesEnabled() : Boolean
@@ -363,17 +396,17 @@ package alternativa.tanks.view.battlecreate
       
       public function get isWithoutUpgrades() : Boolean
       {
-         return !this._upgradesCheckBox.checked;
+         return true;//!this._upgradesCheckBox.checked;
       }
       
       public function get isWithoutDevices() : Boolean
       {
-         return !this._devicesCheckBox.checked;
+         return true;//!this._devicesCheckBox.checked;
       }
       
       public function get isDependentCooldownBattle() : Boolean
       {
-         return this._dependentCooldownCheckBox.checked;
+         return false; //this._dependentCooldownCheckBox.checked;
       }
       
       public function get isClanBattle() : Boolean
@@ -463,10 +496,13 @@ package alternativa.tanks.view.battlecreate
          this._scoreLimitStepper = null;
          this._autoBalanceCheckBox = null;
          this._suppliesCheckBox = null;
-         this._dependentCooldownCheckBox = null;
+         this._minesCheckBox = null;
+         this._firstAidCheckBox = null;
+         //this._dependentCooldownCheckBox = null;
          this._bonusesCheckBox = null;
+         this._preciseTimerCheckBox = null;
          this._goldBoxesCheckBox = null;
-         this._upgradesCheckBox = null;
+         //this._upgradesCheckBox = null;
          this._privateBattleCheckBox = null;
          this._reArmorCheckBox = null;
          this._startButton = null;
@@ -476,7 +512,7 @@ package alternativa.tanks.view.battlecreate
          this._trackedEvents = null;
          this._chooseFormatComboBox = null;
          this._friendlyFireCheckBox = null;
-         this._dronesCheckBox = null;
+         //this._dronesCheckBox = null;
          this._clanCheckBox = null;
          this._battleNameTextInput = null;
          this._battleNameCheckIcon = null;
@@ -527,19 +563,31 @@ package alternativa.tanks.view.battlecreate
          this._privateBattleCheckBox.y = this._maxNumberPlayersStepper.y + this._maxNumberPlayersStepper.height - 11;
          this._bonusesCheckBox.x = FIRST_COLUMN_X;
          this._bonusesCheckBox.y = this._privateBattleCheckBox.y + this._privateBattleCheckBox.height + 8;
+         this._preciseTimerCheckBox.x = FIRST_COLUMN_X + 20;
+         this._preciseTimerCheckBox.y = this._bonusesCheckBox.y + this._bonusesCheckBox.height + 8;
+         this._preciseTimerCheckBox.visible = this._bonusesCheckBox.checked;
+         var _loc1_:DisplayObject = this._preciseTimerCheckBox.visible ? this._preciseTimerCheckBox : this._bonusesCheckBox;
          this._goldBoxesCheckBox.x = FIRST_COLUMN_X;
-         this._goldBoxesCheckBox.y = this._bonusesCheckBox.y + this._bonusesCheckBox.height + 8;
+         this._goldBoxesCheckBox.y = _loc1_.y + _loc1_.height + 8;
          this._goldBoxesCheckBox.visible = !this.getSelectedFormatItem().parkour;
-         var _loc1_:DisplayObject = this._goldBoxesCheckBox.visible ? this._goldBoxesCheckBox : this._bonusesCheckBox;
+         _loc1_ = this._goldBoxesCheckBox.visible ? this._goldBoxesCheckBox : _loc1_;
          this._suppliesCheckBox.x = FIRST_COLUMN_X;
          this._suppliesCheckBox.y = _loc1_.y + _loc1_.height + 8;
-         this._dependentCooldownCheckBox.x = FIRST_COLUMN_X;
-         this._dependentCooldownCheckBox.y = this._suppliesCheckBox.y + this._suppliesCheckBox.height + 8;
-         _loc1_ = this._dependentCooldownCheckBox.visible ? this._dependentCooldownCheckBox : this._suppliesCheckBox;
-         this._dronesCheckBox.x = FIRST_COLUMN_X;
-         this._dronesCheckBox.y = _loc1_.y + _loc1_.height + 8;
-         this.updateDrones();
-         _loc1_ = this._dronesCheckBox.visible ? this._dronesCheckBox : _loc1_;
+         this._minesCheckBox.x = FIRST_COLUMN_X + 20;
+         this._minesCheckBox.y = this._suppliesCheckBox.y + this._suppliesCheckBox.height + 8;
+         this._minesCheckBox.visible = this._suppliesCheckBox.checked;
+         _loc1_ = this._minesCheckBox.visible ? this._minesCheckBox : this._suppliesCheckBox;
+         this._firstAidCheckBox.x = FIRST_COLUMN_X + 20;
+         this._firstAidCheckBox.y = _loc1_.y + _loc1_.height + 8;
+         this._firstAidCheckBox.visible = this._suppliesCheckBox.checked;
+         _loc1_ = this._firstAidCheckBox.visible ? this._firstAidCheckBox : _loc1_;
+         //this._dependentCooldownCheckBox.x = FIRST_COLUMN_X;
+         //this._dependentCooldownCheckBox.y = _loc1_.y + _loc1_.height + 8;
+         //_loc1_ = this._dependentCooldownCheckBox.visible ? this._dependentCooldownCheckBox : this._suppliesCheckBox;
+         //this._dronesCheckBox.x = FIRST_COLUMN_X;
+         //this._dronesCheckBox.y = _loc1_.y + _loc1_.height + 8;
+         //this.updateDrones();
+         //_loc1_ = this._dronesCheckBox.visible ? this._dronesCheckBox : _loc1_;
          this._friendlyFireCheckBox.x = FIRST_COLUMN_X;
          this._friendlyFireCheckBox.y = _loc1_.y + _loc1_.height + 8;
          _loc1_ = this._friendlyFireCheckBox.visible ? this._friendlyFireCheckBox : _loc1_;
@@ -550,12 +598,12 @@ package alternativa.tanks.view.battlecreate
          this._chooseFormatComboBox.x = _loc3_;
          this._chooseFormatComboBox.y = this._privateBattleCheckBox.y;
          this._chooseFormatComboBox.width = _loc2_ - this._chooseFormatComboBox.x - RIGHT_MARGIN;
-         this._upgradesCheckBox.x = _loc3_;
-         this._upgradesCheckBox.y = this._bonusesCheckBox.y;
-         this._devicesCheckBox.x = _loc3_;
-         this._devicesCheckBox.y = this._upgradesCheckBox.y + this._upgradesCheckBox.height + 8;
+         //this._upgradesCheckBox.x = _loc3_;
+         //this._upgradesCheckBox.y = this._bonusesCheckBox.y;
+         //this._devicesCheckBox.x = _loc3_;
+         //this._devicesCheckBox.y = this._upgradesCheckBox.y + this._upgradesCheckBox.height + 8;
          this._reArmorCheckBox.x = _loc3_;
-         this._reArmorCheckBox.y = this._devicesCheckBox.y + this._devicesCheckBox.height + 8;
+         this._reArmorCheckBox.y = this._bonusesCheckBox.y;//this._devicesCheckBox.y + this._devicesCheckBox.height + 8;
          this._autoBalanceCheckBox.x = _loc3_;
          this._autoBalanceCheckBox.y = this._reArmorCheckBox.y + this._reArmorCheckBox.height + 8;
          _loc1_ = this._autoBalanceCheckBox.visible ? this._autoBalanceCheckBox : this._reArmorCheckBox;
@@ -804,7 +852,9 @@ package alternativa.tanks.view.battlecreate
       private function onNoSuppliesChange(param1:CheckBoxEvent) : void
       {
          this.trackOnce("supplyChange");
-         this._dependentCooldownCheckBox.visible = this._suppliesCheckBox.checked;
+         //this._dependentCooldownCheckBox.visible = this._suppliesCheckBox.checked;
+         this._minesCheckBox.visible = this._suppliesCheckBox.checked;
+         this._firstAidCheckBox.visible = this._suppliesCheckBox.checked;
          this.updateUltimate();
          this.updateOptions();
       }
@@ -817,6 +867,7 @@ package alternativa.tanks.view.battlecreate
       private function onBonusesChange(param1:CheckBoxEvent) : void
       {
          this.trackOnce("bonusesChange");
+         this._preciseTimerCheckBox.visible = this._bonusesCheckBox.checked;
          this.updateUltimate();
          this.updateOptions();
       }
@@ -889,8 +940,8 @@ package alternativa.tanks.view.battlecreate
       
       public function resetUpgradesAndDevicesCheckbox() : void
       {
-         this._upgradesCheckBox.setCheckedWithoutEvent(false);
-         this._devicesCheckBox.setCheckedWithoutEvent(false);
+         //this._upgradesCheckBox.setCheckedWithoutEvent(false);
+         //this._devicesCheckBox.setCheckedWithoutEvent(false);
       }
       
       public function selectFormatByIndex(param1:int) : void
@@ -900,12 +951,12 @@ package alternativa.tanks.view.battlecreate
       
       public function resetDependentCooldownCheckBox() : void
       {
-         this._dependentCooldownCheckBox.setCheckedWithoutEvent(false);
+         //this._dependentCooldownCheckBox.setCheckedWithoutEvent(false);
       }
       
       public function resetDronesCheckBox() : void
       {
-         this._dronesCheckBox.setCheckedWithoutEvent(false);
+         //this._dronesCheckBox.setCheckedWithoutEvent(false);
       }
       
       public function isUltimatesEnabled() : Boolean
@@ -978,14 +1029,14 @@ package alternativa.tanks.view.battlecreate
          }
       }
       
-      private function updateDrones() : void
+      /*private function updateDrones() : void
       {
          this._dronesCheckBox.visible = this._suppliesCheckBox.checked && (this.getSelectedFormatItem().index == 0 || Boolean(this.getSelectedFormatItem().parkour));
          if(!this._dronesCheckBox.visible)
          {
             this._dronesCheckBox.setCheckedWithoutEvent(false);
          }
-      }
+      }*/
    }
 }
 

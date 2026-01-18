@@ -1,10 +1,12 @@
-package scpacker.networking.protocol.packets.clientlayout
+package scpacker.networking.protocol.packets.tank
 {
    import scpacker.networking.protocol.AbstractPacket;
    
-   public class LoadGarage extends AbstractPacket
+   public class ReadyToPlaceOutPacket extends AbstractPacket
    {
-      public function LoadGarage()
+      public static const id:int = -1378839846;
+
+      public function ReadyToPlaceOutPacket()
       {
          super();
       }
@@ -15,18 +17,17 @@ package scpacker.networking.protocol.packets.clientlayout
       
       override public function initializeSelf() : AbstractPacket
       {
-         return new LoadGarage();
+         return new ReadyToPlaceOutPacket();
       }
       
       override public function getPacketHandlerId() : int
       {
-         return 17;
+         return 39;
       }
       
       override public function getId() : int
       {
-         return -479046431;
+         return id;
       }
    }
 }
-

@@ -489,7 +489,7 @@ package alternativa.tanks.models.battle.battlefield.mine
       
       private function onTankLoaded(param1:TankLoadedEvent) : void
       {
-         this.loadedTanks[param1.tank.getUser().id] = param1.tank;
+         this.loadedTanks[param1.tank.getUserId()] = param1.tank;
          if(param1.isLocal)
          {
             this.localTank = param1.tank;
@@ -498,7 +498,7 @@ package alternativa.tanks.models.battle.battlefield.mine
       
       private function onTankUnloaded(param1:TankUnloadedEvent) : void
       {
-         delete this.loadedTanks[param1.tank.getUser().id];
+         delete this.loadedTanks[param1.tank.getUserId()];
       }
       
       private function onTankAddedToBattle(param1:TankAddedToBattleEvent) : void

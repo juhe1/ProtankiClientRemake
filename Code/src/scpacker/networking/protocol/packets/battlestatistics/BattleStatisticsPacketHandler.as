@@ -57,7 +57,6 @@ package scpacker.networking.protocol.packets.battlestatistics
       private function initStatisticsModel(param1:InitStatisticsInPacket) : void
       {
          Model.object = BattlePacketHandler.battlefieldGameObject;
-         BattlePacketHandler.battlefieldGameObject.gameClass.models.push(StatisticsDMModelBase.modelId);
          param1.statisticsModelCC.valuableRound = true;
          param1.statisticsModelCC.matchBattle = false;
          this.statisticsModel.putInitParams(param1.statisticsModelCC);
@@ -74,34 +73,46 @@ package scpacker.networking.protocol.packets.battlestatistics
       
       private function fundChange(param1:BattleFundInPacket) : void
       {
+         Model.object = BattlePacketHandler.battlefieldGameObject;
          this.statisticsModel.fundChange(param1.fund);
+         Model.popObject();
       }
       
       private function complaintConfirmed() : void
       {
+         Model.object = BattlePacketHandler.battlefieldGameObject;
          this.statisticsModel.onComplaintConfirmed();
+         Model.popObject();
       }
       
       private function rankChanged(param1:RankUpInPacket) : void
       {
+         Model.object = BattlePacketHandler.battlefieldGameObject;
          this.statisticsModel.onRankChanged(param1.userId,param1.rank, false);
+         Model.popObject();
       }
       
       private function roundFinish(param1:RoundFinishInPacket) : void
       {
+         Model.object = BattlePacketHandler.battlefieldGameObject;
          this.statisticsModel.roundFinish(true,param1.reward,param1.timeToRestart);
          this.battlefieldModel.battleFinish();
+         Model.popObject();
       }
       
       private function roundStart(param1:RoundStartInPacket) : void
       {
+         Model.object = BattlePacketHandler.battlefieldGameObject;
          this.statisticsModel.roundStart(param1.timeLimitInSec,true);
          this.battlefieldModel.battleRestart();
+         Model.popObject();
       }
       
       private function statusProbablyCheaterChanged(param1:StatusProbablyCheaterChangedInPacket) : void
       {
+         Model.object = BattlePacketHandler.battlefieldGameObject;
          this.statisticsModel.statusProbablyCheaterChanged(param1.userId,param1.suspicious);
+         Model.popObject();
       }
    }
 }

@@ -50,6 +50,7 @@ package scpacker.networking.protocol.packets.statisticsdm
       private function initDmStatistics(param1:InitDMStatisticsInPacket) : void
       {
          //OSGi.getInstance().registerService(IClientUserInfo,this.statisticsDMModel);
+         BattlePacketHandler.battlefieldGameObject.gameClass.models.push(StatisticsDMModelBase.modelId);
          Model.object = BattlePacketHandler.battlefieldGameObject;
          this.statisticsDMModel.putInitParams(param1.statisticsDmCC);
          this.statisticsDMModel.objectLoaded();

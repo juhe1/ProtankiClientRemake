@@ -16,7 +16,7 @@ package projects.tanks.client.battlefield.models.user.tank
       
       function move(param1:MoveCommand) : void;
       
-      function movementControl(param1:int, param2:int) : void;
+      function movementControl(param1:int) : void;
       
       function push(param1:Vector3d, param2:Vector3d) : void;
       

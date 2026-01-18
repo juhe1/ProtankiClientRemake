@@ -94,11 +94,15 @@ package scpacker.networking.protocol.packets.garage
    import alternativa.tanks.model.item3d.Item3DModel;
    import projects.tanks.clients.flash.commons.models.detach.DetachModel;
    import projects.tanks.client.commons.models.detach.DetachModelBase;
+   import alternativa.tanks.model.item.properties.ItemPropertiesModel;
+   import projects.tanks.client.garage.models.item.properties.ItemPropertiesModelBase;
+   import alternativa.tanks.model.item.delaymountcategory.DelayMountCategoryModel;
+   import projects.tanks.client.garage.models.item.delaymount.DelayMountCategoryModelBase;
    
    public class GaragePacketHandler extends AbstractPacketHandler
    {
       private var itemModel:ItemModel;
-      private var itemCategoryModel2:ItemCategoryModel;
+      private var itemCategoryModel:ItemCategoryModel;
       private var itemViewCategoryModel:ItemViewCategoryModel;
       private var descriptionModel:DescriptionModel;
       private var buyableModel:BuyableModel;
@@ -106,7 +110,6 @@ package scpacker.networking.protocol.packets.garage
       private var object3dsModel:Object3DSModel;
       private var upgradeParamsModel:UpgradeParamsModel;
       private var countableItemModel:CountableItemModel;
-      private var object3dsModel2:Object3DSModel;
       private var coloringModel:ColoringModel;
       private var temporaryItemModel:TemporaryItemModel;
       private var discountModel:DiscountModel;
@@ -126,20 +129,29 @@ package scpacker.networking.protocol.packets.garage
       private var renameModel:RenameModel;
       private var garageModel:GarageModel;
       private var detachModel:DetachModel;
+      private var itemPropertiesModel:ItemPropertiesModel;
+      private var delayMountCategoryModel:DelayMountCategoryModel;
+   
       private var achievementService:IAchievementService;
-      private var itemGameClass:IGameClass;
-      private var newname_6559__END:IGameClass;
-      private var garageSpace:ISpace;
-      private var newname_6561__END:IGameObject;
+
+      private var temporaryItemGameClass:IGameClass;
+      private var _3dsItemGameClass:IGameClass;
+      private var coloringItemGameClass:IGameClass;
+      private var countableItemGameClass:IGameClass;
+      private var presentItemGameClass:IGameClass;
+      private var renameItemGameClass:IGameClass;
+      private var kitItemGameClass:IGameClass;
       private var garageGameObject:IGameObject;
       private var garageGameClass:IGameClass;
+
+      private var garageSpace:ISpace;
 
       public function GaragePacketHandler()
       {
          super();
          this.id = 34;
          this.itemModel = ItemModel(modelRegistry.getModel(ItemModelBase.modelId));
-         this.itemCategoryModel2 = ItemCategoryModel(modelRegistry.getModel(ItemCategoryModelBase.modelId));
+         this.itemCategoryModel = ItemCategoryModel(modelRegistry.getModel(ItemCategoryModelBase.modelId));
          this.itemViewCategoryModel = ItemViewCategoryModel(modelRegistry.getModel(ItemViewCategoryModelBase.modelId));
          this.descriptionModel = DescriptionModel(modelRegistry.getModel(DescriptionModelBase.modelId));
          this.buyableModel = BuyableModel(modelRegistry.getModel(BuyableModelBase.modelId));
@@ -147,7 +159,6 @@ package scpacker.networking.protocol.packets.garage
          this.object3dsModel = Object3DSModel(modelRegistry.getModel(Object3DSModelBase.modelId));
          this.upgradeParamsModel = UpgradeParamsModel(modelRegistry.getModel(UpgradeableParamsConstructorModelBase.modelId));
          this.countableItemModel = CountableItemModel(modelRegistry.getModel(CountableItemModelBase.modelId));
-         this.object3dsModel2 = Object3DSModel(modelRegistry.getModel(Object3DSModelBase.modelId));
          this.coloringModel = ColoringModel(modelRegistry.getModel(ColoringModelBase.modelId));
          this.temporaryItemModel = TemporaryItemModel(modelRegistry.getModel(TemporaryItemModelBase.modelId));
          this.discountModel = DiscountModel(modelRegistry.getModel(DiscountModelBase.modelId));
@@ -159,7 +170,7 @@ package scpacker.networking.protocol.packets.garage
          this.presentPurchaseModel = PresentPurchaseModel(modelRegistry.getModel(PresentPurchaseModelBase.modelId));
          this.presentItemModel = PresentItemModel(modelRegistry.getModel(PresentItemModelBase.modelId));
          this.discountForUpgradeModel = DiscountForUpgradeModel(modelRegistry.getModel(DiscountForUpgradeModelBase.modelId));
-         this.item3dModel = Item3DModel(modelRegistry.getModel(Item3DModelBase .modelId));
+         this.item3dModel = Item3DModel(modelRegistry.getModel(Item3DModelBase.modelId));
          this.newPresentsShowingModel = NewPresentsShowingModel(modelRegistry.getModel(NewPresentsShowingModelBase.modelId));
          this.groupedItemModel = GroupedItemModel(modelRegistry.getModel(GroupedItemModelBase.modelId));
          this.upgradeGarageItemModel = UpgradeGarageItemModel(modelRegistry.getModel(UpgradeGarageItemModelBase.modelId));
@@ -167,50 +178,119 @@ package scpacker.networking.protocol.packets.garage
          //this.rentModel = RentModel(modelRegistry.getModel(Long.getLong(253893127,1551357191)));
          this.renameModel = RenameModel(modelRegistry.getModel(RenameModelBase.modelId));
          this.garageModel = GarageModel(modelRegistry.getModel(GarageModelBase.modelId));
+         this.itemPropertiesModel = ItemPropertiesModel(modelRegistry.getModel(ItemPropertiesModelBase.modelId));
+         this.delayMountCategoryModel = DelayMountCategoryModel(modelRegistry.getModel(DelayMountCategoryModelBase.modelId));
 
          this.garageSpace = ISpace(spaceRegistry.getSpace(Long.getLong(884380667,214)));
 
          var garageGameClassVector:Vector.<Long> = new Vector.<Long>();
          garageGameClassVector.push(this.garageModel.id);
          garageGameClassVector.push(this.upgradeGarageItemModel.id);
+         garageGameClassVector.push(this.presentPurchaseModel.id);
+         garageGameClassVector.push(this.delayMountCategoryModel.id);
          this.garageGameClass = gameTypeRegistry.createClass(Long.getLong(15025,68455646),garageGameClassVector);
          this.garageGameObject = null;
 
-         var _loc1_:Vector.<Long> = new Vector.<Long>();
-         var renameGameClass:Vector.<Long> = new Vector.<Long>();
-         _loc1_.push(this.itemModel.id);
-         _loc1_.push(this.itemViewCategoryModel.id);
-         _loc1_.push(this.itemCategoryModel2.id);
-         _loc1_.push(this.descriptionModel.id);
-         _loc1_.push(this.buyableModel.id);
-         _loc1_.push(this.modificationModel.id);
-         _loc1_.push(this.object3dsModel.id);
-         _loc1_.push(this.detachModel.id);
-         _loc1_.push(this.upgradeParamsModel.id);
-         _loc1_.push(this.countableItemModel.id);
-         //_loc1_.push(this.object3dsModel2.id);
-         _loc1_.push(this.coloringModel.id);
-         _loc1_.push(this.temporaryItemModel.id);
-         _loc1_.push(this.discountModel.id);
-         _loc1_.push(this.discountCollectorModel.id);
-         _loc1_.push(this.garageKitModel.id);
-         _loc1_.push(this.timePeriodModel.id);
-         _loc1_.push(this.itemFittingModel.id);
-         _loc1_.push(this.presentGivenModel.id);
-         _loc1_.push(this.presentPurchaseModel.id);
-         _loc1_.push(this.presentItemModel.id);
-         _loc1_.push(this.discountForUpgradeModel.id);
-         _loc1_.push(this.groupedItemModel.id);
-         //_loc1_.push(this.rentModel.id);
-         var _loc3_:int = 0;
-         while(_loc3_ < _loc1_.length)
-         {
-            renameGameClass.push(_loc1_[_loc3_]);
-            _loc3_++;
-         }
-         this.itemGameClass = gameTypeRegistry.createClass(Long.getLong(15025,684360),_loc1_);
-         renameGameClass.push(this.renameModel.id);
-         this.newname_6559__END = gameTypeRegistry.createClass(Long.getLong(15026,684361),renameGameClass);
+         var temporaryItemModelVector:Vector.<Long> = new Vector.<Long>();
+         temporaryItemModelVector.push(this.temporaryItemModel.id);
+         temporaryItemModelVector.push(this.itemModel.id);
+         temporaryItemModelVector.push(this.discountModel.id);
+         temporaryItemModelVector.push(this.buyableModel.id);
+         temporaryItemModelVector.push(this.timePeriodModel.id);
+         temporaryItemModelVector.push(this.descriptionModel.id);
+         temporaryItemModelVector.push(this.itemCategoryModel.id);
+         temporaryItemModelVector.push(this.discountCollectorModel.id);
+         temporaryItemModelVector.push(this.itemViewCategoryModel.id);
+         this.temporaryItemGameClass = gameTypeRegistry.createClass(Long.getLong(15725,684360),temporaryItemModelVector);
+
+         var _3dItemModelVector:Vector.<Long> = new Vector.<Long>();
+         _3dItemModelVector.push(this.itemModel.id);
+         _3dItemModelVector.push(this.groupedItemModel.id);
+         _3dItemModelVector.push(this.itemFittingModel.id);
+         _3dItemModelVector.push(this.discountModel.id);
+         _3dItemModelVector.push(this.buyableModel.id);
+         _3dItemModelVector.push(this.descriptionModel.id);
+         _3dItemModelVector.push(this.itemCategoryModel.id);
+         _3dItemModelVector.push(this.discountCollectorModel.id);
+         _3dItemModelVector.push(this.itemViewCategoryModel.id);
+         _3dItemModelVector.push(this.item3dModel.id);
+         _3dItemModelVector.push(this.object3dsModel.id);
+         _3dItemModelVector.push(this.detachModel.id);
+         _3dItemModelVector.push(this.timePeriodModel.id);
+         _3dItemModelVector.push(this.upgradeParamsModel .id);
+         _3dItemModelVector.push(this.modificationModel .id);
+         this._3dsItemGameClass = gameTypeRegistry.createClass(Long.getLong(14725,684360),_3dItemModelVector);
+
+         var coloringItemModelVector:Vector.<Long> = new Vector.<Long>();
+         coloringItemModelVector.push(this.itemModel.id);
+         coloringItemModelVector.push(this.groupedItemModel.id);
+         coloringItemModelVector.push(this.itemFittingModel.id);
+         coloringItemModelVector.push(this.discountModel.id);
+         coloringItemModelVector.push(this.buyableModel.id);
+         coloringItemModelVector.push(this.descriptionModel.id);
+         coloringItemModelVector.push(this.itemCategoryModel.id);
+         coloringItemModelVector.push(this.discountCollectorModel.id);
+         coloringItemModelVector.push(this.itemViewCategoryModel.id);
+         coloringItemModelVector.push(this.coloringModel.id);
+         coloringItemModelVector.push(this.timePeriodModel.id);
+         coloringItemModelVector.push(this.item3dModel.id);
+         coloringItemModelVector.push(this.detachModel.id);
+         coloringItemModelVector.push(this.upgradeParamsModel .id);
+         this.coloringItemGameClass = gameTypeRegistry.createClass(Long.getLong(15726,684360),coloringItemModelVector);
+
+         var countableItemModelVector:Vector.<Long> = new Vector.<Long>();
+         countableItemModelVector.push(this.itemModel.id);
+         countableItemModelVector.push(this.groupedItemModel.id);
+         countableItemModelVector.push(this.itemFittingModel.id);
+         countableItemModelVector.push(this.discountModel.id);
+         countableItemModelVector.push(this.buyableModel.id);
+         countableItemModelVector.push(this.descriptionModel.id);
+         countableItemModelVector.push(this.itemCategoryModel.id);
+         countableItemModelVector.push(this.discountCollectorModel.id);
+         countableItemModelVector.push(this.itemViewCategoryModel.id);
+         countableItemModelVector.push(this.timePeriodModel.id);
+         countableItemModelVector.push(this.countableItemModel.id);
+         countableItemModelVector.push(this.upgradeParamsModel .id);
+         this.countableItemGameClass = gameTypeRegistry.createClass(Long.getLong(15727,684360),countableItemModelVector);
+
+         var presentItemModelVector:Vector.<Long> = new Vector.<Long>();
+         presentItemModelVector.push(this.itemModel.id);
+         presentItemModelVector.push(this.discountModel.id);
+         presentItemModelVector.push(this.buyableModel.id);
+         presentItemModelVector.push(this.descriptionModel.id);
+         presentItemModelVector.push(this.itemCategoryModel.id);
+         presentItemModelVector.push(this.discountCollectorModel.id);
+         presentItemModelVector.push(this.presentItemModel.id);
+         presentItemModelVector.push(this.timePeriodModel.id);
+         presentItemModelVector.push(this.itemViewCategoryModel.id);
+         this.presentItemGameClass = gameTypeRegistry.createClass(Long.getLong(15728,684360),presentItemModelVector);
+
+         var renameItemModelVector:Vector.<Long> = new Vector.<Long>();
+         renameItemModelVector.push(this.itemModel.id);
+         renameItemModelVector.push(this.countableItemModel.id);
+         renameItemModelVector.push(this.itemPropertiesModel.id);
+         renameItemModelVector.push(this.discountModel.id);
+         renameItemModelVector.push(this.buyableModel.id);
+         renameItemModelVector.push(this.descriptionModel.id);
+         renameItemModelVector.push(this.itemCategoryModel.id);
+         renameItemModelVector.push(this.discountCollectorModel.id);
+         renameItemModelVector.push(this.renameModel.id);
+         renameItemModelVector.push(this.timePeriodModel.id);
+         renameItemModelVector.push(this.itemViewCategoryModel.id);
+         this.renameItemGameClass = gameTypeRegistry.createClass(Long.getLong(15730,684360),renameItemModelVector);
+
+         var kitItemModelVector:Vector.<Long> = new Vector.<Long>();
+         kitItemModelVector.push(this.itemModel.id);
+         kitItemModelVector.push(this.discountModel.id);
+         kitItemModelVector.push(this.buyableModel.id);
+         kitItemModelVector.push(this.descriptionModel.id);
+         kitItemModelVector.push(this.itemCategoryModel.id);
+         kitItemModelVector.push(this.discountCollectorModel.id);
+         kitItemModelVector.push(this.garageKitModel.id);
+         kitItemModelVector.push(this.timePeriodModel.id);
+         kitItemModelVector.push(this.itemViewCategoryModel.id);
+         this.kitItemGameClass = gameTypeRegistry.createClass(Long.getLong(15731,684360),kitItemModelVector);
+
          this.achievementService = IAchievementService(OSGi.getInstance().getService(IAchievementService));
       }
       
@@ -267,7 +347,9 @@ package scpacker.networking.protocol.packets.garage
             itemGarageProperties = new Vector.<ItemGaragePropertyData>();
             garageProperties = this.buildGarageProperties(item,itemGarageProperties);
             modificationId = int(item.modificationID);
-            gameObject = this.garageSpace.createObject(Long.getLong(0,EnumUtils.intToItemCategoryEnum(item.type) == ItemCategoryEnum.GIVEN_PRESENT ? int(item.present.date + item.previewResourceId) : int(item.previewResourceId)),this.itemGameClass,item.id + "_m" + modificationId);
+
+            var gameClass:IGameClass = this.getGameClassForItem(item);
+            gameObject = this.garageSpace.createObject(Long.getLong(0,EnumUtils.intToItemCategoryEnum(item.type) == ItemCategoryEnum.GIVEN_PRESENT ? int(item.present.date + item.previewResourceId) : int(item.previewResourceId)),gameClass,item.id + "_m" + modificationId);
             
             Model.object = gameObject;
             if(item.price == 8000 && item.index > 10000)
@@ -276,18 +358,18 @@ package scpacker.networking.protocol.packets.garage
             }
             this.itemModel.putInitParams(new ItemModelCC(30,item.rank,item.index,ImageResource(resourceRegistry.getResource(Long.getLong(0,item.previewResourceId)))));
             this.itemViewCategoryModel.putInitParams(new ItemViewCategoryCC(EnumUtils.stringToItemViewCategoryEnum(item.category)));
-            this.itemCategoryModel2.putInitParams(new ItemCategoryCC(EnumUtils.intToItemCategoryEnum(item.type)));
+            this.itemCategoryModel.putInitParams(new ItemCategoryCC(EnumUtils.intToItemCategoryEnum(item.type)));
             this.descriptionModel.putInitParams(new DescriptionModelCC(item.description,item.name));
             this.buyableModel.putInitParams(new BuyableCC(true,item.price));
             this.modificationModel.putInitParams(new ModificationCC(Long.getLong(0,item.baseItemId),item.modificationID == null ? -1 : int(item.modificationID)));
-            this.object3dsModel.putInitParams(new ItemPropertiesCC(itemGarageProperties));
+            this.itemPropertiesModel.putInitParams(new ItemPropertiesCC(itemGarageProperties));
             
             var upgradeParamsData:UpgradeParamsData = new UpgradeParamsData();
             upgradeParamsData.properties = garageProperties;
             this.upgradeParamsModel.putInitParams(new UpgradeParamsCC(0,upgradeParamsData));
 
             this.countableItemModel.putInitParams(new CountableItemCC(item.count == null ? -1 : int(item.count)));
-            this.object3dsModel2.putInitParams(new Object3DSCC(Long.getLong(0,item.object3ds)));
+            this.object3dsModel.putInitParams(new Object3DSCC(Long.getLong(0,item.object3ds)));
             this.coloringModel.putInitParams(new ColoringCC(null,ImageResource(resourceRegistry.getResource(Long.getLong(0,item.coloring)))));
 
             if(item.remainingTimeInSec > 0)
@@ -296,23 +378,15 @@ package scpacker.networking.protocol.packets.garage
                this.temporaryItemModel.objectLoaded();
             }
 
-            //if(EnumUtils.intToItemCategoryEnum(item.type) == ItemCategoryEnum.GIVEN_PRESENT)
-            //{
-            //   this.presentItemModel.putInitParams(new PresentItemCC(item.present.date,ImageResource(resourceRegistry.getResource(Long.getLong(0,item.present.image))),item.present.presenter,item.present.text,item.present.presentId));
-            //}
+            if(EnumUtils.intToItemCategoryEnum(item.type) == ItemCategoryEnum.GIVEN_PRESENT)
+            {
+               this.presentItemModel.putInitParams(new PresentItemCC(item.present.date,ImageResource(resourceRegistry.getResource(Long.getLong(0,item.present.image))),item.present.presenter,item.present.text));
+            }
             //this.rentModel.putInitParams(new RentItemCC(item.isForRent));
             //this.discountModel.objectLoadedPost();
             this.countableItemModel.objectLoaded();
-            //this.upgradeParamsModel.objectLoadedPost();
             Model.popObject();
-            if(EnumUtils.intToItemCategoryEnum(item.type) == ItemCategoryEnum.GIVEN_PRESENT)
-            {
-               presentItems[presentItems.length] = gameObject;
-            }
-            else
-            {
-               depotItems[depotItems.length] = gameObject;
-            }
+            depotItems[depotItems.length] = gameObject;
          }
          
          Model.object = this.garageGameObject;
@@ -320,7 +394,7 @@ package scpacker.networking.protocol.packets.garage
          mountableCategorys.push(ItemCategoryEnum.WEAPON);
          mountableCategorys.push(ItemCategoryEnum.ARMOR);
          mountableCategorys.push(ItemCategoryEnum.COLOR);
-         this.garageModel.putInitParams(new GarageModelCC(0, -1000, 1.5707963267948966, -120, Tanks3DSResource(resourceRegistry.getResource(Long.getLong(0,parsedJson.garageBoxId))), false, mountableCategorys));
+         this.garageModel.putInitParams(new GarageModelCC(0, -730, 1.5707963267948966, -135, Tanks3DSResource(resourceRegistry.getResource(Long.getLong(0,parsedJson.garageBoxId))), false, mountableCategorys));
          this.garageModel.objectLoaded();
          this.garageModel.initDepot(depotItems);
          //this.garageModel.initPresents(presentItems);
@@ -379,25 +453,26 @@ package scpacker.networking.protocol.packets.garage
                }
             }
 
-            gameObject = this.garageSpace.createObject(Long.getLong(0,item.previewResourceId),item.id == "rename" ? this.newname_6559__END : this.itemGameClass,item.id + "_m" + (item.modificationID == undefined ? "0" : item.modificationID));
+            var gameClass:IGameClass = this.getGameClassForItem(item);
+            gameObject = this.garageSpace.createObject(Long.getLong(0,item.previewResourceId),gameClass,item.id + "_m" + (item.modificationID == undefined ? "0" : item.modificationID));
             Model.object = gameObject;
 
             var garagePropertyDataList:Vector.<GaragePropertyParams> = this.buildGarageProperties(item,itemPropsForModel);
 
             this.itemModel.putInitParams(new ItemModelCC(30,item.rank,item.index,ImageResource(resourceRegistry.getResource(Long.getLong(0,item.previewResourceId)))));
             this.itemViewCategoryModel.putInitParams(new ItemViewCategoryCC(EnumUtils.stringToItemViewCategoryEnum(item.category)));
-            this.itemCategoryModel2.putInitParams(new ItemCategoryCC(EnumUtils.intToItemCategoryEnum(item.type)));
+            this.itemCategoryModel.putInitParams(new ItemCategoryCC(EnumUtils.intToItemCategoryEnum(item.type)));
             this.descriptionModel.putInitParams(new DescriptionModelCC(item.description,item.name));
             this.buyableModel.putInitParams(new BuyableCC(true,item.price));
             this.modificationModel.putInitParams(new ModificationCC(Long.getLong(0,item.baseItemId),item.modificationID == null ? -1 : int(item.modificationID)));
-            this.object3dsModel.putInitParams(new ItemPropertiesCC(itemPropsForModel));
+            this.itemPropertiesModel.putInitParams(new ItemPropertiesCC(itemPropsForModel));
 
             var upgradeParamsData:UpgradeParamsData = new UpgradeParamsData();
             upgradeParamsData.properties = garagePropertyDataList;
             this.upgradeParamsModel.putInitParams(new UpgradeParamsCC(0,upgradeParamsData));
 
             this.countableItemModel.putInitParams(new CountableItemCC(EnumUtils.intToItemCategoryEnum(item.type) == ItemCategoryEnum.INVENTORY ? 0 : -1));
-            this.object3dsModel2.putInitParams(new Object3DSCC(Long.getLong(0,item.object3ds)));
+            this.object3dsModel.putInitParams(new Object3DSCC(Long.getLong(0,item.object3ds)));
             this.coloringModel.putInitParams(new ColoringCC(null,ImageResource(resourceRegistry.getResource(Long.getLong(0,item.coloring)))));
 
             remainingTime = Math.max(0,item.remainingTimeInSec);
@@ -423,8 +498,9 @@ package scpacker.networking.protocol.packets.garage
             Model.popObject();
          }
          Model.object = this.garageGameObject;
-         this.discountForUpgradeModel.putInitParams(new DelayMountCategoryCC(parsed.delayMountArmorInSec,parsed.delayMountColorInSec,parsed.delayMountWeaponInSec));
-         //this.discountForUpgradeModel.objectLoadedPost();
+         this.delayMountCategoryModel.putInitParams(new DelayMountCategoryCC(parsed.delayMountArmorInSec,0,parsed.delayMountColorInSec,parsed.delayMountWeaponInSec));
+         this.delayMountCategoryModel.objectLoadedPost();
+
          this.garageModel.initMarket(marketItems);
          this.garageModel.selectFirstItemInDepot();
          //this.achievementService.setPanelPartition(1);
@@ -455,10 +531,14 @@ package scpacker.networking.protocol.packets.garage
          var _loc2_:Vector.<IGameObject> = new Vector.<IGameObject>();
          var _loc3_:IGameObject = this.garageSpace.getObjectByName(param1.itemId);
          _loc2_.push(_loc3_);
-         Model.object = _loc3_;
-         this.item3dModel.putInitParams(new Item3DCC(param1.mounted));
-         this.item3dModel.objectLoaded();
-         Model.popObject();
+
+         if(_loc3_.hasModel(Item3DModel))
+         {
+            Model.object = _loc3_;
+            this.item3dModel.putInitParams(new Item3DCC(param1.mounted));
+            this.item3dModel.objectLoaded();
+            Model.popObject();
+         }
 
          Model.object = this.garageGameObject;
          if(param1.mounted)
@@ -497,6 +577,37 @@ package scpacker.networking.protocol.packets.garage
       private function showAlert() : void
       {
          this.newPresentsShowingModel.showAlert();
+      }
+      
+      private function getGameClassForItem(item:Object) : IGameClass
+      {
+         if(item.remainingTimeInSec > 0)
+         {
+            return this.temporaryItemGameClass;
+         }
+         else if (EnumUtils.intToItemCategoryEnum(item.type) == ItemCategoryEnum.COLOR)
+         {
+            return this.coloringItemGameClass;
+         }
+         else if (
+            EnumUtils.intToItemCategoryEnum(item.type) == ItemCategoryEnum.GIVEN_PRESENT || 
+            EnumUtils.intToItemCategoryEnum(item.type) == ItemCategoryEnum.PRESENT
+         )
+         {
+            return this.presentItemGameClass;
+         }
+         else if (
+            EnumUtils.intToItemCategoryEnum(item.type) == ItemCategoryEnum.ARMOR || 
+            EnumUtils.intToItemCategoryEnum(item.type) == ItemCategoryEnum.WEAPON
+         )
+         {
+            return this._3dsItemGameClass;
+         }
+         else if (item.inventory || item.count != null)
+         {
+            return this.countableItemGameClass;
+         }
+         return this.countableItemGameClass;
       }
    }
 }

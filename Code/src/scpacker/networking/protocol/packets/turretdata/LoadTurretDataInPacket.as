@@ -4,6 +4,8 @@ package scpacker.networking.protocol.packets.turretdata
    
    public class LoadTurretDataInPacket extends AbstractPacket
    {
+      public static const id:int = -2124388778;
+
       public var json:String;
       
       public function LoadTurretDataInPacket(param1:String = "")
@@ -35,7 +37,7 @@ package scpacker.networking.protocol.packets.turretdata
       
       override public function getId() : int
       {
-         return -2124388778;
+         return id;
       }
    }
 }

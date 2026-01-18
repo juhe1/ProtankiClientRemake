@@ -145,6 +145,83 @@ package scpacker.networking.protocol
    import scpacker.networking.protocol.packets.statisticsdm.InitDMStatisticsInPacket;
    import scpacker.networking.protocol.packets.statisticsdm.RefreshUsersStatInPacket;
    import scpacker.networking.protocol.packets.statisticsdm.StatisticsDmPacketHandler;
+   import scpacker.networking.protocol.packets.statisticsteam.InitStatisticsTeamModelInPacket;
+   import scpacker.networking.protocol.packets.statisticsteam.StatisticsTeamChangeTeamScoreInPacket;
+   import scpacker.networking.protocol.packets.statisticsteam.StatisticsTeamChangeUserStatInPacket;
+   import scpacker.networking.protocol.packets.statisticsteam.StatisticsTeamPacketHandler;
+   import scpacker.networking.protocol.packets.statisticsteam.StatisticsTeamSwapTeamInPacket;
+   import scpacker.networking.protocol.packets.statisticsteam.StatisticsTeamUserConnectInPacket;
+   import scpacker.networking.protocol.packets.statisticsteam.StatisticsTeamUserLeftInPacket;
+   import scpacker.networking.protocol.packets.tdm.TdmPacketHandler;
+   import scpacker.networking.protocol.packets.tdm.LoadTdmPostInPacket;
+   import scpacker.networking.protocol.packets.turretdata.TurretDataPacketHandler;
+   import scpacker.networking.protocol.packets.turretdata.LoadTurretDataInPacket;
+   import scpacker.networking.protocol.packets.tank.TankPacketHandler;
+   import scpacker.networking.protocol.packets.tank.ActivateTankInPacket;
+   import scpacker.networking.protocol.packets.tank.ActivateEffectInPacket;
+   import scpacker.networking.protocol.packets.tank.StopEffectInPacket;
+   import scpacker.networking.protocol.packets.tank.KillTankInPacket;
+   import scpacker.networking.protocol.packets.tank.MoveAndSetTurretStateInPacket;
+   import scpacker.networking.protocol.packets.tank.MoveTankInPacket;
+   import scpacker.networking.protocol.packets.tank.MovementControlInPacket;
+   import scpacker.networking.protocol.packets.tank.PrepareToSpawnInPacket;
+   import scpacker.networking.protocol.packets.tank.RotateTurretInPacket;
+   import scpacker.networking.protocol.packets.tank.SetTankHealthInPacket;
+   import scpacker.networking.protocol.packets.tank.SetSpecificationInPacket;
+   import scpacker.networking.protocol.packets.tank.SetTankTemperatureInPacket;
+   import scpacker.networking.protocol.packets.tank.SpawnTankInPacket;
+   import scpacker.networking.protocol.packets.tank.UnloadTankInPacket;
+   import scpacker.networking.protocol.packets.tank.ClientMoveOutPacket;
+   import scpacker.networking.protocol.packets.tank.ClientMoveTankAndTurretOutPacket;
+   import scpacker.networking.protocol.packets.tank.ClientRotateTurretOutPacket;
+   import scpacker.networking.protocol.packets.tank.ReadyToSpawnEndOutPacket;
+   import scpacker.networking.protocol.packets.tank.ActivateTankOutPacket;
+   import scpacker.networking.protocol.packets.tank.MovementControlOutPacket;
+   import scpacker.networking.protocol.packets.tank.ReadyToPlaceOutPacket;
+   import scpacker.networking.protocol.packets.flamethrower.FlamethrowerPacketHandler;
+   import scpacker.networking.protocol.packets.flamethrower.FlamethrowerStartFireInPacket;
+   import scpacker.networking.protocol.packets.flamethrower.FlamethrowerStopFireInPacket;
+   import scpacker.networking.protocol.packets.flamethrower.FlamethrowerStartOutPacket;
+   import scpacker.networking.protocol.packets.flamethrower.FlamethrowerStopOutPacket;
+   import scpacker.networking.protocol.packets.flamethrower.FlamethrowerHitOutPacket;
+   import scpacker.networking.protocol.packets.damageindicator.DamageIndicatorPacketHandler;
+   import scpacker.networking.protocol.packets.damageindicator.ShowDamageForShooterInPacket;
+   import scpacker.networking.protocol.packets.controlpoints.ControlPointsPacketHandler;
+   import scpacker.networking.protocol.packets.controlpoints.LoadControlPointsCCInPacket;
+   import scpacker.networking.protocol.packets.controlpoints.PointCaptureStartedInPacket;
+   import scpacker.networking.protocol.packets.controlpoints.PointCaptureStoppedInPacket;
+   import scpacker.networking.protocol.packets.controlpoints.SetPointProgressInPacket;
+   import scpacker.networking.protocol.packets.controlpoints.SetPointStateInPacket;
+   import scpacker.networking.protocol.packets.controlpoints.TankEnteredPointZoneInPacket;
+   import scpacker.networking.protocol.packets.controlpoints.TankLeftPointZoneInPacket;
+   import scpacker.networking.protocol.packets.battlechat.BattleChatPacketHandler;
+   import scpacker.networking.protocol.packets.battlechat.ReceiveBattleChatInPacket;
+   import scpacker.networking.protocol.packets.battlechat.AddSpectatorTeamMessageInPacket;
+   import scpacker.networking.protocol.packets.battlechat.ReceiveBattleSystemChatInPacket;
+   import scpacker.networking.protocol.packets.battlechat.AddTeamMessageInPacket;
+   import scpacker.networking.protocol.packets.battlechat.BattleChatLoadedInPacket;
+   import scpacker.networking.protocol.packets.battlechat.BattleChatUpdateTeamHeaderInPacket;
+   import scpacker.networking.protocol.packets.battlechat.SendBattleChatOutPacket;
+   import scpacker.networking.protocol.packets.capturetheflag.CaptureTheFlagPacketHandler;
+   import scpacker.networking.protocol.packets.capturetheflag.DropFlagInPacket;
+   import scpacker.networking.protocol.packets.capturetheflag.FlagDeliveredInPacket;
+   import scpacker.networking.protocol.packets.capturetheflag.FlagTakenInPacket;
+   import scpacker.networking.protocol.packets.capturetheflag.LoadCaptureTheFlagCCInPacket;
+   import scpacker.networking.protocol.packets.capturetheflag.ReturnFlagToBaseInPacket;
+   import scpacker.networking.protocol.packets.capturetheflag.DropFlagOutPacket;
+   import scpacker.networking.protocol.packets.battlemine.BattleMinePacketHandler;
+   import scpacker.networking.protocol.packets.battlemine.ActivateMineInPacket;
+   import scpacker.networking.protocol.packets.battlemine.ExplodeMineInPacket;
+   import scpacker.networking.protocol.packets.battlemine.LoadBattleMinesCCInPacket;
+   import scpacker.networking.protocol.packets.battlemine.PutMineInPacket;
+   import scpacker.networking.protocol.packets.battlemine.RemoveMinesInPacket;
+   import scpacker.networking.protocol.packets.selfdestruct.SelfDestructPacketHandler;
+   import scpacker.networking.protocol.packets.selfdestruct.SuicideInPacket;
+   import scpacker.networking.protocol.packets.selfdestruct.SuicideOutPacket;
+   import scpacker.networking.protocol.packets.tankreloader.TankReloaderPacketHandler;
+   import scpacker.networking.protocol.packets.tankreloader.TankReloaderDieInPacket;
+   import scpacker.networking.protocol.packets.tankreloader.TankReloaDeathScheduledInPacket;
+   import scpacker.networking.protocol.packets.tankreloader.ReloadTankInPacket;
    
    public class PacketInitializer
    {
@@ -344,9 +421,110 @@ package scpacker.networking.protocol
          packetRegistry.registerPacket(new DmStatisticsUserConnectInPacket());
          packetRegistry.registerPacket(new DmStatisticsUserDisconnectInPacket());
 
+         // StatisticsTeam Packets
+         packetInvoker.registerPacketHandler(new StatisticsTeamPacketHandler());
+         packetRegistry.registerPacket(new StatisticsTeamChangeTeamScoreInPacket());
+         packetRegistry.registerPacket(new StatisticsTeamChangeUserStatInPacket());
+         packetRegistry.registerPacket(new InitStatisticsTeamModelInPacket());
+         packetRegistry.registerPacket(new StatisticsTeamSwapTeamInPacket());
+         packetRegistry.registerPacket(new StatisticsTeamUserConnectInPacket());
+         packetRegistry.registerPacket(new StatisticsTeamUserLeftInPacket());
+
          // Dm Packets
          packetInvoker.registerPacketHandler(new DmPacketHandler());
          packetRegistry.registerPacket(new LoadDmModelPostInPacket());
+
+         // Tdm Packets
+         packetInvoker.registerPacketHandler(new TdmPacketHandler());
+         packetRegistry.registerPacket(new LoadTdmPostInPacket());
+
+         // TurretData Packets
+         packetInvoker.registerPacketHandler(new TurretDataPacketHandler());
+         packetRegistry.registerPacket(new LoadTurretDataInPacket());
+
+         // Tank Packets
+         packetInvoker.registerPacketHandler(new TankPacketHandler());
+         packetRegistry.registerPacket(new ActivateTankInPacket());
+         packetRegistry.registerPacket(new ActivateEffectInPacket());
+         packetRegistry.registerPacket(new StopEffectInPacket());
+         packetRegistry.registerPacket(new KillTankInPacket());
+         packetRegistry.registerPacket(new MoveAndSetTurretStateInPacket());
+         packetRegistry.registerPacket(new MoveTankInPacket());
+         packetRegistry.registerPacket(new MovementControlInPacket());
+         packetRegistry.registerPacket(new PrepareToSpawnInPacket());
+         packetRegistry.registerPacket(new RotateTurretInPacket());
+         packetRegistry.registerPacket(new SetTankHealthInPacket());
+         packetRegistry.registerPacket(new SetSpecificationInPacket());
+         packetRegistry.registerPacket(new SetTankTemperatureInPacket());
+         packetRegistry.registerPacket(new SpawnTankInPacket());
+         packetRegistry.registerPacket(new UnloadTankInPacket());
+         packetRegistry.registerPacket(new ClientMoveOutPacket());
+         packetRegistry.registerPacket(new ClientMoveTankAndTurretOutPacket());
+         packetRegistry.registerPacket(new ClientRotateTurretOutPacket());
+         packetRegistry.registerPacket(new ReadyToSpawnEndOutPacket());
+         packetRegistry.registerPacket(new ActivateTankOutPacket());
+         packetRegistry.registerPacket(new MovementControlOutPacket());
+         packetRegistry.registerPacket(new ReadyToPlaceOutPacket());
+
+         // Flamethrower Packets
+         packetInvoker.registerPacketHandler(new FlamethrowerPacketHandler());
+         packetRegistry.registerPacket(new FlamethrowerStartFireInPacket());
+         packetRegistry.registerPacket(new FlamethrowerStopFireInPacket());
+         packetRegistry.registerPacket(new FlamethrowerStartOutPacket());
+         packetRegistry.registerPacket(new FlamethrowerStopOutPacket());
+         packetRegistry.registerPacket(new FlamethrowerHitOutPacket());
+
+         // DamageIndicator Packets
+         packetInvoker.registerPacketHandler(new DamageIndicatorPacketHandler());
+         packetRegistry.registerPacket(new ShowDamageForShooterInPacket());
+
+         // ControlPoints Packets
+         packetInvoker.registerPacketHandler(new ControlPointsPacketHandler());
+         packetRegistry.registerPacket(new LoadControlPointsCCInPacket());
+         packetRegistry.registerPacket(new PointCaptureStartedInPacket());
+         packetRegistry.registerPacket(new PointCaptureStoppedInPacket());
+         packetRegistry.registerPacket(new SetPointProgressInPacket());
+         packetRegistry.registerPacket(new SetPointStateInPacket());
+         packetRegistry.registerPacket(new TankEnteredPointZoneInPacket());
+         packetRegistry.registerPacket(new TankLeftPointZoneInPacket());
+
+         // BattleChat Packets
+         packetInvoker.registerPacketHandler(new BattleChatPacketHandler());
+         packetRegistry.registerPacket(new ReceiveBattleChatInPacket());
+         packetRegistry.registerPacket(new AddSpectatorTeamMessageInPacket());
+         packetRegistry.registerPacket(new ReceiveBattleSystemChatInPacket());
+         packetRegistry.registerPacket(new AddTeamMessageInPacket());
+         packetRegistry.registerPacket(new BattleChatLoadedInPacket());
+         packetRegistry.registerPacket(new BattleChatUpdateTeamHeaderInPacket());
+         packetRegistry.registerPacket(new SendBattleChatOutPacket());
+
+         // CaptureTheFlag Packets
+         packetInvoker.registerPacketHandler(new CaptureTheFlagPacketHandler());
+         packetRegistry.registerPacket(new DropFlagInPacket());
+         packetRegistry.registerPacket(new FlagDeliveredInPacket());
+         packetRegistry.registerPacket(new FlagTakenInPacket());
+         packetRegistry.registerPacket(new LoadCaptureTheFlagCCInPacket());
+         packetRegistry.registerPacket(new ReturnFlagToBaseInPacket());
+         packetRegistry.registerPacket(new DropFlagOutPacket());
+
+         // BattleMine Packets
+         packetInvoker.registerPacketHandler(new BattleMinePacketHandler());
+         packetRegistry.registerPacket(new ActivateMineInPacket());
+         packetRegistry.registerPacket(new ExplodeMineInPacket());
+         packetRegistry.registerPacket(new LoadBattleMinesCCInPacket());
+         packetRegistry.registerPacket(new PutMineInPacket());
+         packetRegistry.registerPacket(new RemoveMinesInPacket());
+
+         // SelfDestruct Packets
+         packetInvoker.registerPacketHandler(new SelfDestructPacketHandler());
+         packetRegistry.registerPacket(new SuicideInPacket());
+         packetRegistry.registerPacket(new SuicideOutPacket());
+
+         // TankReloader Packets
+         packetInvoker.registerPacketHandler(new TankReloaderPacketHandler());
+         packetRegistry.registerPacket(new TankReloaderDieInPacket());
+         packetRegistry.registerPacket(new TankReloaDeathScheduledInPacket());
+         packetRegistry.registerPacket(new ReloadTankInPacket());
       }
    }
 }

@@ -232,7 +232,7 @@ package alternativa.tanks.service.item
                {
                   _loc5_ = this.getModificationIndex(_loc4_);
                   _loc8_[_loc5_] = _loc4_;
-                  _loc9_++;
+                  _loc9_ = Math.max(_loc9_,_loc5_ + 1);
                }
             }
             _loc7_++;
@@ -241,7 +241,12 @@ package alternativa.tanks.service.item
          _loc7_ = 0;
          while(_loc7_ < _loc9_)
          {
-            modifcations[_loc7_] = _loc8_[_loc7_];
+
+            var mod:IGameObject = _loc8_[_loc7_];
+            if(mod != null)
+            {
+               modifcations.push(mod);
+            }
             _loc7_++;
          }
          this.itemToModifications[param1] = modifcations;

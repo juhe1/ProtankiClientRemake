@@ -182,9 +182,10 @@ package alternativa.tanks.battle.objects.tank
       
       public var turretCollisions:Vector.<CollisionBox> = new Vector.<CollisionBox>();
       
-      public function Tank(param1:IGameObject, _userId:String, param2:Number, param3:Number, param4:TankSoundEffects, param5:TankSkin, param6:TurretController, param7:LocalTurretController, param8:Weapon, param9:UserTitle, param10:BattleEventDispatcher, param11:int)
+      public function Tank(param1:IGameObject, _userId:String, param2:Number, param3:Number, param4:TankSoundEffects, param5:TankSkin, turretContr:TurretController, param7:LocalTurretController, param8:Weapon, param9:UserTitle, param10:BattleEventDispatcher, param11:int)
       {
          super();
+         this.user = param1;
          this.userId = _userId;
          this.skin = param5;
          this.sounds = param4;
@@ -206,7 +207,7 @@ package alternativa.tanks.battle.objects.tank
          this.bodyStateValidator = new BodyPhysicsStateValidator(this.tankBody.body,param10);
          this.weapon = param8;
          param8.init(this);
-         this._turretController = param6;
+         this._turretController = turretContr;
          this.title = param9;
          this.localTurretController = param7;
          logService = LogService(OSGi.getInstance().getService(LogService));
@@ -799,12 +800,11 @@ package alternativa.tanks.battle.objects.tank
          this.chassis.setTracksCollisionGroup(param1);
       }
       
-      public function setMovementParams(param1:int, param2:int, param3:int, param4:Boolean) : void
+      public function setMovementParams(param1:int, param2:int, param4:Boolean) : void
       {
          this.chassis.movementDirection = param1;
          this.chassis.turnDirection = param2;
-         this.chassis.turnSpeedNumber = param3;
-         this.chassis.inverseBackTurnMovement = param4;
+         this.chassis.reverseBackTurn = param4;
          if(!this.chassis.movementLocked)
          {
             if(param1 != 0)
@@ -1034,11 +1034,6 @@ package alternativa.tanks.battle.objects.tank
       public function setReverseTurnAcceleration(param1:Number) : void
       {
          this.chassis.setReverseTurnAcceleration(param1);
-      }
-      
-      public function setStabilizationAcceleration(param1:Number) : void
-      {
-         this.chassis.setStabilizationAcceleration(param1);
       }
       
       public function isInBattle() : Boolean

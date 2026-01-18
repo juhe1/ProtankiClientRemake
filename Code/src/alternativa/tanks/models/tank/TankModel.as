@@ -105,6 +105,7 @@ package alternativa.tanks.models.tank
    import projects.tanks.client.battleservice.model.battle.team.BattleTeam;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.battle.IBattleInfoService;
    import utils.TankNameGameObjectMapper;
+   import projects.tanks.client.battlefield.models.user.tank.TankCC;
    
    [ModelInfo]
    public class TankModel extends TankModelBase implements ITankModelBase, ObjectLoadListener, ObjectUnloadListener, ITankModel, LocalTankInfoService, ChassisControlListener, BattleEventListener, ITurretControllerListener
@@ -193,6 +194,8 @@ package alternativa.tanks.models.tank
       private var lastControlSentTime:int;
       
       private var smokeEffect:HullSmoke;
+
+      private var tankActivationTask:TankActivationTask;
       
       public function TankModel()
       {
@@ -285,7 +288,8 @@ package alternativa.tanks.models.tank
       public function objectLoaded() : void
       {
          this.registerUser();
-         putData(UserInfo,new UserInfo(battleUserInfoService.getUserName(getUserInfo().name),battleUserInfoService.getUserRank(getUserInfo().name),getInitParam().local,battleUserInfoService.getChatModeratorLevel(getUserInfo().name),battleUserInfoService.hasUserPremium(getUserInfo().name)));
+         var tankCC:TankCC = getInitParam();
+         putData(UserInfo,new UserInfo(battleUserInfoService.getUserName(tankCC.userId),battleUserInfoService.getUserRank(tankCC.userId),getInitParam().local,battleUserInfoService.getChatModeratorLevel(tankCC.userId),battleUserInfoService.hasUserPremium(tankCC.userId)));
          var _loc1_:TankConfiguration = TankConfiguration(object.adapt(TankConfiguration));
          var _loc2_:int = getDefaultMaxHealth();
          var _loc3_:IGameObject = _loc1_.hasDrone() ? _loc1_.getDrone() : null;
@@ -303,11 +307,11 @@ package alternativa.tanks.models.tank
       
       private function initUltimate() : void
       {
-         var _loc1_:IUltimateModel = IUltimateModel(object.adapt(IUltimateModel));
-         if(_loc1_.isUltimateEnabled())
-         {
-            IUltimateModel(object.adapt(IUltimateModel)).initIndicator();
-         }
+         //var _loc1_:IUltimateModel = IUltimateModel(object.adapt(IUltimateModel));
+         //if(_loc1_.isUltimateEnabled())
+         //{
+         //   IUltimateModel(object.adapt(IUltimateModel)).initIndicator();
+         //}
       }
       
       private function registerUser() : void
@@ -577,10 +581,29 @@ package alternativa.tanks.models.tank
          this.adjustIncomingCommandAndUpdateAnticheatTask(param1);
          this.evaluateMove(param1);
       }
+
+      [Obfuscation(rename="false")]
+      public function moveAndSetTurretState(param1:MoveCommand, param2:Number) : void
+      {
+         this.move(param1);
+         this.setTurretState(param2,param1.control);
+      }
+
+      private function setTurretState(param1:Number, param2:int) : void
+      {
+         var _loc4_:TurretController = null;
+         var _loc3_:Tank = this.getTank();
+         if(_loc3_ != null)
+         {
+            _loc4_ = this.getTurretController();
+            _loc4_.setDirectionImmediate(param1);
+            _loc4_.setControlState(param2);
+         }
+      }
       
       private function evaluateMove(param1:MoveCommand) : void
       {
-         this.setChassisState(param1.position,param1.orientation,param1.linearVelocity,param1.angularVelocity,param1.control,param1.turnSpeedNumber);
+         this.setChassisState(param1.position,param1.orientation,param1.linearVelocity,param1.angularVelocity,param1.control);
       }
       
       private function adjustIncomingCommandAndUpdateAnticheatTask(param1:MoveCommand) : void
@@ -592,7 +615,7 @@ package alternativa.tanks.models.tank
       
       private function placeTankToServerPosition(param1:Vector3d, param2:Vector3d) : void
       {
-         this.setChassisState(param1,param2,ZERO_VECTOR_3D,ZERO_VECTOR_3D,0,0);
+         this.setChassisState(param1,param2,ZERO_VECTOR_3D,ZERO_VECTOR_3D,0);
          this.getTank().getBody().saveState();
       }
       
@@ -630,9 +653,9 @@ package alternativa.tanks.models.tank
       }
       
       [Obfuscation(rename="false")]
-      public function movementControl(param1:int, param2:int) : void
+      public function movementControl(param1:int) : void
       {
-         this.getChassisController().setControlState(param1,param2);
+         this.getChassisController().setControlState(param1);
       }
       
       public function enableStateCorrection() : void
@@ -767,14 +790,13 @@ package alternativa.tanks.models.tank
       {
          var _loc3_:ITankModel = null;
          var _loc4_:Tank = null;
-         if(this.tanksInBattle[this.localObject.id] != null)
+         if(this.tanksInBattle[this.localObject.name] != null)
          {
             _loc3_ = ITankModel(this.localObject.adapt(ITankModel));
             _loc4_ = _loc3_.getTank();
             this.updateLastChassisInput(param1);
             _loc4_.getPhysicsState(this._moveCommand.position,this._moveCommand.orientation,this._moveCommand.linearVelocity,this._moveCommand.angularVelocity);
             this._moveCommand.control = param1;
-            this._moveCommand.turnSpeedNumber = TrackedChassis.TURN_SPEED_COUNT;
             this.sendMoveCommandFunc(battleService.getBattleRunner().getPhysicsTime(),param2);
          }
       }
@@ -784,14 +806,13 @@ package alternativa.tanks.models.tank
          var _loc3_:ITankModel = null;
          var _loc4_:Tank = null;
          var _loc5_:int = 0;
-         if(this.tanksInBattle[this.localObject.id] != null)
+         if(this.tanksInBattle[this.localObject.name] != null)
          {
             _loc3_ = ITankModel(this.localObject.adapt(ITankModel));
             _loc4_ = _loc3_.getTank();
             this.updateLastChassisInput(param1);
             _loc4_.getPreviousPhysicsState(this._moveCommand.position,this._moveCommand.orientation,this._moveCommand.linearVelocity,this._moveCommand.angularVelocity);
             this._moveCommand.control = param1;
-            this._moveCommand.turnSpeedNumber = TrackedChassis.TURN_SPEED_COUNT;
             _loc5_ = battleService.getBattleRunner().getPhysicsTime() - BattleRunner.PHYSICS_STEP_IN_MS;
             this.sendMoveCommandFunc(_loc5_,param2);
          }
@@ -816,7 +837,7 @@ package alternativa.tanks.models.tank
          {
             if(this._moveCommand.control != this.lastSentMoveCommand.control)
             {
-               this.sendMovementControlCommand(param1,this._moveCommand.control,this._moveCommand.turnSpeedNumber);
+               this.sendMovementControlCommand(param1,this._moveCommand.control);
             }
          }
          else
@@ -838,17 +859,16 @@ package alternativa.tanks.models.tank
          this.lastSentTime = param1;
       }
       
-      private function sendMovementControlCommand(param1:int, param2:int, param3:int) : void
+      private function sendMovementControlCommand(param1:int, param2:int) : void
       {
          if(param1 <= this.lastSentTime || param1 <= this.lastControlSentTime)
          {
             return;
          }
          Model.object = this.localObject;
-         server.movementControlCommand(param1,LocalTankParams.getSpecificationId(),param2,param3);
+         server.movementControlCommand(param1,LocalTankParams.getSpecificationId(),param2);
          Model.popObject();
          this.lastSentMoveCommand.control = param2;
-         this.lastSentMoveCommand.turnSpeedNumber = param3;
          this.lastControlSentTime = param1;
       }
       
@@ -925,6 +945,7 @@ package alternativa.tanks.models.tank
             LocalTankUnloadListener(_loc2_.getTurretObject().event(LocalTankUnloadListener)).localTankUnloaded(param1);
             battleService.setCameraTarget(null);
             this.localObject = null;
+            this.destroyActivationTask();
             this.chassisStateCorrectionTask = null;
             this.turretDirectionCorrectionTask = null;
             RegularUserTitleRenderer(getData(RegularUserTitleRenderer)).close();
@@ -939,6 +960,38 @@ package alternativa.tanks.models.tank
             clearData(ClientDeactivationSupport);
          }
       }
+
+      public function onReadyToActivate() : void
+      {
+         var _loc1_:ITankModel = null;
+         var _loc2_:Tank = null;
+         if(this.localObject != null)
+         {
+            _loc1_ = ITankModel(this.localObject.adapt(ITankModel));
+            _loc2_ = _loc1_.getTank();
+            if(_loc2_.getCollisionCount() == 0)
+            {
+               server.activateTankCommand();
+               this.destroyActivationTask();
+            }
+         }
+      }
+
+      public function addActivationTask() : void
+      {
+         this.destroyActivationTask();
+         this.tankActivationTask = new TankActivationTask(getTimer() + 3500,object);
+         battleService.getBattleRunner().addLogicUnit(this.tankActivationTask);
+      }
+
+      private function destroyActivationTask() : void
+      {
+         if(this.tankActivationTask != null)
+         {
+            battleService.getBattleRunner().removeLogicUnit(this.tankActivationTask);
+            this.tankActivationTask = null;
+         }
+      }
       
       private function createWeapon(param1:IGameObject) : Weapon
       {
@@ -950,7 +1003,7 @@ package alternativa.tanks.models.tank
          return _loc2_.createRemoteWeapon(object);
       }
       
-      public function setChassisState(param1:Vector3d, param2:Vector3d, param3:Vector3d, param4:Vector3d, param5:int, param6:int) : void
+      public function setChassisState(param1:Vector3d, param2:Vector3d, param3:Vector3d, param4:Vector3d, param5:int) : void
       {
          var _loc7_:Tank = this.getTank();
          if(_loc7_ != null)
@@ -959,7 +1012,7 @@ package alternativa.tanks.models.tank
             {
                _loc7_.setPhysicsState(param1,param2,param3,param4);
             }
-            this.getChassisController().setControlState(param5,param6);
+            this.getChassisController().setControlState(param5);
          }
       }
       
@@ -1006,7 +1059,7 @@ package alternativa.tanks.models.tank
             this.getWeaponController().unlockWeapon(TankControlLockBits.ALL);
          }
          var _loc3_:TankState = getInitParam().tankState;
-         this.setChassisState(_loc3_.position,_loc3_.orientation,ZERO_VECTOR_3D,ZERO_VECTOR_3D,_loc3_.chassisControl,_loc3_.chassisTurnSpeedNumber);
+         this.setChassisState(_loc3_.position,_loc3_.orientation,ZERO_VECTOR_3D,ZERO_VECTOR_3D,_loc3_.chassisControl);
          switch(getInitParam().logicState)
          {
             case TankLogicState.ACTIVATING:
@@ -1027,7 +1080,7 @@ package alternativa.tanks.models.tank
          if(this.isLocal())
          {
             _loc2_ = battleService.getBattle();
-            _loc3_ = param1 >= this.getTankSet().maxHealth && !IDroneModel(object.adapt(IDroneModel)).canOverheal();
+            _loc3_ = param1 >= this.getTankSet().maxHealth; //&& !IDroneModel(object.adapt(IDroneModel)).canOverheal();
             IInventoryModel(_loc2_.adapt(IInventoryModel)).lockItem(InventoryItemType.FIRST_AID,InventoryLock.FORCED,_loc3_);
          }
       }
@@ -1250,7 +1303,7 @@ package alternativa.tanks.models.tank
       
       public function addTankToBattle(param1:Tank) : void
       {
-         this.tanksInBattle[param1.getUser().id] = param1;
+         this.tanksInBattle[param1.getUserId()] = param1;
          param1.addToBattle(battleService);
          this.battleEventSupport.dispatchEvent(new TankAddedToBattleEvent(param1,this.isLocal()));
       }
@@ -1258,9 +1311,9 @@ package alternativa.tanks.models.tank
       public function removeTankFromBattle() : void
       {
          var _loc1_:Tank = this.getTank();
-         if(Boolean(this.tanksInBattle[_loc1_.getUser().id]))
+         if(Boolean(this.tanksInBattle[_loc1_.getUserId()]))
          {
-            delete this.tanksInBattle[_loc1_.getUser().id];
+            delete this.tanksInBattle[_loc1_.getUserId()];
             _loc1_.removeFromBattle();
             battleEventDispatcher.dispatchEvent(new TankRemovedFromBattleEvent(_loc1_));
          }
@@ -1315,7 +1368,7 @@ package alternativa.tanks.models.tank
          {
             return;
          }
-         var _loc9_:Boolean = this.tanksInBattle[object.id] != null;
+         var _loc9_:Boolean = this.tanksInBattle[object.name] != null;
          this.destroyTank(true);
          var _loc10_:Tank = this.initTank(_loc6_,_loc7_,_loc8_,param4,true);
          IDroneModel(object.adapt(IDroneModel)).initDrones(_loc10_,this.isLocal(),TankLogicState.NEW);

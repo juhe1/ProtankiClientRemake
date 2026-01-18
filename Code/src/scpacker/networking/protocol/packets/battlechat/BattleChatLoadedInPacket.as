@@ -1,10 +1,12 @@
-package scpacker.networking.protocol.packets.clientlayout
+package scpacker.networking.protocol.packets.battlechat
 {
    import scpacker.networking.protocol.AbstractPacket;
    
-   public class LoadLobby extends AbstractPacket
+   public class BattleChatLoadedInPacket extends AbstractPacket
    {
-      public function LoadLobby()
+      public static const id:int = -643105296;
+      
+      public function BattleChatLoadedInPacket()
       {
          super();
       }
@@ -15,17 +17,17 @@ package scpacker.networking.protocol.packets.clientlayout
       
       override public function initializeSelf() : AbstractPacket
       {
-         return new LoadLobby();
+         return new BattleChatLoadedInPacket();
       }
       
       override public function getPacketHandlerId() : int
       {
-         return 17;
+         return 61;
       }
       
       override public function getId() : int
       {
-         return 1452181070;
+         return id;
       }
    }
 }

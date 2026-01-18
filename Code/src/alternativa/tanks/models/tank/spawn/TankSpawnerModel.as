@@ -83,7 +83,6 @@ package alternativa.tanks.models.tank.spawn
       {
          var _loc8_:Boolean = false;
          var _loc9_:int = 0;
-         var _loc10_:int = 0;
          var _loc11_:MovementTimeoutAndDistanceAnticheatTask = null;
          var _loc12_:SpawnHandler = null;
          var _loc6_:ITankModel = ITankModel(object.adapt(ITankModel));
@@ -102,8 +101,7 @@ package alternativa.tanks.models.tank.spawn
             _loc6_.unlockMovementControl(TankControlLockBits.DEAD | TankControlLockBits.DISABLED);
             _loc8_ = Boolean(_loc6_.getUserInfo().isLocal);
             _loc9_ = _loc8_ ? int(_loc6_.getChassisController().getControlState()) : 0;
-            _loc10_ = _loc8_ ? TrackedChassis.TURN_SPEED_COUNT : 0;
-            _loc6_.setChassisState(param2,param3,ZERO_VECTOR_3D,ZERO_VECTOR_3D,_loc9_,_loc10_);
+            _loc6_.setChassisState(param2,param3,ZERO_VECTOR_3D,ZERO_VECTOR_3D,_loc9_);
             _loc11_ = _loc6_.getMovementAnticheatTask();
             if(Boolean(_loc11_))
             {

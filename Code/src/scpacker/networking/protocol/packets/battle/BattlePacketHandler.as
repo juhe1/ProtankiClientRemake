@@ -100,6 +100,70 @@ package scpacker.networking.protocol.packets.battle
    import projects.tanks.client.battleservice.model.statistics.StatisticsModelBase;
    import projects.tanks.client.battleservice.model.statistics.dm.StatisticsDMModelBase;
    import projects.tanks.client.battleservice.model.statistics.team.StatisticsTeamModelBase;
+   import alternativa.tanks.models.sfx.smoke.HullSmokeModel;
+   import alternativa.tanks.models.tank.hullcommon.HullCommon;
+   import alternativa.tanks.models.tank.hullcommon.HullCommonModel;
+   import alternativa.tanks.models.tank.armor.SimpleArmorModel;
+   import projects.tanks.client.battlefield.models.tankparts.armor.simple.SimpleArmorModelBase;
+   import projects.tanks.client.battlefield.models.tankparts.armor.common.HullCommonModelBase;
+   import projects.tanks.client.battlefield.models.tankparts.sfx.smoke.HullSmokeModelBase;
+   import projects.tanks.client.battlefield.models.tankparts.armor.common.HullCommonCC;
+   import projects.tanks.client.battlefield.models.tankparts.armor.simple.SimpleArmorCC;
+   import alternativa.tanks.models.weapon.common.WeaponCommonModel;
+   import projects.tanks.client.battlefield.models.tankparts.weapon.turret.RotatingTurretModelBase;
+   import projects.tanks.client.battlefield.models.tankparts.weapon.common.WeaponCommonModelBase;
+   import alternativa.tanks.models.weapon.turret.RotatingTurretModel;
+   import projects.tanks.client.battlefield.models.tankparts.weapon.common.WeaponCommonCC;
+   import projects.tanks.client.battlefield.models.tankparts.weapon.turret.RotatingTurretCC;
+   import alternativa.tanks.models.tank.configuration.TankConfigurationModel;
+   import projects.tanks.client.battlefield.models.user.configuration.TankConfigurationModelBase;
+   import alternativa.tanks.models.tank.suicude.SuicideModel;
+   import projects.tanks.client.battlefield.models.user.suicide.SuicideModelBase;
+   import alternativa.tanks.models.tank.speedcharacteristics.SpeedCharacteristicsModel;
+   import projects.tanks.client.battlefield.models.user.speedcharacteristics.SpeedCharacteristicsModelBase;
+   import alternativa.tanks.models.tank.temperature.TankTemperatureModel;
+   import projects.tanks.client.battlefield.models.user.temperature.TankTemperatureModelBase;
+   import alternativa.tanks.models.tank.reloader.TankReloaderModel;
+   import projects.tanks.client.battlefield.models.user.reloader.TankReloaderModelBase;
+   import alternativa.tanks.models.tank.spawn.TankSpawnerModel;
+   import projects.tanks.client.battlefield.models.user.spawn.TankSpawnerModelBase;
+   import alternativa.tanks.models.tank.pause.TankPauseModel;
+   import projects.tanks.client.battlefield.models.user.pause.TankPauseModelBase;
+   import alternativa.tanks.models.tank.turnover.TankTurnOverModel;
+   import projects.tanks.client.battlefield.models.user.turnover.TankTurnOverModelBase;
+   import alternativa.tanks.models.tank.damageindicator.DamageIndicatorModel;
+   import projects.tanks.client.battlefield.models.user.damageindicator.DamageIndicatorModelBase;
+   import projects.tanks.client.battlefield.models.user.tank.TankCC;
+   import scpacker.utils.EnumUtils;
+   import projects.tanks.client.battlefield.types.TankState;
+   import alternativa.tanks.battle.objects.tank.tankchassis.TrackedChassis;
+   import scpacker.utils.IdTool;
+   import projects.tanks.client.battlefield.models.user.configuration.TankConfigurationCC;
+   import projects.tanks.client.battlefield.models.user.suicide.SuicideCC;
+   import projects.tanks.client.battlefield.models.user.speedcharacteristics.SpeedCharacteristicsCC;
+   import projects.tanks.client.battlefield.models.user.spawn.TankSpawnerCC;
+   import projects.tanks.client.battlefield.models.user.resistance.TankResistancesCC;
+   import scpacker.weapon.WeaponSfxModelUtil;
+   import scpacker.weapon.WeaponModelUtil;
+   import platform.client.fp10.core.type.IGameClass;
+   import flash.utils.Dictionary;
+   import alternativa.tanks.models.tank.gearscore.BattleGearScoreModel;
+   import projects.tanks.client.battlefield.models.tankparts.gearscore.BattleGearScoreModelBase;
+   import projects.tanks.client.battlefield.models.tankparts.gearscore.BattleGearScoreCC;
+   import alternativa.tanks.models.tank.resistance.TankResistancesModel;
+   import projects.tanks.client.battlefield.models.user.resistance.TankResistancesModelBase;
+   import projects.tanks.client.battlefield.models.user.resistance.TankResistance;
+   import alternativa.tanks.models.tank.device.TankDeviceModel;
+   import projects.tanks.client.battlefield.models.user.device.TankDeviceModelBase;
+   import projects.tanks.client.battlefield.models.user.device.TankDeviceCC;
+   import projects.tanks.client.battlefield.models.tankparts.sfx.smoke.HullSmokeCC;
+   import alternativa.tanks.models.battle.gui.inventory.InventoryModel;
+   import projects.tanks.client.battlefield.models.battle.gui.inventory.InventoryModelBase;
+   import projects.tanks.client.battlefield.models.battle.gui.inventory.InventoryCC;
+   import projects.tanks.client.battlefield.models.user.bossstate.BossStateModelBase;
+   import alternativa.tanks.models.tank.bosstate.BossStateModel;
+   import projects.tanks.client.battlefield.models.user.bossstate.BossStateCC;
+   import utils.TankNameGameObjectMapper;
    
    public class BattlePacketHandler extends AbstractPacketHandler
    {
@@ -120,20 +184,43 @@ package scpacker.networking.protocol.packets.battle
       private var teamLightModel:TeamLightModel;
       private var colorAdjustModel:ColorAdjustModel;
       private var battlefieldBonusesModel:BattlefieldBonusesModel;
+      private var hullSmokeModel:HullSmokeModel;
+      private var hullCommonModel:HullCommonModel;
+      private var simpleArmorModel:SimpleArmorModel;
+      private var rotatingTurretModel:RotatingTurretModel;
+      private var weaponCommonModel:WeaponCommonModel;
+      private var tankConfigurationModel:TankConfigurationModel;
+      private var suicideModel:SuicideModel;
+      private var speedCharacteristicsModel:SpeedCharacteristicsModel;
+      private var tankTemperatureModel:TankTemperatureModel;
+      private var tankReloaderModel:TankReloaderModel;
+      private var tankSpawnerModel:TankSpawnerModel;
+      private var tankPauseModel:TankPauseModel;
+      private var tankTurnOverModel:TankTurnOverModel;
+      private var damageIndicatorModel:DamageIndicatorModel;
+      private var battleGearScoreModel:BattleGearScoreModel;
+      private var tankResistancesModel:TankResistancesModel;
+      private var tankDeviceModel:TankDeviceModel;
+      private var inventoryModel:InventoryModel;
+      private var bossStateModel:BossStateModel;
 
       private var userPropertiesService:IUserPropertiesService;
       private var lightingEffectsService:ILightingEffectsService;
 
       private var battleSpace:ISpace;
 
-      private var tankGameClass:GameClass;
-      private var turretGameClass:GameClass;
+      private var hullGameClass:GameClass;
+      private var coloringGameClass:GameClass;
       private var mapGameClass:GameClass;
-      private var battlefieldGameClass:GameClass;
+      private var battlefieldGameClass:IGameClass;
+      private var tankGameClass:GameClass;
 
       static public var battlefieldGameObject:IGameObject;
 
       private var tankExplosionCC:TankExplosionCC;
+      private var hullSmokeCC:HullSmokeCC;
+
+      private var turretGameClassDictionary:Dictionary = new Dictionary();
 
       public function BattlePacketHandler()
       {
@@ -157,22 +244,42 @@ package scpacker.networking.protocol.packets.battle
          this.teamLightModel = TeamLightModel(modelRegistry.getModel(TeamLightModelBase.modelId));
          this.colorAdjustModel = ColorAdjustModel(modelRegistry.getModel(ColorAdjustModelBase.modelId));
          this.battlefieldBonusesModel = BattlefieldBonusesModel(modelRegistry.getModel(BattlefieldBonusesModelBase.modelId));
+         this.hullSmokeModel = HullSmokeModel(modelRegistry.getModel(HullSmokeModelBase.modelId));
+         this.hullCommonModel = HullCommonModel(modelRegistry.getModel(HullCommonModelBase.modelId));
+         this.simpleArmorModel = SimpleArmorModel(modelRegistry.getModel(SimpleArmorModelBase.modelId));
+         this.weaponCommonModel = WeaponCommonModel(modelRegistry.getModel(WeaponCommonModelBase.modelId));
+         this.rotatingTurretModel = RotatingTurretModel(modelRegistry.getModel(RotatingTurretModelBase.modelId));
+         this.tankConfigurationModel = TankConfigurationModel(modelRegistry.getModel(TankConfigurationModelBase.modelId));
+         this.suicideModel = SuicideModel(modelRegistry.getModel(SuicideModelBase.modelId));
+         this.speedCharacteristicsModel = SpeedCharacteristicsModel(modelRegistry.getModel(SpeedCharacteristicsModelBase.modelId));
+         this.tankTemperatureModel = TankTemperatureModel(modelRegistry.getModel(TankTemperatureModelBase.modelId));
+         this.tankReloaderModel = TankReloaderModel(modelRegistry.getModel(TankReloaderModelBase.modelId));
+         this.tankSpawnerModel = TankSpawnerModel(modelRegistry.getModel(TankSpawnerModelBase.modelId));
+         this.tankPauseModel = TankPauseModel(modelRegistry.getModel(TankPauseModelBase.modelId));
+         this.tankTurnOverModel = TankTurnOverModel(modelRegistry.getModel(TankTurnOverModelBase.modelId));
+         this.damageIndicatorModel = DamageIndicatorModel(modelRegistry.getModel(DamageIndicatorModelBase.modelId));
+         this.battleGearScoreModel = BattleGearScoreModel(modelRegistry.getModel(BattleGearScoreModelBase.modelId));
+         this.tankResistancesModel = TankResistancesModel(modelRegistry.getModel(TankResistancesModelBase.modelId));
+         this.tankDeviceModel = TankDeviceModel(modelRegistry.getModel(TankDeviceModelBase.modelId));
+         this.inventoryModel = InventoryModel(modelRegistry.getModel(InventoryModelBase.modelId));
+         this.bossStateModel = BossStateModel(modelRegistry.getModel(BossStateModelBase.modelId));
 
          this.userPropertiesService = IUserPropertiesService(OSGi.getInstance().getService(IUserPropertiesService));
          this.tankUsersRegistry = TankUsersRegistry(OSGi.getInstance().getService(TankUsersRegistry));
          this.lightingEffectsService = ILightingEffectsService(OSGi.getInstance().getService(ILightingEffectsService));
 
-         var tankGameClassVector:Vector.<Long> = new Vector.<Long>();
-         tankGameClassVector.push(this.coloringModel.id);
-         tankGameClassVector.push(this.object3DSModel.id);
-         tankGameClassVector.push(this.engineModel.id);
-         this.tankGameClass = gameTypeRegistry.createClass(Long.getLong(14025,684260),tankGameClassVector);
+         var hullGameClassVector:Vector.<Long> = new Vector.<Long>();
+         hullGameClassVector.push(this.object3DSModel.id);
+         hullGameClassVector.push(this.engineModel.id);
+         hullGameClassVector.push(this.tankExplosionModel.id);
+         hullGameClassVector.push(this.hullSmokeModel.id);
+         hullGameClassVector.push(this.hullCommonModel.id);
+         hullGameClassVector.push(this.simpleArmorModel.id);
+         this.hullGameClass = gameTypeRegistry.createClass(Long.getLong(14025,684260),hullGameClassVector);
 
-         var turretGameClassVector:Vector.<Long> = new Vector.<Long>();
-         turretGameClassVector.push(this.coloringModel.id);
-         turretGameClassVector.push(this.object3DSModel.id);
-         turretGameClassVector.push(this.bcsHModel.id);
-         this.turretGameClass = gameTypeRegistry.createClass(Long.getLong(55443,68234),turretGameClassVector);
+         var coloringGameClassVector:Vector.<Long> = new Vector.<Long>();
+         coloringGameClassVector.push(this.coloringModel.id);
+         this.coloringGameClass = gameTypeRegistry.createClass(Long.getLong(14025,684460),coloringGameClassVector);
 
          var mapGameClassVector:Vector.<Long> = new Vector.<Long>();
          mapGameClassVector.push(this.battleMapModel.id);
@@ -185,7 +292,27 @@ package scpacker.networking.protocol.packets.battle
          battlefieldGameClassVector.push(this.battlefieldModel.id);
          battlefieldGameClassVector.push(this.battlefieldBonusesModel.id);
          battlefieldGameClassVector.push(StatisticsModelBase.modelId);
+         battlefieldGameClassVector.push(this.inventoryModel.id);
+         battlefieldGameClassVector.push(this.battleMinesModel.id);
          this.battlefieldGameClass = gameTypeRegistry.createClass(Long.getLong(150325,6843665),battlefieldGameClassVector);
+
+         var tankGameClassVector:Vector.<Long> = new Vector.<Long>();
+         tankGameClassVector.push(this.tankModel.id);
+         tankGameClassVector.push(this.tankConfigurationModel.id);
+         tankGameClassVector.push(this.suicideModel.id);
+         tankGameClassVector.push(this.speedCharacteristicsModel.id);
+         tankGameClassVector.push(this.tankTemperatureModel.id);
+         tankGameClassVector.push(this.tankReloaderModel.id);
+         tankGameClassVector.push(this.tankRankUpEffectModel.id);
+         tankGameClassVector.push(this.tankSpawnerModel.id);
+         tankGameClassVector.push(this.tankPauseModel.id);
+         tankGameClassVector.push(this.tankTurnOverModel.id);
+         tankGameClassVector.push(this.damageIndicatorModel.id);
+         tankGameClassVector.push(this.battleGearScoreModel.id);
+         tankGameClassVector.push(this.tankResistancesModel.id);
+         tankGameClassVector.push(this.tankDeviceModel.id);
+         tankGameClassVector.push(this.bossStateModel.id);
+         this.tankGameClass = gameTypeRegistry.createClass(Long.getLong(150325,6843665),tankGameClassVector);
 
          this.battleSpace = spaceRegistry.getSpace(Long.getLong(10568210,51255591));
       }
@@ -210,7 +337,7 @@ package scpacker.networking.protocol.packets.battle
                this.initBattle(param1 as InitBattleInPacket);
                break;
             case CreateTankInPacket.id:
-               //this.createTank(param1 as CreateTankInPacket);
+               this.createTank(param1 as CreateTankInPacket);
                break;
             case RemoveBonusBoxInPacket.id:
                //this.removeBonus(param1 as RemoveBonusBoxInPacket);
@@ -275,6 +402,8 @@ package scpacker.networking.protocol.packets.battle
 
          var bonusColorAdjust:Object = jsonObject.bonusColorAdjust;
          var mapBonusLightCC:MapBonusLightCC = new MapBonusLightCC();
+         mapBonusLightCC.hwColorAdjust = new ColorAdjustParams();
+         mapBonusLightCC.softColorAdjust = new ColorAdjustParams();
          if(bonusColorAdjust != null)
          {
             mapBonusLightCC.bonusLightIntensity = jsonObject.bonusLightIntensity;
@@ -294,9 +423,9 @@ package scpacker.networking.protocol.packets.battle
          Model.popObject();
 
          var colorAdjustCC:ColorAdjustCC = new ColorAdjustCC();
-         colorAdjustCC.frostParamsHW = new ColorAdjustParams(1,1,1.5,1,20,80,100,0);
+         colorAdjustCC.frostParamsHW = new ColorAdjustParams(1, 0, 1.5, 100, 1, 80, 1, 20);
          colorAdjustCC.frostParamsSoft = colorAdjustCC.frostParamsHW;
-         colorAdjustCC.heatParamsHW = new ColorAdjustParams(1,0.75,0.6,1,-16,-66,-66);
+         colorAdjustCC.heatParamsHW = new ColorAdjustParams(1, 0, 0.6, -40, 0.6, -20, 1.5, 40);
          colorAdjustCC.heatParamsSoft = colorAdjustCC.heatParamsHW;
 
          Model.object = mapGameObject;
@@ -332,9 +461,19 @@ package scpacker.networking.protocol.packets.battle
          battlefieldBonusesModelCC.bonusFallSpeed = 150;
          battlefieldBonusesModelCC.bonuses = new Vector.<BonusSpawnData>();
 
-	      battlefieldGameObject = battleSpace.createObject(Long.getLong(47926,64811),this.battlefieldGameClass,"Battlefield object");
+         battlefieldGameObject = battleSpace.rootObject; // battlefield object must be space root object
+         battlefieldGameObject.gameClass = battlefieldGameClass; 
          Model.object = battlefieldGameObject;
          this.battlefieldBonusesModel.putInitParams(battlefieldBonusesModelCC);
+         Model.popObject();
+
+         var inventoryCC:InventoryCC = new InventoryCC();
+         inventoryCC.ultimateEnabled = false;
+
+         Model.object = battlefieldGameObject;
+         this.inventoryModel.putInitParams(inventoryCC);
+         this.inventoryModel.objectLoaded();
+         this.inventoryModel.objectLoadedPost();
          Model.popObject();
 
          var battlefieldModelCC:BattlefieldCC = new BattlefieldCC();
@@ -343,7 +482,7 @@ package scpacker.networking.protocol.packets.battle
          battlefieldModelCC.battlefieldSounds = new BattlefieldSounds();
          battlefieldModelCC.battlefieldSounds.killSound = resourceRegistry.getResource(Long.getLong(0,jsonObject.tankExplosionSound)) as SoundResource;
          battlefieldModelCC.battlefieldSounds.battleFinishSound = battlefieldModelCC.battlefieldSounds.killSound; // dummy data
-         battlefieldModelCC.colorTransformMultiplier = 0.5;
+         battlefieldModelCC.colorTransformMultiplier = 1;
          battlefieldModelCC.idleKickPeriodMsec = jsonObject.kick_period_ms;
          battlefieldModelCC.map = mapGameObject;
 
@@ -363,7 +502,7 @@ package scpacker.networking.protocol.packets.battle
          battlefieldModelCC.respawnDuration = 3000;
          battlefieldModelCC.shadowMapCorrectionFactor = 0.5;
          //battlefieldModelCC.showAddressLink = param13;
-         battlefieldModelCC.spectator = true;//jsonObject.spectator;
+         battlefieldModelCC.spectator = jsonObject.spectator;
          battlefieldModelCC.withoutBonuses = false; // todo: implement without bonuses, if needed
          battlefieldModelCC.withoutDrones = true;
          battlefieldModelCC.withoutSupplies = false; // todo: implement without supplies
@@ -383,99 +522,204 @@ package scpacker.networking.protocol.packets.battle
             MultiframeImageResource(resourceRegistry.getResource(shockWaveTexture)),
             MultiframeImageResource(resourceRegistry.getResource(smokeTextureId))
          );
+
+         this.hullSmokeCC = new HullSmokeCC();
+         this.hullSmokeCC.alpha = jsonObject.dustAlpha;
+         this.hullSmokeCC.density = jsonObject.dustDensity;
+         this.hullSmokeCC.enabled = true;
+         this.hullSmokeCC.fadeTime = 1000;
+         this.hullSmokeCC.farDistance = jsonObject.dustFarDistance;
+         this.hullSmokeCC.nearDistance = jsonObject.dustNearDistance;
+         this.hullSmokeCC.particle = MultiframeImageResource(resourceRegistry.getResource(Long.getLong(0,jsonObject.smokeTextureId)));
+         this.hullSmokeCC.size = jsonObject.dustSize;
       }
       
-      //private function createTank(param1:CreateTankInPacket) : void
-      //{
-      //   var _loc9_:TankSpecification = null;
-      //   var _loc4_:TankState = null;
-      //   var _loc8_:TankRankUpEffectCC = null;
-      //   var _loc6_:Object = JSON.parse(param1.json);
-      //   var _loc7_:Object = JSON.parse(_loc6_.partsObject);
-      //   var _loc13_:ColoringCC = new ColoringCC();
-      //   var _loc11_:Object3DSCC = new Object3DSCC();
-      //   var _loc12_:Object3DSCC = new Object3DSCC();
-      //   var _loc2_:EngineCC = new EngineCC();
-      //   _loc2_.newname_2429__END = SoundResource(newname_122__END.getResource(Long.getLong(0,_loc7_.engineIdleSound)));
-      //   _loc2_.newname_2430__END = SoundResource(newname_122__END.getResource(Long.getLong(0,_loc7_.engineStartMovingSound)));
-      //   _loc2_.newname_2431__END = SoundResource(newname_122__END.getResource(Long.getLong(0,_loc7_.engineMovingSound)));
-      //   _loc2_.newname_2432__END = SoundResource(newname_122__END.getResource(Long.getLong(0,_loc7_.turretRotationSound)));
-      //   if(newname_122__END.getResource(Long.getLong(0,_loc6_.colormap_id)) is MultiframeImageResource)
-      //   {
-      //      _loc13_.animatedColoring = MultiframeImageResource(newname_122__END.getResource(Long.getLong(0,_loc6_.colormap_id)));
-      //   }
-      //   else
-      //   {
-      //      _loc13_.coloring = ImageResource(newname_122__END.getResource(Long.getLong(0,_loc6_.colormap_id)));
-      //   }
-      //   _loc12_.resourceId = Long.getLong(0,_loc6_.hullResource);
-      //   _loc11_.resourceId = Long.getLong(0,_loc6_.turretResource);
-      //   var _loc10_:TankParts = new TankParts();
-      //   _loc10_.newname_2428__END = new GameObject(Long.getLong(0,_loc6_.hullResource),this.tankGameClass,_loc6_.hull_id,null);
-      //   _loc10_.newname_2372__END = new GameObject(Long.getLong(0,_loc6_.turretResource),this.tankGameClass,_loc6_.turret_id,null);
-      //   _loc10_.newname_2459__END = new GameObject(Long.getLong(0,_loc6_.colormap_id),this.tankGameClass,_loc6_.colormap_id,null);
-      //   var _loc18_:* = _loc10_.newname_2428__END;
-      //   var _loc14_:Model = Model;
-      //   platform.client.fp10.core.model.impl.Model.objects[platform.client.fp10.core.model.impl.Model.objects.length] = platform.client.fp10.core.model.impl.Model.newname_1693__END;
-      //   platform.client.fp10.core.model.impl.Model.newname_1693__END = _loc18_;
-      //   this.object3DSModel.putInitParams(_loc12_);
-      //   this.engineModel.putInitParams(_loc2_);
-      //   Model.popObject();
-      //   var _loc19_:* = _loc10_.newname_2372__END;
-      //   var _loc15_:Model = Model;
-      //   platform.client.fp10.core.model.impl.Model.objects[platform.client.fp10.core.model.impl.Model.objects.length] = platform.client.fp10.core.model.impl.Model.newname_1693__END;
-      //   platform.client.fp10.core.model.impl.Model.newname_1693__END = _loc19_;
-      //   this.object3DSModel.putInitParams(_loc11_);
-      //   Model.popObject();
-      //   var _loc20_:* = _loc10_.newname_2459__END;
-      //   var _loc16_:Model = Model;
-      //   platform.client.fp10.core.model.impl.Model.objects[platform.client.fp10.core.model.impl.Model.objects.length] = platform.client.fp10.core.model.impl.Model.newname_1693__END;
-      //   platform.client.fp10.core.model.impl.Model.newname_1693__END = _loc20_;
-      //   this.coloringModel.putInitParams(_loc13_);
-      //   Model.popObject();
-      //   _loc9_ = new TankSpecification();
-      //   _loc9_.speed = _loc6_.maxSpeed;
-      //   _loc9_.newname_1012__END = _loc6_.maxTurnSpeed;
-      //   _loc9_.newname_2450__END = _loc6_.turret_turn_speed;
-      //   _loc9_.acceleration = _loc6_.acceleration;
-      //   _loc9_.dampingCoeff = _loc6_.dampingCoeff;
-      //   _loc9_.reverseAcceleration = _loc6_.reverseAcceleration;
-      //   _loc9_.reverseTurnAcceleration = _loc6_.reverseTurnAcceleration;
-      //   _loc9_.sideAcceleration = _loc6_.sideAcceleration;
-      //   _loc9_.turnAcceleration = _loc6_.turnAcceleration;
-      //   _loc9_.turretTurnAcceleration = _loc6_.turretTurnAcceleration;
-      //   if(!_loc6_.state_null)
-      //   {
-      //      _loc4_ = new TankState();
-      //      _loc4_.orientation = newname_2263__END.newname_7923__END(_loc6_.orientation);
-      //      _loc4_.position = newname_2263__END.newname_7923__END(_loc6_.position);
-      //      _loc4_.turretAngle = _loc6_.turretAngle;
-      //      _loc4_.turretControl = _loc6_.turretControl;
-      //   }
-      //   var _loc3_:ClientTank = new ClientTank();
-      //   _loc3_.health = _loc6_.health;
-      //   _loc3_.IncarnationID = _loc6_.incarnation;
-      //   _loc3_.self = _loc6_.nickname == this.userPropertiesService.userId;
-      //   _loc3_.newname_923__END = newname_2263__END.newname_7924__END(_loc6_.state);
-      //   _loc3_.newname_2371__END = _loc9_;
-      //   _loc3_.newname_2442__END = _loc4_;
-      //   _loc3_.teamType = _loc6_.team_type == "NONE" ? BattleTeam.newname_871__END : (_loc6_.team_type == "RED" ? BattleTeam.newname_701__END : BattleTeam.newname_700__END);
-      //   var _loc5_:ClientObject = new ClientObject(_loc6_.nickname);
-      //   this.tankModel.initObject(_loc5_,_loc6_.mass,_loc10_,_loc6_.impact_force,_loc6_.kickback,_loc6_.turretTurnAcceleration,_loc6_.turret_turn_speed,_loc6_.nickname);
-      //   WeaponsManager.newname_5980__END(_loc5_,_loc6_.turret_id,JSON.parse(_loc6_.sfxData),_loc10_.newname_2372__END);
-      //   this.tankModel.initTank(_loc5_,_loc3_,_loc10_,ImageResource(newname_122__END.getResource(Long.getLong(0,_loc6_.deadColoring))));
-      //   var _loc21_:* = null;
-      //   var _loc17_:Model = Model;
-      //   platform.client.fp10.core.model.impl.Model.objects[platform.client.fp10.core.model.impl.Model.objects.length] = platform.client.fp10.core.model.impl.Model.newname_1693__END;
-      //   platform.client.fp10.core.model.impl.Model.newname_1693__END = _loc21_;
-      //   if(this.tankRankUpEffectModel.newname_1637__END() == null)
-      //   {
-      //      _loc8_ = new TankRankUpEffectCC(ImageResource(newname_122__END.getResource(Long.getLong(0,_loc6_.beamTexture))),ImageResource(newname_122__END.getResource(Long.getLong(0,_loc6_.waveTexture))),ImageResource(newname_122__END.getResource(Long.getLong(0,_loc6_.sparkTexture))),SoundResource(newname_122__END.getResource(Long.getLong(0,_loc6_.levelUpSound))));
-      //      this.tankRankUpEffectModel.putInitParams(_loc8_);
-      //   }
-      //   this.tankRankUpEffectModel.objectLoaded();
-      //   Model.popObject();
-      //}
+      private function createTank(param1:CreateTankInPacket) : void
+      {
+         var jsonObject:Object = JSON.parse(param1.json);
+         var partsJsonObject:Object = JSON.parse(jsonObject.partsObject);
+         var sfxDataJsonObject:Object = JSON.parse(jsonObject.sfxData);
+
+         var engineCC:EngineCC = new EngineCC();
+         engineCC.engineIdleSound = SoundResource(resourceRegistry.getResource(Long.getLong(0,partsJsonObject.engineIdleSound)));
+         engineCC.engineStartMovingSound = SoundResource(resourceRegistry.getResource(Long.getLong(0,partsJsonObject.engineStartMovingSound)));
+         engineCC.engineMovingSound = SoundResource(resourceRegistry.getResource(Long.getLong(0,partsJsonObject.engineMovingSound)));
+         //_loc2_.turretRotationSound = SoundResource(resourceRegistry.getResource(Long.getLong(0,_loc7_.turretRotationSound)));
+
+         var coloringCC:ColoringCC = new ColoringCC();
+         if(resourceRegistry.getResource(Long.getLong(0,jsonObject.colormap_id)) is MultiframeImageResource)
+         {
+            coloringCC.animatedColoring = MultiframeImageResource(resourceRegistry.getResource(Long.getLong(0,jsonObject.colormap_id)));
+         }
+         else
+         {
+            coloringCC.coloring = ImageResource(resourceRegistry.getResource(Long.getLong(0,jsonObject.colormap_id)));
+         }
+
+         var hullObject3DCC:Object3DSCC = new Object3DSCC();
+         hullObject3DCC.resourceId = Long.getLong(0,jsonObject.hullResource);
+
+         var turretObject3DCC:Object3DSCC = new Object3DSCC();
+         turretObject3DCC.resourceId = Long.getLong(0,jsonObject.turretResource);
+
+         var hullGameObject:IGameObject = this.battleSpace.createObject(IdTool.getNextId(),this.hullGameClass,jsonObject.hull_id);
+         var turretGameObject:IGameObject = this.battleSpace.createObject(IdTool.getNextId(),this.getTurretGameClass(jsonObject.turret_id),jsonObject.turret_id);
+         var coloringGameObject:IGameObject = this.battleSpace.createObject(IdTool.getNextId(),this.coloringGameClass,jsonObject.colormap_id);
+
+         var hullCommonCC:HullCommonCC = new HullCommonCC();
+         hullCommonCC.damping = jsonObject.dampingCoeff;
+         hullCommonCC.mass = jsonObject.mass;
+         hullCommonCC.deadColoring = ImageResource(resourceRegistry.getResource(Long.getLong(0,jsonObject.deadColoring)));
+         hullCommonCC.lightingSFXEntity = new LightingSFXEntity();
+         hullCommonCC.lightingSFXEntity.effects = new Vector.<LightingEffectEntity>();
+         var explosionLightEffect:LightingEffectEntity = new LightingEffectEntity(
+            "explosion",
+            new Vector.<LightEffectItem>()
+         )
+         explosionLightEffect.items.push(new LightEffectItem(1, 2, "0xCCA538", 0, 0));
+         explosionLightEffect.items.push(new LightEffectItem(500, 1500, "0xCCA538", 1.2, 100));
+         explosionLightEffect.items.push(new LightEffectItem(1, 2, "0xCCA538", 0, 1200));
+         hullCommonCC.lightingSFXEntity.effects.push(explosionLightEffect);
+
+         var simpleArmorCC:SimpleArmorCC = new SimpleArmorCC();
+         simpleArmorCC.maxHealth = jsonObject.health;
+         
+         // Initialize hull models
+         Model.object = hullGameObject;
+         this.tankExplosionModel.putInitParams(this.tankExplosionCC);
+         this.tankExplosionModel.objectLoaded();
+
+         this.object3DSModel.putInitParams(hullObject3DCC);
+         this.engineModel.putInitParams(engineCC);
+         this.hullCommonModel.putInitParams(hullCommonCC);
+         this.simpleArmorModel.putInitParams(simpleArmorCC);
+         this.hullSmokeModel.putInitParams(this.hullSmokeCC);
+         Model.popObject();
+
+         var weaponCommonCC:WeaponCommonCC = new WeaponCommonCC();
+         weaponCommonCC.highlightingDistance = 100000;
+         weaponCommonCC.impactForce = jsonObject.impact_force;
+         weaponCommonCC.kickback = jsonObject.kickback;
+         weaponCommonCC.turretRotationAcceleration = jsonObject.turretTurnAcceleration;
+         weaponCommonCC.turretRotationSound = resourceRegistry.getResource(Long.getLong(0,partsJsonObject.turretRotationSound)) as SoundResource;
+         weaponCommonCC.turretRotationSpeed = jsonObject.turret_turn_speed;
+         
+         var rotatingTurretCC:RotatingTurretCC = new RotatingTurretCC();
+         rotatingTurretCC.angle = 0;
+         rotatingTurretCC.control = 0;
+
+         WeaponSfxModelUtil.addSfxModelsForWeapon(jsonObject.turret_id, sfxDataJsonObject, turretGameObject);
+         WeaponModelUtil.addModelsForWeapon(turretGameObject, jsonObject.turret_id);
+
+         // Initialize turret models
+         Model.object = turretGameObject;
+         this.object3DSModel.putInitParams(turretObject3DCC);
+         this.weaponCommonModel.putInitParams(weaponCommonCC);
+         this.rotatingTurretModel.putInitParams(rotatingTurretCC);
+         this.rotatingTurretModel.objectLoaded();
+         Model.popObject();
+
+         Model.object = coloringGameObject;
+         this.coloringModel.putInitParams(coloringCC);
+         Model.popObject();
+
+         var tankCC:TankCC = new TankCC();
+         tankCC.health = jsonObject.health;
+         tankCC.local = jsonObject.nickname == this.userPropertiesService.userId;
+         tankCC.logicState = EnumUtils.stringToTankLogicState(jsonObject.state);
+         tankCC.movementDistanceBorderUntilTankCorrection = 2000;
+         tankCC.movementTimeoutUntilTankCorrection = 4000;
+         tankCC.tankState = new TankState();
+         tankCC.tankState.angularVelocity = new Vector3d();
+         tankCC.tankState.chassisControl = 0;
+         tankCC.tankState.linearVelocity = new Vector3d();
+         tankCC.tankState.orientation = EnumUtils.objectToVector3d(jsonObject.orientation);
+         tankCC.tankState.position = EnumUtils.objectToVector3d(jsonObject.position);
+         tankCC.team = EnumUtils.stringToBattleTeam(jsonObject.team_type);
+         tankCC.userId = jsonObject.nickname;
+         
+         var tankConfigurationCC:TankConfigurationCC = new TankConfigurationCC();
+         tankConfigurationCC.coloringId = coloringGameObject.id;
+         tankConfigurationCC.hullId = hullGameObject.id;
+         tankConfigurationCC.weaponId = turretGameObject.id;
+         
+         var suicideCC:SuicideCC = new SuicideCC();
+         suicideCC.suicideDelayMS = 10000;
+         
+         var speedcharacteristicsCC:SpeedCharacteristicsCC = new SpeedCharacteristicsCC();
+         speedcharacteristicsCC.baseAcceleration = jsonObject.acceleration;
+         speedcharacteristicsCC.baseSpeed = jsonObject.maxSpeed;
+         speedcharacteristicsCC.baseTurnSpeed = jsonObject.maxTurnSpeed;
+         speedcharacteristicsCC.baseTurretRotationSpeed = jsonObject.turret_turn_speed;
+         speedcharacteristicsCC.currentAcceleration = jsonObject.acceleration;
+         speedcharacteristicsCC.currentSpeed = jsonObject.maxSpeed;
+         speedcharacteristicsCC.currentTurnSpeed = jsonObject.maxTurnSpeed;
+         speedcharacteristicsCC.currentTurretRotationSpeed = jsonObject.turret_turn_speed;
+         speedcharacteristicsCC.reverseAcceleration = jsonObject.reverseAcceleration;
+         speedcharacteristicsCC.reverseTurnAcceleration = jsonObject.reverseTurnAcceleration;
+         speedcharacteristicsCC.sideAcceleration = jsonObject.sideAcceleration;
+         speedcharacteristicsCC.turnAcceleration = jsonObject.turnAcceleration;
+         
+         var tankRankUpEffectCC:TankRankUpEffectCC = new TankRankUpEffectCC();
+         tankRankUpEffectCC.rankUpSound = SoundResource(resourceRegistry.getResource(Long.getLong(0,jsonObject.levelUpSound)));
+
+         var tankSpawnerCC:TankSpawnerCC = new TankSpawnerCC();
+         tankSpawnerCC.incarnationId = jsonObject.incarnation;
+         
+         var battleGearScoreCC:BattleGearScoreCC = new BattleGearScoreCC();
+         battleGearScoreCC.score = 0;
+
+         var tankResistancesCC:TankResistancesCC = new TankResistancesCC();
+         tankResistancesCC.resistances = new Vector.<TankResistance>();
+         
+         var tankDeviceCC:TankDeviceCC = new TankDeviceCC();
+
+         var bossStateCC:BossStateCC = new BossStateCC();
+         bossStateCC.enabled = false;
+
+         var tankGameObject:IGameObject = this.battleSpace.createObject(IdTool.getNextId(),this.tankGameClass,jsonObject.nickname);
+         Model.object = tankGameObject;
+         this.tankConfigurationModel.putInitParams(tankConfigurationCC);
+         this.suicideModel.putInitParams(suicideCC);
+         this.speedCharacteristicsModel.putInitParams(speedcharacteristicsCC);
+
+         this.tankRankUpEffectModel.putInitParams(tankRankUpEffectCC);
+         this.tankRankUpEffectModel.objectLoaded();
+
+         this.battleGearScoreModel.putInitParams(battleGearScoreCC);
+
+         this.tankSpawnerModel.putInitParams(tankSpawnerCC);
+
+         this.tankResistancesModel.putInitParams(tankResistancesCC);
+
+         this.tankDeviceModel.putInitParams(tankDeviceCC);
+
+         this.bossStateModel.putInitParams(bossStateCC);
+
+         this.tankModel.putInitParams(tankCC);
+         this.tankModel.objectLoaded();
+
+         this.tankSpawnerModel.objectLoaded();
+         this.tankResistancesModel.objectLoadedPost();
+         Model.popObject();
+         
+         TankNameGameObjectMapper.addMapping(jsonObject.nickname, tankGameObject);
+      }
+
+      // Turret GameClass will be modified by WeaponModelUtil and WeaponSfxModelUtil, so it must be unique for each turret type
+      private function getTurretGameClass(turretId:String):GameClass
+      {
+         var weaponName:String = turretId.split("_")[0];
+         if(this.turretGameClassDictionary[weaponName] == null)
+         {
+            var turretGameClassVector:Vector.<Long> = new Vector.<Long>();
+            turretGameClassVector.push(this.object3DSModel.id);
+            turretGameClassVector.push(this.weaponCommonModel.id);
+            turretGameClassVector.push(this.rotatingTurretModel.id);
+            this.turretGameClassDictionary[weaponName] = gameTypeRegistry.createClass(IdTool.getNextId(),turretGameClassVector);
+         }
+         return this.turretGameClassDictionary[weaponName];
+      }
 
       //private function initBonusBoxes(param1:InitBonusBoxesInPacket) : void
       //{

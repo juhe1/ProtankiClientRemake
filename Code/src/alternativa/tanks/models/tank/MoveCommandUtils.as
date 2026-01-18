@@ -35,7 +35,6 @@ package alternativa.tanks.models.tank
          copyVector3d(param1.orientation,param2.orientation);
          copyVector3d(param1.position,param2.position);
          param2.control = param1.control;
-         param2.turnSpeedNumber = param1.turnSpeedNumber;
       }
       
       public static function copyVector3d(param1:Vector3d, param2:Vector3d) : void
