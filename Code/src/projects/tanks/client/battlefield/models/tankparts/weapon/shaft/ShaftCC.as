@@ -42,8 +42,10 @@ package projects.tanks.client.battlefield.models.tankparts.weapon.shaft
       private var _targetingTransitionTime:int;
       
       private var _verticalTargetingSpeed:Number;
+
+      private var _weakeningCoeff:Number;
       
-      public function ShaftCC(param1:int = 0, param2:Number = 0, param3:Number = 0, param4:Number = 0, param5:Number = 0, param6:Number = 0, param7:Number = 0, param8:Number = 0, param9:Number = 0, param10:Number = 0, param11:ImageResource = null, param12:Number = 0, param13:Number = 0, param14:Number = 0, param15:Number = 0, param16:Number = 0, param17:Number = 0, param18:int = 0, param19:Number = 0)
+      public function ShaftCC(param1:int = 0, param2:Number = 0, param3:Number = 0, param4:Number = 0, param5:Number = 0, param6:Number = 0, param7:Number = 0, param8:Number = 0, param9:Number = 0, param10:Number = 0, param11:ImageResource = null, param12:Number = 0, param13:Number = 0, param14:Number = 0, param15:Number = 0, param16:Number = 0, param17:Number = 0, param18:int = 0, param19:Number = 0, param20:Number = 1)
       {
          super();
          this._afterShotPause = param1;
@@ -65,6 +67,7 @@ package projects.tanks.client.battlefield.models.tankparts.weapon.shaft
          this._targetingAcceleration = param17;
          this._targetingTransitionTime = param18;
          this._verticalTargetingSpeed = param19;
+         this._weakeningCoeff = param20;
       }
       
       public function get afterShotPause() : int
@@ -256,6 +259,16 @@ package projects.tanks.client.battlefield.models.tankparts.weapon.shaft
       {
          this._verticalTargetingSpeed = param1;
       }
+
+      public function get weakeningCoeff() : Number
+      {
+         return this._weakeningCoeff;
+      }
+
+      public function set weakeningCoeff(param1:Number) : void
+      {
+         this._weakeningCoeff = param1;
+      }
       
       public function toString() : String
       {
@@ -279,6 +292,7 @@ package projects.tanks.client.battlefield.models.tankparts.weapon.shaft
          _loc1_ += "targetingAcceleration = " + this.targetingAcceleration + " ";
          _loc1_ += "targetingTransitionTime = " + this.targetingTransitionTime + " ";
          _loc1_ += "verticalTargetingSpeed = " + this.verticalTargetingSpeed + " ";
+         _loc1_ += "weakeningCoeff = " + this.weakeningCoeff + " ";
          return _loc1_ + "]";
       }
    }

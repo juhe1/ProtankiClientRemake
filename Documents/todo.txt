@@ -12,13 +12,13 @@ Garage:
 
 Battle:
 - Gold box []
-- Supplie boxes []
+- Supplie boxes [x]
 - Inventory []
 - CTF/CP trigger bug fix [x]
 - CTF flag indicator bug fix [x]
 - Battle leaving [x]
-- Tank explosion bug []
-- Health bar bug []
+- Tank explosion bug [x]
+- Health bar bug [x]
 
 Weapons:
 - Smoky [x]
@@ -26,9 +26,9 @@ Weapons:
 - Twins [x]
 - Railgun [x]
 - Isida [x]
-- Thunder []
-- Hammer []
-- Freeze []
-- Ricochet []
-- Shaft []
-- Vulcan []
+- Thunder [x]
+- Hammer [x]
+- Freeze [x]
+- Ricochet [x]
+- Shaft [x]
+- Vulcan [x]

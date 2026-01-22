@@ -10,6 +10,7 @@ package alternativa.tanks.models.bonus.goldbonus
    import projects.tanks.client.battlefield.models.bonus.battle.bonusregions.BonusRegionData;
    import projects.tanks.client.battlefield.models.bonus.battle.goldbonus.GoldBonusesModelBase;
    import projects.tanks.client.battlefield.models.bonus.battle.goldbonus.IGoldBonusesModelBase;
+   import projects.tanks.client.battlefield.models.bonus.battle.goldbonus.GoldBonusCC;
    
    [ModelInfo]
    public class GoldBonusesModel extends GoldBonusesModelBase implements IGoldBonusesModelBase, IGoldBonus
@@ -58,6 +59,16 @@ package alternativa.tanks.models.bonus.goldbonus
          var _loc5_:BattlefieldGUI = BattlefieldGUI(object.adapt(BattlefieldGUI));
          _loc5_.showBattleMessage(MessageColor.ORANGE,param3);
          bonusRegionService.addAndShowRegion(param2);
+      }
+
+      public function notificationProtanki(message:String, sound:SoundResource) : void
+      {
+         if(sound != null)
+         {
+            battleService.soundManager.playSound(sound.sound);
+         }
+         var _loc5_:BattlefieldGUI = BattlefieldGUI(object.adapt(BattlefieldGUI));
+         _loc5_.showBattleMessage(MessageColor.ORANGE,message);
       }
       
       [Obfuscation(rename="false")]

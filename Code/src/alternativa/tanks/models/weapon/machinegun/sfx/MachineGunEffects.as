@@ -11,6 +11,8 @@ package alternativa.tanks.models.weapon.machinegun.sfx
    import alternativa.tanks.sfx.StaticObject3DPositionProvider;
    import alternativa.tanks.utils.objectpool.ObjectPool;
    import projects.tanks.client.battlefield.models.tankparts.weapons.machinegun.cc.MachineGunCC;
+   import alternativa.tanks.battle.objects.tank.tankskin.dynamic.DynamicSkin;
+   import alternativa.tanks.battle.objects.tank.tankskin.TankTurretDynamicSkin;
    
    public class MachineGunEffects
    {
@@ -19,12 +21,15 @@ package alternativa.tanks.models.weapon.machinegun.sfx
       public static var battleService:BattleService;
       
       private static const HIT_EFFECT_INTERVAL:Number = 0.1;
-      
       private static const HIT_EFFECT_OFFSET_TO_CAMERA:Number = 50;
       
       private static const BARREL_MIN_SPEED:Number = 0.001;
-      
       private static const BARREL_MAX_SPEED:Number = 15;
+
+      private static const BAND_STEP:Number = 0.59;
+      private static const BAND_STEP_TIME:Number = 0.1;
+
+      private static const POW:Number = 3;
       
       private const targetPosition:Vector3 = new Vector3();
       
@@ -53,17 +58,29 @@ package alternativa.tanks.models.weapon.machinegun.sfx
       private var tankSkin:TankSkin;
       
       private var wasShooting:Boolean = false;
+
+      private var barrelSkin:DynamicSkin;
+      private var muzzleSkin:DynamicSkin;
+      private var bandSkin:DynamicSkin;
+      private var bandMSkin:DynamicSkin;
+
+      private var bandTime:Number = 0;
       
       public function MachineGunEffects(param1:WeaponPlatform, param2:MachineGunCC, param3:MachineGunSFXData)
       {
          super();
          var _loc4_:TankSkin = param1.getSkin();
+         var _loc5_:TankTurretDynamicSkin = _loc4_.getTurretDynamicSkin();
          this.tankSkin = _loc4_;
          this.turret = _loc4_.getTurret3D();
          this.spinUpTime = param2.spinUpTime;
          this.spinDownTime = param2.spinDownTime;
          this.localMuzzlePoint = param1.getLocalMuzzlePosition();
          this.sfxData = param3;
+         this.barrelSkin = _loc5_.barrelSkin;
+         this.muzzleSkin = _loc5_.muzzleSkin;
+         this.bandSkin = _loc5_.bandSkin;
+         this.bandMSkin = _loc5_.bandMSkin;
          this.soundManager = new MachineGunSoundManager(this.turret,param3,this.spinUpTime);
          this.hitEffectTime = 0;
       }
@@ -117,6 +134,10 @@ package alternativa.tanks.models.weapon.machinegun.sfx
          this.turret = null;
          this.sfxData = null;
          this.tankSkin = null;
+         this.barrelSkin = null;
+         this.muzzleSkin = null;
+         this.bandSkin = null;
+         this.bandMSkin = null;
       }
       
       private function playSound(param1:Number, param2:Boolean) : void
@@ -157,6 +178,27 @@ package alternativa.tanks.models.weapon.machinegun.sfx
             this.hitEffectTime = 0;
             this.createHitGraphicEffect();
          }
+         this.bandTime += param1;
+         var _loc2_:Number = this.bandTime % BAND_STEP_TIME;
+         var _loc3_:int = this.bandTime / BAND_STEP_TIME;
+         var _loc4_:Number = _loc3_ * BAND_STEP + BAND_STEP * this.ease(_loc2_ / BAND_STEP_TIME,POW);
+         this.bandSkin.reset();
+         this.bandMSkin.reset();
+         this.bandSkin.rotate(_loc4_ % BAND_STEP);
+         this.bandMSkin.rotate(-_loc4_ * 0.7);
+      }
+
+      private function ease(param1:Number, param2:Number) : Number
+      {
+         if(param1 < 0.5)
+         {
+            param1 *= 2;
+            param1 = Math.pow(param1,param2);
+            return param1 / 2;
+         }
+         param1 = 1 - (param1 - 0.5) * 2;
+         param1 = Math.pow(param1,param2);
+         return (1 - param1) / 2 + 0.5;
       }
       
       private function createShotEffect() : void
@@ -203,6 +245,7 @@ package alternativa.tanks.models.weapon.machinegun.sfx
          this.clearTargetPosition(false);
          this.destroyMuzzleFlashGraphicEffect();
          this.destroyFireLightEffect();
+         this.bandTime = 0;
       }
       
       private function destroyMuzzleFlashGraphicEffect() : void
@@ -222,15 +265,16 @@ package alternativa.tanks.models.weapon.machinegun.sfx
             this.fireLightEffect = null;
          }
       }
-      
+
       private function updateBarrelSkin(param1:Number, param2:Number) : void
       {
          var _loc3_:Number = BARREL_MAX_SPEED * param2;
          if(_loc3_ > BARREL_MIN_SPEED)
          {
-            this.tankSkin.getTurretSkin().getMeshes()[1].rotationY = this.tankSkin.getTurretSkin().getMeshes()[1].rotationY + _loc3_ * param1;
+            this.barrelSkin.rotate(_loc3_ * param1);
+            this.muzzleSkin.rotate(_loc3_ * param1);
          }
-      }
+      }  
    }
 }
 

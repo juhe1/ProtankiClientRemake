@@ -8,7 +8,7 @@ package projects.tanks.client.battlefield.models.tankparts.weapon.shaft
       
       function activateManualTargeting(param1:IGameObject) : void;
       
-      function fire(param1:IGameObject, param2:Vector3d, param3:IGameObject, param4:Vector3d, param5:Number) : void;
+      function fire(param1:IGameObject, param2:Vector3d, param3:Vector.<IGameObject>, param4:Vector.<Vector3d>, param5:Number) : void;
       
       function stopManulaTargeting(param1:IGameObject) : void;
    }

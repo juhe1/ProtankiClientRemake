@@ -51,7 +51,7 @@ package scpacker.networking.protocol.packets.controlpoints
       private function loadControlPointsCC(param1:LoadControlPointsCCInPacket) : void
       {
          //OSGi.getInstance().registerService(IDominationModel,this.controlPointsModel);
-
+         BattlePacketHandler.battlefieldGameObject.gameClass.models.push(this.controlPointsModel.id);
          Model.object = BattlePacketHandler.battlefieldGameObject;
          this.controlPointsModel.putInitParams(param1.soundNotification);
          this.controlPointsModel.objectLoaded();

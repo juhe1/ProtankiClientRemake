@@ -153,7 +153,7 @@ package alternativa.tanks.models.weapon.thunder
             else
             {
                this.effects.createExplosionMark(gunParams.barrelOrigin,hitInfo.position);
-               this.callback.onShotStatic(param1,hitInfo.direction);
+               this.callback.onShotStatic(param1,hitInfo.position);
             }
          }
          else

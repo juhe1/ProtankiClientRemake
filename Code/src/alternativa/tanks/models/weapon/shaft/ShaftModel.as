@@ -38,6 +38,7 @@ package alternativa.tanks.models.weapon.shaft
    import projects.tanks.client.battlefield.models.tankparts.weapon.shaft.ShaftCC;
    import projects.tanks.client.battlefield.models.tankparts.weapon.shaft.ShaftModelBase;
    import projects.tanks.client.battlefield.types.Vector3d;
+   import alternativa.tanks.models.weapons.targeting.PenetratingTargetingSystem;
    
    [ModelInfo]
    public class ShaftModel extends ShaftModelBase implements IShaftModelBase, IWeaponModel, IShaftWeaponCallback, BattleEventListener, LocalTurretControllerFactory, ObjectLoadListener
@@ -86,25 +87,42 @@ package alternativa.tanks.models.weapon.shaft
          return _loc1_.getEffects();
       }
       
-      private static function createServerShotData(param1:Vector3, param2:Body, param3:Vector3) : ServerShotData
+      private static function createServerShotData(param1:Vector3, param2:Vector.<Body>, param3:Vector.<Vector3>) : ServerShotData
       {
-         var _loc4_:Vector3d = null;
-         var _loc5_:Vector3d = null;
-         var _loc6_:Vector3d = null;
-         var _loc7_:IGameObject = null;
-         var _loc8_:int = 0;
-         var _loc9_:Vector3 = null;
-         if(param2 != null)
+         var _loc4_:Vector.<Vector3d> = null;
+         var _loc5_:Vector.<IGameObject> = null;
+         var _loc6_:Vector.<int> = null;
+         var _loc7_:Vector.<Vector3d> = null;
+         var _loc8_:Vector.<Vector3d> = null;
+         var _loc9_:uint = 0;
+         var _loc10_:int = 0;
+         var _loc11_:Body = null;
+         var _loc12_:Tank = null;
+         var _loc13_:Vector3 = null;
+         if(param2 != null && param2.length > 0)
          {
-            _loc7_ = param2.tank.getUser();
-            _loc8_ = param2.tank.incarnation;
-            _loc9_ = param3;
-            _loc6_ = BattleUtils.getVector3d(_loc9_);
-            BattleUtils.globalToLocal(param2,_loc9_);
-            _loc4_ = BattleUtils.getVector3d(_loc9_);
-            _loc5_ = BattleUtils.getVector3d(param2.state.position);
+            _loc9_ = param2.length;
+            _loc4_ = new Vector.<Vector3d>(_loc9_);
+            _loc5_ = new Vector.<IGameObject>(_loc9_);
+            _loc6_ = new Vector.<int>(_loc9_);
+            _loc7_ = new Vector.<Vector3d>(_loc9_);
+            _loc8_ = new Vector.<Vector3d>(_loc9_);
+            _loc10_ = 0;
+            while(_loc10_ < _loc9_)
+            {
+               _loc11_ = param2[_loc10_];
+               _loc12_ = _loc11_.tank;
+               _loc6_[_loc10_] = _loc12_.incarnation;
+               _loc5_[_loc10_] = _loc12_.getUser();
+               _loc13_ = param3[_loc10_];
+               _loc8_[_loc10_] = BattleUtils.getVector3d(_loc13_);
+               BattleUtils.globalToLocal(_loc11_,_loc13_);
+               _loc4_[_loc10_] = BattleUtils.getVector3d(_loc13_);
+               _loc7_[_loc10_] = BattleUtils.getVector3d(_loc11_.state.position);
+               _loc10_++;
+            }
          }
-         return new ServerShotData(BattleUtils.getVector3dOrNull(param1),_loc4_,_loc7_,_loc8_,_loc5_,_loc6_);
+         return new ServerShotData(BattleUtils.getVector3dOrNull(param1),_loc4_,_loc5_,_loc6_,_loc7_,_loc8_);
       }
       
       public function objectLoaded() : void
@@ -130,27 +148,39 @@ package alternativa.tanks.models.weapon.shaft
       }
       
       [Obfuscation(rename="false")]
-      public function fire(param1:IGameObject, param2:Vector3d, param3:IGameObject, param4:Vector3d, param5:Number) : void
+      public function fire(param1:IGameObject, param2:Vector3d, param3:Vector.<IGameObject>, param4:Vector.<Vector3d>, param5:Number) : void
       {
-         var _loc7_:Vector3 = null;
-         var _loc8_:Body = null;
-         var _loc9_:Tank = null;
+         var _loc7_:Vector.<Vector3> = null;
+         var _loc8_:Vector.<Body> = null;
+         var _loc9_:int = 0;
+         var _loc10_:int = 0;
+         var _loc11_:IGameObject = null;
+         var _loc12_:Tank = null;
          var _loc6_:RemoteShaftWeapon = this.weapons[param1];
          if(_loc6_ != null)
          {
             _loc6_.stopManualTargeting();
             if(param3 != null)
             {
-               _loc9_ = this.tanksOnField[param3];
-               if(_loc9_ == null)
+               _loc9_ = int(param4.length);
+               _loc7_ = new Vector.<Vector3>(_loc9_);
+               _loc8_ = new Vector.<Body>(_loc9_);
+               _loc10_ = 0;
+               while(_loc10_ < _loc9_)
                {
-                  _loc8_ = null;
-               }
-               else
-               {
-                  _loc8_ = _loc9_.getBody();
-                  _loc7_ = BattleUtils.getVector3(param4);
-                  BattleUtils.localToGlobal(_loc9_.getBody(),_loc7_);
+                  _loc11_ = param3[_loc10_];
+                  _loc12_ = this.tanksOnField[_loc11_];
+                  if(_loc12_ == null)
+                  {
+                     _loc8_[_loc10_] = null;
+                  }
+                  else
+                  {
+                     _loc8_[_loc10_] = _loc12_.getBody();
+                     _loc7_[_loc10_] = BattleUtils.getVector3(param4[_loc10_]);
+                     BattleUtils.localToGlobal(_loc12_.getBody(),_loc7_[_loc10_]);
+                  }
+                  _loc10_++;
                }
             }
             _loc6_.showShotEffects(BattleUtils.getVector3OrNull(param2),_loc8_,_loc7_,param5);
@@ -174,7 +204,7 @@ package alternativa.tanks.models.weapon.shaft
          var _loc3_:WeaponCommonData = _loc2_.getCommonData();
          var _loc4_:SimpleWeaponController = new SimpleWeaponController();
          var _loc5_:ShaftObject = new ShaftObject(object);
-         var _loc6_:TargetingSystem = new ShaftTargetingSystem(param1,_loc5_,MAX_DISTANCE);
+         var _loc6_:TargetingSystem = new PenetratingTargetingSystem(param1,_loc5_,getInitParam().weakeningCoeff);
          var _loc7_:WeaponForces = new WeaponForces(getInitParam().aimingImpact * WeaponConst.BASE_IMPACT_FORCE.getNumber(),_loc3_.getRecoilForce());
          var _loc8_:Weapon = new ShaftWeapon(_loc5_,battleService,battleEventDispatcher,IShaftWeaponCallback(object.adapt(IShaftWeaponCallback)),getInitParam(),_loc7_,_loc4_,this.object3DToTank,LocalShaftController(_loc2_.getLocalTurretController()),param1,_loc6_,getWeakening());
          this.weapons[param1] = _loc8_;
@@ -193,18 +223,18 @@ package alternativa.tanks.models.weapon.shaft
          return _loc7_;
       }
       
-      public function onAimedShot(param1:int, param2:Vector3, param3:Body, param4:Vector3) : void
+      public function onAimedShot(param1:int, param2:Vector3, param3:Vector.<Body>, param4:Vector.<Vector3>) : void
       {
          var _loc5_:ServerShotData = createServerShotData(param2,param3,param4);
          this.battleEventSupport.dispatchEvent(StateCorrectionEvent.MANDATORY_UPDATE);
-         server.aimedShotCommand(param1,_loc5_.staticHitPoint,_loc5_.tank,_loc5_.hitPoint,_loc5_.incarnation,_loc5_.tankPosition,_loc5_.targetPositionGlobal);
+         server.aimedShotCommand(param1,_loc5_.staticHitPoint,_loc5_.tanks,_loc5_.hitPoints,_loc5_.incarnations,_loc5_.tankPositions,_loc5_.targetPositionsGlobal);
       }
       
-      public function onQuickShot(param1:int, param2:Vector3, param3:Body, param4:Vector3) : void
+      public function onQuickShot(param1:int, param2:Vector3, param3:Vector.<Body>, param4:Vector.<Vector3>) : void
       {
          var _loc5_:ServerShotData = createServerShotData(param2,param3,param4);
          this.battleEventSupport.dispatchEvent(StateCorrectionEvent.MANDATORY_UPDATE);
-         server.quickShotCommand(param1,_loc5_.staticHitPoint,_loc5_.tank,_loc5_.hitPoint,_loc5_.incarnation,_loc5_.tankPosition,_loc5_.targetPositionGlobal);
+         server.quickShotCommand(param1,_loc5_.staticHitPoint,_loc5_.tanks,_loc5_.hitPoints,_loc5_.incarnations,_loc5_.tankPositions,_loc5_.targetPositionsGlobal);
       }
       
       public function onBeginEnergyDrain(param1:int) : void
@@ -217,9 +247,9 @@ package alternativa.tanks.models.weapon.shaft
          server.activateManualTargetingCommand();
       }
       
-      public function onManualTargetingStop() : void
+      public function onManualTargetingStop(param1:int) : void
       {
-         server.stopManualTargetingCommand();
+         server.stopManualTargetingCommand(param1);
       }
       
       private function onTankAddedToBattleEvent(param1:TankAddedToBattleEvent) : void

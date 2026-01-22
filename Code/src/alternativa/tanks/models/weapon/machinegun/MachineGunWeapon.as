@@ -138,7 +138,7 @@ package alternativa.tanks.models.weapon.machinegun
                {
                   if(_loc5_)
                   {
-                     this.callback.targetUpdate(param1,this.hitInfo.direction,this.target);
+                     this.callback.targetUpdate(param1,this.hitInfo.direction,this.target,this.hitInfo.position);
                   }
                   else
                   {

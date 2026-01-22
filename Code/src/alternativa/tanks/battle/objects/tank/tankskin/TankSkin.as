@@ -168,19 +168,20 @@ package alternativa.tanks.battle.objects.tank.tankskin
          textureMaterialRegistry.releaseMaterial(param1.turretMaterial);
          textureMaterialRegistry.releaseMaterial(param1.leftTrackMaterial);
          textureMaterialRegistry.releaseMaterial(param1.rightTrackMaterial);
+         textureMaterialRegistry.releaseMaterial(param1.turretDynamicMaterial);
       }
       
       public function setNormalState() : void
       {
          this.hullMesh.setMaterialToAllFaces(this.normalMaterials.hullMaterial);
-         this.turretSkin.setMaterials(this.normalMaterials.turretMaterial);
+         this.turretSkin.setMaterials(this.normalMaterials.turretMaterial, this.normalMaterials.turretDynamicMaterial);
          this.setTracksMaterial(this.normalMaterials.leftTrackMaterial,this.normalMaterials.rightTrackMaterial);
       }
       
       public function setDeadState() : void
       {
          this.hullMesh.setMaterialToAllFaces(this.deadMaterials.hullMaterial);
-         this.turretSkin.setMaterials(this.deadMaterials.turretMaterial);
+         this.turretSkin.setMaterials(this.deadMaterials.turretMaterial, this.deadMaterials.turretDynamicMaterial);
          this.setTracksMaterial(this.deadMaterials.hullMaterial,this.deadMaterials.hullMaterial);
          this.resetColorTransform();
       }
@@ -266,6 +267,11 @@ package alternativa.tanks.battle.objects.tank.tankskin
       public function getTurretSkin() : TurretSkin
       {
          return this.turretSkin;
+      }
+
+      public function getTurretDynamicSkin() : TankTurretDynamicSkin
+      {
+         return this.turretSkin.getTurretDynamicSkin();
       }
       
       public function getHullDescriptor() : TankHullSkinCacheItem

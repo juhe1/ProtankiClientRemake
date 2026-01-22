@@ -65,7 +65,10 @@ package alternativa.tanks.sfx
          if(this.starting)
          {
             this.currentTime += param1;
-            this.startAnimation.updateByTime(this.light,this.currentTime,this.startTime);
+            if(this.startAnimation != null)
+            {
+               this.startAnimation.updateByTime(this.light,this.currentTime,this.startTime);
+            }
             if(this.currentTime >= this.startTime)
             {
                this.starting = false;

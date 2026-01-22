@@ -47,7 +47,7 @@ package alternativa.tanks.models.bonus.common
          }
          var _loc4_:Mesh = Mesh(_loc2_.clone());
          var _loc5_:TextureMaterial = materialRegistry.getMaterial(_loc3_);
-         _loc5_.resolution = 1;
+         _loc5_.resolution = _loc4_.calculateResolution(_loc3_.width,_loc3_.height);
          _loc4_.setMaterialToAllFaces(_loc5_);
          return _loc4_;
       }
@@ -98,7 +98,7 @@ package alternativa.tanks.models.bonus.common
          return TextureMaterial(_loc2_.material);
       }
       
-      public function getBonus(param1:String) : Bonus
+      public function getBonus(param1:Long) : Bonus
       {
          var _loc2_:BattleBonusData = BattleBonusData(getData(BattleBonusData));
          var _loc3_:BattleBonus = BattleBonus(battleService.getObjectPool().getObject(BattleBonus));

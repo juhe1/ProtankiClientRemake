@@ -32,17 +32,17 @@ package alternativa.tanks.models.weapon.shaft
             Model.popObject();
          }
       }
-      
-      public function onAimedShot(param1:int, param2:Vector3, param3:Body, param4:Vector3) : void
+
+      public function onAimedShot(param1:int, param2:Vector3, param3:Vector.<Body>, param4:Vector.<Vector3>) : void
       {
          var time:int = param1;
          var staticHitPoint:Vector3 = param2;
-         var target:Body = param3;
-         var targetHitPoint:Vector3 = param4;
+         var targets:Vector.<Body> = param3;
+         var targetHitPoints:Vector.<Vector3> = param4;
          try
          {
             Model.object = this.object;
-            this.impl.onAimedShot(time,staticHitPoint,target,targetHitPoint);
+            this.impl.onAimedShot(time,staticHitPoint,targets,targetHitPoints);
          }
          finally
          {
@@ -50,22 +50,23 @@ package alternativa.tanks.models.weapon.shaft
          }
       }
       
-      public function onQuickShot(param1:int, param2:Vector3, param3:Body, param4:Vector3) : void
+      public function onQuickShot(param1:int, param2:Vector3, param3:Vector.<Body>, param4:Vector.<Vector3>) : void
       {
          var time:int = param1;
          var staticHitPoint:Vector3 = param2;
-         var target:Body = param3;
-         var targetHitPoint:Vector3 = param4;
+         var targets:Vector.<Body> = param3;
+         var targetHitPoints:Vector.<Vector3> = param4;
          try
          {
             Model.object = this.object;
-            this.impl.onQuickShot(time,staticHitPoint,target,targetHitPoint);
+            this.impl.onQuickShot(time,staticHitPoint,targets,targetHitPoints);
          }
          finally
          {
             Model.popObject();
          }
       }
+      
       
       public function onManualTargetingStart() : void
       {
@@ -80,12 +81,12 @@ package alternativa.tanks.models.weapon.shaft
          }
       }
       
-      public function onManualTargetingStop() : void
+      public function onManualTargetingStop(param1:int) : void
       {
          try
          {
             Model.object = this.object;
-            this.impl.onManualTargetingStop();
+            this.impl.onManualTargetingStop(param1);
          }
          finally
          {

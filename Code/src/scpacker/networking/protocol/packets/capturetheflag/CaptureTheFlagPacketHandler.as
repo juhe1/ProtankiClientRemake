@@ -45,6 +45,7 @@ package scpacker.networking.protocol.packets.capturetheflag
       
       private function loadCaptureTheFlagCC(param1:LoadCaptureTheFlagCCInPacket) : void
       {
+         BattlePacketHandler.battlefieldGameObject.gameClass.models.push(this.ctfModel.id);
          Model.object = BattlePacketHandler.battlefieldGameObject;
          this.ctfModel.putInitParams(param1.cc);
          this.ctfModel.objectLoadedPost();

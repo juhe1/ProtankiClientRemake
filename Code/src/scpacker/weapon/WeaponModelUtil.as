@@ -71,6 +71,7 @@ package scpacker.weapon
    import projects.tanks.client.battlefield.models.tankparts.weapons.common.stream.StreamWeaponCommunicationModelBase;
    import platform.client.fp10.core.type.IGameObject;
    import scpacker.utils.CoreUtils;
+   import projects.tanks.client.battlefield.models.tankparts.weapons.common.discrete.DiscreteWeaponCommunicationModelBase;
    
    public class WeaponModelUtil
    {
@@ -184,6 +185,7 @@ package scpacker.weapon
                _loc9_.targetingAcceleration = specialEntityJsonObject.targetingAcceleration;
                _loc9_.targetingTransitionTime = specialEntityJsonObject.targetingTransitionTime;
                _loc9_.verticalTargetingSpeed = specialEntityJsonObject.vertical_targeting_speed;
+               _loc9_.weakeningCoeff = specialEntityJsonObject.weakeningCoeff;
 
                CoreUtils.addModelToGameClass(weaponObject, ShaftModelBase.modelId);
                CoreUtils.addModelToGameClass(weaponObject, LaserPointerModelBase.modelId);
@@ -225,7 +227,7 @@ package scpacker.weapon
                _loc10_.energyCapacity = specialEntityJsonObject.energyCapacity;
                _loc10_.energyPerShot = specialEntityJsonObject.energyPerShot;
                _loc10_.energyRechargeSpeed = specialEntityJsonObject.energyRechargeSpeed;
-               //_loc10_.maxRicochetCount = _loc8_.maxRicochetCount;
+               _loc10_.maxRicochetCount = specialEntityJsonObject.maxRicochetCount;
                _loc10_.shellRadius = specialEntityJsonObject.shellRadius;
                _loc10_.shellSpeed = specialEntityJsonObject.shellSpeed;
                _loc10_.shotDistance = specialEntityJsonObject.shotDistance;
@@ -403,6 +405,7 @@ package scpacker.weapon
       private static function initializeDiscreteShotModel(weaponObject:IGameObject, weaponData:WeaponData):void {
          var discreteShotModel:DiscreteShotModelBase = DiscreteShotModelBase(modelRegistry.getModel(DiscreteShotModelBase.modelId));
          CoreUtils.addModelToGameClass(weaponObject, DiscreteShotModelBase.modelId);
+         CoreUtils.addModelToGameClass(weaponObject, DiscreteWeaponCommunicationModelBase.modelId);
 
          var shotCC:ShotCC = new ShotCC();
          shotCC.reloadMsec = weaponData.reload;

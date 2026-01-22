@@ -6,6 +6,7 @@ package scpacker.networking.protocol.codec.custom
    import scpacker.networking.protocol.ProtocolInitializer;
    import scpacker.networking.protocol.codec.ICodec;
    
+   // NOTE: Doesn't work, because i commented one line. But this is never used in the original code, so doesn't matter.
    public class CodecBonusSpawnData implements ICodec
    {
       public const optionalVector:Boolean = false;
@@ -32,7 +33,7 @@ package scpacker.networking.protocol.codec.custom
       public function decode(param1:ByteArray) : Object
       {
          var _loc2_:BonusSpawnData = new BonusSpawnData();
-         _loc2_.bonusId = this.newname_4396__END.decode(param1) as String;
+         //_loc2_.bonusId = this.newname_4396__END.decode(param1) as String;
          _loc2_.lifeTime = this.newname_4397__END.decode(param1) as int;
          _loc2_.spawnPosition = this.newname_4398__END.decode(param1) as Vector3d;
          return _loc2_;

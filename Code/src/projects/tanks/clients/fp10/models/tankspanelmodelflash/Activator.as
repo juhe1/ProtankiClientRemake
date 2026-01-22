@@ -75,6 +75,8 @@ package projects.tanks.clients.fp10.models.tankspanelmodelflash
    import alternativa.tanks.gui.alerts.ItemsAlert;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.friend.battleinvite.IBattleInviteService;
    import alternativa.tanks.service.settings.SettingsService;
+   import alternativa.tanks.model.settings.SettingsModel;
+   import alternativa.tanks.model.useremailandpassword.PasswordService;
    
    public class Activator implements IBundleActivator
    {
@@ -2923,55 +2925,55 @@ package projects.tanks.clients.fp10.models.tankspanelmodelflash
          //{
          //   return RulesUpdateShowingModel.dialogService;
          //});
-         //osgi.injectService(IAlertService,function(param1:Object):void
-         //{
-         //   SettingsModel.alertService = IAlertService(param1);
-         //},function():IAlertService
-         //{
-         //   return SettingsModel.alertService;
-         //});
-         //osgi.injectService(IBattleInviteService,function(param1:Object):void
-         //{
-         //   SettingsModel.battleInviteService = IBattleInviteService(param1);
-         //},function():IBattleInviteService
-         //{
-         //   return SettingsModel.battleInviteService;
-         //});
-         //osgi.injectService(FullscreenService,function(param1:Object):void
-         //{
-         //   SettingsModel.fullscreenService = FullscreenService(param1);
-         //},function():FullscreenService
-         //{
-         //   return SettingsModel.fullscreenService;
-         //});
-         //osgi.injectService(ILocaleService,function(param1:Object):void
-         //{
-         //   SettingsModel.localeService = ILocaleService(param1);
-         //},function():ILocaleService
-         //{
-         //   return SettingsModel.localeService;
-         //});
-         //osgi.injectService(IPanelView,function(param1:Object):void
-         //{
-         //   SettingsModel.panelView = IPanelView(param1);
-         //},function():IPanelView
-         //{
-         //   return SettingsModel.panelView;
-         //});
-         //osgi.injectService(PasswordService,function(param1:Object):void
-         //{
-         //   SettingsModel.passwordService = PasswordService(param1);
-         //},function():PasswordService
-         //{
-         //   return SettingsModel.passwordService;
-         //});
-         //osgi.injectService(ISettingsService,function(param1:Object):void
-         //{
-         //   SettingsModel.settingsService = ISettingsService(param1);
-         //},function():ISettingsService
-         //{
-         //   return SettingsModel.settingsService;
-         //});
+         osgi.injectService(IAlertService,function(param1:Object):void
+         {
+            SettingsModel.alertService = IAlertService(param1);
+         },function():IAlertService
+         {
+            return SettingsModel.alertService;
+         });
+         osgi.injectService(IBattleInviteService,function(param1:Object):void
+         {
+            SettingsModel.battleInviteService = IBattleInviteService(param1);
+         },function():IBattleInviteService
+         {
+            return SettingsModel.battleInviteService;
+         });
+         osgi.injectService(FullscreenService,function(param1:Object):void
+         {
+            SettingsModel.fullscreenService = FullscreenService(param1);
+         },function():FullscreenService
+         {
+            return SettingsModel.fullscreenService;
+         });
+         osgi.injectService(ILocaleService,function(param1:Object):void
+         {
+            SettingsModel.localeService = ILocaleService(param1);
+         },function():ILocaleService
+         {
+            return SettingsModel.localeService;
+         });
+         osgi.injectService(IPanelView,function(param1:Object):void
+         {
+            SettingsModel.panelView = IPanelView(param1);
+         },function():IPanelView
+         {
+            return SettingsModel.panelView;
+         });
+         osgi.injectService(PasswordService,function(param1:Object):void
+         {
+            SettingsModel.passwordService = PasswordService(param1);
+         },function():PasswordService
+         {
+            return SettingsModel.passwordService;
+         });
+         osgi.injectService(ISettingsService,function(param1:Object):void
+         {
+            SettingsModel.settingsService = ISettingsService(param1);
+         },function():ISettingsService
+         {
+            return SettingsModel.settingsService;
+         });
          //osgi.injectService(IAlertService,function(param1:Object):void
          //{
          //   SocialNetworkPanelModel.alertService = IAlertService(param1);
@@ -3584,7 +3586,7 @@ package projects.tanks.clients.fp10.models.tankspanelmodelflash
          //modelRegister.add(new ReferralsModel());
          //modelRegister.add(new NewReferralsNotifierModel());
          //modelRegister.add(new RulesUpdateShowingModel());
-         //modelRegister.add(new SettingsModel());
+         modelRegister.add(new SettingsModel());
          //modelRegister.add(new SocialNetworkPanelModel());
          //modelRegister.add(new SNGroupReminderModel());
          //modelRegister.add(new TutorialHintsModel());

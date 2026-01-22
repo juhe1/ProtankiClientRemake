@@ -63,7 +63,7 @@ package alternativa.tanks.models.weapons.stream
          }
       }
       
-      public function targetUpdate(param1:int, param2:Vector3, param3:Tank) : void
+      public function targetUpdate(param1:int, param2:Vector3, param3:Tank, position:Vector3) : void
       {
          var i:int = 0;
          var m:StreamWeaponCommunication = null;
@@ -77,7 +77,7 @@ package alternativa.tanks.models.weapons.stream
             while(i < this.impl.length)
             {
                m = StreamWeaponCommunication(this.impl[i]);
-               m.targetUpdate(clientTime,direction,target);
+               m.targetUpdate(clientTime,direction,target, position);
                i++;
             }
          }

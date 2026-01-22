@@ -45,17 +45,31 @@ package alternativa.tanks.models.weapon.shaft
          this.speedCharacteristics = param5;
       }
       
-      private static function getShotDirection(param1:Vector3, param2:Vector3, param3:Vector3) : Vector3
+      private static function getShotDirection(param1:Vector3, param2:Vector3, param3:Vector.<Vector3>) : Vector3
       {
+         var _loc4_:Vector3 = null;
+         var _loc5_:int = 0;
+         var _loc6_:Vector3 = null;
          if(param2 != null)
          {
             return shotDirection.diff(param2,param1).normalize();
          }
-         if(param3 == null)
+         _loc5_ = param3.length - 1;
+         while(_loc5_ >= 0)
          {
-            param3 = allGunParams.direction;
+            _loc6_ = param3[_loc5_];
+            if(_loc6_ != null)
+            {
+               _loc4_ = _loc6_;
+               break;
+            }
+            _loc5_--;
          }
-         return shotDirection.diff(param3,param1).normalize();
+         if(_loc4_ == null)
+         {
+            _loc4_ = allGunParams.direction;
+         }
+         return shotDirection.diff(_loc4_,param1).normalize();
       }
       
       public function init(param1:WeaponPlatform) : void
@@ -119,7 +133,7 @@ package alternativa.tanks.models.weapon.shaft
          this.weaponPlatform.lockMovement(false);
       }
       
-      public function showShotEffects(param1:Vector3, param2:Body, param3:Vector3, param4:Number) : void
+      public function showShotEffects(param1:Vector3, param2:Vector.<Body>, param3:Vector.<Vector3>, param4:Number) : void
       {
          var _loc5_:Vector3 = null;
          this.weaponPlatform.getAllGunParams(allGunParams);
@@ -136,23 +150,33 @@ package alternativa.tanks.models.weapon.shaft
          }
       }
       
-      private function applyImpactForce(param1:Body, param2:Vector3, param3:Vector3, param4:Number) : void
+      private function applyImpactForce(param1:Vector.<Body>, param2:Vector.<Vector3>, param3:Vector3, param4:Number) : void
       {
          var _loc5_:Number = NaN;
-         var _loc6_:Tank = null;
-         if(param1 == null)
+         var _loc6_:int = 0;
+         var _loc7_:Body = null;
+         var _loc8_:Vector3 = null;
+         var _loc9_:Tank = null;
+         if(param1 != null)
          {
-            return;
-         }
-         if(Vector3.isFiniteVector(param3))
-         {
-            _loc5_ = param4 * WeaponConst.BASE_IMPACT_FORCE.getNumber();
-            if(param1 != null && param1.tank != null)
+            if(Vector3.isFiniteVector(param3))
             {
-               if(Vector3.isFiniteVector(param2))
+               _loc5_ = param4 * WeaponConst.BASE_IMPACT_FORCE.getNumber();
+               _loc6_ = 0;
+               while(_loc6_ < param1.length)
                {
-                  _loc6_ = param1.tank;
-                  _loc6_.applyWeaponHit(param2,param3,_loc5_);
+                  _loc7_ = param1[_loc6_];
+                  if(_loc7_ != null && _loc7_.tank != null)
+                  {
+                     _loc8_ = param2[_loc6_];
+                     if(Vector3.isFiniteVector(_loc8_))
+                     {
+                        _loc9_ = _loc7_.tank;
+                        _loc9_.applyWeaponHit(_loc8_,param3,_loc5_);
+                     }
+                  }
+                  _loc5_ *= this.shaftCC.weakeningCoeff;
+                  _loc6_++;
                }
             }
          }

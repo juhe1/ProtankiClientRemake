@@ -68,6 +68,7 @@ package alternativa.tanks.models.weapon.shaft
    import projects.tanks.client.battlefield.models.tankparts.weapon.shaft.ShaftCC;
    import projects.tanks.client.battleservice.model.battle.team.BattleTeam;
    import projects.tanks.client.garage.models.item.properties.ItemProperty;
+   import alternativa.tanks.models.weapon.railgun.RailgunShotResult;
    
    public class ShaftWeapon extends BattleRunnerProvider implements Weapon, LocalWeapon, LogicUnit, IShaftWeapon
    {
@@ -513,10 +514,10 @@ package alternativa.tanks.models.weapon.shaft
          this.cameraController.readCameraDirection(_direction);
          var _loc4_:Number = param1 - this.getEnergy(_loc2_);
          this.effects.createHitMark(allGunParams.barrelOrigin,_loc3_.staticHitPoint);
-         this.createShotEffects(_loc3_.staticHitPoint,_loc3_.targetHitPoint,_direction);
-         this.applyImpactForceToTarget(_loc3_.target,_loc3_.targetHitPoint,this.getAimedShotImpactForce(_loc4_),_direction);
+         this.createShotEffects(_loc3_.staticHitPoint,_loc3_.targetHitPoints,_direction);
+         this.applyImpactForceToTarget(_loc3_.targets,_loc3_.targetHitPoints,this.getAimedShotImpactForce(_loc4_),_direction);
          this.reloadFinishTime = this.battleService.getPhysicsTime() + this.reloadTimeMS;
-         this.callback.onAimedShot(_loc2_,_loc3_.staticHitPoint,_loc3_.target,_loc3_.targetHitPoint);
+         this.callback.onAimedShot(_loc2_,_loc3_.staticHitPoint,_loc3_.targets,_loc3_.targetHitPoints);
          this.doSetEnergyMode(ShaftEnergyMode.RECHARGE,Math.min(this.getEnergy(_loc2_),this.shaftData.maxEnergy - this.shaftData.minAimedShotEnergy),_loc2_);
       }
       
@@ -549,7 +550,7 @@ package alternativa.tanks.models.weapon.shaft
                _loc5_ = this.object3DToTank[_loc3_];
                if(this.isValidHit(_loc5_,_loc3_,_loc4_))
                {
-                  _loc1_.setTarget(_loc5_.getBody(),_loc4_);
+                  _loc1_.addTarget(_loc5_.getBody(),_loc4_);
                   break;
                }
                this.addTankSkinToExclusionSet(_loc5_.getSkin());
@@ -584,7 +585,7 @@ package alternativa.tanks.models.weapon.shaft
       
       public function performQuickShot(param1:Number) : void
       {
-         var _loc4_:TargetingResult = null;
+         var _loc4_:RailgunShotResult = null;
          var _loc5_:Body = null;
          var _loc6_:Vector3 = null;
          var _loc7_:Vector3 = null;
@@ -594,31 +595,18 @@ package alternativa.tanks.models.weapon.shaft
          if(_loc3_ >= this.shaftData.fastShotEnergy)
          {
             _loc3_ -= this.shaftData.fastShotEnergy;
+            _loc4_ = new RailgunShotResult();
             if(!this.hasIntersection())
             {
                this.weaponPlatform.getAllGunParams(allGunParams);
-               _loc8_ = this.shaftObject.commonData().getImpactForce();
-               _loc4_ = this.targetingSystem.target(allGunParams);
-               if(_loc4_.hasAnyHit())
-               {
-                  _loc6_ = _loc4_.getSingleHit().position.clone();
-               }
-               if(_loc4_.hasStaticHit())
-               {
-                  _loc7_ = _loc4_.getStaticHit().position.clone();
-               }
-               if(_loc4_.hasTankHit())
-               {
-                  _loc5_ = _loc4_.getSingleHit().shape.body;
-                  _loc8_ *= this.weakening.getImpactCoeff(_loc4_.getSingleHit().t);
-               }
-               this.createShotEffects(_loc7_,_loc6_,_loc4_.getDirection());
-               this.applyImpactForceToTarget(_loc5_,_loc6_,_loc8_,_loc4_.getDirection());
-               this.effects.createHitMark(allGunParams.barrelOrigin,_loc7_);
+               _loc4_.setFromTargetingResult(this.targetingSystem.target(allGunParams));
+               this.createShotEffects(_loc4_.getStaticHitPoint(),_loc4_.hitPoints,_loc4_.shotDirection);
+               this.applyImpactForceToTarget(_loc4_.targets,_loc4_.hitPoints,this.shaftData.weakeningCoeff,_loc4_.shotDirection);
+               this.effects.createHitMark(allGunParams.barrelOrigin,_loc4_.getStaticHitPoint());
             }
             this.effects.createMuzzleFlashEffect(this.weaponPlatform.getLocalMuzzlePosition(),this.weaponPlatform.getTurret3D());
             this.reloadFinishTime = this.battleService.getPhysicsTime() + this.reloadTimeMS;
-            this.callback.onQuickShot(_loc2_,_loc7_,_loc5_,_loc6_);
+            this.callback.onQuickShot(_loc2_,_loc4_.getStaticHitPoint(),_loc4_.targets,_loc4_.hitPoints);
          }
          this.doSetEnergyMode(ShaftEnergyMode.RECHARGE,_loc3_,_loc2_);
       }
@@ -630,7 +618,7 @@ package alternativa.tanks.models.weapon.shaft
       
       public function onTargetingModeStop() : void
       {
-         this.callback.onManualTargetingStop();
+         this.callback.onManualTargetingStop(this.battleService.getPhysicsTime());
       }
       
       private function addTankSkinToExclusionSet(param1:TankSkin) : void
@@ -676,7 +664,7 @@ package alternativa.tanks.models.weapon.shaft
          }
       }
       
-      private function createShotEffects(param1:Vector3, param2:Vector3, param3:Vector3) : void
+      private function createShotEffects(param1:Vector3, param2:Vector.<Vector3>, param3:Vector3) : void
       {
          this.effects.createShotSoundEffect(allGunParams.muzzlePosition);
          this.effects.createHitPointsGraphicEffects(param1,param2,allGunParams.muzzlePosition,allGunParams.direction,param3);
@@ -684,11 +672,26 @@ package alternativa.tanks.models.weapon.shaft
          this.weaponPlatform.addDust();
       }
       
-      private function applyImpactForceToTarget(param1:Body, param2:Vector3, param3:Number, param4:Vector3) : void
+      private function applyImpactForceToTarget(param1:Vector.<Body>, param2:Vector.<Vector3>, param3:Number, param4:Vector3) : void
       {
+         var _loc5_:Number = NaN;
+         var _loc6_:int = 0;
+         var _loc7_:Number = NaN;
+         var _loc8_:Body = null;
+         var _loc9_:Tank = null;
          if(param1 != null)
          {
-            param1.tank.applyWeaponHit(param2,param4,param3);
+            _loc5_ = 1;
+            _loc6_ = 0;
+            while(_loc6_ < param1.length)
+            {
+               _loc7_ = _loc5_ * param3;
+               _loc8_ = param1[_loc6_];
+               _loc9_ = _loc8_.tank;
+               _loc9_.applyWeaponHit(param2[_loc6_],param4,_loc7_);
+               _loc5_ *= this.shaftData.weakeningCoeff;
+               _loc6_++;
+            }
          }
       }
       

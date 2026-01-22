@@ -14,6 +14,7 @@ package alternativa.tanks.battle.objects.tank.tankskin.materialfactory
    import platform.client.fp10.core.resource.types.MultiframeImageResource;
    import platform.client.fp10.core.resource.types.ImageResource;
    import projects.tanks.clients.flash.commons.models.coloring.IColoring;
+   import alternativa.tanks.battle.objects.tank.tankskin.dynamic.DynamicSkinMaterial;
    
    public class DefaultTankSkinMaterialsFactory implements TankSkinMaterialsFactory
    {
@@ -60,9 +61,11 @@ package alternativa.tanks.battle.objects.tank.tankskin.materialfactory
          }
          var _loc11_:TrackMaterial = new TrackMaterial(_loc7_);
          var _loc12_:TrackMaterial = new TrackMaterial(_loc7_);
+         var dynamicSkin:DynamicSkinMaterial = new DynamicSkinMaterial(_loc10_);
          textureMaterialRegistry.addMaterial(_loc11_);
          textureMaterialRegistry.addMaterial(_loc12_);
-         return new SkinMaterials(_loc14_,_loc15_,_loc11_,_loc12_);
+         textureMaterialRegistry.addMaterial(dynamicSkin);
+         return new SkinMaterials(_loc14_,_loc15_,_loc11_,_loc12_,dynamicSkin);
       }
       
       public function createDeadSkinMaterials(param1:TankSkin, param2:ImageResource) : SkinMaterials
@@ -77,7 +80,7 @@ package alternativa.tanks.battle.objects.tank.tankskin.materialfactory
          var _loc10_:BitmapData = _loc4_.details;
          var _loc11_:TextureMaterial = textureMaterialRegistry.getPaint(param2,_loc6_,_loc7_,_loc5_);
          var _loc12_:TextureMaterial = textureMaterialRegistry.getPaint(param2,_loc9_,_loc10_,_loc8_);
-         return new SkinMaterials(_loc11_,_loc12_);
+         return new SkinMaterials(_loc11_,_loc12_, null, null, _loc12_);
       }
    }
 }

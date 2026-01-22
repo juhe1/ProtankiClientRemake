@@ -689,6 +689,8 @@ package projects.tanks.clients.fp10.models.battlefieldmodelflash
    import projects.tanks.clients.fp10.libraries.tanksservices.service.userproperties.IUserPropertiesService;
    import projects.tanks.clients.fp10.libraries.tanksservices.utils.BattleFormatUtil;
    import services.contextmenu.IContextMenuService;
+   import scpacker.networking.protocol.packets.bonusregion.BonusRegionPacketHandler;
+   import scpacker.networking.protocol.packets.gold.GoldPacketHandler;
 
    public class Activator implements IBundleActivator
    {
@@ -2826,6 +2828,20 @@ package projects.tanks.clients.fp10.models.battlefieldmodelflash
          },function():IBonusRegionService
          {
             return BonusRegionsModel.bonusRegionService;
+         });
+         osgi.injectService(IBonusRegionService,function(param1:Object):void
+         {
+            BonusRegionPacketHandler.bonusRegionService = IBonusRegionService(param1);
+         },function():IBonusRegionService
+         {
+            return BonusRegionPacketHandler.bonusRegionService;
+         });
+         osgi.injectService(IDisplay,function(param1:Object):void
+         {
+            GoldPacketHandler.display = IDisplay(param1);
+         },function():IDisplay
+         {
+            return GoldPacketHandler.display;
          });
          //osgi.injectService(MatchmakingFormService,function(param1:Object):void
          //{

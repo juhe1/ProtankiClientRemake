@@ -4,11 +4,12 @@ package scpacker.networking.protocol.packets.isida
    import scpacker.networking.protocol.AbstractPacket;
    import alternativa.tanks.models.weapon.healing.HealingGunModel;
    import projects.tanks.client.battlefield.models.tankparts.weapon.healing.IsisModelBase;
-   import utils.TankNameGameObjectMapper;
    import platform.client.fp10.core.model.impl.Model;
    import scpacker.networking.protocol.packets.isida.ResetIsidaTargetInPacket;
    import scpacker.networking.protocol.packets.isida.SetIsidaTargetInPacket;
    import scpacker.networking.protocol.packets.isida.StopIsidaInPacket;
+   import platform.client.fp10.core.type.IGameObject;
+   import scpacker.utils.CoreUtils;
    
    public class IsidaPacketHandler extends AbstractPacketHandler
    {
@@ -38,21 +39,27 @@ package scpacker.networking.protocol.packets.isida
       
       private function resetTarge(param1:ResetIsidaTargetInPacket) : void
       {
-         Model.object = TankNameGameObjectMapper.getGameObjectByTankName(param1.shooter);
+         var turretGameObject:IGameObject = CoreUtils.getTurretObjectByTankName(param1.shooter);
+         
+         Model.object = turretGameObject;
          this.isisdaModel.resetTarget();
          Model.popObject();
       }
       
       private function setTarget(param1:SetIsidaTargetInPacket) : void
       {
-         Model.object = TankNameGameObjectMapper.getGameObjectByTankName(param1.shooter);
+         var turretGameObject:IGameObject = CoreUtils.getTurretObjectByTankName(param1.shooter);
+         
+         Model.object = turretGameObject;
          this.isisdaModel.setTarget(param1.currentState,param1.target);
          Model.popObject();
       }
       
       private function stop(param1:StopIsidaInPacket) : void
       {
-         Model.object = TankNameGameObjectMapper.getGameObjectByTankName(param1.shooter);
+         var turretGameObject:IGameObject = CoreUtils.getTurretObjectByTankName(param1.shooter);
+         
+         Model.object = turretGameObject;
          this.isisdaModel.stopWeapon();
          Model.popObject();
       }

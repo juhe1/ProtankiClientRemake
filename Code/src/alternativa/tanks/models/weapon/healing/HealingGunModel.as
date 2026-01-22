@@ -150,7 +150,7 @@ package alternativa.tanks.models.weapon.healing
             {
                if(param2 != null && param2.target != null)
                {
-                  _loc4_ = this.tanksInBattle[param2.target.id];
+                  _loc4_ = this.tanksInBattle[param2.target.name];
                }
             }
             if(param1 == IsisState.IDLE || _loc4_ != null)

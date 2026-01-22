@@ -463,7 +463,7 @@ package alternativa.tanks.model.garage
          }
          else
          {
-            _loc3_ = 0;
+            _loc3_ = 1;
          }
          server.itemBought(this.itemWaitingForConfirmation.name,_loc3_,_loc2_);
          this.buyItem(this.itemWaitingForConfirmation,_loc3_);

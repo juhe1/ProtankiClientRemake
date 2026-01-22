@@ -47,7 +47,7 @@ package alternativa.tanks.models.weapons.stream
          }
       }
       
-      public function targetUpdate(param1:int, param2:Vector3, param3:Tank) : void
+      public function targetUpdate(param1:int, param2:Vector3, param3:Tank, position:Vector3) : void
       {
          var clientTime:int = param1;
          var direction:Vector3 = param2;
@@ -55,7 +55,7 @@ package alternativa.tanks.models.weapons.stream
          try
          {
             Model.object = this.object;
-            this.impl.targetUpdate(clientTime,direction,target);
+            this.impl.targetUpdate(clientTime,direction,target, position);
          }
          finally
          {

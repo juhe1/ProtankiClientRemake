@@ -123,6 +123,10 @@ package scpacker.networking.protocol.packets.tank
          {
             Model.object = tankGameObject;
             this.tankModel.kill(param1.killer,param1.delay, DamageType.SMOKY);
+            if(!this.tankModel.isLocal())
+            {
+               this.tankModel.deathConfirmed();
+            }
             Model.popObject();
          }
       }

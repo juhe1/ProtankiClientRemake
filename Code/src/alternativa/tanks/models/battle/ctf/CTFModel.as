@@ -754,15 +754,22 @@ package alternativa.tanks.models.battle.ctf
       private function initTargetEvaluators() : void
       {
          this.targetEvaluators = new Vector.<CTFTargetEvaluator>();
+
          var _loc1_:CTFCommonTargetEvaluator = new CTFCommonTargetEvaluator();
          battleService.setCommonTargetEvaluator(_loc1_);
          this.targetEvaluators.push(_loc1_);
+
          var _loc2_:TDMHealingGunTargetEvaluator = new TDMHealingGunTargetEvaluator();
          battleService.setHealingGunTargetEvaluator(_loc2_);
          //this.targetEvaluators.push(_loc2_);
+
          var _loc3_:CTFRailgunTargetEvaluator = new CTFRailgunTargetEvaluator();
          battleService.setRailgunTargetEvaluator(_loc3_);
          this.targetEvaluators.push(_loc3_);
+
+         var _loc4_:CTFRicochetTargetEvaluator = new CTFRicochetTargetEvaluator();
+         battleService.setRicochetTargetEvaluator(_loc4_);
+         this.targetEvaluators.push(_loc4_);
       }
       
       private function setFlagCarrierForEvaluators(param1:Body) : void

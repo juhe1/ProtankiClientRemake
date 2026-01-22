@@ -1,3 +1,4 @@
+
 package alternativa.tanks.models.weapon.shaft
 {
    import platform.client.fp10.core.type.IGameObject;
@@ -8,26 +9,25 @@ package alternativa.tanks.models.weapon.shaft
       
       public var staticHitPoint:Vector3d;
       
-      public var hitPoint:Vector3d;
+      public var hitPoints:Vector.<Vector3d>;
       
-      public var tank:IGameObject;
+      public var tanks:Vector.<IGameObject>;
       
-      public var incarnation:int;
+      public var incarnations:Vector.<int>;
       
-      public var tankPosition:Vector3d;
+      public var tankPositions:Vector.<Vector3d>;
       
-      public var targetPositionGlobal:Vector3d;
+      public var targetPositionsGlobal:Vector.<Vector3d>;
       
-      public function ServerShotData(param1:Vector3d, param2:Vector3d, param3:IGameObject, param4:int, param5:Vector3d, param6:Vector3d)
+      public function ServerShotData(param1:Vector3d, param2:Vector.<Vector3d>, param3:Vector.<IGameObject>, param4:Vector.<int>, param5:Vector.<Vector3d>, param6:Vector.<Vector3d>)
       {
          super();
          this.staticHitPoint = param1;
-         this.hitPoint = param2;
-         this.tank = param3;
-         this.incarnation = param4;
-         this.tankPosition = param5;
-         this.targetPositionGlobal = param6;
+         this.hitPoints = param2;
+         this.tanks = param3;
+         this.incarnations = param4;
+         this.tankPositions = param5;
+         this.targetPositionsGlobal = param6;
       }
    }
 }
-

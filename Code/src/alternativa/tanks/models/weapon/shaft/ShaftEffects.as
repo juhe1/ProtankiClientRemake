@@ -124,15 +124,22 @@ package alternativa.tanks.models.weapon.shaft
          this.battleService.addGraphicEffect(_loc3_);
       }
       
-      public function createHitPointsGraphicEffects(param1:Vector3, param2:Vector3, param3:Vector3, param4:Vector3, param5:Vector3) : void
+      public function createHitPointsGraphicEffects(param1:Vector3, param2:Vector.<Vector3>, param3:Vector3, param4:Vector3, param5:Vector3) : void
       {
+         var _loc6_:Vector3 = null;
          if(param1 != null)
          {
             this.createEffectsForPoint(param1,param3,param4,param5,false);
          }
          if(param2 != null)
          {
-            this.createEffectsForPoint(param2,param3,param4,param5,true);
+            for each(_loc6_ in param2)
+            {
+               if(_loc6_ != null)
+               {
+                  this.createEffectsForPoint(_loc6_,param3,param4,param5,true);
+               }
+            }
          }
       }
       

@@ -1,17 +1,19 @@
-package scpacker.networking.protocol.packets.battle
+package scpacker.networking.protocol.packets.shaft
 {
    import scpacker.networking.protocol.AbstractPacket;
    
-   public class CollectCryBox extends AbstractPacket
+   public class ShaftScopeInitOutPacket extends AbstractPacket
    {
-      public var BonusId:String;
+      public static const id:int = -367760678;
       
-      public function CollectCryBox(param1:String = "")
+      public var clientTime:int;
+      
+      public function ShaftScopeInitOutPacket(param1:int = 0)
       {
          super();
-         this.BonusId = param1;
+         this.clientTime = param1;
          registerProperty(param1);
-         registerPropertyCodec("scpacker.networking.protocol.codec.primitive.StringCodec");
+         registerPropertyCodec("scpacker.networking.protocol.codec.primitive.IntCodec");
       }
       
       override public function writeToPropertyByIndex(param1:Object, param2:int) : void
@@ -19,23 +21,23 @@ package scpacker.networking.protocol.packets.battle
          switch(param2)
          {
             case 0:
-               this.BonusId = param1 as String;
+               this.clientTime = param1 as int;
          }
       }
       
       override public function initializeSelf() : AbstractPacket
       {
-         return new CollectCryBox();
+         return new ShaftScopeInitOutPacket();
       }
       
       override public function getPacketHandlerId() : int
       {
-         return 36;
+         return 50;
       }
       
       override public function getId() : int
       {
-         return -1047185003;
+         return id;
       }
    }
 }

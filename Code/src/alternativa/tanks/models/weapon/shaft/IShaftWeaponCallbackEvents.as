@@ -41,14 +41,14 @@ package alternativa.tanks.models.weapon.shaft
          }
       }
       
-      public function onAimedShot(param1:int, param2:Vector3, param3:Body, param4:Vector3) : void
+      public function onAimedShot(param1:int, param2:Vector3, param3:Vector.<Body>, param4:Vector.<Vector3>) : void
       {
          var i:int = 0;
          var m:IShaftWeaponCallback = null;
          var time:int = param1;
          var staticHitPoint:Vector3 = param2;
-         var target:Body = param3;
-         var targetHitPoint:Vector3 = param4;
+         var targets:Vector.<Body> = param3;
+         var targetHitPoints:Vector.<Vector3> = param4;
          try
          {
             Model.object = this.object;
@@ -56,7 +56,7 @@ package alternativa.tanks.models.weapon.shaft
             while(i < this.impl.length)
             {
                m = IShaftWeaponCallback(this.impl[i]);
-               m.onAimedShot(time,staticHitPoint,target,targetHitPoint);
+               m.onAimedShot(time,staticHitPoint,targets,targetHitPoints);
                i++;
             }
          }
@@ -66,14 +66,14 @@ package alternativa.tanks.models.weapon.shaft
          }
       }
       
-      public function onQuickShot(param1:int, param2:Vector3, param3:Body, param4:Vector3) : void
+      public function onQuickShot(param1:int, param2:Vector3, param3:Vector.<Body>, param4:Vector.<Vector3>) : void
       {
          var i:int = 0;
          var m:IShaftWeaponCallback = null;
          var time:int = param1;
          var staticHitPoint:Vector3 = param2;
-         var target:Body = param3;
-         var targetHitPoint:Vector3 = param4;
+         var targets:Vector.<Body> = param3;
+         var targetHitPoints:Vector.<Vector3> = param4;
          try
          {
             Model.object = this.object;
@@ -81,7 +81,7 @@ package alternativa.tanks.models.weapon.shaft
             while(i < this.impl.length)
             {
                m = IShaftWeaponCallback(this.impl[i]);
-               m.onQuickShot(time,staticHitPoint,target,targetHitPoint);
+               m.onQuickShot(time,staticHitPoint,targets,targetHitPoints);
                i++;
             }
          }
@@ -112,7 +112,7 @@ package alternativa.tanks.models.weapon.shaft
          }
       }
       
-      public function onManualTargetingStop() : void
+      public function onManualTargetingStop(param1:int) : void
       {
          var i:int = 0;
          var m:IShaftWeaponCallback = null;
@@ -123,7 +123,7 @@ package alternativa.tanks.models.weapon.shaft
             while(i < this.impl.length)
             {
                m = IShaftWeaponCallback(this.impl[i]);
-               m.onManualTargetingStop();
+               m.onManualTargetingStop(param1);
                i++;
             }
          }

@@ -2,6 +2,7 @@ package alternativa.tanks.battle.objects.tank.tankskin.dynamic
 {
    import alternativa.engine3d.core.Face;
    import alternativa.engine3d.core.Vertex;
+   import flash.geom.Point;
    
    public class CylinderDynamicSkin extends CommonDynamicSkin
    {
@@ -78,12 +79,23 @@ package alternativa.tanks.battle.objects.tank.tankskin.dynamic
          }
          this.radius = (_loc4_ - _loc2_ + _loc5_ - _loc3_) / 4;
          rotation = 0;
-         this.rotate(0);
       }
       
       override public function rotate(param1:Number) : void
       {
+         var _loc4_:Vertex = null;
+         var _loc5_:Point = null;
          super.rotate(param1);
+         var _loc2_:Number = rotation * this.radius * this.real2UVratio % this.uvPeriod;
+         var _loc3_:int = 0;
+         while(_loc3_ < vertices.length)
+         {
+            _loc4_ = vertices[_loc3_];
+            _loc5_ = originalUVs[_loc3_];
+            _loc4_.u = _loc5_.x + _loc2_;
+            _loc4_.v = _loc5_.y;
+            _loc3_++;
+         }
       }
    }
 }

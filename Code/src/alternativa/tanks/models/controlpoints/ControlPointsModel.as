@@ -57,6 +57,7 @@ package alternativa.tanks.models.controlpoints
    import projects.tanks.clients.fp10.libraries.TanksLocale;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.battle.IBattleInfoService;
    import utils.TankNameGameObjectMapper;
+   import flash.geom.Point;
    
    [ModelInfo]
    public class ControlPointsModel extends ControlPointsModelBase implements IControlPointsModelBase, ObjectLoadListener, ObjectLoadPostListener, ObjectUnloadListener, BattleModel, IDominationModel, BattleEventListener
@@ -133,10 +134,14 @@ package alternativa.tanks.models.controlpoints
       private function onTankAddedToBattle(param1:TankAddedToBattleEvent) : void
       {
          this.tanksInBattle[param1.tank.getUser()] = param1.tank;
-         var _loc2_:int = this.getPointOccupationBuffer().takeTankPointId(param1.tank.getUserId());
-         if(_loc2_ >= 0)
+         var pointOccupationBuffer:PointOccupationBuffer = this.getPointOccupationBuffer();
+         if(pointOccupationBuffer != null)
          {
-            this.createBeamEffect(_loc2_,param1.tank,AllBeamProperties(this.getMyData(AllBeamProperties)));
+            var _loc2_:int = pointOccupationBuffer.takeTankPointId(param1.tank.getUserId());
+            if(_loc2_ >= 0)
+            {
+               this.createBeamEffect(_loc2_,param1.tank,AllBeamProperties(this.getMyData(AllBeamProperties)));
+            }
          }
       }
       

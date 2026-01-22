@@ -8,19 +8,24 @@ package alternativa.tanks.models.weapon.shaft
       
       public var staticHitPoint:Vector3;
       
-      public var target:Body;
+      public var targets:Vector.<Body>;
       
-      public var targetHitPoint:Vector3;
+      public var targetHitPoints:Vector.<Vector3>;
       
       public function AimedShotResult()
       {
          super();
       }
       
-      public function setTarget(param1:Body, param2:Vector3) : void
+      public function addTarget(param1:Body, param2:Vector3) : void
       {
-         this.target = param1;
-         this.targetHitPoint = param2;
+         if(this.targets == null)
+         {
+            this.targets = new Vector.<Body>();
+            this.targetHitPoints = new Vector.<Vector3>();
+         }
+         this.targets.push(param1);
+         this.targetHitPoints.push(param2);
       }
       
       public function setStaticHitPoint(param1:Vector3) : void
@@ -29,4 +34,3 @@ package alternativa.tanks.models.weapon.shaft
       }
    }
 }
-

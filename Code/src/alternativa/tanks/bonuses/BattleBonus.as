@@ -79,7 +79,7 @@ package alternativa.tanks.bonuses
       
       private var data:BattleBonusData;
       
-      private var _bonusId:String;
+      private var _bonusId:Long;
       
       private var controllersActive:Boolean;
       
@@ -117,7 +117,7 @@ package alternativa.tanks.bonuses
          return param1.z > BonusConst.COS_ONE_DEGREE;
       }
       
-      public function init(param1:Long, param2:String, param3:BattleBonusData, param4:BattleService) : void
+      public function init(param1:Long, param2:Long, param3:BattleBonusData, param4:BattleService) : void
       {
          this.bonusObjectId = param1;
          this._bonusId = param2;
@@ -280,7 +280,7 @@ package alternativa.tanks.bonuses
          }
       }
       
-      public function get bonusId() : String
+      public function get bonusId() : Long
       {
          return this._bonusId;
       }

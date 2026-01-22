@@ -11,7 +11,7 @@ package alternativa.tanks.models.weapons.stream
       
       function fireStopped(param1:int) : void;
       
-      function targetUpdate(param1:int, param2:Vector3, param3:Tank) : void;
+      function targetUpdate(param1:int, param2:Vector3, param3:Tank, position:Vector3) : void;
       
       function targetsUpdateDummy(param1:int, param2:Vector3) : void;
    }

@@ -171,6 +171,14 @@ package scpacker.networking.protocol.packets.battle
    import projects.tanks.clients.fp10.libraries.tanksservices.service.layout.ILobbyLayoutService;
    import projects.tanks.clients.flash.commons.services.layout.event.LobbyLayoutServiceEvent;
    import platform.client.fp10.core.type.impl.Space;
+   import scpacker.utils.LongUtils;
+   import projects.tanks.client.battlefield.models.bonus.bonus.common.BonusCommonModelBase;
+   import alternativa.tanks.models.bonus.notification.BonusNotification;
+   import alternativa.tanks.models.bonus.notification.BonusNotificationModel;
+   import projects.tanks.client.battlefield.models.bonus.bonus.notification.BonusNotificationModelBase;
+   import projects.tanks.client.battlefield.models.bonus.battle.bonusregions.BonusRegionsModelBase;
+   import projects.tanks.client.battlefield.models.bonus.battle.goldbonus.GoldBonusesModelBase;
+   import projects.tanks.client.battlefield.models.bonus.bonus.battlebonuses.crystal.BattleGoldBonusesModelBase;
    
    public class BattlePacketHandler extends AbstractPacketHandler
    {
@@ -210,6 +218,8 @@ package scpacker.networking.protocol.packets.battle
       private var tankDeviceModel:TankDeviceModel;
       private var inventoryModel:InventoryModel;
       private var bossStateModel:BossStateModel;
+      private var bonusCommonModel:BonusCommonModel;
+      private var bonusNotificationModel:BonusNotificationModel;
 
       private var userPropertiesService:IUserPropertiesService;
       private var lightingEffectsService:ILightingEffectsService;
@@ -222,11 +232,14 @@ package scpacker.networking.protocol.packets.battle
       private var mapGameClass:GameClass;
       private var battlefieldGameClass:IGameClass;
       private var tankGameClass:GameClass;
+      private var bonusGameClass:GameClass;
 
       static public var battlefieldGameObject:IGameObject;
 
       private var tankExplosionCC:TankExplosionCC;
       private var hullSmokeCC:HullSmokeCC;
+
+      private var gameClassesInited:Boolean = false;
 
       private var turretGameClassDictionary:Dictionary = new Dictionary();
 
@@ -271,6 +284,8 @@ package scpacker.networking.protocol.packets.battle
          this.tankDeviceModel = TankDeviceModel(modelRegistry.getModel(TankDeviceModelBase.modelId));
          this.inventoryModel = InventoryModel(modelRegistry.getModel(InventoryModelBase.modelId));
          this.bossStateModel = BossStateModel(modelRegistry.getModel(BossStateModelBase.modelId));
+         this.bonusCommonModel = BonusCommonModel(modelRegistry.getModel(BonusCommonModelBase.modelId));
+         this.bonusNotificationModel = BonusNotificationModel(modelRegistry.getModel(BonusNotificationModelBase.modelId));
 
          this.userPropertiesService = IUserPropertiesService(OSGi.getInstance().getService(IUserPropertiesService));
          this.tankUsersRegistry = TankUsersRegistry(OSGi.getInstance().getService(TankUsersRegistry));
@@ -282,13 +297,13 @@ package scpacker.networking.protocol.packets.battle
          switch(param1.getId())
          {
             case TakeBonusBoxInPacket.id:
-               //this.bonusTake(param1 as TakeBonusBoxInPacket);
+               this.bonusTake(param1 as TakeBonusBoxInPacket);
                break;
             case InitBonusBoxesInPacket.id:
-               //this.initBonusBoxes(param1 as InitBonusBoxesInPacket);
+               this.initBonusBoxes(param1 as InitBonusBoxesInPacket);
                break;
             case AddBonusBoxesInPacket.id:
-               //this.addBonusBoxes(param1 as AddBonusBoxesInPacket);
+               this.addBonusBoxes(param1 as AddBonusBoxesInPacket);
                break;
             case InitializeSupplyEffectsInPacket.id:
                this.initializeSupplyEffects(param1 as InitializeSupplyEffectsInPacket);
@@ -300,10 +315,10 @@ package scpacker.networking.protocol.packets.battle
                this.createTank(param1 as CreateTankInPacket);
                break;
             case RemoveBonusBoxInPacket.id:
-               //this.removeBonus(param1 as RemoveBonusBoxInPacket);
+               this.removeBonus(param1 as RemoveBonusBoxInPacket);
                break;
             case AddBonusBoxInPacket.id:
-               //this.addBonus(param1 as AddBonusBoxInPacket);
+               this.addBonus(param1 as AddBonusBoxInPacket);
                break;
             case UnloadBattleSpaceInPacket.id:
                this.unloadBattle();
@@ -320,8 +335,20 @@ package scpacker.networking.protocol.packets.battle
          }
       }
 
+      private function createBattleSpaceIfNotExists() : void
+      {
+         if(this.battleSpace == null)
+         {
+            this.battleSpace = new Space(Long.getLong(10568210,51255591),null,null,false);
+         }
+      }
+
       private function initGameClasses() : void
       {
+         if(this.gameClassesInited)
+         {
+            return;
+         }
          var hullGameClassVector:Vector.<Long> = new Vector.<Long>();
          hullGameClassVector.push(this.object3DSModel.id);
          hullGameClassVector.push(this.engineModel.id);
@@ -345,6 +372,8 @@ package scpacker.networking.protocol.packets.battle
          var battlefieldGameClassVector:Vector.<Long> = new Vector.<Long>();
          battlefieldGameClassVector.push(this.battlefieldModel.id);
          battlefieldGameClassVector.push(this.battlefieldBonusesModel.id);
+         battlefieldGameClassVector.push(BonusRegionsModelBase.modelId);
+         battlefieldGameClassVector.push(GoldBonusesModelBase.modelId);
          battlefieldGameClassVector.push(StatisticsModelBase.modelId);
          battlefieldGameClassVector.push(this.inventoryModel.id);
          battlefieldGameClassVector.push(this.battleMinesModel.id);
@@ -367,11 +396,19 @@ package scpacker.networking.protocol.packets.battle
          tankGameClassVector.push(this.tankDeviceModel.id);
          tankGameClassVector.push(this.bossStateModel.id);
          this.tankGameClass = gameTypeRegistry.createClass(Long.getLong(150325,6843665),tankGameClassVector);
+
+         var bonusGameClassVector:Vector.<Long> = new Vector.<Long>();
+         bonusGameClassVector.push(this.bonusCommonModel.id);
+         bonusGameClassVector.push(this.bonusNotificationModel.id);
+         bonusGameClassVector.push(this.bonusLightModel.id);
+         this.bonusGameClass = gameTypeRegistry.createClass(Long.getLong(150325,6873665),bonusGameClassVector);
+         
+         this.gameClassesInited = true;
       }
       
       private function initBattle(param1:InitBattleInPacket) : void
       {
-         this.battleSpace = new Space(Long.getLong(10568210,51255591),null,null,false);
+         this.createBattleSpaceIfNotExists();
          spaceRegistry.addSpace(this.battleSpace);
          this.initGameClasses();
 
@@ -417,9 +454,9 @@ package scpacker.networking.protocol.packets.battle
          var mapBonusLightCC:MapBonusLightCC = new MapBonusLightCC();
          mapBonusLightCC.hwColorAdjust = new ColorAdjustParams();
          mapBonusLightCC.softColorAdjust = new ColorAdjustParams();
+         mapBonusLightCC.bonusLightIntensity = jsonObject.bonusLightIntensity;
          if(bonusColorAdjust != null)
          {
-            mapBonusLightCC.bonusLightIntensity = jsonObject.bonusLightIntensity;
             mapBonusLightCC.hwColorAdjust = new ColorAdjustParams();
             mapBonusLightCC.hwColorAdjust.redOffset = jsonObject.bonusColorAdjust.redOffset;
             mapBonusLightCC.hwColorAdjust.redMultiplier = jsonObject.bonusColorAdjust.redMultiplier;
@@ -429,6 +466,10 @@ package scpacker.networking.protocol.packets.battle
             mapBonusLightCC.hwColorAdjust.blueMultiplier = jsonObject.bonusColorAdjust.blueMultiplier;
             mapBonusLightCC.hwColorAdjust.alphaOffset = jsonObject.bonusColorAdjust.alphaOffset;
             mapBonusLightCC.hwColorAdjust.alphaMultiplier = jsonObject.bonusColorAdjust.alphaMultiplier;
+            mapBonusLightCC.softColorAdjust = mapBonusLightCC.hwColorAdjust;
+         } else
+         {
+            mapBonusLightCC.hwColorAdjust = new ColorAdjustParams(1,0,1,0,1,0,1,0);
             mapBonusLightCC.softColorAdjust = mapBonusLightCC.hwColorAdjust;
          }
          Model.object = mapGameObject;
@@ -595,7 +636,7 @@ package scpacker.networking.protocol.packets.battle
          hullCommonCC.lightingSFXEntity.effects.push(explosionLightEffect);
 
          var simpleArmorCC:SimpleArmorCC = new SimpleArmorCC();
-         simpleArmorCC.maxHealth = jsonObject.health;
+         simpleArmorCC.maxHealth = 10000;
          
          // Initialize hull models
          Model.object = hullGameObject;
@@ -734,68 +775,86 @@ package scpacker.networking.protocol.packets.battle
          return this.turretGameClassDictionary[weaponName];
       }
 
-      //private function initBonusBoxes(param1:InitBonusBoxesInPacket) : void
-      //{
-      //   var _loc6_:* = undefined;
-      //   var _loc3_:BonusCommonCC = null;
-      //   var _loc4_:IGameObject = null;
-      //   var _loc2_:BonusCommonModel = BonusCommonModel(modelRegistry.getModel(Long.getLong(2087671478,1672369054)));
-      //   var _loc5_:Object = JSON.parse(param1.json);
-      //   for each(_loc6_ in _loc5_.bonuses)
-      //   {
-//
-      //      _loc3_ = new BonusCommonCC();
-      //      _loc4_ = CoreUtils.createObject(newname_1931__END.strToId(_loc6_.id),newname_1931__END.strToId("battle_bonus"),newname_1931__END.strToId("battle"));
-      //      var _loc10_:* = _loc4_;
-      //      var _loc7_:Model = Model;
-      //      platform.client.fp10.core.model.impl.Model.objects[platform.client.fp10.core.model.impl.Model.objects.length] = platform.client.fp10.core.model.impl.Model.newname_1693__END;
-      //      platform.client.fp10.core.model.impl.Model.newname_1693__END = _loc10_;
-      //      _loc3_.newname_7925__END = Tanks3DSResource(newname_122__END.getResource(Long.getLong(0,_loc6_.resourceId)));
-      //      _loc3_.newname_7926__END = ImageResource(newname_122__END.getResource(Long.getLong(0,_loc5_.cordResource)));
-      //      _loc3_.newname_7927__END = _loc6_.lifeTimeMs;
-      //      _loc3_.newname_7928__END = Tanks3DSResource(newname_122__END.getResource(Long.getLong(0,_loc5_.parachuteInnerResource)));
-      //      _loc3_.newname_7929__END = Tanks3DSResource(newname_122__END.getResource(Long.getLong(0,_loc5_.parachuteResource)));
-      //      _loc3_.newname_7930__END = SoundResource(newname_122__END.getResource(Long.getLong(0,_loc5_.pickupSoundResource)));
-      //      _loc2_.putInitParams(_loc3_);
-      //      this.bonusLightModel.putInitParams(new BonusLightCC(_loc6_.lighting.attenuationBegin,_loc6_.lighting.attenuationEnd,_loc6_.lighting.intensity,_loc6_.lighting.color));
-      //      _loc2_.objectLoaded();
-      //      Model.popObject();
-      //   }
-      //}
+      private function initBonusBoxes(param1:InitBonusBoxesInPacket) : void
+      {
+         this.createBattleSpaceIfNotExists();
+         this.initGameClasses();
 
-      //private function addBonusBoxes(param1:AddBonusBoxesInPacket) : void
-      //{
-      //   var _loc5_:Object = null;
-      //   var _loc3_:Object = null;
-      //   var _loc2_:* = JSON.parse(param1.json);
-      //   var _loc4_:Array = [];
-      //   for each(_loc5_ in _loc2_)
-      //   {
-      //      _loc3_ = {};
-      //      _loc3_.id = newname_1931__END.strToId(_loc5_.id);
-      //      _loc3_.position = new Vector3d(_loc5_.position.x,_loc5_.position.y,_loc5_.position.z);
-      //      _loc3_.timeFromAppearing = _loc5_.timeFromAppearing;
-      //      _loc3_.timeLife = _loc5_.timeLife;
-      //      _loc3_.object = CoreUtils.getObject(newname_1931__END.strToId(_loc5_.id.split("#")[0]),newname_1931__END.strToId("battle_bonus"),newname_1931__END.strToId("battle"));
-      //      _loc4_.push(_loc3_);
-      //   }
-      //   this.battlefieldModel.initBonuses(_loc4_);
-      //}
-      //
-      //private function addBonus(param1:AddBonusBoxInPacket) : void
-      //{
-      //   this.battlefieldModel.addBonus(CoreUtils.getObject(newname_1931__END.strToId(param1.bonusId.split("#")[0]),newname_1931__END.strToId("battle_bonus"),newname_1931__END.strToId("battle")),newname_1931__END.strToId(param1.bonusId),param1.position);
-      //}
-      //
-      //private function removeBonus(param1:RemoveBonusBoxInPacket) : void
-      //{
-      //   this.battlefieldModel.removeBonus(newname_1931__END.strToId(param1.bonusId));
-      //}
-      //
-      //private function bonusTake(param1:TakeBonusBoxInPacket) : void
-      //{
-      //   this.battlefieldModel.bonusTaken(newname_1931__END.strToId(param1.bonusId));
-      //}
+         var bonusTypeJsonObject:Object = null;
+         var bonusCommonCC:BonusCommonCC = null;
+         var bonusGameObject:IGameObject = null;
+         var bonusDataJsonObject:Object = JSON.parse(param1.json);
+         for each(bonusTypeJsonObject in bonusDataJsonObject.bonuses)
+         {
+
+            bonusGameObject = this.battleSpace.createObject(LongUtils.strToId(bonusTypeJsonObject.id),this.bonusGameClass,bonusTypeJsonObject.id);
+
+            Model.object = bonusGameObject;
+
+            bonusCommonCC = new BonusCommonCC();
+            bonusCommonCC.boxResource = Tanks3DSResource(resourceRegistry.getResource(Long.getLong(0,bonusTypeJsonObject.resourceId)));
+            bonusCommonCC.cordResource = ImageResource(resourceRegistry.getResource(Long.getLong(0,bonusDataJsonObject.cordResource)));
+            //bonusCommonCC.parachuteInnerResource = bonusTypeJsonObject.lifeTimeMs;
+            bonusCommonCC.parachuteInnerResource = Tanks3DSResource(resourceRegistry.getResource(Long.getLong(0,bonusDataJsonObject.parachuteInnerResource)));
+            bonusCommonCC.parachuteResource = Tanks3DSResource(resourceRegistry.getResource(Long.getLong(0,bonusDataJsonObject.parachuteResource)));
+            bonusCommonCC.pickupSoundResource = SoundResource(resourceRegistry.getResource(Long.getLong(0,bonusDataJsonObject.pickupSoundResource)));
+
+            bonusCommonModel.putInitParams(bonusCommonCC);
+            this.bonusLightModel.putInitParams(new BonusLightCC(bonusTypeJsonObject.lighting.attenuationBegin,bonusTypeJsonObject.lighting.attenuationEnd,bonusTypeJsonObject.lighting.intensity,bonusTypeJsonObject.lighting.color));
+            bonusCommonModel.objectLoaded();
+
+            Model.popObject();
+         }
+      }
+
+      private function addBonusBoxes(param1:AddBonusBoxesInPacket) : void
+      {
+         this.createBattleSpaceIfNotExists();
+
+         var bonusJsonObject:Object = null;
+         var jsonObject:Object = JSON.parse(param1.json);
+         var bonuses:Vector.<BonusSpawnData> = new Vector.<BonusSpawnData>();
+
+         for each(bonusJsonObject in jsonObject)
+         {
+            var bonusSpawnData:BonusSpawnData = new BonusSpawnData();
+            bonusSpawnData.bonusId = LongUtils.strToId(bonusJsonObject.id);
+            bonusSpawnData.spawnPosition = new Vector3d(bonusJsonObject.position.x,bonusJsonObject.position.y,bonusJsonObject.position.z);
+            bonusSpawnData.lifeTime = bonusJsonObject.timeFromAppearing;
+            bonusSpawnData.battleBonusObject = this.battleSpace.getObject(LongUtils.strToId(bonusJsonObject.id.split("#")[0]));
+         }
+
+         Model.object = battlefieldGameObject;
+         battlefieldBonusesModel.initBonuses(bonuses);
+         Model.popObject();
+      }
+      
+      private function addBonus(param1:AddBonusBoxInPacket) : void
+      {
+         var bonusSpawnData:BonusSpawnData = new BonusSpawnData();
+         bonusSpawnData.bonusId = LongUtils.strToId(param1.bonusId);
+         bonusSpawnData.spawnPosition = param1.position;
+         bonusSpawnData.lifeTime = 0;
+         bonusSpawnData.battleBonusObject = this.battleSpace.getObject(LongUtils.strToId(param1.bonusId.split("#")[0]));
+
+         Model.object = battlefieldGameObject;
+         battlefieldBonusesModel.spawnBonuses(new <BonusSpawnData>[bonusSpawnData]);
+         Model.popObject();
+      }
+      
+      private function removeBonus(param1:RemoveBonusBoxInPacket) : void
+      {
+         Model.object = battlefieldGameObject;
+         this.battlefieldBonusesModel.removeBonuses(new <Long>[LongUtils.strToId(param1.bonusId)]);
+         Model.popObject();
+      }
+      
+      private function bonusTake(param1:TakeBonusBoxInPacket) : void
+      {
+         Model.object = battlefieldGameObject;
+         this.battlefieldBonusesModel.bonusTaken(LongUtils.strToId(param1.bonusId));
+         Model.popObject();
+      }
 
       private function unloadBattle() : void
       {
@@ -821,6 +880,7 @@ package scpacker.networking.protocol.packets.battle
          }
 
          spaceRegistry.removeSpace(this.battleSpace);
+         this.battleSpace = null;
          TankNameGameObjectMapper.clearMappings();
 
          gameTypeRegistry.destroyClass(Long.getLong(14025,684260));
@@ -828,6 +888,8 @@ package scpacker.networking.protocol.packets.battle
          gameTypeRegistry.destroyClass(Long.getLong(150325,6843660));
          gameTypeRegistry.destroyClass(Long.getLong(150325,6843665));
          gameTypeRegistry.destroyClass(Long.getLong(150325,6843665));
+         gameTypeRegistry.destroyClass(Long.getLong(150325,6873665));
+         gameClassesInited = false;
          
          for each (var key:String in this.turretGameClassDictionary)
          {

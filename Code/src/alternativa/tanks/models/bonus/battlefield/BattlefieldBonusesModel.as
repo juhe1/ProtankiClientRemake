@@ -16,6 +16,8 @@ package alternativa.tanks.models.bonus.battlefield
    import projects.tanks.client.battlefield.models.bonus.battle.battlefield.IBattlefieldBonusesModelBase;
    import projects.tanks.client.battlefield.types.Vector3d;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.userproperties.IUserPropertiesService;
+   import scpacker.utils.LongUtils;
+   import alternativa.types.Long;
    
    [ModelInfo]
    public class BattlefieldBonusesModel extends BattlefieldBonusesModelBase implements IBattlefieldBonusesModelBase, BattleEventListener, BattlefieldEvents
@@ -52,7 +54,7 @@ package alternativa.tanks.models.bonus.battlefield
          }
       }
       
-      private function spawnBonus(param1:IGameObject, param2:String, param3:Vector3d, param4:int, param5:Boolean) : void
+      private function spawnBonus(param1:IGameObject, param2:Long, param3:Vector3d, param4:int, param5:Boolean) : void
       {
          var _loc6_:IBonusCommonModel = null;
          var _loc7_:Bonus = null;
@@ -83,11 +85,23 @@ package alternativa.tanks.models.bonus.battlefield
             }
          }
       }
+
+      public function initBonuses(param1:Vector.<BonusSpawnData>) : void
+      {
+         var _loc2_:BonusSpawnData = null;
+         if(param1 != null)
+         {
+            for each(_loc2_ in param1)
+            {
+               this.spawnBonus(_loc2_.battleBonusObject,_loc2_.bonusId,_loc2_.spawnPosition,_loc2_.lifeTime,false);
+            }
+         }
+      }
       
       [Obfuscation(rename="false")]
-      public function removeBonuses(param1:Vector.<String>) : void
+      public function removeBonuses(param1:Vector.<Long>) : void
       {
-         var _loc2_:String = null;
+         var _loc2_:Long = null;
          if(param1 != null)
          {
             for each(_loc2_ in param1)
@@ -97,7 +111,7 @@ package alternativa.tanks.models.bonus.battlefield
          }
       }
       
-      private function removeBonus(param1:String) : void
+      private function removeBonus(param1:Long) : void
       {
          var _loc2_:Bonus = this.bonuses[param1];
          if(_loc2_ != null)
@@ -108,7 +122,7 @@ package alternativa.tanks.models.bonus.battlefield
       }
       
       [Obfuscation(rename="false")]
-      public function bonusTaken(param1:String) : void
+      public function bonusTaken(param1:Long) : void
       {
          var _loc2_:Bonus = this.bonuses[param1];
          if(_loc2_ != null)
@@ -119,7 +133,7 @@ package alternativa.tanks.models.bonus.battlefield
       }
       
       [Obfuscation(rename="false")]
-      public function attemptToTakeBonusFailedTankNotActive(param1:String) : void
+      public function attemptToTakeBonusFailedTankNotActive(param1:Long) : void
       {
          var _loc2_:Bonus = this.bonuses[param1];
          if(_loc2_ != null)

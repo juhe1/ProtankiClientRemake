@@ -17,6 +17,8 @@ package scpacker.utils
    import platform.client.fp10.core.type.impl.GameClass;
    import platform.client.fp10.core.type.impl.Space;
    import platform.client.fp10.core.type.ISpace;
+   import utils.TankNameGameObjectMapper;
+   import alternativa.tanks.models.tank.configuration.TankConfiguration;
    
    public class CoreUtils
    {
@@ -118,6 +120,21 @@ package scpacker.utils
          {
             gameObject.gameClass.models.push(modelId);
          }
+      }
+      
+      public static function getTurretObjectByTankName(tankName:String):IGameObject
+      {
+         var shooterGameObject:IGameObject = TankNameGameObjectMapper.getGameObjectByTankName(tankName);
+         if(shooterGameObject == null)
+         {
+            return null;
+         }
+         var tankConfiguration:TankConfiguration = TankConfiguration(shooterGameObject.adapt(TankConfiguration));
+         if(tankConfiguration == null)
+         {
+            return null;
+         }
+         return tankConfiguration.getTurretObject();
       }
    }
 }

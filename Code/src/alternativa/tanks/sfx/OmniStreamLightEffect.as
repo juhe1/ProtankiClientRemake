@@ -14,9 +14,12 @@ package alternativa.tanks.sfx
       public function init(param1:Object3DPositionProvider, param2:LightAnimation, param3:LightAnimation) : void
       {
          this.positionProvider = param1;
-         this.startTime = param2.getLiveTime();
+         if(param2 != null)
+         {
+            this.startTime = param2.getLiveTime();
+            this.startAnimation = param2;
+         }
          this.loopTime = param3.getLiveTime();
-         this.startAnimation = param2;
          this.loopAnimation = param3;
          this.random = loopTime / 4;
          starting = true;

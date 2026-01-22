@@ -60,11 +60,11 @@ package alternativa.tanks.models.bonus.gold
          var _loc9_:IGameObject = null;
          var _loc10_:BattlefieldGUI = null;
          var _loc3_:Vector3d = BonusCrystalsEffectUtils.getTargetPosition(param1);
-         var _loc4_:TextureMaterial = TextureMaterial(getData(TextureMaterial));
-         BonusCrystalsEffectUtils.drawEffectForCatcherPosition(_loc3_,DELAY,_loc4_);
-         var _loc5_:Sound3D = Sound3D.create(getInitParam().sound.sound,0.5);
+         //var _loc4_:TextureMaterial = TextureMaterial(getData(TextureMaterial));
+         //BonusCrystalsEffectUtils.drawEffectForCatcherPosition(_loc3_,DELAY,_loc4_);
+         //var _loc5_:Sound3D = Sound3D.create(getInitParam().sound.sound,0.5);
          var _loc6_:Vector3 = new Vector3(_loc3_.x,_loc3_.y,_loc3_.z + 300);
-         battleService.addSound3DEffect(Sound3DEffect.create(_loc6_,_loc5_,DELAY));
+         //battleService.addSound3DEffect(Sound3DEffect.create(_loc6_,_loc5_,DELAY));
          var _loc7_:String = userInfoService.getUserName(TankNameGameObjectMapper.getTankNameByGameObject(param1));
          if(_loc7_ != null)
          {

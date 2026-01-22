@@ -7,6 +7,7 @@ package scpacker.networking.protocol.codec.custom
    import flash.utils.ByteArray;
    import scpacker.networking.protocol.ProtocolInitializer;
    import scpacker.networking.protocol.codec.ICodec;
+   import utils.TankNameGameObjectMapper;
    
    public class CodecTargetPosition implements ICodec
    {
@@ -43,7 +44,7 @@ package scpacker.networking.protocol.codec.custom
          _loc2_.localHitPoint = this.newname_4296__END.decode(param1) as Vector3d;
          _loc2_.orientation = this.newname_4297__END.decode(param1) as Vector3d;
          _loc2_.position = this.newname_4241__END.decode(param1) as Vector3d;
-         _loc2_.target = this.newname_2399__END.getUser(this.newname_4298__END.decode(param1) as String);
+         _loc2_.target = TankNameGameObjectMapper.getGameObjectByTankName(this.newname_4298__END.decode(param1) as String);
          _loc2_.turretAngle = this.newname_4299__END.decode(param1) as Number;
          return _loc2_;
       }
@@ -59,7 +60,7 @@ package scpacker.networking.protocol.codec.custom
          _loc3_ += this.newname_4296__END.encode(param1,_loc4_.localHitPoint);
          _loc3_ += this.newname_4297__END.encode(param1,_loc4_.orientation);
          _loc3_ += this.newname_4241__END.encode(param1,_loc4_.position);
-         _loc3_ += this.newname_4298__END.encode(param1,_loc4_.target == null ? null : _loc4_.target.id);
+         _loc3_ += this.newname_4298__END.encode(param1,_loc4_.target == null ? null : _loc4_.target.name);
          return _loc3_ + this.newname_4299__END.encode(param1,_loc4_.turretAngle);
       }
    }

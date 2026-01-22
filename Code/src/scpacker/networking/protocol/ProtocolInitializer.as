@@ -73,7 +73,6 @@ package scpacker.networking.protocol
          this.addCodec(new CodecRange(this));
          this.addCodec(new CodecBattleInfoData(this));
          this.addCodec(new CodecPremiumNotifierData(this));
-         this.addCodec(new CodecTargetHit(this));
          this.addCodec(new CodecOnlineNotifierData(this));
          this.addCodec(new CodecRankNotifierData(this));
          this.addCodec(new CodecUidNotifierData(this));
@@ -143,6 +142,7 @@ package scpacker.networking.protocol
          this.addCodec(new CodecBonusRegionResource(this));
          this.addCodec(new CodecBonusRegionData(this));
          this.addCodec(new CodecBonusRegionsCC(this));
+         this.addCodec(new CodecTargetHit(this));
       }
       
       public function InitializeProtection(param1:Vector.<int>) : void

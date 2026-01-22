@@ -7,7 +7,7 @@ package alternativa.tanks.models.effects.common
    public interface IBonusCommonModel
    {
       
-      function getBonus(param1:String) : Bonus;
+      function getBonus(param1:Long) : Bonus;
    }
 }
 

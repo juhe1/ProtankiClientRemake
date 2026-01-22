@@ -15,6 +15,7 @@ package alternativa.tanks.battle.objects.tank.tankskin.turret
    import flash.utils.Dictionary;
    import projects.tanks.clients.flash.resources.resource.Tanks3DSResource;
    import projects.tanks.clients.flash.resources.tanks.Tank3D;
+   import alternativa.tanks.battle.objects.tank.tankskin.TankTurretDynamicSkin;
    
    public class TurretSkin
    {
@@ -27,6 +28,8 @@ package alternativa.tanks.battle.objects.tank.tankskin.turret
       protected var turretMeshes:Vector.<Mesh>;
       
       protected var rootObject:Object3D;
+
+      private var turretDynamicSkin:TankTurretDynamicSkin;
       
       public function TurretSkin(param1:Tanks3DSResource)
       {
@@ -82,6 +85,7 @@ package alternativa.tanks.battle.objects.tank.tankskin.turret
          this.rootObject = this.turretMeshes[0].parent != null ? this.turretMeshes[0].parent : this.turretMeshes[0];
          this.rootObject.name = Object3DNames.TANK_PART;
          this.rootObject.mouseEnabled = true;
+         this.turretDynamicSkin = new TankTurretDynamicSkin(this.rootObject as Mesh);
       }
       
       protected static function copyPosition(param1:Object3D, param2:Object3D) : void
@@ -124,15 +128,17 @@ package alternativa.tanks.battle.objects.tank.tankskin.turret
             _loc1_.setMaterialToAllFaces(null);
          }
          this.turretMeshes = null;
+         this.turretDynamicSkin.destroy();
       }
       
-      public function setMaterials(param1:TextureMaterial) : void
+      public function setMaterials(param1:TextureMaterial, param2:TextureMaterial) : void
       {
          var _loc2_:Mesh = null;
          for each(_loc2_ in this.turretMeshes)
          {
             _loc2_.setMaterialToAllFaces(param1);
          }
+         this.turretDynamicSkin.setMaterial(param2);
       }
       
       public function addToScene() : void
@@ -172,6 +178,11 @@ package alternativa.tanks.battle.objects.tank.tankskin.turret
       public function getMeshes() : Vector.<Mesh>
       {
          return this.turretMeshes;
+      }
+
+      public function getTurretDynamicSkin() : TankTurretDynamicSkin
+      {
+         return this.turretDynamicSkin;
       }
       
       public function setColorTransform(param1:ColorTransform) : void

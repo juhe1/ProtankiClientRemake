@@ -46,9 +46,9 @@ package alternativa.tanks.models.weapons.stream
          server.startFire(param1);
       }
       
-      public function targetUpdate(param1:int, param2:Vector3, param3:Tank) : void
+      public function targetUpdate(param1:int, param2:Vector3, param3:Tank, position:Vector3) : void
       {
-         this.targetsUpdated(param1,param2,this.asList(param3));
+         this.targetsUpdated(param1,param2,this.asList(param3,position));
       }
       
       public function targetsUpdated(param1:int, param2:Vector3, param3:Vector.<TargetPosition>) : void
@@ -73,12 +73,15 @@ package alternativa.tanks.models.weapons.stream
          return StreamWeaponListener(object.event(StreamWeaponListener));
       }
       
-      private function asList(param1:Tank) : Vector.<TargetPosition>
+      private function asList(param1:Tank, position:Vector3) : Vector.<TargetPosition>
       {
          var _loc2_:Vector.<TargetPosition> = new Vector.<TargetPosition>();
+         var _loc3_:TargetPosition = null;
          if(param1 != null)
          {
-            _loc2_.push(BattleUtils.getTargetPosition(param1));
+            _loc3_ = BattleUtils.getTargetPosition(param1);
+            _loc3_.localHitPoint = BattleUtils.getVector3dOrNull(position);
+            _loc2_.push(_loc3_);
          }
          return _loc2_;
       }

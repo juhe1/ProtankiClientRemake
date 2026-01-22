@@ -248,7 +248,63 @@ package scpacker.networking.protocol
    import scpacker.networking.protocol.packets.isida.IsidaSetTargetOutPacket;
    import scpacker.networking.protocol.packets.isida.IsidaStopOutPacket;
    import scpacker.networking.protocol.packets.isida.IsidaTickOutPacket;
-   
+   import scpacker.networking.protocol.packets.thunder.ThunderPacketHandler;
+   import scpacker.networking.protocol.packets.thunder.ThunderShootInPacket;
+   import scpacker.networking.protocol.packets.thunder.ThunderShootStaticInPacket;
+   import scpacker.networking.protocol.packets.thunder.ThunderShootTargetInPacket;
+   import scpacker.networking.protocol.packets.thunder.ThunderShootOutPacket;
+   import scpacker.networking.protocol.packets.thunder.ThunderShootStaticOutPacket;
+   import scpacker.networking.protocol.packets.thunder.ThunderShootTargetOutPacket;
+   import scpacker.networking.protocol.packets.shotgun.ShotGunPacketHandler;
+   import scpacker.networking.protocol.packets.shotgun.ShotgunShootInPacket;
+   import scpacker.networking.protocol.packets.shotgun.ShotgunShotOutPacket;
+   import scpacker.networking.protocol.packets.shotgun.ShotgunTryDummyShootOutPacket;
+   import scpacker.networking.protocol.packets.freeze.FreezePacketHandler;
+   import scpacker.networking.protocol.packets.freeze.FreezeStartInPacket;
+   import scpacker.networking.protocol.packets.freeze.FreezeStopInPacket;
+   import scpacker.networking.protocol.packets.freeze.FreezeDamageOutPacket;
+   import scpacker.networking.protocol.packets.freeze.FreezeStopOutPacket;
+   import scpacker.networking.protocol.packets.freeze.FreezeStartOutPacket;
+   import scpacker.networking.protocol.packets.ricochet.RicochetPacketHandler;
+   import scpacker.networking.protocol.packets.ricochet.RicochetFireDummyInPacket;
+   import scpacker.networking.protocol.packets.ricochet.RicochetShootTargetInPacket;
+   import scpacker.networking.protocol.packets.ricochet.RicochetFireDummyOutPacket;
+   import scpacker.networking.protocol.packets.ricochet.RicochetFireOutPacket;
+   import scpacker.networking.protocol.packets.ricochet.RicochetHitStaticOutPacket;
+   import scpacker.networking.protocol.packets.ricochet.RicochetHitTargetOutPacket;
+   import scpacker.networking.protocol.packets.shaft.ShaftPacketHandler;
+   import scpacker.networking.protocol.packets.shaft.ShaftActivateManualTargetingInPacket;
+   import scpacker.networking.protocol.packets.shaft.ShaftActivateManualTargetingOutPacket;
+   import scpacker.networking.protocol.packets.shaft.ShaftAimedShotOutPacket;
+   import scpacker.networking.protocol.packets.shaft.ShaftLaserAimAtTankInPacket;
+   import scpacker.networking.protocol.packets.shaft.ShaftLaserAimAtTankOutPacket;
+   import scpacker.networking.protocol.packets.shaft.ShaftLaserHideInPacket;
+   import scpacker.networking.protocol.packets.shaft.ShaftLaserHideOutPacket;
+   import scpacker.networking.protocol.packets.shaft.ShaftLaserUpdateDirectionInPacket;
+   import scpacker.networking.protocol.packets.shaft.ShaftLaserUpdateDirectionOutPacket;
+   import scpacker.networking.protocol.packets.shaft.ShaftQuickShotOutPacket;
+   import scpacker.networking.protocol.packets.shaft.ShaftScopeInitOutPacket;
+   import scpacker.networking.protocol.packets.shaft.ShaftShootTargetInPacket;
+   import scpacker.networking.protocol.packets.shaft.ShaftStopManualTargetingInPacket;
+   import scpacker.networking.protocol.packets.shaft.ShaftStopManualTargetingOutPacket;
+   import scpacker.networking.protocol.packets.machinegun.MachineGunPacketHandler;
+   import scpacker.networking.protocol.packets.machinegun.MachineGunHitInPacket;
+   import scpacker.networking.protocol.packets.machinegun.MachineGunStartFireInPacket;
+   import scpacker.networking.protocol.packets.machinegun.MachineGunStartFireOutPacket;
+   import scpacker.networking.protocol.packets.machinegun.MachineGunStopFireInPacket;
+   import scpacker.networking.protocol.packets.machinegun.MachineGunStopFireOutPacket;
+   import scpacker.networking.protocol.packets.machinegun.MachineGunUpdateDirectionOutPacket;
+   import scpacker.networking.protocol.packets.machinegun.MachineGunUpdateTargetsOutPacket;   
+   import scpacker.networking.protocol.packets.battle.CollectBonusBoxOutPacket;
+   import scpacker.networking.protocol.packets.bonusregion.BonusRegionPacketHandler;
+   import scpacker.networking.protocol.packets.bonusregion.HideDropZoneInPacket;
+   import scpacker.networking.protocol.packets.bonusregion.LoadBonusRegionsModelInPacket;
+   import scpacker.networking.protocol.packets.bonusregion.ShowDropZoneInPacket;
+   import scpacker.networking.protocol.packets.gold.GoldPacketHandler;
+   import scpacker.networking.protocol.packets.gold.GoldTakenInPacket;
+   import scpacker.networking.protocol.packets.gold.NotificationBonusContainsUidInPacket;
+   import scpacker.networking.protocol.packets.gold.NotificationBonusInPacket;
+
    public class PacketInitializer
    {
       private var packetRegistry:PacketFactory;
@@ -427,6 +483,7 @@ package scpacker.networking.protocol
          packetRegistry.registerPacket(new RemoveBonusBoxInPacket());
          packetRegistry.registerPacket(new TakeBonusBoxInPacket());
          packetRegistry.registerPacket(new UnloadBattleSpaceInPacket());
+         packetRegistry.registerPacket(new CollectBonusBoxOutPacket());
 
          // BattleStatistics Packets
          packetInvoker.registerPacketHandler(new BattleStatisticsPacketHandler());
@@ -585,6 +642,77 @@ package scpacker.networking.protocol
          packetRegistry.registerPacket(new IsidaSetTargetOutPacket());
          packetRegistry.registerPacket(new IsidaStopOutPacket());
          packetRegistry.registerPacket(new IsidaTickOutPacket());
+
+         // Thunder Packets
+         packetInvoker.registerPacketHandler(new ThunderPacketHandler());
+         packetRegistry.registerPacket(new ThunderShootInPacket());
+         packetRegistry.registerPacket(new ThunderShootStaticInPacket());
+         packetRegistry.registerPacket(new ThunderShootTargetInPacket());
+         packetRegistry.registerPacket(new ThunderShootOutPacket());
+         packetRegistry.registerPacket(new ThunderShootStaticOutPacket());
+         packetRegistry.registerPacket(new ThunderShootTargetOutPacket());
+
+         // Shotgun Packets
+         packetInvoker.registerPacketHandler(new ShotGunPacketHandler());
+         packetRegistry.registerPacket(new ShotgunShootInPacket());
+         packetRegistry.registerPacket(new ShotgunShotOutPacket());
+         packetRegistry.registerPacket(new ShotgunTryDummyShootOutPacket());
+
+         // Freeze Packets
+         packetInvoker.registerPacketHandler(new FreezePacketHandler());
+         packetRegistry.registerPacket(new FreezeStartInPacket());
+         packetRegistry.registerPacket(new FreezeStopInPacket());
+         packetRegistry.registerPacket(new FreezeDamageOutPacket());
+         packetRegistry.registerPacket(new FreezeStopOutPacket());
+         packetRegistry.registerPacket(new FreezeStartOutPacket());
+
+         // Ricochet Packets
+         packetInvoker.registerPacketHandler(new RicochetPacketHandler());
+         packetRegistry.registerPacket(new RicochetFireDummyInPacket());
+         packetRegistry.registerPacket(new RicochetShootTargetInPacket());
+         packetRegistry.registerPacket(new RicochetFireDummyOutPacket());
+         packetRegistry.registerPacket(new RicochetFireOutPacket());
+         packetRegistry.registerPacket(new RicochetHitStaticOutPacket());
+         packetRegistry.registerPacket(new RicochetHitTargetOutPacket());
+
+         // Shaft Packets
+         packetInvoker.registerPacketHandler(new ShaftPacketHandler());
+         packetRegistry.registerPacket(new ShaftActivateManualTargetingInPacket());
+         packetRegistry.registerPacket(new ShaftActivateManualTargetingOutPacket());
+         packetRegistry.registerPacket(new ShaftAimedShotOutPacket());
+         packetRegistry.registerPacket(new ShaftLaserAimAtTankInPacket());
+         packetRegistry.registerPacket(new ShaftLaserAimAtTankOutPacket());
+         packetRegistry.registerPacket(new ShaftLaserHideInPacket());
+         packetRegistry.registerPacket(new ShaftLaserHideOutPacket());
+         packetRegistry.registerPacket(new ShaftLaserUpdateDirectionInPacket());
+         packetRegistry.registerPacket(new ShaftLaserUpdateDirectionOutPacket());
+         packetRegistry.registerPacket(new ShaftQuickShotOutPacket());
+         packetRegistry.registerPacket(new ShaftScopeInitOutPacket());
+         packetRegistry.registerPacket(new ShaftShootTargetInPacket());
+         packetRegistry.registerPacket(new ShaftStopManualTargetingInPacket());
+         packetRegistry.registerPacket(new ShaftStopManualTargetingOutPacket());
+
+         // MachineGun Packets
+         packetInvoker.registerPacketHandler(new MachineGunPacketHandler());
+         packetRegistry.registerPacket(new MachineGunHitInPacket());
+         packetRegistry.registerPacket(new MachineGunStartFireInPacket());
+         packetRegistry.registerPacket(new MachineGunStartFireOutPacket());
+         packetRegistry.registerPacket(new MachineGunStopFireInPacket());
+         packetRegistry.registerPacket(new MachineGunStopFireOutPacket());
+         packetRegistry.registerPacket(new MachineGunUpdateDirectionOutPacket());
+         packetRegistry.registerPacket(new MachineGunUpdateTargetsOutPacket());
+
+         // BonusRegion Packets
+         packetInvoker.registerPacketHandler(new BonusRegionPacketHandler());
+         packetRegistry.registerPacket(new HideDropZoneInPacket());
+         packetRegistry.registerPacket(new LoadBonusRegionsModelInPacket());
+         packetRegistry.registerPacket(new ShowDropZoneInPacket());
+
+         // Gold Packets
+         packetInvoker.registerPacketHandler(new GoldPacketHandler());
+         packetRegistry.registerPacket(new GoldTakenInPacket());
+         packetRegistry.registerPacket(new NotificationBonusContainsUidInPacket());
+         packetRegistry.registerPacket(new NotificationBonusInPacket());
       }
    }
 }
