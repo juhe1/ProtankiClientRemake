@@ -4,6 +4,7 @@ package projects.tanks.client.panel.model.garage.resistance
 
    public class ResistancesListModelServer
    {
+
       private var model:IModel;
 
       public function ResistancesListModelServer(param1:IModel)

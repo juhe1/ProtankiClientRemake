@@ -6,9 +6,10 @@ package projects.tanks.client.entrance.model.entrance.passwordchange
 
    public class PasswordChangeModelBase extends Model
    {
+
       protected var server:PasswordChangeModelServer;
 
-      static public var modelId:Long = Long.getLong(2144135680,-1866277160);
+      public static const modelId:Long = Long.getLong(2144135680,-1866277160);
 
       public function PasswordChangeModelBase()
       {

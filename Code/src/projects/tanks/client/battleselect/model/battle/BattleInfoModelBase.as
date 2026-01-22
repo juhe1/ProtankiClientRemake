@@ -6,13 +6,19 @@ package projects.tanks.client.battleselect.model.battle
 
    public class BattleInfoModelBase extends Model
    {
+
       protected var server:BattleInfoModelServer;
 
-      public static var modelId:Long = Long.getLong(678248814,-1039722970);
+      public static const modelId:Long = Long.getLong(678248814,-1039722970);
 
       public function BattleInfoModelBase()
       {
          super();
+         this.initCodecs();
+      }
+
+      protected function initCodecs() : void
+      {
          this.server = new BattleInfoModelServer(IModel(this));
       }
 
@@ -23,7 +29,7 @@ package projects.tanks.client.battleselect.model.battle
 
       override public function get id() : Long
       {
-         return BattleInfoModelBase.modelId;
+         return modelId;
       }
    }
 }

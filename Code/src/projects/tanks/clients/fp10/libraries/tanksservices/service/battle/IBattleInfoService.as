@@ -1,21 +1,20 @@
 package projects.tanks.clients.fp10.libraries.tanksservices.service.battle
 {
-   import alternativa.types.Long;
    import flash.events.IEventDispatcher;
    import projects.tanks.client.battleservice.BattleRoundParameters;
    
    public interface IBattleInfoService extends IEventDispatcher
    {
       
-      function get currentSelectionBattleId() : Long;
+      function get currentSelectionBattleId() : String;
       
-      function get currentBattleId() : Long;
+      function get currentBattleId() : String;
       
-      function set currentBattleId(param1:Long) : void;
+      function set currentBattleId(param1:String) : void;
       
-      function setCurrentSelectionBattle(param1:Long, param2:int, param3:int) : void;
+      function setCurrentSelectionBattle(param1:String, param2:int, param3:int) : void;
       
-      function setCurrentSelectionBattleAndNotify(param1:Long, param2:int, param3:int) : void;
+      function setCurrentSelectionBattleAndNotify(param1:String, param2:int, param3:int) : void;
       
       function resetCurrentSelectionBattleId() : void;
       

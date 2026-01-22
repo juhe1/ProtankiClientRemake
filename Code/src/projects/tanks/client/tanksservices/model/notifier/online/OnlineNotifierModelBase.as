@@ -6,13 +6,19 @@ package projects.tanks.client.tanksservices.model.notifier.online
 
    public class OnlineNotifierModelBase extends Model
    {
-      public static const modelId:Long = Long.getLong(467887314,-1426971041);
 
       protected var server:OnlineNotifierModelServer;
+
+      public static const modelId:Long = Long.getLong(467887314,-1426971041);
 
       public function OnlineNotifierModelBase()
       {
          super();
+         this.initCodecs();
+      }
+
+      protected function initCodecs() : void
+      {
          this.server = new OnlineNotifierModelServer(IModel(this));
       }
 

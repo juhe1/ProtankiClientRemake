@@ -6,13 +6,19 @@ package projects.tanks.client.tanksservices.model.notifier.socialnetworks
 
    public class SNUidNotifierModelBase extends Model
    {
-      public static const modelId:Long = Long.getLong(1741772027,-10049568);
 
       protected var server:SNUidNotifierModelServer;
+
+      public static const modelId:Long = Long.getLong(1741772027,-10049568);
 
       public function SNUidNotifierModelBase()
       {
          super();
+         this.initCodecs();
+      }
+
+      protected function initCodecs() : void
+      {
          this.server = new SNUidNotifierModelServer(IModel(this));
       }
 

@@ -8,7 +8,7 @@ package projects.tanks.clients.fp10.libraries.tanksservices.service.address
       
       function resetBattle() : void;
       
-      function setBattle(param1:Long) : void;
+      function setBattle(param1:String) : void;
       
       function setServer(param1:int) : void;
       
@@ -20,7 +20,7 @@ package projects.tanks.clients.fp10.libraries.tanksservices.service.address
       
       function hasBattle() : Boolean;
       
-      function getBattleId() : Long;
+      function getBattleId() : String;
    }
 }
 

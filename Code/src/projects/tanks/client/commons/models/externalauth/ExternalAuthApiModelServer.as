@@ -1,6 +1,7 @@
 package projects.tanks.client.commons.models.externalauth
 {
    import platform.client.fp10.core.model.IModel;
+   import platform.client.fp10.core.type.IGameObject;
 
    public class ExternalAuthApiModelServer
    {

@@ -9,7 +9,7 @@ package projects.tanks.client.entrance.model.entrance.login
 
       protected var server:LoginModelServer;
 
-      public static var modelId:Long = Long.getLong(1719449474,-786961358);
+      public static const modelId:Long = Long.getLong(1719449474,-786961358);
 
       public function LoginModelBase()
       {

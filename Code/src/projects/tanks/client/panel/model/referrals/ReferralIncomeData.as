@@ -1,12 +1,12 @@
 package projects.tanks.client.panel.model.referrals
 {
-   public class ReferrerIncomeData
+   public class ReferralIncomeData
    {
       private var newname_8147__END:int;
       
       private var newname_3287__END:String;
       
-      public function ReferrerIncomeData(param1:int = 0, param2:String = null)
+      public function ReferralIncomeData(param1:int = 0, param2:String = null)
       {
          super();
          this.newname_8147__END = param1;

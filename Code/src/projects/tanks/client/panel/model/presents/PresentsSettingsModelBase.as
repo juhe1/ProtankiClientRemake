@@ -3,17 +3,22 @@ package projects.tanks.client.panel.model.presents
    import alternativa.types.Long;
    import platform.client.fp10.core.model.IModel;
    import platform.client.fp10.core.model.impl.Model;
-   import projects.tanks.client.panel.model.presents.PresentsSettingsCC;
 
    public class PresentsSettingsModelBase extends Model
    {
-      public static const modelId:Long = Long.getLong(1701514952,2131242841);
 
       protected var server:PresentsSettingsModelServer;
+
+      public static const modelId:Long = Long.getLong(1701514952,2131242841);
 
       public function PresentsSettingsModelBase()
       {
          super();
+         this.initCodecs();
+      }
+
+      protected function initCodecs() : void
+      {
          this.server = new PresentsSettingsModelServer(IModel(this));
       }
 

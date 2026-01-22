@@ -304,6 +304,33 @@ package scpacker.networking.protocol
    import scpacker.networking.protocol.packets.gold.GoldTakenInPacket;
    import scpacker.networking.protocol.packets.gold.NotificationBonusContainsUidInPacket;
    import scpacker.networking.protocol.packets.gold.NotificationBonusInPacket;
+   import scpacker.networking.protocol.packets.friends.FriendsPacketHandler;
+   import scpacker.networking.protocol.packets.friends.LoadFriendsListInPacket;
+   import scpacker.networking.protocol.packets.friends.OutgoingOnAddingInPacket;
+   import scpacker.networking.protocol.packets.friends.AcceptIncomingFriendInPacket;
+   import scpacker.networking.protocol.packets.friends.IncomingOnAddingInPacket;
+   import scpacker.networking.protocol.packets.friends.AlreadyInAcceptedFriendsInPacket;
+   import scpacker.networking.protocol.packets.friends.AlreadyInIncomingFriendsInPacket;
+   import scpacker.networking.protocol.packets.friends.AlreadyInOutgoingFriendsInPacket;
+   import scpacker.networking.protocol.packets.friends.FriendsAcceptedOnRemoveInPacket;
+   import scpacker.networking.protocol.packets.friends.FriendsIncomingOnRemoveInPacket;
+   import scpacker.networking.protocol.packets.friends.FriendsOutgoingOnRemoveInPacket;
+   import scpacker.networking.protocol.packets.friends.FriendsAcceptedNotificatorOnRemoveInPacket;
+   import scpacker.networking.protocol.packets.friends.FriendsIncomingNotificatorOnRemoveInPacket;
+   import scpacker.networking.protocol.packets.friends.FriendsOnUsersLoadedInPacket;
+   import scpacker.networking.protocol.packets.friends.FriendsUidExistInPacket;
+   import scpacker.networking.protocol.packets.friends.FriendsUidNotExistInPacket;
+   import scpacker.networking.protocol.packets.friends.AcceptFriendInviteOutPacket;
+   import scpacker.networking.protocol.packets.friends.AddFriendOutPacket;
+   import scpacker.networking.protocol.packets.friends.CheckFriendOutPacket;
+   import scpacker.networking.protocol.packets.friends.RevokeFriendOutPacket;
+   import scpacker.networking.protocol.packets.friends.RejectFriendInviteOutPacket;
+   import scpacker.networking.protocol.packets.friends.RemoveAcceptedFriendOutPacket;
+   import scpacker.networking.protocol.packets.friends.RemoveIncomingFriendOutPacket;
+   import scpacker.networking.protocol.packets.friends.RemoveOutgoingFriendOutPacket;
+   import scpacker.networking.protocol.packets.friends.FriendsLoadOutPacket;
+   import scpacker.networking.protocol.packets.friends.NotifyAcceptedFriendOutPacket;
+   import scpacker.networking.protocol.packets.friends.BattleKickReasonInPacket;
 
    public class PacketInitializer
    {
@@ -713,6 +740,35 @@ package scpacker.networking.protocol
          packetRegistry.registerPacket(new GoldTakenInPacket());
          packetRegistry.registerPacket(new NotificationBonusContainsUidInPacket());
          packetRegistry.registerPacket(new NotificationBonusInPacket());
+
+         // Friends Packets
+         packetInvoker.registerPacketHandler(new FriendsPacketHandler());
+         packetRegistry.registerPacket(new LoadFriendsListInPacket());
+         packetRegistry.registerPacket(new OutgoingOnAddingInPacket());
+         packetRegistry.registerPacket(new AcceptIncomingFriendInPacket());
+         packetRegistry.registerPacket(new IncomingOnAddingInPacket());
+         packetRegistry.registerPacket(new AlreadyInAcceptedFriendsInPacket());
+         packetRegistry.registerPacket(new AlreadyInIncomingFriendsInPacket());
+         packetRegistry.registerPacket(new AlreadyInOutgoingFriendsInPacket());
+         packetRegistry.registerPacket(new FriendsAcceptedOnRemoveInPacket());
+         packetRegistry.registerPacket(new FriendsIncomingOnRemoveInPacket());
+         packetRegistry.registerPacket(new FriendsOutgoingOnRemoveInPacket());
+         packetRegistry.registerPacket(new FriendsAcceptedNotificatorOnRemoveInPacket());
+         packetRegistry.registerPacket(new FriendsIncomingNotificatorOnRemoveInPacket());
+         packetRegistry.registerPacket(new FriendsOnUsersLoadedInPacket());
+         packetRegistry.registerPacket(new FriendsUidExistInPacket());
+         packetRegistry.registerPacket(new FriendsUidNotExistInPacket());
+         packetRegistry.registerPacket(new AcceptFriendInviteOutPacket());
+         packetRegistry.registerPacket(new AddFriendOutPacket());
+         packetRegistry.registerPacket(new CheckFriendOutPacket());
+         packetRegistry.registerPacket(new RevokeFriendOutPacket());
+         packetRegistry.registerPacket(new RejectFriendInviteOutPacket());
+         packetRegistry.registerPacket(new RemoveAcceptedFriendOutPacket());
+         packetRegistry.registerPacket(new RemoveIncomingFriendOutPacket());
+         packetRegistry.registerPacket(new RemoveOutgoingFriendOutPacket());
+         packetRegistry.registerPacket(new FriendsLoadOutPacket());
+         packetRegistry.registerPacket(new NotifyAcceptedFriendOutPacket());
+         packetRegistry.registerPacket(new BattleKickReasonInPacket());
       }
    }
 }

@@ -4,6 +4,7 @@ package projects.tanks.client.tanksservices.model.notifier.rank
 
    public class RankNotifierModelServer
    {
+
       private var model:IModel;
 
       public function RankNotifierModelServer(param1:IModel)

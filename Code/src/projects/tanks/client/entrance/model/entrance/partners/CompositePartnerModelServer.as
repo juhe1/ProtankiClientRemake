@@ -2,9 +2,11 @@ package projects.tanks.client.entrance.model.entrance.partners
 {
    import platform.client.core.general.socialnetwork.types.LoginParameters;
    import platform.client.fp10.core.model.IModel;
+   import platform.client.fp10.core.type.IGameObject;
 
    public class CompositePartnerModelServer
    {
+
       private var model:IModel;
 
       public function CompositePartnerModelServer(param1:IModel)

@@ -1,6 +1,6 @@
 package scpacker.networking.protocol.codec.custom
 {
-   import projects.tanks.client.panel.model.referrals.ReferrerIncomeData;
+   import projects.tanks.client.panel.model.referrals.ReferralIncomeData;
    import flash.utils.ByteArray;
    import scpacker.networking.protocol.ProtocolInitializer;
    import scpacker.networking.protocol.codec.ICodec;
@@ -18,11 +18,11 @@ package scpacker.networking.protocol.codec.custom
       public function decode(param1:ByteArray) : Object
       {
          var _loc2_:int = param1.readInt();
-         var _loc3_:Vector.<ReferrerIncomeData> = new Vector.<ReferrerIncomeData>(_loc2_,true);
+         var _loc3_:Vector.<ReferralIncomeData> = new Vector.<ReferralIncomeData>(_loc2_,true);
          var _loc4_:int = 0;
          while(_loc4_ < _loc2_)
          {
-            _loc3_[_loc4_] = ReferrerIncomeData(this.elementCodec.decode(param1));
+            _loc3_[_loc4_] = ReferralIncomeData(this.elementCodec.decode(param1));
             _loc4_++;
          }
          return _loc3_;
@@ -34,7 +34,7 @@ package scpacker.networking.protocol.codec.custom
          {
             throw new Error("Object is null. Use @ProtocolOptional annotation.");
          }
-         var _loc5_:Vector.<ReferrerIncomeData> = Vector.<ReferrerIncomeData>(param2);
+         var _loc5_:Vector.<ReferralIncomeData> = Vector.<ReferralIncomeData>(param2);
          var _loc6_:int = int(_loc5_.length);
          param1.writeInt(_loc6_);
          var _loc3_:int = 0;

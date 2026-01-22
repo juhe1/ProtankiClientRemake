@@ -1,9 +1,11 @@
 package projects.tanks.client.entrance.model.entrance.email
 {
    import platform.client.fp10.core.model.IModel;
+   import platform.client.fp10.core.type.IGameObject;
 
    public class EmailRegistrationModelServer
    {
+
       private var model:IModel;
 
       public function EmailRegistrationModelServer(param1:IModel)

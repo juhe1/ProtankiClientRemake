@@ -1,6 +1,7 @@
 package projects.tanks.client.entrance.model.entrance.passwordchange
 {
    import platform.client.fp10.core.model.IModel;
+   import platform.client.fp10.core.type.IGameObject;
 
    public class PasswordChangeModelServer
    {

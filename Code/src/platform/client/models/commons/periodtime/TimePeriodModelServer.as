@@ -4,6 +4,7 @@ package platform.client.models.commons.periodtime
 
    public class TimePeriodModelServer
    {
+
       private var model:IModel;
 
       public function TimePeriodModelServer(param1:IModel)

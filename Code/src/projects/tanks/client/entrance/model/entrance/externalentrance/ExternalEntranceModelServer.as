@@ -1,6 +1,7 @@
 package projects.tanks.client.entrance.model.entrance.externalentrance
 {
    import platform.client.fp10.core.model.IModel;
+   import platform.client.fp10.core.type.IGameObject;
 
    public class ExternalEntranceModelServer
    {

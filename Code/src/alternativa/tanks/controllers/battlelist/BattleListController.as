@@ -62,7 +62,7 @@ package alternativa.tanks.controllers.battlelist
       [Inject] // added
       public static var battleCreateFormService:IBattleCreateFormService;
       
-      private static var lastShownItemId:Long;
+      private static var lastShownItemId:String;
       
       private static const MODE_FILTER:String = "BATTLE_LIST_MODE_FILTER";
       
@@ -166,7 +166,7 @@ package alternativa.tanks.controllers.battlelist
          {
             return;
          }
-         var _loc2_:Long = param1.getBattleId();
+         var _loc2_:String = param1.getBattleId();
          if(_loc2_ == null)
          {
             this.resetSelectedItem();
@@ -177,7 +177,7 @@ package alternativa.tanks.controllers.battlelist
          }
       }
       
-      private function selectBattleItemById(param1:Long) : void
+      private function selectBattleItemById(param1:String) : void
       {
          var _loc2_:BattleListItemParams = this.findBattleListItem(param1);
          if(_loc2_ == null)
@@ -191,14 +191,14 @@ package alternativa.tanks.controllers.battlelist
          }
       }
       
-      private function findBattleListItem(param1:Long) : BattleListItemParams
+      private function findBattleListItem(param1:String) : BattleListItemParams
       {
          var _loc2_:BattleListItemParams = null;
          var _loc3_:int = int(this._allItems.length);
          var _loc4_:int = 0;
          while(_loc4_ < _loc3_)
          {
-            if(this._allItems[_loc4_].params.battle.id == param1)
+            if(this._allItems[_loc4_].params.battle.name == param1)
             {
                _loc2_ = this._allItems[_loc4_];
                break;
@@ -226,7 +226,7 @@ package alternativa.tanks.controllers.battlelist
          this._selectedItem = param1;
          if(param2)
          {
-            if(this._view.getItemIndex(param1.id) < 0)
+            if(this._view.getItemIndex(param1.name) < 0)
             {
                _loc4_ = BattleSelectVectorUtil.findElementInVector(this._allItems,param1.id);
                if(_loc4_ != null)
@@ -238,17 +238,17 @@ package alternativa.tanks.controllers.battlelist
                   }
                }
             }
-            this._view.setSelect(this._selectedItem.id);
+            this._view.setSelect(this._selectedItem.name);
          }
          if(param3)
          {
             dispatchEvent(new BattleSelectedEvent(BattleSelectedEvent.BATTLE_SELECTED,this._selectedItem));
          }
-         if(lastShownItemId == this._selectedItem.id)
+         if(lastShownItemId == this._selectedItem.name)
          {
             battleInfoFormService.showLastShowedForm();
          }
-         lastShownItemId = this._selectedItem.id;
+         lastShownItemId = this._selectedItem.name;
       }
       
       public function onBattleListItemClick(param1:IGameObject) : void
@@ -334,22 +334,22 @@ package alternativa.tanks.controllers.battlelist
          dispatchEvent(new CreateBattleClickEvent());
       }
       
-      public function updateSuspicious(param1:Long, param2:BattleSuspicionLevel) : void
+      public function updateSuspicious(param1:String, param2:BattleSuspicionLevel) : void
       {
          this._view.updateSuspicious(param1,param2);
       }
       
-      public function updateUsersCount(param1:Long) : void
+      public function updateUsersCount(param1:String) : void
       {
          this._view.updateUsersCount(param1);
       }
       
-      public function updateBattleName(param1:Long) : void
+      public function updateBattleName(param1:String) : void
       {
          this._view.updateBattleName(param1);
       }
       
-      public function swapTeams(param1:Long) : void
+      public function swapTeams(param1:String) : void
       {
          this._view.swapTeams(param1);
       }
@@ -360,7 +360,7 @@ package alternativa.tanks.controllers.battlelist
          var _loc3_:int = 0;
          var _loc4_:BattleListItemParams = null;
          var _loc5_:BattleListItemParams = null;
-         var _loc6_:Long = null;
+         var _loc6_:String = null;
          this._isItemsPacketJoinSuccess = true;
          var _loc1_:int = int(this._itemsAwaitPacketJoinSuccess.length);
          if(_loc1_ != 0)
@@ -491,7 +491,7 @@ package alternativa.tanks.controllers.battlelist
          }
          if(this._selectedItem != null)
          {
-            if(this._view.getItemIndex(this._selectedItem.id) == -1)
+            if(this._view.getItemIndex(this._selectedItem.name) == -1)
             {
                this.resetSelectedItem();
             }

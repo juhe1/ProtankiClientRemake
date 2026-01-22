@@ -6,6 +6,7 @@ package projects.tanks.client.battleselect.model.battleselect.create
 
    public class BattleCreateModelBase extends Model
    {
+
       protected var server:BattleCreateModelServer;
 
       public static const modelId:Long = Long.getLong(2006601986,1009878384);

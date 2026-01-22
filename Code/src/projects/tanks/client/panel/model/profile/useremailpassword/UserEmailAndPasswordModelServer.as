@@ -1,9 +1,11 @@
 package projects.tanks.client.panel.model.profile.useremailpassword
 {
    import platform.client.fp10.core.model.IModel;
+   import platform.client.fp10.core.type.IGameObject;
 
    public class UserEmailAndPasswordModelServer
    {
+
       private var model:IModel;
 
       public function UserEmailAndPasswordModelServer(param1:IModel)

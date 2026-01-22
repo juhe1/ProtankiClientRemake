@@ -4,6 +4,7 @@ package projects.tanks.client.tanksservices.model.notifier.referrals
 
    public class ReferralNotifierModelServer
    {
+
       private var model:IModel;
 
       public function ReferralNotifierModelServer(param1:IModel)

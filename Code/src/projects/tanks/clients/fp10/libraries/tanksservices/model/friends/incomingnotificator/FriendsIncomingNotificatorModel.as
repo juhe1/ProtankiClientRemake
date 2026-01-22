@@ -29,7 +29,7 @@ package projects.tanks.clients.fp10.libraries.tanksservices.model.friends.incomi
       public function objectLoaded() : void
       {
          var _loc1_:UserContainerCC = null;
-         var _loc2_:Long = null;
+         var _loc2_:String = null;
          if(IFriends(object.adapt(IFriends)).isLocal())
          {
             _loc1_ = getInitParam();
@@ -51,7 +51,7 @@ package projects.tanks.clients.fp10.libraries.tanksservices.model.friends.incomi
          }
       }
       
-      public function onAdding(param1:Long) : void
+      public function onAdding(param1:String) : void
       {
          if(IFriends(object.adapt(IFriends)).isLocal())
          {
@@ -60,7 +60,7 @@ package projects.tanks.clients.fp10.libraries.tanksservices.model.friends.incomi
          }
       }
       
-      public function onRemoved(param1:Long) : void
+      public function onRemoved(param1:String) : void
       {
          if(IFriends(object.adapt(IFriends)).isLocal())
          {

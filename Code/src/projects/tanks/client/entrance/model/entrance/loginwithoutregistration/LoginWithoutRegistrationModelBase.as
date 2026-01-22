@@ -6,9 +6,10 @@ package projects.tanks.client.entrance.model.entrance.loginwithoutregistration
 
    public class LoginWithoutRegistrationModelBase extends Model
    {
+
       protected var server:LoginWithoutRegistrationModelServer;
 
-      static public var modelId:Long = Long.getLong(692477936,347605992);
+      public static const modelId:Long = Long.getLong(692477936,347605992);
 
       public function LoginWithoutRegistrationModelBase()
       {

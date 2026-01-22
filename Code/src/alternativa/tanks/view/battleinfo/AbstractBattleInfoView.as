@@ -123,7 +123,7 @@ package alternativa.tanks.view.battleinfo
       {
          if(!this.container.contains(this))
          {
-            battleInfoService.setCurrentSelectionBattle(this.initParams.battle.id,this.initParams.createParams.rankRange.min,this.initParams.createParams.rankRange.max);
+            battleInfoService.setCurrentSelectionBattle(this.initParams.battle.name,this.initParams.createParams.rankRange.min,this.initParams.createParams.rankRange.max);
             this.setEvents();
             this.container.addChild(this);
             this.resize();

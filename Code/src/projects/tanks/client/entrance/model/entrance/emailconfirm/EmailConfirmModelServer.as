@@ -1,9 +1,11 @@
 package projects.tanks.client.entrance.model.entrance.emailconfirm
 {
    import platform.client.fp10.core.model.IModel;
+   import platform.client.fp10.core.type.IGameObject;
 
    public class EmailConfirmModelServer
-   {  
+   {
+
       private var model:IModel;
 
       public function EmailConfirmModelServer(param1:IModel)

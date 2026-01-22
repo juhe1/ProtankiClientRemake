@@ -11,10 +11,10 @@ package alternativa.tanks.gui.friends.button.friends
    public class NewRequestIndicator extends Sprite
    {
       
-      [Inject] // added
+      [Inject]
       public static var friendInfoService:IFriendInfoService;
       
-      [Inject] // added
+      [Inject]
       public static var newReferralsNotifierService:NewReferralsNotifierService;
       
       public static var attentionIconClass:Class = NewRequestIndicator_attentionIconClass;

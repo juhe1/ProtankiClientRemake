@@ -4,6 +4,7 @@ package platform.client.models.commons.description
 
    public class DescriptionModelServer
    {
+
       private var model:IModel;
 
       public function DescriptionModelServer(param1:IModel)

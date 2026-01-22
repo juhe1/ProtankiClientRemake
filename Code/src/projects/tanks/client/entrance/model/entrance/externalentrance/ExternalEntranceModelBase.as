@@ -6,9 +6,10 @@ package projects.tanks.client.entrance.model.entrance.externalentrance
 
    public class ExternalEntranceModelBase extends Model
    {
+
       protected var server:ExternalEntranceModelServer;
 
-      static public var modelId:Long = Long.getLong(108568170,1674173608);
+      public static const modelId:Long = Long.getLong(108568170,1674173608);
 
       public function ExternalEntranceModelBase()
       {
@@ -23,7 +24,7 @@ package projects.tanks.client.entrance.model.entrance.externalentrance
 
       protected function getInitParam() : ExternalEntranceCC
       {
-         return ExternalEntranceCC(initParams[platform.client.fp10.core.model.impl.Model.object]);
+         return ExternalEntranceCC(initParams[Model.object]);
       }
 
       override public function get id() : Long

@@ -6,9 +6,10 @@ package projects.tanks.client.battleservice.model.latency
 
    public class LatencyModelBase extends Model
    {
+
       protected var server:LatencyModelServer;
 
-      static public var modelId:Long = Long.getLong(121770418,618912707);
+      public static const modelId:Long = Long.getLong(121770418,618912707);
 
       public function LatencyModelBase()
       {

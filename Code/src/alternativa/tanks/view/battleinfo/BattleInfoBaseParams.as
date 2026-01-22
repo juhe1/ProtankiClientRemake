@@ -38,9 +38,9 @@ package alternativa.tanks.view.battleinfo
          super();
       }
       
-      public function get battleId() : Long
+      public function get battleId() : String
       {
-         return this.battle.id;
+         return this.battle.name;
       }
    }
 }

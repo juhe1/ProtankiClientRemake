@@ -6,9 +6,10 @@ package projects.tanks.client.entrance.model.entrance.loginbyhash
 
    public class LoginByHashModelBase extends Model
    {
+
       protected var server:LoginByHashModelServer;
 
-      static public var modelId:Long = Long.getLong(1662174151,-1895153624);
+      public static const modelId:Long = Long.getLong(1662174151,-1895153624);
 
       public function LoginByHashModelBase()
       {

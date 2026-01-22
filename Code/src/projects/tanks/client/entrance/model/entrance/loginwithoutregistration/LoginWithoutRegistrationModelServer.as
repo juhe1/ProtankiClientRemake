@@ -1,9 +1,11 @@
 package projects.tanks.client.entrance.model.entrance.loginwithoutregistration
 {
    import platform.client.fp10.core.model.IModel;
+   import platform.client.fp10.core.type.IGameObject;
 
    public class LoginWithoutRegistrationModelServer
    {
+
       private var model:IModel;
 
       public function LoginWithoutRegistrationModelServer(param1:IModel)

@@ -6,13 +6,19 @@ package projects.tanks.client.tanksservices.model.notifier.referrals
 
    public class ReferralNotifierModelBase extends Model
    {
-      public static const modelId:Long = Long.getLong(1904649067,-739596764);
 
       protected var server:ReferralNotifierModelServer;
+
+      public static const modelId:Long = Long.getLong(1904649067,-739596764);
 
       public function ReferralNotifierModelBase()
       {
          super();
+         this.initCodecs();
+      }
+
+      protected function initCodecs() : void
+      {
          this.server = new ReferralNotifierModelServer(IModel(this));
       }
 

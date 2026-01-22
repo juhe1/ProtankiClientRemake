@@ -6,13 +6,19 @@ package projects.tanks.client.tanksservices.model.notifier.rank
 
    public class RankNotifierModelBase extends Model
    {
-      public static const modelId:Long = Long.getLong(60229216,350352129);
 
       protected var server:RankNotifierModelServer;
+
+      public static const modelId:Long = Long.getLong(60229216,350352129);
 
       public function RankNotifierModelBase()
       {
          super();
+         this.initCodecs();
+      }
+
+      protected function initCodecs() : void
+      {
          this.server = new RankNotifierModelServer(IModel(this));
       }
 

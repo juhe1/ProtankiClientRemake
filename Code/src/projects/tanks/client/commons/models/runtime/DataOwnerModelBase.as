@@ -6,13 +6,19 @@ package projects.tanks.client.commons.models.runtime
 
    public class DataOwnerModelBase extends Model
    {
+
       protected var server:DataOwnerModelServer;
 
-      public static var modelId:Long = Long.getLong(1160870944,208895362);
+      public static const modelId:Long = Long.getLong(1160870944,208895362);
 
       public function DataOwnerModelBase()
       {
          super();
+         this.initCodecs();
+      }
+
+      protected function initCodecs() : void
+      {
          this.server = new DataOwnerModelServer(IModel(this));
       }
 

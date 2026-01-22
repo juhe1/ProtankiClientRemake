@@ -4,6 +4,7 @@ package projects.tanks.client.battleselect.model.battle
 
    public class BattleInfoModelServer
    {
+
       private var model:IModel;
 
       public function BattleInfoModelServer(param1:IModel)

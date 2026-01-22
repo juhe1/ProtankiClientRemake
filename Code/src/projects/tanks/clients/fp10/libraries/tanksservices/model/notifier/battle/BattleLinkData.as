@@ -90,6 +90,11 @@ package projects.tanks.clients.fp10.libraries.tanksservices.model.notifier.battl
       {
          return this.battleData.proBattle;
       }
+
+      public function get inGroup() : Boolean
+      {
+         return false;
+      }
       
       public function get mapName() : String
       {

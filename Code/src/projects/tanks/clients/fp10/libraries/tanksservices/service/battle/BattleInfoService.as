@@ -1,6 +1,5 @@
 package projects.tanks.clients.fp10.libraries.tanksservices.service.battle
 {
-   import alternativa.types.Long;
    import flash.events.EventDispatcher;
    import projects.tanks.client.battleservice.BattleRoundParameters;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.address.TanksAddressService;
@@ -19,9 +18,9 @@ package projects.tanks.clients.fp10.libraries.tanksservices.service.battle
       [Inject] // added
       public static var userPropertiesService:IUserPropertiesService;
       
-      private var _currentBattleId:Long;
+      private var _currentBattleId:String;
       
-      private var _currentSelectionBattleId:Long;
+      private var _currentSelectionBattleId:String;
       
       private var _minRank:int;
       
@@ -48,37 +47,37 @@ package projects.tanks.clients.fp10.libraries.tanksservices.service.battle
          super();
       }
       
-      public function get currentSelectionBattleId() : Long
+      public function get currentSelectionBattleId() : String
       {
          return this._currentSelectionBattleId;
       }
       
-      public function setCurrentSelectionBattleAndNotify(param1:Long, param2:int, param3:int) : void
+      public function setCurrentSelectionBattleAndNotify(param1:String, param2:int, param3:int) : void
       {
          this.setBattleData(param1,param2,param3);
          addressService.setBattle(param1);
          dispatchEvent(new BattleInfoServiceEvent(BattleInfoServiceEvent.SELECTION_BATTLE));
       }
       
-      private function setBattleData(param1:Long, param2:int, param3:int) : void
+      private function setBattleData(param1:String, param2:int, param3:int) : void
       {
          this._currentSelectionBattleId = param1;
          this._minRank = param2;
          this._maxRank = param3;
       }
       
-      public function setCurrentSelectionBattle(param1:Long, param2:int, param3:int) : void
+      public function setCurrentSelectionBattle(param1:String, param2:int, param3:int) : void
       {
          this.setBattleData(param1,param2,param3);
          addressService.setBattle(param1);
       }
       
-      public function get currentBattleId() : Long
+      public function get currentBattleId() : String
       {
          return this._currentBattleId;
       }
       
-      public function set currentBattleId(param1:Long) : void
+      public function set currentBattleId(param1:String) : void
       {
          this._currentBattleId = param1;
          addressService.setBattle(param1);

@@ -1,6 +1,6 @@
 package scpacker.networking.protocol.codec.custom
 {
-   import projects.tanks.client.panel.model.referrals.ReferrerIncomeData;
+   import projects.tanks.client.panel.model.referrals.ReferralIncomeData;
    import flash.utils.ByteArray;
    import scpacker.networking.protocol.ProtocolInitializer;
    import scpacker.networking.protocol.codec.ICodec;
@@ -9,7 +9,7 @@ package scpacker.networking.protocol.codec.custom
    {
       public const optionalVector:Boolean = false;
       
-      public const element:Class = ReferrerIncomeData;
+      public const element:Class = ReferralIncomeData;
       
       private var newname_4407__END:ICodec;
       
@@ -24,7 +24,7 @@ package scpacker.networking.protocol.codec.custom
       
       public function decode(param1:ByteArray) : Object
       {
-         var _loc2_:ReferrerIncomeData = new ReferrerIncomeData();
+         var _loc2_:ReferralIncomeData = new ReferralIncomeData();
          _loc2_.income = this.newname_4407__END.decode(param1) as int;
          _loc2_.user = this.newname_4276__END.decode(param1) as String;
          return _loc2_;
@@ -36,7 +36,7 @@ package scpacker.networking.protocol.codec.custom
          {
             throw new Error("Object is null. Use @ProtocolOptional annotation.");
          }
-         var _loc3_:ReferrerIncomeData = ReferrerIncomeData(param2);
+         var _loc3_:ReferralIncomeData = ReferralIncomeData(param2);
          this.newname_4407__END.encode(param1,_loc3_.income);
          this.newname_4276__END.encode(param1,_loc3_.user);
          return 4;

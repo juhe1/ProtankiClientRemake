@@ -4,6 +4,7 @@ package projects.tanks.client.tanksservices.model.notifier.socialnetworks
 
    public class SNUidNotifierModelServer
    {
+
       private var model:IModel;
 
       public function SNUidNotifierModelServer(param1:IModel)

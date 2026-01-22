@@ -4,6 +4,7 @@ package projects.tanks.client.tanksservices.model.notifier.online
 
    public class OnlineNotifierModelServer
    {
+
       private var model:IModel;
 
       public function OnlineNotifierModelServer(param1:IModel)

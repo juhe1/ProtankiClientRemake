@@ -45,13 +45,13 @@ package alternativa.tanks.model.info
          param2.customName = _loc4_.params.name;
          param2.matchmakingMark = IMapInfo(_loc4_.map.adapt(IMapInfo)).hasMatchmakingMark();
          param2.previewResource = IBattleInfo(param1.adapt(IBattleInfo)).getPreviewResource();
-         param2.battleUrl = getBattleUrl(param2.battle.id);
+         param2.battleUrl = getBattleUrl(param2.battle.name);
          param2.endTime = getTimer() + _loc3_.timeLeftInSec * 1000;
          param2.roundStarted = _loc3_.roundStarted;
          param2.suspicionLevel = _loc3_.suspicionLevel;
       }
       
-      private static function getBattleUrl(param1:Long) : String
+      private static function getBattleUrl(param1:String) : String
       {
          var _loc2_:String = "battle=" + BattleInfoUtils.getBattleIdUhex(param1);
          var _loc3_:String = BattleInfoUtils.getBattleBaseUrl();

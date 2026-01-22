@@ -7,11 +7,19 @@ package projects.tanks.client.battleselect.model.map
    public class MapInfoModelBase extends Model
    {
 
-      public static var modelId:Long = Long.getLong(1260204725,-1362969538);
+      protected var server:MapInfoModelServer;
+
+      public static const modelId:Long = Long.getLong(1260204725,-1362969538);
 
       public function MapInfoModelBase()
       {
          super();
+         this.initCodecs();
+      }
+
+      protected function initCodecs() : void
+      {
+         this.server = new MapInfoModelServer(IModel(this));
       }
 
       protected function getInitParam() : MapInfoCC

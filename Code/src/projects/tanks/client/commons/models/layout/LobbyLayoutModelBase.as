@@ -7,18 +7,24 @@ package projects.tanks.client.commons.models.layout
    public class LobbyLayoutModelBase extends Model
    {
 
-      protected var server:LobbyLayoutModelServer = new LobbyLayoutModelServer(IModel(this));
+      protected var server:LobbyLayoutModelServer;
 
-      static public var modelId:Long = Long.getLong(1223707112,492148927);
+      public static const modelId:Long = Long.getLong(1223707112,492148927);
 
       public function LobbyLayoutModelBase()
       {
          super();
+         this.initCodecs();
+      }
+
+      protected function initCodecs() : void
+      {
+         this.server = new LobbyLayoutModelServer(IModel(this));
       }
 
       override public function get id() : Long
       {
-         return LobbyLayoutModelBase.modelId;
+         return modelId;
       }
    }
 }

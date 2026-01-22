@@ -48,7 +48,7 @@ package alternativa.tanks.controllers.battlelist
          this.isDM = this.dmParams != null;
          var _loc2_:Range = param1.createParams.rankRange;
          this.accessible = _loc2_.min <= userPropertiesService.rank && userPropertiesService.rank <= _loc2_.max;
-         this.currentBattle = param1.battle.id == battleInfoService.currentBattleId;
+         this.currentBattle = param1.battle.name == battleInfoService.currentBattleId;
          this.formatBattle = battleFormatUtil.isFormatBattle(this.createParams.equipmentConstraintsMode.name,this.createParams.parkourMode);
          this.formatName = battleFormatUtil.getShortFormatName(this.createParams.equipmentConstraintsMode.name,this.createParams.parkourMode);
       }

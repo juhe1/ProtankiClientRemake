@@ -40,9 +40,9 @@ package projects.tanks.clients.fp10.libraries.tanksservices.utils
          return _loc1_;
       }
       
-      public static function getBattleIdUhex(param1:Long) : String
+      public static function getBattleIdUhex(param1:String) : String
       {
-         return intToUhex(param1.high) + intToUhex(param1.low);
+         return param1;
       }
       
       private static function intToUhex(param1:int) : String

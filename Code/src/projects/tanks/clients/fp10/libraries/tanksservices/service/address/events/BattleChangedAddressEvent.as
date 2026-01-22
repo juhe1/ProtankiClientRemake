@@ -6,15 +6,15 @@ package projects.tanks.clients.fp10.libraries.tanksservices.service.address.even
    public class BattleChangedAddressEvent extends Event
    {
       
-      private var battleId:Long;
+      private var battleId:String;
       
-      public function BattleChangedAddressEvent(param1:Long)
+      public function BattleChangedAddressEvent(param1:String)
       {
          super(TanksAddressEvent.BATTLE_CHANGED);
          this.battleId = param1;
       }
       
-      public function getBattleId() : Long
+      public function getBattleId() : String
       {
          return this.battleId;
       }

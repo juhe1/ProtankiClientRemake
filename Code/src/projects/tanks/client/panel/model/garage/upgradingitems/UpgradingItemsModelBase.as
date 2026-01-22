@@ -6,13 +6,19 @@ package projects.tanks.client.panel.model.garage.upgradingitems
 
    public class UpgradingItemsModelBase extends Model
    {
+
       protected var server:UpgradingItemsModelServer;
 
-      public static var modelId:Long = Long.getLong(1118995569,-1424498497);
+      public static const modelId:Long = Long.getLong(1118995569,-1424498497);
 
       public function UpgradingItemsModelBase()
       {
          super();
+         this.initCodecs();
+      }
+
+      protected function initCodecs() : void
+      {
          this.server = new UpgradingItemsModelServer(IModel(this));
       }
 

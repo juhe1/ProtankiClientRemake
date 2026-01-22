@@ -76,12 +76,12 @@ package alternativa.tanks.servermodels.registartion.password
       
       private function checkFormerUser() : void
       {
-         var _loc1_:Object = storageService.getStorage().data.uniqueUserIdHighDWord;
-         var _loc2_:Object = storageService.getStorage().data.uniqueUserIdLowDWord;
-         if(Boolean(_loc1_) && Boolean(_loc2_))
-         {
-            server.setFormerUserId(Long.getLong(int(_loc1_),int(_loc2_)));
-         }
+         //var _loc1_:Object = storageService.getStorage().data.uniqueUserIdHighDWord;
+         //var _loc2_:Object = storageService.getStorage().data.uniqueUserIdLowDWord;
+         //if(Boolean(_loc1_) && Boolean(_loc2_))
+         //{
+         //   server.setFormerUserId(Long.getLong(int(_loc1_),int(_loc2_)));
+         //}
       }
       
       public function enteredUidIsFree() : void

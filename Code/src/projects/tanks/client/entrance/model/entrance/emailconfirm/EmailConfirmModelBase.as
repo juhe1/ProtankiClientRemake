@@ -9,7 +9,7 @@ package projects.tanks.client.entrance.model.entrance.emailconfirm
 
       protected var server:EmailConfirmModelServer;
 
-      public static var modelId:Long = Long.getLong(284901932,-278416008);
+      public static const modelId:Long = Long.getLong(284901932,-278416008);
 
       public function EmailConfirmModelBase()
       {

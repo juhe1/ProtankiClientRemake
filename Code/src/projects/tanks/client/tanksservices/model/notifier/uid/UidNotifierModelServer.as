@@ -4,6 +4,7 @@ package projects.tanks.client.tanksservices.model.notifier.uid
 
    public class UidNotifierModelServer
    {
+
       private var model:IModel;
 
       public function UidNotifierModelServer(param1:IModel)

@@ -6,9 +6,10 @@ package projects.tanks.client.commons.models.externalauth
 
    public class ExternalAuthApiModelBase extends Model
    {
+
       protected var server:ExternalAuthApiModelServer;
 
-      static public var modelId:Long = Long.getLong(1069448555,141534959);
+      public static const modelId:Long = Long.getLong(1069448555,141534959);
 
       public function ExternalAuthApiModelBase()
       {

@@ -6,9 +6,10 @@ package projects.tanks.client.entrance.model.entrance.partners
 
    public class CompositePartnerModelBase extends Model
    {
+
       protected var server:CompositePartnerModelServer;
 
-      public static var modelId:Long = Long.getLong(119483168,-902850894);
+      public static const modelId:Long = Long.getLong(119483168,-902850894);
 
       public function CompositePartnerModelBase()
       {
@@ -23,7 +24,7 @@ package projects.tanks.client.entrance.model.entrance.partners
 
       protected function getInitParam() : CompositePartnerCC
       {
-         return CompositePartnerCC(initParams[platform.client.fp10.core.model.impl.Model.object]);
+         return CompositePartnerCC(initParams[Model.object]);
       }
 
       override public function get id() : Long

@@ -6,9 +6,10 @@ package projects.tanks.client.commons.models.detach
 
    public class DetachModelBase extends Model
    {
+
       protected var server:DetachModelServer;
 
-      static public var modelId:Long = Long.getLong(1666840941,1681304473);
+      public static const modelId:Long = Long.getLong(1666840941,1681304473);
 
       public function DetachModelBase()
       {

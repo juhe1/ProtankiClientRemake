@@ -6,13 +6,19 @@ package projects.tanks.client.tanksservices.model.notifier.uid
 
    public class UidNotifierModelBase extends Model
    {
-      public static const modelId:Long = Long.getLong(990863444,376077627);
 
       protected var server:UidNotifierModelServer;
+
+      public static const modelId:Long = Long.getLong(990863444,376077627);
 
       public function UidNotifierModelBase()
       {
          super();
+         this.initCodecs();
+      }
+
+      protected function initCodecs() : void
+      {
          this.server = new UidNotifierModelServer(IModel(this));
       }
 

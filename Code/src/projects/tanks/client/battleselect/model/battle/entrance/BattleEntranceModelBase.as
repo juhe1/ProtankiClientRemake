@@ -6,9 +6,10 @@ package projects.tanks.client.battleselect.model.battle.entrance
 
    public class BattleEntranceModelBase extends Model
    {
-      public static var modelId:Long = Long.getLong(124040719,-2122162804);
 
       protected var server:BattleEntranceModelServer;
+
+      public static const modelId:Long = Long.getLong(124040719,-2122162804);
 
       public function BattleEntranceModelBase()
       {

@@ -6,13 +6,19 @@ package projects.tanks.client.panel.model.presents
 
    public class NewPresentsShowingModelBase extends Model
    {
-      public static const modelId:Long = Long.getLong(1012007416,-1351622809);
 
       protected var server:NewPresentsShowingModelServer;
+
+      public static const modelId:Long = Long.getLong(1012007416,-1351622809);
 
       public function NewPresentsShowingModelBase()
       {
          super();
+         this.initCodecs();
+      }
+
+      protected function initCodecs() : void
+      {
          this.server = new NewPresentsShowingModelServer(IModel(this));
       }
 

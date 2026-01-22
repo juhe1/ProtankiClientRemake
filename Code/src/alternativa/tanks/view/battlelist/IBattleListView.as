@@ -21,17 +21,17 @@ package alternativa.tanks.view.battlelist
       
       function createItem(param1:BattleListItemParams, param2:Boolean) : void;
       
-      function removeItem(param1:Long) : void;
+      function removeItem(param1:String) : void;
       
-      function setSelect(param1:Long) : void;
+      function setSelect(param1:String) : void;
       
-      function updateSuspicious(param1:Long, param2:BattleSuspicionLevel) : void;
+      function updateSuspicious(param1:String, param2:BattleSuspicionLevel) : void;
       
-      function updateUsersCount(param1:Long) : void;
+      function updateUsersCount(param1:String) : void;
       
-      function updateBattleName(param1:Long) : void;
+      function updateBattleName(param1:String) : void;
       
-      function swapTeams(param1:Long) : void;
+      function swapTeams(param1:String) : void;
       
       function updateAccessibleItems() : void;
       
@@ -39,7 +39,7 @@ package alternativa.tanks.view.battlelist
       
       function sortBattleList() : void;
       
-      function getItemIndex(param1:Long) : int;
+      function getItemIndex(param1:String) : int;
       
       function unPressFilter(param1:BattleMode) : void;
       

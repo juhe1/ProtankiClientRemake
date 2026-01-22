@@ -29,7 +29,7 @@ package projects.tanks.clients.fp10.libraries.tanksservices.service.address
       
       private var oldServerName:String;
       
-      private var battleId:Long;
+      private var battleId:String;
       
       private var _locked:Boolean = true;
       
@@ -47,7 +47,7 @@ package projects.tanks.clients.fp10.libraries.tanksservices.service.address
          return this.battleId != null;
       }
       
-      public function getBattleId() : Long
+      public function getBattleId() : String
       {
          return this.battleId;
       }
@@ -81,7 +81,7 @@ package projects.tanks.clients.fp10.libraries.tanksservices.service.address
          this.setParams();
       }
       
-      private function setServerByNameAndBattle(param1:String, param2:Long) : void
+      private function setServerByNameAndBattle(param1:String, param2:String) : void
       {
          if(this.serverName == param1)
          {
@@ -94,7 +94,7 @@ package projects.tanks.clients.fp10.libraries.tanksservices.service.address
          dispatchEvent(new TanksAddressEvent(TanksAddressEvent.TRY_CHANGE_SERVER));
       }
       
-      public function setBattle(param1:Long) : void
+      public function setBattle(param1:String) : void
       {
          if(this.locked)
          {
@@ -140,12 +140,12 @@ package projects.tanks.clients.fp10.libraries.tanksservices.service.address
          this.currentValue = _loc1_;
       }
       
-      public function parseBattle(param1:String) : Long
+      public function parseBattle(param1:String) : String
       {
          var _loc2_:int = int(param1.indexOf("battle="));
          if(_loc2_ != -1)
          {
-            return Long.fromHexString(param1.substr(_loc2_ + 7,16));
+            return param1.substr(_loc2_ + 7,16);
          }
          return null;
       }

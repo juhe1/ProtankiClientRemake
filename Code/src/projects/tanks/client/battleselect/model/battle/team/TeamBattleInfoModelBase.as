@@ -6,13 +6,19 @@ package projects.tanks.client.battleselect.model.battle.team
 
    public class TeamBattleInfoModelBase extends Model
    {
+
       protected var server:TeamBattleInfoModelServer;
 
-      public static var modelId:Long = Long.getLong(1548819686,-690668258);
+      public static const modelId:Long = Long.getLong(1548819686,-690668258);
 
       public function TeamBattleInfoModelBase()
       {
          super();
+         this.initCodecs();
+      }
+
+      protected function initCodecs() : void
+      {
          this.server = new TeamBattleInfoModelServer(IModel(this));
       }
 
@@ -23,7 +29,7 @@ package projects.tanks.client.battleselect.model.battle.team
 
       override public function get id() : Long
       {
-         return TeamBattleInfoModelBase.modelId;
+         return modelId;
       }
    }
 }

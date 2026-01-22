@@ -5,14 +5,21 @@ package platform.client.core.general.spaces.loading.dispatcher
    import platform.client.fp10.core.model.impl.Model;
 
    public class DispatcherModelBase extends Model
-   {  
-      protected var server:DispatcherModelServer = new DispatcherModelServer(IModel(this));
+   {
 
-      static public var modelId:Long = Long.getLong(191355032,163351191);
+      protected var server:DispatcherModelServer;
+
+      public static const modelId:Long = Long.getLong(191355032,163351191);
 
       public function DispatcherModelBase()
       {
          super();
+         this.initCodecs();
+      }
+
+      protected function initCodecs() : void
+      {
+         this.server = new DispatcherModelServer(IModel(this));
       }
 
       override public function get id() : Long

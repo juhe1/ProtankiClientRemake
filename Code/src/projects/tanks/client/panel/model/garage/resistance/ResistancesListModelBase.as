@@ -3,17 +3,22 @@ package projects.tanks.client.panel.model.garage.resistance
    import alternativa.types.Long;
    import platform.client.fp10.core.model.IModel;
    import platform.client.fp10.core.model.impl.Model;
-   import projects.tanks.client.panel.model.garage.resistance.ResistancesCC;
 
    public class ResistancesListModelBase extends Model
    {
-      public static const modelId:Long = Long.getLong(1350664067,-353806112);
 
       protected var server:ResistancesListModelServer;
+
+      public static const modelId:Long = Long.getLong(1350664067,-353806112);
 
       public function ResistancesListModelBase()
       {
          super();
+         this.initCodecs();
+      }
+
+      protected function initCodecs() : void
+      {
          this.server = new ResistancesListModelServer(IModel(this));
       }
 

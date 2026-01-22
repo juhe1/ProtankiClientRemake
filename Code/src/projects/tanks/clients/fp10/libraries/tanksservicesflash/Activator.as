@@ -64,6 +64,16 @@ package projects.tanks.clients.fp10.libraries.tanksservicesflash
    import projects.tanks.clients.fp10.libraries.tanksservices.service.notifier.online.IOnlineNotifierService;
    import alternativa.tanks.tracker.ITrackerService;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.logging.garage.UserGarageActionsServiceImpl;
+   import projects.tanks.clients.fp10.libraries.tanksservices.model.friends.accepted.FriendsAcceptedModel;
+   import projects.tanks.clients.fp10.libraries.tanksservices.model.friends.acceptednotificator.FriendsAcceptedNotificatorModel;
+   import projects.tanks.clients.fp10.libraries.tanksservices.model.friends.battleinvite.NotificationEnabledModel;
+   import projects.tanks.clients.fp10.libraries.tanksservices.model.friends.incoming.FriendsIncomingModel;
+   import projects.tanks.clients.fp10.libraries.tanksservices.model.friends.incomingnotificator.FriendsIncomingNotificatorModel;
+   import projects.tanks.clients.fp10.libraries.tanksservices.model.IFriends;
+   import projects.tanks.clients.fp10.libraries.tanksservices.model.IFriendsAdapt;
+   import projects.tanks.clients.fp10.libraries.tanksservices.model.IFriendsEvents;
+   import projects.tanks.clients.fp10.libraries.tanksservices.service.friend.IFriendActionService;
+   import projects.tanks.clients.fp10.libraries.tanksservices.model.FriendsModel;
    
    public class Activator implements IBundleActivator
    {
@@ -95,13 +105,13 @@ package projects.tanks.clients.fp10.libraries.tanksservicesflash
          {
             return YandexMetricaServiceImpl.newbieUserService;
          });
-         //osgi.injectService(IFriendActionService,function(param1:Object):void
-         //{
-         //   FriendsModel.friendsActionService = IFriendActionService(param1);
-         //},function():IFriendActionService
-         //{
-         //   return FriendsModel.friendsActionService;
-         //});
+         osgi.injectService(IFriendActionService,function(param1:Object):void
+         {
+            FriendsModel.friendsActionService = IFriendActionService(param1);
+         },function():IFriendActionService
+         {
+            return FriendsModel.friendsActionService;
+         });
          osgi.injectService(BattleFormatUtil,function(param1:Object):void
          {
             EquipmentConstraintsNamingModel.battleFormatUtil = BattleFormatUtil(param1);
@@ -109,27 +119,27 @@ package projects.tanks.clients.fp10.libraries.tanksservicesflash
          {
             return EquipmentConstraintsNamingModel.battleFormatUtil;
          });
-         //osgi.injectService(IFriendInfoService,function(param1:Object):void
-         //{
-         //   FriendsAcceptedModel.friendsInfoService = IFriendInfoService(param1);
-         //},function():IFriendInfoService
-         //{
-         //   return FriendsAcceptedModel.friendsInfoService;
-         //});
-         //osgi.injectService(IFriendInfoService,function(param1:Object):void
-         //{
-         //   FriendsAcceptedNotificatorModel.friendsInfoService = IFriendInfoService(param1);
-         //},function():IFriendInfoService
-         //{
-         //   return FriendsAcceptedNotificatorModel.friendsInfoService;
-         //});
-         //osgi.injectService(LogService,function(param1:Object):void
-         //{
-         //   FriendsAcceptedNotificatorModel.logService = LogService(param1);
-         //},function():LogService
-         //{
-         //   return FriendsAcceptedNotificatorModel.logService;
-         //});
+         osgi.injectService(IFriendInfoService,function(param1:Object):void
+         {
+            FriendsAcceptedModel.friendsInfoService = IFriendInfoService(param1);
+         },function():IFriendInfoService
+         {
+            return FriendsAcceptedModel.friendsInfoService;
+         });
+         osgi.injectService(IFriendInfoService,function(param1:Object):void
+         {
+            FriendsAcceptedNotificatorModel.friendsInfoService = IFriendInfoService(param1);
+         },function():IFriendInfoService
+         {
+            return FriendsAcceptedNotificatorModel.friendsInfoService;
+         });
+         osgi.injectService(LogService,function(param1:Object):void
+         {
+            FriendsAcceptedNotificatorModel.logService = LogService(param1);
+         },function():LogService
+         {
+            return FriendsAcceptedNotificatorModel.logService;
+         });
          //osgi.injectService(IBattleInviteService,function(param1:Object):void
          //{
          //   NotificationEnabledModel.battleInviteService = IBattleInviteService(param1);
@@ -708,16 +718,16 @@ package projects.tanks.clients.fp10.libraries.tanksservicesflash
          modelRegister = osgi.getService(ModelRegistry) as ModelRegistry;
          //modelRegister.add(new FriendsModel());
          modelRegisterAdapt = osgi.getService(ModelRegistry) as ModelRegistry;
-         //modelRegisterAdapt.registerAdapt(IFriends,IFriendsAdapt);
-         //modelRegisterAdapt.registerEvents(IFriends,IFriendsEvents);
+         modelRegisterAdapt.registerAdapt(IFriends,IFriendsAdapt);
+         modelRegisterAdapt.registerEvents(IFriends,IFriendsEvents);
          //modelRegisterAdapt.registerAdapt(UserRefresh,UserRefreshAdapt);
          //modelRegisterAdapt.registerEvents(UserRefresh,UserRefreshEvents);
          modelRegister.add(new EquipmentConstraintsNamingModel());
-         //modelRegister.add(new FriendsAcceptedModel());
-         //modelRegister.add(new FriendsAcceptedNotificatorModel());
-         //modelRegister.add(new NotificationEnabledModel());
-         //modelRegister.add(new FriendsIncomingModel());
-         //modelRegister.add(new FriendsIncomingNotificatorModel());
+         modelRegister.add(new FriendsAcceptedModel());
+         modelRegister.add(new FriendsAcceptedNotificatorModel());
+         modelRegister.add(new NotificationEnabledModel());
+         modelRegister.add(new FriendsIncomingModel());
+         modelRegister.add(new FriendsIncomingNotificatorModel());
          //modelRegisterAdapt.registerAdapt(GPUDetector,GPUDetectorAdapt);
          //modelRegisterAdapt.registerEvents(GPUDetector,GPUDetectorEvents);
          modelRegisterAdapt.registerAdapt(UserNotifier,UserNotifierAdapt);

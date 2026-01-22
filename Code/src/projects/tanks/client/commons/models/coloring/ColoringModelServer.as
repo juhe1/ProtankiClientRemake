@@ -4,6 +4,7 @@ package projects.tanks.client.commons.models.coloring
 
    public class ColoringModelServer
    {
+
       private var model:IModel;
 
       public function ColoringModelServer(param1:IModel)
