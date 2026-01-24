@@ -13,10 +13,10 @@ package alternativa.tanks.sfx
    public class BonusCrystalsEffectUtils
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
-      [Inject]
+      [Inject] // added
       public static var materialRegistry:TextureMaterialRegistry;
       
       public function BonusCrystalsEffectUtils()

@@ -17,13 +17,13 @@ package alternativa.tanks.models.bonus.region
    public class BonusRegionsModel extends BonusRegionsModelBase implements IBonusRegionsModelBase, ObjectLoadListener, ObjectLoadPostListener, ObjectUnloadListener, BattleEventListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleInfoService:IBattleInfoService;
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
-      [Inject]
+      [Inject] // added
       public static var bonusRegionService:IBonusRegionService;
       
       private var battleEventSupport:BattleEventSupport;

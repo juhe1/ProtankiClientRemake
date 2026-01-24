@@ -14,7 +14,7 @@ package alternativa.tanks.models.weapon.rocketlauncher.sfx
    public class RocketSmoke extends PooledObject implements GraphicEffect
    {
       
-      [Inject]
+      [Inject] // added
       public static var settings:ISettingsService;
       
       private static const INITIAL_ALPHA:Number = 0.4;

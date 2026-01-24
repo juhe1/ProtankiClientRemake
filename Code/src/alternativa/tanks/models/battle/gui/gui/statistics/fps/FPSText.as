@@ -12,10 +12,10 @@ package alternativa.tanks.models.battle.gui.gui.statistics.fps
    public class FPSText extends Sprite
    {
       
-      [Inject]
+      [Inject] // added
       public static var pingService:PingService;
       
-      [Inject]
+      [Inject] // added
       public static var performanceDataService:PerformanceDataService;
       
       private static const MAX_FPS:int = 60;

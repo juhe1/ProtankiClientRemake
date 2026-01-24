@@ -24,10 +24,10 @@ package alternativa.tanks.models.bonus.common
    public class BonusCommonModel extends BonusCommonModelBase implements IBonusCommonModelBase, ObjectLoadListener, ObjectUnloadListener, IBonusCommonModel
    {
       
-      [Inject]
+      [Inject] // added
       public static var materialRegistry:TextureMaterialRegistry;
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private static var stubBitmapData:BitmapData;

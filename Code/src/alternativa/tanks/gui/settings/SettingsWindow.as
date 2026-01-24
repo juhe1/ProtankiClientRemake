@@ -19,16 +19,16 @@ package alternativa.tanks.gui.settings
    public class SettingsWindow extends DialogWindow
    {
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
-      [Inject]
+      [Inject] // added
       public static var helperService:IHelpService;
       
-      [Inject]
+      [Inject] // added
       public static var userChangeGameScreenService:UserChangeGameScreenService;
       
-      [Inject]
+      [Inject] // added
       public static var partnersService:IPartnerService;
       
       public static const TAB_VIEW_MAX_HEIGHT:int = WINDOW_HEIGHT - 2 * WINDOW_MARGIN - 2 * BUTTON_HEIGHT - MARGIN;

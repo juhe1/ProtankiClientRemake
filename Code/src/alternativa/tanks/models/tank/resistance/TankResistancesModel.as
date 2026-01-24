@@ -17,7 +17,7 @@ package alternativa.tanks.models.tank.resistance
    public class TankResistancesModel extends TankResistancesModelBase implements ITankResistancesModelBase, TankResistances, ObjectLoadPostListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var usersRegistry:TankUsersRegistry;
       
       public function TankResistancesModel()

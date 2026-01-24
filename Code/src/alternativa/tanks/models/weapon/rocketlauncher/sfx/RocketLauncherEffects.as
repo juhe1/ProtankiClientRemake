@@ -15,7 +15,7 @@ package alternativa.tanks.models.weapon.rocketlauncher.sfx
    public class RocketLauncherEffects
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private static const EXPLOSION_OFFSET_TO_CAMERA:Number = 110;

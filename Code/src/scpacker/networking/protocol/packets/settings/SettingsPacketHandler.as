@@ -8,46 +8,52 @@ package scpacker.networking.protocol.packets.settings
    import projects.tanks.client.users.model.switchbattleinvite.NotificationEnabledCC;
    import alternativa.tanks.model.useremailandpassword.UserEmailAndPasswordModel;
    import scpacker.networking.protocol.AbstractPacket;
+   import scpacker.networking.protocol.packets.panel.PanelPacketHandler;
+   import platform.client.fp10.core.model.impl.Model;
    
    public class SettingsPacketHandler extends AbstractPacketHandler
    {
-      private var newname_7849__END:SettingsModel;
+      private var settingsModel:SettingsModel;
       
-      private var newname_10351__END:NotificationEnabledModel;
+      private var notificationEnabledModel:NotificationEnabledModel;
       
-      private var newname_10352__END:UserEmailAndPasswordModel;
+      private var userEmailAndPasswordModel:UserEmailAndPasswordModel;
       
       public function SettingsPacketHandler()
       {
          super();
          this.id = 23;
-         this.newname_7849__END = SettingsModel(modelRegistry.getModel(Long.getLong(1428989873,1951780812)));
-         this.newname_10351__END = NotificationEnabledModel(modelRegistry.getModel(Long.getLong(1190039526,-1224288945)));
-         this.newname_10352__END = UserEmailAndPasswordModel(modelRegistry.getModel(Long.getLong(740369199,944909632)));
+         this.settingsModel = SettingsModel(modelRegistry.getModel(Long.getLong(1428989873,1951780812)));
+         this.notificationEnabledModel = NotificationEnabledModel(modelRegistry.getModel(Long.getLong(1190039526,-1224288945)));
+         this.userEmailAndPasswordModel = UserEmailAndPasswordModel(modelRegistry.getModel(Long.getLong(740369199,944909632)));
       }
       
       public function invoke(param1:AbstractPacket) : void
       {
          switch(param1.getId())
          {
-            case 1447082276:
-               this.openSettings(param1 as SettingsNotification);
+            case OpenSettingsInPacket.id:
+               this.openSettings(param1 as OpenSettingsInPacket);
                break;
-            case -1302674105:
-               this.newname_10354__END(param1 as newname_3872__END);
+            case CloseSettingsInPacket.id:
+               this.closeSettings(param1 as CloseSettingsInPacket);
          }
       }
       
-      private function openSettings(param1:SettingsNotification) : void
+      private function openSettings(param1:OpenSettingsInPacket) : void
       {
-         this.newname_10351__END.putInitParams(new NotificationEnabledCC(param1.NotificationEnabled));
-         this.newname_10351__END.objectLoaded();
-         this.newname_7849__END.openSettings(PersonalMessageReceiveMode.newname_7952__END);
+         //this.notificationEnabledModel.putInitParams(new NotificationEnabledCC(param1.NotificationEnabled));
+         //this.notificationEnabledModel.objectLoaded();
+         Model.object = PanelPacketHandler.settingsGameObject;
+         this.settingsModel.openSettings(PersonalMessageReceiveMode.ALL);
+         Model.popObject();
       }
       
-      private function newname_10354__END(param1:newname_3872__END) : void
+      private function closeSettings(param1:CloseSettingsInPacket) : void
       {
-         this.newname_7849__END.onSettingsClose();
+         //Model.object = PanelPacketHandler.settingsGameObject;
+         //this.newname_7849__END.onSettingsClose();
+         //Model.popObject();
       }
    }
 }

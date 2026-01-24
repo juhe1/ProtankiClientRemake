@@ -41,6 +41,9 @@ package projects.tanks.clients.flash.commonsflash
    import projects.tanks.clients.flash.commons.models.detach.Detach;
    import projects.tanks.clients.flash.commons.models.detach.DetachAdapt;
    import projects.tanks.clients.flash.commons.models.detach.DetachEvents;
+   import projects.tanks.clients.flash.commons.models.captcha.IServerCaptcha;
+   import projects.tanks.clients.flash.commons.models.captcha.IServerCaptchaAdapt;
+   import projects.tanks.clients.flash.commons.models.captcha.IServerCaptchaEvents;
    
    public class Activator implements IBundleActivator
    {
@@ -356,8 +359,8 @@ package projects.tanks.clients.flash.commonsflash
          //modelRegister.add(new AlertModel());
          //modelRegister.add(new BattleLinkActivatorModel());
          modelRegisterAdapt = osgi.getService(ModelRegistry) as ModelRegistry;
-         //modelRegisterAdapt.registerAdapt(IServerCaptcha,IServerCaptchaAdapt);
-         //modelRegisterAdapt.registerEvents(IServerCaptcha,IServerCaptchaEvents);
+         modelRegisterAdapt.registerAdapt(IServerCaptcha,IServerCaptchaAdapt);
+         modelRegisterAdapt.registerEvents(IServerCaptcha,IServerCaptchaEvents);
          modelRegister.add(new ServerCaptchaModel());
          //modelRegister.add(new ChallengeTimeModel());
          modelRegister.add(new ColoringModel());

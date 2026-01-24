@@ -10,7 +10,7 @@ package alternativa.tanks.models.weapon.artillery.sfx
    public class ArtilleryTrailEffect extends PooledObject implements AutoClosable
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private static const SMOKE_INTERVAL:Number = 0.001;

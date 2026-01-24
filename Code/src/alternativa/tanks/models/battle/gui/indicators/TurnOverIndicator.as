@@ -13,13 +13,13 @@ package alternativa.tanks.models.battle.gui.indicators
    public class TurnOverIndicator extends BlackRoundRect
    {
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
-      [Inject]
+      [Inject] // added
       public static var battleGUIService:BattleGUIService;
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
       private static const turnOverIconClass:Class = TurnOverIndicator_turnOverIconClass;

@@ -58,9 +58,9 @@ package alternativa.tanks.controllers.battlelist
          return this.params.createParams;
       }
       
-      public function get id() : Long
+      public function get id() : String
       {
-         return this.params.battle.id;
+         return this.params.battle.name;
       }
       
       public function get suspicionLevel() : int

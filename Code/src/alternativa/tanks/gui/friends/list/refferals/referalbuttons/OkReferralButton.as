@@ -11,10 +11,10 @@ package alternativa.tanks.gui.friends.list.refferals.referalbuttons
    public class OkReferralButton extends ReferralWindowBigButton
    {
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
-      [Inject]
+      [Inject] // added
       public static var userPropertiesService:IUserPropertiesService;
       
       private static const friendsOKImageClass:Class = OkReferralButton_friendsOKImageClass;

@@ -21,7 +21,7 @@ package alternativa.tanks.models.weapon.machinegun
    public class MachineGunCommonWeapon implements Weapon
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private static var gunParams:AllGlobalGunParams = new AllGlobalGunParams();

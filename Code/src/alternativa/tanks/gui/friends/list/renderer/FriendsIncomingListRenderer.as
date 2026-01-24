@@ -18,10 +18,10 @@ package alternativa.tanks.gui.friends.list.renderer
    public class FriendsIncomingListRenderer extends CellRenderer
    {
       
-      [Inject]
+      [Inject] // added
       public static var contextMenuService:IContextMenuService;
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
       private var _labelsContainer:DisplayObject;

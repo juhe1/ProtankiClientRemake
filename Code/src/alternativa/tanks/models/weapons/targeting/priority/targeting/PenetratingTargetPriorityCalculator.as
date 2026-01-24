@@ -10,7 +10,7 @@ package alternativa.tanks.models.weapons.targeting.priority.targeting
    public class PenetratingTargetPriorityCalculator implements TargetPriorityCalculator
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private const COMMON_PRIORITY_WEIGHT:Number = 0.000001;

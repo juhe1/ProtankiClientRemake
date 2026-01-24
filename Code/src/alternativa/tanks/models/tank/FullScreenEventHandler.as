@@ -8,10 +8,10 @@ package alternativa.tanks.models.tank
    public class FullScreenEventHandler implements AutoClosable
    {
       
-      [Inject]
+      [Inject] // added
       public static var dialogWindowsDispatcherService:IDialogWindowsDispatcherService;
       
-      [Inject]
+      [Inject] // added
       public static var inputManager:TargetingInputManager;
       
       public function FullScreenEventHandler()

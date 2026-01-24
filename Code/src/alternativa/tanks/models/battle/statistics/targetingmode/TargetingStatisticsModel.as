@@ -16,7 +16,7 @@ package alternativa.tanks.models.battle.statistics.targetingmode
    public class TargetingStatisticsModel extends TargetingStatisticsModelBase implements ITargetingStatisticsModelBase, ObjectLoadListener, ObjectUnloadListener, BattleEventListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
       private var gameObject:IGameObject;

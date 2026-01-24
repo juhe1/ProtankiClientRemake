@@ -16,10 +16,10 @@ package alternativa.tanks.gui.alerts
    public class ItemsAlert extends DialogWindow
    {
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
-      [Inject]
+      [Inject] // added
       public static var modalLoaderService:IModalLoaderService;
       
       private var window:TankWindowWithHeader;

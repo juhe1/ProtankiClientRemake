@@ -16,7 +16,7 @@ package alternativa.tanks.models.weapon.common
    public class WeaponCommonModel extends WeaponCommonModelBase implements IWeaponCommonModelBase, IWeaponCommonModel, WeaponSound
    {
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
       private static var allGunParams:AllGlobalGunParams = new AllGlobalGunParams();

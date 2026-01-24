@@ -20,7 +20,7 @@ package alternativa.tanks.models.weapon.machinegun.sfx
    public class MachineGunShotEffect extends PooledObject implements GraphicEffect
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private static const SPARKLES_SIZE:int = 150;

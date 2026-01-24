@@ -20,7 +20,7 @@ package alternativa.tanks.models.tank.rankup
    public class TankRankUpEffectModel extends TankRankUpEffectModelBase implements ITankRankUpEffectModelBase, ObjectLoadListener, ObjectUnloadListener, ITankRankUpEffectModel
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private var listener:RankChangeListener;

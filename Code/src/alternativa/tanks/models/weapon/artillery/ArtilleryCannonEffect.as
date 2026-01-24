@@ -7,7 +7,7 @@ package alternativa.tanks.models.weapon.artillery
    public class ArtilleryCannonEffect implements Renderer
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private static const RECOIL_LENGTH:Number = 75;

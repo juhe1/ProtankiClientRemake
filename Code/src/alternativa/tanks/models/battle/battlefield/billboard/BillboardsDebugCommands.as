@@ -9,10 +9,10 @@ package alternativa.tanks.models.battle.battlefield.billboard
    public class BillboardsDebugCommands implements AutoClosable
    {
       
-      [Inject]
+      [Inject] // added
       public static var commandService:CommandService;
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       public function BillboardsDebugCommands()

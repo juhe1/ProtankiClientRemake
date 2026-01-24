@@ -9,12 +9,12 @@ package projects.tanks.client.users.model.friends
       
       private var _local:Boolean;
       
-      public function FriendsCC(param1:int = 0, param2:int = 0, param3:Boolean = false)
+      public function FriendsCC(acceptedLimitParam:int = 0, incomingLimitParam:int = 0, localParam:Boolean = false)
       {
          super();
-         this._acceptedLimit = param1;
-         this._incomingLimit = param2;
-         this._local = param3;
+         this._acceptedLimit = acceptedLimitParam;
+         this._incomingLimit = incomingLimitParam;
+         this._local = localParam;
       }
       
       public function get acceptedLimit() : int

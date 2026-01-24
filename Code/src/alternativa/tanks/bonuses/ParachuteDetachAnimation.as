@@ -8,7 +8,7 @@ package alternativa.tanks.bonuses
    public class ParachuteDetachAnimation extends PooledObject implements Renderer
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private static const ALPHA_SPEED:Number = 0.001;

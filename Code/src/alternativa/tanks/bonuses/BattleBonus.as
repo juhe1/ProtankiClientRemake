@@ -24,7 +24,7 @@ package alternativa.tanks.bonuses
    public class BattleBonus extends PooledObject implements PhysicsController, PhysicsInterpolator, Renderer, Bonus, ISpawnableObject
    {
       
-      [Inject]
+      [Inject] // added
       public static var lightingService:ILightingEffectsService;
       
       private static const BIG_VALUE:Number = 10000000000;

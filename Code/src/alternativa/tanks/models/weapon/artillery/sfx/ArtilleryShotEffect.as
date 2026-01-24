@@ -7,7 +7,7 @@ package alternativa.tanks.models.weapon.artillery.sfx
    public class ArtilleryShotEffect
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private var flameLeft:ArtilleryFlame;

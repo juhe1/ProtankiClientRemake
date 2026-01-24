@@ -15,10 +15,10 @@ package alternativa.tanks.models.tank.spawn
    public class ReadyToSpawnTask implements LogicUnit, BattleEventListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private var readyTime:int;

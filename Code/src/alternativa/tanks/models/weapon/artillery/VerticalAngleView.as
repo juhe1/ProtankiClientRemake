@@ -15,13 +15,13 @@ package alternativa.tanks.models.weapon.artillery
    public class VerticalAngleView implements AutoClosable
    {
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
-      [Inject]
+      [Inject] // added
       public static var battleGuiService:BattleGUIService;
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private var angleBar:AngleBar;

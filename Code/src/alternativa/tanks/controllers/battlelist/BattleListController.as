@@ -228,7 +228,7 @@ package alternativa.tanks.controllers.battlelist
          {
             if(this._view.getItemIndex(param1.name) < 0)
             {
-               _loc4_ = BattleSelectVectorUtil.findElementInVector(this._allItems,param1.id);
+               _loc4_ = BattleSelectVectorUtil.findElementInVector(this._allItems,param1.name);
                if(_loc4_ != null)
                {
                   this._view.createItem(_loc4_,true);
@@ -321,7 +321,7 @@ package alternativa.tanks.controllers.battlelist
          return param1 == this.filteredMode;
       }
       
-      public function removeBattle(param1:Long) : void
+      public function removeBattle(param1:String) : void
       {
          this._view.removeItem(param1);
          BattleSelectVectorUtil.deleteElementInVector(this._allItems,param1);

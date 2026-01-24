@@ -33,19 +33,19 @@ package alternativa.tanks.models.battle.gui.ultimate
    public class UltimateIndicator
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleInputService:BattleInputService;
       
-      [Inject]
+      [Inject] // added
       public static var inventoryPanel:IInventoryPanel;
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
-      [Inject]
+      [Inject] // added
       public static var battleGuiService:BattleGUIService;
       
-      [Inject]
+      [Inject] // added
       public static var inventorySoundService:InventorySoundService;
       
       private static const KEY_ICON_OFFSET_X:int = -6;

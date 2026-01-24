@@ -32,10 +32,10 @@ package alternativa.tanks.models.weapon.thunder
    public class ThunderModel extends ThunderModelBase implements IThunderModelBase, IWeaponModel, BattleEventListener, ThunderCallback
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
       private static const MAX_DISTANCE:Number = 1000000;

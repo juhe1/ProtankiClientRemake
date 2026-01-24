@@ -12,7 +12,7 @@ package alternativa.tanks.sfx
    public class DecalEffect extends PooledObject implements GraphicEffect
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private var decal:Decal;

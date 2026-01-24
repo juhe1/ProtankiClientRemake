@@ -10,7 +10,7 @@ package alternativa.tanks.bonuses
    public class BonusMesh extends BonusObject3DBase
    {
       
-      [Inject]
+      [Inject] // added
       public static var lightingService:ILightingEffectsService;
       
       private var bonusColorTransform:ColorTransform;

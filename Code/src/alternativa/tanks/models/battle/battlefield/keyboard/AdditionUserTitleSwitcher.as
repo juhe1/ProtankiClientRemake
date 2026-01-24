@@ -27,22 +27,22 @@ package alternativa.tanks.models.battle.battlefield.keyboard
    public class AdditionUserTitleSwitcher extends AbstractKeyboardHandler implements BattleEventListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleInputService:BattleInputService;
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
-      [Inject]
+      [Inject] // added
       public static var battleGuiService:BattleGUIService;
       
-      [Inject]
+      [Inject] // added
       public static var localTankService:LocalTankInfoService;
       
-      [Inject]
+      [Inject] // added
       public static var keysBindingService:KeysBindingService;
       
       private static var RESISTANCE_ICON_SIZE:int = 34;

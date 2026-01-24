@@ -24,9 +24,9 @@ package alternativa.tanks.services.tankregistry
       public function addUser(param1:IGameObject) : void
       {
          this.userList = null;
-         if(!this.users[param1.id])
+         if(!this.users[param1.name])
          {
-            this.users[param1.id] = param1;
+            this.users[param1.name] = param1;
             ++this.userCount;
          }
          if(ITankModel(param1.adapt(ITankModel)).isLocal())
@@ -38,9 +38,9 @@ package alternativa.tanks.services.tankregistry
       public function removeUser(param1:IGameObject) : void
       {
          this.userList = null;
-         if(Boolean(this.users[param1.id]))
+         if(Boolean(this.users[param1.name]))
          {
-            delete this.users[param1.id];
+            delete this.users[param1.name];
             --this.userCount;
          }
          if(ITankModel(param1.adapt(ITankModel)).isLocal())

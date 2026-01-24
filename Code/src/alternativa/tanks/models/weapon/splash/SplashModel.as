@@ -20,7 +20,7 @@ package alternativa.tanks.models.weapon.splash
    public class SplashModel extends SplashModelBase implements ISplashModelBase, ObjectLoadListener, Splash
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private static const vectorToTarget:Vector3 = new Vector3();

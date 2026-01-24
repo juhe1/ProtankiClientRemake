@@ -11,13 +11,13 @@ package alternativa.tanks.gui.shop.components.window
    public class ShopWindowCountrySelector extends DiscreteSprite
    {
       
-      [Inject]
+      [Inject] // added
       public static var countryService:CountryService;
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
-      [Inject]
+      [Inject] // added
       public static var paymentDisplayService:PaymentDisplayService;
       
       public var autoReloadPayments:Boolean;

@@ -35,13 +35,13 @@ package alternativa.tanks.models.tank.spawn
    public class TankSpawnerModel extends TankSpawnerModelBase implements ITankSpawner, ITankSpawnerModelBase, ObjectUnloadListener, ObjectLoadListener, BattleEventListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
-      [Inject]
+      [Inject] // added
       public static var logService:LogService;
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
       private static const ZERO_VECTOR_3D:Vector3d = new Vector3d(0,0,0);

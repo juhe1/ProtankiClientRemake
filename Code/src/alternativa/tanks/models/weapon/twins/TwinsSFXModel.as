@@ -18,10 +18,10 @@ package alternativa.tanks.models.weapon.twins
    public class TwinsSFXModel extends TwinsShootSFXModelBase implements ITwinsShootSFXModelBase, ObjectLoadPostListener, ObjectUnloadListener, ITwinsSFXModel
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
-      [Inject]
+      [Inject] // added
       public static var materialRegistry:EffectsMaterialRegistry;
       
       public function TwinsSFXModel()

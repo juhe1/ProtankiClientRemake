@@ -13,10 +13,10 @@ package alternativa.tanks.models.weapon.terminator.sfx
    public class TerminatorEffects implements AutoClosable, TerminatorToggleCallback
    {
       
-      [Inject]
+      [Inject] // added
       public static var localTankService:LocalTankInfoService;
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private var recoilEffect:Array;

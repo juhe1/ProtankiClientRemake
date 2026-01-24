@@ -12,7 +12,7 @@ package alternativa.tanks.battle
    public class SpeedHackChecker
    {
       
-      [Inject]
+      [Inject] // added
       public static var clientLog:IClientLog;
       
       private const checkInterval:EncryptedInt = new EncryptedIntImpl(15000);

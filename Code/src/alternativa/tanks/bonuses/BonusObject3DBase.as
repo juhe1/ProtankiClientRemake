@@ -10,7 +10,7 @@ package alternativa.tanks.bonuses
    public class BonusObject3DBase implements Object3DWrapper, HidableGraphicObject
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       public var object:Object3D;

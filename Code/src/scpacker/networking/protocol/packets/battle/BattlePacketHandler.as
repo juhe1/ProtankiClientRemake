@@ -179,6 +179,9 @@ package scpacker.networking.protocol.packets.battle
    import projects.tanks.client.battlefield.models.bonus.battle.bonusregions.BonusRegionsModelBase;
    import projects.tanks.client.battlefield.models.bonus.battle.goldbonus.GoldBonusesModelBase;
    import projects.tanks.client.battlefield.models.bonus.bonus.battlebonuses.crystal.BattleGoldBonusesModelBase;
+   import alternativa.tanks.models.battle.gui.inventory.InventorySfxModel;
+   import projects.tanks.client.battlefield.models.inventory.sfx.InventorySfxModelBase;
+   import projects.tanks.client.battlefield.models.inventory.sfx.InventorySfxCC;
    
    public class BattlePacketHandler extends AbstractPacketHandler
    {
@@ -220,6 +223,7 @@ package scpacker.networking.protocol.packets.battle
       private var bossStateModel:BossStateModel;
       private var bonusCommonModel:BonusCommonModel;
       private var bonusNotificationModel:BonusNotificationModel;
+      private var inventorySfxModel:InventorySfxModel;
 
       private var userPropertiesService:IUserPropertiesService;
       private var lightingEffectsService:ILightingEffectsService;
@@ -286,6 +290,7 @@ package scpacker.networking.protocol.packets.battle
          this.bossStateModel = BossStateModel(modelRegistry.getModel(BossStateModelBase.modelId));
          this.bonusCommonModel = BonusCommonModel(modelRegistry.getModel(BonusCommonModelBase.modelId));
          this.bonusNotificationModel = BonusNotificationModel(modelRegistry.getModel(BonusNotificationModelBase.modelId));
+         this.inventorySfxModel = InventorySfxModel(modelRegistry.getModel(InventorySfxModelBase.modelId));
 
          this.userPropertiesService = IUserPropertiesService(OSGi.getInstance().getService(IUserPropertiesService));
          this.tankUsersRegistry = TankUsersRegistry(OSGi.getInstance().getService(TankUsersRegistry));
@@ -377,6 +382,7 @@ package scpacker.networking.protocol.packets.battle
          battlefieldGameClassVector.push(StatisticsModelBase.modelId);
          battlefieldGameClassVector.push(this.inventoryModel.id);
          battlefieldGameClassVector.push(this.battleMinesModel.id);
+         battlefieldGameClassVector.push(this.inventorySfxModel .id);
          this.battlefieldGameClass = gameTypeRegistry.createClass(Long.getLong(150325,6843665),battlefieldGameClassVector);
 
          var tankGameClassVector:Vector.<Long> = new Vector.<Long>();
@@ -519,16 +525,18 @@ package scpacker.networking.protocol.packets.battle
          battlefieldGameObject.gameClass = battlefieldGameClass; 
          Model.object = battlefieldGameObject;
          this.battlefieldBonusesModel.putInitParams(battlefieldBonusesModelCC);
-         Model.popObject();
 
          var inventoryCC:InventoryCC = new InventoryCC();
          inventoryCC.ultimateEnabled = false;
 
-         Model.object = battlefieldGameObject;
          this.inventoryModel.putInitParams(inventoryCC);
          this.inventoryModel.objectLoaded();
          this.inventoryModel.objectLoadedPost();
-         Model.popObject();
+         
+         var inventorySfxModelCC:InventorySfxCC = new InventorySfxCC();
+         Model.object = battlefieldGameObject;
+         this.inventorySfxModel.putInitParams(inventorySfxModelCC);
+         this.inventorySfxModel.objectLoaded();
 
          var battlefieldModelCC:BattlefieldCC = new BattlefieldCC();
          battlefieldModelCC.active = jsonObject.active;
@@ -561,7 +569,6 @@ package scpacker.networking.protocol.packets.battle
          battlefieldModelCC.withoutDrones = true;
          battlefieldModelCC.withoutSupplies = false; // todo: implement without supplies
 
-         Model.object = battlefieldGameObject;
          this.battlefieldModel.putInitParams(battlefieldModelCC);
          this.battlefieldModel.objectLoaded();
          this.battlefieldModel.objectLoadedPost();
@@ -759,7 +766,7 @@ package scpacker.networking.protocol.packets.battle
          
          TankNameGameObjectMapper.addMapping(jsonObject.nickname, tankGameObject);
       }
-
+      
       // Turret GameClass will be modified by WeaponModelUtil and WeaponSfxModelUtil, so it must be unique for each turret type
       private function getTurretGameClass(turretId:String):GameClass
       {

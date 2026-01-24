@@ -12,9 +12,9 @@ package projects.tanks.clients.fp10.libraries.tanksservices.service.battle.activ
       
       public static const NOT_CONFIRMED_NAVIGATE:String = "BattleLinkActivatorServiceEvent.NOT_CONFIRMED_NAVIGATE";
       
-      public var battleId:Long;
+      public var battleId:String;
       
-      public function BattleLinkActivatorServiceEvent(param1:String, param2:Long = null)
+      public function BattleLinkActivatorServiceEvent(param1:String, param2:String = null)
       {
          super(param1);
          this.battleId = param2;

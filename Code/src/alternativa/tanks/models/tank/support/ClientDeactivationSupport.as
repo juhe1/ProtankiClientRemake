@@ -11,7 +11,7 @@ package alternativa.tanks.models.tank.support
    public class ClientDeactivationSupport implements AutoClosable
    {
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
       private var localUserObject:IGameObject;

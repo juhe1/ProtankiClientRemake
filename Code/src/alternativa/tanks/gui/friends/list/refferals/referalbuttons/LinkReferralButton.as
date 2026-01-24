@@ -11,10 +11,10 @@ package alternativa.tanks.gui.friends.list.refferals.referalbuttons
    public class LinkReferralButton extends ReferralWindowBigButton
    {
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
-      [Inject]
+      [Inject] // added
       public static var referralService:ReferralsService;
       
       private static const bitmapIconLink:Class = LinkReferralButton_bitmapIconLink;

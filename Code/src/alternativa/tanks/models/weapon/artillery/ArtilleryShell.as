@@ -23,7 +23,7 @@ package alternativa.tanks.models.weapon.artillery
       
       public static var shellMesh:Mesh;
       
-      [Inject]
+      [Inject] // added
       public static var textureMaterialRegistry:TextureMaterialRegistry;
       
       private static const shellClass:Class = ArtilleryShell_shellClass;

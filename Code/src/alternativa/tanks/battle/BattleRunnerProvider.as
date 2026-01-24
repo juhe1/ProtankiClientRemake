@@ -3,7 +3,7 @@ package alternativa.tanks.battle
    public class BattleRunnerProvider
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       public function BattleRunnerProvider()

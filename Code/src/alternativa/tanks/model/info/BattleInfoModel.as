@@ -76,7 +76,7 @@ package alternativa.tanks.model.info
       
       public function updateSuspicion(param1:BattleSuspicionLevel) : void
       {
-         battleListFormService.updateSuspicious(object.id,param1);
+         battleListFormService.updateSuspicious(object.name,param1);
       }
       
       public function updateUserSuspiciousState(param1:String, param2:Boolean) : void
@@ -106,7 +106,7 @@ package alternativa.tanks.model.info
       public function objectUnloadedPost() : void
       {
          battleUserInfoService.deleteBattleItem(object);
-         battleListFormService.removeBattleItem(object.id);
+         battleListFormService.removeBattleItem(object.name);
       }
       
       public function onAddFriend(param1:String) : void
@@ -128,7 +128,7 @@ package alternativa.tanks.model.info
       
       private function updateUsersCount() : void
       {
-         battleListFormService.updateUsersCount(object.id);
+         battleListFormService.updateUsersCount(object.name);
       }
       
       public function setBattleName(param1:String) : void
@@ -139,7 +139,7 @@ package alternativa.tanks.model.info
       
       private function updateBattleName() : void
       {
-         battleListFormService.updateBattleName(object.id);
+         battleListFormService.updateBattleName(object.name);
          battleInfoFormService.updateBattleName();
       }
       

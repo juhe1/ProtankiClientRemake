@@ -19,10 +19,10 @@ package alternativa.tanks.models.weapon.ricochet
    public class RicochetSFXModel extends RicochetSFXModelBase implements IRicochetSFXModelBase, ObjectLoadPostListener, ObjectUnloadListener, IRicochetSFXModel
    {
       
-      [Inject]
+      [Inject] // added
       public static var materialRegistry:EffectsMaterialRegistry;
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       public function RicochetSFXModel()

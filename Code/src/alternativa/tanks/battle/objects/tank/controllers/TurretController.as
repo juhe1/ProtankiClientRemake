@@ -15,7 +15,7 @@ package alternativa.tanks.battle.objects.tank.controllers
    public final class TurretController
    {
       
-      [Inject]
+      [Inject] // added
       public static var inputManager:TargetingInputManager;
       
       public static const BIT_LEFT:int = 5;//0;

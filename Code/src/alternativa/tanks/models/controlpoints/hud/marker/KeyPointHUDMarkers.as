@@ -17,7 +17,7 @@ package alternativa.tanks.models.controlpoints.hud.marker
    public class KeyPointHUDMarkers implements Renderer
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private static const CON_HIDE_SCALE:ConsoleVarFloat = new ConsoleVarFloat("ph_scale",0.12,0.00001,10);

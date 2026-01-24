@@ -14,7 +14,7 @@ package alternativa.tanks.models.tank.pause
    public class TankPauseModel extends TankPauseModelBase implements ITankPauseModelBase, ITankPause, LocalTankLoadListener, LocalTankUnloadListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private var idleKickTime:IdleKickTime = new IdleKickTime();

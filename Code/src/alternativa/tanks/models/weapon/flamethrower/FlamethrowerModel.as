@@ -35,10 +35,10 @@ package alternativa.tanks.models.weapon.flamethrower
    public class FlamethrowerModel extends FlameThrowerModelBase implements IFlameThrowerModelBase, IWeaponModel, IStreamWeaponCallback, ObjectLoadListener, BattleEventListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
       private const targets:Vector.<IGameObject> = new Vector.<IGameObject>();

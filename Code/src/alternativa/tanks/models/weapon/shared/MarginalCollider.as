@@ -11,7 +11,7 @@ package alternativa.tanks.models.weapon.shared
    public class MarginalCollider
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private static const BOX_HALFSIZE:Number = 6.5;

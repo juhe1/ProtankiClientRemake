@@ -1,10 +1,12 @@
-package scpacker.networking.protocol.packets.settings
+package scpacker.networking.protocol.packets.missions
 {
    import scpacker.networking.protocol.AbstractPacket;
    
-   public class LoadSettings extends AbstractPacket
+   public class OpenQuestWindowOutPacket extends AbstractPacket
    {
-      public function LoadSettings()
+      public static const id:int = 1227293080;
+      
+      public function OpenQuestWindowOutPacket()
       {
          super();
       }
@@ -15,18 +17,17 @@ package scpacker.networking.protocol.packets.settings
       
       override public function initializeSelf() : AbstractPacket
       {
-         return new LoadSettings();
+         return new OpenQuestWindowOutPacket();
       }
       
       override public function getPacketHandlerId() : int
       {
-         return 23;
+         return 19;
       }
       
       override public function getId() : int
       {
-         return 850220815;
+         return id;
       }
    }
 }
-

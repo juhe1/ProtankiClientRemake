@@ -19,7 +19,7 @@ package alternativa.tanks.battle
    public class BattleUtils
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       public static const tmpVector:Vector3 = new Vector3();

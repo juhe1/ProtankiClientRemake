@@ -19,10 +19,10 @@ package alternativa.tanks.models.weapon.freeze
    public class FreezeSFXModel extends FreezeSFXModelBase implements IFreezeSFXModelBase, ObjectLoadListener, ObjectUnloadListener, IFreezeSFXModel
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
-      [Inject]
+      [Inject] // added
       public static var materialRegistry:EffectsMaterialRegistry;
       
       public function FreezeSFXModel()

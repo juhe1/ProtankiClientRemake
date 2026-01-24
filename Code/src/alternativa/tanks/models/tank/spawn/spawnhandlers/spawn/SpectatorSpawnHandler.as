@@ -6,7 +6,7 @@ package alternativa.tanks.models.tank.spawn.spawnhandlers.spawn
    public class SpectatorSpawnHandler implements SpawnHandler
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       public function SpectatorSpawnHandler()

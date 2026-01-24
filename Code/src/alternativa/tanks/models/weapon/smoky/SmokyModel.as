@@ -34,10 +34,10 @@ package alternativa.tanks.models.weapon.smoky
    public class SmokyModel extends SmokyModelBase implements ISmokyModelBase, IWeaponModel, SmokyCallback, BattleEventListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
       private static const MAX_TARGETING_DISTANCE:Number = 1000000;

@@ -108,7 +108,7 @@ package alternativa.tanks.model.info.dm
       
       private function updateUsersCount() : void
       {
-         battleListFormService.updateUsersCount(object.id);
+         battleListFormService.updateUsersCount(object.name);
       }
 
       private function userExists(param1:String) : Boolean

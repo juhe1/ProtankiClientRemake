@@ -21,7 +21,7 @@ package alternativa.tanks.models.weapon.shotgun.sfx
    public class ShotgunEffects implements AutoClosable, ISoundEffectDestructionListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private static const SHOT_VOLUME:Number = 1;

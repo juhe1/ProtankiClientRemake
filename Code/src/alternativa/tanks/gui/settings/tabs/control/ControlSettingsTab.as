@@ -16,10 +16,10 @@ package alternativa.tanks.gui.settings.tabs.control
    public class ControlSettingsTab extends ScrollableSettingsTabView
    {
       
-      [Inject]
+      [Inject] // added
       public static var fullScreenService:FullscreenService;
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
       public static const MIN_SENSITIVITY_MOUSE:int = 1;

@@ -93,6 +93,12 @@ package alternativa.init
    import alternativa.tanks.service.socialnetwork.SocialNetworkPanelService;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.logging.settings.UserSettingsChangedService;
    import alternativa.tanks.service.logging.UserSettingsChangedServiceImpl;
+   import alternativa.tanks.service.socialnetwork.vk.SNFriendsService;
+   import alternativa.tanks.service.socialnetwork.vk.SNFriendsServiceImpl;
+   import alternativa.tanks.service.referrals.buttonhelper.ReferralsButtonHelperService;
+   import alternativa.tanks.service.referrals.buttonhelper.ReferralsButtonHelperServiceImpl;
+   import projects.tanks.clients.fp10.libraries.tanksservices.service.battle.activator.IBattleLinkActivatorService;
+   import alternativa.tanks.service.battlelinkactivator.BattleLinkActivatorService;
    //import projects.tanks.clients.fp10.libraries.tanksservices.service.logging.settings.UserSettingsChangedService;
    
    public class PanelModelActivator implements IBundleActivator
@@ -115,7 +121,7 @@ package alternativa.init
          param1.registerService(ISocialNetworkPanelService,new SocialNetworkPanelService());
          param1.registerService(UpgradingItemsService,new UpgradingItemsServiceImpl());
          param1.registerService(FPSService,new FPSServiceImpl());
-         //param1.registerService(IBattleLinkActivatorService,new BattleLinkActivatorService());
+         param1.registerService(IBattleLinkActivatorService,new BattleLinkActivatorService());
          //param1.registerService(IPaymentPackagesService,new PaymentPackagesService());
          //param1.registerService(PaymentCompleteService,new PaymentCompleteServiceImpl());
          param1.registerService(DailyQuestNotifierService,new DailyQuestNotifierServiceImpl());
@@ -128,10 +134,10 @@ package alternativa.init
          //param1.registerService(ShopNotifierService,new ShopNotifierServiceImpl());
          param1.registerService(KeysBindingService,new KeysBindingServiceImpl());
          //param1.registerService(ReferralsService,new ReferralsServiceImpl());
-         //param1.registerService(SNFriendsService,new SNFriendsServiceImpl());
+         param1.registerService(SNFriendsService,new SNFriendsServiceImpl());
          param1.registerService(NewReferralsNotifierService,new NewReferralsNotifierServiceImpl());
          //param1.registerService(ProcessedPaymentService,new ProcessedPaymentServiceImp());
-         //param1.registerService(ReferralsButtonHelperService,new ReferralsButtonHelperServiceImpl());
+         param1.registerService(ReferralsButtonHelperService,new ReferralsButtonHelperServiceImpl());
          //param1.registerService(StarsInfoService,new StarsInfoServiceImpl());
          //var _loc2_:QuestWindow = new QuestWindow();
          //param1.registerService(MissionsWindowsService,_loc2_);
@@ -163,7 +169,7 @@ package alternativa.init
          //param1.unregisterService(PaymentWindowService);
          param1.unregisterService(KeysBindingService);
          //param1.unregisterService(ProcessedPaymentService);
-         //param1.unregisterService(ReferralsButtonHelperService);
+         param1.unregisterService(ReferralsButtonHelperService);
          //param1.unregisterService(BattlePassPurchaseService);
       }
    }

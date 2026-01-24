@@ -17,10 +17,10 @@ package alternativa.tanks.models.statistics
    public class TankKillLogger implements AutoClosable, BattleEventListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
       private var battleObject:IGameObject;

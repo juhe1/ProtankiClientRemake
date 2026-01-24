@@ -6,7 +6,7 @@ package alternativa.tanks.models.battle.assault
    public class ASFlagPickupTimeoutTask implements LogicUnit
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private var callback:IAssaultModel;

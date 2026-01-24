@@ -21,7 +21,7 @@ package alternativa.tanks.models.weapon.machinegun
    public class MachineGunModel extends MachineGunModelBase implements IMachineGunModelBase, StreamWeaponListener, IWeaponModel
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private static const MAX_DISTANCE:Number = 1000000;

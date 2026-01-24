@@ -27,7 +27,7 @@ package alternativa.tanks.models.battle.battlefield.mine
    public class ProximityMine extends BattleRunnerProvider implements Trigger, Renderer
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleInfoService:IBattleInfoService;
       
       private static var pool:ProximityMine;

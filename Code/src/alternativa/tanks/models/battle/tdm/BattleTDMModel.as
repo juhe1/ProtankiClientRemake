@@ -18,10 +18,10 @@ package alternativa.tanks.models.battle.tdm
    public class BattleTDMModel extends BattleTDMModelBase implements IBattleTDMModelBase, ObjectLoadPostListener, ObjectUnloadListener, BattleEventListener, BattleModel
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
       private var targetEvaluators:Vector.<TeamDMTargetEvaluator>;

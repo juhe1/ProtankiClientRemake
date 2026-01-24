@@ -23,13 +23,13 @@ package alternativa.tanks.models.bonus.battlefield
    public class BattlefieldBonusesModel extends BattlefieldBonusesModelBase implements IBattlefieldBonusesModelBase, BattleEventListener, BattlefieldEvents
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
-      [Inject]
+      [Inject] // added
       public static var userInfoService:BattleUserInfoService;
       
-      [Inject]
+      [Inject] // added
       public static var userPropertiesService:IUserPropertiesService;
       
       private var bonuses:Dictionary = new Dictionary();

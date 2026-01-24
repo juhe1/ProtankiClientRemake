@@ -17,7 +17,7 @@ package alternativa.tanks.models.tank.spawn.spawnhandlers.ready2spawn
    public class LocalReadyToSpawnHandler implements ReadyToSpawnHandler, AutoClosable, BattleEventListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
       private var localUser:IGameObject;

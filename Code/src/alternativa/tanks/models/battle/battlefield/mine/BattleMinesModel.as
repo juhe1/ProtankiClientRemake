@@ -51,16 +51,16 @@ package alternativa.tanks.models.battle.battlefield.mine
    public class BattleMinesModel extends BattleMinesModelBase implements IBattleMinesModelBase, ObjectLoadListener, ObjectUnloadListener, IDumper, BattleEventListener, IMineCallback, IBattleMinesModel
    {
       
-      [Inject]
+      [Inject] // added
       public static var textureMaterialRegistry:TextureMaterialRegistry;
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
-      [Inject]
+      [Inject] // added
       public static var dumperService:IDumpService;
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
       private static const MAIN_EXPLOSION_ORIGIN_X:Number = 0.5;

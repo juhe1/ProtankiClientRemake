@@ -13,7 +13,7 @@ package alternativa.tanks.models.battle.dm
    public class BattleDMModel extends BattleDMModelBase implements IBattleDMModelBase, ObjectLoadPostListener, ObjectUnloadListener, BattleModel
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       public function BattleDMModel()

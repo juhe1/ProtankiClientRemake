@@ -6,7 +6,7 @@ package alternativa.tanks.models.battle.statistics.fps
    public class CameraStatisticFeature
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private var fieldName:String;

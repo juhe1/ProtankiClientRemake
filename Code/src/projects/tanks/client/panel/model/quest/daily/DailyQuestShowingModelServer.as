@@ -2,6 +2,7 @@ package projects.tanks.client.panel.model.quest.daily
 {
    import platform.client.fp10.core.model.IModel;
    import platform.client.fp10.core.type.IGameObject;
+   import alternativa.types.Long;
 
    public class DailyQuestShowingModelServer
    {

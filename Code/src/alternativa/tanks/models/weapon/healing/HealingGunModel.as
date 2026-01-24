@@ -29,10 +29,10 @@ package alternativa.tanks.models.weapon.healing
    public class HealingGunModel extends IsisModelBase implements IIsisModelBase, BattleEventListener, IWeaponModel, HealingGunCallback, ObjectLoadListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
       private var tmpVector:Vector3 = new Vector3();

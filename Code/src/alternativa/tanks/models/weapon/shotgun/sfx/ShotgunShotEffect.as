@@ -30,7 +30,7 @@ package alternativa.tanks.models.weapon.shotgun.sfx
    public class ShotgunShotEffect extends PooledObject implements GraphicEffect
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private static const DECAL_RADIUS:Number = 16;

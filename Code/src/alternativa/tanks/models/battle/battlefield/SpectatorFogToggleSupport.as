@@ -10,13 +10,13 @@ package alternativa.tanks.models.battle.battlefield
    public class SpectatorFogToggleSupport implements AutoClosable
    {
       
-      [Inject]
+      [Inject] // added
       public static var dislpay:IDisplay;
       
-      [Inject]
+      [Inject] // added
       public static var battleInputService:BattleInputService;
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private static const FOG_TOGGLE_KEY:uint = Keyboard.F8;

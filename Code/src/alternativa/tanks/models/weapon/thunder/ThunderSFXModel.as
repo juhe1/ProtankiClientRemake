@@ -19,10 +19,10 @@ package alternativa.tanks.models.weapon.thunder
    public class ThunderSFXModel extends ThunderShootSFXModelBase implements IThunderShootSFXModelBase, IThunderSFXModel, ObjectLoadListener, ObjectUnloadListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var materialRegistry:EffectsMaterialRegistry;
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       public function ThunderSFXModel()

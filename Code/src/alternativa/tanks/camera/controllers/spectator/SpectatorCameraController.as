@@ -16,10 +16,10 @@ package alternativa.tanks.camera.controllers.spectator
    public class SpectatorCameraController extends ActivatedCameraConroller implements CameraController
    {
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private static const conSmooth:ConsoleVarFloat = new ConsoleVarFloat("cam_smooth",0.1,0.001,1);

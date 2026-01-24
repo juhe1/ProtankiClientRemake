@@ -25,22 +25,22 @@ package alternativa.tanks.battle
    public class BattleView
    {
       
-      [Inject]
+      [Inject] // added
       public static var storageService:IStorageService;
       
-      [Inject]
+      [Inject] // added
       public static var battleInputService:BattleInputService;
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
-      [Inject]
+      [Inject] // added
       public static var keysBindingService:KeysBindingService;
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
-      [Inject]
+      [Inject] // added
       public static var backgroundService:IBackgroundService;
       
       public static const MAX_SCREEN_SIZE:int = 10;

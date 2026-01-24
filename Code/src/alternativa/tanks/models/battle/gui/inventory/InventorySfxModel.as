@@ -22,7 +22,7 @@ package alternativa.tanks.models.battle.gui.inventory
    public class InventorySfxModel extends InventorySfxModelBase implements IInventorySfxModelBase, ObjectLoadListener, ObjectUnloadListener, InventorySoundService
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private var readySoundTimer:uint;
@@ -108,7 +108,10 @@ package alternativa.tanks.models.battle.gui.inventory
       
       public function playNotReadySound() : void
       {
-         playSound(this.params.notReadySound.sound);
+         if(this.params.notReadySound != null)
+         {
+            playSound(this.params.notReadySound.sound);
+         }
       }
       
       private function clearUltimate(param1:IGameObject) : void
@@ -124,13 +127,13 @@ package alternativa.tanks.models.battle.gui.inventory
             case InventoryItemType.ULTIMATE:
                return this.ultimateSound;
             case InventoryItemType.FIRST_AID:
-               return this.params.healingSound.sound;
+               return this.params.healingSound ? this.params.healingSound.sound : null;
             case InventoryItemType.ARMOR:
-               return this.params.daOnSound.sound;
+               return this.params.daOnSound ? this.params.daOnSound.sound : null;
             case InventoryItemType.DAMAGE:
-               return this.params.ddOnSound.sound;
+               return this.params.ddOnSound ? this.params.ddOnSound.sound : null;
             case InventoryItemType.NITRO:
-               return this.params.nitroOnSound.sound;
+               return this.params.nitroOnSound ? this.params.nitroOnSound.sound : null;
             default:
                return null;
          }
@@ -151,11 +154,11 @@ package alternativa.tanks.models.battle.gui.inventory
          switch(param1)
          {
             case InventoryItemType.ARMOR:
-               return this.params.daOffSound.sound;
+               return this.params.daOffSound ? this.params.daOffSound.sound : null;
             case InventoryItemType.DAMAGE:
-               return this.params.ddOffSound.sound;
+               return this.params.ddOffSound ? this.params.ddOffSound.sound : null;
             case InventoryItemType.NITRO:
-               return this.params.nitroOffSound.sound;
+               return this.params.nitroOffSound ? this.params.nitroOffSound.sound : null;
             default:
                return null;
          }
@@ -165,7 +168,7 @@ package alternativa.tanks.models.battle.gui.inventory
       {
          clearTimeout(this.readySoundTimer);
          this.readySoundTimer = 0;
-         if(this.isBattleActive())
+         if(this.isBattleActive() && this.params.readySound != null)
          {
             playSound(this.params.readySound.sound);
          }

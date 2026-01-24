@@ -19,10 +19,10 @@ package alternativa.tanks.models.weapon.healing
    public class HealingGunSFXModel extends IsisSFXModelBase implements IIsisSFXModelBase, IHealingGunSFXModel, ObjectLoadPostListener, ObjectUnloadListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var materialRegistry:EffectsMaterialRegistry;
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       public function HealingGunSFXModel()

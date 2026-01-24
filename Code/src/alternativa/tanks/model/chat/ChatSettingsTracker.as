@@ -8,7 +8,7 @@ package alternativa.tanks.model.chat
    public class ChatSettingsTracker implements AutoClosable
    {
       
-      [Inject]
+      [Inject] // added
       public static var settingsService:ISettingsService;
       
       private var chat:ShowChat;

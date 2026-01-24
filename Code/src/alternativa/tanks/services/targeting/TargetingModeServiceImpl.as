@@ -16,28 +16,28 @@ package alternativa.tanks.services.targeting
    public class TargetingModeServiceImpl implements TargetingModeService, TargetingInputListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var inputManager:TargetingInputManager;
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
-      [Inject]
+      [Inject] // added
       public static var logService:LogService;
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
-      [Inject]
+      [Inject] // added
       public static var fullScreenState:FullscreenStateService;
       
-      [Inject]
+      [Inject] // added
       public static var fullScreenService:FullscreenService;
       
-      [Inject]
+      [Inject] // added
       public static var settingsService:ISettingsService;
       
-      [Inject]
+      [Inject] // added
       public static var keysBindingService:KeysBindingService;
       
       private static const FULL_SCREEN_INTERACTIVE_ACCEPTED:String = "fullScreenInteractiveAccepted";

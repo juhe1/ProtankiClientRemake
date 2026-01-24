@@ -1,10 +1,12 @@
-package scpacker.networking.protocol.packets.settings
+package scpacker.networking.protocol.packets.chat
 {
    import scpacker.networking.protocol.AbstractPacket;
    
-   public class newname_3872__END extends AbstractPacket
+   public class UnloadChatInPacket extends AbstractPacket
    {
-      public function newname_3872__END()
+      public static const id:int = -920985123;
+      
+      public function UnloadChatInPacket()
       {
          super();
       }
@@ -15,17 +17,17 @@ package scpacker.networking.protocol.packets.settings
       
       override public function initializeSelf() : AbstractPacket
       {
-         return new newname_3872__END();
+         return new UnloadChatInPacket();
       }
       
       override public function getPacketHandlerId() : int
       {
-         return 23;
+         return 28;
       }
       
       override public function getId() : int
       {
-         return -1302674105;
+         return id;
       }
    }
 }

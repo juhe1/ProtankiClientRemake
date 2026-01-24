@@ -9,7 +9,7 @@ package alternativa.tanks.models.tank
    public class PositionBookmarks
    {
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
       private var tank:Tank;

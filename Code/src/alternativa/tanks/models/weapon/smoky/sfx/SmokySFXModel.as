@@ -20,10 +20,10 @@ package alternativa.tanks.models.weapon.smoky.sfx
    public class SmokySFXModel extends SmokyShootSFXModelBase implements ISmokyShootSFXModelBase, ISmokySFXModel, ObjectLoadListener, ObjectUnloadListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var materialRegistry:EffectsMaterialRegistry;
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       public function SmokySFXModel()

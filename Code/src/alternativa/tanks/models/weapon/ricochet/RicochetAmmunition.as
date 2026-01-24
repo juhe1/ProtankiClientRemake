@@ -9,7 +9,7 @@ package alternativa.tanks.models.weapon.ricochet
    public class RicochetAmmunition
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private var impactForce:Number;

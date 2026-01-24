@@ -19,22 +19,22 @@ package platform.client.fp10.core
    public class CoreCommands
    {
       
-      [Inject]
+      [Inject] // added
       public static var gameTypeRegistry:GameTypeRegistry;
       
-      [Inject]
+      [Inject] // added
       public static var modelRegister:ModelRegistry;
       
-      [Inject]
+      [Inject] // added
       public static var spaceRegistry:SpaceRegistry;
       
-      [Inject]
+      [Inject] // added
       public static var resourceRegistry:ResourceRegistry;
       
-      [Inject]
+      [Inject] // added
       public static var commandService:CommandService;
       
-      [Inject]
+      [Inject] // added
       public static var transportService:ITransportService;
       
       private var osgi:OSGi;

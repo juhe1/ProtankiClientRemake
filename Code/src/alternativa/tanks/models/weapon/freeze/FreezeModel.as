@@ -36,10 +36,10 @@ package alternativa.tanks.models.weapon.freeze
    public class FreezeModel extends FreezeModelBase implements IFreezeModelBase, ObjectLoadListener, IWeaponModel, IStreamWeaponCallback, BattleEventListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
       private const targets:Vector.<IGameObject> = new Vector.<IGameObject>();

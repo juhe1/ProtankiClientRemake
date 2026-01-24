@@ -10,7 +10,7 @@ package alternativa.tanks.models.tank
    public class LocalWeaponController extends BattleRunnerProvider implements IWeaponController
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private var weapon:Weapon;

@@ -14,7 +14,7 @@ package alternativa.tanks.models.weapon.artillery.sfx
    public class ArtillerySfxData implements AutoClosable
    {
       
-      [Inject]
+      [Inject] // added
       public static var materialRegistry:EffectsMaterialRegistry;
       
       public var explosion:TextureAnimation;

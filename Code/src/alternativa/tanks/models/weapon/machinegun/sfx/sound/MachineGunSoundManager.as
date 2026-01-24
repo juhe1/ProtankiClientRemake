@@ -13,7 +13,7 @@ package alternativa.tanks.models.weapon.machinegun.sfx.sound
    public class MachineGunSoundManager implements ISoundEffectDestructionListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private static const INACTIVE_STATE:int = 0;

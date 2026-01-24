@@ -24,22 +24,22 @@ package alternativa.tanks.gui.friends
    public class AddRequestView extends Sprite
    {
       
-      [Inject]
+      [Inject] // added
       public static var friendsActionService:IFriendActionService;
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
-      [Inject]
+      [Inject] // added
       public static var alertService:IAlertService;
       
-      [Inject]
+      [Inject] // added
       public static var blurService:IBlurService;
       
-      [Inject]
+      [Inject] // added
       public static var userPropertiesService:IUserPropertiesService;
       
-      [Inject]
+      [Inject] // added
       public static var uidCheckService:UidCheckService;
       
       private static const SEARCH_TIMEOUT:int = 600;

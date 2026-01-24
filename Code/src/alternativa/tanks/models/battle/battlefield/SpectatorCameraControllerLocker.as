@@ -8,7 +8,7 @@ package alternativa.tanks.models.battle.battlefield
    public class SpectatorCameraControllerLocker implements AutoClosable
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleInputLockService:BattleInputService;
       
       private var cameraController:SpectatorCameraController;

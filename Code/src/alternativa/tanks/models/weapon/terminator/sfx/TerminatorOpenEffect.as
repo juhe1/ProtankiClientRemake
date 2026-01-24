@@ -9,7 +9,7 @@ package alternativa.tanks.models.weapon.terminator.sfx
    public class TerminatorOpenEffect implements Renderer
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private static const OPEN_LENGTH:Number = 50;

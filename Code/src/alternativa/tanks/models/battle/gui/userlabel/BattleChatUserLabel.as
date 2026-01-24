@@ -21,13 +21,13 @@ package alternativa.tanks.models.battle.gui.userlabel
    public class BattleChatUserLabel extends ChatUserLabel
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleInfoService:IBattleInfoService;
       
-      [Inject]
+      [Inject] // added
       public static var tankUsersRegistry:TankUsersRegistry;
       
-      [Inject]
+      [Inject] // added
       public static var userInfoService:BattleUserInfoService;
       
       private var resitanceLabel:LabelBase;

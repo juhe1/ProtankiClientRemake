@@ -8,16 +8,16 @@ package alternativa.tanks.services.battlereadiness
    public class BattleReadinessServiceImpl implements BattleReadinessService
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleSerivce:BattleService;
       
-      [Inject]
+      [Inject] // added
       public static var loaderWindowService:ILoaderWindowService;
       
-      [Inject]
+      [Inject] // added
       public static var lobbyLayoutService:ILobbyLayoutService;
       
-      [Inject]
+      [Inject] // added
       public static var modalLoaderService:IModalLoaderService;
       
       private var mapReady:Boolean;

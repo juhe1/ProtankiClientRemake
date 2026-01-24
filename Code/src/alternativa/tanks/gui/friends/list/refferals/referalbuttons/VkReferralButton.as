@@ -12,13 +12,13 @@ package alternativa.tanks.gui.friends.list.refferals.referalbuttons
    public class VkReferralButton extends ReferralWindowBigButton
    {
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
-      [Inject]
+      [Inject] // added
       public static var referralService:ReferralsService;
       
-      [Inject]
+      [Inject] // added
       public static var userPropertiesService:IUserPropertiesService;
       
       private static const friendsVKImageClass:Class = VkReferralButton_friendsVKImageClass;

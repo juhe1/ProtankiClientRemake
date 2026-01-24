@@ -12,10 +12,10 @@ package alternativa.tanks.gui.settings.tabs
    public class SettingsTabView extends DiscreteSprite
    {
       
-      [Inject]
+      [Inject] // added
       public static var settingsService:ISettingsService;
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
       public static const MARGIN:int = 8;

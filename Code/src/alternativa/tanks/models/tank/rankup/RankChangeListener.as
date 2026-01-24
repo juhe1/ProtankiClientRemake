@@ -11,7 +11,7 @@ package alternativa.tanks.models.tank.rankup
    public class RankChangeListener implements BattleUserInfoListener, AutoClosable
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleUserInfoService:BattleUserInfoService;
       
       private var space:ISpace;

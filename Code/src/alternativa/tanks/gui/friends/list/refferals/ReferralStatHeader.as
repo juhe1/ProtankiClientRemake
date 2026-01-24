@@ -10,7 +10,7 @@ package alternativa.tanks.gui.friends.list.refferals
    public class ReferralStatHeader extends Sprite
    {
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
       protected var tabs:Vector.<Number>;

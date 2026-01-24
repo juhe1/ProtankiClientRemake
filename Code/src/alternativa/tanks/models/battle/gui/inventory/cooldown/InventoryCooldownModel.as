@@ -13,7 +13,7 @@ package alternativa.tanks.models.battle.gui.inventory.cooldown
    public class InventoryCooldownModel extends InventoryCooldownModelBase implements IInventoryCooldownModelBase, ObjectLoadPostListener, ObjectUnloadListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var inventoryPanel:IInventoryPanel;
       
       private var slotIndexByObjectId:Dictionary = new Dictionary();

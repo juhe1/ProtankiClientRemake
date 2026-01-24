@@ -12,10 +12,10 @@ package alternativa.tanks.models.battle.ctf
    public class CTFMessages
    {
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
-      [Inject]
+      [Inject] // added
       public static var userInfoService:BattleUserInfoService;
       
       public static const MESSAGE_TAKEN:String = "taken";

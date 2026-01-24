@@ -9,7 +9,7 @@ package alternativa.tanks.models.weapons.targeting.priority.targeting
    public class CommonTargetPriorityCalculator implements TargetPriorityCalculator
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private var commonTargetEvaluator:CommonTargetEvaluator;

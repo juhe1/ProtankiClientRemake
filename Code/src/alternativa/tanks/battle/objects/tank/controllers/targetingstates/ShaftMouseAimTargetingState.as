@@ -17,13 +17,13 @@ package alternativa.tanks.battle.objects.tank.controllers.targetingstates
    public class ShaftMouseAimTargetingState implements TargetingState, TargetingInputListener, AimController
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
-      [Inject]
+      [Inject] // added
       public static var inputManager:TargetingInputManager;
       
-      [Inject]
+      [Inject] // added
       public static var localTankInfoService:LocalTankInfoService;
       
       private var haltAim:Boolean = false;

@@ -21,7 +21,7 @@ package alternativa.tanks.models.weapon.machinegun
    public class MachineGunWeapon extends CommonLocalWeapon
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private var gunParams:AllGlobalGunParams;

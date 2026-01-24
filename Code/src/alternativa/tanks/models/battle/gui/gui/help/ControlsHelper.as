@@ -8,7 +8,7 @@ package alternativa.tanks.models.battle.gui.gui.help
    public class ControlsHelper extends Helper
    {
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
       public static const GROUP_ID:String = "Tank.ControlsHelper";

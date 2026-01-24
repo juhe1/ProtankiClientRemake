@@ -13,7 +13,7 @@ package projects.tanks.clients.fp10.libraries.tanksservices.model.friends.incomi
    public class FriendsIncomingModel extends FriendsIncomingModelBase implements IFriendsIncomingModelBase, ObjectLoadListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var friendsInfoService:IFriendInfoService;
       
       public function FriendsIncomingModel()

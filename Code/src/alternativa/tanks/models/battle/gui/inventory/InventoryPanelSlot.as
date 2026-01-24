@@ -25,10 +25,10 @@ package alternativa.tanks.models.battle.gui.inventory
    public class InventoryPanelSlot
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
-      [Inject]
+      [Inject] // added
       public static var inventorySoundService:InventorySoundService;
       
       private static const FONT_SIZE:int = 10;

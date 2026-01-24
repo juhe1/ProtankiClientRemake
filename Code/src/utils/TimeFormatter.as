@@ -6,7 +6,7 @@ package utils
    public class TimeFormatter
    {
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
       private static const MINUTE:int = 60;

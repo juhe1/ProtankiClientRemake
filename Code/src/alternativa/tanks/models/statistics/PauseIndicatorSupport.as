@@ -18,19 +18,19 @@ package alternativa.tanks.models.statistics
    public class PauseIndicatorSupport implements AutoClosable, BattleEventListener, LogicUnit
    {
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
-      [Inject]
+      [Inject] // added
       public static var battleGUIService:BattleGUIService;
       
       private var pauseIndicator:PauseIndicator;

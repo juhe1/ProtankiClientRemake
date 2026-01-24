@@ -19,7 +19,7 @@ package alternativa.tanks.models.weapon.shotgun
    public class ShotgunRicochetTargetingSystem implements IRayCollisionFilter
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private static const rayHit:RayHit = new RayHit();

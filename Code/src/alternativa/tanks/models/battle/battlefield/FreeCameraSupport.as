@@ -11,13 +11,13 @@ package alternativa.tanks.models.battle.battlefield
    public class FreeCameraSupport implements AutoClosable
    {
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
-      [Inject]
+      [Inject] // added
       public static var battleInputService:BattleInputService;
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private var followCameraController:FollowCameraController;

@@ -35,25 +35,25 @@ package alternativa.tanks.model.settings
    public class SettingsModel extends SettingsModelBase implements ISettingsModelBase, ObjectLoadPostListener, ObjectUnloadListener, CaptchaClientFacade
    {
       
-      [Inject]
+      [Inject] // added
       public static var settingsService:ISettingsService;
       
-      [Inject]
+      [Inject] // added
       public static var panelView:IPanelView;
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
-      [Inject]
+      [Inject] // added
       public static var battleInviteService:IBattleInviteService;
       
-      [Inject]
+      [Inject] // added
       public static var alertService:IAlertService;
       
-      [Inject]
+      [Inject] // added
       public static var fullscreenService:FullscreenService;
       
-      [Inject]
+      [Inject] // added
       public static var passwordService:PasswordService;
       
       private var settingsWindow:SettingsWindow;
@@ -97,11 +97,12 @@ package alternativa.tanks.model.settings
          this.settingsWindow.addEventListener(AccountSettingsEvent.SET_ANTI_ADDICTION,getFunctionWrapper(this.onSetAntiAddictionInfo));
          this.settingsWindow.addEventListener(ReceivePersonalMessagesSettingEvent.RECEIVE_PERSONAL_MESSAGES_CHANGE,getFunctionWrapper(this.onChangeReceivePersonalMessageOnlyFromFriends));
          panelView.unlock();
-         if(!settingsService.isPasswordSet)
-         {
-            passwordService.checkIsPasswordSet(this.callbackIsPasswordSet);
-         }
-         else
+         // TODO: re-enable password check 
+         //if(!settingsService.isPasswordSet)
+         //{
+         //   passwordService.checkIsPasswordSet(this.callbackIsPasswordSet);
+         //}
+         //else
          {
             this.settingsWindow.show();
          }

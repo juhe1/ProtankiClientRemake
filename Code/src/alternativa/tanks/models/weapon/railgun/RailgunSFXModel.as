@@ -19,10 +19,10 @@ package alternativa.tanks.models.weapon.railgun
    public class RailgunSFXModel extends RailgunShootSFXModelBase implements IRailgunShootSFXModelBase, IRailgunSFXModel, ObjectLoadPostListener, ObjectUnloadListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var materialRegistry:EffectsMaterialRegistry;
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private const chargingTextureRegistry:ChargingTextureRegistry = new ChargingTextureRegistry();

@@ -9,7 +9,7 @@ package alternativa.tanks.battle
    public class PerformanceControllerWithThrottling extends PerformanceController
    {
       
-      [Inject]
+      [Inject] // added
       public static var performanceDataService:PerformanceDataService;
       
       private var stage:Stage;

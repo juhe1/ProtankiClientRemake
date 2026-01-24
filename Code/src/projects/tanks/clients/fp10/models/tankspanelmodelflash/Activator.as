@@ -87,6 +87,54 @@ package projects.tanks.clients.fp10.models.tankspanelmodelflash
    import alternativa.tanks.gui.friends.battleinvite.BattleInviteNotification;
    import alternativa.tanks.model.friends.loader.FriendsLoaderModel;
    import alternativa.tanks.model.friends.battleinvite.BattleInviteModel;
+   import alternativa.tanks.gui.friends.list.renderer.HeaderAcceptedList;
+   import alternativa.tanks.gui.friends.list.renderer.FriendsAcceptedListRenderer;
+   import services.contextmenu.IContextMenuService;
+   import alternativa.tanks.gui.friends.list.renderer.FriendsIncomingListRenderer;
+   import alternativa.tanks.gui.friends.list.AcceptedList;
+   import projects.tanks.clients.fp10.libraries.tanksservices.service.notifier.battle.IBattleNotifierService;
+   import projects.tanks.clients.fp10.libraries.tanksservices.service.notifier.online.IOnlineNotifierService;
+   import alternativa.tanks.service.socialnetwork.vk.SNFriendsService;
+   import alternativa.tanks.gui.friends.list.FriendsList;
+   import alternativa.tanks.gui.friends.list.dataprovider.FriendsDataProvider;
+   import alternativa.tanks.gui.friends.list.refferals.ReferralStatHeader;
+   import alternativa.tanks.gui.friends.list.refferals.ReferralForm;
+   import alternativa.tanks.service.referrals.ReferralsService;
+   import alternativa.tanks.service.referrals.buttonhelper.ReferralsButtonHelperService;
+   import alternativa.tanks.gui.friends.list.refferals.referalbuttons.LinkReferralButton;
+   import alternativa.tanks.gui.friends.list.refferals.referalbuttons.OkReferralButton;
+   import alternativa.tanks.gui.friends.list.refferals.referalbuttons.VkReferralButton;
+   import alternativa.tanks.service.referrals.buttonhelper.ReferralsButtonHelperServiceImpl;
+   import alternativa.tanks.gui.settings.SettingsTabButtonList;
+   import alternativa.tanks.gui.settings.tabs.SettingsTabView;
+   import alternativa.tanks.gui.settings.tabs.SoundSettingsTab;
+   import alternativa.tanks.gui.settings.tabs.account.AccountSettingsTab;
+   import projects.tanks.clients.flash.commons.services.validate.IValidateService;
+   import alternativa.tanks.gui.settings.tabs.control.ControlSettingsTab;
+   import alternativa.tanks.gui.settings.tabs.control.KeyBinding;
+   import alternativa.tanks.gui.settings.tabs.control.KeyBindingsPanel;
+   import alternativa.tanks.gui.settings.tabs.game.GameSettingsTab;
+   import alternativa.tanks.gui.settings.SettingsWindow;
+   import alternativa.tanks.service.country.CountryService;
+   import alternativa.tanks.gui.shop.components.window.ShopWindowCountrySelector;
+   import alternativa.tanks.model.usercountry.UserCountryModel;
+   import projects.tanks.clients.fp10.libraries.tanksservices.service.logging.paymentactions.UserPaymentActionsService;
+   import alternativa.tanks.model.useremailandpassword.IUserEmailAndPassword;
+   import alternativa.tanks.model.useremailandpassword.IUserEmailAndPasswordAdapt;
+   import alternativa.tanks.model.useremailandpassword.IUserEmailAndPasswordEvents;
+   import alternativa.tanks.model.useremailandpassword.PasswordServiceAdapt;
+   import alternativa.tanks.model.useremailandpassword.PasswordServiceEvents;
+   import alternativa.tanks.gui.dailyquests.window.DailyQuestEmptyItemView;
+   import alternativa.tanks.gui.dailyquests.window.QuestWindow;
+   import alternativa.tanks.gui.dailyquests.window.DailyQuestItemViewInfoPanel;
+   import alternativa.tanks.gui.dailyquests.window.WeeklyQuestInfoPanel;
+   import alternativa.tanks.gui.dailyquests.window.buttons.DailyQuestGetPrizeButton;
+   import alternativa.tanks.gui.dailyquests.window.buttons.DailyQuestChangeButton;
+   import alternativa.tanks.model.dailyquest.QuestShowingModel;
+   import alternativa.tanks.model.dailyquest.DailyQuestAdapt;
+   import alternativa.tanks.model.dailyquest.DailyQuest;
+   import alternativa.tanks.model.dailyquest.DailyQuestEvents;
+   import alternativa.tanks.model.dailyquest.DailyQuestModel;
    
    public class Activator implements IBundleActivator
    {
@@ -113,76 +161,90 @@ package projects.tanks.clients.fp10.models.tankspanelmodelflash
          {
             return DailyQuestChangesIndicator.dailyQuestInfoService;
          });
-         //osgi.injectService(ILocaleService,function(param1:Object):void
-         //{
-         //   DailyQuestEmptyItemView.localeService = ILocaleService(param1);
-         //},function():ILocaleService
-         //{
-         //   return DailyQuestEmptyItemView.localeService;
-         //});
-         //osgi.injectService(ILocaleService,function(param1:Object):void
-         //{
-         //   QuestWindow.localeService = ILocaleService(param1);
-         //},function():ILocaleService
-         //{
-         //   return QuestWindow.localeService;
-         //});
-         //osgi.injectService(IMoneyService,function(param1:Object):void
-         //{
-         //   QuestWindow.moneyService = IMoneyService(param1);
-         //},function():IMoneyService
-         //{
-         //   return QuestWindow.moneyService;
-         //});
-         //osgi.injectService(DailyQuestNotifierService,function(param1:Object):void
-         //{
-         //   QuestWindow.dailyQuestNotifierService = DailyQuestNotifierService(param1);
-         //},function():DailyQuestNotifierService
-         //{
-         //   return QuestWindow.dailyQuestNotifierService;
-         //});
-         //osgi.injectService(UserChangeGameScreenService,function(param1:Object):void
-         //{
-         //   QuestWindow.userChangeGameScreenService = UserChangeGameScreenService(param1);
-         //},function():UserChangeGameScreenService
-         //{
-         //   return QuestWindow.userChangeGameScreenService;
-         //});
-         //osgi.injectService(ILocaleService,function(param1:Object):void
-         //{
-         //   DailyQuestItemViewInfoPanel.localeService = ILocaleService(param1);
-         //},function():ILocaleService
-         //{
-         //   return DailyQuestItemViewInfoPanel.localeService;
-         //});
-         //osgi.injectService(ILocaleService,function(param1:Object):void
-         //{
-         //   WeeklyQuestInfoPanel.localeService = ILocaleService(param1);
-         //},function():ILocaleService
-         //{
-         //   return WeeklyQuestInfoPanel.localeService;
-         //});
-         //osgi.injectService(ILocaleService,function(param1:Object):void
-         //{
-         //   DailyQuestGetPrizeButton.localeService = ILocaleService(param1);
-         //},function():ILocaleService
-         //{
-         //   return DailyQuestGetPrizeButton.localeService;
-         //});
-         //osgi.injectService(ILocaleService,function(param1:Object):void
-         //{
-         //   DailyQuestChangeButton.localeService = ILocaleService(param1);
-         //},function():ILocaleService
-         //{
-         //   return DailyQuestChangeButton.localeService;
-         //});
-         //osgi.injectService(IMoneyService,function(param1:Object):void
-         //{
-         //   DailyQuestChangeButto.moneyService = IMoneyService(param1);
-         //},function():IMoneyService
-         //{
-         //   return DailyQuestChangeButton.moneyService;
-         //});
+         osgi.injectService(ILocaleService,function(param1:Object):void
+         {
+            DailyQuestEmptyItemView.localeService = ILocaleService(param1);
+         },function():ILocaleService
+         {
+            return DailyQuestEmptyItemView.localeService;
+         });
+         osgi.injectService(ILocaleService,function(param1:Object):void
+         {
+            QuestWindow.localeService = ILocaleService(param1);
+         },function():ILocaleService
+         {
+            return QuestWindow.localeService;
+         });
+         osgi.injectService(IMoneyService,function(param1:Object):void
+         {
+            QuestWindow.moneyService = IMoneyService(param1);
+         },function():IMoneyService
+         {
+            return QuestWindow.moneyService;
+         });
+         osgi.injectService(DailyQuestNotifierService,function(param1:Object):void
+         {
+            QuestWindow.dailyQuestNotifierService = DailyQuestNotifierService(param1);
+         },function():DailyQuestNotifierService
+         {
+            return QuestWindow.dailyQuestNotifierService;
+         });
+         osgi.injectService(UserChangeGameScreenService,function(param1:Object):void
+         {
+            QuestWindow.userChangeGameScreenService = UserChangeGameScreenService(param1);
+         },function():UserChangeGameScreenService
+         {
+            return QuestWindow.userChangeGameScreenService;
+         });
+         osgi.injectService(ILocaleService,function(param1:Object):void
+         {
+            DailyQuestItemViewInfoPanel.localeService = ILocaleService(param1);
+         },function():ILocaleService
+         {
+            return DailyQuestItemViewInfoPanel.localeService;
+         });
+         osgi.injectService(ILocaleService,function(param1:Object):void
+         {
+            WeeklyQuestInfoPanel.localeService = ILocaleService(param1);
+         },function():ILocaleService
+         {
+            return WeeklyQuestInfoPanel.localeService;
+         });
+         osgi.injectService(ILocaleService,function(param1:Object):void
+         {
+            DailyQuestGetPrizeButton.localeService = ILocaleService(param1);
+         },function():ILocaleService
+         {
+            return DailyQuestGetPrizeButton.localeService;
+         });
+         osgi.injectService(ILocaleService,function(param1:Object):void
+         {
+            DailyQuestChangeButton.localeService = ILocaleService(param1);
+         },function():ILocaleService
+         {
+            return DailyQuestChangeButton.localeService;
+         });
+         osgi.injectService(IMoneyService,function(param1:Object):void
+         {
+            DailyQuestChangeButton.moneyService = IMoneyService(param1);
+         },function():IMoneyService
+         {
+            return DailyQuestChangeButton.moneyService;
+         });
+         osgi.injectService(IPanelView,function(param1:Object):void
+         {
+            QuestShowingModel.panelView = IPanelView(param1);
+         },function():IPanelView
+         {
+            return QuestShowingModel.panelView;
+         });
+         osgi.injectService(UserChangeGameScreenService,function(param1:Object):void
+         {
+            QuestShowingModel.userChangeGameScreenService = UserChangeGameScreenService(param1);
+         },function():UserChangeGameScreenService
+         {
+            return QuestShowingModel.userChangeGameScreenService;
+         });
 
          //osgi.injectService(IPaymentPackagesService,function(param1:Object):void
          //{
@@ -646,48 +708,48 @@ package projects.tanks.clients.fp10.models.tankspanelmodelflash
          //{
          //   return RequestCountIndicator.friendInfoService;
          //});
-         //osgi.injectService(IBattleInfoService,function(param1:Object):void
-         //{
-         //   AcceptedList.battleInfoService = IBattleInfoService(param1);
-         //},function():IBattleInfoService
-         //{
-         //   return AcceptedList.battleInfoService;
-         //});
-         //osgi.injectService(IBattleInviteService,function(param1:Object):void
-         //{
-         //   AcceptedList.battleInviteService = IBattleInviteService(param1);
-         //},function():IBattleInviteService
-         //{
-         //   return AcceptedList.battleInviteService;
-         //});
-         //osgi.injectService(IBattleNotifierService,function(param1:Object):void
-         //{
-         //   AcceptedList.battleNotifierService = IBattleNotifierService(param1);
-         //},function():IBattleNotifierService
-         //{
-         //   return AcceptedList.battleNotifierService;
-         //});
-         //osgi.injectService(IContextMenuService,function(param1:Object):void
-         //{
-         //   AcceptedList.contextMenuService = IContextMenuService(param1);
-         //},function():IContextMenuService
-         //{
-         //   return AcceptedList.contextMenuService;
-         //});
-         //osgi.injectService(IOnlineNotifierService,function(param1:Object):void
-         //{
-         //   AcceptedList.onlineNotifierService = IOnlineNotifierService(param1);
-         //},function():IOnlineNotifierService
-         //{
-         //   return AcceptedList.onlineNotifierService;
-         //});
-         //osgi.injectService(SNFriendsService,function(param1:Object):void
-         //{
-         //   AcceptedList.snFriendsService = SNFriendsService(param1);
-         //},function():SNFriendsService
-         //{
-         //   return AcceptedList.snFriendsService;
-         //});
+         osgi.injectService(IBattleInfoService,function(param1:Object):void
+         {
+            AcceptedList.battleInfoService = IBattleInfoService(param1);
+         },function():IBattleInfoService
+         {
+            return AcceptedList.battleInfoService;
+         });
+         osgi.injectService(IBattleInviteService,function(param1:Object):void
+         {
+            AcceptedList.battleInviteService = IBattleInviteService(param1);
+         },function():IBattleInviteService
+         {
+            return AcceptedList.battleInviteService;
+         });
+         osgi.injectService(IBattleNotifierService,function(param1:Object):void
+         {
+            AcceptedList.battleNotifierService = IBattleNotifierService(param1);
+         },function():IBattleNotifierService
+         {
+            return AcceptedList.battleNotifierService;
+         });
+         osgi.injectService(IContextMenuService,function(param1:Object):void
+         {
+            AcceptedList.contextMenuService = IContextMenuService(param1);
+         },function():IContextMenuService
+         {
+            return AcceptedList.contextMenuService;
+         });
+         osgi.injectService(IOnlineNotifierService,function(param1:Object):void
+         {
+            AcceptedList.onlineNotifierService = IOnlineNotifierService(param1);
+         },function():IOnlineNotifierService
+         {
+            return AcceptedList.onlineNotifierService;
+         });
+         osgi.injectService(SNFriendsService,function(param1:Object):void
+         {
+            AcceptedList.snFriendsService = SNFriendsService(param1);
+         },function():SNFriendsService
+         {
+            return AcceptedList.snFriendsService;
+         });
          //osgi.injectService(IBattleInfoService,function(param1:Object):void
          //{
          //   ClanMembersList.battleInfoService = IBattleInfoService(param1);
@@ -744,20 +806,20 @@ package projects.tanks.clients.fp10.models.tankspanelmodelflash
          //{
          //   return ClanMembersList.userPropertiesService;
          //});
-         //osgi.injectService(IFriendInfoService,function(param1:Object):void
-         //{
-         //   FriendsList.friendInfoService = IFriendInfoService(param1);
-         //},function():IFriendInfoService
-         //{
-         //   return FriendsList.friendInfoService;
-         //});
-         //osgi.injectService(IUserInfoService,function(param1:Object):void
-         //{
-         //   FriendsList.userInfoService = IUserInfoService(param1);
-         //},function():IUserInfoService
-         //{
-         //   return FriendsList.userInfoService;
-         //});
+         osgi.injectService(IFriendInfoService,function(param1:Object):void
+         {
+            FriendsList.friendInfoService = IFriendInfoService(param1);
+         },function():IFriendInfoService
+         {
+            return FriendsList.friendInfoService;
+         });
+         osgi.injectService(IUserInfoService,function(param1:Object):void
+         {
+            FriendsList.userInfoService = IUserInfoService(param1);
+         },function():IUserInfoService
+         {
+            return FriendsList.userInfoService;
+         });
          //osgi.injectService(IContextMenuService,function(param1:Object):void
          //{
          //   IncomingList.contextMenuService = IContextMenuService(param1);
@@ -779,125 +841,125 @@ package projects.tanks.clients.fp10.models.tankspanelmodelflash
          //{
          //   return IncomingList.friendInfoService;
          //});
-         //osgi.injectService(IBattleInfoService,function(param1:Object):void
-         //{
-         //   FriendsDataProvider.battleInfoService = IBattleInfoService(param1);
-         //},function():IBattleInfoService
-         //{
-         //   return FriendsDataProvider.battleInfoService;
-         //});
-         //osgi.injectService(IFriendInfoService,function(param1:Object):void
-         //{
-         //   FriendsDataProvider.friendInfoService = IFriendInfoService(param1);
-         //},function():IFriendInfoService
-         //{
-         //   return FriendsDataProvider.friendInfoService;
-         //});
-         //osgi.injectService(IUserInfoService,function(param1:Object):void
-         //{
-         //   FriendsDataProvider.userInfoService = IUserInfoService(param1);
-         //},function():IUserInfoService
-         //{
-         //   return FriendsDataProvider.userInfoService;
-         //});
-         //osgi.injectService(IUserPropertiesService,function(param1:Object):void
-         //{
-         //   FriendsDataProvider.userPropertiesService = IUserPropertiesService(param1);
-         //},function():IUserPropertiesService
-         //{
-         //   return FriendsDataProvider.userPropertiesService;
-         //});
-         //osgi.injectService(ILocaleService,function(param1:Object):void
-         //{
-         //   ReferralForm.localeService = ILocaleService(param1);
-         //},function():ILocaleService
-         //{
-         //   return ReferralForm.localeService;
-         //});
-         //osgi.injectService(NewReferralsNotifierService,function(param1:Object):void
-         //{
-         //   ReferralForm.newReferralsNotifierService = NewReferralsNotifierService(param1);
-         //},function():NewReferralsNotifierService
-         //{
-         //   return ReferralForm.newReferralsNotifierService;
-         //});
-         //osgi.injectService(IPartnerService,function(param1:Object):void
-         //{
-         //   ReferralForm.partnerService = IPartnerService(param1);
-         //},function():IPartnerService
-         //{
-         //   return ReferralForm.partnerService;
-         //});
-         //osgi.injectService(ReferralsService,function(param1:Object):void
-         //{
-         //   ReferralForm.referralService = ReferralsService(param1);
-         //},function():ReferralsService
-         //{
-         //   return ReferralForm.referralService;
-         //});
-         //osgi.injectService(ReferralsButtonHelperService,function(param1:Object):void
-         //{
-         //   ReferralForm.referralsButtonHelperService = ReferralsButtonHelperService(param1);
-         //},function():ReferralsButtonHelperService
-         //{
-         //   return ReferralForm.referralsButtonHelperService;
-         //});
-         //osgi.injectService(ILocaleService,function(param1:Object):void
-         //{
-         //   ReferralStatHeader.localeService = ILocaleService(param1);
-         //},function():ILocaleService
-         //{
-         //   return ReferralStatHeader.localeService;
-         //});
-         //osgi.injectService(ILocaleService,function(param1:Object):void
-         //{
-         //   LinkReferralButton.localeService = ILocaleService(param1);
-         //},function():ILocaleService
-         //{
-         //   return LinkReferralButton.localeService;
-         //});
-         //osgi.injectService(ReferralsService,function(param1:Object):void
-         //{
-         //   LinkReferralButton.referralService = ReferralsService(param1);
-         //},function():ReferralsService
-         //{
-         //   return LinkReferralButton.referralService;
-         //});
-         //osgi.injectService(ILocaleService,function(param1:Object):void
-         //{
-         //   OkReferralButton.localeService = ILocaleService(param1);
-         //},function():ILocaleService
-         //{
-         //   return OkReferralButton.localeService;
-         //});
-         //osgi.injectService(IUserPropertiesService,function(param1:Object):void
-         //{
-         //   OkReferralButton.userPropertiesService = IUserPropertiesService(param1);
-         //},function():IUserPropertiesService
-         //{
-         //   return OkReferralButton.userPropertiesService;
-         //});
-         //osgi.injectService(ILocaleService,function(param1:Object):void
-         //{
-         //   VkReferralButton.localeService = ILocaleService(param1);
-         //},function():ILocaleService
-         //{
-         //   return VkReferralButton.localeService;
-         //});
-         //osgi.injectService(ReferralsService,function(param1:Object):void
-         //{
-         //   VkReferralButton.referralService = ReferralsService(param1);
-         //},function():ReferralsService
-         //{
-         //   return VkReferralButton.referralService;
-         //});
-         //osgi.injectService(IUserPropertiesService,function(param1:Object):void
-         //{
-         //   VkReferralButton.userPropertiesService = IUserPropertiesService(param1);
-         //},function():IUserPropertiesService
-         //{
-         //   return VkReferralButton.userPropertiesService;
-         //});
+         osgi.injectService(IBattleInfoService,function(param1:Object):void
+         {
+            FriendsDataProvider.battleInfoService = IBattleInfoService(param1);
+         },function():IBattleInfoService
+         {
+            return FriendsDataProvider.battleInfoService;
+         });
+         osgi.injectService(IFriendInfoService,function(param1:Object):void
+         {
+            FriendsDataProvider.friendInfoService = IFriendInfoService(param1);
+         },function():IFriendInfoService
+         {
+            return FriendsDataProvider.friendInfoService;
+         });
+         osgi.injectService(IUserInfoService,function(param1:Object):void
+         {
+            FriendsDataProvider.userInfoService = IUserInfoService(param1);
+         },function():IUserInfoService
+         {
+            return FriendsDataProvider.userInfoService;
+         });
+         osgi.injectService(IUserPropertiesService,function(param1:Object):void
+         {
+            FriendsDataProvider.userPropertiesService = IUserPropertiesService(param1);
+         },function():IUserPropertiesService
+         {
+            return FriendsDataProvider.userPropertiesService;
+         });
+         osgi.injectService(ILocaleService,function(param1:Object):void
+         {
+            ReferralForm.localeService = ILocaleService(param1);
+         },function():ILocaleService
+         {
+            return ReferralForm.localeService;
+         });
+         osgi.injectService(NewReferralsNotifierService,function(param1:Object):void
+         {
+            ReferralForm.newReferralsNotifierService = NewReferralsNotifierService(param1);
+         },function():NewReferralsNotifierService
+         {
+            return ReferralForm.newReferralsNotifierService;
+         });
+         osgi.injectService(IPartnerService,function(param1:Object):void
+         {
+            ReferralForm.partnerService = IPartnerService(param1);
+         },function():IPartnerService
+         {
+            return ReferralForm.partnerService;
+         });
+         osgi.injectService(ReferralsService,function(param1:Object):void
+         {
+            ReferralForm.referralService = ReferralsService(param1);
+         },function():ReferralsService
+         {
+            return ReferralForm.referralService;
+         });
+         osgi.injectService(ReferralsButtonHelperService,function(param1:Object):void
+         {
+            ReferralForm.referralsButtonHelperService = ReferralsButtonHelperService(param1);
+         },function():ReferralsButtonHelperService
+         {
+            return ReferralForm.referralsButtonHelperService;
+         });
+         osgi.injectService(ILocaleService,function(param1:Object):void
+         {
+            ReferralStatHeader.localeService = ILocaleService(param1);
+         },function():ILocaleService
+         {
+            return ReferralStatHeader.localeService;
+         });
+         osgi.injectService(ILocaleService,function(param1:Object):void
+         {
+            LinkReferralButton.localeService = ILocaleService(param1);
+         },function():ILocaleService
+         {
+            return LinkReferralButton.localeService;
+         });
+         osgi.injectService(ReferralsService,function(param1:Object):void
+         {
+            LinkReferralButton.referralService = ReferralsService(param1);
+         },function():ReferralsService
+         {
+            return LinkReferralButton.referralService;
+         });
+         osgi.injectService(ILocaleService,function(param1:Object):void
+         {
+            OkReferralButton.localeService = ILocaleService(param1);
+         },function():ILocaleService
+         {
+            return OkReferralButton.localeService;
+         });
+         osgi.injectService(IUserPropertiesService,function(param1:Object):void
+         {
+            OkReferralButton.userPropertiesService = IUserPropertiesService(param1);
+         },function():IUserPropertiesService
+         {
+            return OkReferralButton.userPropertiesService;
+         });
+         osgi.injectService(ILocaleService,function(param1:Object):void
+         {
+            VkReferralButton.localeService = ILocaleService(param1);
+         },function():ILocaleService
+         {
+            return VkReferralButton.localeService;
+         });
+         osgi.injectService(ReferralsService,function(param1:Object):void
+         {
+            VkReferralButton.referralService = ReferralsService(param1);
+         },function():ReferralsService
+         {
+            return VkReferralButton.referralService;
+         });
+         osgi.injectService(IUserPropertiesService,function(param1:Object):void
+         {
+            VkReferralButton.userPropertiesService = IUserPropertiesService(param1);
+         },function():IUserPropertiesService
+         {
+            return VkReferralButton.userPropertiesService;
+         });
          //osgi.injectService(IBattleInfoService,function(param1:Object):void
          //{
          //   ClanMembersListRenderer.battleInfoService = IBattleInfoService(param1);
@@ -926,62 +988,62 @@ package projects.tanks.clients.fp10.models.tankspanelmodelflash
          //{
          //   return ClanMembersListRenderer.localeService;
          //});
-         //osgi.injectService(IBattleInfoService,function(param1:Object):void
-         //{
-         //   FriendsAcceptedListRenderer.battleInfoService = IBattleInfoService(param1);
-         //},function():IBattleInfoService
-         //{
-         //   return FriendsAcceptedListRenderer.battleInfoService;
-         //});
-         //osgi.injectService(IBattleLinkActivatorService,function(param1:Object):void
-         //{
-         //   FriendsAcceptedListRenderer.battleLinkActivatorService = IBattleLinkActivatorService(param1);
-         //},function():IBattleLinkActivatorService
-         //{
-         //   return FriendsAcceptedListRenderer.battleLinkActivatorService;
-         //});
-         //osgi.injectService(IContextMenuService,function(param1:Object):void
-         //{
-         //   FriendsAcceptedListRenderer.contextMenuService = IContextMenuService(param1);
-         //},function():IContextMenuService
-         //{
-         //   return FriendsAcceptedListRenderer.contextMenuService;
-         //});
-         //osgi.injectService(ILocaleService,function(param1:Object):void
-         //{
-         //   FriendsAcceptedListRenderer.localeService = ILocaleService(param1);
-         //},function():ILocaleService
-         //{
-         //   return FriendsAcceptedListRenderer.localeService;
-         //});
-         //osgi.injectService(IContextMenuService,function(param1:Object):void
-         //{
-         //   FriendsIncomingListRenderer.contextMenuService = IContextMenuService(param1);
-         //},function():IContextMenuService
-         //{
-         //   return FriendsIncomingListRenderer.contextMenuService;
-         //});
-         //osgi.injectService(ILocaleService,function(param1:Object):void
-         //{
-         //   FriendsIncomingListRenderer.localeService = ILocaleService(param1);
-         //},function():ILocaleService
-         //{
-         //   return FriendsIncomingListRenderer.localeService;
-         //});
-         //osgi.injectService(ILocaleService,function(param1:Object):void
-         //{
-         //   HeaderAcceptedList.localeService = ILocaleService(param1);
-         //},function():ILocaleService
-         //{
-         //   return HeaderAcceptedList.localeService;
-         //});
-         //osgi.injectService(IPartnerService,function(param1:Object):void
-         //{
-         //   HeaderAcceptedList.partnersService = IPartnerService(param1);
-         //},function():IPartnerService
-         //{
-         //   return HeaderAcceptedList.partnersService;
-         //});
+         osgi.injectService(IBattleInfoService,function(param1:Object):void
+         {
+            FriendsAcceptedListRenderer.battleInfoService = IBattleInfoService(param1);
+         },function():IBattleInfoService
+         {
+            return FriendsAcceptedListRenderer.battleInfoService;
+         });
+         osgi.injectService(IBattleLinkActivatorService,function(param1:Object):void
+         {
+            FriendsAcceptedListRenderer.battleLinkActivatorService = IBattleLinkActivatorService(param1);
+         },function():IBattleLinkActivatorService
+         {
+            return FriendsAcceptedListRenderer.battleLinkActivatorService;
+         });
+         osgi.injectService(IContextMenuService,function(param1:Object):void
+         {
+            FriendsAcceptedListRenderer.contextMenuService = IContextMenuService(param1);
+         },function():IContextMenuService
+         {
+            return FriendsAcceptedListRenderer.contextMenuService;
+         });
+         osgi.injectService(ILocaleService,function(param1:Object):void
+         {
+            FriendsAcceptedListRenderer.localeService = ILocaleService(param1);
+         },function():ILocaleService
+         {
+            return FriendsAcceptedListRenderer.localeService;
+         });
+         osgi.injectService(IContextMenuService,function(param1:Object):void
+         {
+            FriendsIncomingListRenderer.contextMenuService = IContextMenuService(param1);
+         },function():IContextMenuService
+         {
+            return FriendsIncomingListRenderer.contextMenuService;
+         });
+         osgi.injectService(ILocaleService,function(param1:Object):void
+         {
+            FriendsIncomingListRenderer.localeService = ILocaleService(param1);
+         },function():ILocaleService
+         {
+            return FriendsIncomingListRenderer.localeService;
+         });
+         osgi.injectService(ILocaleService,function(param1:Object):void
+         {
+            HeaderAcceptedList.localeService = ILocaleService(param1);
+         },function():ILocaleService
+         {
+            return HeaderAcceptedList.localeService;
+         });
+         osgi.injectService(IPartnerService,function(param1:Object):void
+         {
+            HeaderAcceptedList.partnersService = IPartnerService(param1);
+         },function():IPartnerService
+         {
+            return HeaderAcceptedList.partnersService;
+         });
          //osgi.injectService(IClientLog,function(param1:Object):void
          //{
          //   PartsListRenderer.clientLog = IClientLog(param1);
@@ -1332,139 +1394,139 @@ package projects.tanks.clients.fp10.models.tankspanelmodelflash
          //{
          //   return SelectCountryAlert.localeService;
          //});
-         //osgi.injectService(ILocaleService,function(param1:Object):void
-         //{
-         //   SettingsTabButtonList.localeService = ILocaleService(param1);
-         //},function():ILocaleService
-         //{
-         //   return SettingsTabButtonList.localeService;
-         //});
-         //osgi.injectService(IHelpService,function(param1:Object):void
-         //{
-         //   SettingsWindow.helperService = IHelpService(param1);
-         //},function():IHelpService
-         //{
-         //   return SettingsWindow.helperService;
-         //});
-         //osgi.injectService(ILocaleService,function(param1:Object):void
-         //{
-         //   SettingsWindow.localeService = ILocaleService(param1);
-         //},function():ILocaleService
-         //{
-         //   return SettingsWindow.localeService;
-         //});
-         //osgi.injectService(IPartnerService,function(param1:Object):void
-         //{
-         //   SettingsWindow.partnersService = IPartnerService(param1);
-         //},function():IPartnerService
-         //{
-         //   return SettingsWindow.partnersService;
-         //});
-         //osgi.injectService(UserChangeGameScreenService,function(param1:Object):void
-         //{
-         //   SettingsWindow.userChangeGameScreenService = UserChangeGameScreenService(param1);
-         //},function():UserChangeGameScreenService
-         //{
-         //   return SettingsWindow.userChangeGameScreenService;
-         //});
-         //osgi.injectService(ILocaleService,function(param1:Object):void
-         //{
-         //   SettingsTabView.localeService = ILocaleService(param1);
-         //},function():ILocaleService
-         //{
-         //   return SettingsTabView.localeService;
-         //});
-         //osgi.injectService(ISettingsService,function(param1:Object):void
-         //{
-         //   SettingsTabView.settingsService = ISettingsService(param1);
-         //},function():ISettingsService
-         //{
-         //   return SettingsTabView.settingsService;
-         //});
-         //osgi.injectService(IDisplay,function(param1:Object):void
-         //{
-         //   SoundSettingsTab.display = IDisplay(param1);
-         //},function():IDisplay
-         //{
-         //   return SoundSettingsTab.display;
-         //});
-         //osgi.injectService(IDisplay,function(param1:Object):void
-         //{
-         //   AccountSettingsTab.display = IDisplay(param1);
-         //},function():IDisplay
-         //{
-         //   return AccountSettingsTab.display;
-         //});
-         //osgi.injectService(IHelpService,function(param1:Object):void
-         //{
-         //   AccountSettingsTab.helperService = IHelpService(param1);
-         //},function():IHelpService
-         //{
-         //   return AccountSettingsTab.helperService;
-         //});
-         //osgi.injectService(IPartnerService,function(param1:Object):void
-         //{
-         //   AccountSettingsTab.partnersService = IPartnerService(param1);
-         //},function():IPartnerService
-         //{
-         //   return AccountSettingsTab.partnersService;
-         //});
-         //osgi.injectService(ISocialNetworkPanelService,function(param1:Object):void
-         //{
-         //   AccountSettingsTab.socialNetworkService = ISocialNetworkPanelService(param1);
-         //},function():ISocialNetworkPanelService
-         //{
-         //   return AccountSettingsTab.socialNetworkService;
-         //});
-         //osgi.injectService(IValidateService,function(param1:Object):void
-         //{
-         //   AccountSettingsTab.validateService = IValidateService(param1);
-         //},function():IValidateService
-         //{
-         //   return AccountSettingsTab.validateService;
-         //});
-         //osgi.injectService(IDisplay,function(param1:Object):void
-         //{
-         //   ControlSettingsTab.display = IDisplay(param1);
-         //},function():IDisplay
-         //{
-         //   return ControlSettingsTab.display;
-         //});
-         //osgi.injectService(FullscreenService,function(param1:Object):void
-         //{
-         //   ControlSettingsTab.fullScreenService = FullscreenService(param1);
-         //},function():FullscreenService
-         //{
-         //   return ControlSettingsTab.fullScreenService;
-         //});
-         //osgi.injectService(KeysBindingService,function(param1:Object):void
-         //{
-         //   KeyBinding.keysBindingService = KeysBindingService(param1);
-         //},function():KeysBindingService
-         //{
-         //   return KeyBinding.keysBindingService;
-         //});
-         //osgi.injectService(KeysBindingService,function(param1:Object):void
-         //{
-         //   KeyBindingsPanel.keysBindingService = KeysBindingService(param1);
-         //},function():KeysBindingService
-         //{
-         //   return KeyBindingsPanel.keysBindingService;
-         //});
-         //osgi.injectService(ILocaleService,function(param1:Object):void
-         //{
-         //   KeyBindingsPanel.localeService = ILocaleService(param1);
-         //},function():ILocaleService
-         //{
-         //   return KeyBindingsPanel.localeService;
-         //});
-         //osgi.injectService(IBattleInviteService,function(param1:Object):void
-         //{
-         //   GameSettingsTab.battleInviteService = IBattleInviteService(param1);
-         //},function():IBattleInviteService
-         //{
-         //   return GameSettingsTab.battleInviteService;
-         //});
+         osgi.injectService(ILocaleService,function(param1:Object):void
+         {
+            SettingsTabButtonList.localeService = ILocaleService(param1);
+         },function():ILocaleService
+         {
+            return SettingsTabButtonList.localeService;
+         });
+         osgi.injectService(IHelpService,function(param1:Object):void
+         {
+            SettingsWindow.helperService = IHelpService(param1);
+         },function():IHelpService
+         {
+            return SettingsWindow.helperService;
+         });
+         osgi.injectService(ILocaleService,function(param1:Object):void
+         {
+            SettingsWindow.localeService = ILocaleService(param1);
+         },function():ILocaleService
+         {
+            return SettingsWindow.localeService;
+         });
+         osgi.injectService(IPartnerService,function(param1:Object):void
+         {
+            SettingsWindow.partnersService = IPartnerService(param1);
+         },function():IPartnerService
+         {
+            return SettingsWindow.partnersService;
+         });
+         osgi.injectService(UserChangeGameScreenService,function(param1:Object):void
+         {
+            SettingsWindow.userChangeGameScreenService = UserChangeGameScreenService(param1);
+         },function():UserChangeGameScreenService
+         {
+            return SettingsWindow.userChangeGameScreenService;
+         });
+         osgi.injectService(ILocaleService,function(param1:Object):void
+         {
+            SettingsTabView.localeService = ILocaleService(param1);
+         },function():ILocaleService
+         {
+            return SettingsTabView.localeService;
+         });
+         osgi.injectService(ISettingsService,function(param1:Object):void
+         {
+            SettingsTabView.settingsService = ISettingsService(param1);
+         },function():ISettingsService
+         {
+            return SettingsTabView.settingsService;
+         });
+         osgi.injectService(IDisplay,function(param1:Object):void
+         {
+            SoundSettingsTab.display = IDisplay(param1);
+         },function():IDisplay
+         {
+            return SoundSettingsTab.display;
+         });
+         osgi.injectService(IDisplay,function(param1:Object):void
+         {
+            AccountSettingsTab.display = IDisplay(param1);
+         },function():IDisplay
+         {
+            return AccountSettingsTab.display;
+         });
+         osgi.injectService(IHelpService,function(param1:Object):void
+         {
+            AccountSettingsTab.helperService = IHelpService(param1);
+         },function():IHelpService
+         {
+            return AccountSettingsTab.helperService;
+         });
+         osgi.injectService(IPartnerService,function(param1:Object):void
+         {
+            AccountSettingsTab.partnersService = IPartnerService(param1);
+         },function():IPartnerService
+         {
+            return AccountSettingsTab.partnersService;
+         });
+         osgi.injectService(ISocialNetworkPanelService,function(param1:Object):void
+         {
+            AccountSettingsTab.socialNetworkService = ISocialNetworkPanelService(param1);
+         },function():ISocialNetworkPanelService
+         {
+            return AccountSettingsTab.socialNetworkService;
+         });
+         osgi.injectService(IValidateService,function(param1:Object):void
+         {
+            AccountSettingsTab.validateService = IValidateService(param1);
+         },function():IValidateService
+         {
+            return AccountSettingsTab.validateService;
+         });
+         osgi.injectService(IDisplay,function(param1:Object):void
+         {
+            ControlSettingsTab.display = IDisplay(param1);
+         },function():IDisplay
+         {
+            return ControlSettingsTab.display;
+         });
+         osgi.injectService(FullscreenService,function(param1:Object):void
+         {
+            ControlSettingsTab.fullScreenService = FullscreenService(param1);
+         },function():FullscreenService
+         {
+            return ControlSettingsTab.fullScreenService;
+         });
+         osgi.injectService(KeysBindingService,function(param1:Object):void
+         {
+            KeyBinding.keysBindingService = KeysBindingService(param1);
+         },function():KeysBindingService
+         {
+            return KeyBinding.keysBindingService;
+         });
+         osgi.injectService(KeysBindingService,function(param1:Object):void
+         {
+            KeyBindingsPanel.keysBindingService = KeysBindingService(param1);
+         },function():KeysBindingService
+         {
+            return KeyBindingsPanel.keysBindingService;
+         });
+         osgi.injectService(ILocaleService,function(param1:Object):void
+         {
+            KeyBindingsPanel.localeService = ILocaleService(param1);
+         },function():ILocaleService
+         {
+            return KeyBindingsPanel.localeService;
+         });
+         osgi.injectService(IBattleInviteService,function(param1:Object):void
+         {
+            GameSettingsTab.battleInviteService = IBattleInviteService(param1);
+         },function():IBattleInviteService
+         {
+            return GameSettingsTab.battleInviteService;
+         });
          //osgi.injectService(ShopNotifierService,function(param1:Object):void
          //{
          //   ShopNotificationIndicator.shopNotifierService = ShopNotifierService(param1);
@@ -1472,27 +1534,27 @@ package projects.tanks.clients.fp10.models.tankspanelmodelflash
          //{
          //   return ShopNotificationIndicator.shopNotifierService;
          //});
-         //osgi.injectService(CountryService,function(param1:Object):void
-         //{
-         //   ShopWindowCountrySelector.countryService = CountryService(param1);
-         //},function():CountryService
-         //{
-         //   return ShopWindowCountrySelector.countryService;
-         //});
-         //osgi.injectService(ILocaleService,function(param1:Object):void
-         //{
-         //   ShopWindowCountrySelector.localeService = ILocaleService(param1);
-         //},function():ILocaleService
-         //{
-         //   return ShopWindowCountrySelector.localeService;
-         //});
-         //osgi.injectService(PaymentDisplayService,function(param1:Object):void
-         //{
-         //   ShopWindowCountrySelector.paymentDisplayService = PaymentDisplayService(param1);
-         //},function():PaymentDisplayService
-         //{
-         //   return ShopWindowCountrySelector.paymentDisplayService;
-         //});
+         osgi.injectService(CountryService,function(param1:Object):void
+         {
+            ShopWindowCountrySelector.countryService = CountryService(param1);
+         },function():CountryService
+         {
+            return ShopWindowCountrySelector.countryService;
+         });
+         osgi.injectService(ILocaleService,function(param1:Object):void
+         {
+            ShopWindowCountrySelector.localeService = ILocaleService(param1);
+         },function():ILocaleService
+         {
+            return ShopWindowCountrySelector.localeService;
+         });
+         osgi.injectService(PaymentDisplayService,function(param1:Object):void
+         {
+            ShopWindowCountrySelector.paymentDisplayService = PaymentDisplayService(param1);
+         },function():PaymentDisplayService
+         {
+            return ShopWindowCountrySelector.paymentDisplayService;
+         });
          //osgi.injectService(ILocaleService,function(param1:Object):void
          //{
          //   ShopWindowNavigationBar.localeService = ILocaleService(param1);
@@ -1899,13 +1961,13 @@ package projects.tanks.clients.fp10.models.tankspanelmodelflash
          //{
          //   return BattleInviteModel.blurService;
          //});
-         //osgi.injectService(IFriendInfoService,function(param1:Object):void
-         //{
-         //   BattleInviteModel.friendInfoService = IFriendInfoService(param1);
-         //},function():IFriendInfoService
-         //{
-         //   return BattleInviteModel.friendInfoService;
-         //});
+         osgi.injectService(IFriendInfoService,function(param1:Object):void
+         {
+            BattleInviteModel.friendInfoService = IFriendInfoService(param1);
+         },function():IFriendInfoService
+         {
+            return BattleInviteModel.friendInfoService;
+         });
          //osgi.injectService(ILobbyLayoutService,function(param1:Object):void
          //{
          //   BattleInviteModel.lobbyLayoutService = ILobbyLayoutService(param1);
@@ -1969,13 +2031,13 @@ package projects.tanks.clients.fp10.models.tankspanelmodelflash
          //{
          //   return BattleInviteModel.userPropertiesService;
          //});
-         //osgi.injectService(IButtonBarService,function(param1:Object):void
-         //{
-         //   FriendsLoaderModel.buttonBarService = IButtonBarService(param1);
-         //},function():IButtonBarService
-         //{
-         //   return FriendsLoaderModel.buttonBarService;
-         //});
+         osgi.injectService(IButtonBarService,function(param1:Object):void
+         {
+            FriendsLoaderModel.buttonBarService = IButtonBarService(param1);
+         },function():IButtonBarService
+         {
+            return FriendsLoaderModel.buttonBarService;
+         });
          //osgi.injectService(ClanUserInfoService,function(param1:Object):void
          //{
          //   FriendsLoaderModel.clanUserInfoService = ClanUserInfoService(param1);
@@ -1983,20 +2045,20 @@ package projects.tanks.clients.fp10.models.tankspanelmodelflash
          //{
          //   return FriendsLoaderModel.clanUserInfoService;
          //});
-         //osgi.injectService(IDisplay,function(param1:Object):void
-         //{
-         //   FriendsLoaderModel.display = IDisplay(param1);
-         //},function():IDisplay
-         //{
-         //   return FriendsLoaderModel.display;
-         //});
-         //osgi.injectService(IFriendInfoService,function(param1:Object):void
-         //{
-         //   FriendsLoaderModel.friendInfoService = IFriendInfoService(param1);
-         //},function():IFriendInfoService
-         //{
-         //   return FriendsLoaderModel.friendInfoService;
-         //});
+         osgi.injectService(IDisplay,function(param1:Object):void
+         {
+            FriendsLoaderModel.display = IDisplay(param1);
+         },function():IDisplay
+         {
+            return FriendsLoaderModel.display;
+         });
+         osgi.injectService(IFriendInfoService,function(param1:Object):void
+         {
+            FriendsLoaderModel.friendInfoService = IFriendInfoService(param1);
+         },function():IFriendInfoService
+         {
+            return FriendsLoaderModel.friendInfoService;
+         });
          //osgi.injectService(ILobbyLayoutService,function(param1:Object):void
          //{
          //   AvailableItemsModel.lobbyLayoutService = ILobbyLayoutService(param1);
@@ -2781,20 +2843,20 @@ package projects.tanks.clients.fp10.models.tankspanelmodelflash
          //{
          //   return QuestWindow.buttonBarService;
          //});
-         //osgi.injectService(ILocaleService,function(param1:Object):void
-         //{
-         //   QuestWindow.localeService = ILocaleService(param1);
-         //},function():ILocaleService
-         //{
-         //   return QuestWindow.localeService;
-         //});
-         //osgi.injectService(UserChangeGameScreenService,function(param1:Object):void
-         //{
-         //   QuestWindow.userChangeGameScreenService = UserChangeGameScreenService(param1);
-         //},function():UserChangeGameScreenService
-         //{
-         //   return QuestWindow.userChangeGameScreenService;
-         //});
+         osgi.injectService(ILocaleService,function(param1:Object):void
+         {
+            QuestWindow.localeService = ILocaleService(param1);
+         },function():ILocaleService
+         {
+            return QuestWindow.localeService;
+         });
+         osgi.injectService(UserChangeGameScreenService,function(param1:Object):void
+         {
+            QuestWindow.userChangeGameScreenService = UserChangeGameScreenService(param1);
+         },function():UserChangeGameScreenService
+         {
+            return QuestWindow.userChangeGameScreenService;
+         });
          //osgi.injectService(ILocaleService,function(param1:Object):void
          //{
          //   DailyQuestChangeButton.localeService = ILocaleService(param1);
@@ -3005,41 +3067,41 @@ package projects.tanks.clients.fp10.models.tankspanelmodelflash
          //{
          //   return SocialNetworkPanelModel.socialNetworkService;
          //});
-         //osgi.injectService(CountryService,function(param1:Object):void
-         //{
-         //   UserCountryModel.countryService = CountryService(param1);
-         //},function():CountryService
-         //{
-         //   return UserCountryModel.countryService;
-         //});
-         //osgi.injectService(ILobbyLayoutService,function(param1:Object):void
-         //{
-         //   UserCountryModel.lobbyLayoutService = ILobbyLayoutService(param1);
-         //},function():ILobbyLayoutService
-         //{
-         //   return UserCountryModel.lobbyLayoutService;
-         //});
-         //osgi.injectService(PaymentDisplayService,function(param1:Object):void
-         //{
-         //   UserCountryModel.paymentDisplayService = PaymentDisplayService(param1);
-         //},function():PaymentDisplayService
-         //{
-         //   return UserCountryModel.paymentDisplayService;
-         //});
-         //osgi.injectService(IPaymentService,function(param1:Object):void
-         //{
-         //   UserCountryModel.paymentService = IPaymentService(param1);
-         //},function():IPaymentService
-         //{
-         //   return UserCountryModel.paymentService;
-         //});
-         //osgi.injectService(UserPaymentActionsService,function(param1:Object):void
-         //{
-         //   UserCountryModel.userPaymentActionService = UserPaymentActionsService(param1);
-         //},function():UserPaymentActionsService
-         //{
-         //   return UserCountryModel.userPaymentActionService;
-         //});
+         osgi.injectService(CountryService,function(param1:Object):void
+         {
+            UserCountryModel.countryService = CountryService(param1);
+         },function():CountryService
+         {
+            return UserCountryModel.countryService;
+         });
+         osgi.injectService(ILobbyLayoutService,function(param1:Object):void
+         {
+            UserCountryModel.lobbyLayoutService = ILobbyLayoutService(param1);
+         },function():ILobbyLayoutService
+         {
+            return UserCountryModel.lobbyLayoutService;
+         });
+         osgi.injectService(PaymentDisplayService,function(param1:Object):void
+         {
+            UserCountryModel.paymentDisplayService = PaymentDisplayService(param1);
+         },function():PaymentDisplayService
+         {
+            return UserCountryModel.paymentDisplayService;
+         });
+         osgi.injectService(IPaymentService,function(param1:Object):void
+         {
+            UserCountryModel.paymentService = IPaymentService(param1);
+         },function():IPaymentService
+         {
+            return UserCountryModel.paymentService;
+         });
+         osgi.injectService(UserPaymentActionsService,function(param1:Object):void
+         {
+            UserCountryModel.userPaymentActionService = UserPaymentActionsService(param1);
+         },function():UserPaymentActionsService
+         {
+            return UserCountryModel.userPaymentActionService;
+         });
          osgi.injectService(IAlertService,function(param1:Object):void
          {
             UserEmailAndPasswordModel.alertService = IAlertService(param1);
@@ -3341,13 +3403,13 @@ package projects.tanks.clients.fp10.models.tankspanelmodelflash
          //{
          //   return PaymentDisplayServiceImpl.userPaymentActionsService;
          //});
-         //osgi.injectService(IPartnerService,function(param1:Object):void
-         //{
-         //   ReferralsButtonHelperServiceImpl.partnerService = IPartnerService(param1);
-         //},function():IPartnerService
-         //{
-         //   return ReferralsButtonHelperServiceImpl.partnerService;
-         //});
+         osgi.injectService(IPartnerService,function(param1:Object):void
+         {
+            ReferralsButtonHelperServiceImpl.partnerService = IPartnerService(param1);
+         },function():IPartnerService
+         {
+            return ReferralsButtonHelperServiceImpl.partnerService;
+         });
          osgi.injectService(IBattleInviteService,function(param1:Object):void
          {
             SettingsService.battleInviteService = IBattleInviteService(param1);
@@ -3395,7 +3457,7 @@ package projects.tanks.clients.fp10.models.tankspanelmodelflash
          //modelRegister.add(new AchievementModel());
          //modelRegister.add(new AndroidAppRatingModel());
          //modelRegister.add(new AntiAddictionAlertModel());
-         //modelRegisterAdapt = osgi.getService(ModelRegistry) as ModelRegistry;
+         modelRegisterAdapt = osgi.getService(ModelRegistry) as ModelRegistry;
          //modelRegisterAdapt.registerAdapt(IAntiAddictionAlert,IAntiAddictionAlertAdapt);
          //modelRegisterAdapt.registerEvents(IAntiAddictionAlert,IAntiAddictionAlertEvents);
          //modelRegister.add(new BattlePassPackageModel());
@@ -3600,12 +3662,18 @@ package projects.tanks.clients.fp10.models.tankspanelmodelflash
          //modelRegister.add(new SocialNetworkPanelModel());
          //modelRegister.add(new SNGroupReminderModel());
          //modelRegister.add(new TutorialHintsModel());
-         //modelRegister.add(new UserCountryModel());
-         //modelRegisterAdapt.registerAdapt(IUserEmailAndPassword,IUserEmailAndPasswordAdapt);
-         //modelRegisterAdapt.registerEvents(IUserEmailAndPassword,IUserEmailAndPasswordEvents);
-         //modelRegisterAdapt.registerAdapt(PasswordService,PasswordServiceAdapt);
-         //modelRegisterAdapt.registerEvents(PasswordService,PasswordServiceEvents);
-         //modelRegister.add(new UserEmailAndPasswordModel());
+         modelRegister.add(new UserCountryModel());
+         modelRegisterAdapt.registerAdapt(IUserEmailAndPassword,IUserEmailAndPasswordAdapt);
+         modelRegisterAdapt.registerEvents(IUserEmailAndPassword,IUserEmailAndPasswordEvents);
+         modelRegisterAdapt.registerAdapt(PasswordService,PasswordServiceAdapt);
+         modelRegisterAdapt.registerEvents(PasswordService,PasswordServiceEvents);
+         modelRegister.add(new UserEmailAndPasswordModel());
+         modelRegister.add(new QuestShowingModel());
+
+         modelRegisterAdapt.registerAdapt(DailyQuest,DailyQuestAdapt);
+         modelRegisterAdapt.registerEvents(DailyQuest,DailyQuestEvents);
+         modelRegister.add(new DailyQuestModel());
+
          //modelRegisterAdapt.registerAdapt(IUserProperties,IUserPropertiesAdapt);
          //modelRegisterAdapt.registerEvents(IUserProperties,IUserPropertiesEvents);
          modelRegister.add(new UserPropertiesModel());

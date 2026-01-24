@@ -36,10 +36,10 @@ package alternativa.tanks.models.weapon.terminator
    public class TerminatorModel extends TerminatorModelBase implements TargetShellWeaponListener, ITerminatorModelBase, BattleEventListener, ObjectLoadListener, CustomTurretSkin, TerminatorSkin, IWeaponModel, Terminator
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
       private var battleEventSupport:BattleEventSupport;

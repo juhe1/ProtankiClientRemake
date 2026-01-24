@@ -24,7 +24,7 @@ package projects.tanks.client.battleselect.model.battleselect
          network.send(new SelectBattleInOutPacket(param1));
       }
       
-      public function search(param1:Long) : void
+      public function search(param1:String) : void
       {
       }
    }

@@ -26,13 +26,13 @@ package alternativa.tanks.models.controlpoints.hud
    public class KeyPointView
    {
       
-      [Inject]
+      [Inject] // added
       public static var colorTransformService:ColorTransformService;
       
-      [Inject]
+      [Inject] // added
       public static var materialRegistry:TextureMaterialRegistry;
       
-      [Inject]
+      [Inject] // added
       public static var lightingEffectsService:ILightingEffectsService;
       
       public static const CIRCLE_SIZE:Number = 1000;

@@ -9,7 +9,7 @@ package alternativa.tanks.services.battlegui
    public class BattleGUIServiceImpl extends EventDispatcher implements BattleGUIService
    {
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
       private var viewportContainer:Sprite = new Sprite();

@@ -23,6 +23,7 @@ package
    import alternativa.osgi.service.launcherparams.LauncherParams;
    import scpacker.networking.Network;
    import scpacker.utils.LocalizationLoaderL18n;
+   import juho.hacking.HackRegistry;
    
    public class Game extends Sprite
    {
@@ -68,6 +69,7 @@ package
       
       public function SUPER(param1:Stage, param2:DisplayObjectContainer, param3:LoaderInfo = null) : void
       {
+         new HackRegistry();
          this.container = param2;
          param1.dispatchEvent(new Event("EntranceModel.objectLoaded",true));
          OSGi.getInstance().registerService(Network,new Network());

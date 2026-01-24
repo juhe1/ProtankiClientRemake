@@ -31,10 +31,10 @@ package alternativa.tanks.models.tank.explosion
    public class TankExplosionModel extends TankExplosionModelBase implements ITankExplosionModelBase, ObjectLoadListener, ObjectUnloadListener, ITankExplosionModel
    {
       
-      [Inject]
+      [Inject] // added
       public static var materialRegistry:EffectsMaterialRegistry;
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private static const EXPLOSION_SIZE:Number = 800;

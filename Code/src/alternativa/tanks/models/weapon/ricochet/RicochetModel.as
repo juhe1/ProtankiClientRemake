@@ -23,10 +23,10 @@ package alternativa.tanks.models.weapon.ricochet
    public class RicochetModel extends RicochetModelBase implements IRicochetModelBase, ObjectLoadListener, IWeaponModel, RicochetWeaponCallback, BattleEventListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
       private static const shotDirection:Vector3 = new Vector3();

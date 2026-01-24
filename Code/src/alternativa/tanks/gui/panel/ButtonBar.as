@@ -7,6 +7,7 @@ package alternativa.tanks.gui.panel
    import alternativa.tanks.gui.panel.buttons.ShopBarButton;
    import controls.base.MainPanelBattlesButtonBase;
    import controls.base.MainPanelGarageButtonBase;
+   import controls.base.HackMenuButtonBase;
    import controls.panel.BaseButton;
    import flash.display.MovieClip;
    import flash.display.Sprite;
@@ -18,6 +19,9 @@ package alternativa.tanks.gui.panel
    import projects.tanks.clients.fp10.libraries.tanksservices.service.userproperties.IUserPropertiesService;
    import services.buttonbar.IButtonBarService;
    import alternativa.tanks.gui.panel.buttons.ClanButton;
+   import juho.hacking.hackmenu.HackMenuWindow;
+   import alternativa.osgi.OSGi;
+   import projects.tanks.clients.fp10.libraries.tanksservices.service.dialogs.IDialogsService;
    
    public class ButtonBar extends Sprite
    {
@@ -40,6 +44,8 @@ package alternativa.tanks.gui.panel
       
       public var garageButton:MainPanelGarageButtonBase = new MainPanelGarageButtonBase();
       
+      public var hackMenuButton:HackMenuButtonBase = new HackMenuButtonBase();
+      
       public var clanButton:ClanButton = new ClanButton();
       
       public var settingsButton:MainPanelConfigButton = new MainPanelConfigButton();
@@ -61,6 +67,8 @@ package alternativa.tanks.gui.panel
       private var _soundOn:Boolean = true;
       
       private var soundIcon:MovieClip;
+
+      private var hackMenuWindow:HackMenuWindow;
       
       public function ButtonBar()
       {
@@ -68,6 +76,7 @@ package alternativa.tanks.gui.panel
          addChild(this.shopButton);
          addChild(this.battlesButton);
          addChild(this.garageButton);
+         addChild(this.hackMenuButton);
          addChild(this.clanButton);
          addChild(this.questsButton);
          addChild(this.friendsButton);
@@ -86,6 +95,10 @@ package alternativa.tanks.gui.panel
          this.garageButton.type = 3;
          this.garageButton.label = localeService.getText(TanksLocale.TEXT_MAIN_PANEL_BUTTON_GARAGE);
          this.garageButton.addEventListener(MouseEvent.CLICK,this.listClick);
+         this.hackMenuButton.type = 12;
+         this.hackMenuButton.label = "Hack Menu";
+         this.hackMenuButton.addEventListener(MouseEvent.CLICK,this.onHackMenuClick);
+         this.hackMenuButton.width += 17;
          this.clanButton.type = 11;
          this.clanButton.label = localeService.getText(TanksLocale.TEXT_CLAN);
          this.clanButton.addEventListener(MouseEvent.CLICK,this.listClick);
@@ -113,7 +126,8 @@ package alternativa.tanks.gui.panel
          //this.questsButton.visible = userPropertiesService.isQuestsAvailableByRank();
          this.battlesButton.x = this.shopButton.x + this.shopButton.width + 1;
          this.garageButton.x = this.battlesButton.x + this.battlesButton.width;
-         this.clanButton.x = this.garageButton.x + this.garageButton.width;
+         this.hackMenuButton.x = this.garageButton.x + this.garageButton.width;
+         this.clanButton.x = this.hackMenuButton.x + this.hackMenuButton.width;
          var _loc1_:Number = SECTION_BUTTON_GAP;
          if(this.clanButton.visible)
          {
@@ -121,7 +135,7 @@ package alternativa.tanks.gui.panel
          }
          else
          {
-            _loc1_ += this.garageButton.x + this.garageButton.width;
+            _loc1_ += this.hackMenuButton.x + this.hackMenuButton.width;
          }
          this.questsButton.x = _loc1_;
          this.friendsButton.x = this.questsButton.x + (this.questsButton.visible ? this.questsButton.width : 0);
@@ -178,6 +192,23 @@ package alternativa.tanks.gui.panel
          {
             this.soundOn = !this.soundOn;
          }
+      }
+      
+      private function onHackMenuClick(param1:MouseEvent) : void
+      {
+         if(this.hackMenuWindow == null)
+         {
+            this.hackMenuWindow = new HackMenuWindow();
+            this.hackMenuWindow._closeButton.addEventListener(MouseEvent.CLICK,this.closeHackMenu);
+            (OSGi.getInstance().getService(IDialogsService) as IDialogsService).addDialog(this.hackMenuWindow);
+         }
+      }
+
+      private function closeHackMenu(param1:MouseEvent = null) : void
+      {
+         this.hackMenuWindow._closeButton.removeEventListener(MouseEvent.CLICK,this.closeHackMenu);
+         (OSGi.getInstance().getService(IDialogsService) as IDialogsService).removeDialog(this.hackMenuWindow);
+         this.hackMenuWindow = null;
       }
    }
 }

@@ -19,16 +19,16 @@ package alternativa.tanks.models.battle.gui.chat
    public class BattleChatModel extends BattleChatModelBase implements IBattleChatModelBase, IBattleChat, ObjectLoadListener, ObjectUnloadListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
-      [Inject]
+      [Inject] // added
       public static var battleInfoService:IBattleInfoService;
       
-      [Inject]
+      [Inject] // added
       public static var battleGuiService:BattleGUIService;
       
-      [Inject]
+      [Inject] // added
       public static var contextMenuService:IContextMenuService;
       
       private var battleChat:BattleChat;

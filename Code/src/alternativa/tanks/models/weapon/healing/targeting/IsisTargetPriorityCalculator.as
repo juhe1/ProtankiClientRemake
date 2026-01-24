@@ -11,7 +11,7 @@ package alternativa.tanks.models.weapon.healing.targeting
    public class IsisTargetPriorityCalculator implements TargetPriorityCalculator
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private const COMMON_PRIORITY_WEIGHT:Number = 0.0001;

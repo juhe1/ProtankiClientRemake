@@ -9,10 +9,10 @@ package alternativa.tanks.gui.friends.list.renderer
    public class HeaderAcceptedList extends Sprite
    {
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
-      [Inject]
+      [Inject] // added
       public static var partnersService:IPartnerService;
       
       public static var HEADERS:Vector.<HeaderData>;

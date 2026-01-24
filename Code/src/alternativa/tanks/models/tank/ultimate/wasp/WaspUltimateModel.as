@@ -18,13 +18,13 @@ package alternativa.tanks.models.tank.ultimate.wasp
    public class WaspUltimateModel extends WaspUltimateModelBase implements IWaspUltimateModelBase, ObjectLoadListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var inventorySoundService:InventorySoundService;
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
-      [Inject]
+      [Inject] // added
       public static var textureMaterialRegistry:TextureMaterialRegistry;
       
       private static var vector:Vector3 = new Vector3();

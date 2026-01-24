@@ -9,7 +9,7 @@ package alternativa.tanks.bonuses
    public class BonusPickupAnimation extends PooledObject implements Renderer
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private static const PICKUP_ANIMATION_TIME:int = 2000;

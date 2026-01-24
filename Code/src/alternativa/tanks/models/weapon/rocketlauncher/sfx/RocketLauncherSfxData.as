@@ -13,7 +13,7 @@ package alternativa.tanks.models.weapon.rocketlauncher.sfx
    public class RocketLauncherSfxData implements AutoClosable
    {
       
-      [Inject]
+      [Inject] // added
       public static var materialRegistry:EffectsMaterialRegistry;
       
       public var explosion:TextureAnimation;

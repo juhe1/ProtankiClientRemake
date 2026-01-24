@@ -31,7 +31,7 @@ package alternativa.tanks.models.battle.assault
    public class ASFlag implements HidableGraphicObject, Trigger, Renderer
    {
       
-      [Inject]
+      [Inject] // added
       public static var lightingEffectsService:ILightingEffectsService;
       
       private static const FRAME_INTERVAL:int = 1000;

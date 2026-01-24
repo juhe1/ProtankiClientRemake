@@ -15,10 +15,10 @@ package projects.tanks.clients.fp10.libraries.tanksservices.model.friends.incomi
    public class FriendsIncomingNotificatorModel extends FriendsIncomingNotificatorModelBase implements IFriendsIncomingNotificatorModelBase, ObjectLoadListener, ObjectUnloadListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var logService:LogService;
       
-      [Inject]
+      [Inject] // added
       public static var friendsInfoService:IFriendInfoService;
       
       public function FriendsIncomingNotificatorModel()

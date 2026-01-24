@@ -15,7 +15,7 @@ package alternativa.tanks.models.weapons.discrete
    public class DiscreteWeaponCommunicationModel extends DiscreteWeaponCommunicationModelBase implements IDiscreteWeaponCommunicationModelBase, DiscreteWeapon
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
       public function DiscreteWeaponCommunicationModel()

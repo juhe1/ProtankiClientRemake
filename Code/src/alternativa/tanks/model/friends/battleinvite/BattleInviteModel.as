@@ -43,49 +43,49 @@ package alternativa.tanks.model.friends.battleinvite
    public class BattleInviteModel extends BattleInviteModelBase implements IBattleInviteModelBase, ObjectLoadListener, ObjectUnloadListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleInviteService:IBattleInviteService;
       
-      [Inject]
+      [Inject] // added
       public static var notificationService:INotificationService;
       
-      [Inject]
+      [Inject] // added
       public static var battleInfoService:IBattleInfoService;
       
-      [Inject]
+      [Inject] // added
       public static var battleLinkActivatorService:IBattleLinkActivatorService;
       
-      [Inject]
+      [Inject] // added
       public static var alertService:IAlertService;
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
-      [Inject]
+      [Inject] // added
       public static var lobbyLayoutService:ILobbyLayoutService;
       
-      [Inject]
+      [Inject] // added
       public static var userInfoService:IUserInfoService;
       
-      [Inject]
+      [Inject] // added
       public static var blurService:IBlurService;
       
-      [Inject]
+      [Inject] // added
       public static var friendInfoService:IFriendInfoService;
       
-      [Inject]
+      [Inject] // added
       public static var notificationSoundService:INotificationSoundService;
       
-      [Inject]
+      [Inject] // added
       public static var serverNameService:ServerNumberToLocaleServerService;
       
-      [Inject]
+      [Inject] // added
       public static var userPropertiesService:IUserPropertiesService;
       
-      [Inject]
+      [Inject] // added
       public static var reconnectService:ReconnectService;
       
-      [Inject]
+      [Inject] // added
       public static var modalLoaderService:IModalLoaderService;
       
       private var inviteList:Dictionary;

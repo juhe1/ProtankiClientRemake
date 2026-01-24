@@ -16,10 +16,10 @@ package alternativa.tanks.sfx.drone
    public class DroneExplosionModel extends DroneExplosionModelBase implements IDroneExplosionModelBase, ObjectLoadListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
-      [Inject]
+      [Inject] // added
       public static var materialRegistry:EffectsMaterialRegistry;
       
       private static const EXPLOSION_OFFSET_TO_CAMERA:Number = 110;

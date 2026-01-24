@@ -23,7 +23,7 @@ package alternativa.tanks.models.weapon.machinegun
    public class MachineGunRemoteWeapon implements LogicUnit, Weapon
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private static const MAX_DISTANCE:Number = 1000000;
@@ -112,7 +112,7 @@ package alternativa.tanks.models.weapon.machinegun
             _loc3_ = true;
             this.hitPosition = BattleUtils.getVector3(param2[0].localHitPoint);
             this.target = ITankModel(param2[0].target.adapt(ITankModel)).getTank();
-            BattleUtils.localToGlobal(this.target.getBody(),this.hitPosition);
+            //BattleUtils.localToGlobal(this.target.getBody(),this.hitPosition);
          }
          this.updateTargetPosition(_loc3_);
       }

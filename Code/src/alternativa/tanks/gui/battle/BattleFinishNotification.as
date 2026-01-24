@@ -14,7 +14,7 @@ package alternativa.tanks.gui.battle
    public class BattleFinishNotification extends Notification
    {
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
       private static const DEFAULT_BUTTON_WIDTH:int = 96;

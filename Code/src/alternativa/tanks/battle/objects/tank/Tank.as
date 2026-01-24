@@ -63,10 +63,12 @@ package alternativa.tanks.battle.objects.tank
    import projects.tanks.client.battlefield.types.Vector3d;
    import projects.tanks.client.battleservice.model.battle.team.BattleTeam;
    import alternativa.tanks.models.battle.battlefield.BattleUserInfoService;
+   import juho.hacking.event.HackEventDispatcher;
+   import juho.hacking.event.TankNormalStateSettedEvent;
    
    public class Tank implements PhysicsController, PostPhysicsController, PhysicsInterpolator, Renderer, BodyCollisionFilter, CameraTarget, WeaponPlatform
    {
-      [Inject]
+      [Inject] // added
       public static var userInfoService:BattleUserInfoService;
       
       public static var logService:LogService;
@@ -120,7 +122,7 @@ package alternativa.tanks.battle.objects.tank
       
       private var battleService:BattleService;
       
-      private var tankBody:TankBody;
+      public var tankBody:TankBody;
       
       private var collisionCount:int;
       
@@ -502,6 +504,7 @@ package alternativa.tanks.battle.objects.tank
          this.setTracksCollisionGroup(CollisionGroup.ACTIVE_TRACK);
          this.skin.setAlpha(1);
          this.tankBody.body.postCollisionFilter = null;
+         HackEventDispatcher.singleton.dispatchEvent(new TankNormalStateSettedEvent(this));
       }
       
       public function considerBodies(param1:Body, param2:Body) : Boolean

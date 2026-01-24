@@ -87,7 +87,7 @@ package alternativa.tanks.model.info.team
          _loc1_.usersRed = _loc2_;
          _loc1_.usersBlue = _loc3_;
          _loc1_.scoreBlue = _loc1_.scoreRed = 0;
-         battleListFormService.swapTeams(object.id);
+         battleListFormService.swapTeams(object.name);
          battleInfoFormService.swapTeams();
       }
       
@@ -152,7 +152,7 @@ package alternativa.tanks.model.info.team
       
       private function updateUsersCount() : void
       {
-         battleListFormService.updateUsersCount(object.id);
+         battleListFormService.updateUsersCount(object.name);
       }
 
       private function userExists(param1:String) : Boolean

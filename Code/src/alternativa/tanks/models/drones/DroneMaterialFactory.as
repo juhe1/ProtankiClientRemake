@@ -9,7 +9,7 @@ package alternativa.tanks.models.drones
    public class DroneMaterialFactory
    {
       
-      [Inject]
+      [Inject] // added
       public static var textureMaterialRegistry:TextureMaterialRegistry;
       
       private static const DETAILS:String = "details.png";

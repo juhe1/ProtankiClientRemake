@@ -21,7 +21,7 @@ package alternativa.tanks.models.weapon.flamethrower
    public class FlamethrowerEffects extends BattleRunnerProvider implements StreamWeaponEffects, ISoundEffectDestructionListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private const MUZZLE_SHIFT:Number = 100;

@@ -2,14 +2,16 @@ package scpacker.networking.protocol.packets.settings
 {
    import scpacker.networking.protocol.AbstractPacket;
    
-   public class SettingsNotification extends AbstractPacket
+   public class CloseSettingsOutPacket extends AbstractPacket
    {
-      public var NotificationEnabled:Boolean;
+      public static const id:int = -731115522;
       
-      public function SettingsNotification(param1:Boolean = false)
+      public var closeState:Boolean;
+      
+      public function CloseSettingsOutPacket(param1:Boolean = false)
       {
          super();
-         this.NotificationEnabled = param1;
+         this.closeState = param1;
          registerProperty(param1);
          registerPropertyCodec("scpacker.networking.protocol.codec.primitive.BooleanCodec");
       }
@@ -19,13 +21,13 @@ package scpacker.networking.protocol.packets.settings
          switch(param2)
          {
             case 0:
-               this.NotificationEnabled = param1 as Boolean;
+               this.closeState = param1 as Boolean;
          }
       }
       
       override public function initializeSelf() : AbstractPacket
       {
-         return new SettingsNotification();
+         return new CloseSettingsOutPacket();
       }
       
       override public function getPacketHandlerId() : int
@@ -35,7 +37,7 @@ package scpacker.networking.protocol.packets.settings
       
       override public function getId() : int
       {
-         return 1447082276;
+         return id;
       }
    }
 }

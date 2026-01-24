@@ -12,7 +12,7 @@ package alternativa.tanks.physics
    public class SoaringChecker
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private static const HALF_WHEEL_SIZE:Number = 12.5;

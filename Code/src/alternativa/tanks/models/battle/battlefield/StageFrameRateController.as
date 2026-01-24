@@ -12,10 +12,10 @@ package alternativa.tanks.models.battle.battlefield
    public class StageFrameRateController extends BattleRunnerProvider implements LogicUnit
    {
       
-      [Inject]
+      [Inject] // added
       public static var clientLog:IClientLog;
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
       private static const MAX_HARDWARE_FRAME_RATE:Number = 60;

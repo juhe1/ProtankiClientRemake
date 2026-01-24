@@ -20,10 +20,10 @@ package alternativa.tanks.models.weapon.shaft.states
    public class ManualTargetingState implements IShaftState
    {
       
-      [Inject]
+      [Inject] // added
       public static var targetingModeService:TargetingModeService;
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
       private static const MAX_SPOT_SCALE:Number = 8;

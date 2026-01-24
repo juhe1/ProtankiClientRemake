@@ -9,7 +9,7 @@ package alternativa.tanks.models.tank.support
    public class TankSettingsSupport implements AutoClosable
    {
       
-      [Inject]
+      [Inject] // added
       public static var settings:ISettingsService;
       
       private var controller:LocalChassisController;

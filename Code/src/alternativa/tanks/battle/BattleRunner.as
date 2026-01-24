@@ -23,10 +23,10 @@ package alternativa.tanks.battle
    public class BattleRunner
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
-      [Inject]
+      [Inject] // added
       public static var localTankInfoService:LocalTankInfoService;
       
       public static const PHYSICS_STEP_IN_MS:int = 33;

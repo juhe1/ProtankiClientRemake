@@ -30,37 +30,37 @@ package alternativa.tanks.gui.friends
    public class FriendsWindow extends DialogWindow
    {
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
-      [Inject]
+      [Inject] // added
       public static var battleLinkActivatorService:IBattleLinkActivatorService;
       
-      [Inject]
+      [Inject] // added
       public static var friendInfoService:IFriendInfoService;
       
-      [Inject]
+      [Inject] // added
       public static var friendsActionService:IFriendActionService;
       
-      [Inject]
+      [Inject] // added
       public static var blurService:IBlurService;
       
-      [Inject]
+      [Inject] // added
       public static var alertService:IAlertService;
       
-      [Inject]
+      [Inject] // added
       public static var userChangeGameScreenService:UserChangeGameScreenService;
       
       //[Inject]
       //public static var clanUserInfoService:ClanUserInfoService;
       
-      [Inject]
+      [Inject] // added
       public static var userInfoService:IUserInfoService;
       
-      [Inject]
+      [Inject] // added
       public static var newReferralsNotifierService:NewReferralsNotifierService;
       
-      [Inject]
+      [Inject] // added
       public static var partnerService:IPartnerService;
       
       public static const WINDOW_MARGIN:int = 12;

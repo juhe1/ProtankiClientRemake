@@ -19,10 +19,10 @@ package alternativa.tanks.models.weapon.laser
    public class LaserPointerModel extends LaserPointerModelBase implements LaserPointer, ILaserPointerModelBase, TankPartReset
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
-      [Inject]
+      [Inject] // added
       public static var localTankInfoService:LocalTankInfoService;
       
       public function LaserPointerModel()

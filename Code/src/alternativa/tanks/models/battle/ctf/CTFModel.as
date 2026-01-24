@@ -71,28 +71,28 @@ package alternativa.tanks.models.battle.ctf
    public class CTFModel extends CaptureTheFlagModelBase implements ICaptureTheFlagModelBase, ICTFModel, ObjectLoadPostListener, ObjectUnloadListener, BattleEventListener, BattleModel
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleInfoService:IBattleInfoService;
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
-      [Inject]
+      [Inject] // added
       public static var materialRegistry:TextureMaterialRegistry;
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
-      [Inject]
+      [Inject] // added
       public static var userInfoService:BattleUserInfoService;
       
-      [Inject]
+      [Inject] // added
       public static var battleInputLockService:BattleInputService;
       
       public static const Z_DISPLACEMENT:Number = 80;

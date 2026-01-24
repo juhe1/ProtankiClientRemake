@@ -44,13 +44,13 @@ package alternativa.tanks.models.weapon.shaft
    public class ShaftModel extends ShaftModelBase implements IShaftModelBase, IWeaponModel, IShaftWeaponCallback, BattleEventListener, LocalTurretControllerFactory, ObjectLoadListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
       private static const MAX_DISTANCE:Number = 10000000000;

@@ -20,7 +20,7 @@ package alternativa.tanks.models.weapon.terminator
    public class RemoteTerminatorWeapon implements Weapon
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private static const gunParams:AllGlobalGunParams = new AllGlobalGunParams();

@@ -11,10 +11,10 @@ package alternativa.tanks.models.statistics
    public class FpsIndicatorToggleSupport implements AutoClosable
    {
       
-      [Inject]
+      [Inject] // added
       public static var settingsService:ISettingsService;
       
-      [Inject]
+      [Inject] // added
       public static var battleGuiService:BattleGUIService;
       
       private var fpsIndicator:FPSText;

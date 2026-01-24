@@ -27,22 +27,22 @@ package alternativa.tanks.gui.friends.list
    public class AcceptedList extends FriendsList implements IFriendsListState
    {
       
-      [Inject]
+      [Inject] // added
       public static var contextMenuService:IContextMenuService;
       
-      [Inject]
+      [Inject] // added
       public static var onlineNotifierService:IOnlineNotifierService;
       
-      [Inject]
+      [Inject] // added
       public static var battleNotifierService:IBattleNotifierService;
       
-      [Inject]
+      [Inject] // added
       public static var battleInfoService:IBattleInfoService;
       
-      [Inject]
+      [Inject] // added
       public static var battleInviteService:IBattleInviteService;
       
-      [Inject]
+      [Inject] // added
       public static var snFriendsService:SNFriendsService;
       
       public static var SCROLL_ON:Boolean;

@@ -14,7 +14,7 @@ package alternativa.tanks.models.weapon.shotgun.sfx
    public class ShotgunSFXData implements AutoClosable
    {
       
-      [Inject]
+      [Inject] // added
       public static var materialRegistry:EffectsMaterialRegistry;
       
       public var shotSound:Sound;

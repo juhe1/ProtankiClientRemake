@@ -9,7 +9,7 @@ package alternativa.tanks.models.battle.gui.gui.statistics.messages
    public class BattleMessages extends Sprite
    {
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
       private var output:BattleMessagesOutput = new BattleMessagesOutput();

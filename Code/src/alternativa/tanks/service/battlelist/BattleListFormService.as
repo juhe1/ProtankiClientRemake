@@ -57,22 +57,22 @@ package alternativa.tanks.service.battlelist
          this.battleListController.selectBattleItemFromServer(param1);
       }
       
-      public function updateSuspicious(param1:Long, param2:BattleSuspicionLevel) : void
+      public function updateSuspicious(param1:String, param2:BattleSuspicionLevel) : void
       {
          this.battleListController.updateSuspicious(param1,param2);
       }
       
-      public function removeBattleItem(param1:Long) : void
+      public function removeBattleItem(param1:String) : void
       {
          this.battleListController.removeBattle(param1);
       }
       
-      public function updateUsersCount(param1:Long) : void
+      public function updateUsersCount(param1:String) : void
       {
          this.battleListController.updateUsersCount(param1);
       }
       
-      public function updateBattleName(param1:Long) : void
+      public function updateBattleName(param1:String) : void
       {
          this.battleListController.updateBattleName(param1);
       }
@@ -88,7 +88,7 @@ package alternativa.tanks.service.battlelist
          dispatchEvent(new BattleByURLNotFoundEvent(BattleByURLNotFoundEvent.BATTLE_BY_URL_NOT_FOUND,param1.battleId));
       }
       
-      public function swapTeams(param1:Long) : void
+      public function swapTeams(param1:String) : void
       {
          this.battleListController.swapTeams(param1);
       }

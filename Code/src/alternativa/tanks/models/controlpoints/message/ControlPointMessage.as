@@ -5,7 +5,7 @@ package alternativa.tanks.models.controlpoints.message
    public class ControlPointMessage
    {
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
       public var color:uint;

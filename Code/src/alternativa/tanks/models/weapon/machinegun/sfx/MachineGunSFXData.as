@@ -14,7 +14,7 @@ package alternativa.tanks.models.weapon.machinegun.sfx
    public class MachineGunSFXData implements AutoClosable
    {
       
-      [Inject]
+      [Inject] // added
       public static var materialRegistry:EffectsMaterialRegistry;
       
       private static const START_FIRE_LIGHT_ANIMATION_NAME:String = "startFire";

@@ -16,25 +16,25 @@ package alternativa.tanks.models.tank.support
    public class DialogWindowSupport implements AutoClosable
    {
       
-      [Inject]
+      [Inject] // added
       public static var dialogWindowsDispatcherService:IDialogWindowsDispatcherService;
       
-      [Inject]
+      [Inject] // added
       public static var lobbyLayoutService:ILobbyLayoutService;
       
-      [Inject]
+      [Inject] // added
       public static var dialogService:IDialogsService;
       
-      [Inject]
+      [Inject] // added
       public static var blurService:IBlurService;
       
-      [Inject]
+      [Inject] // added
       public static var battleInputService:BattleInputService;
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
-      [Inject]
+      [Inject] // added
       public static var paymentDisplayService:PaymentDisplayService;
       
       public function DialogWindowSupport()

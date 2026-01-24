@@ -19,19 +19,19 @@ package alternativa.tanks.services.targeting
    public class TargetingInputManagerImpl implements TargetingInputManager, BattleEventListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
-      [Inject]
+      [Inject] // added
       public static var lobbyLayout:ILobbyLayoutService;
       
-      [Inject]
+      [Inject] // added
       public static var battleInputService:BattleInputService;
       
-      [Inject]
+      [Inject] // added
       public static var fullScreenService:FullscreenService;
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
       private static const MOVEMENT_X:String = "movementX";

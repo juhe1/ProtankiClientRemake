@@ -20,19 +20,19 @@ package alternativa.tanks.gui.friends.battleLink
    public class BattleLink extends Sprite
    {
       
-      [Inject]
+      [Inject] // added
       public static var userInfoService:IUserInfoService;
       
-      [Inject]
+      [Inject] // added
       public static var addressService:AddressService;
       
-      [Inject]
+      [Inject] // added
       public static var lobbyLayoutService:ILobbyLayoutService;
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
-      [Inject]
+      [Inject] // added
       public static var userPropertiesService:IUserPropertiesService;
       
       private var _userId:String;

@@ -16,10 +16,10 @@ package alternativa.tanks.models.bonus.goldbonus
    public class GoldBonusesModel extends GoldBonusesModelBase implements IGoldBonusesModelBase, IGoldBonus
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
-      [Inject]
+      [Inject] // added
       public static var bonusRegionService:IBonusRegionService;
       
       private static const UID_PATTERN:String = "%USERNAME%";

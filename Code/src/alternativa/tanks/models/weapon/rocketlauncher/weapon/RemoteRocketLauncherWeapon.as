@@ -19,7 +19,7 @@ package alternativa.tanks.models.weapon.rocketlauncher.weapon
    public class RemoteRocketLauncherWeapon implements Weapon
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private static const allGunParams:AllGlobalGunParams = new AllGlobalGunParams();

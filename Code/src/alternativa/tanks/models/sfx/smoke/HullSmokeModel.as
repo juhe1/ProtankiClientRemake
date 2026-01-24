@@ -17,10 +17,10 @@ package alternativa.tanks.models.sfx.smoke
    public class HullSmokeModel extends HullSmokeModelBase implements HullSmoke, IHullSmokeModelBase, BattleEventListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private var battleEventSupport:BattleEventSupport;

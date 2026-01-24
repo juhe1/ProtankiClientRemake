@@ -9,7 +9,7 @@ package alternativa.tanks.models.timechecker
    public class TimeCheckerModel extends TimeCheckerModelBase implements ITimeCheckerModelBase
    {
       
-      [Inject]
+      [Inject] // added
       public static var pingService:PingService;
       
       public function TimeCheckerModel()

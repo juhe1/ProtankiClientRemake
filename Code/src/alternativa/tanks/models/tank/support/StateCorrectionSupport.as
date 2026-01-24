@@ -14,7 +14,7 @@ package alternativa.tanks.models.tank.support
    public class StateCorrectionSupport implements AutoClosable, BattleEventListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
       private var localUser:IGameObject;

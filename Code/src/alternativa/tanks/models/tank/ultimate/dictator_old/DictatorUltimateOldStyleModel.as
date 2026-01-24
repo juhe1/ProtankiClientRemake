@@ -22,16 +22,16 @@ package alternativa.tanks.models.tank.ultimate.dictator_old
    public class DictatorUltimateOldStyleModel extends DictatorUltimateOldStyleModelBase implements IDictatorUltimateOldStyleModelBase, ObjectLoadListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
-      [Inject]
+      [Inject] // added
       public static var localTankInfoService:LocalTankInfoService;
       
-      [Inject]
+      [Inject] // added
       public static var inventorySoundService:InventorySoundService;
       
-      [Inject]
+      [Inject] // added
       public static var battleInfoService:IBattleInfoService;
       
       public function DictatorUltimateOldStyleModel()

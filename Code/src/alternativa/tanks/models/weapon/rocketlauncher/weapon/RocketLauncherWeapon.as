@@ -29,7 +29,7 @@ package alternativa.tanks.models.weapon.rocketlauncher.weapon
    public class RocketLauncherWeapon extends CommonLocalWeapon implements IRocketLauncherWeapon
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private static var shotId:int;

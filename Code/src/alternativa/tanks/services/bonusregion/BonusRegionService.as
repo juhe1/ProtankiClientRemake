@@ -28,13 +28,13 @@ package alternativa.tanks.services.bonusregion
    public class BonusRegionService implements IBonusRegionService, BattleEventListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
-      [Inject]
+      [Inject] // added
       public static var materialRegistry:TextureMaterialRegistry;
       
-      [Inject]
+      [Inject] // added
       public static var settings:ISettingsService;
       
       private static var stubBitmapData:BitmapData;

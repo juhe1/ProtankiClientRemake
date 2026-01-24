@@ -11,7 +11,7 @@ package alternativa.tanks.models.teamlight
    public class TeamLightModel extends TeamLightModelBase implements ITeamLightModelBase, ObjectLoadListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var lightingEffectsService:ILightingEffectsService;
       
       public function TeamLightModel()

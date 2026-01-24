@@ -15,10 +15,10 @@ package alternativa.tanks.models.battle.meteor
    public class MeteorStormModel extends MeteorStormModelBase implements IMeteorStormModelBase, ObjectUnloadListener, ObjectLoadPostListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
-      [Inject]
+      [Inject] // added
       public static var effectsMaterialRegistry:EffectsMaterialRegistry;
       
       private static const NUM_LOOPS:int = 100000;

@@ -9,7 +9,7 @@ package alternativa.tanks.models.weapons.targeting.priority.targeting
    public class ShaftTargetPriorityCalculator implements TargetPriorityCalculator
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private const MAX_DISTANCE:Number = 10000000000;

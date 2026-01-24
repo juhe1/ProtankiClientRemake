@@ -14,10 +14,10 @@ package alternativa.tanks.models.tank.premium
    public class DisplayPremiumStatusModel extends DisplayPremiumStatusModelBase implements IDisplayPremiumStatusModelBase, ObjectLoadPostListener, ObjectUnloadListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var userInfoService:IUserInfoService;
       
-      [Inject]
+      [Inject] // added
       public static var premiumService:PremiumService;
       
       public function DisplayPremiumStatusModel()

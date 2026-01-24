@@ -32,13 +32,13 @@ package alternativa.tanks.battle.objects.tank.tankskin
    public class TankSkin
    {
       
-      [Inject]
+      [Inject] // added
       public static var textureMaterialRegistry:TextureMaterialRegistry;
       
-      [Inject]
+      [Inject] // added
       public static var colorTransformService:ColorTransformService;
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private static const BASE_COLOR_TRANSFORM:ColorTransform = new ColorTransform();

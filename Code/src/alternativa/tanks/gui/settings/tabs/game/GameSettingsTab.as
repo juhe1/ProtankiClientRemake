@@ -16,7 +16,7 @@ package alternativa.tanks.gui.settings.tabs.game
    public class GameSettingsTab extends SettingsTabView
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleInviteService:IBattleInviteService;
       
       private var cbReceivePersonalMessagesOnlyFromFriends:CheckBoxBase;

@@ -12,10 +12,10 @@ package alternativa.tanks.battle.objects.tank.controllers
    public class LocalCheatController
    {
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private static const MOVEMENT_DISTANCE:Number = 10;

@@ -19,6 +19,7 @@ package scpacker.networking.protocol.packets.friends
    import platform.client.fp10.core.type.IGameObject;
    import platform.client.fp10.core.type.impl.Space;
    import platform.client.fp10.core.model.impl.Model;
+   import projects.tanks.client.users.model.friends.FriendsCC;
    
    public class FriendsPacketHandler extends AbstractPacketHandler
    {
@@ -113,15 +114,22 @@ package scpacker.networking.protocol.packets.friends
          var friendsObject:IGameObject = this.space.createObject(Long.getLong(5555,87654321), friendsGameClass, "Friends game object");
 
          Model.object = friendsObject;
+
+         this.friendsModel.putInitParams(new FriendsCC(99999, 99999, true));
+         this.friendsModel.objectLoaded();
+
          this.friendsAcceptedModel.putInitParams(param1.friendsAcceptedCC);
          this.friendsAcceptedModel.objectLoaded();
+
          this.friendsAcceptedNotificatorModel.putInitParams(param1.friendsAcceptedNotificatorCC);
          this.friendsAcceptedNotificatorModel.objectLoaded();
+
          this.friendsIncomingModel.putInitParams(param1.friendsIncomingCC);
          this.friendsIncomingModel.objectLoaded();
+
          this.friendsIncomingNotificatorModel.putInitParams(param1.friendsIncomingNotificatorCC);
          this.friendsIncomingNotificatorModel.objectLoaded();
-         this.friendsModel.objectLoaded();
+
          this.friendsLoaderModel.objectLoadedPost();
          //this.friendsOutgoingModel.putInitParams(param1.friendsOutgoingCC);
          //this.friendsOutgoingModel.objectLoaded();

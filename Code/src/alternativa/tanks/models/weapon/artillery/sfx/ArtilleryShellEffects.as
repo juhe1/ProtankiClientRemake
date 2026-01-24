@@ -20,10 +20,10 @@ package alternativa.tanks.models.weapon.artillery.sfx
    public class ArtilleryShellEffects
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
-      [Inject]
+      [Inject] // added
       public static var localTankService:LocalTankInfoService;
       
       private static const EXPLOSION_OFFSET_TO_CAMERA:Number = 110;

@@ -8,7 +8,7 @@ package alternativa.tanks.models.statistics
    public class BattlefieldMessagesAligner implements AutoClosable
    {
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
       private var battlefieldMessages:BattlefieldMessages;

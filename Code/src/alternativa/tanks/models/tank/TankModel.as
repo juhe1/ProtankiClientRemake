@@ -106,45 +106,49 @@ package alternativa.tanks.models.tank
    import projects.tanks.clients.fp10.libraries.tanksservices.service.battle.IBattleInfoService;
    import utils.TankNameGameObjectMapper;
    import projects.tanks.client.battlefield.models.user.tank.TankCC;
+   import juho.hacking.event.LocalTankInitedEvent;
+   import juho.hacking.event.HackEventDispatcher;
+   import juho.hacking.Hack;
+   import juho.hacking.event.LocalTankUnloadedEvent;
    
    [ModelInfo]
    public class TankModel extends TankModelBase implements ITankModelBase, ObjectLoadListener, ObjectUnloadListener, ITankModel, LocalTankInfoService, ChassisControlListener, BattleEventListener, ITurretControllerListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var logService:LogService;
       
-      [Inject]
+      [Inject] // added
       public static var settings:ISettingsService;
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
-      [Inject]
+      [Inject] // added
       public static var battleUserInfoService:BattleUserInfoService;
       
-      [Inject]
+      [Inject] // added
       public static var modelRegistry:ModelRegistry;
       
-      [Inject]
+      [Inject] // added
       public static var memoryLeakTrackerService:MemoryLeakTrackerService;
       
-      [Inject]
+      [Inject] // added
       public static var tankUsersRegistry:TankUsersRegistry;
       
-      [Inject]
+      [Inject] // added
       public static var inventoryPanel:IInventoryPanel;
       
-      [Inject]
+      [Inject] // added
       public static var initialEffectsService:IInitialEffectsService;
       
-      [Inject]
+      [Inject] // added
       public static var battleInfoService:IBattleInfoService;
       
       private static const LOCAL_TITLE_OFFSET_Z:Number = 0;
@@ -943,6 +947,7 @@ package alternativa.tanks.models.tank
             LocalTankUnloadListener(object.event(LocalTankUnloadListener)).localTankUnloaded(param1);
             _loc2_ = TankConfiguration(object.adapt(TankConfiguration));
             LocalTankUnloadListener(_loc2_.getTurretObject().event(LocalTankUnloadListener)).localTankUnloaded(param1);
+            HackEventDispatcher.singleton.dispatchEvent(new LocalTankUnloadedEvent(this.getTank()));
             battleService.setCameraTarget(null);
             this.localObject = null;
             this.destroyActivationTask();
@@ -1031,6 +1036,8 @@ package alternativa.tanks.models.tank
          putData(MainLoopExecutionErrorHandler,new MainLoopExecutionErrorHandler(object));
          var _loc4_:LocalTankLoadListener = LocalTankLoadListener(object.event(LocalTankLoadListener));
          _loc4_.localTankLoaded(param2);
+
+         HackEventDispatcher.singleton.dispatchEvent(new LocalTankInitedEvent(param1));
       }
       
       private function tankShouldBeAddedToBattle() : Boolean
@@ -1221,7 +1228,7 @@ package alternativa.tanks.models.tank
          var _loc4_:ITankModel = null;
          var _loc5_:UserTitle = null;
          var _loc6_:int = 0;
-         var _loc2_:IGameObject = tankUsersRegistry.getUser(getUserInfo().name);
+         var _loc2_:IGameObject = tankUsersRegistry.getUser(param1.userId);
          var _loc3_:Boolean = true;
          if(_loc2_ != null)
          {
@@ -1266,7 +1273,7 @@ package alternativa.tanks.models.tank
             return;
          }
          initialEffectsService.removeInitialEffect(param1.userId,param1.effectId);
-         var _loc2_:IGameObject = tankUsersRegistry.getUser(getUserInfo().name);
+         var _loc2_:IGameObject = tankUsersRegistry.getUser(param1.userId);
          if(_loc2_ != null)
          {
             _loc3_ = ITankModel(_loc2_.adapt(ITankModel));
@@ -1284,7 +1291,7 @@ package alternativa.tanks.models.tank
       
       private function isClientDurationEffect(param1:EffectStoppedEvent) : Boolean
       {
-         return param1.effectId == InventoryItemType.FIRST_AID;
+         return false;//param1.effectId == InventoryItemType.FIRST_AID;
       }
       
       public function addTankToExclusionSet(param1:Tank) : void

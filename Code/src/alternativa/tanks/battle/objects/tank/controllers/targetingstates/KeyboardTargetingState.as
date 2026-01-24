@@ -12,13 +12,13 @@ package alternativa.tanks.battle.objects.tank.controllers.targetingstates
    public class KeyboardTargetingState implements TargetingState, TargetingInputListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var targetingModeService:TargetingModeService;
       
-      [Inject]
+      [Inject] // added
       public static var inputManager:TargetingInputManager;
       
-      [Inject]
+      [Inject] // added
       public static var keysBindingService:KeysBindingService;
       
       protected var turretController:TurretController;

@@ -210,6 +210,14 @@ package scpacker.networking.protocol
    import scpacker.networking.protocol.packets.battlechat.BattleChatLoadedInPacket;
    import scpacker.networking.protocol.packets.battlechat.BattleChatUpdateTeamHeaderInPacket;
    import scpacker.networking.protocol.packets.battlechat.SendBattleChatOutPacket;
+   import scpacker.networking.protocol.packets.chat.ChatPacketHandler;
+   import scpacker.networking.protocol.packets.chat.CleanUsersMessagesInPacket;
+   import scpacker.networking.protocol.packets.chat.ClearAllMessagesInPacket;
+   import scpacker.networking.protocol.packets.chat.LoadChatModelInPacket;
+   import scpacker.networking.protocol.packets.chat.SendMessageOutPacket;
+   import scpacker.networking.protocol.packets.chat.ShowMessagesInPacket;
+   import scpacker.networking.protocol.packets.chat.UnloadChatInPacket;
+   import scpacker.networking.protocol.packets.chat.UpdateTypingAntifloodParamsInPacket;
    import scpacker.networking.protocol.packets.capturetheflag.CaptureTheFlagPacketHandler;
    import scpacker.networking.protocol.packets.capturetheflag.DropFlagInPacket;
    import scpacker.networking.protocol.packets.capturetheflag.FlagDeliveredInPacket;
@@ -331,6 +339,34 @@ package scpacker.networking.protocol
    import scpacker.networking.protocol.packets.friends.FriendsLoadOutPacket;
    import scpacker.networking.protocol.packets.friends.NotifyAcceptedFriendOutPacket;
    import scpacker.networking.protocol.packets.friends.BattleKickReasonInPacket;
+   import scpacker.networking.protocol.packets.settings.SettingsPacketHandler;
+   import scpacker.networking.protocol.packets.settings.CloseSettingsInPacket;
+   import scpacker.networking.protocol.packets.settings.CloseSettingsOutPacket;
+   import scpacker.networking.protocol.packets.settings.LoadSettingsOutPacket;
+   import scpacker.networking.protocol.packets.settings.OpenSettingsInPacket;
+   import scpacker.networking.protocol.packets.usercountry.UserCountryPacketHandler;
+   import scpacker.networking.protocol.packets.usercountry.ChangeLocationOutPacket;
+   import scpacker.networking.protocol.packets.usercountry.CheckUserPaymentCountryOutPacket;
+   import scpacker.networking.protocol.packets.usercountry.LoadUserCountryModelInPacket;
+   import scpacker.networking.protocol.packets.usercountry.RequestUserCountryInPacket;
+   import scpacker.networking.protocol.packets.usercountry.ShowPaymentWindowInPacket;
+   import scpacker.networking.protocol.packets.inventory.InventoryPacketHandler;
+   import scpacker.networking.protocol.packets.inventory.InventoryItemActivatedInPacket;
+   import scpacker.networking.protocol.packets.inventory.InventoryItemActivateOutPacket;
+   import scpacker.networking.protocol.packets.inventory.InventoryUpdateCountInPacket;
+   import scpacker.networking.protocol.packets.inventory.LoadInventoryInPacket;
+   import scpacker.networking.protocol.packets.missions.MissionPacketHandler;
+   import scpacker.networking.protocol.packets.missions.TakePrizeOutPacket;
+   import scpacker.networking.protocol.packets.missions.SkipQuestForFreeOutPacket;
+   import scpacker.networking.protocol.packets.missions.SkipQuestForCrystalsOutPacket;
+   import scpacker.networking.protocol.packets.missions.OpenQuestWindowOutPacket;
+   import scpacker.networking.protocol.packets.missions.NotifyDailyQuestChangesViewedOutPacket;
+   import scpacker.networking.protocol.packets.missions.NotifyDailyQuestCompletedInPacket;
+   import scpacker.networking.protocol.packets.missions.NotifyDailyQuestGeneratedInPacket;
+   import scpacker.networking.protocol.packets.missions.ShowQuestWindowInPacket;
+   import scpacker.networking.protocol.packets.missions.ShowQuestWindowWithoutDailyQuestsInPacket;
+   import scpacker.networking.protocol.packets.missions.SkipDailyQuestInPacket;
+   import scpacker.networking.protocol.packets.missions.TakeDailyQuestPrizeInPacket;
 
    public class PacketInitializer
    {
@@ -618,6 +654,16 @@ package scpacker.networking.protocol
          packetRegistry.registerPacket(new BattleChatUpdateTeamHeaderInPacket());
          packetRegistry.registerPacket(new SendBattleChatOutPacket());
 
+         // Chat Packets
+         packetInvoker.registerPacketHandler(new ChatPacketHandler());
+         packetRegistry.registerPacket(new CleanUsersMessagesInPacket());
+         packetRegistry.registerPacket(new ClearAllMessagesInPacket());
+         packetRegistry.registerPacket(new LoadChatModelInPacket());
+         packetRegistry.registerPacket(new SendMessageOutPacket());
+         packetRegistry.registerPacket(new ShowMessagesInPacket());
+         packetRegistry.registerPacket(new UnloadChatInPacket());
+         packetRegistry.registerPacket(new UpdateTypingAntifloodParamsInPacket());
+
          // CaptureTheFlag Packets
          packetInvoker.registerPacketHandler(new CaptureTheFlagPacketHandler());
          packetRegistry.registerPacket(new DropFlagInPacket());
@@ -769,6 +815,42 @@ package scpacker.networking.protocol
          packetRegistry.registerPacket(new FriendsLoadOutPacket());
          packetRegistry.registerPacket(new NotifyAcceptedFriendOutPacket());
          packetRegistry.registerPacket(new BattleKickReasonInPacket());
+
+         // Settings Packets
+         packetInvoker.registerPacketHandler(new SettingsPacketHandler());
+         packetRegistry.registerPacket(new OpenSettingsInPacket());
+         packetRegistry.registerPacket(new CloseSettingsInPacket());
+         packetRegistry.registerPacket(new CloseSettingsOutPacket());
+         packetRegistry.registerPacket(new LoadSettingsOutPacket());
+
+         // UserCountry Packets
+         packetInvoker.registerPacketHandler(new UserCountryPacketHandler());
+         packetRegistry.registerPacket(new LoadUserCountryModelInPacket());
+         packetRegistry.registerPacket(new RequestUserCountryInPacket());
+         packetRegistry.registerPacket(new ShowPaymentWindowInPacket());
+         packetRegistry.registerPacket(new ChangeLocationOutPacket());
+         packetRegistry.registerPacket(new CheckUserPaymentCountryOutPacket());
+
+         // Inventory Packets
+         packetInvoker.registerPacketHandler(new InventoryPacketHandler());
+         packetRegistry.registerPacket(new InventoryItemActivatedInPacket());
+         packetRegistry.registerPacket(new InventoryItemActivateOutPacket());
+         packetRegistry.registerPacket(new InventoryUpdateCountInPacket());
+         packetRegistry.registerPacket(new LoadInventoryInPacket());
+
+         // Mission Packets
+         packetInvoker.registerPacketHandler(new MissionPacketHandler());
+         packetRegistry.registerPacket(new TakePrizeOutPacket());
+         packetRegistry.registerPacket(new SkipQuestForFreeOutPacket());
+         packetRegistry.registerPacket(new SkipQuestForCrystalsOutPacket());
+         packetRegistry.registerPacket(new OpenQuestWindowOutPacket());
+         packetRegistry.registerPacket(new NotifyDailyQuestChangesViewedOutPacket());
+         packetRegistry.registerPacket(new NotifyDailyQuestCompletedInPacket());
+         packetRegistry.registerPacket(new NotifyDailyQuestGeneratedInPacket());
+         packetRegistry.registerPacket(new ShowQuestWindowInPacket());
+         packetRegistry.registerPacket(new ShowQuestWindowWithoutDailyQuestsInPacket());
+         packetRegistry.registerPacket(new SkipDailyQuestInPacket());
+         packetRegistry.registerPacket(new TakeDailyQuestPrizeInPacket());
       }
    }
 }

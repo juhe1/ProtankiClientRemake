@@ -12,6 +12,7 @@ package projects.tanks.client.panel.model.dailyquest.showing
       public function QuestShowingModelBase()
       {
          super();
+         this.server = new QuestShowingModelServer(this);
       }
 
       override public function get id() : Long

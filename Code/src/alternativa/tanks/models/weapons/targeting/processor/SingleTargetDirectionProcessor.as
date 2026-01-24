@@ -12,7 +12,7 @@ package alternativa.tanks.models.weapons.targeting.processor
    public class SingleTargetDirectionProcessor extends CommonDirectionProcessor implements TargetingDirectionProcessor
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private var collisionFilter:RayCollisionFilter = new RayCollisionFilter();

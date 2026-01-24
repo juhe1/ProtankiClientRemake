@@ -15,7 +15,7 @@ package alternativa.tanks.models.weapon.artillery.rotation
    public class ArtilleryElevatingBarrelModel extends ArtilleryElevatingBarrelModelBase implements IArtilleryElevatingBarrelModelBase, ObjectLoadListener, InitTankPart, TurretStateSender
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       public function ArtilleryElevatingBarrelModel()

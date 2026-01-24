@@ -84,31 +84,31 @@ package alternativa.tanks.models.battle.assault
    public class AssaultModel extends AssaultModelBase implements IAssaultModelBase, ObjectLoadPostListener, ObjectUnloadListener, BattleEventListener, BattleModel, IAssaultModel
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleInfoService:IBattleInfoService;
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
-      [Inject]
+      [Inject] // added
       public static var materialRegistry:TextureMaterialRegistry;
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
-      [Inject]
+      [Inject] // added
       public static var userInfoService:BattleUserInfoService;
       
-      [Inject]
+      [Inject] // added
       public static var battleInputLockService:BattleInputService;
       
-      [Inject]
+      [Inject] // added
       public static var lightingEffectsService:ILightingEffectsService;
       
       private static const pointIconClass:Class = AssaultModel_pointIconClass;

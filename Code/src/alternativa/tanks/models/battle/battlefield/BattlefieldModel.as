@@ -100,73 +100,73 @@ package alternativa.tanks.models.battle.battlefield
    public class BattlefieldModel extends BattlefieldModelBase implements IBattlefieldModelBase, ObjectLoadListener, ObjectLoadPostListener, ObjectUnloadPostListener, BattleEventListener, BattleService, BattleSfx
    {
       
-      [Inject]
+      [Inject] // added
       public static var logService:LogService;
       
-      [Inject]
+      [Inject] // added
       public static var storageService:IStorageService;
       
-      [Inject]
+      [Inject] // added
       public static var addressService:TanksAddressService;
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
-      [Inject]
+      [Inject] // added
       public static var dataValidator:DataValidator;
       
-      [Inject]
+      [Inject] // added
       public static var settings:ISettingsService;
       
-      [Inject]
+      [Inject] // added
       public static var backgroundService:IBackgroundService;
       
-      [Inject]
+      [Inject] // added
       public static var mipMappingService:MipMappingService;
       
-      [Inject]
+      [Inject] // added
       public static var materialRegistry:TextureMaterialRegistry;
       
-      [Inject]
+      [Inject] // added
       public static var colorTransformService:ColorTransformService;
       
-      [Inject]
+      [Inject] // added
       public static var battleInfoService:IBattleInfoService;
       
-      [Inject]
+      [Inject] // added
       public static var memoryLeakTrackerService:MemoryLeakTrackerService;
       
-      [Inject]
+      [Inject] // added
       public static var battleReadinessService:BattleReadinessService;
       
-      [Inject]
+      [Inject] // added
       public static var battleInputService:BattleInputService;
       
-      [Inject]
+      [Inject] // added
       public static var battleGuiService:BattleGUIService;
       
-      [Inject]
+      [Inject] // added
       public static var lobbyLayoutService:ILobbyLayoutService;
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
-      [Inject]
+      [Inject] // added
       public static var lightingAdjustService:ILightingEffectsService;
       
-      [Inject]
+      [Inject] // added
       public static var targetingInputManager:TargetingInputManager;
       
-      [Inject]
+      [Inject] // added
       public static var targetingModeService:TargetingModeService;
       
-      [Inject]
+      [Inject] // added
       public static var notificationService:INotificationService;
       
-      [Inject]
+      [Inject] // added
       public static var keysBindingService:KeysBindingService;
       
       private static const cameraPosition:Vector3 = new Vector3();

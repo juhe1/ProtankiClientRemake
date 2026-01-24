@@ -11,7 +11,7 @@ package alternativa.tanks.sfx
    public class Sound3DEffect extends PooledObject implements ISound3DEffect
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private var position:Vector3 = new Vector3();

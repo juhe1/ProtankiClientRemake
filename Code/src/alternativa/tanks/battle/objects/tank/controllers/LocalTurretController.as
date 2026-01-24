@@ -17,22 +17,22 @@ package alternativa.tanks.battle.objects.tank.controllers
    public class LocalTurretController implements BattleEventListener, Renderer, AutoClosable
    {
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
-      [Inject]
+      [Inject] // added
       public static var battleInputLockService:BattleInputService;
       
-      [Inject]
+      [Inject] // added
       public static var localTankInfoService:LocalTankInfoService;
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
-      [Inject]
+      [Inject] // added
       public static var targetingService:TargetingModeService;
       
       private var lookAround:Boolean = false;

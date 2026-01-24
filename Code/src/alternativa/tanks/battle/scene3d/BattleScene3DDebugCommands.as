@@ -6,7 +6,7 @@ package alternativa.tanks.battle.scene3d
    public class BattleScene3DDebugCommands
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       public function BattleScene3DDebugCommands()

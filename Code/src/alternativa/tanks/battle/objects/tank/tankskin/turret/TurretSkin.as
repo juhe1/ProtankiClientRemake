@@ -20,7 +20,7 @@ package alternativa.tanks.battle.objects.tank.tankskin.turret
    public class TurretSkin
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       public static const turretMatrix:Matrix4 = new Matrix4();

@@ -7,7 +7,7 @@ package alternativa.tanks.camera.controllers.spectator
    public class SpectatorBonusRegionController implements KeyboardHandler
    {
       
-      [Inject]
+      [Inject] // added
       public static var bonusRegionService:IBonusRegionService;
       
       public function SpectatorBonusRegionController()

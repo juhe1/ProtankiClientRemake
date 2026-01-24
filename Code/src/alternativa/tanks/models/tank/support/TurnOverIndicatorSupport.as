@@ -18,13 +18,13 @@ package alternativa.tanks.models.tank.support
    public class TurnOverIndicatorSupport implements AutoClosable, BattleEventListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
-      [Inject]
+      [Inject] // added
       public static var dialogWindowsDispatcherService:IDialogWindowsDispatcherService;
       
-      [Inject]
+      [Inject] // added
       public static var lobbyLayoutService:ILobbyLayoutService;
       
       private var turnOverIndicator:TurnOverIndicator;

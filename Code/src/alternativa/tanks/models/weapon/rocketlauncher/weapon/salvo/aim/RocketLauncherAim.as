@@ -16,7 +16,7 @@ package alternativa.tanks.models.weapon.rocketlauncher.weapon.salvo.aim
    public class RocketLauncherAim implements Renderer
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private static const position:Vector3 = new Vector3();

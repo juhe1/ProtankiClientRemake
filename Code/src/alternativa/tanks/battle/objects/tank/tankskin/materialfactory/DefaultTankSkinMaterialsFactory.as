@@ -19,13 +19,13 @@ package alternativa.tanks.battle.objects.tank.tankskin.materialfactory
    public class DefaultTankSkinMaterialsFactory implements TankSkinMaterialsFactory
    {
       
-      [Inject]
+      [Inject] // added
       public static var textureMaterialRegistry:TextureMaterialRegistry;
       
-      [Inject]
+      [Inject] // added
       public static var skinTextureRegistry:TankSkinTextureRegistry;
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       public function DefaultTankSkinMaterialsFactory()

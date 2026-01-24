@@ -26,16 +26,16 @@ package alternativa.tanks.models.bonus.gold
    public class BattleGoldBonusesModel extends BattleGoldBonusesModelBase implements IBattleGoldBonusesModelBase, ObjectLoadListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
-      [Inject]
+      [Inject] // added
       public static var userInfoService:BattleUserInfoService;
       
-      [Inject]
+      [Inject] // added
       public static var userPropertiesService:IUserPropertiesService;
       
       public static const DELAY:int = 800;

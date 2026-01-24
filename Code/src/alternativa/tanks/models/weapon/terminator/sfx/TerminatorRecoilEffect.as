@@ -7,7 +7,7 @@ package alternativa.tanks.models.weapon.terminator.sfx
    public class TerminatorRecoilEffect implements Renderer
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private static const RECOIL_LENGTH:Number = 100;

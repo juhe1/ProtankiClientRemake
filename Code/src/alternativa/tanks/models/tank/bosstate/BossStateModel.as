@@ -18,13 +18,13 @@ package alternativa.tanks.models.tank.bosstate
    public class BossStateModel extends BossStateModelBase implements IBossStateModelBase, IBossState
    {
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
-      [Inject]
+      [Inject] // added
       public static var battleInfoService:IBattleInfoService;
       
-      [Inject]
+      [Inject] // added
       public static var inventoryPanel:IInventoryPanel;
       
       private var inventoryLockMask:Vector.<int>;

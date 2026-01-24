@@ -9,10 +9,10 @@ package alternativa.tanks.models.battle.battlefield.keyboard
    public class AbstractKeyboardHandler implements AutoClosable
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleInputService:BattleInputService;
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
       public function AbstractKeyboardHandler()

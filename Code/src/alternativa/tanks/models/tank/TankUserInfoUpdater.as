@@ -9,7 +9,7 @@ package alternativa.tanks.models.tank
    public class TankUserInfoUpdater implements BattleUserInfoListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var usersRegistry:TankUsersRegistry;
       
       public function TankUserInfoUpdater()

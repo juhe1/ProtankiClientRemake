@@ -9,7 +9,7 @@ package alternativa.tanks.models.weapon.twins
    public class TwinsAmmunition
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private var weakening:DistanceWeakening;

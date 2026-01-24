@@ -14,13 +14,13 @@ package alternativa.tanks.models.battle.gui.indicators
    public class ReloaderIndicator extends BlackRoundRect
    {
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
-      [Inject]
+      [Inject] // added
       public static var battleGUIService:BattleGUIService;
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
       private static const reArmorIconClass:Class = ReloaderIndicator_reArmorIconClass;

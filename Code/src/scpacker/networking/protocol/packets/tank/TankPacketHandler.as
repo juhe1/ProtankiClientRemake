@@ -30,6 +30,17 @@ package scpacker.networking.protocol.packets.tank
    import scpacker.utils.CoreUtils;
    import projects.tanks.clients.fp10.libraries.tanksservices.service.layout.ILobbyLayoutService;
    import projects.tanks.clients.flash.commons.services.layout.event.LobbyLayoutServiceEvent;
+   import flash.utils.Dictionary;
+   import alternativa.tanks.models.effects.description.EffectDescriptionModel;
+   import projects.tanks.client.battlefield.models.effects.description.EffectDescriptionModelBase;
+   import scpacker.networking.protocol.packets.battle.BattlePacketHandler;
+   import platform.client.fp10.core.type.IGameClass;
+   import scpacker.utils.LongUtils;
+   import scpacker.utils.IdTool;
+   import projects.tanks.client.battlefield.models.effects.description.EffectDescriptionCC;
+   import alternativa.tanks.models.effects.durationTime.DurationModel;
+   import projects.tanks.client.battlefield.models.effects.duration.time.DurationModelBase;
+   import projects.tanks.client.battlefield.models.effects.duration.time.DurationCC;
    
    public class TankPacketHandler extends AbstractPacketHandler
    {
@@ -39,8 +50,11 @@ package scpacker.networking.protocol.packets.tank
       private var tankTemperatureModel:TankTemperatureModel;
       private var tankSpawnerModel:TankSpawnerModel;
       private var rotatingTurretModel:RotatingTurretModel;
+      private var effectDescriptionModel:EffectDescriptionModel;
 
       private var userPropertiesService:IUserPropertiesService;
+      private static var effectGameObjectsByTankName:Dictionary = new Dictionary();
+      private var effectGameClass:IGameClass;
       
       public function TankPacketHandler()
       {
@@ -53,8 +67,13 @@ package scpacker.networking.protocol.packets.tank
          this.tankTemperatureModel = TankTemperatureModel(modelRegistry.getModel(TankTemperatureModelBase.modelId));
          this.tankSpawnerModel = TankSpawnerModel(modelRegistry.getModel(TankSpawnerModelBase.modelId));
          this.rotatingTurretModel = RotatingTurretModel(modelRegistry.getModel(RotatingTurretModelBase.modelId));
+         this.effectDescriptionModel = EffectDescriptionModel(modelRegistry.getModel(EffectDescriptionModelBase.modelId));
 
          this.userPropertiesService = IUserPropertiesService(OSGi.getInstance().getService(IUserPropertiesService));
+
+         var effectVector:Vector.<Long> = new Vector.<Long>();
+         effectVector.push(this.effectDescriptionModel.id);
+         this.effectGameClass = gameTypeRegistry.createClass(Long.getLong(14025,687788),effectVector);
       }
       
       public function invoke(param1:AbstractPacket) : void
@@ -236,7 +255,6 @@ package scpacker.networking.protocol.packets.tank
       
       private function unloadTank(param1:UnloadTankInPacket) : void
       {
-         // todo: remove effects when tank is unloaded
          this.tankRankUpEffectModel.objectUnloaded();
          var tankGameObject:IGameObject = TankNameGameObjectMapper.getGameObjectByTankName(param1.tankId);
          if(tankGameObject != null)
@@ -247,7 +265,16 @@ package scpacker.networking.protocol.packets.tank
       
       public static function unloadTankGameObject(tankGameObject:IGameObject) : void
       {
-         Model.object = tankGameObject;
+         // Remove all effects for this tank
+         var tankEffects:Dictionary = effectGameObjectsByTankName[tankGameObject.name];
+         if(tankEffects != null)
+         {
+            for each(var effectGameObject:IGameObject in tankEffects)
+            {
+               effectGameObject.space.destroyObject(effectGameObject.id);
+            }
+            delete effectGameObjectsByTankName[tankGameObject.name];
+         }
 
          var tankConfiguration:TankConfiguration = TankConfiguration(tankGameObject.adapt(TankConfiguration));
          var coloringGameObject:IGameObject = tankConfiguration.getColoringObject();
@@ -259,31 +286,57 @@ package scpacker.networking.protocol.packets.tank
          hullGameObject.space.destroyObject(hullGameObject.id);
          turretGameObject.space.destroyObject(turretGameObject.id);
 
-         Model.popObject();
          TankNameGameObjectMapper.removeMapping(tankGameObject.name);
       }
       
       private function activateEffect(param1:ActivateEffectInPacket) : void
       {
-         var tankGameObject:IGameObject = TankNameGameObjectMapper.getGameObjectByTankName(param1.tankId);
-         if(tankGameObject != null)
+         var tankEffects:Dictionary = effectGameObjectsByTankName[param1.tankId];
+         
+         // Create nested dictionary if it doesn't exist
+         if(tankEffects == null)
          {
-            Model.object = tankGameObject;
-            // todo: create new game object for effect
-            //this.tankModel.onEffectActivated(param1.effectId,param1.duration,param1.activeAfterDeath,param1.effectLevel);
+            tankEffects = new Dictionary();
+            effectGameObjectsByTankName[param1.tankId] = tankEffects;
+         }
+
+         var effectGameObject:IGameObject = tankEffects[param1.effectId];
+         if(effectGameObject == null)
+         {
+            effectGameObject = BattlePacketHandler.battlefieldGameObject.space.createObject(IdTool.getNextId(), this.effectGameClass, "Effect game object for tank " + param1.tankId);
+            tankEffects[param1.effectId] = effectGameObject;
+
+            var effectCC:EffectDescriptionCC = new EffectDescriptionCC();
+            effectCC.index = param1.effectId;
+            effectCC.tank = param1.tankId;
+
+            Model.object = effectGameObject;
+            this.effectDescriptionModel.putInitParams(effectCC);
             Model.popObject();
          }
+
+         Model.object = effectGameObject;
+         this.effectDescriptionModel.activated(param1.duration, true);
+         Model.popObject();
       }
       
       private function stopEffect(param1:StopEffectInPacket) : void
       {
-         var tankGameObject:IGameObject = TankNameGameObjectMapper.getGameObjectByTankName(param1.tankId);
-         if(tankGameObject != null)
+         var tankEffects:Dictionary = effectGameObjectsByTankName[param1.tankId];
+         if(tankEffects == null)
          {
-            Model.object = tankGameObject;
-            //this.tankModel.onEffectStopped(param1.effectId,false);
-            Model.popObject();
+            return;
          }
+         
+         var effectGameObject:IGameObject = tankEffects[param1.effectId];
+         if(effectGameObject == null)
+         {
+            return;
+         }
+
+         Model.object = effectGameObject;
+         this.effectDescriptionModel.deactivated();
+         Model.popObject();
       }
    }
 }

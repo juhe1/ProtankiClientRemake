@@ -13,7 +13,7 @@ package alternativa.tanks.gui.settings
    public class SettingsTabButtonList extends DiscreteSprite
    {
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
       private var settingsCategoryToButton:Dictionary = new Dictionary();

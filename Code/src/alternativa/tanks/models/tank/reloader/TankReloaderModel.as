@@ -13,7 +13,7 @@ package alternativa.tanks.models.tank.reloader
    public class TankReloaderModel extends TankReloaderModelBase implements ITankReloaderModelBase, LocalTankLoadListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
       public function TankReloaderModel()

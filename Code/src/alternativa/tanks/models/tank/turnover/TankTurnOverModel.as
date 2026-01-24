@@ -24,10 +24,10 @@ package alternativa.tanks.models.tank.turnover
    public class TankTurnOverModel extends TankTurnOverModelBase implements ITankTurnOverModelBase, LocalTankLoadListener, BattleEventListener, LocalTankUnloadListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
-      [Inject]
+      [Inject] // added
       public static var userPropertiesService:IUserPropertiesService;
       
       private const CHECK_DELAY:int = 100;

@@ -14,7 +14,7 @@ package alternativa.tanks.battle.objects.tank.controllers
    public class ShaftReticleDisplayController
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private var camera:GameCamera;

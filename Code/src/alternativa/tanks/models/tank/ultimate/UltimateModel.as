@@ -41,34 +41,34 @@ package alternativa.tanks.models.tank.ultimate
    public class UltimateModel extends UltimateModelBase implements IUltimateModelBase, IUltimateModel, BattleEventListener, LocalTankLoadListener, LocalTankUnloadListener, ObjectLoadPostListener, ObjectUnloadListener, TankSpawnListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var inventorySoundService:InventorySoundService;
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
-      [Inject]
+      [Inject] // added
       public static var battleGuiService:BattleGUIService;
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
-      [Inject]
+      [Inject] // added
       public static var battleInputService:BattleInputService;
       
-      [Inject]
+      [Inject] // added
       public static var localTankInfoService:LocalTankInfoService;
       
-      [Inject]
+      [Inject] // added
       public static var tankUsersRegistry:TankUsersRegistry;
       
-      [Inject]
+      [Inject] // added
       public static var keysBindingService:KeysBindingService;
       
-      [Inject]
+      [Inject] // added
       public static var battleInfoService:IBattleInfoService;
       
       private static const CHARGE_TIME_PERIOD_MILLIS:int = 100;

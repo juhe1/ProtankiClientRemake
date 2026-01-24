@@ -14,7 +14,7 @@ package alternativa.tanks.sfx.floatingmessage
    public class FloatingTextEffect extends PooledObject implements GraphicEffect
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private static const vector1:Vector3D = new Vector3D();

@@ -13,7 +13,7 @@ package projects.tanks.clients.fp10.libraries.tanksservices.service.logging.batt
          super();
       }
       
-      public function battleSelected(param1:BattleMode, param2:Long) : void
+      public function battleSelected(param1:BattleMode, param2:String) : void
       {
          dispatchEvent(new UserBattleSelectActionEvent(BattleSelectAction.SELECT_BATTLE,param1,param2.toString()));
       }
@@ -33,12 +33,12 @@ package projects.tanks.clients.fp10.libraries.tanksservices.service.logging.batt
          dispatchEvent(new UserBattleSelectActionEvent(BattleSelectAction.CREATE_BATTLE,param1));
       }
       
-      public function enterToBattle(param1:BattleMode, param2:Long) : void
+      public function enterToBattle(param1:BattleMode, param2:String) : void
       {
          dispatchEvent(new UserBattleSelectActionEvent(BattleSelectAction.ENTER_TO_BATTLE,param1,param2.toString()));
       }
       
-      public function copyBattleLink(param1:BattleMode, param2:Long) : void
+      public function copyBattleLink(param1:BattleMode, param2:String) : void
       {
          dispatchEvent(new UserBattleSelectActionEvent(BattleSelectAction.COPY_BATTLE_LINK,param1,param2.toString()));
       }

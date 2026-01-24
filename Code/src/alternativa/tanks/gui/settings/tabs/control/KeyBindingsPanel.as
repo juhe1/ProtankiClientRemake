@@ -15,10 +15,10 @@ package alternativa.tanks.gui.settings.tabs.control
    public class KeyBindingsPanel extends DiscreteSprite
    {
       
-      [Inject]
+      [Inject] // added
       public static var keysBindingService:KeysBindingService;
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
       private var keyBindingsPanel:VerticalStackPanel = new VerticalStackPanel();

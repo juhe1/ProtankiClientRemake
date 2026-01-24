@@ -15,7 +15,7 @@ package alternativa.tanks.models.weapons.stream
    public class StreamWeaponCommunicationModel extends StreamWeaponCommunicationModelBase implements IStreamWeaponCommunicationModelBase, StreamWeaponCommunication
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
       public function StreamWeaponCommunicationModel()

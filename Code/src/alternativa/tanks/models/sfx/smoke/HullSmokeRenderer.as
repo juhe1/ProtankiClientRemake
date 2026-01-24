@@ -20,10 +20,10 @@ package alternativa.tanks.models.sfx.smoke
    public class HullSmokeRenderer implements Renderer
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
-      [Inject]
+      [Inject] // added
       public static var materialRegistry:TextureMaterialRegistry;
       
       private static const bias:Vector3 = new Vector3(50,-1000,0);

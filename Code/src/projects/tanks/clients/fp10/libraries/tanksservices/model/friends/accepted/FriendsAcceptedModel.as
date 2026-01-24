@@ -13,7 +13,7 @@ package projects.tanks.clients.fp10.libraries.tanksservices.model.friends.accept
    public class FriendsAcceptedModel extends FriendsAcceptedModelBase implements IFriendsAcceptedModelBase, ObjectLoadListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var friendsInfoService:IFriendInfoService;
       
       public function FriendsAcceptedModel()

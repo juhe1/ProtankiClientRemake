@@ -30,7 +30,7 @@ package alternativa.tanks.models.battle.gui.gui.statistics.table
    public class ViewStatistics extends Sprite
    {
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
       private static var scrollBarStyles:Object;

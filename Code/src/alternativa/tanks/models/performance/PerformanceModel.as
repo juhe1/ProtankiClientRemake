@@ -9,7 +9,7 @@ package alternativa.tanks.models.performance
    public class PerformanceModel extends PerformanceModelBase implements IPerformanceModelBase, ObjectLoadListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var performanceDataService:PerformanceDataService;
       
       public function PerformanceModel()

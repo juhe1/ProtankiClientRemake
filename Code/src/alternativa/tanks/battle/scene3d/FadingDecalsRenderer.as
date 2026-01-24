@@ -7,7 +7,7 @@ package alternativa.tanks.battle.scene3d
    public class FadingDecalsRenderer implements Renderer
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private var fadeTime:int;

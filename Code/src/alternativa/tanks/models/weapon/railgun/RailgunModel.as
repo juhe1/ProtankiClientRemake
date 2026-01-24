@@ -33,10 +33,10 @@ package alternativa.tanks.models.weapon.railgun
    public class RailgunModel extends RailgunModelBase implements IRailgunModelBase, ObjectLoadListener, IWeaponModel, BattleEventListener, RailgunCallback
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
       private var weapons:Dictionary = new Dictionary();

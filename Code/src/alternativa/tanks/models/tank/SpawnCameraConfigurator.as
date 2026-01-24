@@ -8,10 +8,10 @@ package alternativa.tanks.models.tank
    public class SpawnCameraConfigurator
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
-      [Inject]
+      [Inject] // added
       public static var battleReadinessService:BattleReadinessService;
       
       private var firstSpawn:Boolean = true;

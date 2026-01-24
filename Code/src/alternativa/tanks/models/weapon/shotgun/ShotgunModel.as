@@ -25,7 +25,7 @@ package alternativa.tanks.models.weapon.shotgun
    public class ShotgunModel extends ShotgunShotModelBase implements IShotgunShotModelBase, IWeaponModel, DiscreteWeaponListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private var shooter:IGameObject;

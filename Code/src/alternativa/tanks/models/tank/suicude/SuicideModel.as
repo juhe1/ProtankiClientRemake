@@ -13,7 +13,7 @@ package alternativa.tanks.models.tank.suicude
    public class SuicideModel extends SuicideModelBase implements ISuicideModelBase, LocalTankLoadListener, LocalTankUnloadListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
       public function SuicideModel()

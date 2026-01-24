@@ -7,7 +7,7 @@ package alternativa.tanks.models.bonus.region
    public class BonusRegion
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       protected var mesh:Mesh;

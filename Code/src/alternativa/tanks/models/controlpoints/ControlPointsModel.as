@@ -63,19 +63,19 @@ package alternativa.tanks.models.controlpoints
    public class ControlPointsModel extends ControlPointsModelBase implements IControlPointsModelBase, ObjectLoadListener, ObjectLoadPostListener, ObjectUnloadListener, BattleModel, IDominationModel, BattleEventListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
-      [Inject]
+      [Inject] // added
       public static var effectsMaterialRegistry:EffectsMaterialRegistry;
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
-      [Inject]
+      [Inject] // added
       public static var battleGuiService:BattleGUIService;
       
-      [Inject]
+      [Inject] // added
       public static var battleInfoService:IBattleInfoService;
       
       private var targetEvaluators:Vector.<TeamDMTargetEvaluator>;

@@ -18,10 +18,10 @@ package alternativa.tanks.models.effects.description
    public class EffectDescriptionModel extends EffectDescriptionModelBase implements IEffectDescriptionModelBase, ObjectUnloadListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
-      [Inject]
+      [Inject] // added
       public static var inventorySoundService:InventorySoundService;
       
       public function EffectDescriptionModel()

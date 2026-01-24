@@ -21,7 +21,7 @@ package alternativa.tanks.models.tank
    public class ChassisStateCorrectionTask extends BattleRunnerProvider implements PostPhysicsController
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
       private static const COLLISION_PREDICTION_TIME_SEC:Number = 2;

@@ -17,16 +17,16 @@ package alternativa.tanks.battle.objects.tank.controllers
    public class LocalChassisController extends ChassisController implements BattleEventListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var commandService:CommandService;
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
-      [Inject]
+      [Inject] // added
       public static var keyBindingService:KeysBindingService;
       
       private static const REVERSE_BACK_TURN_MASK:int = 1 << BIT_REVERSE_TURN;

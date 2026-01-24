@@ -6,7 +6,7 @@ package alternativa.tanks.models.weapon.machinegun.sfx
    public class ParticleSystem
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private var particles:Dictionary = new Dictionary();

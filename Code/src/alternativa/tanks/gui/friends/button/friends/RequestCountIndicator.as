@@ -10,10 +10,10 @@ package alternativa.tanks.gui.friends.button.friends
    public class RequestCountIndicator extends Sprite
    {
       
-      [Inject]
+      [Inject] // added
       public static var friendInfoService:IFriendInfoService;
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
       private static var leftIconClass:Class = RequestCountIndicator_leftIconClass;

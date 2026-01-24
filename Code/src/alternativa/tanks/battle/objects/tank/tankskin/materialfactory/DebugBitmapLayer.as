@@ -8,7 +8,7 @@ package alternativa.tanks.battle.objects.tank.tankskin.materialfactory
    public class DebugBitmapLayer
    {
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
       private static var isShowing:Boolean = false;

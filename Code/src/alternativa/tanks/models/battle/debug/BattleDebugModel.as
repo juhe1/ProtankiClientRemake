@@ -9,7 +9,7 @@ package alternativa.tanks.models.battle.debug
    public class BattleDebugModel extends BattleDebugModelBase implements IBattleDebugModelBase
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       public function BattleDebugModel()

@@ -16,13 +16,13 @@ package alternativa.tanks.models.tank.ultimate.titan
    public class TitanUltimateModel extends TitanUltimateModelBase implements ITitanUltimateModelBase, ObjectLoadListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var inventorySoundService:InventorySoundService;
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
-      [Inject]
+      [Inject] // added
       public static var textureMaterialRegistry:TextureMaterialRegistry;
       
       public function TitanUltimateModel()

@@ -22,10 +22,10 @@ package alternativa.tanks.models.tank
    public class RegularUserTitleRenderer implements UserTitleRenderer, AutoClosable, BattleEventListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private static const DISTANCE_TO_SHOW_TITLES:EncryptedNumber = new EncryptedNumberImpl(7000);

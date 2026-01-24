@@ -22,7 +22,7 @@ package alternativa.tanks.models.battle.gui.gui.statistics.table
    public class StatisticsListRenderer extends CellRenderer
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleInfoService:IBattleInfoService;
       
       public static var showBonus:Boolean;

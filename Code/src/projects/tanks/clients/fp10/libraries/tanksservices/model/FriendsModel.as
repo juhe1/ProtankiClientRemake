@@ -12,7 +12,7 @@ package projects.tanks.clients.fp10.libraries.tanksservices.model
    public class FriendsModel extends FriendsModelBase implements IFriendsModelBase, ObjectLoadListener, ObjectUnloadListener, IFriends
    {
       
-      [Inject]
+      [Inject] // added
       public static var friendsActionService:IFriendActionService;
       
       public function FriendsModel()

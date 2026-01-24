@@ -15,7 +15,7 @@ package alternativa.tanks.gui.settings.tabs.control
    public class KeyBinding extends DiscreteSprite
    {
       
-      [Inject]
+      [Inject] // added
       public static var keysBindingService:KeysBindingService;
       
       public static const KEY_INPUT_WIDTH:int = 120;

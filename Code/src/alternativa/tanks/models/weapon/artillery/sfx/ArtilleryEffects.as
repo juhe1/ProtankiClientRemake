@@ -22,10 +22,10 @@ package alternativa.tanks.models.weapon.artillery.sfx
    public class ArtilleryEffects implements ISoundEffectDestructionListener, AutoClosable
    {
       
-      [Inject]
+      [Inject] // added
       public static var localTankService:LocalTankInfoService;
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private static const SHOT_SOUND_BY_POWER:Vector.<Number> = Vector.<Number>([0.3,0.6,0.9,1]);

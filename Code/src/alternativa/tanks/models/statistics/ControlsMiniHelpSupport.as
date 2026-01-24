@@ -16,19 +16,19 @@ package alternativa.tanks.models.statistics
    public class ControlsMiniHelpSupport implements AutoClosable, BattleEventListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var storageService:IStorageService;
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
-      [Inject]
+      [Inject] // added
       public static var userPropertiesService:IUserPropertiesService;
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
-      [Inject]
+      [Inject] // added
       public static var battleGuiService:BattleGUIService;
       
       private static const SHARED_OBJECT_KEY:String = "disableControlsMiniHelp";

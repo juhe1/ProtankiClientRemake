@@ -30,7 +30,7 @@ package alternativa.tanks.models.battle.ctf
    public class CTFFlag implements HidableGraphicObject, Trigger, Renderer
    {
       
-      [Inject]
+      [Inject] // added
       public static var lightingEffectsService:ILightingEffectsService;
       
       private static const SKIN_BASE_SIZE:EncryptedInt = new EncryptedIntImpl(95);

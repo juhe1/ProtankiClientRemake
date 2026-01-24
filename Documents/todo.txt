@@ -1,24 +1,26 @@
 Lobby:
-- Missions []
+- Missions [x]
 - Friends []
-- Settings []
+- Settings [x]
 - Battle Creation [x]
 - Password changing []
-- Chat []
+- Chat [x]
+- Battle join bug []
 
 Garage:
 - Present buying []
 - Rename []
 
 Battle:
-- Gold box []
+- Gold box [x]
 - Supplie boxes [x]
-- Inventory []
+- Inventory [x]
 - CTF/CP trigger bug fix [x]
 - CTF flag indicator bug fix [x]
 - Battle leaving [x]
 - Tank explosion bug [x]
 - Health bar bug [x]
+- Vulcan direction bug [x]
 
 Weapons:
 - Smoky [x]

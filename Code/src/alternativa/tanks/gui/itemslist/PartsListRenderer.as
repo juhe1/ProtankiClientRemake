@@ -11,7 +11,7 @@ package alternativa.tanks.gui.itemslist
    public class PartsListRenderer extends CellRenderer implements IResourceLoadingListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var clientLog:IClientLog;
       
       private static var defaultStyles:Object = {

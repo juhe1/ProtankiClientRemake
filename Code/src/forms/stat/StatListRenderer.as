@@ -16,7 +16,7 @@ package forms.stat
    public class StatListRenderer extends CellRenderer
    {
       
-      [Inject]
+      [Inject] // added
       public static var rankService:RankService;
       
       protected var nicon:DisplayObject;

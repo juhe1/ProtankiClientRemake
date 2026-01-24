@@ -20,7 +20,7 @@ package alternativa.tanks.models.weapon.rocketlauncher.sfx
    public class RocketFlightEffect extends PooledObject implements AutoClosable
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private static const FLAMES_COUNT:int = 8;

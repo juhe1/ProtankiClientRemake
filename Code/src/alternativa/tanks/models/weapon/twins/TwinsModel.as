@@ -24,10 +24,10 @@ package alternativa.tanks.models.weapon.twins
    public class TwinsModel extends TwinsModelBase implements ITwinsModelBase, ObjectLoadListener, IWeaponModel, TwinsWeaponCallback, BattleEventListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
       private var weapons:Dictionary = new Dictionary();

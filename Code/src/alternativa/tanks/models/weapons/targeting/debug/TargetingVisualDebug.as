@@ -10,7 +10,7 @@ package alternativa.tanks.models.weapons.targeting.debug
    public class TargetingVisualDebug
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private static var targetingDebug:ConsoleVarInt = new ConsoleVarInt("targeting_debug",0,0,1);

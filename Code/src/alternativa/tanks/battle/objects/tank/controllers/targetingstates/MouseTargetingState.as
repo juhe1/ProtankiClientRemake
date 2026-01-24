@@ -14,16 +14,16 @@ package alternativa.tanks.battle.objects.tank.controllers.targetingstates
    public class MouseTargetingState implements TargetingState, TargetingInputListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var inputService:TargetingInputManager;
       
-      [Inject]
+      [Inject] // added
       public static var localTankInfoService:LocalTankInfoService;
       
-      [Inject]
+      [Inject] // added
       public static var settingsService:ISettingsService;
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
       private static const MOUSE_SENS_MUL:Number = 0.0001;

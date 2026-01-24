@@ -12,7 +12,7 @@ package alternativa.tanks.models.sfx.bcsh
    public class BCSHModel extends BCSHModelBase implements IBCSHModelBase, ObjectLoadListener, IBcsh
    {
       
-      [Inject]
+      [Inject] // added
       public static var logService:LogService;
       
       public function BCSHModel()

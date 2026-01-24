@@ -20,13 +20,13 @@ package alternativa.tanks.models.tank.ultimate.juggernaut
    public class JuggernautUltimateModel extends JuggernautUltimateEffectModelBase implements IJuggernautUltimateEffectModelBase, ObjectLoadListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
-      [Inject]
+      [Inject] // added
       public static var inventorySoundService:InventorySoundService;
       
-      [Inject]
+      [Inject] // added
       public static var battleInfoService:IBattleInfoService;
       
       public function JuggernautUltimateModel()

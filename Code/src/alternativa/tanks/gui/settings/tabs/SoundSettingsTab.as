@@ -14,7 +14,7 @@ package alternativa.tanks.gui.settings.tabs
    public class SoundSettingsTab extends SettingsTabView
    {
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
       private var volumeLevel:Slider;

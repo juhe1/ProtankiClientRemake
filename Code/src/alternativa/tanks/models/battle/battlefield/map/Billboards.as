@@ -9,7 +9,7 @@ package alternativa.tanks.models.battle.battlefield.map
    public class Billboards
    {
       
-      [Inject]
+      [Inject] // added
       public static var textureMaterialRegistry:TextureMaterialRegistry;
       
       private static const BILLBOARD_MATERIAL_NAME:String = "display";

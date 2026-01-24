@@ -9,10 +9,10 @@ package alternativa.tanks.models.tank.support
    public class AutoExitSupport implements AutoClosable, BattleEventListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
-      [Inject]
+      [Inject] // added
       public static var autoEnterExitService:AutomaticEnterExitService;
       
       private var tank:Tank;

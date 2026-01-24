@@ -11,7 +11,7 @@ package alternativa.tanks.models.weapons.shell.states
    public class ShellStates extends PooledObject
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private var states:Vector.<ShellState> = new Vector.<ShellState>();

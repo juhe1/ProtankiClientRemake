@@ -8,7 +8,7 @@ package alternativa.tanks.models.controlpoints.sfx
    public class BeamEffects
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private var effects:Dictionary = new Dictionary();

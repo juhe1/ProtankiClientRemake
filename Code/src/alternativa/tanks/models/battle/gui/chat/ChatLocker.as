@@ -7,7 +7,7 @@ package alternativa.tanks.models.battle.gui.chat
    public class ChatLocker implements AutoClosable
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleInputLockService:BattleInputService;
       
       private var chat:BattleChat;

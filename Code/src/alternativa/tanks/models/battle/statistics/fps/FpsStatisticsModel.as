@@ -24,19 +24,19 @@ package alternativa.tanks.models.battle.statistics.fps
    public class FpsStatisticsModel extends FpsStatisticsModelBase implements IFpsStatisticsModelBase, ObjectLoadListener, ObjectUnloadListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
-      [Inject]
+      [Inject] // added
       public static var settingsService:ISettingsService;
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
-      [Inject]
+      [Inject] // added
       public static var lobbyLayoutService:LobbyLayoutService;
       
       private const HARDWARE_BIT:int = 1 << 0;

@@ -25,22 +25,22 @@ package alternativa.tanks.camera.controllers.spectator
    public class PlayerCamera implements KeyboardHandler, BattleEventListener, AutoClosable
    {
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
-      [Inject]
+      [Inject] // added
       public static var tankUsersRegistry:TankUsersRegistry;
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
-      [Inject]
+      [Inject] // added
       public static var contextMenuService:IContextMenuService;
       
-      [Inject]
+      [Inject] // added
       public static var bonusRegionService:IBonusRegionService;
       
       private var focusedUser:Tank;

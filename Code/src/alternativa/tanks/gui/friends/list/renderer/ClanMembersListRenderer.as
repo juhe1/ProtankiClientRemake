@@ -23,16 +23,16 @@ package alternativa.tanks.gui.friends.list.renderer
    public class ClanMembersListRenderer extends CellRenderer
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleLinkActivatorService:IBattleLinkActivatorService;
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
-      [Inject]
+      [Inject] // added
       public static var contextMenuService:IContextMenuService;
       
-      [Inject]
+      [Inject] // added
       public static var battleInfoService:IBattleInfoService;
       
       public static const ROW_HEIGHT:int = 18;

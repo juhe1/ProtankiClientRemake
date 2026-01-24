@@ -13,7 +13,7 @@ package alternativa.tanks.models.weapons.targeting.processor
    public class CommonDirectionProcessor
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private const COS_ALMOST_ZERO_ANGLE:Number = 0.9999;

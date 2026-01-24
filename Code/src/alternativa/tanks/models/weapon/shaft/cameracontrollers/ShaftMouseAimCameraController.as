@@ -21,16 +21,16 @@ package alternativa.tanks.models.weapon.shaft.cameracontrollers
    public class ShaftMouseAimCameraController implements CameraController
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
-      [Inject]
+      [Inject] // added
       public static var dispay:IDisplay;
       
-      [Inject]
+      [Inject] // added
       public static var localTankInfoService:LocalTankInfoService;
       
-      [Inject]
+      [Inject] // added
       public static var settings:ISettingsService;
       
       private static const ALLOWED_DIFFERENCE_ANGLE:Number = 15;

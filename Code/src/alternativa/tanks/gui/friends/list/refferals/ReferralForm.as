@@ -21,19 +21,19 @@ package alternativa.tanks.gui.friends.list.refferals
    public class ReferralForm extends Sprite implements IFriendsListState
    {
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
-      [Inject]
+      [Inject] // added
       public static var referralService:ReferralsService;
       
-      [Inject]
+      [Inject] // added
       public static var partnerService:IPartnerService;
       
-      [Inject]
+      [Inject] // added
       public static var newReferralsNotifierService:NewReferralsNotifierService;
       
-      [Inject]
+      [Inject] // added
       public static var referralsButtonHelperService:ReferralsButtonHelperService;
       
       private static const MARGIN:int = 9;

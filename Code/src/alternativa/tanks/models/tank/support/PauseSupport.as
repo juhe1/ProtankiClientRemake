@@ -33,34 +33,34 @@ package alternativa.tanks.models.tank.support
    public class PauseSupport implements AutoClosable, BattleEventListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
-      [Inject]
+      [Inject] // added
       public static var battleInputService:BattleInputService;
       
-      [Inject]
+      [Inject] // added
       public static var lobbyLayoutService:ILobbyLayoutService;
       
-      [Inject]
+      [Inject] // added
       public static var dialogWindowsDispatcherService:IDialogWindowsDispatcherService;
       
-      [Inject]
+      [Inject] // added
       public static var dialogsService:IDialogsService;
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
-      [Inject]
+      [Inject] // added
       public static var battleGUIService:BattleGUIService;
       
-      [Inject]
+      [Inject] // added
       public static var fullscreenStateService:FullscreenStateService;
       
-      [Inject]
+      [Inject] // added
       public static var keysBindingService:KeysBindingService;
       
       private var _localUser:IGameObject;

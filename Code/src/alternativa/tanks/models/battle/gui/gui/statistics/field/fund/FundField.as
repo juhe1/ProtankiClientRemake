@@ -10,7 +10,7 @@ package alternativa.tanks.models.battle.gui.gui.statistics.field.fund
    public class FundField extends IconField
    {
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
       private var diamond:Diamond = new Diamond();

@@ -11,7 +11,6 @@ package alternativa.tanks.view.battlelist
    import alternativa.tanks.view.battlelist.forms.BattleListRenderer;
    import alternativa.tanks.view.battlelist.help.LockedMapsHelper;
    import alternativa.tanks.view.battlelist.modefilter.BattleModeCheckBox;
-   import alternativa.types.Long;
    import controls.BigButton;
    import controls.TankWindowInner;
    import controls.base.DefaultButtonBase;
@@ -114,7 +113,7 @@ package alternativa.tanks.view.battlelist
       
       private var iconWidth:int = 100;
       
-      private var lastSelectedBattleId:Long;
+      private var lastSelectedBattleId:String;
       
       public function BattleListView()
       {
@@ -464,7 +463,7 @@ package alternativa.tanks.view.battlelist
          return param1.teamParams.usersRed.length == param1.params.createParams.maxPeopleCount && param1.teamParams.usersBlue.length == param1.params.createParams.maxPeopleCount;
       }
       
-      public function removeItem(param1:Long) : void
+      public function removeItem(param1:String) : void
       {
          var _loc2_:int = this.getItemIndex(param1);
          if(_loc2_ >= 0)
@@ -474,7 +473,7 @@ package alternativa.tanks.view.battlelist
          }
       }
       
-      public function setSelect(param1:Long) : void
+      public function setSelect(param1:String) : void
       {
          var _loc2_:int = this.getItemIndex(param1);
          if(_loc2_ >= 0)
@@ -494,7 +493,7 @@ package alternativa.tanks.view.battlelist
          this._battleList.drawNow();
       }
       
-      public function updateSuspicious(param1:Long, param2:BattleSuspicionLevel) : void
+      public function updateSuspicious(param1:String, param2:BattleSuspicionLevel) : void
       {
          var _loc4_:Object = null;
          var _loc5_:BattleListItemParams = null;
@@ -510,7 +509,7 @@ package alternativa.tanks.view.battlelist
          }
       }
       
-      public function updateUsersCount(param1:Long) : void
+      public function updateUsersCount(param1:String) : void
       {
          var _loc3_:Object = null;
          var _loc4_:BattleListItemParams = null;
@@ -525,7 +524,7 @@ package alternativa.tanks.view.battlelist
          }
       }
       
-      public function updateBattleName(param1:Long) : void
+      public function updateBattleName(param1:String) : void
       {
          var _loc2_:int = this.getItemIndex(param1);
          if(_loc2_ >= 0)
@@ -535,7 +534,7 @@ package alternativa.tanks.view.battlelist
          }
       }
       
-      public function swapTeams(param1:Long) : void
+      public function swapTeams(param1:String) : void
       {
          var _loc3_:Object = null;
          var _loc4_:BattleListItemParams = null;
@@ -573,7 +572,7 @@ package alternativa.tanks.view.battlelist
          this.sortBattleList();
       }
       
-      public function getItemIndex(param1:Long) : int
+      public function getItemIndex(param1:String) : int
       {
          var _loc4_:Object = null;
          var _loc2_:int = int(this._dataProvider.length);
@@ -602,7 +601,7 @@ package alternativa.tanks.view.battlelist
       
       private function onBattleListItemClick(param1:ListEvent) : void
       {
-         var _loc2_:Long = BattleListItemParams(param1.item.dat).id;
+         var _loc2_:String = BattleListItemParams(param1.item.dat).id;
          if(_loc2_ != this.lastSelectedBattleId)
          {
             this.lastSelectedBattleId = _loc2_;

@@ -8,10 +8,10 @@ package alternativa.tanks.models.battle.gui.chat.cmdhandlers
    public class UnblockCommandHandler implements IChatCommandHandler
    {
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
-      [Inject]
+      [Inject] // added
       public static var blockUserService:IBlockUserService;
       
       private var output:BattleChatOutput;

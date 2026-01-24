@@ -16,7 +16,7 @@ package alternativa.tanks.sfx.damageindicator
    public class DamageIndicatorEffect extends PooledObject implements GraphicEffect
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private static const POP_HEIGHT:Number = 100;

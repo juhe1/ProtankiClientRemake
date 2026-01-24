@@ -7,7 +7,7 @@ package alternativa.tanks.models.tank
    public class TankDataValidatorWrapper implements AutoClosable
    {
       
-      [Inject]
+      [Inject] // added
       public static var dataValidator:DataValidator;
       
       private var dataUnitValidator:DataUnitValidator;

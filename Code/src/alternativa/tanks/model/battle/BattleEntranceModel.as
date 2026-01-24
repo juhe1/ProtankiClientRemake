@@ -73,7 +73,7 @@ package alternativa.tanks.model.battle
       {
          trackerService.trackEvent("battleList",param1 != null ? "StartTeamBattle" : "StartDMBattle","");
          var _loc2_:BattleCreateParameters = BattleParams(object.adapt(BattleParams)).getConstructor().params;
-         userBattleSelectActionsService.enterToBattle(_loc2_.battleMode,object.id);
+         userBattleSelectActionsService.enterToBattle(_loc2_.battleMode,object.name);
          if(_loc2_.parkourMode)
          {
             putData(BattleTeam,param1);

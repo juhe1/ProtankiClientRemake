@@ -73,10 +73,10 @@ package alternativa.tanks.models.weapon.shaft
    public class ShaftWeapon extends BattleRunnerProvider implements Weapon, LocalWeapon, LogicUnit, IShaftWeapon
    {
       
-      [Inject]
+      [Inject] // added
       public static var targetingModeService:TargetingModeService;
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
       private static const Cross:Class = ShaftWeapon_Cross;

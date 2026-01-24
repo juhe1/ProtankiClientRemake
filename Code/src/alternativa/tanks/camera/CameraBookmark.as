@@ -6,7 +6,7 @@ package alternativa.tanks.camera
    public class CameraBookmark
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       public var position:Vector3 = new Vector3();

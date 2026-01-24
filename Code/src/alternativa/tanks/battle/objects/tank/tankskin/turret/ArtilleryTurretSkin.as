@@ -11,7 +11,7 @@ package alternativa.tanks.battle.objects.tank.tankskin.turret
    public class ArtilleryTurretSkin extends TurretSkin
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       public function ArtilleryTurretSkin(param1:Tanks3DSResource)

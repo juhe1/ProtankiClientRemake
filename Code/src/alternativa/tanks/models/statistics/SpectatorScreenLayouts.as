@@ -19,22 +19,22 @@ package alternativa.tanks.models.statistics
    public class SpectatorScreenLayouts implements AutoClosable
    {
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
-      [Inject]
+      [Inject] // added
       public static var panelView:IPanelView;
       
-      [Inject]
+      [Inject] // added
       public static var settingsService:ISettingsService;
       
-      [Inject]
+      [Inject] // added
       public static var spectatorService:SpectatorService;
       
-      [Inject]
+      [Inject] // added
       public static var battleInput:BattleInputService;
       
-      [Inject]
+      [Inject] // added
       public static var guiService:BattleGUIService;
       
       private static const LAYOUT_SWITCH_KEY:uint = Keyboard.BACKSLASH;

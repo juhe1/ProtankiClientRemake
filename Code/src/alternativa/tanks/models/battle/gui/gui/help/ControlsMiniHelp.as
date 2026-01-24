@@ -11,10 +11,10 @@ package alternativa.tanks.models.battle.gui.gui.help
    public class ControlsMiniHelp extends Sprite
    {
       
-      [Inject]
+      [Inject] // added
       public static var helpService:IHelpService;
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
       private var normalHelp:Bitmap;

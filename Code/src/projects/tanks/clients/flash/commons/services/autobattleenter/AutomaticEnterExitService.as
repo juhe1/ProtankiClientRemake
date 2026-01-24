@@ -12,13 +12,13 @@ package projects.tanks.clients.flash.commons.services.autobattleenter
    public class AutomaticEnterExitService extends EventDispatcher
    {
       
-      [Inject]
+      [Inject] // added
       public static var lobbyLayoutService:ILobbyLayoutService;
       
-      [Inject]
+      [Inject] // added
       public static var logService:LogService;
       
-      [Inject]
+      [Inject] // added
       public static var paymentDisplayService:PaymentDisplayService;
       
       private var enabledBattle:Boolean;

@@ -2836,13 +2836,6 @@ package projects.tanks.clients.fp10.models.battlefieldmodelflash
          {
             return BonusRegionPacketHandler.bonusRegionService;
          });
-         osgi.injectService(IDisplay,function(param1:Object):void
-         {
-            GoldPacketHandler.display = IDisplay(param1);
-         },function():IDisplay
-         {
-            return GoldPacketHandler.display;
-         });
          //osgi.injectService(MatchmakingFormService,function(param1:Object):void
          //{
          //   MatchmakingContinueBattleModel.matchmakingFormService = MatchmakingFormService(param1);

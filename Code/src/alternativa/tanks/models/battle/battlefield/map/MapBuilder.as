@@ -40,13 +40,13 @@ package alternativa.tanks.models.battle.battlefield.map
    public class MapBuilder implements AutoClosable
    {
       
-      [Inject]
+      [Inject] // added
       public static var dataValidator:DataValidator;
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
-      [Inject]
+      [Inject] // added
       public static var commandService:CommandService;
       
       private static const conMapDelay:ConsoleVarInt = new ConsoleVarInt("map_delay",0,0,600);

@@ -20,13 +20,13 @@ package alternativa.tanks.models.tank.support
    public class TankReloaderSupport implements AutoClosable, BattleEventListener, LogicUnit
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private static const ADDITIONAL_DELAY_TIME_MS:int = 900;

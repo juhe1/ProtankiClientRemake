@@ -27,7 +27,7 @@ package alternativa.tanks.models.weapons.shell
    public class Shell extends PooledObject implements PhysicsController, Renderer, PhysicsInterpolator, IRayCollisionFilter
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       protected static const thousandth:EncryptedInt = new EncryptedIntImpl(1000);

@@ -35,37 +35,37 @@ package alternativa.tanks.models.battle.gui.chat
    public class BattleChat extends Sprite implements ShowChat
    {
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
-      [Inject]
+      [Inject] // added
       public static var battleInputLockService:BattleInputService;
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
-      [Inject]
+      [Inject] // added
       public static var blockUserService:IBlockUserService;
       
-      [Inject]
+      [Inject] // added
       public static var battleGuiService:BattleGUIService;
       
-      [Inject]
+      [Inject] // added
       public static var battleInfoService:IBattleInfoService;
       
-      [Inject]
+      [Inject] // added
       public static var userPropertiesService:IUserPropertiesService;
       
-      [Inject]
+      [Inject] // added
       public static var userInfoService:BattleUserInfoService;
       
-      [Inject]
+      [Inject] // added
       public static var fullscreenService:FullscreenService;
       
-      [Inject]
+      [Inject] // added
       public static var targetingInputManager:TargetingInputManager;
       
       private const CMD_BLOCK:String = "/block";

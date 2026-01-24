@@ -22,22 +22,22 @@ package alternativa.tanks.models.weapon.shared
    public class SimpleWeaponController implements BattleEventListener, TargetingInputListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
-      [Inject]
+      [Inject] // added
       public static var inputManager:TargetingInputManager;
       
-      [Inject]
+      [Inject] // added
       public static var targetingModeService:TargetingModeService;
       
-      [Inject]
+      [Inject] // added
       public static var settingsService:ISettingsService;
       
-      [Inject]
+      [Inject] // added
       public static var keysBindingService:KeysBindingService;
       
       private var weapon:LocalWeapon;

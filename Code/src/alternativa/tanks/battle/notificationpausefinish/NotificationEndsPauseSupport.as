@@ -15,16 +15,16 @@ package alternativa.tanks.battle.notificationpausefinish
    public class NotificationEndsPauseSupport implements AutoClosable, BattleEventListener, LogicUnit
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
-      [Inject]
+      [Inject] // added
       public static var dialogWindowsDispatcherService:IDialogWindowsDispatcherService;
       
-      [Inject]
+      [Inject] // added
       public static var lobbyLayoutService:ILobbyLayoutService;
       
       private static const NOTIFICATION_ENDS_PAUSE_TIME_IN_SEC:int = 60;

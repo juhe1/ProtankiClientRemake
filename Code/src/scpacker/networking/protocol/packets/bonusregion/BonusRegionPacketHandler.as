@@ -26,7 +26,7 @@ package scpacker.networking.protocol.packets.bonusregion
    
    public class BonusRegionPacketHandler extends AbstractPacketHandler
    {
-      [Inject]
+      [Inject] // added
       public static var bonusRegionService:IBonusRegionService;
       
       private var bonusRegionsModel:BonusRegionsModel;

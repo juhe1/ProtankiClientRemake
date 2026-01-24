@@ -19,7 +19,7 @@ package alternativa.tanks.models.weapon.smoky.sfx
    public class SmokyEffects implements ISmokyEffects
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private var soundManager:ISoundManager;

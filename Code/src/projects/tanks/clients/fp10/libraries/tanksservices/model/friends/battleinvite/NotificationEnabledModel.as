@@ -12,7 +12,7 @@ package projects.tanks.clients.fp10.libraries.tanksservices.model.friends.battle
    public class NotificationEnabledModel extends NotificationEnabledModelBase implements INotificationEnabledModelBase, ObjectLoadListener, ObjectUnloadListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleInviteService:IBattleInviteService;
       
       public function NotificationEnabledModel()

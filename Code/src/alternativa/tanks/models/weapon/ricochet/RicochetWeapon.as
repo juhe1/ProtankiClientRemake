@@ -23,7 +23,7 @@ package alternativa.tanks.models.weapon.ricochet
    public class RicochetWeapon extends BattleRunnerProvider implements Weapon, LogicUnit
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private static var shotId:int;

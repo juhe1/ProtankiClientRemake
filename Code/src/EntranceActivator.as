@@ -29,6 +29,7 @@ package
    import platform.clients.fp10.libraries.alternativapartners.osgi.PartnersActivator;
    import platform.clients.fp10.libraries.alternativapartnersflash.Activator;
    import alternativa.init.BattleSelectModelActivator;
+   import alternativa.init.ChatModelActivator;
    
    public class EntranceActivator implements IBundleActivator
    {
@@ -66,6 +67,7 @@ package
          new projects.tanks.clients.fp10.models.tanksusermodelflash.Activator().start(osgi);
          new projects.tanks.clients.fp10.models.tanksbattleselectmodelflash.Activator().start(osgi);
          new projects.tanks.clients.flash.resources.osgi.Activator().start(osgi);
+         new ChatModelActivator().start(param1);
          //new projects.tanks.clients.flash.resources.Activator().start(osgi);
          new BattleSelectModelActivator().start(osgi);
          new TanksFormsActivator().start(osgi);

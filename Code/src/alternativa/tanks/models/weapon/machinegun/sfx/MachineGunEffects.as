@@ -17,7 +17,7 @@ package alternativa.tanks.models.weapon.machinegun.sfx
    public class MachineGunEffects
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private static const HIT_EFFECT_INTERVAL:Number = 0.1;

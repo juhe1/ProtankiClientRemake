@@ -10,10 +10,10 @@ package alternativa.tanks.battle.objects.tank.controllers
    public class LocalShaftController extends LocalTurretController
    {
       
-      [Inject]
+      [Inject] // added
       public static var inputManager:TargetingInputManager;
       
-      [Inject]
+      [Inject] // added
       public static var targetingModeService:TargetingModeService;
       
       private var isAimMode:Boolean = false;

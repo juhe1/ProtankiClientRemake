@@ -14,7 +14,7 @@ package alternativa.tanks.models.weapon.turret
    public class RotatingTurretModel extends RotatingTurretModelBase implements IRotatingTurretModelBase, ObjectLoadListener, InitTankPart, TurretStateSender
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       public function RotatingTurretModel()

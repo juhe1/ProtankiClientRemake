@@ -147,27 +147,27 @@ package projects.tanks.clients.fp10.libraries.tanksservicesflash
          //{
          //   return NotificationEnabledModel.battleInviteService;
          //});
-         //osgi.injectService(IFriendInfoService,function(param1:Object):void
-         //{
-         //   FriendsIncomingModel.friendsInfoService = IFriendInfoService(param1);
-         //},function():IFriendInfoService
-         //{
-         //   return FriendsIncomingModel.friendsInfoService;
-         //});
-         //osgi.injectService(IFriendInfoService,function(param1:Object):void
-         //{
-         //   FriendsIncomingNotificatorModel.friendsInfoService = IFriendInfoService(param1);
-         //},function():IFriendInfoService
-         //{
-         //   return FriendsIncomingNotificatorModel.friendsInfoService;
-         //});
-         //osgi.injectService(LogService,function(param1:Object):void
-         //{
-         //   FriendsIncomingNotificatorModel.logService = LogService(param1);
-         //},function():LogService
-         //{
-         //   return FriendsIncomingNotificatorModel.logService;
-         //});
+         osgi.injectService(IFriendInfoService,function(param1:Object):void
+         {
+            FriendsIncomingModel.friendsInfoService = IFriendInfoService(param1);
+         },function():IFriendInfoService
+         {
+            return FriendsIncomingModel.friendsInfoService;
+         });
+         osgi.injectService(IFriendInfoService,function(param1:Object):void
+         {
+            FriendsIncomingNotificatorModel.friendsInfoService = IFriendInfoService(param1);
+         },function():IFriendInfoService
+         {
+            return FriendsIncomingNotificatorModel.friendsInfoService;
+         });
+         osgi.injectService(LogService,function(param1:Object):void
+         {
+            FriendsIncomingNotificatorModel.logService = LogService(param1);
+         },function():LogService
+         {
+            return FriendsIncomingNotificatorModel.logService;
+         });
          osgi.injectService(IUserInfoService,function(param1:Object):void
          {
             UserNotifierModel.userInfoService = IUserInfoService(param1);
@@ -716,7 +716,7 @@ package projects.tanks.clients.fp10.libraries.tanksservicesflash
          //   return PieceWordDeclensionUtil.localeService;
          //});
          modelRegister = osgi.getService(ModelRegistry) as ModelRegistry;
-         //modelRegister.add(new FriendsModel());
+         modelRegister.add(new FriendsModel());
          modelRegisterAdapt = osgi.getService(ModelRegistry) as ModelRegistry;
          modelRegisterAdapt.registerAdapt(IFriends,IFriendsAdapt);
          modelRegisterAdapt.registerEvents(IFriends,IFriendsEvents);

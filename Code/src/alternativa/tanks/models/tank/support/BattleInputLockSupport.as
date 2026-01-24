@@ -10,7 +10,7 @@ package alternativa.tanks.models.tank.support
    public class BattleInputLockSupport implements AutoClosable
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleInputService:BattleInputService;
       
       private var user:IGameObject;

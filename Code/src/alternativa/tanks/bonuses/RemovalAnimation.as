@@ -8,7 +8,7 @@ package alternativa.tanks.bonuses
    public class RemovalAnimation extends PooledObject implements Renderer
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private static const REMOVAL_ALPHA_SPEED:Number = 0.001;

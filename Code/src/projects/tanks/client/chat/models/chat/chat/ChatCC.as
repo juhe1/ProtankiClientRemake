@@ -29,6 +29,8 @@ package projects.tanks.client.chat.models.chat.chat
       private var newname_11153__END:Boolean;
       
       private var newname_11154__END:Boolean;
+
+      private var _channels:Vector.<String>;
       
       public function ChatCC(param1:Boolean = false, param2:Boolean = false, param3:int = 0, param4:Boolean = false, param5:ChatModeratorLevel = null, param6:String = null, param7:Vector.<String> = null, param8:int = 0, param9:int = 0, param10:Boolean = false, param11:String = null, param12:Boolean = false, param13:Boolean = false)
       {
@@ -176,6 +178,16 @@ package projects.tanks.client.chat.models.chat.chat
       public function set typingSpeedAntifloodEnabled(param1:Boolean) : void
       {
          this.newname_11154__END = param1;
+      }
+
+      public function get channels() : Vector.<String>
+      {
+         return this._channels;
+      }
+      
+      public function set channels(param1:Vector.<String>) : void
+      {
+         this._channels = param1;
       }
       
       public function toString() : String

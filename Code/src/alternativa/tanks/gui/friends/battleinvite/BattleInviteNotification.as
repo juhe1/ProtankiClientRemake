@@ -20,19 +20,19 @@ package alternativa.tanks.gui.friends.battleinvite
    public class BattleInviteNotification extends Notification
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleInviteService:IBattleInviteService;
       
-      [Inject]
+      [Inject] // added
       public static var battleAlertService:IAlertService;
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
-      [Inject]
+      [Inject] // added
       public static var storageService:IStorageService;
       
-      [Inject]
+      [Inject] // added
       public static var dialogWindowsDispatcherService:IDialogWindowsDispatcherService;
       
       private static const DEFAULT_BUTTON_WIDTH:int = 96;

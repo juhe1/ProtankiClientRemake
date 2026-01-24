@@ -23,13 +23,13 @@ package alternativa.tanks.gui.shop.components.window
    public class ShopWindowNavigationBar extends DiscreteSprite
    {
       
-      [Inject]
+      [Inject] // added
       public static var paymentService:IPaymentService;
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
-      [Inject]
+      [Inject] // added
       public static var paymentWindowService:PaymentWindowService;
       
       private static const HEIGHT:int = 37;

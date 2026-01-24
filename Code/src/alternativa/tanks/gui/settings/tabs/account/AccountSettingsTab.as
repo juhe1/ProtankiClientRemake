@@ -42,19 +42,19 @@ package alternativa.tanks.gui.settings.tabs.account
    public class AccountSettingsTab extends SettingsTabView
    {
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
-      [Inject]
+      [Inject] // added
       public static var partnersService:IPartnerService;
       
-      [Inject]
+      [Inject] // added
       public static var socialNetworkService:ISocialNetworkPanelService;
       
-      [Inject]
+      [Inject] // added
       public static var validateService:IValidateService;
       
-      [Inject]
+      [Inject] // added
       public static var helperService:IHelpService;
       
       private static const HELPER_GROUP_KEY:String = "ChangeHelpers";

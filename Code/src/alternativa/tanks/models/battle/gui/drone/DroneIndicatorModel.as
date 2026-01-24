@@ -41,22 +41,22 @@ package alternativa.tanks.models.battle.gui.drone
    public class DroneIndicatorModel extends DroneIndicatorModelBase implements IDroneIndicatorModelBase, IDroneModel, TankEntityCreationListener, BattleEventListener, ObjectLoadListener, ObjectUnloadListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var inventoryPanel:IInventoryPanel;
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
-      [Inject]
+      [Inject] // added
       public static var textureMaterialRegistry:TextureMaterialRegistry;
       
-      [Inject]
+      [Inject] // added
       public static var settingsService:ISettingsService;
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
-      [Inject]
+      [Inject] // added
       public static var settingsChangedService:UserSettingsChangedService;
       
       private var localTank:Tank;

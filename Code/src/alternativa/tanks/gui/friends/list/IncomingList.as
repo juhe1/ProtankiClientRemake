@@ -15,13 +15,13 @@ package alternativa.tanks.gui.friends.list
    public class IncomingList extends FriendsList implements IFriendsListState
    {
       
-      [Inject]
+      [Inject] // added
       public static var friendInfoService:IFriendInfoService;
       
-      [Inject]
+      [Inject] // added
       public static var contextMenuService:IContextMenuService;
       
-      [Inject]
+      [Inject] // added
       public static var friendActionService:IFriendActionService;
       
       private var _rejectAllIncomingButton:IRejectAllIncomingButtonEnabled;

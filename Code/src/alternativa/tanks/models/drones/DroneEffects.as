@@ -10,7 +10,7 @@ package alternativa.tanks.models.drones
    public class DroneEffects implements AutoClosable
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private var sfxData:DroneSFXData;

@@ -10,10 +10,10 @@ package alternativa.tanks.models.statistics
    public class ControlsHelpSupport implements AutoClosable
    {
       
-      [Inject]
+      [Inject] // added
       public static var helpService:IHelpService;
       
-      [Inject]
+      [Inject] // added
       public static var lobbyLayoutService:ILobbyLayoutService;
       
       private var controlsHelper:ControlsHelper;

@@ -22,7 +22,7 @@ package alternativa.tanks.models.weapon.shaft.states
    public class ManualTargetingActivationState implements IShaftState
    {
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
       private var context:ManualTargetingContext;

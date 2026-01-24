@@ -15,10 +15,10 @@ package projects.tanks.clients.fp10.libraries.tanksservices.model.friends.accept
    public class FriendsAcceptedNotificatorModel extends FriendsAcceptedNotificatorModelBase implements IFriendsAcceptedNotificatorModelBase, ObjectLoadListener, ObjectUnloadListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var logService:LogService;
       
-      [Inject]
+      [Inject] // added
       public static var friendsInfoService:IFriendInfoService;
       
       public function FriendsAcceptedNotificatorModel()

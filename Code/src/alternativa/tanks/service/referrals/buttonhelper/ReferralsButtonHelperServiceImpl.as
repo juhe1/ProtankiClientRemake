@@ -10,7 +10,7 @@ package alternativa.tanks.service.referrals.buttonhelper
    public class ReferralsButtonHelperServiceImpl implements ReferralsButtonHelperService
    {
       
-      [Inject]
+      [Inject] // added
       public static var partnerService:IPartnerService;
       
       public function ReferralsButtonHelperServiceImpl()

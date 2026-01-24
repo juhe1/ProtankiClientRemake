@@ -35,19 +35,19 @@ package alternativa.tanks.models.tank.support
    public class SuicideSupport implements AutoClosable, BattleEventListener, LogicUnit
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
-      [Inject]
+      [Inject] // added
       public static var battleInputLockService:BattleInputService;
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
-      [Inject]
+      [Inject] // added
       public static var keysBindingService:KeysBindingService;
       
       private static const SUICIDE_PING_DELAY:int = 1000;

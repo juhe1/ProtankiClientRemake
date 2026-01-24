@@ -10,7 +10,7 @@ package alternativa.tanks.models.tank.rankup
    public class ScheduledTankRankChangeEffect implements BattleEventListener, AutoClosable
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
       private var user:IGameObject;

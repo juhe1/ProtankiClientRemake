@@ -13,7 +13,7 @@ package alternativa.tanks.models.weapons.targeting.direction.sector
    public class TargetingSectorsCalculator
    {
       
-      [Inject]
+      [Inject] // added
       public static var tankUsersRegistry:TankUsersRegistry;
       
       private var upDirection:Vector3 = new Vector3();

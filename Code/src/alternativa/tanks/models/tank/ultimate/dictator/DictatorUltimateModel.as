@@ -16,13 +16,13 @@ package alternativa.tanks.models.tank.ultimate.dictator
    public class DictatorUltimateModel extends DictatorUltimateModelBase implements IDictatorUltimateModelBase, ObjectLoadListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var inventorySoundService:InventorySoundService;
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
-      [Inject]
+      [Inject] // added
       public static var textureMaterialRegistry:TextureMaterialRegistry;
       
       public function DictatorUltimateModel()

@@ -6,7 +6,7 @@ package alternativa.tanks.camera
    public class ActivatedCameraConroller implements CameraController
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       public function ActivatedCameraConroller()

@@ -13,7 +13,7 @@ package alternativa.tanks.models.battle.gui.chat
    public class BattleChatLine extends MessageLine
    {
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
       private var output:Label;

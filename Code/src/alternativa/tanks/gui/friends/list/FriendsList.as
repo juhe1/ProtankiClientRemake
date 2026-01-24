@@ -13,10 +13,10 @@ package alternativa.tanks.gui.friends.list
    public class FriendsList extends Sprite
    {
       
-      [Inject]
+      [Inject] // added
       public static var friendInfoService:IFriendInfoService;
       
-      [Inject]
+      [Inject] // added
       public static var userInfoService:IUserInfoService;
       
       protected var _dataProvider:FriendsDataProvider;

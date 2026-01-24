@@ -15,7 +15,7 @@ package alternativa.tanks.models.weapons.common
    public class CommonLocalWeapon extends BattleRunnerProvider implements Weapon, LocalWeapon, LogicUnit
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       protected static const gunParams:AllGlobalGunParams = new AllGlobalGunParams();

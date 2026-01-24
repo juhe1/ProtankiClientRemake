@@ -14,16 +14,16 @@ package alternativa.tanks.gui.friends.list.dataprovider
    public class FriendsDataProvider extends DataProvider
    {
       
-      [Inject]
+      [Inject] // added
       public static var friendInfoService:IFriendInfoService;
       
-      [Inject]
+      [Inject] // added
       public static var userInfoService:IUserInfoService;
       
-      [Inject]
+      [Inject] // added
       public static var battleInfoService:IBattleInfoService;
       
-      [Inject]
+      [Inject] // added
       public static var userPropertiesService:IUserPropertiesService;
       
       public static const IS_NEW:String = "isNew";

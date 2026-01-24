@@ -6,7 +6,7 @@ package alternativa.tanks.models.battle.ctf
    public class FlagPickupTimeoutTask implements LogicUnit
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private var callback:ICTFModel;

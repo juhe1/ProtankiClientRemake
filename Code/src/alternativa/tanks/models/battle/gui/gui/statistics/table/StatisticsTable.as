@@ -21,13 +21,13 @@ package alternativa.tanks.models.battle.gui.gui.statistics.table
    public class StatisticsTable extends Sprite
    {
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
-      [Inject]
+      [Inject] // added
       public static var inputManager:TargetingInputManager;
       
       private var redTeamView:ViewStatistics;

@@ -15,10 +15,10 @@ package alternativa.tanks.models.battle.battlefield
    public class SpectatorUserTitleRenderer implements UserTitleRenderer, BattleEventListener, AutoClosable
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
-      [Inject]
+      [Inject] // added
       public static var spectatorService:SpectatorService;
       
       private var battleEventSupport:BattleEventSupport;

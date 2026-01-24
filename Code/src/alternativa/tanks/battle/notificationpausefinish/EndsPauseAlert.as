@@ -19,13 +19,13 @@ package alternativa.tanks.battle.notificationpausefinish
    public class EndsPauseAlert extends DialogWindow
    {
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
-      [Inject]
+      [Inject] // added
       public static var blurService:IBlurService;
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
       private static const TIME_REPLACE_PATTERN:String = "{time}";

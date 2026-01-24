@@ -13,10 +13,10 @@ package alternativa.tanks.models.tank.spawn.spawnhandlers
    public class LocalTankFirstTimeSpawner implements AutoClosable, BattleEventListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleReadinessService:BattleReadinessService;
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
       private var user:IGameObject;

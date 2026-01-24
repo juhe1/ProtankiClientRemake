@@ -10,7 +10,7 @@ package alternativa.tanks.models.battle.gui.group
    public class MatchmakingGroupInfoModel extends MatchmakingGroupInfoModelBase implements IMatchmakingGroupInfoModelBase, ObjectLoadListener, ObjectUnloadListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var groupInfoService:IGroupInfoService;
       
       public function MatchmakingGroupInfoModel()

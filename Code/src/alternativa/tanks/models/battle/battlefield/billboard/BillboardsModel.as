@@ -10,7 +10,7 @@ package alternativa.tanks.models.battle.battlefield.billboard
    public class BillboardsModel extends BillboardsModelBase implements IBillboardsModelBase, ObjectLoadPostListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       public function BillboardsModel()

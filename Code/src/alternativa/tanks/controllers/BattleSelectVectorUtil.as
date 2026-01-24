@@ -1,7 +1,6 @@
 package alternativa.tanks.controllers
 {
    import alternativa.tanks.controllers.battlelist.BattleListItemParams;
-   import alternativa.types.Long;
    import projects.tanks.client.battleselect.model.battle.entrance.user.BattleInfoUser;
    
    public class BattleSelectVectorUtil
@@ -49,7 +48,7 @@ package alternativa.tanks.controllers
          }
       }
       
-      public static function deleteElementInLongsVector(param1:Vector.<Long>, param2:Long) : void
+      public static function deleteElementInLongsVector(param1:Vector.<String>, param2:String) : void
       {
          var _loc3_:int = int(param1.length);
          var _loc4_:int = 0;
@@ -65,7 +64,7 @@ package alternativa.tanks.controllers
          }
       }
       
-      public static function deleteElementInVector(param1:Vector.<BattleListItemParams>, param2:Long) : void
+      public static function deleteElementInVector(param1:Vector.<BattleListItemParams>, param2:String) : void
       {
          var _loc3_:int = int(param1.length);
          var _loc4_:int = 0;
@@ -81,7 +80,7 @@ package alternativa.tanks.controllers
          }
       }
       
-      public static function deleteElementInArray(param1:Array, param2:Long) : void
+      public static function deleteElementInArray(param1:Array, param2:String) : void
       {
          var _loc3_:int = int(param1.length);
          var _loc4_:int = 0;
@@ -97,7 +96,7 @@ package alternativa.tanks.controllers
          }
       }
       
-      public static function findElementInVector(param1:Vector.<BattleListItemParams>, param2:Long) : BattleListItemParams
+      public static function findElementInVector(param1:Vector.<BattleListItemParams>, param2:String) : BattleListItemParams
       {
          var _loc3_:BattleListItemParams = null;
          var _loc4_:int = int(param1.length);
@@ -114,9 +113,9 @@ package alternativa.tanks.controllers
          return _loc3_;
       }
       
-      public static function containsElementInVector(param1:Vector.<Long>, param2:Long) : Boolean
+      public static function containsElementInVector(param1:Vector.<String>, param2:String) : Boolean
       {
-         var _loc3_:Long = null;
+         var _loc3_:String = null;
          var _loc4_:int = int(param1.length);
          var _loc5_:int = 0;
          while(_loc5_ < _loc4_)

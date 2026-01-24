@@ -16,7 +16,7 @@ package alternativa.tanks.engine3d
    public class TextureMaterialRegistryBase implements TextureMaterialRegistry
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private var materialStat:CachedEntityStat = new CachedEntityStat();

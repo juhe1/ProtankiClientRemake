@@ -10,10 +10,10 @@ package alternativa.tanks.models.battle.gui.statistics
    public class DefaultLayout implements LayoutManager
    {
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
-      [Inject]
+      [Inject] // added
       public static var battleGUIService:BattleGUIService;
       
       private var deferred:Vector.<Widget> = new Vector.<Widget>();

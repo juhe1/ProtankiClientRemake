@@ -8,7 +8,7 @@ package alternativa.tanks.bonuses
    public class GroundSpawnRenderer extends PooledObject implements Renderer
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private static const SCALE_SPEED:Number = 0.005;

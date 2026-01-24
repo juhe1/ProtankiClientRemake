@@ -20,10 +20,10 @@ package alternativa.tanks.models.tank.killhandlers
    public class CommonTankDieHandler
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
       public function CommonTankDieHandler()

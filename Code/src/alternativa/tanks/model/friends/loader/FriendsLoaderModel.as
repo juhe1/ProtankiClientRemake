@@ -16,13 +16,13 @@ package alternativa.tanks.model.friends.loader
    public class FriendsLoaderModel extends FriendsLoaderModelBase implements IFriendsLoaderModelBase, ObjectLoadPostListener, ObjectUnloadListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
-      [Inject]
+      [Inject] // added
       public static var friendInfoService:IFriendInfoService;
       
-      [Inject]
+      [Inject] // added
       public static var buttonBarService:IButtonBarService;
       
       //[Inject]

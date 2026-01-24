@@ -1,68 +1,111 @@
+
 package projects.tanks.client.chat.types
 {
+   import projects.tanks.client.chat.models.chat.chat.ChatAddressMode;
+   
    public class ChatMessage
    {
-      private var _links:SetOfString;
       
-      private var _sourceUserStatus:UserStatus;
+      private var _addressMode:ChatAddressMode;
       
-      private var _system:Boolean;
+      private var _battleLinks:Vector.<BattleChatLink>;
       
-      private var _targetUserStatus:UserStatus;
+      private var _channel:String;
+      
+      private var _links:Vector.<String>;
+      
+      private var _messageType:MessageType;
+      
+      private var _sourceUser:UserStatus;
+      
+      private var _targetUser:UserStatus;
       
       private var _text:String;
       
-      private var _warning:Boolean;
+      private var _timePassedInSec:int;
       
-      public function ChatMessage(param1:SetOfString = null, param2:UserStatus = null, param3:Boolean = false, param4:UserStatus = null, param5:String = null, param6:Boolean = false)
+      public function ChatMessage(param1:ChatAddressMode = null, param2:Vector.<BattleChatLink> = null, param3:String = null, param4:Vector.<String> = null, param5:MessageType = null, param6:UserStatus = null, param7:UserStatus = null, param8:String = null, param9:int = 0)
       {
          super();
-         this._links = param1;
-         this._sourceUserStatus = param2;
-         this._system = param3;
-         this._targetUserStatus = param4;
-         this._text = param5;
-         this._warning = param6;
+         this._addressMode = param1;
+         this._battleLinks = param2;
+         this._channel = param3;
+         this._links = param4;
+         this._messageType = param5;
+         this._sourceUser = param6;
+         this._targetUser = param7;
+         this._text = param8;
+         this._timePassedInSec = param9;
       }
       
-      public function get links() : SetOfString
+      public function get addressMode() : ChatAddressMode
+      {
+         return this._addressMode;
+      }
+      
+      public function set addressMode(param1:ChatAddressMode) : void
+      {
+         this._addressMode = param1;
+      }
+      
+      public function get battleLinks() : Vector.<BattleChatLink>
+      {
+         return this._battleLinks;
+      }
+      
+      public function set battleLinks(param1:Vector.<BattleChatLink>) : void
+      {
+         this._battleLinks = param1;
+      }
+      
+      public function get channel() : String
+      {
+         return this._channel;
+      }
+      
+      public function set channel(param1:String) : void
+      {
+         this._channel = param1;
+      }
+      
+      public function get links() : Vector.<String>
       {
          return this._links;
       }
       
-      public function set links(param1:SetOfString) : void
+      public function set links(param1:Vector.<String>) : void
       {
          this._links = param1;
       }
       
-      public function get sourceUserStatus() : UserStatus
+      public function get messageType() : MessageType
       {
-         return this._sourceUserStatus;
+         return this._messageType;
       }
       
-      public function set sourceUserStatus(param1:UserStatus) : void
+      public function set messageType(param1:MessageType) : void
       {
-         this._sourceUserStatus = param1;
+         this._messageType = param1;
       }
       
-      public function get system() : Boolean
+      public function get sourceUser() : UserStatus
       {
-         return this._system;
+         return this._sourceUser;
       }
       
-      public function set system(param1:Boolean) : void
+      public function set sourceUser(param1:UserStatus) : void
       {
-         this._system = param1;
+         this._sourceUser = param1;
       }
       
-      public function get targetUserStatus() : UserStatus
+      public function get targetUser() : UserStatus
       {
-         return this._targetUserStatus;
+         return this._targetUser;
       }
       
-      public function set targetUserStatus(param1:UserStatus) : void
+      public function set targetUser(param1:UserStatus) : void
       {
-         this._targetUserStatus = param1;
+         this._targetUser = param1;
       }
       
       public function get text() : String
@@ -75,56 +118,29 @@ package projects.tanks.client.chat.types
          this._text = param1;
       }
       
-      public function get warning() : Boolean
+      public function get timePassedInSec() : int
       {
-         return this._warning;
+         return this._timePassedInSec;
       }
       
-      public function set warning(param1:Boolean) : void
+      public function set timePassedInSec(param1:int) : void
       {
-         this._warning = param1;
+         this._timePassedInSec = param1;
       }
       
       public function toString() : String
       {
-         return "";
+         var _loc1_:String = "ChatMessage [";
+         _loc1_ += "addressMode = " + this.addressMode + " ";
+         _loc1_ += "battleLinks = " + this.battleLinks + " ";
+         _loc1_ += "channel = " + this.channel + " ";
+         _loc1_ += "links = " + this.links + " ";
+         _loc1_ += "messageType = " + this.messageType + " ";
+         _loc1_ += "sourceUser = " + this.sourceUser + " ";
+         _loc1_ += "targetUser = " + this.targetUser + " ";
+         _loc1_ += "text = " + this.text + " ";
+         _loc1_ += "timePassedInSec = " + this.timePassedInSec + " ";
+         return _loc1_ + "]";
       }
-   }
-}
-
-import flash.utils.Dictionary;
-
-class SetOfString
-{
-   private var _dictionary:Dictionary = new Dictionary();
-   
-   public function SetOfString()
-   {
-      super();
-   }
-   
-   public function add(param1:String) : void
-   {
-      this._dictionary[param1] = true;
-   }
-   
-   public function contains(param1:String) : Boolean
-   {
-      return this._dictionary[param1];
-   }
-   
-   public function remove(param1:String) : Boolean
-   {
-      var _loc2_:Boolean = Boolean(this.contains(param1));
-      if(_loc2_)
-      {
-         delete this._dictionary[param1];
-      }
-      return _loc2_;
-   }
-   
-   public function get dictionary() : Dictionary
-   {
-      return this._dictionary;
    }
 }

@@ -19,10 +19,10 @@ package alternativa.tanks.models.weapons.shell
    public class ShellWeaponCommunicationModel extends ShellWeaponCommunicationModelBase implements IShellWeaponCommunicationModelBase, ShellWeaponCommunication
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       public function ShellWeaponCommunicationModel()

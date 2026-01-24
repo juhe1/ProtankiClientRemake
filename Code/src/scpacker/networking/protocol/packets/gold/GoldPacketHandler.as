@@ -20,9 +20,6 @@ package scpacker.networking.protocol.packets.gold
    {
       private var battleGoldBonusesModel:BattleGoldBonusesModel;
       private var goldBonusModel:GoldBonusesModel;
-
-      [Inject]
-      public static var display:IDisplay;
       
       public function GoldPacketHandler()
       {
@@ -30,33 +27,8 @@ package scpacker.networking.protocol.packets.gold
          this.id = 65;
          this.battleGoldBonusesModel = BattleGoldBonusesModel(modelRegistry.getModel(BattleGoldBonusesModelBase.modelId));
          this.goldBonusModel = GoldBonusesModel(modelRegistry.getModel(GoldBonusesModelBase.modelId));
-         display.stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
       }
 
-      private function onKeyDown(event:KeyboardEvent):void
-      {
-         if (event.keyCode == Keyboard.Y)
-         {
-            debugGold();
-         }
-      }
-
-      private function debugGold():void
-      {
-         var fakePacket:NotificationBonusContainsUidInPacket = new NotificationBonusContainsUidInPacket();
-         fakePacket.reason = "Gold bonus droped by %USERNAME%!";
-         fakePacket.username = "NewPc";
-         notificationBonusContainsUid(fakePacket);
-
-         var fakePacket2:NotificationBonusInPacket = new NotificationBonusInPacket();
-         fakePacket2.reason = "Gold bonus droped!";
-         notificationBonus(fakePacket2);
-
-         var fakePacket3:GoldTakenInPacket = new GoldTakenInPacket();
-         fakePacket3.username = "NewPc";
-         goldTaken(fakePacket3);
-      }
-      
       public function invoke(param1:AbstractPacket) : void
       {
          switch(param1.getId())

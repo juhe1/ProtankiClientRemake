@@ -43,34 +43,34 @@ package alternativa.tanks.models.battle.gui.inventory
    public class InventoryModel extends InventoryModelBase implements IInventoryModelBase, ObjectLoadListener, ObjectLoadPostListener, ObjectUnloadListener, IInventoryPanel, IInventoryModel, BattleEventListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
-      [Inject]
+      [Inject] // added
       public static var battleInputService:BattleInputService;
       
-      [Inject]
+      [Inject] // added
       public static var battleGuiService:BattleGUIService;
       
-      [Inject]
+      [Inject] // added
       public static var battleInfoService:IBattleInfoService;
       
-      [Inject]
+      [Inject] // added
       public static var keysBindingService:KeysBindingService;
       
-      [Inject]
+      [Inject] // added
       public static var tankUsersRegistry:TankUsersRegistry;
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
-      [Inject]
+      [Inject] // added
       public static var inventorySoundService:InventorySoundService;
       
-      [Inject]
+      [Inject] // added
       public static var modelRegistry:ModelRegistry;
       
       public static const PANEL_OFFSET_Y:int = 50;
@@ -420,6 +420,7 @@ package alternativa.tanks.models.battle.gui.inventory
       {
          var _loc2_:InventoryPanelSlot = this.inventorySlots[param1];
          _loc2_.destroy();
+         delete this.inventorySlots[param1];
       }
       
       private function onEnterFrame(param1:Event) : void

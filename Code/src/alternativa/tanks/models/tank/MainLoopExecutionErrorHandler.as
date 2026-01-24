@@ -10,7 +10,7 @@ package alternativa.tanks.models.tank
    public class MainLoopExecutionErrorHandler implements AutoClosable, BattleEventListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
       private var localUser:IGameObject;

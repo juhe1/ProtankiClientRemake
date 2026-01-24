@@ -47,37 +47,37 @@ package alternativa.tanks.models.statistics
    public class StatisticsModel extends StatisticsModelBase implements IStatisticsModelBase, IStatisticsModel, ObjectLoadListener, ObjectLoadPostListener, ObjectUnloadListener, BattlefieldGUI, LogicUnit
    {
       
-      [Inject]
+      [Inject] // added
       public static var localeService:ILocaleService;
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
-      [Inject]
+      [Inject] // added
       public static var settingsService:ISettingsService;
       
-      [Inject]
+      [Inject] // added
       public static var storageService:IStorageService;
       
-      [Inject]
+      [Inject] // added
       public static var userPropertiesService:IUserPropertiesService;
       
-      [Inject]
+      [Inject] // added
       public static var helpService:IHelpService;
       
-      [Inject]
+      [Inject] // added
       public static var battleGUIService:BattleGUIService;
       
-      [Inject]
+      [Inject] // added
       public static var battleFormatUtil:BattleFormatUtil;
       
-      [Inject]
+      [Inject] // added
       public static var localTankInfoService:LocalTankInfoService;
       
-      [Inject]
+      [Inject] // added
       public static var battleInfoService:IBattleInfoService;
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
       private var playerJoinedMessage:String;

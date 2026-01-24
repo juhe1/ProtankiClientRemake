@@ -29,28 +29,28 @@ package alternativa.tanks.gui.friends.list
    public class ClanMembersList extends Sprite implements IFriendsListState
    {
       
-      [Inject]
+      [Inject] // added
       public static var userInfoService:IUserInfoService;
       
-      [Inject]
+      [Inject] // added
       public static var contextMenuService:IContextMenuService;
       
-      [Inject]
+      [Inject] // added
       public static var onlineNotifierService:IOnlineNotifierService;
       
-      [Inject]
+      [Inject] // added
       public static var battleNotifierService:IBattleNotifierService;
       
-      [Inject]
+      [Inject] // added
       public static var battleInfoService:IBattleInfoService;
       
-      [Inject]
+      [Inject] // added
       public static var battleInviteService:IBattleInviteService;
       
       //[Inject]
       //public static var clanFriendsService:ClanFriendsService;
       
-      [Inject]
+      [Inject] // added
       public static var userPropertiesService:IUserPropertiesService;
       
       public static var scrollOn:Boolean;

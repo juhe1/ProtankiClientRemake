@@ -5,6 +5,7 @@ package scpacker.networking.protocol.codec.custom
    import scpacker.networking.protocol.codec.ICodec;
    import projects.tanks.client.chat.types.ChatMessage;
    import projects.tanks.client.chat.types.UserStatus;
+   import projects.tanks.client.chat.types.MessageType;
    
    public class CodecChatMessage implements ICodec
    {
@@ -34,13 +35,15 @@ package scpacker.networking.protocol.codec.custom
       
       public function decode(param1:ByteArray) : Object
       {
-         var _loc2_:ChatMessage = new ChatMessage();
-         _loc2_.sourceUserStatus = this.newname_4165__END.decode(param1) as UserStatus;
-         _loc2_.system = this.newname_4166__END.decode(param1) as Boolean;
-         _loc2_.targetUserStatus = this.newname_4167__END.decode(param1) as UserStatus;
-         _loc2_.text = this.newname_4168__END.decode(param1) as String;
-         _loc2_.warning = this.newname_4169__END.decode(param1) as Boolean;
-         return _loc2_;
+         var chatMessage:ChatMessage = new ChatMessage();
+         chatMessage.sourceUser = this.newname_4165__END.decode(param1) as UserStatus;
+         var system:Boolean = this.newname_4166__END.decode(param1) as Boolean;
+         chatMessage.messageType = system ? MessageType.SYSTEM : MessageType.USER;
+         chatMessage.targetUser = this.newname_4167__END.decode(param1) as UserStatus;
+         chatMessage.text = this.newname_4168__END.decode(param1) as String;
+         var warning:Boolean = this.newname_4169__END.decode(param1) as Boolean;
+         chatMessage.messageType = warning ? MessageType.WARNING : chatMessage.messageType;
+         return chatMessage;
       }
       
       public function encode(param1:ByteArray, param2:Object) : int
@@ -49,12 +52,12 @@ package scpacker.networking.protocol.codec.custom
          {
             throw new Error("Object is null. Use @ProtocolOptional annotation.");
          }
-         var _loc3_:ChatMessage = ChatMessage(param2);
-         this.newname_4165__END.encode(param1,_loc3_.sourceUserStatus);
-         this.newname_4166__END.encode(param1,_loc3_.system);
-         this.newname_4167__END.encode(param1,_loc3_.targetUserStatus);
-         this.newname_4168__END.encode(param1,_loc3_.text);
-         this.newname_4169__END.encode(param1,_loc3_.warning);
+         var chatMessage:ChatMessage = ChatMessage(param2);
+         this.newname_4165__END.encode(param1,chatMessage.sourceUser);
+         this.newname_4166__END.encode(param1,chatMessage.messageType == MessageType.SYSTEM);
+         this.newname_4167__END.encode(param1,chatMessage.targetUser);
+         this.newname_4168__END.encode(param1,chatMessage.text);
+         this.newname_4169__END.encode(param1,chatMessage.messageType == MessageType.WARNING);
          return 4;
       }
    }

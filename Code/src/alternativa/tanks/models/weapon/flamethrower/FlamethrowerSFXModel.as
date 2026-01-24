@@ -20,10 +20,10 @@ package alternativa.tanks.models.weapon.flamethrower
    public class FlamethrowerSFXModel extends FlameThrowingSFXModelBase implements IFlameThrowingSFXModelBase, ObjectLoadListener, ObjectUnloadListener, IFlamethrowerSFXModel, ColorTransformConsumer
    {
       
-      [Inject]
+      [Inject] // added
       public static var materialRegistry:EffectsMaterialRegistry;
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       public function FlamethrowerSFXModel()

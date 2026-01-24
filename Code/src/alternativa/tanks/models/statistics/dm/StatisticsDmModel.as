@@ -47,43 +47,43 @@ package alternativa.tanks.models.statistics.dm
    public class StatisticsDmModel extends StatisticsDMModelBase implements IStatisticsDMModelBase, IObjectLoadListener, IClientUserInfo, BattleEventListener, IStatisticRound
    {
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
-      [Inject]
+      [Inject] // added
       public static var lobbyLayoutService:ILobbyLayoutService;
       
-      [Inject]
+      [Inject] // added
       public static var serverHaltService:IServerHaltService;
       
-      [Inject]
+      [Inject] // added
       public static var userPropertiesService:IUserPropertiesService;
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
-      [Inject]
+      [Inject] // added
       public static var battleGUIService:BattleGUIService;
       
-      [Inject]
+      [Inject] // added
       public static var battleInputService:BattleInputService;
       
-      [Inject]
+      [Inject] // added
       public static var notificationService:INotificationService;
       
-      [Inject]
+      [Inject] // added
       public static var battleInfoService:IBattleInfoService;
       
-      [Inject]
+      [Inject] // added
       public static var reconnectService:ReconnectService;
       
-      [Inject]
+      [Inject] // added
       public static var starsEventService:ChallengeInfoService;
       
-      [Inject]
+      [Inject] // added
       public static var battlePremiumService:BattleUserPremiumService;
 
-      [Inject]
+      [Inject] // added
       public static var userInfoService:BattleUserInfoService;
       
       private var battleEventSupport:BattleEventSupport;

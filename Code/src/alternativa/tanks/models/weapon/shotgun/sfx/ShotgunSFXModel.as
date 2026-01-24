@@ -19,7 +19,7 @@ package alternativa.tanks.models.weapon.shotgun.sfx
    public class ShotgunSFXModel extends ShotgunSFXModelBase implements IShotgunSFXModelBase, ShotgunSFX, ObjectLoadPostListener, DiscreteWeaponListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private var gunParams:AllGlobalGunParams = new AllGlobalGunParams();

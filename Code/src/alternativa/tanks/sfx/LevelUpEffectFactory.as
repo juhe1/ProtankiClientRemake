@@ -25,13 +25,13 @@ package alternativa.tanks.sfx
    public class LevelUpEffectFactory
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
-      [Inject]
+      [Inject] // added
       public static var userInfoService:IUserInfoService;
       
-      [Inject]
+      [Inject] // added
       public static var materialRegistry:TextureMaterialRegistry;
       
       private static const BeamTexture:Class = LevelUpEffectFactory_BeamTexture;

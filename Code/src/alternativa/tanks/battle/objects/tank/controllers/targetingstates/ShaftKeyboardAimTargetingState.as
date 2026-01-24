@@ -11,7 +11,7 @@ package alternativa.tanks.battle.objects.tank.controllers.targetingstates
    public class ShaftKeyboardAimTargetingState extends KeyboardTargetingState implements AimController
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private var camera:GameCamera;

@@ -30,22 +30,22 @@ package alternativa.tanks.camera
    public class FollowCameraController extends CameraControllerBase implements IFollowCameraController, TargetingInputListener, BattleEventListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var settings:ISettingsService;
       
-      [Inject]
+      [Inject] // added
       public static var storageService:IStorageService;
       
-      [Inject]
+      [Inject] // added
       public static var display:IDisplay;
       
-      [Inject]
+      [Inject] // added
       public static var inputManager:TargetingInputManager;
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
-      [Inject]
+      [Inject] // added
       public static var keysBindingService:KeysBindingService;
       
       private static const conVerticalCameraSpeed:ConsoleVarFloat = new ConsoleVarFloat("cam_vspeed",0.7,0,10);

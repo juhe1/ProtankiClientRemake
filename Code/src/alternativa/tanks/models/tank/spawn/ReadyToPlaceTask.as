@@ -8,7 +8,7 @@ package alternativa.tanks.models.tank.spawn
    public class ReadyToPlaceTask implements LogicUnit
    {
       
-      [Inject]
+      [Inject] // added
       public static var lobbyLayoutService:ILobbyLayoutService;
       
       private var tankObject:IGameObject;

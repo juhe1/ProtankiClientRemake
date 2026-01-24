@@ -17,10 +17,10 @@ package alternativa.tanks.models.battle.gui.inventory
    public class InventoryItemModel extends InventoryItemModelBase implements IInventoryItemModelBase, ObjectUnloadListener, IInventoryItemActivator, ObjectLoadPostListener, IInventoryItem
    {
       
-      [Inject]
+      [Inject] // added
       public static var inventoryPanel:IInventoryPanel;
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
       private var itemByObject:Dictionary = new Dictionary(true);
@@ -54,7 +54,8 @@ package alternativa.tanks.models.battle.gui.inventory
       {
          Model.object = param1.getGameObject();
          battleEventDispatcher.dispatchEvent(StateCorrectionEvent.MANDATORY_UPDATE);
-         server.activate();
+         server.activate(object.name);
+         updateCount(param1.count - 1);
          Model.popObject();
       }
       

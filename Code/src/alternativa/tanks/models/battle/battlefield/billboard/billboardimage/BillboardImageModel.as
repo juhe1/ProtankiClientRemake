@@ -9,7 +9,7 @@ package alternativa.tanks.models.battle.battlefield.billboard.billboardimage
    public class BillboardImageModel extends BillboardImageModelBase implements IBillboardImageModelBase, ObjectLoadListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       public function BillboardImageModel()

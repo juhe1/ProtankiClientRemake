@@ -7,7 +7,7 @@ package alternativa.tanks.models.tank.spawn.spawnhandlers.spawn
    public class LocalSpawnHandler implements SpawnHandler
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       public function LocalSpawnHandler()

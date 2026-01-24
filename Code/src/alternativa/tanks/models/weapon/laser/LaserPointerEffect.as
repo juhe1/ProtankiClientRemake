@@ -26,7 +26,7 @@ package alternativa.tanks.models.weapon.laser
    public class LaserPointerEffect implements GraphicEffect, AutoClosable
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private static const EmbedLaserSpot:Class = LaserPointerEffect_EmbedLaserSpot;

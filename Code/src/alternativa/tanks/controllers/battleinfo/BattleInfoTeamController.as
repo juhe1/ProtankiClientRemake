@@ -49,7 +49,7 @@ package alternativa.tanks.controllers.battleinfo
       
       private function isFightButtonEnabledForTeam(param1:BattleInfoUserList, param2:BattleInfoUserList) : Boolean
       {
-         return availableByRank && initParams.createParams.proBattle && param1.usersCount < maxPeopleCount && (!this.autoBalance || param1.usersCount <= param2.usersCount);
+         return availableByRank && /*initParams.createParams.proBattle &&*/ param1.usersCount < maxPeopleCount && (!this.autoBalance || param1.usersCount <= param2.usersCount);
       }
       
       private function isAvailableEnterInClanBattleForTeam(param1:BattleInfoUserList, param2:BattleInfoUserList) : Boolean

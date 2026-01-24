@@ -13,10 +13,10 @@ package alternativa.tanks.models.tank.killhandlers
    public class DeathConfirmationTimeoutTask implements LogicUnit, BattleEventListener
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleEventDispatcher:BattleEventDispatcher;
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private static const DEATH_CONFIRMATION_TIMEOUT_MS:int = 2000;

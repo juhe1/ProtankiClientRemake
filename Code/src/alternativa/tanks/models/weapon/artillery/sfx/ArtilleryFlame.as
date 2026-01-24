@@ -18,7 +18,7 @@ package alternativa.tanks.models.weapon.artillery.sfx
    public class ArtilleryFlame extends PooledObject implements GraphicEffect
    {
       
-      [Inject]
+      [Inject] // added
       public static var battleService:BattleService;
       
       private const LIFE_TIME:Number = 1;
