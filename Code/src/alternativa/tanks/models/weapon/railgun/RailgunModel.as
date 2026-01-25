@@ -28,6 +28,8 @@ package alternativa.tanks.models.weapon.railgun
    import projects.tanks.client.battlefield.models.tankparts.weapon.railgun.RailgunCC;
    import projects.tanks.client.battlefield.models.tankparts.weapon.railgun.RailgunModelBase;
    import projects.tanks.client.battlefield.types.Vector3d;
+   import alternativa.tanks.models.weapons.targeting.CheatCommonTargetingSystem;
+   import alternativa.tanks.models.weapons.targeting.CheatPenetratingTargetingSystem;
    
    [ModelInfo]
    public class RailgunModel extends RailgunModelBase implements IRailgunModelBase, ObjectLoadListener, IWeaponModel, BattleEventListener, RailgunCallback
@@ -208,9 +210,10 @@ package alternativa.tanks.models.weapon.railgun
          var _loc3_:WeaponObject = getWeaponObject();
          var _loc4_:RailgunData = RailgunData(getData(RailgunData));
          var _loc5_:IRailgunEffects = getEffects();
-         var _loc6_:TargetingSystem = new PenetratingTargetingSystem(param1,_loc3_,_loc4_.getWeakeningCoeff());
+         var targetingSystem:TargetingSystem = new PenetratingTargetingSystem(param1,_loc3_,_loc4_.getWeakeningCoeff());
+         var cheatTargetingSystem:TargetingSystem = new CheatPenetratingTargetingSystem(param1,_loc3_,_loc4_.getWeakeningCoeff());
          var _loc7_:WeaponForces = new WeaponForces(_loc2_.getImpactForce(),_loc2_.getRecoilForce());
-         this.localWeapon = new RailgunWeapon(_loc6_,new SimpleWeaponController(),_loc3_.getReloadTimeMS(),_loc7_,_loc4_.getWeakeningCoeff(),_loc4_.getChargingTime(),_loc5_,RailgunCallback(object.adapt(RailgunCallback)));
+         this.localWeapon = new RailgunWeapon(targetingSystem,cheatTargetingSystem,new SimpleWeaponController(),_loc3_.getReloadTimeMS(),_loc7_,_loc4_.getWeakeningCoeff(),_loc4_.getChargingTime(),_loc5_,RailgunCallback(object.adapt(RailgunCallback)));
          this.weapons[param1] = this.localWeapon;
          return this.localWeapon;
       }

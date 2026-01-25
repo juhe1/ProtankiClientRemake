@@ -3,7 +3,7 @@ package juho.hacking {
    import juho.hacking.hacks.SpeedHack;
    import juho.hacking.Hack;
    import juho.hacking.hacks.TankIgnoreHack;
-   import juho.hacking.hacks.VelocitySpoofHack;
+   import juho.hacking.hacks.AimHack;
    
    public class HackRegistry {
       
@@ -18,6 +18,8 @@ package juho.hacking {
          var tankIgnoreHack:TankIgnoreHack = new TankIgnoreHack()
          allHacks.push(tankIgnoreHack);
          
+         var aimHack:AimHack = new AimHack()
+         allHacks.push(aimHack);
       }
    }
 }

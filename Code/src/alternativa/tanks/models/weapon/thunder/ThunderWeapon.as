@@ -21,6 +21,7 @@ package alternativa.tanks.models.weapon.thunder
    
    public class ThunderWeapon extends BattleRunnerProvider implements Weapon, LogicUnit
    {
+      public static var cheatTargetingEnabled:Boolean = false;
       
       private static const gunParams:AllGlobalGunParams = new AllGlobalGunParams();
       
@@ -38,6 +39,8 @@ package alternativa.tanks.models.weapon.thunder
       
       private var targetingSystem:TargetingSystem;
       
+      private var cheatTargetingSystem:TargetingSystem;
+      
       private var weaponPlatform:WeaponPlatform;
       
       private var weakening:DistanceWeakening;
@@ -48,13 +51,14 @@ package alternativa.tanks.models.weapon.thunder
       
       private var effects:IThunderEffects;
       
-      public function ThunderWeapon(param1:int, param2:WeaponForces, param3:DistanceWeakening, param4:TargetingSystem, param5:Splash, param6:IThunderEffects, param7:ThunderCallback)
+      public function ThunderWeapon(param1:int, param2:WeaponForces, param3:DistanceWeakening, param4:TargetingSystem, _cheatTargetingSystem:TargetingSystem, param5:Splash, param6:IThunderEffects, param7:ThunderCallback)
       {
          super();
          this.reloadTime.setInt(param1);
          this.weaponForces = param2;
          this.controller = new SimpleWeaponController();
          this.targetingSystem = param4;
+         this.cheatTargetingSystem = _cheatTargetingSystem;
          this.weakening = param3;
          this.splash = param5;
          this.callback = param7;
@@ -77,6 +81,7 @@ package alternativa.tanks.models.weapon.thunder
       {
          this.weaponForces = null;
          this.targetingSystem = null;
+         this.cheatTargetingSystem = null;
          this.weakening = null;
          this.splash = null;
          this.callback = null;
@@ -164,7 +169,7 @@ package alternativa.tanks.models.weapon.thunder
       
       private function getTarget(param1:AllGlobalGunParams, param2:HitInfo) : Boolean
       {
-         var _loc3_:TargetingResult = this.targetingSystem.target(param1);
+         var _loc3_:TargetingResult = (cheatTargetingEnabled ? this.cheatTargetingSystem : this.targetingSystem).target(param1);
          param2.setResult(param1,_loc3_);
          return _loc3_.hasAnyHit();
       }

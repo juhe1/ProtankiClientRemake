@@ -20,11 +20,14 @@ package alternativa.tanks.models.weapon.twins
    import platform.client.fp10.core.type.IGameObject;
    import projects.tanks.client.battlefield.models.tankparts.weapon.twins.TwinsCC;
    import projects.tanks.client.garage.models.item.properties.ItemProperty;
+   import alternativa.tanks.models.weapons.targeting.CheatCommonTargetingSystem;
    
    public class TwinsWeapon extends BattleRunnerProvider implements Weapon, LogicUnit
    {
       
       private static var shotId:int;
+
+      public static var cheatTargetingEnabled :Boolean = false;
       
       private static const allGunParams:AllGlobalGunParams = new AllGlobalGunParams();
       
@@ -45,6 +48,7 @@ package alternativa.tanks.models.weapon.twins
       private var enabled:Boolean;
       
       private var targetingSystem:TargetingSystem;
+      private var cheatTargetingSystem:CheatCommonTargetingSystem;
       
       private var currentBarrel:int;
       
@@ -65,13 +69,18 @@ package alternativa.tanks.models.weapon.twins
          var _loc7_:TwinsWeaponCallback = TwinsWeaponCallback(param2.adapt(TwinsWeaponCallback));
          var _loc8_:ITwinsSFXModel = ITwinsSFXModel(param2.adapt(ITwinsSFXModel));
          var _loc9_:TwinsAmmunition = new TwinsAmmunition(_loc4_,param3,_loc8_.getSFXData(),_loc7_);
-         var _loc10_:TargetingSystem = new CommonTargetingSystem(param1,_loc4_,_loc5_.getDistance());
-         _loc10_.getProcessor().setShotFromMuzzle();
+
+         var _targetingSystem:TargetingSystem = new CommonTargetingSystem(param1,_loc4_,_loc5_.getDistance());
+         _targetingSystem.getProcessor().setShotFromMuzzle();
+         var _cheatTargetingSystem:CheatCommonTargetingSystem = new CheatCommonTargetingSystem(param1,_loc4_,_loc5_.getDistance());
+         _cheatTargetingSystem.getProcessor().setShotFromMuzzle();
+
          var _loc11_:SimpleWeaponController = new SimpleWeaponController();
          this.reloadingTime = _loc4_.getReloadTimeMS();
          this.recoilForce = _loc6_.getRecoilForce();
          this.controller = _loc11_;
-         this.targetingSystem = _loc10_;
+         this.targetingSystem = _targetingSystem;
+         this.cheatTargetingSystem = _cheatTargetingSystem;
          this.callback = _loc7_;
          this.ammunition = _loc9_;
          this.effects = _loc8_.getPlasmaWeaponEffects();
@@ -87,6 +96,7 @@ package alternativa.tanks.models.weapon.twins
       public function destroy() : void
       {
          this.targetingSystem = null;
+         this.cheatTargetingSystem = null;
          this.effects = null;
          this.controller.destroy();
          this.controller = null;
@@ -168,7 +178,13 @@ package alternativa.tanks.models.weapon.twins
          }
          else
          {
-            _loc4_ = this.targetingSystem.target(param2);
+            if(cheatTargetingEnabled )
+            {
+               _loc4_ = this.cheatTargetingSystem.target(param2);
+            } else
+            {
+               _loc4_ = this.targetingSystem.target(param2);
+            }
             shotDirection.copy(_loc4_.getDirection());
          }
          var _loc3_:TwinsShot = this.ammunition.getShot();

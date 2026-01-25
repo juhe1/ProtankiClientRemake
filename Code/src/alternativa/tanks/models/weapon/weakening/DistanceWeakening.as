@@ -11,13 +11,13 @@ package alternativa.tanks.models.weapon.weakening
       
       private var falloffInterval:Number;
       
-      public function DistanceWeakening(param1:Number, param2:Number, param3:Number)
+      public function DistanceWeakening(_maximumDamageRadius:Number, _minimumDamageRadius:Number, _minimumDamagePercent:Number)
       {
          super();
-         this.maximumDamageRadius = param1;
-         this.minimumDamageRadius = param2;
-         this.minimumDamagePercent = param3;
-         this.falloffInterval = param2 - param1;
+         this.maximumDamageRadius = _maximumDamageRadius;
+         this.minimumDamageRadius = _minimumDamageRadius;
+         this.minimumDamagePercent = _minimumDamagePercent;
+         this.falloffInterval = _minimumDamageRadius - _maximumDamageRadius;
       }
       
       public function getImpactCoeff(param1:Number) : Number

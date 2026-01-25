@@ -27,6 +27,7 @@ package alternativa.tanks.models.weapon.thunder
    import projects.tanks.client.battlefield.models.tankparts.weapon.thunder.IThunderModelBase;
    import projects.tanks.client.battlefield.models.tankparts.weapon.thunder.ThunderModelBase;
    import projects.tanks.client.battlefield.types.Vector3d;
+   import alternativa.tanks.models.weapons.targeting.CheatCommonTargetingSystem;
    
    [ModelInfo]
    public class ThunderModel extends ThunderModelBase implements IThunderModelBase, IWeaponModel, BattleEventListener, ThunderCallback
@@ -82,9 +83,10 @@ package alternativa.tanks.models.weapon.thunder
          var _loc4_:DistanceWeakening = getWeakening();
          var _loc5_:Splash = Splash(object.adapt(Splash));
          var _loc6_:IThunderEffects = getEffects();
-         var _loc7_:TargetingSystem = new CommonTargetingSystem(param1,_loc2_,MAX_DISTANCE);
+         var targetingSystem:TargetingSystem = new CommonTargetingSystem(param1,_loc2_,MAX_DISTANCE);
+         var cheatTargetingSystem:TargetingSystem = new CheatCommonTargetingSystem(param1,_loc2_,MAX_DISTANCE);
          var _loc8_:WeaponForces = new WeaponForces(_loc3_.getImpactForce(),_loc3_.getRecoilForce());
-         var _loc9_:Weapon = new ThunderWeapon(_loc2_.getReloadTimeMS(),_loc8_,_loc4_,_loc7_,_loc5_,_loc6_,ThunderCallback(object.adapt(ThunderCallback)));
+         var _loc9_:Weapon = new ThunderWeapon(_loc2_.getReloadTimeMS(),_loc8_,_loc4_,targetingSystem,cheatTargetingSystem,_loc5_,_loc6_,ThunderCallback(object.adapt(ThunderCallback)));
          this.weapons[param1] = _loc9_;
          return _loc9_;
       }

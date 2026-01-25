@@ -4,6 +4,7 @@ package alternativa.tanks.models.weapons.targeting.priority
    import alternativa.physics.collision.types.RayHit;
    import alternativa.tanks.models.weapons.targeting.direction.sector.TargetingSector;
    import alternativa.tanks.models.weapons.targeting.priority.targeting.TargetPriorityCalculator;
+   import alternativa.tanks.models.weapons.targeting.direction.sector.TargetingSector2D;
    
    public class TargetingPriorityCalculator
    {
@@ -34,6 +35,25 @@ package alternativa.tanks.models.weapons.targeting.priority
       }
       
       private function getPriorityForSector(param1:TargetingSector, param2:Number) : Number
+      {
+         return this.priorityEvalutor.getTargetPriority(param1.getTank(),param1.getDistance(),param2);
+      }
+
+      public function getPriorityForSectors2D(param1:Number, param2:Vector.<TargetingSector2D>) : Number
+      {
+         var _loc5_:TargetingSector2D = null;
+         var _loc3_:Number = 0;
+         var _loc4_:int = param2.length - 1;
+         while(_loc4_ >= 0)
+         {
+            _loc5_ = param2[_loc4_];
+            _loc3_ = Math.max(this.getPriorityForSector2D(_loc5_,param1) + this.weakingCoef * _loc3_,_loc3_);
+            _loc4_--;
+         }
+         return _loc3_;
+      }
+      
+      private function getPriorityForSector2D(param1:TargetingSector2D, param2:Number) : Number
       {
          return this.priorityEvalutor.getTargetPriority(param1.getTank(),param1.getDistance(),param2);
       }

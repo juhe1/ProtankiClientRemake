@@ -18,9 +18,11 @@ package alternativa.tanks.models.weapon.railgun
    import alternativa.tanks.utils.MathUtils;
    import flash.utils.getTimer;
    import projects.tanks.client.garage.models.item.properties.ItemProperty;
+   import alternativa.tanks.models.weapons.targeting.CheatCommonTargetingSystem;
    
    public class RailgunWeapon extends BattleRunnerProvider implements Weapon, LogicUnit
    {
+      public static var cheatTargetingEnabled:Boolean = false;
       
       private static const allGunParams:AllGlobalGunParams = new AllGlobalGunParams();
       
@@ -29,6 +31,7 @@ package alternativa.tanks.models.weapon.railgun
       private var controller:SimpleWeaponController;
       
       private var targetingSystem:TargetingSystem;
+      private var cheatTargetingSystem:TargetingSystem;
       
       private var reloadTime:EncryptedInt = new EncryptedIntImpl();
       
@@ -50,10 +53,11 @@ package alternativa.tanks.models.weapon.railgun
       
       private var charging:Boolean;
       
-      public function RailgunWeapon(param1:TargetingSystem, param2:SimpleWeaponController, param3:int, param4:WeaponForces, param5:Number, param6:int, param7:IRailgunEffects, param8:RailgunCallback)
+      public function RailgunWeapon(param1:TargetingSystem, _cheatTargetingSystem:TargetingSystem, param2:SimpleWeaponController, param3:int, param4:WeaponForces, param5:Number, param6:int, param7:IRailgunEffects, param8:RailgunCallback)
       {
          super();
          this.targetingSystem = param1;
+         this.cheatTargetingSystem = _cheatTargetingSystem;
          this.controller = param2;
          this.reloadTime.setInt(param3);
          this.weaponForces = param4;
@@ -78,6 +82,7 @@ package alternativa.tanks.models.weapon.railgun
          this.effects = null;
          this.weaponForces = null;
          this.targetingSystem = null;
+         this.cheatTargetingSystem = null;
          this.callback = null;
       }
       
@@ -167,7 +172,13 @@ package alternativa.tanks.models.weapon.railgun
          if(BattleUtils.isTurretAboveGround(this.weaponPlatform.getBody(),allGunParams))
          {
             _loc2_ = new RailgunShotResult();
-            _loc2_.setFromTargetingResult(this.targetingSystem.target(allGunParams));
+            if(cheatTargetingEnabled)
+            {
+               _loc2_.setFromTargetingResult(this.cheatTargetingSystem.target(allGunParams));
+            } else
+            {
+               _loc2_.setFromTargetingResult(this.targetingSystem.target(allGunParams));
+            }
             if(_loc2_.hitPoints.length > 0)
             {
                this.applyImpactToTargets(_loc2_);

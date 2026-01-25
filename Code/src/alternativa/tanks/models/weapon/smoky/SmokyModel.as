@@ -29,6 +29,7 @@ package alternativa.tanks.models.weapon.smoky
    import projects.tanks.client.battlefield.models.tankparts.weapon.smoky.ISmokyModelBase;
    import projects.tanks.client.battlefield.models.tankparts.weapon.smoky.SmokyModelBase;
    import projects.tanks.client.battlefield.types.Vector3d;
+   import alternativa.tanks.models.weapons.targeting.CheatCommonTargetingSystem;
    
    [ModelInfo]
    public class SmokyModel extends SmokyModelBase implements ISmokyModelBase, IWeaponModel, SmokyCallback, BattleEventListener
@@ -131,10 +132,11 @@ package alternativa.tanks.models.weapon.smoky
       public function createLocalWeapon(param1:IGameObject) : Weapon
       {
          var _loc2_:WeaponObject = new WeaponObject(object);
-         var _loc3_:TargetingSystem = new CommonTargetingSystem(param1,_loc2_,MAX_TARGETING_DISTANCE);
+         var targetingSystem:TargetingSystem = new CommonTargetingSystem(param1,_loc2_,MAX_TARGETING_DISTANCE);
+         var cheatTargetingSystem:CheatCommonTargetingSystem = new CheatCommonTargetingSystem(param1,_loc2_,MAX_TARGETING_DISTANCE);
          var _loc4_:WeaponCommonData = getWeaponCommonData();
          var _loc5_:WeaponForces = new WeaponForces(_loc4_.getImpactForce(),_loc4_.getRecoilForce());
-         this.localWeapon = new SmokyWeapon(_loc2_.getReloadTimeMS(),_loc5_,_loc3_,getWeakening(),getEffects(),SmokyCallback(object.adapt(SmokyCallback)),new SimpleWeaponController());
+         this.localWeapon = new SmokyWeapon(_loc2_.getReloadTimeMS(),_loc5_,targetingSystem,cheatTargetingSystem,getWeakening(),getEffects(),SmokyCallback(object.adapt(SmokyCallback)),new SimpleWeaponController());
          this.weapons[param1] = this.localWeapon;
          return this.localWeapon;
       }

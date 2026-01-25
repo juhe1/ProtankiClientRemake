@@ -68,6 +68,8 @@ package alternativa.tanks.models.weapons.targeting.direction.sector
          var _loc16_:Number = Math.asin(_loc15_ / _loc6_);
          var _loc17_:Number = _loc16_;
          var _loc18_:Number = _loc16_;
+
+         // Horizontal auto-aiming limits
          if(Math.abs(_loc13_) > _loc17_)
          {
             return;

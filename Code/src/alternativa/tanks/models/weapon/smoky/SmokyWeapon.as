@@ -18,9 +18,11 @@ package alternativa.tanks.models.weapon.smoky
    import alternativa.tanks.utils.EncryptedIntImpl;
    import flash.utils.getTimer;
    import projects.tanks.client.garage.models.item.properties.ItemProperty;
+   import alternativa.tanks.models.weapons.targeting.CheatCommonTargetingSystem;
    
    public class SmokyWeapon extends BattleRunnerProvider implements Weapon, LogicUnit
    {
+      public static var cheatTargetingEnabled:Boolean = false;
       
       private static const gunParams:AllGlobalGunParams = new AllGlobalGunParams();
       
@@ -35,6 +37,7 @@ package alternativa.tanks.models.weapon.smoky
       private var controller:SimpleWeaponController;
       
       private var targetingSystem:TargetingSystem;
+      private var cheatTargetingSystem:CheatCommonTargetingSystem;
       
       private var weaponPlatform:WeaponPlatform;
       
@@ -44,12 +47,13 @@ package alternativa.tanks.models.weapon.smoky
       
       private var effects:ISmokyEffects;
       
-      public function SmokyWeapon(param1:int, param2:WeaponForces, param3:TargetingSystem, param4:DistanceWeakening, param5:ISmokyEffects, param6:SmokyCallback, param7:SimpleWeaponController)
+      public function SmokyWeapon(param1:int, param2:WeaponForces, param3:TargetingSystem, _cheatTargetingSystem:CheatCommonTargetingSystem, param4:DistanceWeakening, param5:ISmokyEffects, param6:SmokyCallback, param7:SimpleWeaponController)
       {
          super();
          this.reloadTime.setInt(param1);
          this.weaponForces = param2;
          this.targetingSystem = param3;
+         this.cheatTargetingSystem = _cheatTargetingSystem;
          this.weakening = param4;
          this.effects = param5;
          this.callback = param6;
@@ -67,6 +71,7 @@ package alternativa.tanks.models.weapon.smoky
       {
          this.weaponForces = null;
          this.targetingSystem = null;
+         this.cheatTargetingSystem = null;
          this.weakening = null;
          this.effects = null;
          this.callback = null;
@@ -152,9 +157,17 @@ package alternativa.tanks.models.weapon.smoky
       
       private function getTarget(param1:AllGlobalGunParams, param2:HitInfo) : Boolean
       {
-         var _loc3_:TargetingResult = this.targetingSystem.target(param1);
-         param2.setResult(param1,_loc3_);
-         return _loc3_.hasAnyHit();
+         var targetingResult:TargetingResult;
+         if(cheatTargetingEnabled)
+         {
+            targetingResult = cheatTargetingSystem.target(param1);
+         }
+         else
+         {
+            targetingResult = targetingSystem.target(param1);
+         }
+         param2.setResult(param1,targetingResult);
+         return targetingResult.hasAnyHit();
       }
       
       public function createCriticalHitEffect(param1:Vector3) : void

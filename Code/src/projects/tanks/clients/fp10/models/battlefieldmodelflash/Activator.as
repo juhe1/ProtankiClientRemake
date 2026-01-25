@@ -691,6 +691,8 @@ package projects.tanks.clients.fp10.models.battlefieldmodelflash
    import services.contextmenu.IContextMenuService;
    import scpacker.networking.protocol.packets.bonusregion.BonusRegionPacketHandler;
    import scpacker.networking.protocol.packets.gold.GoldPacketHandler;
+   import alternativa.tanks.models.weapons.targeting.direction.sector.CheatSectorDirectionCalculator;
+   import alternativa.tanks.models.weapons.targeting.direction.sector.CheatTargetingSectorsCalculator;
 
    public class Activator implements IBundleActivator
    {
@@ -5124,6 +5126,13 @@ package projects.tanks.clients.fp10.models.battlefieldmodelflash
          },function():TankUsersRegistry
          {
             return TargetingSectorsCalculator.tankUsersRegistry;
+         });
+         osgi.injectService(TankUsersRegistry,function(param1:Object):void
+         {
+            CheatTargetingSectorsCalculator.tankUsersRegistry = TankUsersRegistry(param1);
+         },function():TankUsersRegistry
+         {
+            return CheatTargetingSectorsCalculator.tankUsersRegistry;
          });
          osgi.injectService(BattleService,function(param1:Object):void
          {

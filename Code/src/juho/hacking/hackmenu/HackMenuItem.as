@@ -24,7 +24,7 @@ package juho.hacking.hackmenu {
       private var container:Shape;
       private var checkBox:TankCheckBox;
       private var currentPropertyPos:Point;
-      
+
       public function HackMenuItem(_hack:Hack) {
          this.hack = _hack;
          
@@ -76,8 +76,11 @@ package juho.hacking.hackmenu {
                case "Vector3D":
                   this.createVector3DProperty(property);
                   break;
-               default:
+               case "Boolean":
+                  this.createBooleanProperty(property);
                   break;
+               default:
+                  throw new Error("Unknown property type: " + property.type);
             }
          }
       }
@@ -174,6 +177,30 @@ package juho.hacking.hackmenu {
          zInput.textField.addEventListener(Event.CHANGE, function(event:Event):void {
             Vector3D(property.value).z = parseFloat(zInput.textField.text);
             self.hack.setPropertyValue(property.name, property.value);
+         });
+      }
+
+      private function createBooleanProperty(property:HackProperty) : void {
+         var propertyContainer:Sprite = new Sprite();
+         propertyContainer.x = this.currentPropertyPos.x + 8;
+         propertyContainer.y = this.currentPropertyPos.y;
+         addChild(propertyContainer);
+
+         var propertyName:Label = new Label();
+         propertyName.text = property.name;
+         propertyName.size = 18;
+         propertyContainer.addChild(propertyName);
+
+         var checkBox:TankCheckBox = new TankCheckBox();
+         checkBox.x = propertyName.width + 13;
+         checkBox.checked = Boolean(property.value);
+         propertyContainer.addChild(checkBox);
+
+         currentPropertyPos = new Point(currentPropertyPos.x, propertyContainer.height + propertyContainer.y + PROPERTY_SPACE);
+
+         var self:Object = this;
+         checkBox.addEventListener(MouseEvent.MOUSE_UP, function(e:MouseEvent):void {
+            self.hack.setPropertyValue(property.name, checkBox.checked);
          });
       }
       
