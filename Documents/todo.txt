@@ -34,3 +34,12 @@ Weapons:
 - Ricochet [x]
 - Shaft [x]
 - Vulcan [x]
+
+Auto aim hack:
+- Smoky [x]
+- Twins [x]
+- Railgun [x]
+- Thunder [x]
+- Hammer [] ?
+- Shaft [] ?
+- Vulcan [] ?
