@@ -65,8 +65,9 @@ package alternativa.tanks.battle.objects.tank
    import alternativa.tanks.models.battle.battlefield.BattleUserInfoService;
    import juho.hacking.event.HackEventDispatcher;
    import juho.hacking.event.TankNormalStateSettedEvent;
+   import alternativa.tanks.models.battle.gui.markers.PointIndicatorStateProvider;
    
-   public class Tank implements PhysicsController, PostPhysicsController, PhysicsInterpolator, Renderer, BodyCollisionFilter, CameraTarget, WeaponPlatform
+   public class Tank implements PhysicsController, PostPhysicsController, PhysicsInterpolator, Renderer, BodyCollisionFilter, CameraTarget, WeaponPlatform, PointIndicatorStateProvider
    {
       [Inject] // added
       public static var userInfoService:BattleUserInfoService;
@@ -1038,6 +1039,11 @@ package alternativa.tanks.battle.objects.tank
       {
          this.chassis.setReverseTurnAcceleration(param1);
       }
+
+      public function setTurnAccelaration(param1:Number) : void
+      {
+         this.chassis.setTurnAcceleration(param1);
+      }
       
       public function isInBattle() : Boolean
       {
@@ -1064,6 +1070,21 @@ package alternativa.tanks.battle.objects.tank
          this.lastHitPoint.copy(param1);
          BattleUtils.globalToLocal(this.getBody(),this.lastHitPoint);
          this.isLastHitPointSet = true;
+      }
+
+      public function getIndicatorPosition() : Vector3
+      {
+         return this.getBody().state.position
+      }
+
+      public function isIndicatorActive(param1:Vector3 = null) : Boolean
+      {
+         return true;
+      }
+
+      public function zOffset() : Number
+      {
+         return 150;
       }
    }
 }

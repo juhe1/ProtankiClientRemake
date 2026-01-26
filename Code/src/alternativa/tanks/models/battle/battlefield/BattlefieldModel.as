@@ -169,6 +169,9 @@ package alternativa.tanks.models.battle.battlefield
       [Inject] // added
       public static var keysBindingService:KeysBindingService;
       
+
+      public static const wallHack:WallHackSystem = new WallHackSystem();
+
       private static const cameraPosition:Vector3 = new Vector3();
       
       private static const cameraAngles:Vector3 = new Vector3();
@@ -557,6 +560,7 @@ package alternativa.tanks.models.battle.battlefield
          battleEventDispatcher.dispatchEvent(new BattleLoadEvent());
          battleInfoService.battleLoad();
          putData(AdditionUserTitleSwitcher,new AdditionUserTitleSwitcher());
+         wallHack.load();
       }
       
       private function startTimeStatisticsTimer() : void
@@ -616,6 +620,7 @@ package alternativa.tanks.models.battle.battlefield
          }
          this.getObjectPool().clear();
          this.localTankPaused = false;
+         wallHack.unload();
       }
       
       private function initBattleData() : void

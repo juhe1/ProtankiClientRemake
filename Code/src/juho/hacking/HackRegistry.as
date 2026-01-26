@@ -4,6 +4,7 @@ package juho.hacking {
    import juho.hacking.Hack;
    import juho.hacking.hacks.TankIgnoreHack;
    import juho.hacking.hacks.AimHack;
+   import juho.hacking.hacks.WallHack;
    
    public class HackRegistry {
       
@@ -12,14 +13,17 @@ package juho.hacking {
       public function HackRegistry() {
          allHacks = new Vector.<Hack>();
          
-         var speedHack:SpeedHack = new SpeedHack()
-         allHacks.push(speedHack);
-         
          var tankIgnoreHack:TankIgnoreHack = new TankIgnoreHack()
          allHacks.push(tankIgnoreHack);
          
          var aimHack:AimHack = new AimHack()
          allHacks.push(aimHack);
+         
+         var wallHack:WallHack = new WallHack()
+         allHacks.push(wallHack);
+
+         var speedHack:SpeedHack = new SpeedHack()
+         allHacks.push(speedHack);
       }
    }
 }

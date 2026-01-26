@@ -693,6 +693,8 @@ package projects.tanks.clients.fp10.models.battlefieldmodelflash
    import scpacker.networking.protocol.packets.gold.GoldPacketHandler;
    import alternativa.tanks.models.weapons.targeting.direction.sector.CheatSectorDirectionCalculator;
    import alternativa.tanks.models.weapons.targeting.direction.sector.CheatTargetingSectorsCalculator;
+   import alternativa.tanks.models.tank.ultimate.hornet.radar.BattleRadarHudIndicators;
+   import alternativa.tanks.models.battle.battlefield.WallHackSystem;
 
    public class Activator implements IBundleActivator
    {
@@ -710,6 +712,41 @@ package projects.tanks.clients.fp10.models.battlefieldmodelflash
          var modelRegister:ModelRegistry;
          var _osgi:OSGi = param1;
          osgi = _osgi;
+         osgi.injectService(BattleEventDispatcher,function(param1:Object):void
+         {
+            WallHackSystem.battleEventDispatcher = BattleEventDispatcher(param1);
+         },function():BattleEventDispatcher
+         {
+            return WallHackSystem.battleEventDispatcher;
+         });
+         osgi.injectService(IBattleInfoService,function(param1:Object):void
+         {
+            WallHackSystem.battleInfoService = IBattleInfoService(param1);
+         },function():IBattleInfoService
+         {
+            return WallHackSystem.battleInfoService;
+         });
+         osgi.injectService(BattleService,function(param1:Object):void
+         {
+            WallHackSystem.battleService = BattleService(param1);
+         },function():BattleService
+         {
+            return WallHackSystem.battleService;
+         });
+         osgi.injectService(BattleService,function(param1:Object):void
+         {
+            BattleRadarHudIndicators.battleService = BattleService(param1);
+         },function():BattleService
+         {
+            return BattleRadarHudIndicators.battleService;
+         });
+         osgi.injectService(LocalTankInfoService,function(param1:Object):void
+         {
+            BattleRadarHudIndicators.localTankInfoService = LocalTankInfoService(param1);
+         },function():LocalTankInfoService
+         {
+            return BattleRadarHudIndicators.localTankInfoService;
+         });
          osgi.injectService(BattleService,function(param1:Object):void
          {
             BattleRunner.battleService = BattleService(param1);

@@ -15,15 +15,22 @@ package juho.hacking.hacks {
       
       private var localTank:Tank;
       
+      private static const PROP_SPEED:String = "Speed (be careful to not get banned)";
+      private static const PROP_TURN_SPEED:String = "Turn speed";
+      private static const PROP_TURRET_ROT_SPEED:String = "Turret rotation speed";
+      private static const PROP_TURRET_ACCEL:String = "Turret accelaration";
+      private static const PROP_ACCEL:String = "Accelaration";
+      private static const PROP_TURN_ACCEL:String = "Turn accelaration";
+
       public function SpeedHack() {
          super(NAME, ID);
-         
-         this.addProperty("Speed", 1000.0, "Number", speedChanged);
-         this.addProperty("Turn speed", 1000.0, "Number", speedChanged);
-         this.addProperty("Turret rotation speed", 3.0, "Number", speedChanged);
-         this.addProperty("Turret accelaration", 2.0, "Number", speedChanged);
-         this.addProperty("Accelaration", 1000.0, "Number", speedChanged);
-         this.addProperty("Turn accelaration", 1000.0, "Number", speedChanged);
+
+         this.addProperty(PROP_SPEED, 500.0, "Number", speedChanged);
+         this.addProperty(PROP_ACCEL, 1000.0, "Number", speedChanged);
+         this.addProperty(PROP_TURN_SPEED, 3.0, "Number", speedChanged);
+         this.addProperty(PROP_TURN_ACCEL, 5.0, "Number", speedChanged);
+         this.addProperty(PROP_TURRET_ROT_SPEED, 3.0, "Number", speedChanged);
+         this.addProperty(PROP_TURRET_ACCEL, 2.0, "Number", speedChanged);
          HackEventDispatcher.singleton.addEventListener(LocalTankInitedEvent.LOCAL_TANK_INITED, this.localTankInited);
          HackEventDispatcher.singleton.addEventListener(LocalTankUnloadedEvent.LOCAL_TANK_UNLOADED_EVENT, this.localTankDestroyed);
          HackEventDispatcher.singleton.addEventListener(TankSpecificationsChangedEvent.TANK_SPECIFICATIONS_CHANGED_EVENT, this.tankSpecificationsChanged);
@@ -60,20 +67,20 @@ package juho.hacking.hacks {
          if (this.localTank == null || !this.isEnabled) {
             return;
          }
-         
-         var speed:Number = this.getProperty("Speed").value;
-         var turnSpeed:Number = this.getProperty("Turn speed").value;
-         var accelaration:Number = this.getProperty("Accelaration").value;
-         var turnAccelaration:Number = this.getProperty("Turn accelaration").value;
-         var turretRotationSpeed:Number = this.getProperty("Turret rotation speed").value;
-         var turretAccelaration:Number = this.getProperty("Turret accelaration").value;
-         
+
+         var speed:Number = this.getProperty(PROP_SPEED).value;
+         var turnSpeed:Number = this.getProperty(PROP_TURN_SPEED).value;
+         var accelaration:Number = this.getProperty(PROP_ACCEL).value;
+         var turnAccelaration:Number = this.getProperty(PROP_TURN_ACCEL).value;
+         var turretRotationSpeed:Number = this.getProperty(PROP_TURRET_ROT_SPEED).value;
+         var turretAccelaration:Number = this.getProperty(PROP_TURRET_ACCEL).value;
+
          this.localTank.setMaxSpeed(speed, true);
          this.localTank.setMaxTurnSpeed(turnSpeed, true);
          this.localTank.setAcceleration(accelaration)
-         //this.localTank.setTurnAccelaration(turnAccelaration)
-         //this.localTank.setMaxTurretTurnSpeed(turretRotationSpeed, true);
-         //this.localTank.setTurretTurnAcceleration(turretAccelaration);
+         this.localTank.setTurnAccelaration(turnAccelaration)
+         this.localTank.turretController.setMaxTurnSpeed(turretRotationSpeed, true);
+         this.localTank.turretController.setTurnAcceleration(turretAccelaration);
       }
    
    }

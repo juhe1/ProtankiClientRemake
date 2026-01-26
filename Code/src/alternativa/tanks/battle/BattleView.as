@@ -279,6 +279,11 @@ package alternativa.tanks.battle
       {
          this.overlay.addChild(param1);
       }
+
+      public function removeOverlayObject(param1:DisplayObject) : void
+      {
+         this.overlay.removeChild(param1);
+      }
       
       public function getWidth() : int
       {
