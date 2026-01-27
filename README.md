@@ -10,6 +10,7 @@ You can download binaries from: https://github.com/juhe1/ProtankiClientRemake/re
 ## Compiling
 #### General
 Download binaries from releases and paste them into "Code/bin/", so that after compilation, you have launcher that can run the compiled swf file. This is necessary even if you are launching the game using debug.
+Also when you open the project inside vscode or flash develop, open the Code/ folder.
 #### Preparing the SDKs
 We need two SDKs, AIR SDK for debugging and FLEX SDK for compiling.
 
