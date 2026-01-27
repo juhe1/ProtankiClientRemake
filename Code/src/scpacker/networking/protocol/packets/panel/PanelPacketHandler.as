@@ -30,6 +30,9 @@ package scpacker.networking.protocol.packets.panel
    import projects.tanks.client.panel.model.dailyquest.quest.mode.DailyQuestWithModeModelBase;
    import projects.tanks.client.panel.model.dailyquest.showing.QuestShowingModelBase;
    import alternativa.tanks.model.dailyquest.QuestShowingModel;
+   import alternativa.tanks.models.performance.PerformanceModel;
+   import projects.tanks.client.battleservice.model.performance.PerformanceModelBase;
+   import projects.tanks.client.battleservice.model.performance.PerformanceCC;
    
    public class PanelPacketHandler extends AbstractPacketHandler
    {
@@ -39,6 +42,7 @@ package scpacker.networking.protocol.packets.panel
       private var settingsModel:SettingsModel;
       private var serverCaptcha:ServerCaptchaModel;
       private var userEmailAndPasswordModel:UserEmailAndPasswordModel;
+      private var performanceModel:PerformanceModel;
       
       private var panelView:IPanelView;
       public static var panelSpace:Space;
@@ -55,6 +59,7 @@ package scpacker.networking.protocol.packets.panel
          this.settingsModel = SettingsModel(modelRegistry.getModel(SettingsModelBase.modelId));
          this.serverCaptcha = ServerCaptchaModel(modelRegistry.getModel(CaptchaModelBase.modelId));
          this.userEmailAndPasswordModel = UserEmailAndPasswordModel(modelRegistry.getModel(UserEmailAndPasswordModelBase.modelId));
+         this.performanceModel = PerformanceModel(modelRegistry.getModel(PerformanceModelBase.modelId));
 
          this.panelView = IPanelView(OSGi.getInstance().getService(IPanelView));
          panelSpace = new Space(Long.getLong(10566210,44467896),null,null,false);
@@ -80,6 +85,37 @@ package scpacker.networking.protocol.packets.panel
          this.panelModel.objectLoaded();
          this.panelModel.objectLoadedPost();
          //this.questShowingModel.objectLoadedPost();
+
+         // performance
+         var performanceCC:PerformanceCC = new PerformanceCC();
+         performanceCC.alertFPSRatioThreshold = 0.9;
+         performanceCC.alertFPSThreshold = 10000;
+         performanceCC.alertMinTestTime = 10000;
+         performanceCC.alertPingRatioThreshold = 0.9;
+         performanceCC.alertPingThreshold = 900;
+
+         performanceCC.indicatorHighFPS = 50;
+         performanceCC.indicatorHighFPSColor = "0x00ff00";
+         performanceCC.indicatorHighPing = 200;
+         performanceCC.indicatorHighPingColor = "0xaaaa00";
+         performanceCC.indicatorLowFPS = 30;
+         performanceCC.indicatorLowFPSColor = "0xaaaa00";
+         performanceCC.indicatorLowPing = 50;
+         performanceCC.indicatorLowPingColor = "0x00ff00";
+         performanceCC.indicatorVeryHighPing = 900;
+         performanceCC.indicatorVeryHighPingColor = "0xff0000";
+         performanceCC.indicatorVeryLowFPS = 10;
+         performanceCC.indicatorVeryLowFPSColor = "0xff0000";
+
+         performanceCC.qualityFPSThreshold = 40;
+         performanceCC.qualityIdleTime = 1000;
+         performanceCC.qualityMaxAttempts = 10;
+         performanceCC.qualityRatioThreshold = 0.5;
+         performanceCC.qualityTestTime = 1000;
+         performanceCC.qualityVisualizationSpeed = 1000;
+         
+         this.performanceModel.putInitParams(performanceCC);
+         this.performanceModel.objectLoaded();
 
          // settings
          var modelVector:Vector.<Long> = new Vector.<Long>();

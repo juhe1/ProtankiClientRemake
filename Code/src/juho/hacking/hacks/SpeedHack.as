@@ -51,6 +51,10 @@ package juho.hacking.hacks {
       
       private function localTankInited(e:LocalTankInitedEvent) : void {
          this.localTank = e.localTank;
+         if(isEnabled)
+            enable()
+         else
+            disable()
       }
       
       private function localTankDestroyed(e:LocalTankUnloadedEvent) : void {

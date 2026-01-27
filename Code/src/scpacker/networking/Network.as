@@ -162,7 +162,7 @@ package scpacker.networking
                {
                   //LogService(OSGi.getInstance().getService(LogService)).getLogger("net").error("error packet does not exists: packetLength %1 packetId %2 \n\n",[_loc3_,_loc1_]);
                } else {
-                  LogService(OSGi.getInstance().getService(LogService)).getLogger("net").error("error packet %1 packetLength %2 packetId %3 \n\n %4",[_loc11_,_loc3_,_loc1_,e.getStackTrace()]);
+                  LogService(OSGi.getInstance().getService(LogService)).getLogger("net").error("error packet %1 packetLength %2 packetId %3 error: %4 \n\n %5",[_loc11_,_loc3_,_loc1_,e.message,e.getStackTrace()]);
                   trace(e.message);
                   trace(e.getStackTrace());
                }

@@ -6,6 +6,8 @@ package alternativa.tanks.models.tank.speedcharacteristics
    import alternativa.tanks.models.tank.LocalTankParams;
    import projects.tanks.client.battlefield.models.user.speedcharacteristics.ISpeedCharacteristicsModelBase;
    import projects.tanks.client.battlefield.models.user.speedcharacteristics.SpeedCharacteristicsModelBase;
+   import juho.hacking.event.HackEventDispatcher;
+   import juho.hacking.event.TankSpecificationsChangedEvent;
    
    [ModelInfo]
    public class SpeedCharacteristicsModel extends SpeedCharacteristicsModelBase implements ISpeedCharacteristicsModelBase, SpeedCharacteristics
@@ -58,6 +60,7 @@ package alternativa.tanks.models.tank.speedcharacteristics
          {
             LocalTankParams.setSpecificationId(param5);
          }
+         HackEventDispatcher.singleton.dispatchEvent(new TankSpecificationsChangedEvent(_loc6_.getTank()));
       }
       
       private function setTankSpec(param1:ITankModel, param2:Number, param3:Number, param4:Number, param5:Number, param6:Boolean) : void

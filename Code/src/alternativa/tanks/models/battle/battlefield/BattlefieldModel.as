@@ -572,6 +572,7 @@ package alternativa.tanks.models.battle.battlefield
       [Obfuscation(rename="false")]
       public function objectUnloadedPost() : void
       {
+         wallHack.unload();
          this.battleActive = false;
          this.clearServerNumber();
          battleEventDispatcher.dispatchEvent(new BattleUnloadEvent());
@@ -620,7 +621,6 @@ package alternativa.tanks.models.battle.battlefield
          }
          this.getObjectPool().clear();
          this.localTankPaused = false;
-         wallHack.unload();
       }
       
       private function initBattleData() : void

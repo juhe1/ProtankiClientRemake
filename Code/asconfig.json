@@ -20,7 +20,7 @@
 		"use-network": true,
 		"use-resource-bundle-metadata": true,
 		"warnings": false,
-		"verbose-stacktraces": false,
+		"verbose-stacktraces": true,
 		"static-link-runtime-shared-libraries": true,
 		"library-path":[
 			"libs"

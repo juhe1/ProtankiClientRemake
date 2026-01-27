@@ -22,7 +22,7 @@ package alternativa.tanks.controllers.battleinfo
       
       override protected function updateAvailableEnterInBattle() : void
       {
-         this.dmView.fightButton.enabled = availableByRank && initParams.createParams.proBattle && this.dmView.userList.usersCount < maxPeopleCount;
+         this.dmView.fightButton.enabled = availableByRank && this.dmView.userList.usersCount < maxPeopleCount;
       }
       
       public function addUser(param1:BattleInfoUser) : void
