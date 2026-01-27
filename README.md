@@ -20,9 +20,9 @@ Next download air SDK (https://airsdk.harman.com/download). Extract it where eve
 #### Configuring Visual Studio Code for compile
 First install "AS3, MXML and SWF Extension Pack" extension. You can get it here: https://marketplace.visualstudio.com/items?itemName=bowlerhatllc.vscode-nextgenas.
 
-To get debugging working, go into "this_repo/.vscode/launch.json" and change "runtimeExecutable" to point to your "adl.exe" (it is inside "air_sdk/bin/").
+To get debugging working, go into "this_repo/Code/.vscode/launch.json" and change "runtimeExecutable" to point to your "adl.exe" (it is inside "air_sdk/bin/").
 
-To be alble to compile, you should make some changes to your "settings.json" and to "this_repo/.vscode/tasks.json". Let's edit tasks.json first:
+To be alble to compile, you should make some changes to your "settings.json" and to "this_repo/Code/.vscode/tasks.json". Let's edit tasks.json first:
 1. open tasks.json
 2. Paste these lines: 
 ```
