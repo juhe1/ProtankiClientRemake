@@ -11,6 +11,7 @@ package juho.hacking.hacks {
    import alternativa.tanks.physics.CollisionGroup;
    import projects.tanks.client.battlefield.types.TankState;
    import alternativa.tanks.battle.objects.tank.ClientTankState;
+   import alternativa.tanks.models.battle.battlefield.WallHackSystem;
    
 	/**
     * ...
@@ -31,12 +32,14 @@ package juho.hacking.hacks {
       override public function enable():void {
          super.enable();
          
+         WallHackSystem.isEnabled = true;
          this.reveal();
       }
       
       override public function disable():void {
          super.disable();
          
+         WallHackSystem.isEnabled = false;
          this.conceal();
       }
       

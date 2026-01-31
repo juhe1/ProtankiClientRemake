@@ -35,6 +35,7 @@ package alternativa.tanks.models.battle.battlefield
       private var battleEventSupport:BattleEventSupport;
       private var tanksInBattle:Dictionary = new Dictionary();
       private var isLoaded:Boolean = false;
+      public static var isEnabled:Boolean = false;
       
       public function WallHackSystem()
       {
@@ -119,12 +120,18 @@ package alternativa.tanks.models.battle.battlefield
       
       private function revealTank(param1:Tank) : void
       {
-         this.battleRadarHudIndicators.addTankMarker(param1);
+         if(isLoaded && isEnabled)
+         {
+            this.battleRadarHudIndicators.addTankMarker(param1);
+         }
       }
       
       private function concealTank(param1:Tank) : void
       {
-         this.battleRadarHudIndicators.removeTankMarker(param1);
+         if(isLoaded)
+         {
+            this.battleRadarHudIndicators.removeTankMarker(param1);
+         }
       }
    }
 }

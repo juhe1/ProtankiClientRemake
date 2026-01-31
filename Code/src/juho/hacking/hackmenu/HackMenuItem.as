@@ -23,6 +23,9 @@ package juho.hacking.hackmenu {
       private var hack:Hack;
       private var container:Shape;
       private var checkBox:TankCheckBox;
+      private var headerBarContainer:Sprite;
+      private var nameLabel:Label;
+      private var enabledLabel:Label;
       private var currentPropertyPos:Point;
 
       public function HackMenuItem(_hack:Hack) {
@@ -31,30 +34,30 @@ package juho.hacking.hackmenu {
          this.container = new Shape()
          addChild(this.container);
          
-         var headerBarContainer:Sprite = new Sprite();
-         headerBarContainer.x = CONTAINER_BORDER_THICKNESS + 3;
-         headerBarContainer.y = CONTAINER_BORDER_THICKNESS + 6;
-         addChild(headerBarContainer);
+         this.headerBarContainer = new Sprite();
+         this.headerBarContainer.x = CONTAINER_BORDER_THICKNESS + 3;
+         this.headerBarContainer.y = CONTAINER_BORDER_THICKNESS + 6;
+         addChild(this.headerBarContainer);
       
-         var nameLabel:Label = new Label();
-         nameLabel.text = this.hack.name;
-         nameLabel.size = 18;
-         headerBarContainer.addChild(nameLabel);
+         this.nameLabel = new Label();
+         this.nameLabel.text = this.hack.name;
+         this.nameLabel.size = 18;
+         this.nameLabel.color = 0x00FF00;
+         this.headerBarContainer.addChild(this.nameLabel);
          
-         var enabledLabel:Label = new Label();
-         enabledLabel.text = "ENABLED  ";
-         enabledLabel.size = 18;
-         enabledLabel.x = nameLabel.x + nameLabel.width + 30;
-         headerBarContainer.addChild(enabledLabel);
+         this.enabledLabel = new Label();
+         this.enabledLabel.text = "ENABLED  ";
+         this.enabledLabel.size = 18;
+         this.enabledLabel.color = 0x00FF00;
+         this.headerBarContainer.addChild(this.enabledLabel);
          
          this.checkBox = new TankCheckBox();
-         this.checkBox.x = enabledLabel.x + enabledLabel.width + 5;
-         this.checkBox.y = enabledLabel.y - 2;
+         this.checkBox.y = this.enabledLabel.y - 2;
          this.checkBox.checked = this.hack.isEnabled;
          this.checkBox.addEventListener(MouseEvent.MOUSE_UP, this.enableStateChanged);
-         headerBarContainer.addChild(this.checkBox);
+         this.headerBarContainer.addChild(this.checkBox);
          
-         currentPropertyPos = new Point(headerBarContainer.x, headerBarContainer.height + headerBarContainer.y + PROPERTY_SPACE)
+         currentPropertyPos = new Point(this.headerBarContainer.x, this.headerBarContainer.height + this.headerBarContainer.y + PROPERTY_SPACE)
          
          this.createProperties();
       }
@@ -212,6 +215,18 @@ package juho.hacking.hackmenu {
          this.container.graphics.beginFill(CONTAINER_COLOR);
          this.container.graphics.drawRoundRect(CONTAINER_BORDER_THICKNESS, CONTAINER_BORDER_THICKNESS, _width - CONTAINER_BORDER_THICKNESS * 2, _height - CONTAINER_BORDER_THICKNESS * 2, 5, 5);
          this.container.graphics.endFill();
+            // Position header and right-anchored enabled label + checkbox
+            var hbX:int = CONTAINER_BORDER_THICKNESS + 3;
+            this.headerBarContainer.x = hbX;
+            this.headerBarContainer.y = CONTAINER_BORDER_THICKNESS + 6;
+            // name stays at left
+            this.nameLabel.x = 0;
+            this.nameLabel.y = 0;
+            // anchor enabled label and checkbox to the right inside the container
+            var rightPadding:int = 8;
+            var localRight:int = _width - this.headerBarContainer.x - rightPadding;
+            this.checkBox.x = localRight - this.checkBox.width;
+            this.enabledLabel.x = this.checkBox.x - 5 - this.enabledLabel.width;
       }
    }
 }
