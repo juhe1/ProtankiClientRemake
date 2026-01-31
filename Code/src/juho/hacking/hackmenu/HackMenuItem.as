@@ -215,18 +215,18 @@ package juho.hacking.hackmenu {
          this.container.graphics.beginFill(CONTAINER_COLOR);
          this.container.graphics.drawRoundRect(CONTAINER_BORDER_THICKNESS, CONTAINER_BORDER_THICKNESS, _width - CONTAINER_BORDER_THICKNESS * 2, _height - CONTAINER_BORDER_THICKNESS * 2, 5, 5);
          this.container.graphics.endFill();
-            // Position header and right-anchored enabled label + checkbox
-            var hbX:int = CONTAINER_BORDER_THICKNESS + 3;
-            this.headerBarContainer.x = hbX;
-            this.headerBarContainer.y = CONTAINER_BORDER_THICKNESS + 6;
-            // name stays at left
-            this.nameLabel.x = 0;
-            this.nameLabel.y = 0;
-            // anchor enabled label and checkbox to the right inside the container
-            var rightPadding:int = 8;
-            var localRight:int = _width - this.headerBarContainer.x - rightPadding;
-            this.checkBox.x = localRight - this.checkBox.width;
-            this.enabledLabel.x = this.checkBox.x - 5 - this.enabledLabel.width;
+
+         var hbX:int = CONTAINER_BORDER_THICKNESS + 3;
+         this.headerBarContainer.x = hbX;
+         this.headerBarContainer.y = CONTAINER_BORDER_THICKNESS + 6;
+
+         this.nameLabel.x = 0;
+         this.nameLabel.y = 0;
+
+         var rightPadding:int = 8;
+         var localRight:int = _width - this.headerBarContainer.x - rightPadding;
+         this.checkBox.x = localRight - this.checkBox.width;
+         this.enabledLabel.x = this.checkBox.x - 5 - this.enabledLabel.width;
       }
    }
 }
