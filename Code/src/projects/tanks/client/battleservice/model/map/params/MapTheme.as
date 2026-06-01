@@ -15,6 +15,8 @@ package projects.tanks.client.battleservice.model.map.params
       public static const WINTER_DAY:MapTheme = new MapTheme(5,"WINTER_DAY");
       
       public static const WINTER_NIGHT:MapTheme = new MapTheme(6,"WINTER_NIGHT");
+
+      public static const MATCHMAKING:MapTheme = new MapTheme(7,"MATCHMAKING");
       
       private var _value:int;
       
@@ -37,6 +39,7 @@ package projects.tanks.client.battleservice.model.map.params
          _loc1_.push(SUMMER_NIGHT);
          _loc1_.push(WINTER_DAY);
          _loc1_.push(WINTER_NIGHT);
+         _loc1_.push(MATCHMAKING);
          return _loc1_;
       }
       

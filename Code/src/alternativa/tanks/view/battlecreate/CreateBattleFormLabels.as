@@ -232,6 +232,8 @@ package alternativa.tanks.view.battlecreate
                return localeService.getText(TanksLocale.TEXT_MAP_THEME_NAME_WINTER_DAY);
             case MapTheme.WINTER_NIGHT.value:
                return localeService.getText(TanksLocale.TEXT_MAP_THEME_NAME_WINTER_NIGHT);
+            case MapTheme.MATCHMAKING.value:
+               return localeService.getText(TanksLocale.TEXT_MAP_THEME_NAME_MATCHMAKING);
             default:
                return null;
          }

@@ -130,6 +130,8 @@ package projects.tanks.clients.fp10.libraries
       public static const TEXT_REDUCE_DAMAGE_TWINS:String = "REDUCE_DAMAGE_TWINS";
       
       public static const TEXT_MAP_THEME_NAME_WINTER_NIGHT:String = "MAP_THEME_NAME_WINTER_NIGHT";
+
+      public static const TEXT_MAP_THEME_NAME_MATCHMAKING:String = "MAP_THEME_NAME_MATCHMAKING";
       
       public static const TEXT_SETTINGS_LINK_ACCOUNT:String = "SETTINGS_LINK_ACCOUNT";
       

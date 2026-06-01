@@ -186,6 +186,8 @@ package scpacker.utils
                return MapTheme.WINTER_DAY;
             case "WINTER_NIGHT":
                return MapTheme.WINTER_NIGHT;
+            case "MATCHMAKING":
+               return MapTheme.MATCHMAKING;
             default:
                throw new Error(param1);
          }
