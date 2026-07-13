@@ -367,6 +367,11 @@ package scpacker.networking.protocol
    import scpacker.networking.protocol.packets.missions.ShowQuestWindowWithoutDailyQuestsInPacket;
    import scpacker.networking.protocol.packets.missions.SkipDailyQuestInPacket;
    import scpacker.networking.protocol.packets.missions.TakeDailyQuestPrizeInPacket;
+   import scpacker.networking.protocol.packets.userproperties.UserPropertiesPacketHandler;
+   import scpacker.networking.protocol.packets.userproperties.ChangeCrystalCountInPacket;
+   import scpacker.networking.protocol.packets.userproperties.UpdateScoreInPacket;
+   import scpacker.networking.protocol.packets.userproperties.UpdateRankInPacket;
+   import scpacker.networking.protocol.packets.userproperties.UpdateRatingAndPlaceInPacket;
 
    public class PacketInitializer
    {
@@ -851,6 +856,13 @@ package scpacker.networking.protocol
          packetRegistry.registerPacket(new ShowQuestWindowWithoutDailyQuestsInPacket());
          packetRegistry.registerPacket(new SkipDailyQuestInPacket());
          packetRegistry.registerPacket(new TakeDailyQuestPrizeInPacket());
+
+         // UserProperties Packets
+         packetInvoker.registerPacketHandler(new UserPropertiesPacketHandler());
+         packetRegistry.registerPacket(new ChangeCrystalCountInPacket());
+         packetRegistry.registerPacket(new UpdateScoreInPacket());
+         packetRegistry.registerPacket(new UpdateRankInPacket());
+         packetRegistry.registerPacket(new UpdateRatingAndPlaceInPacket());
       }
    }
 }

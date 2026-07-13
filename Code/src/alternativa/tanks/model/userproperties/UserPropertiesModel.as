@@ -179,6 +179,11 @@ package alternativa.tanks.model.userproperties
       {
          return this._place;
       }
+
+      public function setPlace(param1:int) : void
+      {
+         this._place = param1;
+      }
       
       public function changeCrystal(param1:int) : void
       {
