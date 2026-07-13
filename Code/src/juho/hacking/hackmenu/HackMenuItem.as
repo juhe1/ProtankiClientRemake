@@ -1,14 +1,16 @@
 package juho.hacking.hackmenu {
+   import alternativa.tanks.gui.settings.tabs.control.KeyBinding;
    import controls.TankInput;
    import flash.events.Event;
+   import flash.events.KeyboardEvent;
    import flash.events.MouseEvent;
    import flash.geom.Point;
    import controls.Label;
-   import flash.display.BitmapData;
    import flash.display.Shape;
    import flash.display.Sprite;
-   import flash.geom.Matrix;
    import flash.geom.Vector3D;
+   import flash.ui.Keyboard;
+   import flash.utils.Dictionary;
    import juho.hacking.Hack;
    import juho.hacking.HackProperty;
    import controls.checkbox.TankCheckBox;
@@ -20,12 +22,23 @@ package juho.hacking.hackmenu {
       private static const CONTAINER_BORDER_THICKNESS:int = 3;
       private static const PROPERTY_SPACE:int = 3;
       
+      private static var keyBindings:Dictionary = new Dictionary();
+      private static var stageListenerAdded:Boolean = false;
+      
+      private static function onStageKeyDown(e:KeyboardEvent):void {
+         var menuItem:HackMenuItem = keyBindings[e.keyCode] as HackMenuItem;
+         if (menuItem != null) {
+            menuItem.toggleHack();
+         }
+      }
+      
       private var hack:Hack;
       private var container:Shape;
       private var checkBox:TankCheckBox;
       private var headerBarContainer:Sprite;
       private var nameLabel:Label;
       private var enabledLabel:Label;
+      private var keyInput:TankInput;
       private var currentPropertyPos:Point;
 
       public function HackMenuItem(_hack:Hack) {
@@ -45,6 +58,14 @@ package juho.hacking.hackmenu {
          this.nameLabel.color = 0x00FF00;
          this.headerBarContainer.addChild(this.nameLabel);
          
+         this.keyInput = new TankInput();
+         this.keyInput.width = 70;
+         this.keyInput.maxChars = 1;
+         this.keyInput.textField.restrict = "";
+         this.keyInput.value = this.getKeyLabel();
+         this.keyInput.textField.addEventListener(KeyboardEvent.KEY_DOWN, this.onKeyInputKeyDown);
+         this.headerBarContainer.addChild(this.keyInput);
+         
          this.enabledLabel = new Label();
          this.enabledLabel.text = "ENABLED  ";
          this.enabledLabel.size = 18;
@@ -60,6 +81,65 @@ package juho.hacking.hackmenu {
          currentPropertyPos = new Point(this.headerBarContainer.x, this.headerBarContainer.height + this.headerBarContainer.y + PROPERTY_SPACE)
          
          this.createProperties();
+         
+         this.updateKeyRegistry();
+         
+         addEventListener(Event.ADDED_TO_STAGE, this.onAddedToStage);
+         addEventListener(Event.REMOVED_FROM_STAGE, this.onRemovedFromStage);
+      }
+      
+      private function onAddedToStage(e:Event):void {
+         if (!stageListenerAdded && stage != null) {
+            stage.addEventListener(KeyboardEvent.KEY_DOWN, onStageKeyDown);
+            stageListenerAdded = true;
+         }
+      }
+      
+      private function onRemovedFromStage(e:Event):void {
+      }
+      
+      private function getKeyLabel():String {
+         if (this.hack.keyCode == 0) {
+            return "---";
+         }
+         return KeyBinding.keysBindingService.getKeyCodeLabel(this.hack.keyCode);
+      }
+      
+      private function onKeyInputKeyDown(e:KeyboardEvent):void {
+         if (e.keyCode == Keyboard.BACKSPACE || e.keyCode == Keyboard.DELETE) {
+            this.hack.setKeyBinding(0);
+            this.keyInput.value = "---";
+            this.updateKeyRegistry();
+            return;
+         }
+         
+         var label:String = KeyBinding.keysBindingService.getKeyCodeLabel(e.keyCode);
+         if (label != "") {
+            this.hack.setKeyBinding(e.keyCode);
+            this.keyInput.value = label;
+            this.updateKeyRegistry();
+         }
+      }
+      
+      private function updateKeyRegistry():void {
+         for (var key:Object in keyBindings) {
+            if (keyBindings[key] == this) {
+               delete keyBindings[key];
+            }
+         }
+         if (this.hack.keyCode != 0) {
+            keyBindings[this.hack.keyCode] = this;
+         }
+      }
+      
+      private function toggleHack():void {
+         if (this.hack.isEnabled) {
+            this.hack.disable();
+            this.checkBox.checked = false;
+         } else {
+            this.hack.enable();
+            this.checkBox.checked = true;
+         }
       }
       
       private function enableStateChanged(e:MouseEvent) : void {
@@ -222,6 +302,9 @@ package juho.hacking.hackmenu {
 
          this.nameLabel.x = 0;
          this.nameLabel.y = 0;
+         
+         this.keyInput.x = this.nameLabel.x + this.nameLabel.width + 10;
+         this.keyInput.y = -3;
 
          var rightPadding:int = 8;
          var localRight:int = _width - this.headerBarContainer.x - rightPadding;

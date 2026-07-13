@@ -10,6 +10,7 @@ package juho.hacking {
       public var id:String = "DEFAULT";
       
       public var isEnabled:Boolean = false;
+      public var keyCode:uint = 0;
       public var allHackProperties:Vector.<HackProperty> = new Vector.<HackProperty>();
       private var saveData:SharedObject;
       
@@ -27,6 +28,20 @@ package juho.hacking {
          if (!saveData.data.hasOwnProperty("hackPropertyValuesByName")) {
             saveData.data.hackPropertyValuesByName = new Object();
          }
+
+         if (saveData.data.hasOwnProperty("keyCode")) {
+            this.keyCode = saveData.data.keyCode;
+         }
+      }
+      
+      public function setKeyBinding(_keyCode:uint):void {
+         this.keyCode = _keyCode;
+         saveData.data.keyCode = _keyCode;
+         saveData.flush();
+      }
+      
+      public function getKeyBinding():uint {
+         return this.keyCode;
       }
       
       public function enable():void {
