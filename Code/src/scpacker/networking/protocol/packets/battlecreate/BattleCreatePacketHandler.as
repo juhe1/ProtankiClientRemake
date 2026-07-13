@@ -135,6 +135,8 @@ package scpacker.networking.protocol.packets.battlecreate
          equipmentConstraintsCC.equipmentConstraintsModeInfos.push(new EquipmentConstraintsModeInfo(0,"HORNET_RAILGUN","Hornet & Railgun"));
          equipmentConstraintsCC.equipmentConstraintsModeInfos.push(new EquipmentConstraintsModeInfo(1,"WASP_RAILGUN","Wasp & Railgun"));
          equipmentConstraintsCC.equipmentConstraintsModeInfos.push(new EquipmentConstraintsModeInfo(2,"HORNET_WASP_RAILGUN","Hornet, Wasp & Railgun"));
+         equipmentConstraintsCC.equipmentConstraintsModeInfos.push(new EquipmentConstraintsModeInfo(3,"LIGHT","Light"));
+         equipmentConstraintsCC.equipmentConstraintsModeInfos.push(new EquipmentConstraintsModeInfo(4,"HARD","Hard"));
 
          Model.object = this.battleSelectObject;
          this.equipmentConstraintsNamingMode.putInitParams(equipmentConstraintsCC);
