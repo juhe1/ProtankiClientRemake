@@ -70,7 +70,7 @@ package alternativa.tanks.model.battleselect
          var event:BattleListFormServiceEvent = param1;
          this.clearSelectTimeout();
          var battleId:String = BattleParams(param1.selectedItem.adapt(BattleParams)).getConstructor().params.battleId;
-         server.onSelect(battleId + " ");
+         server.onSelect(battleId);
       }
       
       private function onBattleByURLNotFound(param1:BattleByURLNotFoundEvent) : void
