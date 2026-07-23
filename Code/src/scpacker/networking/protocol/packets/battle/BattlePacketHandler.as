@@ -182,6 +182,7 @@ package scpacker.networking.protocol.packets.battle
    import alternativa.tanks.models.battle.gui.inventory.InventorySfxModel;
    import projects.tanks.client.battlefield.models.inventory.sfx.InventorySfxModelBase;
    import projects.tanks.client.battlefield.models.inventory.sfx.InventorySfxCC;
+   import projects.tanks.client.battlefield.models.battle.gui.chat.BattleChatModelBase;
    
    public class BattlePacketHandler extends AbstractPacketHandler
    {
@@ -380,6 +381,7 @@ package scpacker.networking.protocol.packets.battle
          battlefieldGameClassVector.push(BonusRegionsModelBase.modelId);
          battlefieldGameClassVector.push(GoldBonusesModelBase.modelId);
          battlefieldGameClassVector.push(StatisticsModelBase.modelId);
+         battlefieldGameClassVector.push(BattleChatModelBase.modelId);
          battlefieldGameClassVector.push(this.inventoryModel.id);
          battlefieldGameClassVector.push(this.battleMinesModel.id);
          battlefieldGameClassVector.push(this.inventorySfxModel .id);
