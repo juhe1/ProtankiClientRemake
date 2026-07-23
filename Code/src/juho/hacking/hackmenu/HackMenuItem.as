@@ -1,6 +1,9 @@
 package juho.hacking.hackmenu {
+   import alternativa.osgi.OSGi;
    import alternativa.tanks.gui.settings.tabs.control.KeyBinding;
    import controls.TankInput;
+   import flash.display.InteractiveObject;
+   import flash.display.Stage;
    import flash.events.Event;
    import flash.events.KeyboardEvent;
    import flash.events.MouseEvent;
@@ -9,11 +12,14 @@ package juho.hacking.hackmenu {
    import flash.display.Shape;
    import flash.display.Sprite;
    import flash.geom.Vector3D;
+   import flash.text.TextField;
+   import flash.text.TextFieldType;
    import flash.ui.Keyboard;
    import flash.utils.Dictionary;
    import juho.hacking.Hack;
    import juho.hacking.HackProperty;
    import controls.checkbox.TankCheckBox;
+   import projects.tanks.clients.fp10.libraries.tanksservices.service.layout.ILobbyLayoutService;
    
    public class HackMenuItem extends Sprite {
       
@@ -24,8 +30,25 @@ package juho.hacking.hackmenu {
       
       private static var keyBindings:Dictionary = new Dictionary();
       private static var stageListenerAdded:Boolean = false;
+      private static var lobbyLayoutService:ILobbyLayoutService = null;
+      
+      private static function getLobbyLayoutService():ILobbyLayoutService {
+         if (lobbyLayoutService == null) {
+            lobbyLayoutService = ILobbyLayoutService(OSGi.getInstance().getService(ILobbyLayoutService));
+         }
+         return lobbyLayoutService;
+      }
       
       private static function onStageKeyDown(e:KeyboardEvent):void {
+         // Don't activate when typing in an input field (chat, etc.)
+         var stage:Stage = e.currentTarget as Stage;
+         if (stage != null) {
+            var focusObj:InteractiveObject = stage.focus;
+            if (focusObj is TextField && TextField(focusObj).type == TextFieldType.INPUT) {
+               return;
+            }
+         }
+         
          var menuItem:HackMenuItem = keyBindings[e.keyCode] as HackMenuItem;
          if (menuItem != null) {
             menuItem.toggleHack();
